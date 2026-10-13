@@ -1,0 +1,735 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^FN-(EGA|CGA|TDY|DOS|AMIGA)-[0-9]{6}$"
+    },
+    "record_type": {
+      "const": "function"
+    },
+    "edition_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "bounded",
+        "contract_reviewed",
+        "translated",
+        "compiled",
+        "differential_passed",
+        "accepted",
+        "explained_nontranslated",
+        "superseded",
+        "refuted"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "tentative",
+        "supported",
+        "strong",
+        "refuted"
+      ]
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gates": {
+      "$ref": "#/$defs/gates"
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unknown"
+      }
+    },
+    "superseded_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "updated_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "packer",
+        "compiler_runtime",
+        "game",
+        "interrupt",
+        "hardware_adapter",
+        "shared_tail"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/locator"
+      }
+    },
+    "ranges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/locator"
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "calling_convention": {
+          "type": "string"
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "register_inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "register_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "register_clobbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stack_effect": {
+          "type": "string"
+        },
+        "segment_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_reads": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_writes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "aliasing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "arithmetic": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hardware_os_effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unresolved_indirect_edges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "calling_convention",
+        "preconditions",
+        "postconditions",
+        "register_inputs",
+        "register_outputs",
+        "register_clobbers",
+        "flags",
+        "stack_effect",
+        "segment_assumptions",
+        "memory_reads",
+        "memory_writes",
+        "aliasing",
+        "arithmetic",
+        "hardware_os_effects",
+        "unresolved_indirect_edges"
+      ]
+    },
+    "callers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "callees": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "portable_source": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/locator"
+      }
+    },
+    "validation_records": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nontranslated_reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "record_type",
+    "edition_id",
+    "status",
+    "confidence",
+    "claim",
+    "evidence",
+    "dependencies",
+    "gates",
+    "unknowns",
+    "names",
+    "classification",
+    "entries",
+    "ranges",
+    "contract",
+    "callers",
+    "callees",
+    "data_dependencies",
+    "portable_source",
+    "validation_records"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:testdrive2:recovery:function:1",
+  "title": "Test Drive II function evidence record",
+  "description": "One stable function or shared code body. Addresses do not imply semantic recovery; acceptance gates remain separate.",
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "coordinate": {
+          "type": "string",
+          "enum": [
+            "packed_file",
+            "rebuilt_mz",
+            "unpacked_module",
+            "tool_segmented",
+            "runtime_segmented",
+            "resource_file",
+            "source",
+            "document"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "segment": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "segment_offset": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "module_offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "runtime_load_segment": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "tool_profile": {
+          "type": "string"
+        },
+        "analysis_map_id": {
+          "type": "string"
+        },
+        "transform_id": {
+          "type": "string"
+        },
+        "relocation_state": {
+          "type": "string",
+          "enum": [
+            "unrelocated",
+            "relocated",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "timepoint": {
+          "type": "string"
+        },
+        "address_policy": {
+          "type": "string"
+        },
+        "container_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_path": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "coordinate",
+        "path"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "enum": [
+                  "packed_file",
+                  "rebuilt_mz",
+                  "unpacked_module",
+                  "resource_file"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sha256",
+              "offset",
+              "length"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "enum": [
+                  "tool_segmented",
+                  "runtime_segmented"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sha256",
+              "segment",
+              "segment_offset",
+              "relocation_state"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "const": "tool_segmented"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "tool_profile",
+              "analysis_map_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "const": "runtime_segmented"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "runtime_load_segment",
+              "timepoint",
+              "address_policy"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "const": "source"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "line"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "member_path"
+            ]
+          },
+          "then": {
+            "required": [
+              "container_sha256"
+            ]
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "raw_bytes",
+            "instruction_analysis",
+            "source_comparison",
+            "transform_validation",
+            "compilation",
+            "synthetic_vectors",
+            "differential_trace",
+            "runtime_observation",
+            "visual_review",
+            "audio_review",
+            "document_review"
+          ]
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool_id": {
+          "type": "string"
+        },
+        "record_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "locator",
+        "result",
+        "scope"
+      ]
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "resolution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "description",
+        "blocking",
+        "resolution"
+      ]
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "pending",
+            "passed",
+            "failed",
+            "blocked",
+            "not_applicable"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "evidence_ids",
+        "scope"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "edition_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "locators": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/locator"
+          }
+        }
+      },
+      "required": [
+        "description",
+        "locators"
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "static_bytes": {
+          "$ref": "#/$defs/gate"
+        },
+        "code_contract": {
+          "$ref": "#/$defs/gate"
+        },
+        "compilation": {
+          "$ref": "#/$defs/gate"
+        },
+        "differential": {
+          "$ref": "#/$defs/gate"
+        },
+        "runtime": {
+          "$ref": "#/$defs/gate"
+        },
+        "visual": {
+          "$ref": "#/$defs/gate"
+        },
+        "audio": {
+          "$ref": "#/$defs/gate"
+        },
+        "fidelity": {
+          "$ref": "#/$defs/gate"
+        }
+      },
+      "required": [
+        "static_bytes",
+        "code_contract",
+        "compilation",
+        "differential",
+        "runtime",
+        "visual",
+        "audio",
+        "fidelity"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "accepted"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence": {
+            "minItems": 1
+          },
+          "portable_source": {
+            "minItems": 1
+          },
+          "unknowns": {
+            "items": {
+              "properties": {
+                "blocking": {
+                  "const": false
+                }
+              }
+            }
+          },
+          "gates": {
+            "properties": {
+              "static_bytes": {
+                "properties": {
+                  "status": {
+                    "const": "passed"
+                  }
+                }
+              },
+              "code_contract": {
+                "properties": {
+                  "status": {
+                    "const": "passed"
+                  }
+                }
+              },
+              "compilation": {
+                "properties": {
+                  "status": {
+                    "const": "passed"
+                  }
+                }
+              },
+              "differential": {
+                "properties": {
+                  "status": {
+                    "const": "passed"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "explained_nontranslated"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "nontranslated_reason"
+        ]
+      }
+    }
+  ]
+}

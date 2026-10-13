@@ -1,0 +1,565 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^DC-[0-9]{6}$"
+    },
+    "record_type": {
+      "const": "decision"
+    },
+    "edition_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "adopted",
+        "superseded",
+        "rejected"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "tentative",
+        "supported",
+        "strong",
+        "refuted"
+      ]
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gates": {
+      "$ref": "#/$defs/gates"
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unknown"
+      }
+    },
+    "superseded_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "updated_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "problem": {
+      "type": "string"
+    },
+    "choice": {
+      "type": "string"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "option": {
+            "type": "string"
+          },
+          "benefits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "costs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason_not_selected": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "option",
+          "benefits",
+          "costs",
+          "reason_not_selected"
+        ]
+      }
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "consequences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "consequence_if_false": {
+            "type": "string"
+          },
+          "validation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "consequence_if_false",
+          "validation"
+        ]
+      }
+    },
+    "review_trigger": {
+      "type": "string"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "record_type",
+    "edition_id",
+    "status",
+    "confidence",
+    "claim",
+    "evidence",
+    "dependencies",
+    "gates",
+    "unknowns",
+    "problem",
+    "choice",
+    "alternatives",
+    "rationale",
+    "consequences",
+    "assumptions",
+    "review_trigger",
+    "requirements",
+    "authority"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:testdrive2:recovery:decision:1",
+  "title": "Test Drive II decision evidence record",
+  "description": "A project/recovery choice recording authority and evidence without enlarging authorized phase scope.",
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "coordinate": {
+          "type": "string",
+          "enum": [
+            "packed_file",
+            "rebuilt_mz",
+            "unpacked_module",
+            "tool_segmented",
+            "runtime_segmented",
+            "resource_file",
+            "source",
+            "document"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "segment": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "segment_offset": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "module_offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "runtime_load_segment": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "tool_profile": {
+          "type": "string"
+        },
+        "analysis_map_id": {
+          "type": "string"
+        },
+        "transform_id": {
+          "type": "string"
+        },
+        "relocation_state": {
+          "type": "string",
+          "enum": [
+            "unrelocated",
+            "relocated",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "timepoint": {
+          "type": "string"
+        },
+        "address_policy": {
+          "type": "string"
+        },
+        "container_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "member_path": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "coordinate",
+        "path"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "enum": [
+                  "packed_file",
+                  "rebuilt_mz",
+                  "unpacked_module",
+                  "resource_file"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sha256",
+              "offset",
+              "length"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "enum": [
+                  "tool_segmented",
+                  "runtime_segmented"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sha256",
+              "segment",
+              "segment_offset",
+              "relocation_state"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "const": "tool_segmented"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "tool_profile",
+              "analysis_map_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "const": "runtime_segmented"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "runtime_load_segment",
+              "timepoint",
+              "address_policy"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "coordinate": {
+                "const": "source"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "line"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "member_path"
+            ]
+          },
+          "then": {
+            "required": [
+              "container_sha256"
+            ]
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "raw_bytes",
+            "instruction_analysis",
+            "source_comparison",
+            "transform_validation",
+            "compilation",
+            "synthetic_vectors",
+            "differential_trace",
+            "runtime_observation",
+            "visual_review",
+            "audio_review",
+            "document_review"
+          ]
+        },
+        "locator": {
+          "$ref": "#/$defs/locator"
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool_id": {
+          "type": "string"
+        },
+        "record_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "locator",
+        "result",
+        "scope"
+      ]
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "resolution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "description",
+        "blocking",
+        "resolution"
+      ]
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "pending",
+            "passed",
+            "failed",
+            "blocked",
+            "not_applicable"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "evidence_ids",
+        "scope"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "edition_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "locators": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/locator"
+          }
+        }
+      },
+      "required": [
+        "description",
+        "locators"
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "static_bytes": {
+          "$ref": "#/$defs/gate"
+        },
+        "code_contract": {
+          "$ref": "#/$defs/gate"
+        },
+        "compilation": {
+          "$ref": "#/$defs/gate"
+        },
+        "differential": {
+          "$ref": "#/$defs/gate"
+        },
+        "runtime": {
+          "$ref": "#/$defs/gate"
+        },
+        "visual": {
+          "$ref": "#/$defs/gate"
+        },
+        "audio": {
+          "$ref": "#/$defs/gate"
+        },
+        "fidelity": {
+          "$ref": "#/$defs/gate"
+        }
+      },
+      "required": [
+        "static_bytes",
+        "code_contract",
+        "compilation",
+        "differential",
+        "runtime",
+        "visual",
+        "audio",
+        "fidelity"
+      ]
+    }
+  }
+}

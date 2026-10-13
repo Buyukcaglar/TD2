@@ -1,0 +1,9 @@
+{
+  "checks": {
+    "TD2EGA.image.bin": true,
+    "TD2EGA.unpacked.exe": true,
+    "relocations.json": true
+  },
+  "result": "pass",
+  "scope": "EGA input pin added; decoder/envelope unchanged. Prior independent original-loader and author-tool validation apply to these byte-identical artifacts."
+}

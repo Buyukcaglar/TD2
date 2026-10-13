@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000003",
+  "result": "pass",
+  "vectors": 131584,
+  "original_function_instructions_executed": 1447424,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "function_image_range": [
+    58526,
+    58555
+  ],
+  "function_sha256": "f138992baf1f9cf7843fd61b1cc51d4f9bd3e5f2fe158e98a15bfca435367f66",
+  "library_sha256": "2423e05530c67de68bfb16a87a1ce86203d528045a83c9479132769f098ba246",
+  "source_sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74",
+  "validator_sha256": "c5d5858382ea0c43c64c303e51c1676cf59b4db405ef60a5ef8202dcf069dcaf",
+  "coverage": [
+    "all 256 indices x all 256 byte values",
+    "all 65536 cursor values",
+    "512 seeded varied-state vectors"
+  ],
+  "comparisons": [
+    "native C vs guest: all 258 state bytes and AX result",
+    "native state prefix/suffix guards",
+    "guest contract: preserved registers/segments, far return/stack and adjacent guards"
+  ],
+  "limits": "Isolated function semantics only. No whole game/DOS/device session, no caller-level meaning, no cycle timing, no core integration; C does not expose CPU flags."
+}

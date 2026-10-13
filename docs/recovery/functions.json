@@ -1,0 +1,495 @@
+{
+  "schema_version": 1,
+  "scope": "Three manually reviewed/discovered records only; automatic365candidatefunctions are not a complete or accepted routine inventory.",
+  "records": [
+    {
+      "schema_version": 1,
+      "record_type": "function",
+      "id": "FN-EGA-000001",
+      "edition_id": "DOS-EGA-SUPPLIED-EB4F8E88",
+      "status": "bounded",
+      "confidence": "strong",
+      "claim": "compiler_runtime_startup_candidate",
+      "evidence": [
+        {
+          "method": "instruction_analysis",
+          "locator": {
+            "coordinate": "unpacked_module",
+            "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+            "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+            "offset": 81528,
+            "length": 198,
+            "segment": 5032,
+            "segment_offset": 1016,
+            "relocation_state": "unrelocated",
+            "transform_id": "TD2EGA-UNPACK-V1"
+          },
+          "result": "Bounded static instructions and call/data evidence reviewed.",
+          "scope": "Named range only; no game session."
+        }
+      ],
+      "dependencies": [
+        "TD2EGA-UNPACK-V1"
+      ],
+      "gates": {
+        "static_bytes": {
+          "status": "passed",
+          "evidence_ids": [
+            "TD2EGA-UNPACK-V1",
+            "TD2EGA-STARTUP-V1"
+          ],
+          "scope": "Input image and reviewed range identity verified."
+        },
+        "code_contract": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "compilation": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "differential": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "runtime": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "visual": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "audio": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "fidelity": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        }
+      },
+      "unknowns": [
+        {
+          "description": "Range-specific DS/SS tool context and all runtime helper interfaces are incomplete.",
+          "blocking": true,
+          "resolution": "Review helpers and set only proven context ranges; preserve PSP/environment accesses."
+        }
+      ],
+      "names": [
+        "compiler_runtime_startup_candidate"
+      ],
+      "classification": "compiler_runtime",
+      "entries": [
+        {
+          "coordinate": "unpacked_module",
+          "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+          "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+          "offset": 81528,
+          "length": 1,
+          "segment": 5032,
+          "segment_offset": 1016,
+          "relocation_state": "unrelocated",
+          "transform_id": "TD2EGA-UNPACK-V1"
+        }
+      ],
+      "ranges": [
+        {
+          "coordinate": "unpacked_module",
+          "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+          "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+          "offset": 81528,
+          "length": 198,
+          "segment": 5032,
+          "segment_offset": 1016,
+          "relocation_state": "unrelocated",
+          "transform_id": "TD2EGA-UNPACK-V1"
+        }
+      ],
+      "contract": {
+        "calling_convention": "DOS MZ entry; invokes far C runtime helpers and far application main.",
+        "preconditions": [],
+        "postconditions": [],
+        "register_inputs": [
+          "Initial DS/ES point to PSP under DOS loader contract.",
+          "Initial SS:SP from recovered metadata."
+        ],
+        "register_outputs": [
+          "Normal path sets SS and later DS to relocated group178F."
+        ],
+        "register_clobbers": [],
+        "flags": [],
+        "stack_effect": "Static normal path changes SS to178F and SP from0FA0 toA3CE before runtime calls.",
+        "segment_assumptions": [
+          "DS is PSP initially; principal group only after PUSHSS/POPDS."
+        ],
+        "memory_reads": [
+          "PSP allocation/environment/command-tail metadata."
+        ],
+        "memory_writes": [
+          "Runtime bookkeeping and BSS clear [DS83C8,DS9430)."
+        ],
+        "aliasing": [],
+        "arithmetic": [],
+        "hardware_os_effects": [
+          "DOS version, allocation resize, runtime initialization and termination services."
+        ],
+        "unresolved_indirect_edges": [
+          "Runtime command-line parser returns through saved far address; remaining helpers need reviewed contracts."
+        ]
+      },
+      "callers": [],
+      "callees": [
+        "FN-EGA-000002"
+      ],
+      "data_dependencies": [],
+      "portable_source": [],
+      "validation_records": [
+        "docs/recovery/evidence/td2ega-startup.json"
+      ],
+      "updated_on": "2026-10-13"
+    },
+    {
+      "schema_version": 1,
+      "record_type": "function",
+      "id": "FN-EGA-000002",
+      "edition_id": "DOS-EGA-SUPPLIED-EB4F8E88",
+      "status": "bounded",
+      "confidence": "strong",
+      "claim": "application_main_candidate",
+      "evidence": [
+        {
+          "method": "instruction_analysis",
+          "locator": {
+            "coordinate": "unpacked_module",
+            "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+            "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+            "offset": 1971,
+            "length": 1105,
+            "segment": 0,
+            "segment_offset": 1971,
+            "relocation_state": "unrelocated",
+            "transform_id": "TD2EGA-UNPACK-V1"
+          },
+          "result": "Bounded static instructions and call/data evidence reviewed.",
+          "scope": "Named range only; no game session."
+        }
+      ],
+      "dependencies": [
+        "TD2EGA-UNPACK-V1"
+      ],
+      "gates": {
+        "static_bytes": {
+          "status": "passed",
+          "evidence_ids": [
+            "TD2EGA-UNPACK-V1",
+            "TD2EGA-STARTUP-V1"
+          ],
+          "scope": "Input image and reviewed range identity verified."
+        },
+        "code_contract": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "compilation": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "differential": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "runtime": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "visual": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "audio": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        },
+        "fidelity": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        }
+      },
+      "unknowns": [
+        {
+          "description": "Full state machine, callee semantics and resource interfaces are not recovered.",
+          "blocking": true,
+          "resolution": "P1-04/P1-05 reviewed code/control/resource maps."
+        }
+      ],
+      "names": [
+        "application_main_candidate"
+      ],
+      "classification": "game",
+      "entries": [
+        {
+          "coordinate": "unpacked_module",
+          "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+          "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+          "offset": 1971,
+          "length": 1,
+          "segment": 0,
+          "segment_offset": 1971,
+          "relocation_state": "unrelocated",
+          "transform_id": "TD2EGA-UNPACK-V1"
+        }
+      ],
+      "ranges": [
+        {
+          "coordinate": "unpacked_module",
+          "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+          "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+          "offset": 1971,
+          "length": 1105,
+          "segment": 0,
+          "segment_offset": 1971,
+          "relocation_state": "unrelocated",
+          "transform_id": "TD2EGA-UNPACK-V1"
+        }
+      ],
+      "contract": {
+        "calling_convention": "Far C-style caller pushes argc, near argv, near envp; exact original signature remains a candidate.",
+        "preconditions": [
+          "Runtime normal path established group178F and argument/environment vectors."
+        ],
+        "postconditions": [],
+        "register_inputs": [],
+        "register_outputs": [],
+        "register_clobbers": [],
+        "flags": [],
+        "stack_effect": "Under review",
+        "segment_assumptions": [
+          "Principal DS/SS group178F inferred statically from startup."
+        ],
+        "memory_reads": [],
+        "memory_writes": [],
+        "aliasing": [],
+        "arithmetic": [],
+        "hardware_os_effects": [
+          "Calls video, input/runtime and resource-loader candidates; effects not fully recovered."
+        ],
+        "unresolved_indirect_edges": [
+          "Main direct CFG bounded; callees and their indirect behavior remain open."
+        ]
+      },
+      "callers": [
+        "FN-EGA-000001"
+      ],
+      "callees": [],
+      "data_dependencies": [],
+      "portable_source": [],
+      "validation_records": [
+        "docs/recovery/evidence/td2ega-startup.json"
+      ],
+      "updated_on": "2026-10-13"
+    },
+    {
+      "schema_version": 1,
+      "record_type": "function",
+      "id": "FN-EGA-000003",
+      "edition_id": "DOS-EGA-SUPPLIED-EB4F8E88",
+      "status": "differential_passed",
+      "confidence": "strong",
+      "claim": "Recovered state transformation and AX result agree with isolated original function on131584 vectors; caller-level purpose unknown.",
+      "evidence": [
+        {
+          "method": "instruction_analysis",
+          "locator": {
+            "coordinate": "unpacked_module",
+            "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+            "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+            "offset": 58526,
+            "length": 29,
+            "segment": 1737,
+            "segment_offset": 30734,
+            "relocation_state": "unrelocated",
+            "transform_id": "TD2EGA-UNPACK-V1"
+          },
+          "result": "Bounded static instructions and call/data evidence reviewed.",
+          "scope": "Named range only; no game session."
+        },
+        {
+          "method": "differential_trace",
+          "locator": {
+            "coordinate": "document",
+            "path": "docs/recovery/evidence/td2ega-byte-ring-validation.json"
+          },
+          "result": "131584 vectors passed; state,AX,preservedregisters,stack and guards compared.",
+          "scope": "Only isolated leaf; no DOS/game session or caller-purpose validation."
+        }
+      ],
+      "dependencies": [
+        "TD2EGA-UNPACK-V1"
+      ],
+      "gates": {
+        "static_bytes": {
+          "status": "passed",
+          "evidence_ids": [
+            "TD2EGA-UNPACK-V1",
+            "TD2EGA-STARTUP-V1"
+          ],
+          "scope": "Input image and reviewed range identity verified."
+        },
+        "code_contract": {
+          "status": "passed",
+          "evidence_ids": [
+            "TD2EGA-BYTE-RING-CONTRACT"
+          ],
+          "scope": "Independently reviewed29-byte state/register contract."
+        },
+        "compilation": {
+          "status": "passed",
+          "evidence_ids": [
+            "TD2EGA-BYTE-RING-BUILD"
+          ],
+          "scope": "Actual C17 helper compiled byMSVC19.44 withW4/WX."
+        },
+        "differential": {
+          "status": "passed",
+          "evidence_ids": [
+            "TD2EGA-BYTE-RING-VALIDATION"
+          ],
+          "scope": "131584 isolated original-instruction/nativeC comparisons passed."
+        },
+        "runtime": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Integrated game execution not exercised; isolated C/CPU execution is covered by differential evidence."
+        },
+        "visual": {
+          "status": "not_applicable",
+          "evidence_ids": [],
+          "scope": "This leaf has no visual/audio/device effects; game presentation remains untested."
+        },
+        "audio": {
+          "status": "not_applicable",
+          "evidence_ids": [],
+          "scope": "This leaf has no visual/audio/device effects; game presentation remains untested."
+        },
+        "fidelity": {
+          "status": "pending",
+          "evidence_ids": [],
+          "scope": "Not established by this bounded recovery record."
+        }
+      },
+      "unknowns": [
+        {
+          "description": "Caller-level purpose, live state ownership and source-level return usage are not established.",
+          "blocking": true,
+          "resolution": "Trace admitted callers and resource/game-state ownership before core integration."
+        }
+      ],
+      "names": [
+        "byte_ring_step_purpose_unknown"
+      ],
+      "classification": "unknown",
+      "entries": [
+        {
+          "coordinate": "unpacked_module",
+          "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+          "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+          "offset": 58526,
+          "length": 1,
+          "segment": 1737,
+          "segment_offset": 30734,
+          "relocation_state": "unrelocated",
+          "transform_id": "TD2EGA-UNPACK-V1"
+        }
+      ],
+      "ranges": [
+        {
+          "coordinate": "unpacked_module",
+          "path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+          "sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+          "offset": 58526,
+          "length": 29,
+          "segment": 1737,
+          "segment_offset": 30734,
+          "relocation_state": "unrelocated",
+          "transform_id": "TD2EGA-UNPACK-V1"
+        }
+      ],
+      "contract": {
+        "calling_convention": "Far function, no stack arguments; DS selects cursor and byte ring. New C interface receives explicit state and returns AX-equivalent uint16.",
+        "preconditions": [
+          "DS66E6 is a writable 16-bit cursor; DS66E8..67E7 is a writable256-byte ring, disjoint from cursor."
+        ],
+        "postconditions": [
+          "Cursor decremented modulo65536; selected byte updated as((old<<1)|(old<128))&255; other state bytes unchanged."
+        ],
+        "register_inputs": [
+          "DS and far-return stack frame."
+        ],
+        "register_outputs": [
+          "AX is updated byte zero-extended."
+        ],
+        "register_clobbers": [
+          "AX, arithmetic flags."
+        ],
+        "flags": [
+          "Final XORAH,AH:CF=OF=0,ZF=PF=1,SF=0;AFundefined. C API does not expose flags."
+        ],
+        "stack_effect": "PUSH/POPSI balanced;RETF consumes4-byte caller return address.",
+        "segment_assumptions": [
+          "No fixed DS value needed within isolated contract."
+        ],
+        "memory_reads": [
+          "DS66E6 cursor and DS66E8+(newcursor&255)."
+        ],
+        "memory_writes": [
+          "DS66E6 cursor and selected ringbyte; temporary SI stack save."
+        ],
+        "aliasing": [
+          "Explicit C state cursor and byte array are disjoint."
+        ],
+        "arithmetic": [
+          "Unsigned16 cursorwrap;8-bit truncation;CMPAL80 supplies incomingRCLcarry."
+        ],
+        "hardware_os_effects": [],
+        "unresolved_indirect_edges": []
+      },
+      "callers": [],
+      "callees": [],
+      "data_dependencies": [],
+      "portable_source": [
+        {
+          "coordinate": "source",
+          "path": "src/recovered/td2ega_byte_ring.c",
+          "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74",
+          "line": 1
+        },
+        {
+          "coordinate": "source",
+          "path": "src/recovered/td2ega_byte_ring.h",
+          "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891",
+          "line": 1
+        }
+      ],
+      "validation_records": [
+        "docs/recovery/evidence/td2ega-byte-ring-build.json",
+        "docs/recovery/evidence/td2ega-byte-ring-validation.json"
+      ],
+      "updated_on": "2026-10-13"
+    }
+  ]
+}

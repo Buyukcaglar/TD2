@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "checkpoint_date": "2026-10-13",
+  "phase0": "complete",
+  "phase1": "in_progress",
+  "primary_target": "TD2EGA.EXE",
+  "task_counts": {
+    "complete": 7,
+    "in_progress": 1,
+    "pending": 55
+  },
+  "current_task": "P1-03",
+  "next_tasks": [
+    "P1-04",
+    "P1-05"
+  ],
+  "accepted_milestones": [
+    "Phase 0 custody, tools, evidence and future-oracle specification",
+    "TD2EGA image and relocation recovery independently validated"
+  ],
+  "bounded_artifacts": [
+    "Saved Ghidra project: 365 automatic candidates and 363 private decompiler transcripts; not code coverage",
+    "Static startup and application-main candidate map",
+    "FN-EGA-000003 compiled as C17; 131584 isolated differential vectors passed"
+  ],
+  "open_gates": [
+    "Range-specific DS/SS context and startup helper ABI review",
+    "Full function, state and resource-consumer recovery",
+    "Caller-level meaning and core integration of the C helper",
+    "Complete EGA C recovery before CGA",
+    "Full DOS oracle, gameplay, visual/audio and fidelity testing"
+  ],
+  "private_artifacts": [
+    "analysis/inputs/dos",
+    "analysis/derived/td2ega-v1",
+    "analysis/independent",
+    "analysis/ghidra-projects/TD2EGA.gpr",
+    "analysis/exports/td2ega-v1",
+    "analysis/build"
+  ],
+  "originals": "All 250 initial content hashes verified; final metadata/content custody result is recorded in checkpoint-audit.json.",
+  "later_phases": "No CGA unpacking, full resource codec, native Windows host or Amiga recovery performed."
+}

@@ -1,0 +1,1174 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "scope": "Draft 2020-12 metaschema validation and synthetic positive/negative record-shape cases only. No game bytes read or game execution.",
+  "validator": {
+    "name": "jsonschema",
+    "version": "4.25.1",
+    "target": "analysis/tools/validator-python",
+    "interpreter": "C:\\Python314\\python.exe",
+    "python": "3.14.2",
+    "interpreter_sha256": "fda7026477256845afab371e354c4d512896665f1761939cb5887d0a9dec257a",
+    "format_checker": "jsonschema.FormatChecker",
+    "installation": "Project-local wheel-only target, no global packages modified."
+  },
+  "packages": [
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "pypi_metadata_url": "https://pypi.org/pypi/attrs/26.1.0/json",
+      "metadata_path": "analysis/tools/validator-metadata/attrs-26.1.0.json",
+      "metadata_sha256": "a882bf941fb4a0bb748d0194df544121cc130f5fb15a710ab6b804c17d2899b7",
+      "requires_python": ">=3.9",
+      "requires_dist": null,
+      "wheels": [
+        {
+          "path": "analysis/tools/validator-wheels/attrs-26.1.0-py3-none-any.whl",
+          "bytes": 67548,
+          "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309",
+          "pypi_url": "https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl",
+          "pypi_sha256_match": true
+        }
+      ]
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.25.1",
+      "pypi_metadata_url": "https://pypi.org/pypi/jsonschema/4.25.1/json",
+      "metadata_path": "analysis/tools/validator-metadata/jsonschema-4.25.1.json",
+      "metadata_sha256": "89147a276d194f27bdf626f63c3cb3cb6b8ad6313ce5e87a59ba789835ef23fb",
+      "requires_python": ">=3.9",
+      "requires_dist": [
+        "attrs>=22.2.0",
+        "jsonschema-specifications>=2023.03.6",
+        "referencing>=0.28.4",
+        "rpds-py>=0.7.1",
+        "fqdn; extra == \"format\"",
+        "idna; extra == \"format\"",
+        "isoduration; extra == \"format\"",
+        "jsonpointer>1.13; extra == \"format\"",
+        "rfc3339-validator; extra == \"format\"",
+        "rfc3987; extra == \"format\"",
+        "uri-template; extra == \"format\"",
+        "webcolors>=1.11; extra == \"format\"",
+        "fqdn; extra == \"format-nongpl\"",
+        "idna; extra == \"format-nongpl\"",
+        "isoduration; extra == \"format-nongpl\"",
+        "jsonpointer>1.13; extra == \"format-nongpl\"",
+        "rfc3339-validator; extra == \"format-nongpl\"",
+        "rfc3986-validator>0.1.0; extra == \"format-nongpl\"",
+        "rfc3987-syntax>=1.1.0; extra == \"format-nongpl\"",
+        "uri-template; extra == \"format-nongpl\"",
+        "webcolors>=24.6.0; extra == \"format-nongpl\""
+      ],
+      "wheels": [
+        {
+          "path": "analysis/tools/validator-wheels/jsonschema-4.25.1-py3-none-any.whl",
+          "bytes": 90040,
+          "sha256": "3fba0169e345c7175110351d456342c364814cfcf3b964ba4587f22915230a63",
+          "pypi_url": "https://files.pythonhosted.org/packages/bf/9c/8c95d856233c1f82500c2450b8c68576b4cf1c871db3afac5c34ff84e6fd/jsonschema-4.25.1-py3-none-any.whl",
+          "pypi_sha256_match": true
+        }
+      ]
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "pypi_metadata_url": "https://pypi.org/pypi/jsonschema-specifications/2025.9.1/json",
+      "metadata_path": "analysis/tools/validator-metadata/jsonschema-specifications-2025.9.1.json",
+      "metadata_sha256": "91810d8f79384375ad0c0cf631e06903e2790b030d3fad2f1ad657b20ddd839e",
+      "requires_python": ">=3.9",
+      "requires_dist": [
+        "referencing>=0.31.0"
+      ],
+      "wheels": [
+        {
+          "path": "analysis/tools/validator-wheels/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+          "bytes": 18437,
+          "sha256": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe",
+          "pypi_url": "https://files.pythonhosted.org/packages/41/45/1a4ed80516f02155c51f51e8cedb3c1902296743db0bbc66608a0db2814f/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+          "pypi_sha256_match": true
+        }
+      ]
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "pypi_metadata_url": "https://pypi.org/pypi/referencing/0.37.0/json",
+      "metadata_path": "analysis/tools/validator-metadata/referencing-0.37.0.json",
+      "metadata_sha256": "a67968d8e03aa45e650fc2ff0d07796676db1a7841ce8e810bf2dba5af689464",
+      "requires_python": ">=3.10",
+      "requires_dist": [
+        "attrs>=22.2.0",
+        "rpds-py>=0.7.0",
+        "typing-extensions>=4.4.0; python_version < \"3.13\""
+      ],
+      "wheels": [
+        {
+          "path": "analysis/tools/validator-wheels/referencing-0.37.0-py3-none-any.whl",
+          "bytes": 26766,
+          "sha256": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231",
+          "pypi_url": "https://files.pythonhosted.org/packages/2c/58/ca301544e1fa93ed4f80d724bf5b194f6e4b945841c5bfd555878eea9fcb/referencing-0.37.0-py3-none-any.whl",
+          "pypi_sha256_match": true
+        }
+      ]
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "pypi_metadata_url": "https://pypi.org/pypi/rpds-py/2026.9.1/json",
+      "metadata_path": "analysis/tools/validator-metadata/rpds-py-2026.9.1.json",
+      "metadata_sha256": "93808b9ff27aabe26d9a4f03b28422d1d05c3fb8716d88f3826e7ddf4b0b258b",
+      "requires_python": ">=3.11",
+      "requires_dist": null,
+      "wheels": [
+        {
+          "path": "analysis/tools/validator-wheels/rpds_py-2026.9.1-cp314-cp314-win_amd64.whl",
+          "bytes": 222852,
+          "sha256": "837c6b305e26fe0f75b15c92cf3b2ba29e0ae19dc40b1c557b026cb426347d0c",
+          "pypi_url": "https://files.pythonhosted.org/packages/a4/0b/489d48abbcc7d70cf3fbf662d9d22abf1f4650761c0a9ae05260800800d3/rpds_py-2026.9.1-cp314-cp314-win_amd64.whl",
+          "pypi_sha256_match": true
+        }
+      ]
+    }
+  ],
+  "test_script": {
+    "path": "analysis/tools/validate-recovery-schemas.py",
+    "sha256": "1614702f5f4fcaf9d0cec04e2c579383046d82fae8878f189112d3b1eb99e5e6"
+  },
+  "schemas": [
+    {
+      "path": "docs/recovery/schemas/decision-record.schema.json",
+      "sha256": "e85b01f86683837fbab124eda7c4252eccce0e973638616dcaf651eeb2b7f71e",
+      "draft202012_metaschema": "passed"
+    },
+    {
+      "path": "docs/recovery/schemas/difference-record.schema.json",
+      "sha256": "a985d97d6bf938e3a541554897267b145c82c356304dd2cd9cc475c4570a1b28",
+      "draft202012_metaschema": "passed"
+    },
+    {
+      "path": "docs/recovery/schemas/function-record.schema.json",
+      "sha256": "24ff761e84d379cf477a5b7d0f303e880faa78d4ba662bdd5ff6a6817c87442d",
+      "draft202012_metaschema": "passed"
+    },
+    {
+      "path": "docs/recovery/schemas/resource-record.schema.json",
+      "sha256": "605c634a4072a8afa7540450b873d73743d07b1fe7d8ba1dd95a3d20530502da",
+      "draft202012_metaschema": "passed"
+    },
+    {
+      "path": "docs/recovery/schemas/trace-record.schema.json",
+      "sha256": "1fe59fa64cac6dfa42a2343b6af3bebb360a4a10a77d2046477f672f99673a1d",
+      "draft202012_metaschema": "passed"
+    }
+  ],
+  "cases": [
+    {
+      "case": "decision-minimal-synthetic-positive",
+      "schema": "decision",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "decision-missing-claim",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "required",
+          "message": "'claim' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "decision-unexpected-field",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('original_media_bytes' was unexpected)"
+        }
+      ]
+    },
+    {
+      "case": "decision-invalid-id",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "id"
+          ],
+          "validator": "pattern",
+          "message": "'ADDRESS-AS-ID' does not match '^DC-[0-9]{6}$'"
+        }
+      ]
+    },
+    {
+      "case": "decision-confidence-is-not-status",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "confidence"
+          ],
+          "validator": "enum",
+          "message": "'complete' is not one of ['unknown', 'tentative', 'supported', 'strong', 'refuted']"
+        }
+      ]
+    },
+    {
+      "case": "decision-binary-locator-needs-hash",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator"
+          ],
+          "validator": "required",
+          "message": "'sha256' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "decision-negative-offset",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator",
+            "offset"
+          ],
+          "validator": "minimum",
+          "message": "-1 is less than the minimum of 0"
+        }
+      ]
+    },
+    {
+      "case": "decision-invalid-gate",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "gates",
+            "runtime",
+            "status"
+          ],
+          "validator": "enum",
+          "message": "'inferred' is not one of ['not_started', 'pending', 'passed', 'failed', 'blocked', 'not_applicable']"
+        }
+      ]
+    },
+    {
+      "case": "decision-blocking-must-be-boolean",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "unknowns",
+            0,
+            "blocking"
+          ],
+          "validator": "type",
+          "message": "'yes' is not of type 'boolean'"
+        }
+      ]
+    },
+    {
+      "case": "difference-minimal-synthetic-positive",
+      "schema": "difference",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "difference-missing-claim",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "required",
+          "message": "'claim' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "difference-unexpected-field",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('original_media_bytes' was unexpected)"
+        }
+      ]
+    },
+    {
+      "case": "difference-invalid-id",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "id"
+          ],
+          "validator": "pattern",
+          "message": "'ADDRESS-AS-ID' does not match '^DF-[0-9]{6}$'"
+        }
+      ]
+    },
+    {
+      "case": "difference-confidence-is-not-status",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "confidence"
+          ],
+          "validator": "enum",
+          "message": "'complete' is not one of ['unknown', 'tentative', 'supported', 'strong', 'refuted']"
+        }
+      ]
+    },
+    {
+      "case": "difference-binary-locator-needs-hash",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator"
+          ],
+          "validator": "required",
+          "message": "'sha256' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "difference-negative-offset",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator",
+            "offset"
+          ],
+          "validator": "minimum",
+          "message": "-1 is less than the minimum of 0"
+        }
+      ]
+    },
+    {
+      "case": "difference-invalid-gate",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "gates",
+            "runtime",
+            "status"
+          ],
+          "validator": "enum",
+          "message": "'inferred' is not one of ['not_started', 'pending', 'passed', 'failed', 'blocked', 'not_applicable']"
+        }
+      ]
+    },
+    {
+      "case": "difference-blocking-must-be-boolean",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "unknowns",
+            0,
+            "blocking"
+          ],
+          "validator": "type",
+          "message": "'yes' is not of type 'boolean'"
+        }
+      ]
+    },
+    {
+      "case": "function-minimal-synthetic-positive",
+      "schema": "function",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "function-missing-claim",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "required",
+          "message": "'claim' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "function-unexpected-field",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('original_media_bytes' was unexpected)"
+        }
+      ]
+    },
+    {
+      "case": "function-invalid-id",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "id"
+          ],
+          "validator": "pattern",
+          "message": "'ADDRESS-AS-ID' does not match '^FN-(EGA|CGA|TDY|DOS|AMIGA)-[0-9]{6}$'"
+        }
+      ]
+    },
+    {
+      "case": "function-confidence-is-not-status",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "confidence"
+          ],
+          "validator": "enum",
+          "message": "'complete' is not one of ['unknown', 'tentative', 'supported', 'strong', 'refuted']"
+        }
+      ]
+    },
+    {
+      "case": "function-binary-locator-needs-hash",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator"
+          ],
+          "validator": "required",
+          "message": "'sha256' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "function-negative-offset",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator",
+            "offset"
+          ],
+          "validator": "minimum",
+          "message": "-1 is less than the minimum of 0"
+        }
+      ]
+    },
+    {
+      "case": "function-invalid-gate",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "gates",
+            "runtime",
+            "status"
+          ],
+          "validator": "enum",
+          "message": "'inferred' is not one of ['not_started', 'pending', 'passed', 'failed', 'blocked', 'not_applicable']"
+        }
+      ]
+    },
+    {
+      "case": "function-blocking-must-be-boolean",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "unknowns",
+            0,
+            "blocking"
+          ],
+          "validator": "type",
+          "message": "'yes' is not of type 'boolean'"
+        }
+      ]
+    },
+    {
+      "case": "resource-minimal-synthetic-positive",
+      "schema": "resource",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "resource-missing-claim",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "required",
+          "message": "'claim' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "resource-unexpected-field",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('original_media_bytes' was unexpected)"
+        }
+      ]
+    },
+    {
+      "case": "resource-invalid-id",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "id"
+          ],
+          "validator": "pattern",
+          "message": "'ADDRESS-AS-ID' does not match '^RS-(DOS|AMIGA)-[0-9]{6}$'"
+        }
+      ]
+    },
+    {
+      "case": "resource-confidence-is-not-status",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "confidence"
+          ],
+          "validator": "enum",
+          "message": "'complete' is not one of ['unknown', 'tentative', 'supported', 'strong', 'refuted']"
+        }
+      ]
+    },
+    {
+      "case": "resource-binary-locator-needs-hash",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator"
+          ],
+          "validator": "required",
+          "message": "'sha256' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "resource-negative-offset",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator",
+            "offset"
+          ],
+          "validator": "minimum",
+          "message": "-1 is less than the minimum of 0"
+        }
+      ]
+    },
+    {
+      "case": "resource-invalid-gate",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "gates",
+            "runtime",
+            "status"
+          ],
+          "validator": "enum",
+          "message": "'inferred' is not one of ['not_started', 'pending', 'passed', 'failed', 'blocked', 'not_applicable']"
+        }
+      ]
+    },
+    {
+      "case": "resource-blocking-must-be-boolean",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "unknowns",
+            0,
+            "blocking"
+          ],
+          "validator": "type",
+          "message": "'yes' is not of type 'boolean'"
+        }
+      ]
+    },
+    {
+      "case": "trace-minimal-synthetic-positive",
+      "schema": "trace",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "trace-missing-claim",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "required",
+          "message": "'claim' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "trace-unexpected-field",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('original_media_bytes' was unexpected)"
+        }
+      ]
+    },
+    {
+      "case": "trace-invalid-id",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "id"
+          ],
+          "validator": "pattern",
+          "message": "'ADDRESS-AS-ID' does not match '^TR-(DOS-EGA|DOS-CGA|AMIGA)-[0-9]{6}$'"
+        }
+      ]
+    },
+    {
+      "case": "trace-confidence-is-not-status",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "confidence"
+          ],
+          "validator": "enum",
+          "message": "'complete' is not one of ['unknown', 'tentative', 'supported', 'strong', 'refuted']"
+        }
+      ]
+    },
+    {
+      "case": "trace-binary-locator-needs-hash",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator"
+          ],
+          "validator": "required",
+          "message": "'sha256' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "trace-negative-offset",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "evidence",
+            0,
+            "locator",
+            "offset"
+          ],
+          "validator": "minimum",
+          "message": "-1 is less than the minimum of 0"
+        }
+      ]
+    },
+    {
+      "case": "trace-invalid-gate",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "gates",
+            "runtime",
+            "status"
+          ],
+          "validator": "enum",
+          "message": "'inferred' is not one of ['not_started', 'pending', 'passed', 'failed', 'blocked', 'not_applicable']"
+        }
+      ]
+    },
+    {
+      "case": "trace-blocking-must-be-boolean",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "unknowns",
+            0,
+            "blocking"
+          ],
+          "validator": "type",
+          "message": "'yes' is not of type 'boolean'"
+        }
+      ]
+    },
+    {
+      "case": "function-acceptance-needs-source-and-gates",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "gates",
+            "code_contract",
+            "status"
+          ],
+          "validator": "const",
+          "message": "'passed' was expected"
+        },
+        {
+          "path": [
+            "gates",
+            "compilation",
+            "status"
+          ],
+          "validator": "const",
+          "message": "'passed' was expected"
+        },
+        {
+          "path": [
+            "gates",
+            "differential",
+            "status"
+          ],
+          "validator": "const",
+          "message": "'passed' was expected"
+        },
+        {
+          "path": [
+            "gates",
+            "static_bytes",
+            "status"
+          ],
+          "validator": "const",
+          "message": "'passed' was expected"
+        },
+        {
+          "path": [
+            "portable_source"
+          ],
+          "validator": "minItems",
+          "message": "[] should be non-empty"
+        }
+      ]
+    },
+    {
+      "case": "function-scoped-acceptance-shape",
+      "schema": "function",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "function-blocking-unknown-prevents-acceptance",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "unknowns",
+            0,
+            "blocking"
+          ],
+          "validator": "const",
+          "message": "False was expected"
+        }
+      ]
+    },
+    {
+      "case": "function-disposition-requires-explanation",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [],
+          "validator": "required",
+          "message": "'nontranslated_reason' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "function-explained-disposition",
+      "schema": "function",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "runtime-location-requires-load-and-timepoint",
+      "schema": "function",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "entries",
+            0
+          ],
+          "validator": "required",
+          "message": "'runtime_load_segment' is a required property"
+        },
+        {
+          "path": [
+            "entries",
+            0
+          ],
+          "validator": "required",
+          "message": "'timepoint' is a required property"
+        },
+        {
+          "path": [
+            "entries",
+            0
+          ],
+          "validator": "required",
+          "message": "'address_policy' is a required property"
+        }
+      ]
+    },
+    {
+      "case": "trace-lock-requires-config-and-identity",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "environment"
+          ],
+          "validator": "required",
+          "message": "'executable_sha256' is a required property"
+        },
+        {
+          "path": [
+            "environment"
+          ],
+          "validator": "required",
+          "message": "'config_path' is a required property"
+        },
+        {
+          "path": [
+            "environment"
+          ],
+          "validator": "required",
+          "message": "'config_sha256' is a required property"
+        },
+        {
+          "path": [
+            "environment"
+          ],
+          "validator": "required",
+          "message": "'disk_manifest_path' is a required property"
+        },
+        {
+          "path": [
+            "environment"
+          ],
+          "validator": "required",
+          "message": "'disk_manifest_sha256' is a required property"
+        },
+        {
+          "path": [
+            "timebase",
+            "kind"
+          ],
+          "validator": "not",
+          "message": "'unresolved' should not be valid under {'const': 'unresolved'}"
+        }
+      ]
+    },
+    {
+      "case": "trace-environment-locked-shape",
+      "schema": "trace",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "trace-repeatability-needs-three-runs",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "repeatability",
+            "completed_runs"
+          ],
+          "validator": "minimum",
+          "message": "2 is less than the minimum of 3"
+        },
+        {
+          "path": [
+            "runs"
+          ],
+          "validator": "minItems",
+          "message": "[{'id': '1', 'result_path': 'synthetic/1', 'result_sha256': '0000000000000000000000000000000000000000000000000000000000000000', 'repeat_index': 1, 'result': 'synthetic'}, {'id': '2', 'result_path': 'synthetic/2', 'result_sha256': '0000000000000000000000000000000000000000000000000000000000000000', 'repeat_index': 2, 'result': 'synthetic'}] is too short"
+        }
+      ]
+    },
+    {
+      "case": "trace-three-run-admission-shape",
+      "schema": "trace",
+      "expected_valid": true,
+      "actual_valid": true,
+      "passed": true,
+      "errors": []
+    },
+    {
+      "case": "trace-repeatable-cannot-remain-unproven",
+      "schema": "trace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "repeatability",
+            "status"
+          ],
+          "validator": "const",
+          "message": "'passed' was expected"
+        }
+      ]
+    },
+    {
+      "case": "difference-needs-two-subjects",
+      "schema": "difference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "subjects"
+          ],
+          "validator": "minItems",
+          "message": "[{'description': 'synthetic schema test only', 'locators': []}] is too short"
+        }
+      ]
+    },
+    {
+      "case": "resource-invalid-role",
+      "schema": "resource",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "role"
+          ],
+          "validator": "enum",
+          "message": "'file-extension-proves-codec' is not one of ['unknown', 'executable_container', 'graphics', 'animation', 'font', 'game_text', 'audio', 'car_data', 'route_data', 'catalog', 'mutable_metadata', 'installer', 'placeholder', 'other']"
+        }
+      ]
+    },
+    {
+      "case": "decision-explicit-status-enum",
+      "schema": "decision",
+      "expected_valid": false,
+      "actual_valid": false,
+      "passed": true,
+      "errors": [
+        {
+          "path": [
+            "status"
+          ],
+          "validator": "enum",
+          "message": "'implicitly_authorized' is not one of ['proposed', 'adopted', 'superseded', 'rejected']"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "schema_count": 5,
+    "case_count": 59,
+    "passed": 59,
+    "failed": 0
+  },
+  "limits": [
+    "Shape validation does not prove evidence truth, custody, claimed hash existence, address arithmetic, contract correctness, complete code coverage, original/native agreement or game fidelity.",
+    "Positive specimens are synthetic and are not real function/resource/trace/difference/decision evidence records.",
+    "Dependencies were resolved once and are locked by exact versions and PyPI-verified wheel SHA-256 in this report."
+  ]
+}

@@ -1,0 +1,24 @@
+# User-supplied originals and all payload-bearing derived material stay private.
+/reference/
+/analysis/
+/build/
+/dist/
+/captures/
+/cache/
+/runs/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.vs/
+*.pdb
+*.obj
+*.exe
+*.dll
+*.bin
+*.ghidra
+*.gpr
+*.rep/
+
+# Exception: published code may describe formats, but must never include game
+# payloads, binary-derived arrays, memory dumps, screenshots or original media.

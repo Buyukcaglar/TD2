@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "method": "exact-private-artifact-comparison",
+  "checks": {
+    "primary_raw_image_exact": true,
+    "primary_ordered_relocation_sites_exact": true,
+    "primary_metadata_exact": true,
+    "second_load_segment_image_exact": true,
+    "second_load_segment_ordered_relocations_exact": true,
+    "normalized_mz_body_exact": true,
+    "normalized_mz_ordered_relocations_exact": true,
+    "normalized_mz_entry_exact": true,
+    "normalized_mz_stack_exact": true,
+    "normalized_mz_length_exact": true,
+    "normalized_allocation_budget_preserved": true,
+    "normalized_minmax_extra_match": true
+  },
+  "source_sha256": "eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "image_bytes": 130240,
+  "normalized_mz_sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2",
+  "normalized_mz_bytes": 136880,
+  "normalized_header_bytes": 6640,
+  "relocation_count": 1652,
+  "application_entry": {
+    "cs_relative": 5032,
+    "ip": 1016,
+    "image_offset": 81528
+  },
+  "load_segments": [
+    4096,
+    9029
+  ],
+  "verifier_sha256": "1237456a2b18013aa840fa9a04e360d9144ec94980b9108b93567fce1dfd9e2a",
+  "primary_tool_sha256": "ce27ea25b3b65f5deb1bf7e0ae6c1215a059c2286d88bb2b1c69a804a0191b66",
+  "application_instructions_executed": 0,
+  "all_checks_passed": true
+}

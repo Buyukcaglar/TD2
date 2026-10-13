@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "record_type": "static_startup_report",
+  "target": "TD2EGA",
+  "date": "2026-10-13",
+  "source": {
+    "packed_sha256": "eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+    "image_path": "analysis/derived/td2ega-v1/TD2EGA.image.bin",
+    "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+    "image_bytes": 130240
+  },
+  "scope": {
+    "method": "bounded Capstone disassembly plus admitted-relocation and direct-flow analysis",
+    "application_instructions_executed": 0,
+    "bios_dos_services_executed": 0,
+    "hardware_io_executed": 0,
+    "runtime_fidelity_claim": false
+  },
+  "tool": {
+    "python_version": "3.14.2",
+    "capstone_distribution_version": "5.0.9",
+    "capstone_python_version": "5.0.7",
+    "mode": "x86-16",
+    "known_mnemonic_issue": "Unprefixed 98/99 print cwde/cdq; manually interpret CBW/CWD under 16-bit mode."
+  },
+  "coordinate_convention": {
+    "segmented_values": "load-relative original segments",
+    "module_formula": "segment*16+offset",
+    "synthetic_load_segment": 4096,
+    "packed_file_offsets_are_distinct": true
+  },
+  "function_candidates": [
+    {
+      "function_id": "FN-EGA-000001",
+      "entry": {
+        "cs_relative": 5032,
+        "ip": 1016,
+        "module_offset": 81528
+      },
+      "classification": "C-runtime startup",
+      "confidence": "high-static",
+      "entry_region_end_ip_exclusive": 1214,
+      "not_game_main": true
+    },
+    {
+      "function_id": "FN-EGA-000002",
+      "entry": {
+        "cs_relative": 0,
+        "ip": 1971,
+        "module_offset": 1971
+      },
+      "classification": "application main candidate",
+      "confidence": "high-static",
+      "end_ip_exclusive": 3076,
+      "far_return_ip": 3075,
+      "direct_flow_instruction_locations": 360,
+      "direct_call_sites": 56,
+      "far_call_sites": 48,
+      "near_call_sites": 8,
+      "indirect_branches_in_bounded_body": 0,
+      "coverage_note": "Syntactic direct-flow reachability; callee bodies and actual exercised paths excluded.",
+      "near_call_encoding_note": "All eight near-call encodings are immediately preceded by PUSH CS, supplying a far-return frame; do not infer near-return callees from encoding alone."
+    }
+  ],
+  "principal_data_stack_group": {
+    "segment_relative": 6031,
+    "module_base": 96496,
+    "synthetic_segment": 10127,
+    "segment_immediate_relocation_site": 81539,
+    "ss_set_at": {
+      "cs": 5032,
+      "ip": 1045
+    },
+    "normal_ds_set_at": {
+      "cs": 5032,
+      "ip": 1136
+    },
+    "incoming_ds": "PSP segment, retained until normal setup; runtime helpers temporarily alter DS",
+    "static_initial_c_sp": 41934,
+    "sp_calculation": "0x0FA0 + 0x942E, then alignment",
+    "zero_range_group_offsets": [
+      33736,
+      37936
+    ],
+    "zero_range_module_offsets": [
+      130232,
+      134432
+    ],
+    "zero_bytes": 4200,
+    "zero_file_backed_overlap_bytes": 8
+  },
+  "main_transfer": {
+    "caller_cs": 5032,
+    "caller_ip": 1168,
+    "target_cs_relative": 0,
+    "target_ip": 1971,
+    "target_segment_relocation_site": 81683,
+    "push_order_group_offsets": [
+      28092,
+      28090,
+      28088
+    ],
+    "candidate_argument_order": [
+      "argc",
+      "near argv",
+      "near envp"
+    ],
+    "argument_setup": {
+      "argc_group_offset": 28088,
+      "argv_group_offset": 28090,
+      "envp_group_offset": 28092,
+      "command_tail_parser_entry": {
+        "cs": 5032,
+        "ip": 1684
+      },
+      "environment_builder_entry": {
+        "cs": 5032,
+        "ip": 2086
+      }
+    },
+    "exit_call": {
+      "cs": 5032,
+      "ip": 1410
+    },
+    "memory_model_note": "Far code and near CRT data pointers; exact compiler memory-model option unknown."
+  },
+  "main_direct_calls": [
+    {
+      "caller": "0000:07C8",
+      "callee": "0x6c9, 0x6f86",
+      "near": false
+    },
+    {
+      "caller": "0000:07CD",
+      "callee": "0x6c9, 0x5d83",
+      "near": false
+    },
+    {
+      "caller": "0000:07DF",
+      "callee": "0x13a8, 0x2988",
+      "near": false
+    },
+    {
+      "caller": "0000:07EB",
+      "callee": "0x6c9, 0x5f64",
+      "near": false
+    },
+    {
+      "caller": "0000:0804",
+      "callee": "0x6c9, 0x6a17",
+      "near": false
+    },
+    {
+      "caller": "0000:080C",
+      "callee": "0x16fc, 2",
+      "near": false
+    },
+    {
+      "caller": "0000:0811",
+      "callee": "0x6c9, 0x6860",
+      "near": false
+    },
+    {
+      "caller": "0000:081A",
+      "callee": "0x6c9, 0x6059",
+      "near": false
+    },
+    {
+      "caller": "0000:082A",
+      "callee": "0x6c9, 0x614c",
+      "near": false
+    },
+    {
+      "caller": "0000:0832",
+      "callee": "0x6c9, 0x5d00",
+      "near": false
+    },
+    {
+      "caller": "0000:083B",
+      "callee": "0x6c9, 0x6d18",
+      "near": false
+    },
+    {
+      "caller": "0000:084E",
+      "callee": "0x6c9, 0x6d18",
+      "near": false
+    },
+    {
+      "caller": "0000:0865",
+      "callee": "0x6c9, 0x75c8",
+      "near": false
+    },
+    {
+      "caller": "0000:0879",
+      "callee": "0x6c9, 0x758a",
+      "near": false
+    },
+    {
+      "caller": "0000:088D",
+      "callee": "0x6c9, 0xb0fe",
+      "near": false
+    },
+    {
+      "caller": "0000:08A0",
+      "callee": "0x13a8, 0x2e2e",
+      "near": false
+    },
+    {
+      "caller": "0000:08B0",
+      "callee": "0x5c0",
+      "near": true
+    },
+    {
+      "caller": "0000:0BE4",
+      "callee": "0x6c9, 0x610a",
+      "near": false
+    },
+    {
+      "caller": "0000:0BE9",
+      "callee": "0x6c9, 0x68c4",
+      "near": false
+    },
+    {
+      "caller": "0000:0BF4",
+      "callee": "0x6c9, 0x5fbc",
+      "near": false
+    },
+    {
+      "caller": "0000:0BFB",
+      "callee": "0x6c9, 0x642e",
+      "near": false
+    },
+    {
+      "caller": "0000:08F2",
+      "callee": "0x477",
+      "near": true
+    },
+    {
+      "caller": "0000:0907",
+      "callee": "0x13a8, 0x2e",
+      "near": false
+    },
+    {
+      "caller": "0000:090F",
+      "callee": "0x6c9, 0x5d4e",
+      "near": false
+    },
+    {
+      "caller": "0000:0917",
+      "callee": "0x6c9, 0x5d74",
+      "near": false
+    },
+    {
+      "caller": "0000:0934",
+      "callee": "0x5c0",
+      "near": true
+    },
+    {
+      "caller": "0000:0945",
+      "callee": "0x6c9, 0x5d8d",
+      "near": false
+    },
+    {
+      "caller": "0000:0A07",
+      "callee": "0x6c9, 0x5d83",
+      "near": false
+    },
+    {
+      "caller": "0000:0A2F",
+      "callee": "0x432, 0x2bf",
+      "near": false
+    },
+    {
+      "caller": "0000:0A52",
+      "callee": "0x432, 0xa9",
+      "near": false
+    },
+    {
+      "caller": "0000:0A6D",
+      "callee": "0x432, 0x1d25",
+      "near": false
+    },
+    {
+      "caller": "0000:0A82",
+      "callee": "0x432, 0x1b2",
+      "near": false
+    },
+    {
+      "caller": "0000:0A98",
+      "callee": "0x651",
+      "near": true
+    },
+    {
+      "caller": "0000:0A9C",
+      "callee": "0x730",
+      "near": true
+    },
+    {
+      "caller": "0000:0A9F",
+      "callee": "0x645, 0",
+      "near": false
+    },
+    {
+      "caller": "0000:0AAE",
+      "callee": "0x6c9, 0x5d8d",
+      "near": false
+    },
+    {
+      "caller": "0000:0AB9",
+      "callee": "0xc0, 0x39c",
+      "near": false
+    },
+    {
+      "caller": "0000:0AD9",
+      "callee": "0x6c9, 0x8a0c",
+      "near": false
+    },
+    {
+      "caller": "0000:0AF5",
+      "callee": "0x16af, 6",
+      "near": false
+    },
+    {
+      "caller": "0000:0B04",
+      "callee": "0x6c9, 0x7a82",
+      "near": false
+    },
+    {
+      "caller": "0000:0B14",
+      "callee": "0x16ab, 0xc",
+      "near": false
+    },
+    {
+      "caller": "0000:0B22",
+      "callee": "0x6c9, 0x6a6a",
+      "near": false
+    },
+    {
+      "caller": "0000:0BDC",
+      "callee": "0x432, 0x376",
+      "near": false
+    },
+    {
+      "caller": "0000:0B63",
+      "callee": "0x432, 0x2bf",
+      "near": false
+    },
+    {
+      "caller": "0000:0B81",
+      "callee": "0x432, 0x2bf",
+      "near": false
+    },
+    {
+      "caller": "0000:0B8D",
+      "callee": "0x432, 0x1d25",
+      "near": false
+    },
+    {
+      "caller": "0000:0BA0",
+      "callee": "0x432, 0x1d44",
+      "near": false
+    },
+    {
+      "caller": "0000:0BBB",
+      "callee": "0x19e, 0x6c5",
+      "near": false
+    },
+    {
+      "caller": "0000:0961",
+      "callee": "0x13a8, 0xa6e",
+      "near": false
+    },
+    {
+      "caller": "0000:0978",
+      "callee": "0x90",
+      "near": true
+    },
+    {
+      "caller": "0000:098D",
+      "callee": "0x13a8, 0x978",
+      "near": false
+    },
+    {
+      "caller": "0000:0999",
+      "callee": "0x13a8, 0x2e2e",
+      "near": false
+    },
+    {
+      "caller": "0000:09A5",
+      "callee": "0x5c0",
+      "near": true
+    },
+    {
+      "caller": "0000:09CF",
+      "callee": "0x477",
+      "near": true
+    },
+    {
+      "caller": "0000:09FF",
+      "callee": "0x13a8, 0x2e",
+      "near": false
+    },
+    {
+      "caller": "0000:07F7",
+      "callee": "0x6c9, 0x90e8",
+      "near": false
+    }
+  ],
+  "embedded_name_locations": [
+    {
+      "name": "herc",
+      "ds_offset": 29063,
+      "module_offset": 125559
+    },
+    {
+      "name": "voices.bin",
+      "ds_offset": 29068,
+      "module_offset": 125564
+    },
+    {
+      "name": "songs.bin",
+      "ds_offset": 29079,
+      "module_offset": 125575
+    },
+    {
+      "name": "testdrv2.pes",
+      "ds_offset": 29091,
+      "module_offset": 125587
+    }
+  ],
+  "import_checks": [
+    {
+      "kind": "entry",
+      "tool_cs": 9128,
+      "tool_ip": 1016
+    },
+    {
+      "kind": "main",
+      "tool_cs": 4096,
+      "tool_ip": 1971
+    },
+    {
+      "kind": "normal_data_stack_group",
+      "tool_segment": 10127
+    }
+  ],
+  "import_error_status": "No Ghidra loader address error established by this independent Capstone-only review; DS context must be range-specific.",
+  "address_anomalies": [
+    {
+      "routine": {
+        "cs_relative": 1737,
+        "ip": 23939
+      },
+      "literal_es": 64,
+      "literal_offset": 1132,
+      "physical_address": 2156,
+      "companion_entry_ip": 23949,
+      "policy": "Preserve exact observed address; do not silently normalize to 0x006C or claim verified timebase semantics."
+    }
+  ],
+  "leaf_review": {
+    "function_id": "FN-EGA-000003",
+    "range_cs_relative": 1737,
+    "ip_range_half_open": [
+      30734,
+      30763
+    ],
+    "module_range_half_open": [
+      58526,
+      58555
+    ],
+    "byte_length": 29,
+    "sha256": "f138992baf1f9cf7843fd61b1cc51d4f9bd3e5f2fe158e98a15bfca435367f66",
+    "contract_agrees": true,
+    "cursor_group_offset": 26342,
+    "ring_group_offset": 26344,
+    "ring_bytes": 256,
+    "cursor_rule": "(cursor-1) modulo65536",
+    "index_rule": "new_cursor & 255",
+    "byte_rule": "((old_byte<<1) | (old_byte<128)) &255",
+    "return": "AX zero-extended updated byte",
+    "si_restored": true,
+    "no_calls_interrupts_port_io": true,
+    "purpose": "unknown",
+    "final_flags": {
+      "CF": 0,
+      "OF": 0,
+      "ZF": 1,
+      "PF": 1,
+      "SF": 0,
+      "AF": "undefined"
+    },
+    "implementation_or_differential_tests_performed_by_this_report": false
+  },
+  "region_hashes_and_private_listings": [
+    {
+      "name": "crt-entry",
+      "cs_relative": 5032,
+      "ip_start": 1016,
+      "ip_end_exclusive": 1214,
+      "module_start": 81528,
+      "module_end_exclusive": 81726,
+      "byte_length": 198,
+      "sha256": "4b5d3d07ec111f996677a97ac52c368282f8e2199150988dc02fc3285f85056c",
+      "private_listing": "analysis/startup/crt-entry.listing.txt"
+    },
+    {
+      "name": "crt-init",
+      "cs_relative": 5032,
+      "ip_start": 1214,
+      "ip_end_exclusive": 1410,
+      "module_start": 81726,
+      "module_end_exclusive": 81922,
+      "byte_length": 196,
+      "sha256": "5224e9b30058d95e08bf477c3413cf9c312ff2855d4cc9ee93e1e48b59e7fe94",
+      "private_listing": "analysis/startup/crt-init.listing.txt"
+    },
+    {
+      "name": "crt-argv",
+      "cs_relative": 5032,
+      "ip_start": 1684,
+      "ip_end_exclusive": 2086,
+      "module_start": 82196,
+      "module_end_exclusive": 82598,
+      "byte_length": 402,
+      "sha256": "72f36c5f7a07bc271828833801d0e9ca9d6708d4f06d5aa52f53a4b07691da6d",
+      "private_listing": "analysis/startup/crt-argv.listing.txt"
+    },
+    {
+      "name": "crt-environment",
+      "cs_relative": 5032,
+      "ip_start": 2086,
+      "ip_end_exclusive": 2188,
+      "module_start": 82598,
+      "module_end_exclusive": 82700,
+      "byte_length": 102,
+      "sha256": "27c15454c55b723c03a96db8c07e64a6a6b15cb37fe26f5c5f4d6e486a5eeef8",
+      "private_listing": "analysis/startup/crt-environment.listing.txt"
+    },
+    {
+      "name": "crt-string-compare",
+      "cs_relative": 5032,
+      "ip_start": 10632,
+      "ip_end_exclusive": 10675,
+      "module_start": 91144,
+      "module_end_exclusive": 91187,
+      "byte_length": 43,
+      "sha256": "f37700cec5d015f36fe8be45c87db9c636f2aaa7f27abcef2d46a5cc4aacbd9a",
+      "private_listing": "analysis/startup/crt-string-compare.listing.txt"
+    },
+    {
+      "name": "main-candidate-span",
+      "cs_relative": 0,
+      "ip_start": 1971,
+      "ip_end_exclusive": 3076,
+      "module_start": 1971,
+      "module_end_exclusive": 3076,
+      "byte_length": 1105,
+      "sha256": "4fc9806151701d45debe3cc22159765d9bd7f32b8a31b5f44b80548f054c2dee",
+      "private_listing": "analysis/startup/main-candidate-span.listing.txt"
+    },
+    {
+      "name": "hercules-init",
+      "cs_relative": 1737,
+      "ip_start": 24420,
+      "ip_end_exclusive": 24507,
+      "module_start": 52212,
+      "module_end_exclusive": 52299,
+      "byte_length": 87,
+      "sha256": "d3bd0dec746cdc351c6fda9b0c84139abc4639923d58cbebd84bbc0e389fd8ef",
+      "private_listing": "analysis/startup/hercules-init.listing.txt"
+    },
+    {
+      "name": "ega-init",
+      "cs_relative": 1737,
+      "ip_start": 37096,
+      "ip_end_exclusive": 37187,
+      "module_start": 64888,
+      "module_end_exclusive": 64979,
+      "byte_length": 91,
+      "sha256": "c73aaa56013454e5146a8a648b30e4e56bd498674a1507f7d71540f3ea7bb938",
+      "private_listing": "analysis/startup/ega-init.listing.txt"
+    },
+    {
+      "name": "external-word-reader",
+      "cs_relative": 1737,
+      "ip_start": 23939,
+      "ip_end_exclusive": 23966,
+      "module_start": 51731,
+      "module_end_exclusive": 51758,
+      "byte_length": 27,
+      "sha256": "d66dbb73ddfbc682207b3b63628afd3ccb49ec69599b19d705e99dabe6ba0d62",
+      "private_listing": "analysis/startup/external-word-reader.listing.txt"
+    },
+    {
+      "name": "bounded-state-leaf",
+      "cs_relative": 1737,
+      "ip_start": 30734,
+      "ip_end_exclusive": 30763,
+      "module_start": 58526,
+      "module_end_exclusive": 58555,
+      "byte_length": 29,
+      "sha256": "f138992baf1f9cf7843fd61b1cc51d4f9bd3e5f2fe158e98a15bfca435367f66",
+      "private_listing": "analysis/startup/bounded-state-leaf.listing.txt"
+    }
+  ],
+  "unknowns": [
+    "Exact compiler version/options and runtime-library identities beyond bounded semantics",
+    "Purposes of most main-candidate application callees",
+    "Timing word-read address anomaly provenance",
+    "Full application state ownership, gameplay, physics and runtime behavior",
+    "Purpose and real-caller interface of FN-EGA-000003"
+  ]
+}

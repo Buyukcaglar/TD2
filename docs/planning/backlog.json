@@ -1,0 +1,1281 @@
+{
+  "schema": 1,
+  "snapshot_date": "2026-10-13",
+  "mode": "development_phase_0_and_1",
+  "implementation_authorized_in_this_session": true,
+  "status_meaning": "Completed tasks have bounded acceptance evidence. In-progress tasks retain open gates; pending tasks remain future work.",
+  "phase_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "planning_deliverables": [
+    "reference inventory and hashes",
+    "DOS static MZ/packer/launcher observations",
+    "DOS resource clustering/catalog/duplicate observations",
+    "Amiga member inventory and signatures",
+    "Primary-source/tooling examination",
+    "Detailed roadmap architecture validation risks and handoff"
+  ],
+  "requirements": {
+    "R01": "Preserve originals",
+    "R02": "EGA disassembly and portable C",
+    "R03": "CGA graphics analysis",
+    "R04": "All DOS resources",
+    "R05": "External executable-embedded media",
+    "R06": "Native Windows gameplay",
+    "R07": "Portable C core",
+    "R08": "No original DOS resources distributed",
+    "R09": "EGA and CGA modes",
+    "R10": "PC Speaker music and effects",
+    "R12": "Amiga code recovery",
+    "R13": "Amiga graphics and animation",
+    "R14": "Amiga music and sound effects",
+    "R15": "On-the-fly independent media choices",
+    "R16": "Northern Germany Challenge when files supplied",
+    "R17": "Required development order",
+    "R18": "Durable planning and evidence",
+    "R19": "All Amiga archive members understood"
+  },
+  "conditional_requirements": {
+    "R16": "Northern Germany Challenge is required when necessary user supplied files validate. Candidate scen3 exists now; identify/completeness-check it first."
+  },
+  "task_count": 63,
+  "tasks": [
+    {
+      "id": "P0-01",
+      "phase": 0,
+      "title": "Refresh originals and admit edition baseline",
+      "status": "complete",
+      "depends_on": [],
+      "requirements": [
+        "R01",
+        "R18"
+      ],
+      "deliverables": [
+        "Versioned reference manifest",
+        "Edition admission record"
+      ],
+      "acceptance": "Every supplied file is hashed; additions/changes are reviewed without replacing originals.",
+      "evidence": [
+        "docs/recovery/custody-and-baseline.md",
+        "docs/recovery/evidence/custody-baseline.json"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P0-02",
+      "phase": 0,
+      "title": "Create source control and private working boundaries",
+      "status": "complete",
+      "depends_on": [
+        "P0-01"
+      ],
+      "requirements": [
+        "R01",
+        "R08"
+      ],
+      "deliverables": [
+        "Repository exclusions",
+        "Derived/run/cache path policy"
+      ],
+      "acceptance": "Originals, derived payloads, captures and writable game data cannot enter publication or source writes.",
+      "evidence": [
+        ".gitignore",
+        "docs/recovery/evidence/working-copy.json"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P0-03",
+      "phase": 0,
+      "title": "Pin tools and evidence/address conventions",
+      "status": "complete",
+      "depends_on": [
+        "P0-02"
+      ],
+      "requirements": [
+        "R02",
+        "R18"
+      ],
+      "deliverables": [
+        "Tool version/hash register",
+        "Evidence and function/resource record schemas"
+      ],
+      "acceptance": "Locators distinguish packed file, unpacked image, segment:offset and analysis/runtime addresses.",
+      "evidence": [
+        "docs/recovery/toolchain.md",
+        "docs/recovery/evidence-conventions.md",
+        "docs/recovery/evidence/schema-validation.json"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P0-04",
+      "phase": 0,
+      "title": "Define future controlled original oracle",
+      "status": "complete",
+      "depends_on": [
+        "P0-03"
+      ],
+      "requirements": [
+        "R02",
+        "R18"
+      ],
+      "deliverables": [
+        "Pinned emulator/config/input fixture specification"
+      ],
+      "acceptance": "Repeatability and timing limits are explicit; no static result is called runtime fidelity.",
+      "evidence": [
+        "docs/recovery/oracle-spec.md"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P0-GATE",
+      "phase": 0,
+      "title": "Accept custody bootstrap",
+      "status": "complete",
+      "depends_on": [
+        "P0-04"
+      ],
+      "requirements": [
+        "R01",
+        "R17",
+        "R18"
+      ],
+      "deliverables": [
+        "Bootstrap gate record"
+      ],
+      "acceptance": "Custody, admitted editions, private runs and evidence/tool policies are complete.",
+      "evidence": [
+        "docs/recovery/custody-and-baseline.md"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P1-01",
+      "phase": 1,
+      "title": "Verify EGA MZ and EXEPACK layout",
+      "status": "complete",
+      "depends_on": [
+        "P0-GATE"
+      ],
+      "requirements": [
+        "R02"
+      ],
+      "deliverables": [
+        "Packed-image map",
+        "Validated packing-layout contract"
+      ],
+      "acceptance": "Header, stub metadata, boundaries, allocation, tail and algorithm compatibility match source bytes.",
+      "evidence": [
+        "docs/recovery/evidence/td2ega-unpack.json"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P1-02",
+      "phase": 1,
+      "title": "Recover and independently validate EGA image",
+      "status": "complete",
+      "depends_on": [
+        "P1-01"
+      ],
+      "requirements": [
+        "R02"
+      ],
+      "deliverables": [
+        "Derived unpacked image provenance",
+        "Relocation and entry/stack audit"
+      ],
+      "acceptance": "Independent comparison validates output; every relocation and unexplained byte has a disposition.",
+      "evidence": [
+        "docs/recovery/evidence/td2ega-loader-comparison.json",
+        "docs/recovery/evidence/td2ega-author-comparison.json",
+        "docs/recovery/evidence/td2ega-ghidra-import.json"
+      ],
+      "completed_on": "2026-10-13"
+    },
+    {
+      "id": "P1-03",
+      "phase": 1,
+      "title": "Import segmented EGA and recover startup ABI",
+      "status": "in_progress",
+      "depends_on": [
+        "P1-02"
+      ],
+      "requirements": [
+        "R02"
+      ],
+      "deliverables": [
+        "Analysis project metadata",
+        "Startup/segment/calling-convention map"
+      ],
+      "acceptance": "Loader, address base and register assumptions are manually verified.",
+      "evidence": [
+        "docs/recovery/td2ega-startup.md",
+        "docs/recovery/evidence/td2ega-ghidra-import.json"
+      ],
+      "remaining": "Reconcile range-specific DS/SS analysis context and reviewed startup helper/ABI contracts; unknown tool context and provisional prototypes remain explicit."
+    },
+    {
+      "id": "P1-04",
+      "phase": 1,
+      "title": "Classify functions data and indirect reachability",
+      "status": "pending",
+      "depends_on": [
+        "P1-03"
+      ],
+      "requirements": [
+        "R02"
+      ],
+      "deliverables": [
+        "Function/code/data registry",
+        "Dispatch and cross-reference map"
+      ],
+      "acceptance": "All discovered reachable entries are accounted for; uncertainty is retained."
+    },
+    {
+      "id": "P1-05",
+      "phase": 1,
+      "title": "Recover state machine and raw resource contracts",
+      "status": "pending",
+      "depends_on": [
+        "P1-04"
+      ],
+      "requirements": [
+        "R02",
+        "R05"
+      ],
+      "deliverables": [
+        "State/ownership model",
+        "Resource-consumer interface map"
+      ],
+      "acceptance": "Startup through exit states, reads/writes and embedded-resource references have instruction evidence."
+    },
+    {
+      "id": "P1-06",
+      "phase": 1,
+      "title": "Recover arithmetic RNG and simulation contracts",
+      "status": "pending",
+      "depends_on": [
+        "P1-05"
+      ],
+      "requirements": [
+        "R02",
+        "R07"
+      ],
+      "deliverables": [
+        "Defined arithmetic contracts",
+        "RNG/seed model",
+        "Recovered low-level C"
+      ],
+      "acceptance": "Boundary vectors match original instruction effects and preserve RNG consumption."
+    },
+    {
+      "id": "P1-07",
+      "phase": 1,
+      "title": "Recover hardware timer input and filesystem interfaces",
+      "status": "pending",
+      "depends_on": [
+        "P1-05"
+      ],
+      "requirements": [
+        "R02"
+      ],
+      "deliverables": [
+        "BIOS/DOS/port/interrupt map",
+        "Scheduling and input contracts"
+      ],
+      "acceptance": "Reachable platform interactions and handler lifetimes are classified."
+    },
+    {
+      "id": "P1-08",
+      "phase": 1,
+      "title": "Recover vehicle road opponent collision and progression C",
+      "status": "pending",
+      "depends_on": [
+        "P1-06",
+        "P1-07"
+      ],
+      "requirements": [
+        "R02",
+        "R07"
+      ],
+      "deliverables": [
+        "Portable simulation/state C",
+        "Function provenance and differential vectors"
+      ],
+      "acceptance": "Code semantics are explained; raw resource contracts may await phase 2 without guessed values."
+    },
+    {
+      "id": "P1-09",
+      "phase": 1,
+      "title": "Recover EGA drawing menus and animation code",
+      "status": "pending",
+      "depends_on": [
+        "P1-05",
+        "P1-07"
+      ],
+      "requirements": [
+        "R02",
+        "R09"
+      ],
+      "deliverables": [
+        "EGA primitive/presentation C",
+        "Mask/palette/draw-order contracts"
+      ],
+      "acceptance": "Original hardware effects and UI/presentation behavior are traceable to source instructions."
+    },
+    {
+      "id": "P1-10",
+      "phase": 1,
+      "title": "Recover DOS PC Speaker music effects and device paths",
+      "status": "pending",
+      "depends_on": [
+        "P1-05",
+        "P1-07"
+      ],
+      "requirements": [
+        "R10"
+      ],
+      "deliverables": [
+        "PC Speaker sequencer/device contracts",
+        "Music/effect event and data-source map"
+      ],
+      "acceptance": "Reachable PC Speaker music/effect code, data sources, PIT/speaker interactions and scheduling are recovered from the supplied DOS program."
+    },
+    {
+      "id": "P1-11",
+      "phase": 1,
+      "title": "Close EGA portable code contracts",
+      "status": "pending",
+      "depends_on": [
+        "P1-08",
+        "P1-09",
+        "P1-10"
+      ],
+      "requirements": [
+        "R02",
+        "R07"
+      ],
+      "deliverables": [
+        "Reviewed C recovery map",
+        "Compilation and differential-contract record"
+      ],
+      "acceptance": "All reachable EGA code has disposition; resource-fed integration is explicitly reserved for later phases."
+    },
+    {
+      "id": "P1-12",
+      "phase": 1,
+      "title": "Validate CGA unpacking and remainder",
+      "status": "pending",
+      "depends_on": [
+        "P1-11"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "deliverables": [
+        "CGA derived-image record",
+        "Eleven-byte remainder disposition"
+      ],
+      "acceptance": "Same custody and independent validation as EGA; no tail bytes silently discarded."
+    },
+    {
+      "id": "P1-13",
+      "phase": 1,
+      "title": "Align EGA CGA functions and differences",
+      "status": "pending",
+      "depends_on": [
+        "P1-12"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "deliverables": [
+        "Shared/variant function matrix",
+        "Simulation comparison"
+      ],
+      "acceptance": "Alignment uses behavior/control/data evidence, not address similarity."
+    },
+    {
+      "id": "P1-14",
+      "phase": 1,
+      "title": "Recover actual CGA graphics behavior",
+      "status": "pending",
+      "depends_on": [
+        "P1-13"
+      ],
+      "requirements": [
+        "R03",
+        "R09"
+      ],
+      "deliverables": [
+        "CGA portable presentation contracts",
+        "Pixel/palette/memory specification"
+      ],
+      "acceptance": "CGA packing, clipping, ordering, mode/aspect and loader paths are explained."
+    },
+    {
+      "id": "P1-GATE",
+      "phase": 1,
+      "title": "Accept EGA recovery then CGA analysis",
+      "status": "pending",
+      "depends_on": [
+        "P1-14"
+      ],
+      "requirements": [
+        "R02",
+        "R03",
+        "R17"
+      ],
+      "deliverables": [
+        "Phase 1 gate record"
+      ],
+      "acceptance": "Code/control/arithmetic and CGA analysis close; every deferred resource-fed check names phase 2/3 dependency."
+    },
+    {
+      "id": "P2-01",
+      "phase": 2,
+      "title": "Complete DOS file and embedded-resource consumer registry",
+      "status": "pending",
+      "depends_on": [
+        "P1-GATE"
+      ],
+      "requirements": [
+        "R04",
+        "R05"
+      ],
+      "deliverables": [
+        "All-file disposition table",
+        "Embedded range/transform map"
+      ],
+      "acceptance": "All 249 baseline DOS files and executable-embedded resource families are accounted for."
+    },
+    {
+      "id": "P2-02",
+      "phase": 2,
+      "title": "Recover nested wrappers and actual codec families",
+      "status": "pending",
+      "depends_on": [
+        "P2-01"
+      ],
+      "requirements": [
+        "R04"
+      ],
+      "deliverables": [
+        "Compression specifications",
+        "Bounded readers and representative vectors"
+      ],
+      "acceptance": "Both observed PCS prefixes and shared wrappers are proved from consumers; lengths/termination are checked."
+    },
+    {
+      "id": "P2-03",
+      "phase": 2,
+      "title": "Decode all DOS graphics and animations",
+      "status": "pending",
+      "depends_on": [
+        "P2-02"
+      ],
+      "requirements": [
+        "R04",
+        "R09"
+      ],
+      "deliverables": [
+        "Graphics schemas",
+        "Full PCS/PES corpus results"
+      ],
+      "acceptance": "All 82 pairs are decoded with palettes/masks/metrics/order and original-reference comparisons."
+    },
+    {
+      "id": "P2-04",
+      "phase": 2,
+      "title": "Decode car parameters and ordered SS metadata",
+      "status": "pending",
+      "depends_on": [
+        "P2-02"
+      ],
+      "requirements": [
+        "R04"
+      ],
+      "deliverables": [
+        "Car/O/SS schemas",
+        "All-car corpus results"
+      ],
+      "acceptance": "All 12 cars including CAMA exception and repeated labels have explained fields/units."
+    },
+    {
+      "id": "P2-05",
+      "phase": 2,
+      "title": "Decode DOS route and progression records",
+      "status": "pending",
+      "depends_on": [
+        "P2-02"
+      ],
+      "requirements": [
+        "R04"
+      ],
+      "deliverables": [
+        "Route/event schema",
+        "Nineteen-section content model"
+      ],
+      "acceptance": "All supplied section links, geometry and events are mapped without dropping fields."
+    },
+    {
+      "id": "P2-06",
+      "phase": 2,
+      "title": "Decode signs and fonts and missing-companion behavior",
+      "status": "pending",
+      "depends_on": [
+        "P2-05"
+      ],
+      "requirements": [
+        "R04"
+      ],
+      "deliverables": [
+        "SGN/FNT schemas",
+        "Consumer and glyph validation"
+      ],
+      "acceptance": "Fourteen SGN and three fonts are understood; TDS2 companion absence has an evidence-backed explanation."
+    },
+    {
+      "id": "P2-07",
+      "phase": 2,
+      "title": "Decode DOS PC Speaker audio data and embedded effects",
+      "status": "pending",
+      "depends_on": [
+        "P2-02"
+      ],
+      "requirements": [
+        "R04",
+        "R10"
+      ],
+      "deliverables": [
+        "Song/effect schema",
+        "Timing and source map"
+      ],
+      "acceptance": "SONGS, two-byte VOICES and embedded audio receive explicit dispositions."
+    },
+    {
+      "id": "P2-08",
+      "phase": 2,
+      "title": "Specify catalogs selections disk ID and scores",
+      "status": "pending",
+      "depends_on": [
+        "P2-01"
+      ],
+      "requirements": [
+        "R04",
+        "R01"
+      ],
+      "deliverables": [
+        "Metadata/read-write schemas"
+      ],
+      "acceptance": "Case, terminators, historical writable values and exact update locations are understood."
+    },
+    {
+      "id": "P2-09",
+      "phase": 2,
+      "title": "Design external embedded-resource loading policy",
+      "status": "pending",
+      "depends_on": [
+        "P2-01",
+        "P2-03",
+        "P2-07"
+      ],
+      "requirements": [
+        "R05",
+        "R08"
+      ],
+      "deliverables": [
+        "External EXE extraction contract",
+        "Code-constant versus resource audit"
+      ],
+      "acceptance": "No original media/text/table is quietly baked into native artifacts."
+    },
+    {
+      "id": "P2-GATE",
+      "phase": 2,
+      "title": "Accept complete DOS format and resource closure",
+      "status": "pending",
+      "depends_on": [
+        "P2-03",
+        "P2-04",
+        "P2-05",
+        "P2-06",
+        "P2-07",
+        "P2-08",
+        "P2-09"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R17"
+      ],
+      "deliverables": [
+        "Phase 2 gate record",
+        "Full-corpus and malformed-input validation"
+      ],
+      "acceptance": "Every file is decoded or explained with evidence; all integrated resource contracts and external-media policy close."
+    },
+    {
+      "id": "P3-01",
+      "phase": 3,
+      "title": "Implement native host and portable builds",
+      "status": "pending",
+      "depends_on": [
+        "P2-GATE"
+      ],
+      "requirements": [
+        "R06",
+        "R07"
+      ],
+      "deliverables": [
+        "Pinned CMake/SDL host",
+        "Windows and second-host build results"
+      ],
+      "acceptance": "Core is host independent; native launch requires no emulator or original instruction execution."
+    },
+    {
+      "id": "P3-02",
+      "phase": 3,
+      "title": "Implement external edition/content loading",
+      "status": "pending",
+      "depends_on": [
+        "P3-01"
+      ],
+      "requirements": [
+        "R05",
+        "R08"
+      ],
+      "deliverables": [
+        "Data-folder verification",
+        "Atomic bounded loaders/cache"
+      ],
+      "acceptance": "Valid originals load; absent/corrupt/unsupported mandatory files fail clearly and safely."
+    },
+    {
+      "id": "P3-03",
+      "phase": 3,
+      "title": "Integrate state clock input and complete session flow",
+      "status": "pending",
+      "depends_on": [
+        "P3-02"
+      ],
+      "requirements": [
+        "R06",
+        "R07"
+      ],
+      "deliverables": [
+        "Native state/scheduling integration"
+      ],
+      "acceptance": "Canonical ticks/RNG/events preserve recovered semantics through all state transitions."
+    },
+    {
+      "id": "P3-04",
+      "phase": 3,
+      "title": "Integrate complete native race gameplay",
+      "status": "pending",
+      "depends_on": [
+        "P3-03"
+      ],
+      "requirements": [
+        "R06"
+      ],
+      "deliverables": [
+        "Playable vehicle/road/opponent/progression integration"
+      ],
+      "acceptance": "Complete sessions work beyond menus and first road entry."
+    },
+    {
+      "id": "P3-05",
+      "phase": 3,
+      "title": "Integrate EGA and CGA presentation",
+      "status": "pending",
+      "depends_on": [
+        "P3-04"
+      ],
+      "requirements": [
+        "R09"
+      ],
+      "deliverables": [
+        "Native graphics providers",
+        "Per-mode comparison results"
+      ],
+      "acceptance": "Both modes independently meet pixels/palette/masks/animation/aspect acceptance."
+    },
+    {
+      "id": "P3-06",
+      "phase": 3,
+      "title": "Integrate PC Speaker music and effects",
+      "status": "pending",
+      "depends_on": [
+        "P3-04"
+      ],
+      "requirements": [
+        "R10"
+      ],
+      "deliverables": [
+        "Speaker sequencer/synthesis",
+        "Event and listening comparisons"
+      ],
+      "acceptance": "Timing, effects priority and output are assessed separately."
+    },
+    {
+      "id": "P3-08",
+      "phase": 3,
+      "title": "Separate settings scores saves and caches",
+      "status": "pending",
+      "depends_on": [
+        "P3-02"
+      ],
+      "requirements": [
+        "R01",
+        "R06"
+      ],
+      "deliverables": [
+        "User-profile storage",
+        "Source-write audit"
+      ],
+      "acceptance": "No original writes; proven original format compatibility only where specified."
+    },
+    {
+      "id": "P3-09",
+      "phase": 3,
+      "title": "Handle Windows input focus resize and devices",
+      "status": "pending",
+      "depends_on": [
+        "P3-03"
+      ],
+      "requirements": [
+        "R06"
+      ],
+      "deliverables": [
+        "Host robustness cases"
+      ],
+      "acceptance": "Device/window changes do not alter game rules or corrupt state."
+    },
+    {
+      "id": "P3-10",
+      "phase": 3,
+      "title": "Validate all DOS content and complete sessions",
+      "status": "pending",
+      "depends_on": [
+        "P3-05",
+        "P3-06",
+        "P3-08",
+        "P3-09"
+      ],
+      "requirements": [
+        "R06",
+        "R07",
+        "R09",
+        "R10"
+      ],
+      "deliverables": [
+        "All-content gameplay/state/visual/audio acceptance"
+      ],
+      "acceptance": "All 12 cars and three scenery families/all sections and supported branches are covered."
+    },
+    {
+      "id": "P3-11",
+      "phase": 3,
+      "title": "Audit native DOS distributable and clean install",
+      "status": "pending",
+      "depends_on": [
+        "P3-10"
+      ],
+      "requirements": [
+        "R08",
+        "R01"
+      ],
+      "deliverables": [
+        "Package manifest and media audit",
+        "Valid/missing-data install tests"
+      ],
+      "acceptance": "No original resources/caches/fixtures/manuals in release; external data and custody behavior verified."
+    },
+    {
+      "id": "P3-GATE",
+      "phase": 3,
+      "title": "Accept native Windows DOS edition",
+      "status": "pending",
+      "depends_on": [
+        "P3-11"
+      ],
+      "requirements": [
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R17"
+      ],
+      "deliverables": [
+        "Phase 3 gate record"
+      ],
+      "acceptance": "Separate source/build/runtime/presentation/fidelity gates pass for admitted DOS scope."
+    },
+    {
+      "id": "P4-01",
+      "phase": 4,
+      "title": "Admit Amiga supplied edition and archive member baseline",
+      "status": "pending",
+      "depends_on": [
+        "P3-GATE"
+      ],
+      "requirements": [
+        "R12",
+        "R19"
+      ],
+      "deliverables": [
+        "Versioned 352-member manifest",
+        "Original/HD patch provenance record"
+      ],
+      "acceptance": "Supplied HD tree is distinguished from original disks and newer WHDLoad patches."
+    },
+    {
+      "id": "P4-02",
+      "phase": 4,
+      "title": "Recover Hunk loading relocation and executable components",
+      "status": "pending",
+      "depends_on": [
+        "P4-01"
+      ],
+      "requirements": [
+        "R12"
+      ],
+      "deliverables": [
+        "Hunk/load/relocation map",
+        "duel DuelHD song image contracts"
+      ],
+      "acceptance": "Validate candidate Hunk/header/load/relocation bounds and reproducible image maps; resolve code-bearing sections, packing and actual consumers iteratively with loader/function analysis in P4-03/04/05."
+    },
+    {
+      "id": "P4-03",
+      "phase": 4,
+      "title": "Map HD patches and review comparative source",
+      "status": "pending",
+      "depends_on": [
+        "P4-02"
+      ],
+      "requirements": [
+        "R12"
+      ],
+      "deliverables": [
+        "Patch-byte/behavior matrix",
+        "Source/license review"
+      ],
+      "acceptance": "Modified/new code is separated from original behavior; source reuse has admitted provenance."
+    },
+    {
+      "id": "P4-04",
+      "phase": 4,
+      "title": "Recover Amiga game C and platform differences",
+      "status": "pending",
+      "depends_on": [
+        "P4-03"
+      ],
+      "requirements": [
+        "R12"
+      ],
+      "deliverables": [
+        "68000 function/state map",
+        "Recovered C contracts",
+        "DOS/Amiga difference matrix"
+      ],
+      "acceptance": "Reachable code and arithmetic/state semantics have evidence; no patched baseline is falsely called original."
+    },
+    {
+      "id": "P4-05",
+      "phase": 4,
+      "title": "Recover all Amiga resource wrappers and formats",
+      "status": "pending",
+      "depends_on": [
+        "P4-02"
+      ],
+      "requirements": [
+        "R19"
+      ],
+      "deliverables": [
+        "Consumer-led container/codecs",
+        "All-member disposition registry"
+      ],
+      "acceptance": "Rpck/PPkc and other custom paths are proved; every archive member has a disposition."
+    },
+    {
+      "id": "P4-06",
+      "phase": 4,
+      "title": "Decode Amiga graphics palettes and animation",
+      "status": "pending",
+      "depends_on": [
+        "P4-04",
+        "P4-05"
+      ],
+      "requirements": [
+        "R13",
+        "R19"
+      ],
+      "deliverables": [
+        "Bitplane/mask/palette/animation schemas",
+        "Media mappings"
+      ],
+      "acceptance": "Actual game consumers and original-mode comparisons validate media behavior."
+    },
+    {
+      "id": "P4-07",
+      "phase": 4,
+      "title": "Recover Amiga replay code samples and effects",
+      "status": "pending",
+      "depends_on": [
+        "P4-04",
+        "P4-05"
+      ],
+      "requirements": [
+        "R14",
+        "R19"
+      ],
+      "deliverables": [
+        "Music/effect replay contracts",
+        "Sample and timing schemas"
+      ],
+      "acceptance": "Actual song container/replay role, channel/period/loop/priority and timebase are explained from sections and consumers."
+    },
+    {
+      "id": "P4-08",
+      "phase": 4,
+      "title": "Map Amiga cars and scenery identities",
+      "status": "pending",
+      "depends_on": [
+        "P4-05"
+      ],
+      "requirements": [
+        "R16",
+        "R19"
+      ],
+      "deliverables": [
+        "Namespaced content/cross-platform ID table"
+      ],
+      "acceptance": "Catalog collision and same-name nonidentical payloads remain separate until proven."
+    },
+    {
+      "id": "P4-09",
+      "phase": 4,
+      "title": "Identify Northern Germany Challenge files and completeness",
+      "status": "pending",
+      "depends_on": [
+        "P4-08"
+      ],
+      "requirements": [
+        "R16"
+      ],
+      "deliverables": [
+        "Admitted NGC member/dependency manifest"
+      ],
+      "acceptance": "User-confirmed name is associated with actual byte/loader evidence; inspect scen3 before requesting inputs.",
+      "input_condition": "Northern Germany Challenge input availability/identity must be investigated; if unavailable retain waiting-input status rather than claiming completion."
+    },
+    {
+      "id": "P4-10",
+      "phase": 4,
+      "title": "Specify Northern Germany Challenge route gameplay normalization",
+      "status": "pending",
+      "depends_on": [
+        "P4-04",
+        "P4-09"
+      ],
+      "requirements": [
+        "R16"
+      ],
+      "deliverables": [
+        "Route/geometry/sign/object/event adapter contract"
+      ],
+      "acceptance": "All supplied sections and gameplay fields map into DOS-core content without invented semantics.",
+      "input_condition": "Northern Germany Challenge input availability/identity must be investigated; if unavailable retain waiting-input status rather than claiming completion."
+    },
+    {
+      "id": "P4-11",
+      "phase": 4,
+      "title": "Validate Amiga code and resource recovery",
+      "status": "pending",
+      "depends_on": [
+        "P4-06",
+        "P4-07",
+        "P4-08"
+      ],
+      "requirements": [
+        "R12",
+        "R13",
+        "R14",
+        "R16",
+        "R19"
+      ],
+      "deliverables": [
+        "Selected-edition C/format/media comparisons"
+      ],
+      "acceptance": "Code recovery, all available resource families and patch differences have separate acceptance; Northern Germany Challenge identity/normalization is a separate required-when-available branch."
+    },
+    {
+      "id": "P4-GATE",
+      "phase": 4,
+      "title": "Accept Amiga recovery and extra-scenery contracts",
+      "status": "pending",
+      "depends_on": [
+        "P4-11"
+      ],
+      "requirements": [
+        "R12",
+        "R13",
+        "R14",
+        "R16",
+        "R17",
+        "R19"
+      ],
+      "deliverables": [
+        "Phase 4 gate record"
+      ],
+      "acceptance": "Common Amiga code/media are recoverable with a precise edition claim; NGC contract/validation status is recorded separately, and missing optional inputs do not block common media integration."
+    },
+    {
+      "id": "P5-01",
+      "phase": 5,
+      "title": "Finalize semantic media/content interfaces",
+      "status": "pending",
+      "depends_on": [
+        "P4-GATE"
+      ],
+      "requirements": [
+        "R15",
+        "R16"
+      ],
+      "deliverables": [
+        "Stable ID/event/time interfaces",
+        "Canonical-state contract"
+      ],
+      "acceptance": "All providers read one DOS canonical simulation without changing physics/RNG."
+    },
+    {
+      "id": "P5-02",
+      "phase": 5,
+      "title": "Integrate external Amiga video and audio providers",
+      "status": "pending",
+      "depends_on": [
+        "P5-01"
+      ],
+      "requirements": [
+        "R13",
+        "R14",
+        "R08"
+      ],
+      "deliverables": [
+        "Amiga presentation and replay providers"
+      ],
+      "acceptance": "No original assets bundled; independent Amiga provider acceptance passes."
+    },
+    {
+      "id": "P5-03",
+      "phase": 5,
+      "title": "Import and register Northern Germany Challenge",
+      "status": "pending",
+      "depends_on": [
+        "P5-01",
+        "P4-10"
+      ],
+      "requirements": [
+        "R16"
+      ],
+      "deliverables": [
+        "Atomic NGC content adapter",
+        "Optional-pack diagnostics"
+      ],
+      "acceptance": "Complete validated user inputs enable scenery; absent/partial/corrupt sets do not break DOS play.",
+      "input_condition": "Northern Germany Challenge input availability/identity must be investigated; if unavailable retain waiting-input status rather than claiming completion."
+    },
+    {
+      "id": "P5-04",
+      "phase": 5,
+      "title": "Close content and provider capability matrix",
+      "status": "pending",
+      "depends_on": [
+        "P5-02"
+      ],
+      "requirements": [
+        "R09",
+        "R13",
+        "R14",
+        "R15",
+        "R16"
+      ],
+      "deliverables": [
+        "Per-state/car/scenery/video/music/SFX coverage matrix"
+      ],
+      "acceptance": "Every declared combination has complete faithful assets/mapping; gaps stay explicit.",
+      "conditional_depends_on": [
+        {
+          "id": "P5-03",
+          "condition": "NGC input set identified and validated",
+          "unknown_condition_action": "keep NGC coverage unverified; inspect candidate set"
+        }
+      ]
+    },
+    {
+      "id": "P5-05",
+      "phase": 5,
+      "title": "Implement atomic live graphics switching",
+      "status": "pending",
+      "depends_on": [
+        "P5-04"
+      ],
+      "requirements": [
+        "R15"
+      ],
+      "deliverables": [
+        "Prepare/commit/rollback graphics switch"
+      ],
+      "acceptance": "Same session/tick/RNG/input/game events survive success/failure and repeated switches."
+    },
+    {
+      "id": "P5-06",
+      "phase": 5,
+      "title": "Implement independent live music and effects switching",
+      "status": "pending",
+      "depends_on": [
+        "P5-04"
+      ],
+      "requirements": [
+        "R15"
+      ],
+      "deliverables": [
+        "Audio timeline handover and resource retirement"
+      ],
+      "acceptance": "Preserve semantic position where proven; otherwise validate a deterministic restart/optional-fade policy at a safe boundary. No gameplay-state reset, stuck/duplicated cues or stale audio references."
+    },
+    {
+      "id": "P5-07",
+      "phase": 5,
+      "title": "Validate live combinations failure paths and device changes",
+      "status": "pending",
+      "depends_on": [
+        "P5-05",
+        "P5-06"
+      ],
+      "requirements": [
+        "R15"
+      ],
+      "deliverables": [
+        "Switch/state/event/presentation acceptance matrix"
+      ],
+      "acceptance": "All declared states and combinations pass invariant, failure and human presentation checks."
+    },
+    {
+      "id": "P5-08",
+      "phase": 5,
+      "title": "Validate complete Northern Germany Challenge gameplay",
+      "status": "pending",
+      "depends_on": [
+        "P5-03",
+        "P5-07"
+      ],
+      "requirements": [
+        "R16"
+      ],
+      "deliverables": [
+        "All-section route/session comparison",
+        "Optional-input and supported-profile tests"
+      ],
+      "acceptance": "Full scenery gameplay/events work and are compared; no menu-only or graphics-only completion claim.",
+      "input_condition": "Northern Germany Challenge input availability/identity must be investigated; if unavailable retain waiting-input status rather than claiming completion."
+    },
+    {
+      "id": "P5-09",
+      "phase": 5,
+      "title": "Audit final release and documentation",
+      "status": "pending",
+      "depends_on": [
+        "P5-07"
+      ],
+      "requirements": [
+        "R01",
+        "R08",
+        "R18"
+      ],
+      "deliverables": [
+        "Package/media/license audit",
+        "Complete evidence and continuation records"
+      ],
+      "acceptance": "No original resources shipped; supported editions/combinations and remaining conditions are disclosed.",
+      "conditional_depends_on": [
+        {
+          "id": "P5-08",
+          "condition": "NGC input set identified and validated",
+          "unknown_condition_action": "do not claim final NGC availability or acceptance"
+        }
+      ]
+    },
+    {
+      "id": "P5-GATE",
+      "phase": 5,
+      "title": "Accept complete requested implementation",
+      "status": "pending",
+      "depends_on": [
+        "P5-09"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19"
+      ],
+      "deliverables": [
+        "Final requirement and independent-gate acceptance record"
+      ],
+      "acceptance": "All applicable requirements pass; NGC missing-input conditions and unresolved fidelity gaps cannot be silently closed."
+    }
+  ],
+  "optional_content_dependency_policy": {
+    "condition": "necessary Northern Germany Challenge input set has been identified and validated",
+    "condition_status": "unverified",
+    "rule": "Do not infer absence from unknown status. Inspect the existing candidate pack first. Missing optional inputs may defer only the named NGC branch; do not block independently validated common Amiga media work. Do not close NGC acceptance without its inputs.",
+    "records_required": [
+      "member-identity and completeness result",
+      "exact missing roles if any",
+      "supported provider/content matrix"
+    ]
+  },
+  "id_policy": "Existing requirement and task IDs are retained across scope changes; gaps in numbering are intentional.",
+  "audio_scope": {
+    "dos": [
+      "PC Speaker music",
+      "PC Speaker sound effects"
+    ],
+    "amiga": [
+      "music",
+      "sound effects"
+    ],
+    "switching": "Independent music/effects provider selection where complete mappings exist."
+  },
+  "authorization": {
+    "date": "2026-10-13",
+    "scope": "Phase 0 and Phase 1, TD2EGA first; all original files unchanged; document and persist findings.",
+    "later_phases": "Not started; required order preserved."
+  }
+}

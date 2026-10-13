@@ -1,0 +1,27 @@
+{
+  "method": "Pinned author exepack -d; comparison excludes independently synthesized MZ envelopes.",
+  "tool_sha256": "95eb32789d47fb88f8bdc50b6f14c6a441915339a37ebb06a1c044e0288b62eb",
+  "source_sha256": "212f3ec55822dc67763ab79534e5c9cd5fc2cf127a557a983a6b95ae4ad89ecf",
+  "output_mz_sha256": "17161286754bccfd64c912ddd40bdc3cf55cbcf94cc300f4e3c781b22bad4cc7",
+  "output_image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "image_bytes": 130240,
+  "images_byte_identical": true,
+  "relocations_same_order_and_sites": true,
+  "relocation_count": 1652,
+  "author_header_words": [
+    "0x5a4d",
+    "0xc0",
+    "0x10c",
+    "0x674",
+    "0x1a0",
+    "0x201",
+    "0x5fd",
+    "0x20d2",
+    "0xfa0",
+    "0x12d0",
+    "0x3f8",
+    "0x13a8",
+    "0x1c",
+    "0x0"
+  ]
+}

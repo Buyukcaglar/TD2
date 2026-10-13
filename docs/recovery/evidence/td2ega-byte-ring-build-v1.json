@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000003",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "analysis/build/compile-byte-ring.cmd",
+    "sha256": "8d80e4128b9fd981e8b0454854c424cb41d7741aeb881180ed33d43f889ad69c"
+  },
+  "public_reproduction_recipe": "tools/compile_byte_ring.cmd",
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "c25d7426337a5c83532b42eb6d5dc38ee021eba6c523a9cd93a0d52d600654e1"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/td2ega_byte_ring.obj",
+      "sha256": "111791090dca3d4f800e3c2734f262ba6c177b0b470b77cc1b4bfda233ec0f03",
+      "bytes": 676
+    },
+    {
+      "path": "analysis/build/td2ega_byte_ring.dll",
+      "sha256": "6c2b8fb8cc6ec6132b85748d19a6be31de461cc20593203d7c119338329f37ad",
+      "bytes": 102912
+    }
+  ],
+  "limit": "Actual recovered function compiled on Windows x64; no second-host/compiler, game core, OS host, or integration build is established."
+}

@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "verification_date": "2026-10-13",
+  "scope": "Phase 0 dependency and compiler discovery for TD2EGA-first Phase 1",
+  "original_game_inputs_passed_to_tools": false,
+  "game_execution_performed": false,
+  "ghidra_import_performed_by_researcher": false,
+  "recovered_c_compilation_performed_by_researcher": false,
+  "system_wide_installation_performed": false,
+  "shared_tool_mutation_performed": false,
+  "selected_ghidra": {
+    "root": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC",
+    "version": "12.1.3",
+    "build_date": "2026-Aug-17 1710 UTC",
+    "source_revision": "8b4c91d4d5bd1549622bfbade0df199585b98365",
+    "minimum_java": 21,
+    "language_id": "x86:LE:16:Real Mode",
+    "compiler_specification": "default",
+    "release_url": "https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.1.3_build",
+    "release_archive_url": "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.3_build/ghidra_12.1.3_PUBLIC_20260817.zip",
+    "release_archive_size_bytes": 569445154,
+    "upstream_archive_sha256": "93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54",
+    "archive_downloaded_this_task": false,
+    "provenance_limit": "Local application properties and selected component hashes checked; entire installed tree and original archive not revalidated",
+    "isolation_required": ["user.home", "application.settingsdir", "application.cachedir", "application.tempdir", "java.io.tmpdir", "explicit -log and -scriptlog", "new TestDrive2 project directory"]
+  },
+  "selected_java": {
+    "root": "C:\\Projects\\Civ1RE\\tools\\jdk-21.0.12.1+1",
+    "vendor": "Eclipse Adoptium",
+    "version": "21.0.12.1+1-LTS",
+    "architecture": "Windows x86_64",
+    "version_command_succeeded": true
+  },
+  "selected_compiler": {
+    "visual_studio_instance": "Visual Studio Build Tools 2022 17.14.39",
+    "installation_version": "17.14.37614.0",
+    "toolset_directory_version": "14.44.35207",
+    "cl_reported_version": "19.44.35228",
+    "target": "x64",
+    "environment_script": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat",
+    "environment_arguments": ["10.0.26100.0", "-vcvars_ver=14.44"],
+    "windows_sdk": "10.0.26100.0",
+    "header_and_library_presence": ["MSVC include/stdint.h", "SDK ucrt/stdio.h", "SDK um/Windows.h", "SDK ucrt/x64/libucrt.lib", "SDK um/x64/kernel32.lib"],
+    "required_c_flags": ["/TC", "/std:c17", "/W4", "/WX"],
+    "probe": "cl.exe /Bv; compiler/pass versions printed; D8003 missing source filename expected; no compilation performed"
+  },
+  "downloaded_tools": [
+    {
+      "name": "Author-published native EXEPACK comparison tool",
+      "path": "C:\\Projects\\TestDrive2\\analysis\\tools\\exepack-1.4.0\\exepack.exe",
+      "url": "https://www.bamsoftware.com/software/exepack/exepack.exe",
+      "size_bytes": 1299501,
+      "sha256": "95eb32789d47fb88f8bdc50b6f14c6a441915339a37ebb06a1c044e0288b62eb",
+      "http_last_modified": "Wed, 26 Aug 2026 02:24:07 GMT",
+      "reported_version": null,
+      "help_command_exit_code": 0,
+      "version_option": "Unsupported: invalid option --version",
+      "decompress_cli": "exepack.exe -d INPUT.EXE OUTPUT.EXE",
+      "original_input_processed": false,
+      "binary_source_equivalence_verified": false
+    },
+    {
+      "name": "EXEPACK source package",
+      "path": "C:\\Projects\\TestDrive2\\analysis\\tools\\exepack-1.4.0\\exepack-1.4.0.tar.gz",
+      "url": "https://www.bamsoftware.com/software/exepack/exepack-1.4.0.tar.gz",
+      "size_bytes": 49776,
+      "sha256": "212f3ec55822dc67763ab79534e5c9cd5fc2cf127a557a983a6b95ae4ad89ecf",
+      "source_version": "1.4.0",
+      "license": "CC0 from COPYING",
+      "http_last_modified": "Wed, 21 Sep 2022 20:01:04 GMT",
+      "read_members": ["Cargo.toml", "COPYING", "doc/README.stubs", "src/main.rs"],
+      "build_performed": false,
+      "limits": "Source metadata, stub catalog and CLI inspected; no full decompression implementation audit or native binary reproducible build performed"
+    }
+  ],
+  "alternative_remote_pins_not_acquired": [
+    {"url": "https://github.com/w4kfu/unEXEPACK.git", "head_observed": "db26f9e2d23af37e6508436b62cb98cbbb86a275"},
+    {"url": "https://www.bamsoftware.com/git/exepack.git", "head_observed": "0000b0109a16d2838aeb952f8c6cae49591dbdaa", "limit": "HEAD observation is not proof of source-archive or binary correspondence"}
+  ],
+  "future_oracle": {
+    "name": "DOSBox-X",
+    "tag": "dosbox-x-v2026.10.01",
+    "commit": "b6abbd5980a885f5f310a4088c59a8688d1b116c",
+    "release_published_at": "2026-10-02T02:29:52Z",
+    "release_url": "https://github.com/joncampbell123/dosbox-x/releases/tag/dosbox-x-v2026.10.01",
+    "candidate_archive_url": "https://github.com/joncampbell123/dosbox-x/releases/download/dosbox-x-v2026.10.01/dosbox-x-vsbuild-win64-2026.10.01-portable.zip",
+    "candidate_archive_size_bytes": 44575207,
+    "upstream_archive_sha256": "3c50915e63aefe35777d65ebb4391a06b4a2c2342e4c75cbee6bbda4c6916e33",
+    "acquired": false,
+    "executable_sha256": null,
+    "runtime_repeatability_verified": false,
+    "debugger_source_url": "https://raw.githubusercontent.com/joncampbell123/dosbox-x/b6abbd5980a885f5f310a4088c59a8688d1b116c/README.debugger",
+    "config_source_url": "https://raw.githubusercontent.com/joncampbell123/dosbox-x/b6abbd5980a885f5f310a4088c59a8688d1b116c/dosbox-x.reference.full.conf"
+  },
+  "local_component_locks": [
+    {"path": "C:\\Projects\\Civ1RE\\tools\\jdk-21.0.12.1+1\\bin\\java.exe", "size_bytes": 50304, "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\jdk-21.0.12.1+1\\bin\\javac.exe", "size_bytes": 24704, "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\support\\analyzeHeadless.bat", "size_bytes": 2930, "sha256": "dd7b9d17d32ed70a71df82a43a21cdaed6c4ce67064e30f8642c149f81c2ae07"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\application.properties", "size_bytes": 659, "sha256": "fb9b6292c801e4a18b7c20829437d3b18b2241b273aea9b1cbdebdf3e5d0dc15"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\Features\\Decompiler\\os\\win_x86_64\\decompile.exe", "size_bytes": 2557440, "sha256": "5ae40d01bf03e09ee89b65d1ca465537a1b5d2626cdcfae6e6a9f98ee2d8f536"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\Features\\Base\\lib\\Base.jar", "size_bytes": 23104631, "sha256": "1b6b4063ed5c04c6137ecfc588e72ec7d795a57b07ab34324a8245e85d50a56c"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\Processors\\x86\\data\\languages\\x86.sla", "size_bytes": 438083, "sha256": "f8f79a2bae797ed62e9613cb1253dab56e57a0a57c4b14b52912e25c58e60273"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\Processors\\x86\\data\\languages\\x86.ldefs", "size_bytes": 5390, "sha256": "5d8311a8a38cc55072b250d2610ac98a5970d3e2233c97edaf21f551052eb4a0"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\Processors\\x86\\data\\languages\\x86-16.cspec", "size_bytes": 4862, "sha256": "85f7c1fd851a51518885d94f34fbc677e7cc289dc2a86d2244f5b9114dcedede"},
+    {"path": "C:\\Projects\\Civ1RE\\tools\\ghidra_12.1.3_PUBLIC\\Ghidra\\Processors\\x86\\data\\languages\\x86-16-real.pspec", "size_bytes": 989, "sha256": "68cf2d52405e23103695c118519dd09c89b2963d3811530fbbf6a297ec14cb81"},
+    {"path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe", "size_bytes": 677736, "file_version": "19.44.35228.0", "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d"},
+    {"path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\dumpbin.exe", "size_bytes": 23416, "file_version": "14.44.35228.0", "sha256": "12a1cd87238bd66dfdb788b4fcdcb91ce4b3f81236aab12a7a29e5ae1d85af50"},
+    {"path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat", "size_bytes": 39, "sha256": "6b516d8fcf543c14b2d861e1f45661e0029230fe0dc48e86ce78522801822209"},
+    {"path": "C:\\Program Files\\7-Zip\\7z.exe", "size_bytes": 575488, "file_version": "25.01", "sha256": "4cd7d776c686427226a151789d2d61f0b2ed2c392148cc4e69c0238362fafecf"}
+  ]
+}

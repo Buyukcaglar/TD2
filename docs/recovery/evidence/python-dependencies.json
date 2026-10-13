@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-13",
+  "installation": "analysis/tools/python",
+  "packages": [
+    {
+      "filename": "capstone-5.0.9-py3-none-win_amd64.whl",
+      "sha256": "732cedbbb56d42e723f14d7af6387f1454194a820b4b96b56d1e53f865ef85d0",
+      "bytes": 1273459,
+      "version": "5.0.9",
+      "source_url": "https://pypi.org/project/capstone/"
+    },
+    {
+      "filename": "unicorn-2.1.4-cp37-abi3-win_amd64.whl",
+      "sha256": "d7107500c64ce5c168fbff6bef9485b5db1350050036f4cea568650cf8bdbdf5",
+      "bytes": 15943079,
+      "version": "2.1.4",
+      "source_url": "https://pypi.org/project/unicorn/"
+    }
+  ],
+  "observed_runtime_versions": {
+    "capstone_distribution": "5.0.9",
+    "capstone_python_binding___version__": "5.0.7",
+    "capstone_native_cs_version": [
+      5,
+      0,
+      1280
+    ],
+    "unicorn": "2.1.4"
+  },
+  "version_limit": "Wheel/distribution identity and binding/native API version differ; exact verified wheel and native DLL hashes govern reproduction."
+}

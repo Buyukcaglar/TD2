@@ -1,0 +1,1759 @@
+{
+  "schema": 1,
+  "inspection_date": "2026-10-13",
+  "scope": "Read-only static planning inventory; source files were not executed or changed.",
+  "file_count": 250,
+  "total_bytes": 3025505,
+  "files": [
+    {
+      "path": "reference/amiga/TestDrive2&DataDisks_v1.1_HD_JOTD.lha",
+      "bytes": 1412072,
+      "sha256": "1a2fc1d197e96356aad46fd65b6661fc194aeb2caf764c5a4319d435112ee114",
+      "first_32_hex": "34d22d6c68352db701000084030000959e3b4802011b54657374447269766532",
+      "suffix": ".LHA"
+    },
+    {
+      "path": "reference/dos/ACCOLADE.PCS",
+      "bytes": 823,
+      "sha256": "71f9a093c3b0500abf57d744e0c3f5dc2689dbaa02909c629bd5fb72ce3d05e8",
+      "first_32_hex": "82680c00027204000a00000106070608140d1600010507135455021415171a40",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ACCOLADE.PES",
+      "bytes": 1412,
+      "sha256": "5abcae8cd38037048f41674a04517bf53f0e7d1d02163a7565e913263acfc1a6",
+      "first_32_hex": "8265110002bc06000b00000102080d1118141614000aff0103191f80c0f0f802",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CAMA.BIN",
+      "bytes": 896,
+      "sha256": "d892915b0b93742734283daba08e5f26793389a3f2a136232d16014cb681e1c2",
+      "first_32_hex": "0400401f201c6419b80b0100c042c0000a0000002874a8564c43182e00000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/CAMA.SS",
+      "bytes": 72,
+      "sha256": "240f2fa3d929bac0d6dd0c5edaf045be0fa76445007e6aebd8ae3396033e8a0c",
+      "first_32_hex": "313520313220313520776e6441776e6442776e6443776e6444776e6445776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/CAMADASH.PCS",
+      "bytes": 6810,
+      "sha256": "f69d82d162c83c5068471d542a3e983fc3698ddf50fc4f4f7341d482f9565840",
+      "first_32_hex": "82424700024721000d000002010110151c24261e211600aa5536010205080a2a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CAMADASH.PES",
+      "bytes": 10104,
+      "sha256": "3556058fc69b7c1e1d3ae6b5757721a0acb4f8eb864a4a2a6288599d9ea74c26",
+      "first_32_hex": "82957700024a33000d00000200050e0d17303c2f181400ff01556ba9aa020304",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CAMAO.BIN",
+      "bytes": 32,
+      "sha256": "31443bee6703b40b6c8c438660d9c43e95515947c607cb8b84ba4ff850cb1fa8",
+      "first_32_hex": "40067805e803ee025802c20177012c01c8009600000000000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/CAMAREAR.PCS",
+      "bytes": 1685,
+      "sha256": "550f7b3c7846fe644a39781e837837c2ede75055a09fb1c34de0b17dab1d26fc",
+      "first_32_hex": "82a61b0002be08000b00000201070c12130e191e00aa030b0d222a5588a80208",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CAMAREAR.PES",
+      "bytes": 2746,
+      "sha256": "dcc5f205ac3989690372cf532b8e6738a12601c4720dae7a0219531abfce95a9",
+      "first_32_hex": "820e360002c10d000c0001000201111313132a232a0011ff1d010203070e0f1b",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CAMAROAD.PCS",
+      "bytes": 6097,
+      "sha256": "7a7dc95c873c18ee141d0caff89128c4dd6a7b35e75cd51378784db8e9f9d31a",
+      "first_32_hex": "822e360002b51e000d0001000103110d1a17312e191e00aa021eff03080a0f22",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CAMAROAD.PES",
+      "bytes": 6843,
+      "sha256": "41acc05f6d7fa23516bfaf093f939242f867a199a80a59300aca12168f58dab7",
+      "first_32_hex": "82f3350002e121000d00010001020d15172a32391e1000ff13960103070f1a1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CAMAST.PCS",
+      "bytes": 8364,
+      "sha256": "aeb70903b0b0c241b1df5de07cd0b9b92e4ae731d94cc7c6948b72284ba90b63",
+      "first_32_hex": "82ac5e00026127000d00000002060e16253811241b1200ff132f3955aacc0102",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CAMAST.PES",
+      "bytes": 12180,
+      "sha256": "86ee20566e92ed21201d1f653be22d1cf464abe2cb47c7fca1274623c7f172f3",
+      "first_32_hex": "82218500024638000e00000101040c181c4136260e090600ff015b94aa020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CARS.DAT",
+      "bytes": 252,
+      "sha256": "92fe1947430749503ff21b65f105acc46e77912f87ac8237e56eebbf63dc9617",
+      "first_32_hex": "46343020466572726172695f4634300d0a5039353920506f72736368655f3935",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC.FNT",
+      "bytes": 1012,
+      "sha256": "224ffd27148eeec78e02e866c18fb6a25943af9722116041804752f51fdf5152",
+      "first_32_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".FNT"
+    },
+    {
+      "path": "reference/dos/CCC0.DAT",
+      "bytes": 755,
+      "sha256": "cd80234e65d53f5f1c61d8e082f3f8d1d4f330317f41201c706a804beddfba08",
+      "first_32_hex": "82ed110002be03000a0000010409060f0d1628001217292e02030a13162a2f36",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC0.SGN",
+      "bytes": 141,
+      "sha256": "adf1882c43b24411a7fd356e384256056d901bb6101074dd6991bfd34434a813",
+      "first_32_hex": "2800580000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCC1.DAT",
+      "bytes": 713,
+      "sha256": "27587516e7c0e72171c755c02d7ead4988c818c9017364ba7cc2ed7ae9e2a67c",
+      "first_32_hex": "82e40d00027d03000a0001010107040d17172e002e290102030a162fff051214",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC1.SGN",
+      "bytes": 131,
+      "sha256": "2f6b9d07052e374d240042ac815a0d96a83a220849cab50f9136e37c61c27938",
+      "first_32_hex": "2800540000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCC2.DAT",
+      "bytes": 780,
+      "sha256": "64ed6c9bfd48fd010e9e58426b6bf512d68dbaaae8c4366e59e9a69b8f2b1546",
+      "first_32_hex": "8253100002da03000a00000105070709150f36001217292e3502030a13162fff",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC2.SGN",
+      "bytes": 294,
+      "sha256": "cce0b2b85ec3c61ad2e96f9e07f15a265956c259fd5c562c22d16f53d1e7007e",
+      "first_32_hex": "280052007c00a600d000fa000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCC3.DAT",
+      "bytes": 841,
+      "sha256": "5eafe19d8bb511d6bc665f4c88753de906c6dc061fb990223ae07d402508f585",
+      "first_32_hex": "8290100002f803000a000100030508051e204000292e2f0102030aff05121619",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC3.SGN",
+      "bytes": 262,
+      "sha256": "a42fd594f1dbc2409a3ba78de7921a99fe1ed2b1095b60494f1abb6abd23874d",
+      "first_32_hex": "28004e0072009600ba00e0000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCC4.DAT",
+      "bytes": 974,
+      "sha256": "5f1472643763b0aab57f1ae35c3400de70795d64abe128db5b548a85ab93f9bb",
+      "first_32_hex": "8284120002ee04000a0001000404040b123634000203292e010a3133121828ff",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC4.SGN",
+      "bytes": 321,
+      "sha256": "8a022ecc0ce5618b8f242036afd97e8b51fd0b4f63be68bc25c1cacabdd4c6b8",
+      "first_32_hex": "280058008000aa00d600fc002001000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCC5.DAT",
+      "bytes": 920,
+      "sha256": "c7d9d5efc2d81b32544ab0e88a9594b6bd9290e7fa27af6f6b1cf1ae9764c2b1",
+      "first_32_hex": "82e31300029104000a0001000403060c122e3c0003292e3301020a0512384647",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC5.SGN",
+      "bytes": 402,
+      "sha256": "444d31923802a0f60b4816d2c92bca4664b4078ad7be4d0847a2920f7cb8bc29",
+      "first_32_hex": "28004a006a009a00c000e6001a013e016a010000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCC6.DAT",
+      "bytes": 878,
+      "sha256": "c887107b53054fc9d6fe9954a34edfd8d32fbf131b7571b7271b91c392f0c431",
+      "first_32_hex": "82fc0f00025004000a00010002070510171942003839010203313a4cff0a1214",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCC6.SGN",
+      "bytes": 538,
+      "sha256": "2388ec789d8e44607d18b0d62b540e743341743e23d0d7286f4e8e8c088e4393",
+      "first_32_hex": "28004a0070009200ba00e4000c013201580100007c01a001c601ec0100000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/CCCCAR1.PCS",
+      "bytes": 4051,
+      "sha256": "1e6a0a3a53fc535693c284452fa01f81aa1d5234d96db23c4c745e51f965137d",
+      "first_32_hex": "82362c00024515000c00010001060e09112528342000ff0203173942aa080a0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCCAR1.PES",
+      "bytes": 4981,
+      "sha256": "91a1223ee3c1fb8536fe105a2d79991e52440c2582fd297894611f6efb19be85",
+      "first_32_hex": "82bc350002541a000d000100010512080d21292d1c1c00ff01274580c0020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCCAR2.PCS",
+      "bytes": 3924,
+      "sha256": "dcac29537ed2d5fe30e1c87ea29502b2b8f39d86b8f56ae89cb249f13b520a4b",
+      "first_32_hex": "82762c00022915000c0001000204100a0e1330351e0014ff020f25aa03080a22",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCCAR2.PES",
+      "bytes": 4811,
+      "sha256": "31b4526b213f72089909322182c08ea83843ccf584b4712616b6cbbbb7eaaeb5",
+      "first_32_hex": "82883300020319000d00010001050f0c10222f21212200ff01394b4ec0020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCCAR3.PCS",
+      "bytes": 5313,
+      "sha256": "21d38dfbbf07af9bd3dc34ce84519d704e37a51382797cb586d39d71b557f731",
+      "first_32_hex": "82ce450002a81c000d00010003020e0718232821181c0021aaff484b02030a0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCCAR3.PES",
+      "bytes": 7701,
+      "sha256": "2d27df41477ff1e0af8c6de3e46ddfbd0ecd9f68daad9f86cfed2dff45259f31",
+      "first_32_hex": "82fa5500029e29000d00000201060d0f0e153031291a00ff5101034952568007",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCFRISC.PCS",
+      "bytes": 7745,
+      "sha256": "7b339c9144ffe5247bdf0538bc7a63c51a2035199b2f57f3317eb654d09ecdc5",
+      "first_32_hex": "82126a00023927000d0000010106120f1428311e171200ff0213557e80aa0308",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCFRISC.PES",
+      "bytes": 9524,
+      "sha256": "226dc9ca5807630644d164a3f43022a1def639e1c33a66212e57afca1ea73595",
+      "first_32_hex": "821e5c0002db2b000d0000010004100e2555461407020001515dff0203070f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCHISC.DAT",
+      "bytes": 340,
+      "sha256": "36a015d3d2435d794607d579c8e62940ef3dbc813ff6af9e98b1636227e9dab5",
+      "first_32_hex": "0000000000343000200069636b204b617374726f756e69730020000000000034",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/CCCICON.PCS",
+      "bytes": 3608,
+      "sha256": "3d271344b2f9b10b4f6a32f343b415f0942151e5bb34eabc8abcabe8b7c036ec",
+      "first_32_hex": "82863700028f12000c0000010403061c191a2e2126000955aaff02191c0a0c20",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCICON.PES",
+      "bytes": 5881,
+      "sha256": "ccfb873b63953b45c85dd4c979e0427821d25dfafe74f19f9be9655264b34301",
+      "first_32_hex": "82f66e0002701d000d00000201020b17182d412b151200ff233a4d01030f101f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCRED.PCS",
+      "bytes": 10821,
+      "sha256": "8f8fe07ef6dd7212abed419e6344d6d860f002b3646a63a9aaf36d11907e958e",
+      "first_32_hex": "82daa40002f536000e0000010107140814252f1f120e140013020a3d80a8aaff",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCRED.PES",
+      "bytes": 16441,
+      "sha256": "8a9d1e62d29b6fe385dfb97eaa2176c7049206943be99ff6466933399d407696",
+      "first_32_hex": "82d18b0002e34a000b0000010103091329624c08004a04d1ff01030506070880",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCSOUT.PCS",
+      "bytes": 8189,
+      "sha256": "b9d10808cb3c49374872b9bb8c779c1310f7b2e5448949d6318220037fc43eb1",
+      "first_32_hex": "821a750002df29000d00000103031013121b30211a18001baaff02355503080a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCSOUT.PES",
+      "bytes": 10530,
+      "sha256": "078381696779f0c87a14d5775753d317a8357b45e66f3f4ae57ff143311dd258",
+      "first_32_hex": "8214710002b731000d00000101040d1122463e240e0400ff01244a8003070f1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/CCCSOUTH.PCS",
+      "bytes": 9196,
+      "sha256": "2e53d3258c9bd47104307d0efec264273eb418bf4db2585115fe244b2e6ac4bf",
+      "first_32_hex": "82c47200021830000e0000010304110c151e26231018180027aaff02034f5508",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/CCCSOUTH.PES",
+      "bytes": 11234,
+      "sha256": "f0c852bac71a9429aabd1531009523748eff0f7df669b785a93dfb4b27830c2f",
+      "first_32_hex": "8211740002bf36000e0000010104120c1e3c342621050200ff01036280020407",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/COP.PCS",
+      "bytes": 9412,
+      "sha256": "748d8bb4bcaf6be798076f0e2128bcb44ac1e50843447c0382778f4d872efd98",
+      "first_32_hex": "82407f00028a30000e000100020309160f2c2c2b1d1014004eff038dc00a0f3f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/COP.PES",
+      "bytes": 14036,
+      "sha256": "b310304f656397162edaf7edc838f982b449c6aa4edaff9e1324e76e7240c2b5",
+      "first_32_hex": "822f9c0002a648000e0000010205100e14243334220f0a0071ff010380d6e502",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/COUN.BIN",
+      "bytes": 847,
+      "sha256": "af72f9149ef61d3876d13bf23533106035a3fc6765061fb0e8659dbdd5e2cbb4",
+      "first_32_hex": "05002823781e841c740e01002398ea000a00000089838e5f4b40ba32e1290000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/COUN.SS",
+      "bytes": 72,
+      "sha256": "e4564b1d75bfe39c1fbea6ca587fda735e0989106b8ae91970a816dda038d3e8",
+      "first_32_hex": "313520313420313520776e6441776e6442776e6443776e6444776e6445776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/COUNDASH.PCS",
+      "bytes": 7624,
+      "sha256": "27b5cba6e568172ae61fb9d3f26aad42a08c7388a357b023b0cabeabb6a6601d",
+      "first_32_hex": "8224550002de29000d0000020208080916141729261800aa22880208091c202a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/COUNDASH.PES",
+      "bytes": 10405,
+      "sha256": "fe435bef883c2542bc19877949b6a87da3ee11a6672e208c98f5de920523b540",
+      "first_32_hex": "826f830002b532000e00000102030e17152c42221d090a008eff0155aa020304",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/COUNO.BIN",
+      "bytes": 32,
+      "sha256": "5eee5f5587da3ca746864f2aa111ead8995d2b18d22da6f7bdd1788543ed9a84",
+      "first_32_hex": "4c042e041a0416033002ce0144012201180113011001b8000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/COUNREAR.PCS",
+      "bytes": 2079,
+      "sha256": "f7f454d5e146946300ca101412dd5e8ece7302f8aae7fa09480371287d3cba7c",
+      "first_32_hex": "822e1500020c0a000b00000200050f16141c272200aa06122288ee0a112a5582",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/COUNREAR.PES",
+      "bytes": 2700,
+      "sha256": "43e109c580576742404d38b139f41a746d7e084eeb6139a32deb418663ea74bc",
+      "first_32_hex": "82262a0002310c000c00000101040e1d1c2a1e1c2000ff011355aa0203070a0f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/COUNROAD.PCS",
+      "bytes": 5370,
+      "sha256": "ad78ca5a7620493660a848138a57f706d4ee71d25bdebc8727829d5ae7c5e437",
+      "first_32_hex": "82de2d0002341a000d00010001030b17182531261e1400ff434faa0203080f10",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/COUNROAD.PES",
+      "bytes": 6231,
+      "sha256": "56043ccd577012cce849d57992e757bd1f02dda8f1e8f08aa12d34c13396cf0e",
+      "first_32_hex": "821b360002d91d000d00010001020e0f1831443a100800ff01730203070f3f55",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/COUNST.PCS",
+      "bytes": 11540,
+      "sha256": "b13c942db22f8b76770d3c5ede2f5089207219ad0ce7f32ed44565b22c74b03f",
+      "first_32_hex": "8204750002e637000e00000003050f1a1a1d261f16110e00aaff182755bbee02",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/COUNST.PES",
+      "bytes": 13812,
+      "sha256": "6b50f2548fc4b4a0ffc2d7b64f00c947f1dbed130c99eb4186936fc2d4673f89",
+      "first_32_hex": "82319a0002ca3f000e00000002050e182232382e10070200ff01114955aa0203",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/DISKID.DAT",
+      "bytes": 9,
+      "sha256": "a8301f3a6573b69989ce5680088086ce325aab464996aa1e739841e7678ee02a",
+      "first_32_hex": "cecfced12092808f96",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/DODG.BIN",
+      "bytes": 847,
+      "sha256": "0f77babc51646ae7724c27ee097971adb4e1385c8cb0302c138590799706f0b6",
+      "first_32_hex": "0400401fbc1b3818b80b0100c042c0000a0000001d793558123fb42d00000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/DODG.SS",
+      "bytes": 76,
+      "sha256": "905ea335c9029afd5a447fdd0fa4f7b7852ba03930d2e90c30c0134963cd6823",
+      "first_32_hex": "313620313220313520776e6441776e6442776e6443776e6444776e6445776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/DODGDASH.PCS",
+      "bytes": 5082,
+      "sha256": "10dbc59826aa3c642d206c72134513ee7a58853d29e2be0bdb512cc607e98aa3",
+      "first_32_hex": "8278470002ff1c000d0001000305080e14171d1a111e000217aa0a2380a0ff01",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/DODGDASH.PES",
+      "bytes": 7168,
+      "sha256": "39c57774491bcfd347bb76e5340de48ead05e906b8e71fca06c1ffbe49372f3c",
+      "first_32_hex": "82605c00022424000d000002010310110f22372b261000ff25013a8002030407",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/DODGO.BIN",
+      "bytes": 32,
+      "sha256": "ee29a29fef46d1e176febb6133cd7a0b619b448b723a271d2666d8085767c6c5",
+      "first_32_hex": "dc051405e803ee02260290012c01c80075000000000000000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/DODGREAR.PCS",
+      "bytes": 2038,
+      "sha256": "6b34b2b002101a8c90a61d98ed18acd04e107cc876a9c2bd143df0f3510b38a9",
+      "first_32_hex": "82cc2000027a0a000b000001020b08100f1625260009aa0a14222a55888aa0a2",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/DODGREAR.PES",
+      "bytes": 2835,
+      "sha256": "0e734502d4f9fe1fc241be668472081b5e5fbb2e743bd3e771d9879d4efa6d11",
+      "first_32_hex": "8262410002a50e000c00000202020d151914241a2c00ff09161980010203070f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/DODGROAD.PCS",
+      "bytes": 6310,
+      "sha256": "47cfca43d0bb73853a0eb031653593242aad88c6fb92a8413bf3b4760ad08706",
+      "first_32_hex": "825e3600021c21000d0001000104120c1514251e321c00ff023b5baa0103080a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/DODGROAD.PES",
+      "bytes": 7318,
+      "sha256": "8b21c642f4a435cd556ab28ae5fb4ae065c276ec18b4be3826438911620c7187",
+      "first_32_hex": "82e3410002cc23000d00010001020e11172c43321b0a00ff809b01020307080f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/DODGST.PCS",
+      "bytes": 7760,
+      "sha256": "3ba05ba53c68d9ba9bb56803983fb1d75442cb5b3559bdfa5382548345b1cdb5",
+      "first_32_hex": "8238620002d725000d00000200060b121e2a1d161e2400ff0d1b1e55aacc020c",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/DODGST.PES",
+      "bytes": 11673,
+      "sha256": "1f204443280969f28746adadc40678c27e5520f0626c2d83d6098bb250c0311c",
+      "first_32_hex": "820d8a00020b37000e00000200030a1a1e2e4227140a0400ff2c96aa01030f55",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/DSITITLE.PCS",
+      "bytes": 682,
+      "sha256": "7ce3fe93b09571c30704087d6098b7dee0d4e88e3da7011d8066c0dcac0a15c8",
+      "first_32_hex": "82820d00027303000a000001020b0f0d05140c00060e0103090f10133f4055f0",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/DSITITLE.PES",
+      "bytes": 890,
+      "sha256": "0c577a8b0c621afd5262388187d3b2596ef839930ac7ea2514d9f44078c328e0",
+      "first_32_hex": "823c0a0002cb03000a000001030407182d2218000911ff121755aa0103051330",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/DUEL.EXE",
+      "bytes": 960,
+      "sha256": "76d5ba36c4c755a86a3a15f61e32b4a5d2fab0efcb2182bb8cc474a48e2ef25f",
+      "first_32_hex": "4d5ac0010200020020000000ffff1a002000f05b000000001e00000001006701",
+      "suffix": ".EXE"
+    },
+    {
+      "path": "reference/dos/EC_.FNT",
+      "bytes": 1012,
+      "sha256": "224ffd27148eeec78e02e866c18fb6a25943af9722116041804752f51fdf5152",
+      "first_32_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".FNT"
+    },
+    {
+      "path": "reference/dos/EC_0.DAT",
+      "bytes": 684,
+      "sha256": "cc1623ae49f7e07e1b321aca32f117b8900c7e3e664884431cf05c44044bfaad",
+      "first_32_hex": "82d21700026603000a00010005020411141d2e00020331393a01330a42468004",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_0.PCS",
+      "bytes": 27691,
+      "sha256": "ab999e645a44f21ea760079d33d60b75c669127f1dd9ff1fb72c72dc0877e9fc",
+      "first_32_hex": "01deca00186c00000a27b6b7d7e52636373d5bdeca0000250021504154484738",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_0.PES",
+      "bytes": 33020,
+      "sha256": "1806dc6723d2accc14e41076ce804a7f7b0319e995bbe215a05b4cf8e0887ab1",
+      "first_32_hex": "82340c01022599000c0000010104100f1a3e4a2f0a00ff01035280020607080f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_0.SGN",
+      "bytes": 128,
+      "sha256": "073fa474b4f3bc721a3e5c760ac273ebf4eaceb27f7288fef23f9efd8f03eadf",
+      "first_32_hex": "2800520000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/EC_1.DAT",
+      "bytes": 676,
+      "sha256": "bceee0e7c2e18a20a272a9f5533b703995ae3784bd6f390be232a67df4be289f",
+      "first_32_hex": "82f01400026303000a0001000503030e102e2400023334373801038012284604",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_1.PCS",
+      "bytes": 17826,
+      "sha256": "d87d47fe3b35c0d70bfd9b58a7033567e88af79dac8219e9237ff3ae7da8fe95",
+      "first_32_hex": "015677008f4500000a175e272d2e2f393a3b3e567700001b00215041544c4730",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_1.PES",
+      "bytes": 17927,
+      "sha256": "5b808f3e3e47640a1c7496558f65d064eb815cea9970c8cea81561ba8f8a32e9",
+      "first_32_hex": "820fa300025755000c00000102020d16104e512306004dff0380010204060708",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_1.SGN",
+      "bytes": 216,
+      "sha256": "a0cf39cb862cda1bf35e84eac106a848830ee6f31c208682a72ad533f442ad80",
+      "first_32_hex": "280056008200ae00000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/EC_2.DAT",
+      "bytes": 869,
+      "sha256": "558313d4a08743a07e893199436217376a2297d6ba1f6e7a8651614d19ac8d74",
+      "first_32_hex": "828d1800027504000a0000010508040d120f3200121317313601021416283338",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_2.PCS",
+      "bytes": 17585,
+      "sha256": "300659c3961c634dae533aabed2ac9bb7cc6a4c6fef7c43e9b757bdf31f23db9",
+      "first_32_hex": "0168da009e4400000a25b52d6f7d7e8595979d68da0000580021504154484738",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_2.PES",
+      "bytes": 17388,
+      "sha256": "1140670f04e9b05540a4a6c2037568025603dad80f5680e90be4d53081c86eff",
+      "first_32_hex": "82530901029e55000c00000102021012153d453210002dff015d03070f103f7f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_2.SGN",
+      "bytes": 212,
+      "sha256": "6e5e4e68376495c4e60388aab2ee4d2b14ab871e0d3926019c5d408fcdb42d1b",
+      "first_32_hex": "28007e0000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/EC_3.DAT",
+      "bytes": 743,
+      "sha256": "3cb2a0911e0f46d2c04b031c92f94e4f7cda530be7f70c2b90fe854f79210b11",
+      "first_32_hex": "827e160002bc03000a00010004030a091814300031383a3b02030a0114181e1f",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_3.PCS",
+      "bytes": 15165,
+      "sha256": "cee3379593d7ca4b29f6a887c5f56750fbf1ea5556126a27b328b0a0e6fc71d1",
+      "first_32_hex": "011276002a3b00000a3ab061626b8b8e9b9eae127600001b00215041544c4730",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_3.PES",
+      "bytes": 17162,
+      "sha256": "6e58aa931672ccaf1a577449f8a8d376fb7a80922925d58b84f99457e7c23787",
+      "first_32_hex": "82459700027650000c00000102020e0f1e4a452b060066ff01d103040507080f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_3.SGN",
+      "bytes": 125,
+      "sha256": "b305e78f4d0f5bc700c994e0d572ad82db1cd25fa77a9ec3649e23f98e45067b",
+      "first_32_hex": "28004e0000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/EC_4.DAT",
+      "bytes": 652,
+      "sha256": "50ea1d49f5f715390e78e594096d342d344dc59a92799bb2df0dabd961c0855f",
+      "first_32_hex": "82dd1000023303000a000101030406060e1e3c0036023138011e334603040828",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_4.PCS",
+      "bytes": 8714,
+      "sha256": "ad913ffd6ed40f05b8b7a8e8a642acbffd0f9ab32b94932faa8406922952aeb1",
+      "first_32_hex": "01585700f72100000a25853b3e495963656b7858570000280021504154484739",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_4.PES",
+      "bytes": 7324,
+      "sha256": "2e27462198263b43e51841eba1f315553e10de2723056d0e3b4c805f3b3d64f0",
+      "first_32_hex": "82a47b0002b324000d00000102050f0f1721372e27120046ff01038095c00207",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_4.SGN",
+      "bytes": 173,
+      "sha256": "8b50404da2ce577c44f4bf3a9d2c69d03e40a67d25d662d0f77ce32ce34269b8",
+      "first_32_hex": "2800540080000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/EC_5.DAT",
+      "bytes": 742,
+      "sha256": "fb1cc5b269273b7169fe57db40c2ea47aab6dcf59e768bf2550a49314a549ea2",
+      "first_32_hex": "82661700029803000a00010004020a101115320002333639133a01030812171e",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_5.PCS",
+      "bytes": 21853,
+      "sha256": "67f69e944fcc1f60a50f9e7f7ff4e07eb178ed4bac240c339b3092db8ef711a0",
+      "first_32_hex": "0192d7004a5500000a1edb2b3e7d9b9fb7c7d992d70000530021504154484739",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_5.PES",
+      "bytes": 23072,
+      "sha256": "3baf3a79dee493a0fbd502a76cb06896e4d34220786f5d8bf7fb22c64ca4f283",
+      "first_32_hex": "824f030102e270000c00000102031109194046370a0099ff0180cd0203040507",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_5.SGN",
+      "bytes": 278,
+      "sha256": "4566e48d5d0f7fe1669d29aea059962bd100f8ce1861cc17c294614ec9b54f9f",
+      "first_32_hex": "280056007c00b200e60000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/EC_CAR1.PCS",
+      "bytes": 6071,
+      "sha256": "3bd0e67fa00c684ee43ef0b66d4774e6b857fc5bb2e276c18e3b7398e98a7385",
+      "first_32_hex": "012e3100a41700000a094a2d393d42454647492e310000210021504154666330",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_CAR1.PES",
+      "bytes": 6041,
+      "sha256": "43a7144f6d705e59325cabd9823fb56110b03652faa4a67a824376916c89edda",
+      "first_32_hex": "82ae3c00029d1e000d00010001040f0917264032150e00ff012a538003070f1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_CAR2.PCS",
+      "bytes": 5812,
+      "sha256": "2d60d3ee92470835e824fda22bace91837af9690e4511f3abd080b02b5c3e455",
+      "first_32_hex": "014e3200a11600000a132e2e2f393d3e4042434e320000210021504154666330",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_CAR2.PES",
+      "bytes": 6353,
+      "sha256": "f9ff0448eff76bc7d8d4922f46e00ebbbf1d980179336553080e2e8ed48ddee6",
+      "first_32_hex": "82323e00026322000d00010100031009161b2a27222000ff3a5d800102030f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_CAR3.PCS",
+      "bytes": 7781,
+      "sha256": "f6cfc7e8660da22870eb410d42c0a71965ac88d8ca82c74f3952fa00a9d56905",
+      "first_32_hex": "013e4600521e00000a0d4515171a262d3d42433e460000210021504154666330",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_CAR3.PES",
+      "bytes": 10079,
+      "sha256": "d493da2203105d94a36c82e44c33051758f92f65c34cae8ff28fe8b7753b7252",
+      "first_32_hex": "821e570002ff30000d000100010308161538512f0c0400ff013a8002030f1f46",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/EC_HISC.DAT",
+      "bytes": 340,
+      "sha256": "ccba8486827de8866452004893dd1288a56e80316e9b0e689dac22903e1d2787",
+      "first_32_hex": "46af0100444f44470051756573746572202020202020202000007c0500004634",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/EC_ICON.PCS",
+      "bytes": 5122,
+      "sha256": "76fcfd474c3cb3b36c4fcab0ed096fa37171c184b50d3cc1f98487be47fab8ab",
+      "first_32_hex": "014e3a00ef1300000a07090b0e1b1e262728294e3a0000030021504154706963",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/EC_ICON.PES",
+      "bytes": 5983,
+      "sha256": "91dec175e819f1fa1aaf98af7ebc808e941d32e02028f73f7d80dce8219ffb2d",
+      "first_32_hex": "822e740002bc1f000d00000202030819151a302b192200ff133d49525901030f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/ENDGAME.PCS",
+      "bytes": 4048,
+      "sha256": "492bb3460b86b87d591582bec03d24374aaa3f2ea1736a03b4d612bbf179f590",
+      "first_32_hex": "82b24400025715000c000001030904111d1a1a1e1c000613ff030f1a3f5455c0",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ENDGAME.PES",
+      "bytes": 6379,
+      "sha256": "d42f15fb55b2c4b52f040f2d474fe09f678b311fe304c8fc3cfca4fdb8fa0ae2",
+      "first_32_hex": "8211550002f920000d00000101100307181d21241f1a00ff0103070f141a1f3f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/F40.BIN",
+      "bytes": 847,
+      "sha256": "22a6383571cddb95306fa8aab54efe9523470a599d3371f1b1b6ddbcba13dfd8",
+      "first_32_hex": "0500302afc21781e941101006aecf7000a0000002490d85910400032d8270000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/F40.SS",
+      "bytes": 76,
+      "sha256": "defed02c91e88a4f0b34c671fc4b8986b5ae66002dcbcd2105f011b8fdb15919",
+      "first_32_hex": "313620313220313520776e6430776e6431776e6432776e6433776e6434776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/F40DASH.PCS",
+      "bytes": 7613,
+      "sha256": "568733bc2207435d7c41a9f4f95149648ddbbdfcd63e3cdfc98e237769e24bc1",
+      "first_32_hex": "82144f0002bf26000d000001010a0b0f161d26232c1c00aa02081f20222a4780",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/F40DASH.PES",
+      "bytes": 12845,
+      "sha256": "8ee365e3b26a4638e61c1dcdd35acdb2125cde687b7a0089d9e5c4c55b03bb62",
+      "first_32_hex": "821c780002993e000e00000101050f111a2e4b25140b0200ff01162955800203",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/F40O.BIN",
+      "bytes": 32,
+      "sha256": "597182914ca1d85a0871287e15552bf0e15b265f24ffc6ce4e4a3be1d160a204",
+      "first_32_hex": "1a043a0740064c044c044504ac03dd026302cc01c201b801ae01000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/F40REAR.PCS",
+      "bytes": 2165,
+      "sha256": "739396e2fde59774464ff770c6c2d1d3b7ff442de76f41724d65d32d3ec62840",
+      "first_32_hex": "82b8180002b70a000c00000103070b0e1917133306002288aa0102060a2080ff",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/F40REAR.PES",
+      "bytes": 3626,
+      "sha256": "0e497caae3e7e9942f896fbf091921acfce752785452c15606d0c27d33931e8f",
+      "first_32_hex": "823a310002e411000c00000102050e1213293820280019ff01325580aa020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/F40ROAD.PCS",
+      "bytes": 5300,
+      "sha256": "64aec264b07ea7b368e3a7f30037d787d9a0e44aaf3960d6272164ebc4dffc31",
+      "first_32_hex": "82ca320002751c000d00010001060e0a19132926152600aa020a2e4980ff0308",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/F40ROAD.PES",
+      "bytes": 6307,
+      "sha256": "9ba747998e758b4ebe5305d8eb0be8668707643b6ce50461ac356c6068248ea1",
+      "first_32_hex": "82b73900026d1f000d00010001040c100f2e4142120c00ff0103809702070f1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/F40ST.PCS",
+      "bytes": 7664,
+      "sha256": "83caf64c6ffc07b9b5481a9580c73eef9590181349da423b1d4a5e4e274f1c0d",
+      "first_32_hex": "829a500002ba25000d00000101070e121a1f2e281712ff001e474b5580aacc02",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/F40ST.PES",
+      "bytes": 11521,
+      "sha256": "f79e0a7c0c17e2e3692d34a3c56d81bc4ed7d12c7498fe37409ae3c9438268a4",
+      "first_32_hex": "822c7100026035000d00000101030e171f3a41241008ff00469daa010f3f557f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GAMEDIFF.PCS",
+      "bytes": 1931,
+      "sha256": "ce86184cafc5d9e70b74379884d99bc9648c9298d22d1346fa078b2aa2105fe5",
+      "first_32_hex": "82102900026b09000b00000102060b1b15152c1c0012550213181977aa0b0c0e",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GAMEDIFF.PES",
+      "bytes": 2359,
+      "sha256": "6c45f12ac737d6d488c58aec7b34fec02cf2eb87bf109599e10e42fb73a8ab5c",
+      "first_32_hex": "826a4a0002750b000c000002010310111a2411201c0016ff012339030407080c",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GAMEOPT.PCS",
+      "bytes": 2067,
+      "sha256": "4a1f48fe9e85f57436def96dc5b2b2baeda4fe8144e1efc50e21f71d8a561a4b",
+      "first_32_hex": "8260220002430b000c00010100050c1608111821160055061819aaff02030a13",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GAMEOPT.PES",
+      "bytes": 3309,
+      "sha256": "31f5825f9091a5351a313d508a503cfab5f832af29a9b686843137557eb77e68",
+      "first_32_hex": "82883a0002f810000c00010101010b111a21202b2200ff132b01030407202c39",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GASSTUFF.PCS",
+      "bytes": 12785,
+      "sha256": "4205b245e0e8090b1be89912dfcbfef236e9c7b9877bbd81609c0754dc6f1498",
+      "first_32_hex": "828e6200023742000e0000010305061b191a2e2d260c080055aaff030c3049c0",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GASSTUFF.PES",
+      "bytes": 24018,
+      "sha256": "360403a14191d33382f6c18194bd4a4afb717703be21490712673004f6bfad08",
+      "first_32_hex": "820ec400023e70000e00000200010e182330382a17090200ff1a010204070f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GOAT.BIN",
+      "bytes": 847,
+      "sha256": "2bb6047ed022260f06948f1da4bd395927bd84539d3643c8751cfa4cad4915d9",
+      "first_32_hex": "0400401fbc1bd417b80b0100c042c0000a0000008089e060c049a03c00000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/GOAT.SS",
+      "bytes": 64,
+      "sha256": "1f39b8662bf86be6c99444ee26b91070a14fa588915e09f6bddb98dc20c92721",
+      "first_32_hex": "313320313220313520776e6441776e6442776e6443776e6444776e6445776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/GOATDASH.PCS",
+      "bytes": 8901,
+      "sha256": "0a84faa4c581060639aabb4487174e454b5150f20cbef8f8a4096c929226be9e",
+      "first_32_hex": "82d0660002262d000d0000010106121015222d1c281800aa08364655a8ff0102",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GOATDASH.PES",
+      "bytes": 9861,
+      "sha256": "e278148086544b5d9675b3cefeb0cea0bba5bcb7b470e667e9cb589b900f8a71",
+      "first_32_hex": "82b7710002c231000d0000010106110d172e2d2f270e00ff010220296b800304",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GOATO.BIN",
+      "bytes": 32,
+      "sha256": "9710f89583af84e09ceabf949a5e1a8594a189b7e31d31283aab8762e60eb474",
+      "first_32_hex": "08077805e803bc02440240016400000000000000000000000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/GOATREAR.PCS",
+      "bytes": 1553,
+      "sha256": "773ee3cd1e61d82b0c6b5c4b82d79debd031c004a68b6a0e7bb0d8144e829057",
+      "first_32_hex": "827e1a00020c08000b00000202050f0a111b1c1400aa065502112288a80a0f12",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GOATREAR.PES",
+      "bytes": 2475,
+      "sha256": "4776b96f25f7935e401291e63db64142083b2f9719fd3e894ed64b0a7c657305",
+      "first_32_hex": "8222360002210e000c0001010102130c0717190e1800ff0912e0010203070a0f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GOATROAD.PCS",
+      "bytes": 6612,
+      "sha256": "384fb656ec523eae503fd5a364ac9a2a7d8ef6aaa86992d2cf7cdf4a3a34eed5",
+      "first_32_hex": "82263400029220000d00000102040f0f21212f331a1800aaff0f3e556e010203",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GOATROAD.PES",
+      "bytes": 8620,
+      "sha256": "f047b2ccc0ae4d2fbd5d441e8bbbb8587ba507b05e98b019592fb1ddc5f13a02",
+      "first_32_hex": "8206410002082a000d000001010410101e354429120800ff011680b90203070f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GOATST.PCS",
+      "bytes": 7764,
+      "sha256": "5e78c5194699273cf7cfdaedf27bc6ad0a8dcf0543464be3d808b1dc3589aad2",
+      "first_32_hex": "82245e00025725000d00000101040d1f20211f230b16ff00061caacc0a0f1e21",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GOATST.PES",
+      "bytes": 12156,
+      "sha256": "4dd4317d391c6117cf75f65339c534e9c550b9096ce483e06ce024f9092ff13d",
+      "first_32_hex": "824e8700028638000e0000020002100e1e43372b12070200ff25690102070f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GT50.BIN",
+      "bytes": 847,
+      "sha256": "779b6977c96a9af0622662d19a05aa93982935d48b9ce6b09c658d4d2541479e",
+      "first_32_hex": "04004c1dc8197017b80b0100c042c0000a000000c06c384f783ce02e00000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/GT50.SS",
+      "bytes": 64,
+      "sha256": "1f39b8662bf86be6c99444ee26b91070a14fa588915e09f6bddb98dc20c92721",
+      "first_32_hex": "313320313220313520776e6441776e6442776e6443776e6444776e6445776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/GT50DASH.PCS",
+      "bytes": 8641,
+      "sha256": "089d7d0ce7be5ded2ab0c1e522c1358d75e7abd7a07b67fc64ed6ece4935ac5e",
+      "first_32_hex": "82606a0002642b000e0001000203080f1f342b2114170a0036aa0280ff03080a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GT50DASH.PES",
+      "bytes": 9553,
+      "sha256": "da70f20ce2ffcba4fe16d3cd8ed55e106afda0a83beb7245cf5c1093d5647aca",
+      "first_32_hex": "827d630002cb2f000d00000101051013152d4024171200ff0103368096020407",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GT50O.BIN",
+      "bytes": 32,
+      "sha256": "627858b3dcc52af0d01bd9b21b6560893827c63fb0a3b44055019eadf432730a",
+      "first_32_hex": "7805b603ee022602a4010e01b4008c0000000000000000000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/GT50REAR.PCS",
+      "bytes": 2039,
+      "sha256": "ebaeb2ce81eefa37720d8bcb51b09baff5cab599dc33d3b538d0627a03cd5824",
+      "first_32_hex": "82581e0002180b000b000001020a0c120e0d12180007aa010c0d1115222a5580",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GT50REAR.PES",
+      "bytes": 4028,
+      "sha256": "32d2eab203870f2410e1adf045da0840a5c44c1829ef12dfa78277210cbf59a6",
+      "first_32_hex": "827a3c00024d16000d000101010113080c22261b1c0c00ff14250103070e0f1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GT50ROAD.PCS",
+      "bytes": 6508,
+      "sha256": "6fbb86d51b21c286bccf465bcc2699788d8882c8a8dcfe7a7ddc439ed53a1cad",
+      "first_32_hex": "825e3f00022c21000d00010000060e0e182720321b1200023d4655aaff03080a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GT50ROAD.PES",
+      "bytes": 10302,
+      "sha256": "f5e4902569ac2171b5cb27bd45e210709a368d2db24c63e1cf0a014005e85734",
+      "first_32_hex": "82fd4c0002d133000e00010001020f0c21263e331d080400ff018003070f1b1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/GT50ST.PCS",
+      "bytes": 7970,
+      "sha256": "eb6df37b30db18d83c74000edbed297e3680385f0e8b14c1b5dea5f64cf9957c",
+      "first_32_hex": "82905e0002e126000d00000003060c1c1d1d1b191f160055ff06181a1baacc02",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/GT50ST.PES",
+      "bytes": 11660,
+      "sha256": "dc07522c84b54ce0f7026a4dbb3e8e81d341aa9248f26dbcc3e3883f42bf1e92",
+      "first_32_hex": "829d7a0002e536000e00000101030e1a1b373a300b0804ff002ca5aa01020a1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/LOTU.BIN",
+      "bytes": 847,
+      "sha256": "5dfb384c03b6fa2775f2173985c7b9bb063c9ae92f7215ce9ba2d1f7baa3e115",
+      "first_32_hex": "05006022e81c2c1a100e01006699da000a000000c0b71c70784b5438d82c0000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/LOTU.SS",
+      "bytes": 76,
+      "sha256": "defed02c91e88a4f0b34c671fc4b8986b5ae66002dcbcd2105f011b8fdb15919",
+      "first_32_hex": "313620313220313520776e6430776e6431776e6432776e6433776e6434776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/LOTUDASH.PCS",
+      "bytes": 7624,
+      "sha256": "56c94b36b12bc808cc5b9d171bcffb7d7dae987c5d2de34eccc89ee7aa1ee0c6",
+      "first_32_hex": "829e4f00029225000d00000101060f190f252721211200aa020a1e2225880811",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/LOTUDASH.PES",
+      "bytes": 11834,
+      "sha256": "e7d48102db5583bd1cb78d646caa2ff27f2285170bbe1b86e630434ccd13a799",
+      "first_32_hex": "826b710002a43b000e00000103040d0d1829362a230d0a0055aaff014b86cd02",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/LOTUO.BIN",
+      "bytes": 32,
+      "sha256": "d6592da7e22904356b8bf70118204992ffeaaa0860a1263ad9ae4abc3ae9c457",
+      "first_32_hex": "8403e803bc020f0248011601ed00d200b400a4008c0000000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/LOTUREAR.PCS",
+      "bytes": 1752,
+      "sha256": "7dcfeef6e73fc0537c34cb977f3a7c9aa0bafb4e9a50536867e7cdb17156d734",
+      "first_32_hex": "82f81400021d08000b00000102050d11262a0f1a0007aa2a558088ff020a1213",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/LOTUREAR.PES",
+      "bytes": 2663,
+      "sha256": "d5735580a25da500a3445021f489c539c5ca7a9b38b9e600e2d842fbcc2d00d7",
+      "first_32_hex": "82ba290002ff0c000c00000102040e191a19212e18000bff022324e00103070a",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/LOTUROAD.PCS",
+      "bytes": 5621,
+      "sha256": "2d2cb4acf0891b4c0b22553f2bb23e7f2d1fecaa1462b2e424bae707f015d97b",
+      "first_32_hex": "82cc340002a11b000d000100000410111922322b151a003e5faaff0203080a0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/LOTUROAD.PES",
+      "bytes": 6892,
+      "sha256": "41d98f859fd80e1e31c6e38778c747630fd7b268d97b1a3db99ea96d8eaeb81a",
+      "first_32_hex": "82203c00029422000d00010000050d10192441341d0e00014c8096ff02030708",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/LOTUST.PCS",
+      "bytes": 7770,
+      "sha256": "6fd393e59533ba18a987bdee96fca7adf85c485ad75697d9e8db90640e2d71db",
+      "first_32_hex": "825a5e00021e28000d0000010205120f14202318181800aaff183b4380cc0203",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/LOTUST.PES",
+      "bytes": 11025,
+      "sha256": "f7269120ecf3fc88cf92c2b59b6f38924e0640b70b83c2b4a8e7f1ed5b81506f",
+      "first_32_hex": "82408500023135000e00000200040d0e2030432f11080400ff256980aa01020f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/P959.BIN",
+      "bytes": 847,
+      "sha256": "1c3ad8cd4f4dd461f38067fd6292d52e3f12493bf5f2f4404c10dbde3bf9369e",
+      "first_32_hex": "0600d8276c20e81c941101006aecf700f6ff0000c0dac08020580041a0320028",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/P959.SS",
+      "bytes": 51,
+      "sha256": "47df4d14da2b1d59e8eb6cc77c4da7c9061102afb8125edeb24e7f88cc1ff06c",
+      "first_32_hex": "3130203520323520776e6441776e6442776e6443776e6444776e6445776e6446",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/P959DASH.PCS",
+      "bytes": 7851,
+      "sha256": "2664c0c94f015f3291057c97efd492ef3390727c36dcb39a219203ef40fc3f8a",
+      "first_32_hex": "82ae4d00027b26000d00000101041416141a31231b1600550e112c4401020304",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/P959DASH.PES",
+      "bytes": 14689,
+      "sha256": "ef0aa901edf3bfc4746e7dc02878fedaf2179e4e1a95295521dddfd5edcc8d26",
+      "first_32_hex": "8218790002e246000e00000101060b1516364b2616030200ff01365580aab102",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/P959O.BIN",
+      "bytes": 32,
+      "sha256": "11d311bf7b64ed12ee16ef1cb1f769e20f9ab2206a56535ff223012c848776a1",
+      "first_32_hex": "6c0798081405b60384036b031d033e0290015f015e015e015401000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/P959REAR.PCS",
+      "bytes": 2215,
+      "sha256": "160f7c56c4f9efe3d4fa7c054c8538d7c7879a0559159881daffbc3fb9f46de5",
+      "first_32_hex": "82961a0002180b000b000001020908101a2322200007aa020a1222558088a0ff",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/P959REAR.PES",
+      "bytes": 4866,
+      "sha256": "a82afebb0b333d329ed1c588ca7f60fe7dda6972e2f91f603d4df8ffe5fd5b03",
+      "first_32_hex": "82f63400027519000d0000020104120a161b281f182400ff16035580aa010207",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/P959ROAD.PCS",
+      "bytes": 4948,
+      "sha256": "98561e2d2321912d2b5902f953e27e13309ce1a0c7ad9bd00f5ae8c90e7f2396",
+      "first_32_hex": "8264340002061b000d00010001061108121524201e1400aa020a263980ff0308",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/P959ROAD.PES",
+      "bytes": 7967,
+      "sha256": "6f301ec22de5e4e4ddc7a9ef374f35ec1e245b1fb7eb4d2a09d7bdf501532933",
+      "first_32_hex": "820a3900028528000d00010001040e0b16273d371d1200ff0103808d02070f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/P959ST.PCS",
+      "bytes": 7537,
+      "sha256": "73be32ab4d1fabf31c072c480dc19c3b3a450aaf79103935a0b0f5a4702bbb9f",
+      "first_32_hex": "8222580002e724000d00000101070c1815262a171e18ff002135363755aacc02",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/P959ST.PES",
+      "bytes": 11801,
+      "sha256": "8f48bdd7526c719bd3b7fc47aa548adb7e7fe47cf563f2c56b20f879e4af6724",
+      "first_32_hex": "823a7b00025637000d00000101030e15224038261008ff00254baa010b3f555a",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/ROAD.PCS",
+      "bytes": 7079,
+      "sha256": "0e1fbb4bb6fea3067c77aefebde8789048c507c9006101a88e5d819d5e585f65",
+      "first_32_hex": "82fc540002e424000d00000200080615211c2022201800ff030f2d3f5cc0f0fc",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ROAD.PES",
+      "bytes": 7933,
+      "sha256": "d7ec58c35f5998a0f2c64c9b6a959a9cfc8609ef775f9602db293ddcb9bfd2e8",
+      "first_32_hex": "821f560002df25000d00000101050c1129332d341a0400ff010f4a7f9903071f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/ROSS.BIN",
+      "bytes": 847,
+      "sha256": "0a98a75e5e70dbe05d17e0d71a45c4d653ceb66aa0974665008adabaf9b202f6",
+      "first_32_hex": "0500d020581b0019ac0d0100aeede7000a000000ec865e56be414632d0250000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/ROSS.SS",
+      "bytes": 71,
+      "sha256": "c18bcba520c218f315d0e454436533a78c9fbd3708b1be47f4357f7f0a53bf0e",
+      "first_32_hex": "3135203520323520776e6441776e6442776e6443776e6444776e6445776e6446",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/ROSSDASH.PCS",
+      "bytes": 7204,
+      "sha256": "94e3a2ae7df65ed397922b09d7c770d250b224f81cc93a97eeb844e9aa5051ac",
+      "first_32_hex": "82525300020b25000d00000102070e0d171d2a1d1d120055aa0110111b364044",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ROSSDASH.PES",
+      "bytes": 11201,
+      "sha256": "4ebb15aba8c046dda7573a4353a9c40875e00cbad964e49150b85aa983c3c3ba",
+      "first_32_hex": "821f8400026f36000e000001020509162025372d1d070600aaff014e55808902",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/ROSSO.BIN",
+      "bytes": 32,
+      "sha256": "aaa43573a7f1c5e5d54fca8b700a68e58cfecea83e3cefb1236deb32d779b931",
+      "first_32_hex": "8a02ca03c0039e021202a4012c01180118010e010401b8000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/ROSSREAR.PCS",
+      "bytes": 1705,
+      "sha256": "99f6d32a3e0bdf11971a4ffe713887bc5d49617c6269e5a54b33813fc3b87c14",
+      "first_32_hex": "825c1600022908000b00000102050f141b1e15260007aa02225588a8080a0b13",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ROSSREAR.PES",
+      "bytes": 2372,
+      "sha256": "32f9eb8d5e24544e99d6199ee7645bb32eef68e2f1188cd98a7ae9b68c79224c",
+      "first_32_hex": "82822c0002af0b000c00010002020e11171f271c240012ff01800203070a0f20",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/ROSSROAD.PCS",
+      "bytes": 5446,
+      "sha256": "62c1b798c92b12a9d08d90dc2850d79c6b221e3b0f0bbcc8fc33355bb2edee34",
+      "first_32_hex": "82043300026e1c000d0001000103130f14161e281c1800aa3e4eff0203080a0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ROSSROAD.PES",
+      "bytes": 6168,
+      "sha256": "41dc7bb318879f53ee159a12e445c8765f9c6bb53d5e5cc2387f415a5b123b4c",
+      "first_32_hex": "8244350002a51e000d0001000102100d1532412f161000ff010302070f1f3f4b",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/ROSSST.PCS",
+      "bytes": 9069,
+      "sha256": "982b9d386601f579eae4db64f0faa4c4af2edb153cf44786c208f4d5c0d7d452",
+      "first_32_hex": "8204600002a72b000d00000101050f17192c221f221000ff12215caaee020f2c",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/ROSSST.PES",
+      "bytes": 13098,
+      "sha256": "62d7275dc2255b465e8fd3018b2985aafbd540d038beddf352d1b6e4e738b9d7",
+      "first_32_hex": "82d8890002673e000e000002000509112628432d16050600ff01175593aa070a",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/RUF.BIN",
+      "bytes": 847,
+      "sha256": "ee19f566facdb8c32b57ca231c09fcde0ac36725c30baf56bd4d89f6460c55f0",
+      "first_32_hex": "0500d020841cc819100e0100aeede7000a0000009a926054103bc52b39210000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/RUF.SS",
+      "bytes": 71,
+      "sha256": "c18bcba520c218f315d0e454436533a78c9fbd3708b1be47f4357f7f0a53bf0e",
+      "first_32_hex": "3135203520323520776e6441776e6442776e6443776e6444776e6445776e6446",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/RUFDASH.PCS",
+      "bytes": 8658,
+      "sha256": "e8cd9841b04642430d04a991376e9b1d54ecbf3e91717c32c15fabbefda9068e",
+      "first_32_hex": "825e4f0002f329000d00000101041214192a272f1c1400aa021e4955080a2022",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/RUFDASH.PES",
+      "bytes": 12922,
+      "sha256": "a447eb34e621ca4104bd3d122ed33930e2a73975cbf98b6fd168e012998bd0f1",
+      "first_32_hex": "827f6e0002bd3d000e000001010609151a3f4a2b09010200ff012d5580aab102",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/RUFO.BIN",
+      "bytes": 32,
+      "sha256": "488ba6ef8fbccd78ae653d81948f0478cafae58ba75ec9259e02ae9db7d7fb4f",
+      "first_32_hex": "e803e2047805840320036e023a02c601b8017201480130010000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/RUFREAR.PCS",
+      "bytes": 2432,
+      "sha256": "75e0d8b3fabdac02046ae1b90972fbd946370c5f0662f057832bdd151acec8b0",
+      "first_32_hex": "82f41a0002380c000c0000010305100f121e101722000f88aa1822a8bbee0204",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/RUFREAR.PES",
+      "bytes": 4252,
+      "sha256": "2cd52a9fcab317a8a6a8ec29de82e03898a2012adae94eb50d49f38b8b1969f8",
+      "first_32_hex": "82ce3500029f15000c00000201030e180c232a2e2400ff0d2555aa010203070f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/RUFROAD.PCS",
+      "bytes": 5992,
+      "sha256": "38b01470dbf7458f4137974a58f536a37727ca1413d0d27fcc48cb96d4d644af",
+      "first_32_hex": "82e0350002791d000d0001000004111012263e2d1414002549aaff02030a0f10",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/RUFROAD.PES",
+      "bytes": 8866,
+      "sha256": "2b1ff4e959506420f6350a62e360b5947ccc3ed2eeff304e34e02f3a18e8817d",
+      "first_32_hex": "82d03b0002c62b000d0000020003120a1a3342321a0400ff0103210207080f1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/RUFST.PCS",
+      "bytes": 8101,
+      "sha256": "72425bf48b48d1968836873f7b3a83ded9c33e31cf61af810e803f7255d8183f",
+      "first_32_hex": "829c5b0002df27000d00000200040f161a1d261c1c1800ff131e55aa01020c0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/RUFST.PES",
+      "bytes": 11887,
+      "sha256": "423c2a733052d5d3a27e0db32148d930b68cf13f68ddc3173c9e02dad08511ef",
+      "first_32_hex": "82038200028639000e0000020003110d1931443013080400ff255aaa01030d0f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/SCENES.DAT",
+      "bytes": 73,
+      "sha256": "d061a7e917c3d2a15d66c864f27610efaf283ed4a87f8552d25450e8bf5be3ce",
+      "first_32_hex": "4343432043616c69665f4368616c6c656e676520370d0a65635f204575726f70",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/SELECT.DAT",
+      "bytes": 19,
+      "sha256": "b0a21227c92567459a8038b929ac8f1d99106000117389bc3618628920ec91b4",
+      "first_32_hex": "30203020302052554620503935392054445332",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/SONGS.BIN",
+      "bytes": 618,
+      "sha256": "8f0bd7a2af35efe54dd98baf67f7f701bd4c721d8effde94b257559da60d824c",
+      "first_32_hex": "0000000014000000680000007700000000000000860005ac0005ce0005ce0005",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/STNG.BIN",
+      "bytes": 847,
+      "sha256": "4010f324214547bc92d1636827b27d03fbe0c1e1e93d43ba207746c5e80f72b7",
+      "first_32_hex": "0400581b00197017b80b0100c042c0000a0000004060c0475039c02b00000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/STNG.SS",
+      "bytes": 72,
+      "sha256": "240f2fa3d929bac0d6dd0c5edaf045be0fa76445007e6aebd8ae3396033e8a0c",
+      "first_32_hex": "313520313220313520776e6441776e6442776e6443776e6444776e6445776e64",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/STNGDASH.PCS",
+      "bytes": 8163,
+      "sha256": "c56da5bedaefee4bc5e5a206b35bacbf585203fbee6ea7c24bd9afab1b1951ad",
+      "first_32_hex": "82544c0002e92a000d00000101080f111b131b1f1e2000aa020a1d222d5580ff",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/STNGDASH.PES",
+      "bytes": 12479,
+      "sha256": "efa0a8677fbf0b23d44a4ffe3fd4a4bbf200ed058dff5ed928e0c62bc168fb62",
+      "first_32_hex": "8260750002063d000e000001010411151b2536271a0c0800ff01034e80020407",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/STNGO.BIN",
+      "bytes": 32,
+      "sha256": "5e6f8808fa652fdd6f27494352cdd94ce7f451390d2f4c304b2e255d0a409d04",
+      "first_32_hex": "dc05b004e803f40140010401c800b80050000000000000000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/STNGREAR.PCS",
+      "bytes": 2377,
+      "sha256": "f976bc92de9f6928979e3d5b7564cf04c4d73af651091829c38f437d8a7dc6a9",
+      "first_32_hex": "8206180002f90b000c00000102090b1413140e0b22aa00070d141722455188bb",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/STNGREAR.PES",
+      "bytes": 3027,
+      "sha256": "94c8123a90c3828a757b2b640a825fdf073ff9b50330c857e783cc7e30e966e9",
+      "first_32_hex": "82e62e0002b30e000c00000102060d101133301c200014ff01032d5580aa0207",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/STNGROAD.PCS",
+      "bytes": 6490,
+      "sha256": "6e01d31014e6a9bd93f79ae4573a270324ee5fb8b7436331602261ac7e0702d5",
+      "first_32_hex": "82603600026d1f000d00000101050e16261b2529161800aa22395588ff010203",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/STNGROAD.PES",
+      "bytes": 7116,
+      "sha256": "7bebbf2ef7851966abb2176c6306fe7eb5bd99b83260e59b71e108c15963a422",
+      "first_32_hex": "82de410002d222000d0001000101120c1b2f372a1f1200ff4b01020307080f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/STNGST.PCS",
+      "bytes": 7733,
+      "sha256": "49cc75d3159a695c1b2cc497b8b65f51d9d1ed0c5c081fdd160c168e79f2e5d0",
+      "first_32_hex": "82745700020826000d0000000305131318211e1c1e1400aaff0e1b1c2ccc020a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/STNGST.PES",
+      "bytes": 10522,
+      "sha256": "89a36318ac84f3ab759ca36b0575b621da137a97d00cda287af5f4a882968525",
+      "first_32_hex": "82847b00024830000d0000020003081a223c3724180800ff68aac201020b557f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TD2CGA.EXE",
+      "bytes": 104160,
+      "sha256": "3e254f317b8d91c6b6d1e1b3d873f80f71c630e30f77a7cf7243cbe7eec979ba",
+      "first_32_hex": "4d5ae000cc0000002000f705f705281e8000a4f812006a181e00000001000000",
+      "suffix": ".EXE"
+    },
+    {
+      "path": "reference/dos/TD2EGA.EXE",
+      "bytes": 114421,
+      "sha256": "eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+      "first_32_hex": "4d5af500e00000002000fd05fd05b020800000001200ec1a1e00000001000000",
+      "suffix": ".EXE"
+    },
+    {
+      "path": "reference/dos/TD2TDY.EXE",
+      "bytes": 103905,
+      "sha256": "6a22aeeb809b483f6c19bc201eb9e267fd6800ca1dfd1af427a05622ce2293fa",
+      "first_32_hex": "4d5ae101cb0000002000fe05fe05231e80000000120058181e00000001000000",
+      "suffix": ".EXE"
+    },
+    {
+      "path": "reference/dos/TDS2.FNT",
+      "bytes": 386,
+      "sha256": "71f3bf8f2d4afa2bf58360a391f92739f9752659b424ef1d298cf98279d1b660",
+      "first_32_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".FNT"
+    },
+    {
+      "path": "reference/dos/TDS20.DAT",
+      "bytes": 593,
+      "sha256": "d1a039a741e374e810b1acef010123b513bc1d4b3a26c5843ebf16ff75c8dd81",
+      "first_32_hex": "826c0c0002c60200090001010102090f2a28002c290aff010203161e2d2e3380",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS20.SGN",
+      "bytes": 90,
+      "sha256": "b3fecc669c3e01bdf1134e0ff5cd3274e115099f5303d09ee5bc650b6b29c55d",
+      "first_32_hex": "2800280000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".SGN"
+    },
+    {
+      "path": "reference/dos/TDS21.DAT",
+      "bytes": 584,
+      "sha256": "54d43f4d3b33495345fe838e21adabe1e03feabdfeccccc2f83da5bda1db0ef3",
+      "first_32_hex": "82cc0e0002b602000a00010101030d0a153208002c2902032d01040a0c16191e",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS22.DAT",
+      "bytes": 788,
+      "sha256": "a2380ad6ea5942c109cde45c4eaef5eab978e5fdac9fd130ff7b1463bb075c56",
+      "first_32_hex": "8214120002f803000a0001000404040d1d18340002293133010314ff0a18373d",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS23.DAT",
+      "bytes": 764,
+      "sha256": "91a096c4c481ac3902288496f1834812843b3dd076ef8ee060042fdc70cdb132",
+      "first_32_hex": "829e110002b903000a00010003040a091f1a2800292e2f0102030a0416191e28",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS24.DAT",
+      "bytes": 868,
+      "sha256": "e5d4f89a66ade7be247db6d3331b802690a0d95848a90b6e2d807d5049c9bce4",
+      "first_32_hex": "82441200024404000a0001000305080b171e30002931370102030a1412131618",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS25.DAT",
+      "bytes": 1024,
+      "sha256": "bc1d6de4cf255f80bbfda56c630c8753033762a94e94ef1c033d947c6f8ab187",
+      "first_32_hex": "821d1300028404000a0001000207060f14262c0029360102030a383fff041314",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS2CAR1.PCS",
+      "bytes": 4051,
+      "sha256": "1e6a0a3a53fc535693c284452fa01f81aa1d5234d96db23c4c745e51f965137d",
+      "first_32_hex": "82362c00024515000c00010001060e09112528342000ff0203173942aa080a0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2CAR1.PES",
+      "bytes": 4981,
+      "sha256": "91a1223ee3c1fb8536fe105a2d79991e52440c2582fd297894611f6efb19be85",
+      "first_32_hex": "82bc350002541a000d000100010512080d21292d1c1c00ff01274580c0020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TDS2CAR2.PCS",
+      "bytes": 3924,
+      "sha256": "dcac29537ed2d5fe30e1c87ea29502b2b8f39d86b8f56ae89cb249f13b520a4b",
+      "first_32_hex": "82762c00022915000c0001000204100a0e1330351e0014ff020f25aa03080a22",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2CAR2.PES",
+      "bytes": 4811,
+      "sha256": "31b4526b213f72089909322182c08ea83843ccf584b4712616b6cbbbb7eaaeb5",
+      "first_32_hex": "82883300020319000d00010001050f0c10222f21212200ff01394b4ec0020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TDS2CAR3.PCS",
+      "bytes": 5313,
+      "sha256": "21d38dfbbf07af9bd3dc34ce84519d704e37a51382797cb586d39d71b557f731",
+      "first_32_hex": "82ce450002a81c000d00010003020e0718232821181c0021aaff484b02030a0f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2CAR3.PES",
+      "bytes": 7702,
+      "sha256": "f331039a6d7a847363f6d443b5a0a9b6056a7e25c40bb1eb7333d550736f5611",
+      "first_32_hex": "82fa5500029e29000d00000201060d0f0e153031291a00ff5101034952568007",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TDS2DEST.PCS",
+      "bytes": 2522,
+      "sha256": "2e9698e51f4bdf5d054406898647284926e22a5d4272a67fb77e701fb372c16f",
+      "first_32_hex": "8234120002290c000c0000010106150f141c191f1e0055021b2a80aaff030408",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2DEST.PES",
+      "bytes": 2927,
+      "sha256": "f755cd17be07f1a3f0651f3733d82df0da5de3b577873cb668ac5ae43b7c4285",
+      "first_32_hex": "8224100002d80c000c000001010110153138301f1200ff01020304080f102030",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TDS2HISC.DAT",
+      "bytes": 340,
+      "sha256": "f2ebacaa06dc1e0b94207829841b241b643e9a1cddc0614ce8b69260577c82c6",
+      "first_32_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "suffix": ".DAT"
+    },
+    {
+      "path": "reference/dos/TDS2ICON.PCS",
+      "bytes": 3454,
+      "sha256": "aec92a49574fdb16237bbef8b210fe2d6687596ab9b7959c7126badda4e503ab",
+      "first_32_hex": "828e2f00024712000c000002010807131711192d2a00550d010405151b1c54aa",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2ICON.PES",
+      "bytes": 5452,
+      "sha256": "91b01bd61be52a9f36b88ef43843316f77d91f76e71ad2f008bc724016be05f4",
+      "first_32_hex": "82e65e0002b81a000d0000020101101021263623181400ff29350103070f101f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TDS2TRES.PCS",
+      "bytes": 3837,
+      "sha256": "6283ea14224156907f64311968de896f858719426d15e89ce9ba5f1c9235e41a",
+      "first_32_hex": "822a2d0002cd13000c000001010b0b0f131c20201000aa03090a0f252a3055a8",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2TRES.PES",
+      "bytes": 5112,
+      "sha256": "fa72cb1cc9ad955df48e566a393eed7fbe182310ceddad012e828797035259b6",
+      "first_32_hex": "82222c00023217000c0000010102140a2a402a301800ff014902030407080f10",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TDS2TUNN.PCS",
+      "bytes": 1487,
+      "sha256": "eae41c4293aa8f91083c28cb941c44d616f3d6877c37c31ca82d610674eaf047",
+      "first_32_hex": "82541800027807000b00010001030f181320151e001302101d010304080a0f1e",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TDS2TUNN.PES",
+      "bytes": 1825,
+      "sha256": "f39c2851445ea3e4d646160127a2cd2e22b78b3e7610cd72be5ce2f226284da2",
+      "first_32_hex": "82c4100002e008000b00010000040f1123241f2a00010f1dff02030708091023",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/TESTDRV2.PCS",
+      "bytes": 3250,
+      "sha256": "82127c72a193020d1801e261fc71c4f6924554a08e5b52d42c6ba6bea14e3280",
+      "first_32_hex": "82a22a00029210000c00000003071a0d09071614180002aa040d555980a2ff05",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/TESTDRV2.PES",
+      "bytes": 3514,
+      "sha256": "e67c74a235f3229f66928d07e2eea79eb7cbfd7190b95c2fee2914cec56cf31d",
+      "first_32_hex": "82a22a00026e0f000c0000000204141223293c1e1c00ff01111c800203070b0f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/VETT.BIN",
+      "bytes": 847,
+      "sha256": "7d738978754f9f4922926b2b7e98f259b09495f07abde172df18af2446683409",
+      "first_32_hex": "0600fc21e81c2c1a100e0100f641f5000a000000c4807c56f13e0c3009248b17",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/VETT.SS",
+      "bytes": 71,
+      "sha256": "c18bcba520c218f315d0e454436533a78c9fbd3708b1be47f4357f7f0a53bf0e",
+      "first_32_hex": "3135203520323520776e6441776e6442776e6443776e6444776e6445776e6446",
+      "suffix": ".SS"
+    },
+    {
+      "path": "reference/dos/VETTDASH.PCS",
+      "bytes": 7666,
+      "sha256": "1928f40fd136e3002079ed2931687ef207719e2e04302ae3cb7d683ef7a7f619",
+      "first_32_hex": "824a520002a729000d00000200090b0e18131e20221c00aa020a191e2a5580a0",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/VETTDASH.PES",
+      "bytes": 9825,
+      "sha256": "e7e209217fc4d3446d0f3ffeaaba1ef876c8ed81e6be2245447dba5e827c2a8d",
+      "first_32_hex": "825c760002a531000d0000010203140d0f313834131a002eff0180b902030407",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/VETTO.BIN",
+      "bytes": 32,
+      "sha256": "8884729c62aec92a5401ae40fb1c0f60f5f400271aba3d32fedc5a03981597c7",
+      "first_32_hex": "e803c8051a04e4023002ae017c010e0114010401e600b8000000000000000000",
+      "suffix": ".BIN"
+    },
+    {
+      "path": "reference/dos/VETTREAR.PCS",
+      "bytes": 2060,
+      "sha256": "52be6f214f5f0269075f752ae6951562d58327e6cfd5b6041fbe50fa3a7560e4",
+      "first_32_hex": "820e190002030a000b00000102060e0f1c1d2a28000caa02151b2a55a801050a",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/VETTREAR.PES",
+      "bytes": 2528,
+      "sha256": "45dffc2e689d7e88fc5af3220cfb8bf0b4ad666b1905131c68e10482ac8334f9",
+      "first_32_hex": "82ce2500026e0c000c00000201040e101a201f1f2600ff11215580aa01020307",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/VETTROAD.PCS",
+      "bytes": 5606,
+      "sha256": "53c795c82bd3b7ae50c637807e330669c31f97b86b5422819fec8d656c546583",
+      "first_32_hex": "824e310002d01b000d00010001031011131f2c31142400aa5b67ff02030a0f10",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/VETTROAD.PES",
+      "bytes": 6776,
+      "sha256": "0f09870e486661f9449d37e1db972b5545e2b44e1ad8f25537dbc626b042d289",
+      "first_32_hex": "82db370002f520000d00010001020f0e1a2d3c321e0c00ff0153020307080f1f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/VETTST.PCS",
+      "bytes": 9015,
+      "sha256": "bc4dafb6fc7ddad448d11123766c8f0a8bbdf089b9b94f48a203c146bd28a494",
+      "first_32_hex": "82966400026a2b000d00000101050d1c1b212722220c00ff243955aaee020a3f",
+      "suffix": ".PCS"
+    },
+    {
+      "path": "reference/dos/VETTST.PES",
+      "bytes": 12479,
+      "sha256": "75aa462d063261f5256d3485226dfe2884efe826d2bc943f6269ad9d1a4bc8b8",
+      "first_32_hex": "82069a0002a23b000e00000200030f0e21313d2e12090600ff1d69aa0103070f",
+      "suffix": ".PES"
+    },
+    {
+      "path": "reference/dos/VOICES.BIN",
+      "bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "first_32_hex": "0d0a",
+      "suffix": ".BIN"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Evidence and tool/source hashes describe exact bytes, including line endings.
+# Preserve those bytes across checkouts instead of applying host text conversion.
+* -text

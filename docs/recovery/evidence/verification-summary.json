@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-13",
+  "primary_decoder_synthetic_tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "independent_loader_guard_tests": {
+    "passed": 9,
+    "failed": 0,
+    "environment": "PYTHONPATH points to locked analysis/tools/python. An initial invocation without this path failed dependency import; the documented invocation passed."
+  },
+  "input_pin_negatives": {
+    "CGA_rejected": true,
+    "Tandy_rejected": true,
+    "scope": "Working-copy hash rejection only; no CGA/Tandy unpacking."
+  },
+  "optimized_python_negative_check": "Explicit require(False) raises RuntimeError under python -O.",
+  "schema_tests": "5 schemas; 59 synthetic cases; three actual function records validated.",
+  "review_corrections": [
+    "EGA identity pin at both API and CLI",
+    "Explicit checks active under python -O; native guards added",
+    "AX postcondition distinguished from unknown original C return type"
+  ],
+  "historical_records": "First source/tool versions are retained privately under analysis/history; first build/validation records retained with -v1 suffix."
+}

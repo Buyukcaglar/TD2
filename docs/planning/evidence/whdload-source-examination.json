@@ -1,0 +1,77 @@
+{
+  "verification_date": "2026-10-13",
+  "purpose": "Bounded external comparative-source research for planning; not original-source recovery",
+  "source_url": "https://www.whdload.net/games/TestDrive2.lha",
+  "index_url": "https://www.whdload.net/games/TestDrive2.html",
+  "archive_size_bytes": 65313,
+  "archive_sha256": "a497830991596b6b3d3d71f2505beef1da8cb460f0a71e1570785e62785ec600",
+  "archive_retained": false,
+  "retention_note": "Downloaded installer was used only for source-text inspection and removed afterward; metadata is retained, game manuals and patch binaries are not part of this documentation deliverable.",
+  "inspection_tool": "Existing C:\\Program Files\\7-Zip\\7z.exe; source members read to stdout only",
+  "failed_method": "C:\\Windows\\System32\\tar.exe reported Unrecognized archive format; no dependency installed",
+  "examined": [
+    "Author index and change history",
+    "First 80 lines of TestDrive2HD.s and simulation.s",
+    "First 70 lines of render.s",
+    "First 55 lines of simulation-verify.s",
+    "First 50 lines of simulation-patches.i",
+    "Complete datmerger.c (1157 bytes)",
+    "Entire six source members scanned for copyright, license, and public domain keywords; full-body semantics were not reviewed"
+  ],
+  "not_performed": [
+    "Original game binary comparison with source patch targets",
+    "Assembly, compilation, execution, or automated test of external patch source",
+    "Execution of any installer or archive binary",
+    "Reading or copying bundled manuals",
+    "Legal conclusion about licensing of included newer source members",
+    "Validation of fidelity or physics claims in external change history"
+  ],
+  "date_observations": {
+    "net_page_created_at": "2026-10-11",
+    "net_page_last_change": "2026-10-11",
+    "net_slave_archive_listing": "11.10.2026 16:53:56",
+    "net_slave_info_version": "2.1 (11-oct-2026 16:53:52)",
+    "net_change_history_version_2_0": "07.10.2026",
+    "net_change_history_version_2_1": "08.10.2026",
+    "de_page_created_at": "2021-04-01",
+    "interpretation": "Mirror/package drift and distinct feature/build dates; pin exact archive hash before use"
+  },
+  "members": [
+    {
+      "name": "TestDrive2Install/source/TestDrive2HD.s",
+      "size_bytes": 14473,
+      "sha256": "40d22491ea34f8f2b0242110b1f7bfb5f94b79329e97e8d831a456b82ad655c5",
+      "license_observation": "Header declares Public Domain"
+    },
+    {
+      "name": "TestDrive2Install/source/render.s",
+      "size_bytes": 21788,
+      "sha256": "eda38d094ab02caf6993c3238c0b923ad5070a2d28dfa9b0deffda24575a1f32",
+      "license_observation": "No explicit copyright/license/public domain keyword found"
+    },
+    {
+      "name": "TestDrive2Install/source/simulation.s",
+      "size_bytes": 29811,
+      "sha256": "8e64b3fa480a79b94e5222fbc43b655467d1976eba0719a6d5ed4cd2d4ea4e29",
+      "license_observation": "No explicit copyright/license/public domain keyword found"
+    },
+    {
+      "name": "TestDrive2Install/source/simulation-patches.i",
+      "size_bytes": 3007,
+      "sha256": "6bcf858d68c31fd834066eb6cabc6c7f033a0e1a6ac1185669aaea5f05ae4535",
+      "license_observation": "No explicit copyright/license/public domain keyword found"
+    },
+    {
+      "name": "TestDrive2Install/source/simulation-verify.s",
+      "size_bytes": 9412,
+      "sha256": "ec3c83155e053d9e4da641f657848244ee18046a1ea08612aa29617baceb4cab",
+      "license_observation": "No explicit copyright/license/public domain keyword found"
+    },
+    {
+      "name": "TestDrive2Install/source/datmerger.c",
+      "size_bytes": 1157,
+      "sha256": "e76a22e04d36cd35bf4b9097a4c1b39df7f2f5ba4e3b49c8403d0b40f8d1d60c",
+      "license_observation": "No explicit copyright/license/public domain keyword found"
+    }
+  ]
+}
