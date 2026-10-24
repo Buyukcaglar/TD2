@@ -38,7 +38,6 @@ static const struct { const char *from, *to; } copies[] = {
     { "EC_CAR1.PES", CODE "CAR1.PES" }, { "EC_CAR1.PCS", CODE "CAR1.PCS" },
     { "EC_CAR2.PES", CODE "CAR2.PES" }, { "EC_CAR2.PCS", CODE "CAR2.PCS" },
     { "EC_CAR3.PES", CODE "CAR3.PES" }, { "EC_CAR3.PCS", CODE "CAR3.PCS" },
-    { "EC_ICON.PES", CODE "ICON.PES" }, { "EC_ICON.PCS", CODE "ICON.PCS" },
 };
 
 #define AMIGA_SIGN 0x2E                                 /* the Amiga's object code of sign 0 */
@@ -125,6 +124,213 @@ static u8 *convert_signs(const u8 *a, u32 alen, const int map[SIGNS], size_t *ou
     }
     *out_len = o + 90;                                  /* the game copies 45 words from each record */
     return out;
+}
+
+/* The icon: the scenery's Amiga title picture (euro_icon, 320x200 in 32 colours) as the DOS "picl", the
+ * picture on the scenery choice screen (320x178 at y 13), and "pics", the main menu's 64x36 icon at
+ * (168, 154), cut from its heath picture. Colours are the nearest of the EGA's 16 or the CGA's palette 1. */
+typedef struct { u16 w, h; u8 *pix; u8 pal[32][3]; } Picture;
+
+static const u8 ega_rgb[16][3] = {
+    { 0, 0, 0 }, { 0, 0, 170 }, { 0, 170, 0 }, { 0, 170, 170 }, { 170, 0, 0 }, { 170, 0, 170 },
+    { 170, 85, 0 }, { 170, 170, 170 }, { 85, 85, 85 }, { 85, 85, 255 }, { 85, 255, 85 }, { 85, 255, 255 },
+    { 255, 85, 85 }, { 255, 85, 255 }, { 255, 255, 85 }, { 255, 255, 255 },
+};
+static const u8 cga_rgb[4][3] = { { 0, 0, 0 }, { 85, 255, 255 }, { 255, 85, 255 }, { 255, 255, 255 } };
+
+#define ICON_H 178
+#define PICS_W 64
+#define PICS_H 36
+#define PICS_X 126                                      /* the heath picture's middle, 75x42 */
+#define PICS_Y 15
+#define PICS_SW 75
+#define PICS_SH 42
+
+static u32 be32(const u8 *p) { return (u32)p[0] << 24 | (u32)p[1] << 16 | (u32)p[2] << 8 | p[3]; }
+
+/* An IFF ILBM (BMHD, CMAP, BODY in ByteRun1 or plain) as one colour index per pixel. */
+static bool ilbm_read(const u8 *f, u32 len, Picture *p)
+{
+    if (len < 12 || memcmp(f, "FORM", 4) != 0 || memcmp(f + 8, "ILBM", 4) != 0) return false;
+    int planes = 0, masking = 0, packed = 0;
+    const u8 *body = NULL;
+    u32 body_len = 0;
+    memset(p, 0, sizeof *p);
+    for (u32 at = 12; at + 8 <= len;) {
+        u32 n = be32(f + at + 4);
+        const u8 *c = f + at + 8;
+        if (n > len - at - 8) return false;
+        if (memcmp(f + at, "BMHD", 4) == 0 && n >= 11) {
+            p->w = be16(c);
+            p->h = be16(c + 2);
+            planes = c[8];
+            masking = c[9];
+            packed = c[10];
+        } else if (memcmp(f + at, "CMAP", 4) == 0) {
+            memcpy(p->pal, c, n < sizeof p->pal ? n : sizeof p->pal);
+        } else if (memcmp(f + at, "BODY", 4) == 0) {
+            body = c;
+            body_len = n;
+        }
+        at += 8 + n + (n & 1);
+    }
+    if (!body || p->w == 0 || p->h == 0 || planes < 1 || planes > 5) return false;
+    u32 row = (p->w + 15u) / 16 * 2, nrows = (u32)p->h * (planes + (masking == 1));
+    u8 *raw = SDL_malloc(row * nrows);
+    p->pix = SDL_calloc(p->w, p->h);
+    if (!raw || !p->pix) {
+        SDL_free(raw);
+        SDL_free(p->pix);
+        return false;
+    }
+    u32 o = 0, i = 0;
+    while (o < row * nrows && i < body_len) {
+        if (!packed) {
+            raw[o++] = body[i++];
+            continue;
+        }
+        u8 k = body[i++];
+        if (k < 128) {
+            for (int r = 0; r <= k && i < body_len && o < row * nrows; r++) raw[o++] = body[i++];
+        } else if (k > 128 && i < body_len) {
+            for (int r = 0; r < 257 - k && o < row * nrows; r++) raw[o++] = body[i];
+            i++;
+        }
+    }
+    for (u32 y = 0; y < p->h; y++)
+        for (int k = 0; k < planes; k++) {
+            const u8 *line = raw + (y * (planes + (masking == 1)) + k) * row;
+            for (u32 x = 0; x < p->w; x++)
+                p->pix[y * p->w + x] |= (u8)((line[x >> 3] >> (7 - (x & 7)) & 1) << k);
+        }
+    SDL_free(raw);
+    return o == row * nrows;
+}
+
+static u8 nearest(const int rgb[3], const u8 (*pal)[3], int n)
+{
+    int best = 0, dist = 0x7FFFFFFF;
+    for (int i = 0; i < n; i++) {
+        int dr = rgb[0] - pal[i][0], dg = rgb[1] - pal[i][1], db = rgb[2] - pal[i][2];
+        int d = 3 * dr * dr + 4 * dg * dg + 2 * db * db;
+        if (d < dist) { dist = d; best = i; }
+    }
+    return (u8)best;
+}
+
+/* The picture's rows for the 178-row icon: the longest runs of blank rows give up one row at a time. */
+static bool icon_rows(const Picture *p, u16 rows[ICON_H])
+{
+    if (p->w != 320 || p->h < ICON_H || p->h > 256) return false;
+    int run_of[256], keep[256], at[256], runs = 0;    /* each row's blank run (or -1) and place in it */
+    for (int y = 0; y < p->h; y++) {
+        bool blank = true;
+        for (int x = 0; x < p->w && blank; x++) blank = p->pix[y * p->w + x] == 0;
+        run_of[y] = -1;
+        if (!blank) continue;
+        if (y == 0 || run_of[y - 1] < 0) keep[runs++] = 0;
+        run_of[y] = runs - 1;
+        at[y] = keep[runs - 1]++;
+    }
+    for (int cut = p->h - ICON_H; cut > 0; cut--) {
+        int longest = -1;
+        for (int r = 0; r < runs; r++)
+            if (keep[r] && (longest < 0 || keep[r] > keep[longest])) longest = r;
+        if (longest < 0) return false;
+        keep[longest]--;
+    }
+    int n = 0;
+    for (int y = 0; y < p->h && n < ICON_H; y++)
+        if (run_of[y] < 0 || at[y] < keep[run_of[y]]) rows[n++] = (u16)y;
+    return n == ICON_H;
+}
+
+/* One sprite of colour indices, w x h: the 16-byte header (width in bytes, height, hot spot, own
+ * position, plane map), then the pixels row-major, which the loaders leave as they are (storage mode
+ * 0): four bit planes for EGA, 2-bit pixels for CGA. */
+static size_t put_sprite(u8 *out, const u8 *px, int w, int h, u16 x, u16 y, bool cga)
+{
+    int wb = cga ? w / 4 : w / 8;
+    u16 head[6] = { (u16)wb, (u16)h, 0, 0, x, y };
+    for (int k = 0; k < 6; k++) le16(out + 2 * k, head[k]);
+    static const u8 ega_planes[4] = { 1, 2, 4, 8 };
+    memcpy(out + 12, cga ? (const u8 *)"\0\0\0\0" : ega_planes, 4);
+    u8 *d = out + 16;
+    for (int k = 0; k < (cga ? 1 : 4); k++)
+        for (int yy = 0; yy < h; yy++)
+            for (int b = 0; b < wb; b++) {
+                u8 v = 0;
+                for (int i = 0; i < (cga ? 4 : 8); i++) {
+                    u8 c = px[yy * w + b * (cga ? 4 : 8) + i];
+                    v = cga ? (u8)(v << 2 | c) : (u8)(v << 1 | (c >> k & 1));
+                }
+                *d++ = v;
+            }
+    return (size_t)(d - out);
+}
+
+/* NGCICON.PES or .PCS: an archive of picl and pics (its length, the count, the names, the offsets
+ * after the table), packed. */
+static bool write_icon(const Picture *p, const u16 rows[ICON_H], bool cga, const char *dir)
+{
+    const u8 (*pal)[3] = cga ? cga_rgb : ega_rgb;
+    int ncol = cga ? 4 : 16;
+    u8 map[32];
+    for (int i = 0; i < 32; i++) {
+        int rgb[3] = { p->pal[i][0], p->pal[i][1], p->pal[i][2] };
+        map[i] = nearest(rgb, pal, ncol);
+    }
+    u8 *picl = SDL_malloc(320 * ICON_H), pics[PICS_W * PICS_H];
+    u8 *arc = SDL_malloc(22 + 2 * 16 + 320 * ICON_H / 2 + PICS_W * PICS_H / 2);
+    if (!picl || !arc) {
+        SDL_free(picl);
+        SDL_free(arc);
+        return false;
+    }
+    for (int y = 0; y < ICON_H; y++)
+        for (int x = 0; x < 320; x++) picl[y * 320 + x] = map[p->pix[rows[y] * p->w + x] & 31];
+    for (int y = 0; y < PICS_H; y++)                    /* each icon pixel: the mean of its source box */
+        for (int x = 0; x < PICS_W; x++) {
+            int x0 = PICS_X + x * PICS_SW / PICS_W, x1 = PICS_X + (x + 1) * PICS_SW / PICS_W;
+            int y0 = PICS_Y + y * PICS_SH / PICS_H, y1 = PICS_Y + (y + 1) * PICS_SH / PICS_H;
+            if (x1 == x0) x1++;
+            if (y1 == y0) y1++;
+            int sum[3] = { 0, 0, 0 }, n = 0;
+            for (int yy = y0; yy < y1; yy++)
+                for (int xx = x0; xx < x1; xx++, n++)
+                    for (int c = 0; c < 3; c++) sum[c] += p->pal[p->pix[yy * p->w + xx] & 31][c];
+            for (int c = 0; c < 3; c++) sum[c] /= n;
+            pics[y * PICS_W + x] = nearest(sum, pal, ncol);
+        }
+    memcpy(arc + 4, "\2\0picl" "pics", 10);
+    size_t o = 22;
+    size_t first = put_sprite(arc + o, picl, 320, ICON_H, 0, 13, cga);
+    size_t second = put_sprite(arc + o + first, pics, PICS_W, PICS_H, 168, 154, cga);
+    u32 offs[2] = { 0, (u32)first }, total = (u32)(o + first + second);
+    for (int i = 0; i < 2; i++)
+        for (int b = 0; b < 4; b++) arc[14 + 4 * i + b] = (u8)(offs[i] >> 8 * b);
+    for (int b = 0; b < 4; b++) arc[b] = (u8)(total >> 8 * b);
+    size_t n;
+    u8 *packed = dos_pack_rle(arc, total, &n);
+    bool ok = packed && save(dir, cga ? CODE "ICON.PCS" : CODE "ICON.PES", packed, n);
+    SDL_free(packed);
+    SDL_free(arc);
+    SDL_free(picl);
+    return ok;
+}
+
+static bool build_icon(const char *amiga, const char *out)
+{
+    u32 len;
+    u8 *f = load(amiga, "scen3/scen/euro_icon", &len);
+    Picture p;
+    u16 rows[ICON_H];
+    bool ok = f && ilbm_read(f, len, &p);
+    SDL_free(f);
+    if (!ok) return false;
+    ok = icon_rows(&p, rows) && write_icon(&p, rows, false, out) && write_icon(&p, rows, true, out);
+    SDL_free(p.pix);
+    return ok;
 }
 
 static bool fail(char *err, size_t n, const char *what, const char *name)
@@ -215,6 +421,7 @@ bool northern_germany_build(const char *amiga_dir, const char *out_dir, char *(*
     bool ok = true;
     for (int s = 0; s < 7 && ok; s++) ok = build_stage(s, amiga_dir, out_dir, find, slices, err, err_size);
     SDL_free(slices);
+    if (ok && !build_icon(amiga_dir, out_dir)) return fail(err, err_size, "cannot convert", "scen3/scen/euro_icon");
     for (size_t i = 0; i < SDL_arraysize(copies) && ok; i++) {
         size_t n;
         u8 *b = load_dos(find, copies[i].from, &n);

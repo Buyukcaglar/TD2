@@ -99,7 +99,7 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
    - zip, 7z, rar and lha archives: libarchive is built static by `build.ps1`, with a one-line patch so Amiga LhA archives are recognised;
    - the themed question windows, the first-start setup, and the Game files… and About entries.
    The app icon is in. Still open in this phase: a look at the windows in the light theme, and macOS (step 6, later). The next phase is the Amiga recovery: its sound and music behind the same switch, and its sceneries, Northern Germany among them.
-6. **Amiga phase** ([amiga.md](amiga.md), section 4). The Amiga audio is in (music, race sounds, live switch). Next: ask the user how the Amiga sound sounds (the two WAVs in `runs/amiga-view`, or `.\run.ps1` and Ctrl+Shift+S with the Amiga game's folder or archive), Done since: the road question, and Northern Germany in the game. Next: the Amiga graphics backend; for Northern Germany, its own title picture as the scenery icon and the Amiga traffic sprites.
+6. **Amiga phase** ([amiga.md](amiga.md), section 4). The Amiga audio is in (music, race sounds, live switch). Next: ask the user how the Amiga sound sounds (the two WAVs in `runs/amiga-view`, or `.\run.ps1` and Ctrl+Shift+S with the Amiga game's folder or archive), Done since: the road question, Northern Germany in the game, and its own title picture as its scenery icons. Next: the Amiga graphics backend; for Northern Germany, the Amiga traffic sprites (optional).
 7. **Snapshot coverage.** Once the play test has recorded states, rendering a frame from a recorded race state would add player-driven scenes.
 
 ### Open questions

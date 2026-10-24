@@ -3,8 +3,8 @@
  * Germany"). It is a scenery made in 2012 for the Amiga game from the other three: each of its seven
  * roads is a road of the Master, California or European scenery and each of its sprite files a copy
  * of theirs, under other names. So each stage here is the DOS twin of its road, drawn with the DOS
- * sprite archive of its Amiga sprite file; its signs are its own, converted from its vector sign files.
- * The font, the traffic and the icon are the European Challenge's.
+ * sprite archive of its Amiga sprite file; its signs are its own, converted from its vector sign files,
+ * and its icons are its Amiga title picture. The font and the traffic are the European Challenge's.
  *
  * Needs the Amiga game and the DOS California and European Challenges; find returns the path of a DOS
  * game file (SDL_free it) or NULL. Writes the scenery's files and its SCENES.DAT to out_dir. */

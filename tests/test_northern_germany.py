@@ -79,6 +79,23 @@ class NorthernGermanyTest(unittest.TestCase):
         self.assertEqual(s5[4], ' OKERTAL \nSPERRE 900M')
         self.assertNotIn(9, s5)                     # its road's sign 9 has no text on the Amiga
 
+    def test_icons(self):
+        """The title picture as the choice screen's picl and the menu's pics, row-major (storage mode 0)."""
+        for ext, wb in (('PES', 8), ('PCS', 4)):
+            packed = (self.out / f'NGCICON.{ext}').read_bytes()
+            arc = dos_unpack.unpack(packed)
+            self.assertEqual(struct.unpack_from('<I', arc)[0], len(arc))
+            sprites = dict(dos_unpack.entries(arc))
+            self.assertEqual(list(sprites), ['picl', 'pics'])
+            for name, (w, h, x, y) in {'picl': (320, 178, 0, 13), 'pics': (64, 36, 168, 154)}.items():
+                b = sprites[name]
+                self.assertEqual(struct.unpack_from('<6H', b), (w // wb, h, 0, 0, x, y), name)
+                self.assertEqual(b[12:16], b'\1\2\4\x08' if ext == 'PES' else bytes(4), name)
+                self.assertEqual(len(b), 16 + w * h // 2 if ext == 'PES' else 16 + w * h // 4, name)
+                self.assertGreater(len(set(b[16:])), 8, f'{name}: a picture, not a blank')
+            if harness:
+                self.assertEqual(game_unpack(packed), arc, f'{ext} through the game\'s rle_decode')
+
 
 harness = None
 try:
