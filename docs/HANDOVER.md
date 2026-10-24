@@ -4,7 +4,7 @@ This file replaces `docs/planning/continuation.md` as the place to start. That f
 
 ## 0. Current state (session 3, 24 October 2026)
 
-M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart from that play test: the planned fixes are in, each with a regression test, and the harness checks whole sim ticks. M2 "Backend split" is done: graphics and audio each sit behind a backend interface, and the EGA frames and the speaker output are unchanged.
+M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart from that play test: the planned fixes are in, each with a regression test, and the harness checks whole sim ticks. M2 "Backend split" is done: graphics and audio each sit behind a backend interface, and the EGA frames and the speaker output are unchanged. M3 "CGA" has started: TD2CGA is unpacked and compared with EGA. Its simulation is the same program, and its scene renderer differs only in drawing ([cga.md](cga.md)).
 
 - **Code.** The Kylofon port is vendored in `port/td2/` (provenance and local changes in `port/td2/PROVENANCE.md`). Local fixes: 20-bit address wrap, the `INT32_MIN / -1` division guard, EXEPACK bounds checks, and `--user-dir` so scores and `SELECT.DAT` never go to the game folder.
 - **Build.** `.\build.ps1` (add `-Clean` for a fresh build) builds `build\td2port.exe` and `build\td2diff.dll` with MSVC 14.44, the VS-bundled CMake and Ninja, and SDL3 3.4.18. It builds with no warnings at `/W3`.
@@ -31,14 +31,27 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
   - `platform/gfx.c` keeps what TD2EGA and TD2CGA share: target descriptors, clipping, the text state, sprite positioning (hot / raw / own), centred text and outlines.
   - The pixel routines sit behind a `GfxBackend` table (`platform/gfx_backend.h`). The EGA backend is `gfx_ega.c` and `gfx_ega_blit.c`; its code is unchanged, only renamed to static `ega_*` functions.
   - The table holds exactly the routines that TD2CGA implements differently. This was found by aligning the two function indexes (`port/td2/port/td2ega_functions.csv`, `td2cga_functions.csv`) per segment on size, instruction count, call count and strings. Video memory access is confined to the backend: no game code touches the EGA model.
-  - The same comparison gives the CGA work list. 119 EGA functions have no identical CGA twin: 61 in the platform library (all the graphics routines, plus `joy_read`, `music_tick`, `huff_decode`, `mem_release_cache` and a few more), 29 in the scene renderer (projection, sky, ground, objects, mirror, cockpit and instruments, `stage_load`), 15 in the simulation and 11 in the game flow screens. The scene renderer and simulation differences are not explained yet; they may be real changes or just different addresses and constants.
+  - The same comparison gives the CGA work list. 119 EGA functions have no identical CGA twin: 61 in the platform library (all the graphics routines, plus `joy_read`, `music_tick`, `huff_decode`, `mem_release_cache` and a few more), 29 in the scene renderer (projection, sky, ground, objects, mirror, cockpit and instruments, `stage_load`), 15 in the simulation and 11 in the game flow screens. M3 has since explained the simulation and scene-renderer ones (next entry).
 - **Audio backend (M2, session 3).** The game's sound code stays game logic: the effect and music stream players and the drive tones keep their state in DGROUP, and the game reads some of it back. An `AudioBackend` (`src/audio_backend.h`) only turns the output into samples. The PC speaker backend is in `speaker.c` and the host renders through the active one (`host_set_audio_backend`). A sample-based Amiga backend will also need to hear which effect or song started; those events should be added together with it.
+- **CGA against EGA (M3, session 3).** Written up in [cga.md](cga.md); `python tools/cga_compare.py` reproduces it, and `python tools/cga_compare.py <EGA address>` prints one function's differences. `tools/exepack.py` gained `unpack()`, which unpacks TD2EGA, TD2CGA and TD2TDY without the old hash gate (TD2CGA has 11 bytes after its relocation table that are simply ignored).
+  - **How it compares.** Disassemblies are compared after normalising the relink. A number that still differs passes only with evidence that it is the moved EGA address: the same bytes at both places, the uninitialised-data shift (CGA's initialised data is 160h shorter), the same offset inside a paired function, a jump table pointing to paired code, the graphics descriptor block, or the same shift shown by two variables in one area.
+  - **Simulation.** All 15 simulation functions are the same program in CGA; the port's simulation code serves CGA unchanged.
+  - **Scene renderer.** 13 of the 29 scene-renderer functions are identical; the other 16 differ only in drawing:
+    - 2-bit pixels instead of four planes, and 4 pixels per byte instead of 8;
+    - dither patterns instead of colour numbers;
+    - interleaved rows walked through a row table;
+    - the crash flash on port 3D9h instead of the palette;
+    - a few coordinates forced odd, probably for the dither phase (unconfirmed).
+  - **Index mistakes found.** The Kylofon indexes cut some functions short or split them: EGA 06C9:1A37 is the tail of `draw_front_objects`, and 06C9:AF54 is the screen descriptor, not code. The tool corrects for this.
 - **Adding a function to the harness** takes three steps: add an adapter in `tools/diffharness/adapters.c`, add a `Spec` with an input generator in `tools/diffharness/cases.py`, and rebuild.
 
 ### Next steps (in order)
 
 1. **Play test.** Ask the user for the results of one race on each scenery (CCC, ec_, TDS2), ideally recorded with `.\run.ps1 -RecordStates`. Their states would add player-driven races on every scenery to the `sim_tick` cases.
-2. **M3 CGA, first steps.** Unpack `TD2CGA.EXE` with `tools/exepack.py`. Explain the 15 simulation and 29 scene-renderer functions that differ from EGA: diff their disassembly against the EGA twins and sort them into real changes and moved addresses. Then decide how the CGA build's data is reached. The port runs on the EGA image's DGROUP, so a CGA backend needs its own tables (palette, row tables) read from TD2CGA.EXE, and its sprites from the PCS files.
+2. **M3 CGA, next steps.**
+   - Decide how the 16 drawing scene-renderer functions reach CGA. [cga.md](cga.md) recommends backend hooks (span fill, horizontal line, object pixel, wall rows, crash flash, a colour-to-pattern map, pixels per byte) over CGA copies of the functions.
+   - Then compare the CGA data the backend needs: the pattern and mask tables, the row tables, and the colour select values.
+   - Finally, the PCS sprite format and the CGA graphics library itself. Its pairing with EGA is weak, so map its routines from their callers.
 3. **Snapshot coverage.** The snapshot run covers only attract mode. Once the play test has recorded states, rendering a frame from a recorded race state would add player-driven scenes.
 
 ### Open questions
