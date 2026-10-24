@@ -515,6 +515,21 @@ redraw:
     return car;
 }
 
+/* PORT: the Amiga game's folder of each scenery, by its DOS code, for the Amiga graphics. */
+static const char *amiga_scenery_prefix(const char *code)
+{
+    static const struct { const char *code, *prefix; } sceneries[] = {
+        { "TDS2", "scen/sc1_" }, { "CCC", "scen1/scen/rock_" }, { "ec_", "scen2/scen/euro_" },
+        { "NGC", "scen3/scen/euro_" },
+    };
+    for (size_t i = 0; i < sizeof sceneries / sizeof sceneries[0]; i++) {
+        const char *a = code, *b = sceneries[i].code;
+        while (*a && (*a | 0x20) == (*b | 0x20)) a++, b++;
+        if (!*a && !*b) return sceneries[i].prefix;
+    }
+    return NULL;
+}
+
 /* 019e:0527 scenery_select — game_flow.md §4.9 (verified) */
 void scenery_select(void)
 {
@@ -526,6 +541,12 @@ void scenery_select(void)
         if (DSS(DS_scn_idx) < 0) DSS(DS_scn_idx) = (s16)(DSS(DS_nscenes) - 1);
         strcpy(DSTR(DS_scn_code), DSTR(scn_rec(DSS(DS_scn_idx))));
         DSS(DS_scn_disk) = scn_disk(DSS(DS_scn_idx));
+        /* PORT: with the Amiga graphics, the scenery's Amiga picture fills the page and the disk name
+         * is written over it in pen 5, with no line at the bottom (duel $2d8c8). */
+        const char *prefix = gfx_amiga_screens() ? amiga_scenery_prefix(DSTR(DS_scn_code)) : NULL;
+        bool amiga = prefix && gfx_amiga_picture(flow_concat(buf, sizeof buf, prefix, "icon"), 0, 0);
+        u16 fg = DSW(DS_text_fg), bg = DSW(DS_text_bg);
+        if (amiga) gfx_set_text_colours(AMIGA_PEN(5), AMIGA_PEN(0));
         if (DSS(DS_nscenes) == 1) {
             draw_text_centered(0x73ED, 0);           /* "Additional Scenerydisks Available." */
         } else {
@@ -533,13 +554,16 @@ void scenery_select(void)
             snprintf(buf, sizeof buf, "%s DISK", DSTR(DSW(DS_disk_type_names + 2 * DSS(DS_scn_disk))));
             draw_text_centered_str(buf, 0);
         }
+        if (amiga) gfx_set_text_colours(fg, bg);
         if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(scn_rec(DSS(DS_scn_idx))), DSTR(0x7418)),
                           DSS(DS_scn_disk), 0) != 0)
             return;                                  /* "icon" */
-        FarPtr a = load_shapes(DS_disk_path);
-        blit_copy_own(res_find(a, 0x741D));          /* "picl" */
-        mem_release_cache(a);
-        draw_text_centered(0x7422, 0xBE);            /* "Use Keyboard/Joystick to change scenery." */
+        if (!amiga) {
+            FarPtr a = load_shapes(DS_disk_path);
+            blit_copy_own(res_find(a, 0x741D));      /* "picl" */
+            mem_release_cache(a);
+            draw_text_centered(0x7422, 0xBE);        /* "Use Keyboard/Joystick to change scenery." */
+        }
         screen_reveal(3);
         s16 old;
         do {

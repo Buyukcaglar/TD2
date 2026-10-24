@@ -122,6 +122,14 @@ void draw_text_centered(u16 s_ds, u16 y);                               /* 16ab:
 void draw_text_centered_str(const char *s, u16 y);                      /* PORT: C-string variant */
 void draw_rect_outline(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour);     /* 16af:0006 */
 
+/* ---- the Amiga graphics (gfx_amiga.c; docs/amiga.md, "The Amiga graphics backend") */
+void gfx_amiga_open(const char *dir);                                   /* the Amiga game's folder, or NULL */
+bool gfx_amiga_screens(void);                   /* the Amiga backend is on and has the Amiga game's files */
+/* Draws a picture of the Amiga game (an ILBM, by its path in the Amiga folder) into the selected target
+ * at (x, y), x a multiple of 8, and gives the target its colours. False if it is not there. */
+bool gfx_amiga_picture(const char *file, s16 x, s16 y);
+#define AMIGA_PEN(n) ((u16)(0x20 + (n)))        /* a colour argument: pen n of the target's Amiga colours */
+
 /* ---- sprite blitters (platform.md §4.2)
  * hot = at (x - hot_x, y - hot_y), raw = at (x, y), own = at the header's (x, y) (not masked in TD2).
  * *_clip_* clip against the live clip rectangle; the others do not clip. */

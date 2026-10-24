@@ -359,6 +359,7 @@ static void blit_body(FarPtr spr, u16 px, u16 py, int op, bool clip)
     }
 
     /* EGA path (clipped 06c9:941c, unclipped 06c9:9e61) */
+    if (ega_buffer_sprite(spr)) gfx_amiga_shown(spr);
     u8 gcfunc = op_gcfunc[op];
     gc_out(3, gcfunc);
     u16 adv_last = (u16)(blocksize - vis_w);                       /* bp-30 */

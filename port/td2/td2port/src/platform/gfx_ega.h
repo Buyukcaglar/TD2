@@ -26,8 +26,11 @@ typedef struct {
     u8 bit_mask;      /* GC index 8 */
     u8 palette[17];   /* attribute controller palette registers + overscan (INT 10h AX=1002h) */
     u8 planes;        /* 4, or 5 for the Amiga backend */
-    u32 rgb[32];      /* five planes: the frame's colours (gfx_amiga.c) */
-    u8 colour_map[16];   /* five planes: the colour each EGA colour number draws (gfx_amiga.c) */
+    /* Five planes: the screen's colours (gfx_amiga.c). With an Amiga palette all 32 are rgb[];
+     * without, 0-15 are the palette registers' and colour_map is the identity. */
+    bool amiga_palette;
+    u32 rgb[32];
+    u8 colour_map[16];   /* the colour each EGA colour number draws on the screen */
     bool dirty;
 } EgaState;
 
@@ -35,15 +38,20 @@ extern EgaState gfx_ega;
 
 void gfx_ega_reset_registers(void);
 void gfx_ega_reset(int planes);
-void gfx_amiga_reset(void);                                         /* gfx_amiga.c */
+/* gfx_amiga.c: the colours of the selected target, and the hooks the model calls with five planes. */
+void gfx_amiga_reset(void);
+u8   gfx_amiga_colour(u16 c);
+void gfx_amiga_buffer_created(u16 seg);         /* a new off-screen buffer, plane 0 at seg */
+void gfx_amiga_cleared(bool screen);            /* the screen, or the selected target, was cleared */
+void gfx_amiga_shown(FarPtr spr);               /* a buffer sprite is drawn onto the screen */
 bool gfx_ega_compose(u32 *xrgb);
 
 /* A colour the game passes. With four planes it is used as it is. With five, it is an EGA colour
  * number (the game also passes FFh or FFFFh for white, which four planes read as 15) and the colour
- * map says what it draws. */
+ * map of the selected target says what it draws, or an Amiga pen (AMIGA_PEN, gfx.h). */
 static inline u8 ega_colour(u16 c)
 {
-    return gfx_ega.planes == 5 ? gfx_ega.colour_map[c & 0x0F] : (u8)c;
+    return gfx_ega.planes == 5 ? gfx_amiga_colour(c) : (u8)c;
 }
 
 /* Every plane of the model: the map mask the game's "all planes" (0Fh) means. */

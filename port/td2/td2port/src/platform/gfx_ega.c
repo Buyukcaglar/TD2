@@ -39,6 +39,7 @@ void gfx_ega_reset(int planes)
     memset(gfx_ega.plane, 0, sizeof gfx_ega.plane);
     memset(gfx_ega.latch, 0, sizeof gfx_ega.latch);
     gfx_ega.planes = (u8)planes;
+    gfx_ega.amiga_palette = false;
     for (int i = 0; i < 16; i++) gfx_ega.colour_map[i] = (u8)i;
     gfx_ega_reset_registers();
     memcpy(gfx_ega.palette, mode0d_default_palette, sizeof gfx_ega.palette);
@@ -58,14 +59,15 @@ static u32 ega_rgb(u8 v)
     return r << 16 | g << 8 | b;
 }
 
-/* Colours 0-15 are the palette registers' and, with five planes, 16-31 the Amiga backend's. */
+/* Colours 0-15 are the palette registers' and, with five planes, 16-31 the Amiga backend's; with an
+ * Amiga palette on the screen all 32 are its. */
 bool gfx_ega_compose(u32 *xrgb)
 {
     if (!gfx_ega.dirty) return false;
     gfx_ega.dirty = false;
     u32 pal[32];
-    for (int i = 0; i < 16; i++) pal[i] = ega_rgb(gfx_ega.palette[i]);
-    for (int i = 16; i < 32; i++) pal[i] = gfx_ega.rgb[i];
+    for (int i = 0; i < 32; i++)
+        pal[i] = i < 16 && !gfx_ega.amiga_palette ? ega_rgb(gfx_ega.palette[i]) : gfx_ega.rgb[i];
     bool five = gfx_ega.planes == 5;
     for (int y = 0; y < 200; y++) {
         for (int bx = 0; bx < 40; bx++) {
@@ -189,12 +191,14 @@ static FarPtr ega_create_buffer(u16 width_px, u16 h, u16 plane_mask)
         b = (u16)(b + 2);
         off = (u16)(off + w);
     } while (--cnt);
+    if (gfx_ega.planes == 5) gfx_amiga_buffer_created(seg);
     return far_make(ASM_SEG, bx);
 }
 
 /* 06c9:840a gfx_clear_screen: always A000h, 8000 bytes, write mode 2, map mask 0Fh */
 static void ega_clear_screen(u16 colour16)
 {
+    if (gfx_ega.planes == 5) gfx_amiga_cleared(true);
     u8 colour = ega_colour(colour16);
     gc_out(5, 2);
     seq_map_mask(ega_all_planes());
@@ -205,6 +209,7 @@ static void ega_clear_screen(u16 colour16)
 /* 06c9:843e gfx_clear_clip */
 static void ega_clear_clip(u16 colour16)
 {
+    if (gfx_ega.planes == 5) gfx_amiga_cleared(false);
     u8 colour = ega_colour(colour16);
     u16 rows = (u16)(CUR_Y1 - CUR_Y0);                             /* bp-0E */
     u16 cols = (u16)(CUR_X1 - CUR_X0);                             /* bp-08 */
@@ -661,6 +666,12 @@ static void dissolve(FarPtr spr, u8 phase, const DissolveTables *t)
         if (n >= 4) break;
         p++;
     }
+    if (n == 4 && ega_buffer_sprite(spr)) {                        /* PORT: a buffer's plane 4 */
+        emm[n] = 0x0410;
+        ert[n++] = DIS_COPY_LAST;
+        cx = (u16)(cx + psize);
+    }
+    if (es == VRAM_SEG && ega_buffer_sprite(spr)) gfx_amiga_shown(spr);
     u16 rewind = (u16)(cx - step12);                               /* bp-1C */
     for (int pmk = 0; pmk < 2; pmk++) {                            /* pm[0] >> 4: clear, pm[1] >> 4: set */
         u16 bx = (rd8(ds, (u16)(so + 0x0C + pmk)) >> 4) & 0x0F;

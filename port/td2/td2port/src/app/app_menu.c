@@ -68,6 +68,7 @@ bool app_amiga_open(const char *path)
 {
     char *dir = app_data_amiga_dir(path);
     if (!dir) return false;
+    gfx_amiga_open(dir);
     char err[256];
     bool ok = audio_amiga_open(dir, err, sizeof err);
     if (!ok) fprintf(stderr, "Amiga sound: %s\n", err);
