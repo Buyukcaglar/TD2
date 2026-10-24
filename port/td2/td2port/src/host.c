@@ -36,10 +36,11 @@ static bool virtual_clock;
 static Uint64 virtual_ns;
 static Uint64 run_limit_ns;
 
-/* TD2_KEYS presses keys at given game times, for headless runs of the menus: "20:Return,24.5:Down"
- * (seconds, then an SDL scancode name). Each key is held for 0.1 s. */
+/* TD2_KEYS presses keys at given game times, for headless runs of the menus and races:
+ * "20:Return,24.5:Down,30:Up/5" (seconds, an SDL scancode name, and optionally how many seconds to
+ * hold it; 0.1 s otherwise). */
 #define KEY_SCRIPT_MAX 64
-static struct { Uint64 at_ns; SDL_Scancode sc; u8 state; } key_script[KEY_SCRIPT_MAX];
+static struct { Uint64 at_ns, hold_ns; SDL_Scancode sc; u8 state; } key_script[KEY_SCRIPT_MAX];
 static int key_script_n;
 static void key_script_load(const char *text);
 static void key_script_run(Uint64 game_ns);
@@ -264,8 +265,10 @@ static void snapshot(void)
     SDL_Surface *s = SDL_CreateSurfaceFrom(frame_w, frame_h, SDL_PIXELFORMAT_XRGB8888, frame, frame_w * 4);
     if (!s) return;
     char path[512];
-    SDL_snprintf(path, sizeof path, "%s/snap%04d.bmp", dir, n++);
+    SDL_snprintf(path, sizeof path, "%s/snap%04d.bmp", dir, n);
     SDL_SaveBMP(s, path);
+    if (key_script_n) fprintf(stderr, "snap%04d.bmp at %.2f s\n", n, (double)(tick_due_ns(ticks_run) - clock_start_ns) / SDL_NS_PER_SECOND);
+    n++;
     SDL_DestroySurface(s);
 }
 
@@ -581,13 +584,16 @@ static void key_script_load(const char *text)
         size_t n = strcspn(text, ",");
         SDL_snprintf(item, sizeof item, "%.*s", (int)SDL_min(n, sizeof item - 1), text);
         text += n + (text[n] == ',');
-        char *colon = SDL_strchr(item, ':');
+        char *colon = SDL_strchr(item, ':'), *slash = SDL_strchr(item, '/');
+        double hold = 0.1;
+        if (slash) { *slash = 0; hold = SDL_atof(slash + 1); }
         SDL_Scancode sc = colon ? SDL_GetScancodeFromName(colon + 1) : SDL_SCANCODE_UNKNOWN;
         if (sc == SDL_SCANCODE_UNKNOWN) {
             fprintf(stderr, "TD2_KEYS: ignoring \"%s\"\n", item);
             continue;
         }
         key_script[key_script_n].at_ns = (Uint64)(SDL_atof(item) * SDL_NS_PER_SECOND);
+        key_script[key_script_n].hold_ns = (Uint64)(hold * SDL_NS_PER_SECOND);
         key_script[key_script_n].sc = sc;
         key_script[key_script_n].state = 0;
         key_script_n++;
@@ -600,7 +606,9 @@ static void key_script_run(Uint64 game_ns)
         if (key_script[i].state == 0 && game_ns >= key_script[i].at_ns) {
             key_down(SDL_GetKeyFromScancode(key_script[i].sc, SDL_KMOD_NONE, false), key_script[i].sc, SDL_KMOD_NONE);
             key_script[i].state = 1;
-        } else if (key_script[i].state == 1 && game_ns >= key_script[i].at_ns + SDL_NS_PER_SECOND / 10) {
+            fprintf(stderr, "TD2_KEYS: %.2f s %s\n", (double)game_ns / SDL_NS_PER_SECOND,
+                    SDL_GetScancodeName(key_script[i].sc));
+        } else if (key_script[i].state == 1 && game_ns >= key_script[i].at_ns + key_script[i].hold_ns) {
             key_up(key_script[i].sc);
             key_script[i].state = 2;
         }
