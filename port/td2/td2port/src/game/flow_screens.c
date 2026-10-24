@@ -1,5 +1,6 @@
 /* game_flow screens: intro (00c0, 010c), showroom (0143), main menu, car and scenery selection (019e) —
  * port/spec/game_flow.md §4.5-4.9. */
+#include <SDL3/SDL.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -46,9 +47,93 @@ static void title_lines(s16 s)
 
 static void title_lines_redraw(void *ctx) { (void)ctx; title_lines(0x20); }
 
+/* PORT: the Amiga's title (duel $2b390, in overlay 1): "The Duel" (pics/title.shp "duel", planes 0 to 2)
+ * dissolves in with 16 colours of its own ($245b4). Then duel gives the screens' bitmaps plane 3 alone
+ * and, 111 steps one frame each, clears it and draws 33 lines that move from random points to the strokes
+ * of "TEST DRIVE II" ($244ac); colours 9 to 15 repeat 1 to 7, so the lines show yellow on black and
+ * leave the grey logo as it is. "titl" (the letters filled) is drawn over them at the end. */
+#define AMIGA_TITLE_LINES 33
+#define AMIGA_TITLE_STEPS 110
+#define AMIGA_TITLE_PLANE 3
+
+static u16 amiga_title_colours[16];
+static u16 amiga_title_targets[AMIGA_TITLE_LINES][4];   /* x0, y0, x1, y1 */
+
+static bool amiga_title_data(void)
+{
+    u8 c[32], t[AMIGA_TITLE_LINES * 8];
+    if (!gfx_amiga_duel_data(0x245B4, c, sizeof c) || !gfx_amiga_duel_data(0x244AC, t, sizeof t)) return false;
+    for (int i = 0; i < 16; i++) amiga_title_colours[i] = (u16)(c[2 * i] << 8 | c[2 * i + 1]);
+    for (int i = 0; i < AMIGA_TITLE_LINES * 4; i++)
+        amiga_title_targets[i / 4][i % 4] = (u16)(t[2 * i] << 8 | t[2 * i + 1]);
+    return true;
+}
+
+/* Step s of the lines (0 at the start points, AMIGA_TITLE_STEPS at the letters) into the selected
+ * target's plane 3. */
+static void amiga_title_lines(u16 start[][4], s16 s)
+{
+    gfx_amiga_plane_clear(AMIGA_TITLE_PLANE);
+    for (int i = 0; i < AMIGA_TITLE_LINES; i++) {
+        s16 p[4];
+        for (int k = 0; k < 4; k++)
+            p[k] = (s16)((amiga_title_targets[i][k] * s + start[i][k] * (AMIGA_TITLE_STEPS - s)) / AMIGA_TITLE_STEPS);
+        gfx_amiga_plane_line(AMIGA_TITLE_PLANE, p[0], p[1], p[2], p[3]);
+    }
+}
+
+/* "The Duel" into the page in the title's colours, and with done the lines at the letters and "titl". */
+static bool amiga_title_page(bool done)
+{
+    if (!gfx_amiga_screens() || !amiga_title_data()) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    if (!gfx_amiga_sprite("pics/title.shp", "duel", 0, 0, AMIGA_AT_OWN)) return false;
+    gfx_amiga_colours(amiga_title_colours, 16);
+    if (done) {
+        amiga_title_lines(amiga_title_targets, AMIGA_TITLE_STEPS);
+        gfx_amiga_sprite("pics/title.shp", "titl", 0, 0, AMIGA_AT_OWN);
+    }
+    return true;
+}
+
+static void title_redraw(void *ctx);
+
+/* The rest of the Amiga's title once "The Duel" is in the page. At the DOS pace a step takes a tick. */
+static s16 amiga_title(void)
+{
+    host_sound_event(SOUND_TITLE, 0, NULL);
+    s16 k = screen_reveal(1);
+    if (k != 0) return k;
+    static Uint64 seed = 1;                             /* duel's random points ($2b350, $2b370) */
+    u16 start[AMIGA_TITLE_LINES][4];
+    for (int i = 0; i < AMIGA_TITLE_LINES; i++)
+        for (int j = 0; j < 4; j++) {
+            u16 v;
+            do v = (u16)(SDL_rand_bits_r(&seed) & (j & 1 ? 0xFF : 0x1FF)); while (v > (j & 1 ? 199 : 319));
+            start[i][j] = v;
+        }
+    bool amiga = host_amiga_pace();
+    u32 t0 = ticks_get();
+    for (s16 s = 0; s <= AMIGA_TITLE_STEPS; s++) {
+        if (gfx_pending_backend()) {                 /* the live switch shows the title as it ends */
+            flow_switch_redraw(title_redraw, NULL);
+            return 0;
+        }
+        select_screen();
+        amiga_title_lines(start, s);
+        DSL(DS_deadline) = t0 + (amiga ? amiga_ticks((u32)s + 1) : (u32)s + 1);
+        if ((k = (s16)getkey_until_deadline()) != 0) return k;
+    }
+    select_screen();
+    gfx_amiga_sprite("pics/title.shp", "titl", 0, 0, AMIGA_AT_OWN);
+    return 0;
+}
+
 /* The title picture into the page. */
 static void title_page(void)
 {
+    if (amiga_title_page(true)) return;              /* PORT */
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     FarPtr a = load_shapes(0x71E6);                  /* "testdrv2" */
@@ -65,6 +150,10 @@ s16 title_screen(void)
     s16 k;
     select_screen();
     gfx_clear_clip(0);
+    if (amiga_title_page(false)) {                   /* PORT: the Amiga's title, then as TD2 */
+        if ((k = amiga_title()) != 0) return k;
+        goto shown;
+    }
     for (s16 s = 0; s <= 0x20; s++) {
         if (gfx_pending_backend()) flow_switch_redraw(NULL, NULL);   /* PORT: the live switch */
         title_lines(s);
@@ -77,11 +166,18 @@ s16 title_screen(void)
     host_sound_event(SOUND_TITLE, 0, NULL);          /* PORT: sample-based audio (the Amiga's speech) */
     k = screen_reveal(1);
     if (k != 0) return k;
+shown:
     if (host_amiga_pace()) {                         /* PORT: duel's title ends with its speech, then 220 frames */
         if ((k = (s16)wait_sound_end(title_redraw, NULL)) != 0) return k;
         return (s16)getkey_timeout_redraw(amiga_ticks(220), title_redraw, NULL);
     }
     return (s16)getkey_timeout_redraw(300, title_redraw, NULL);
+}
+
+/* PORT: the Amiga's "Accolade presents" (duel's intro, overlay 1204h): pics/title2 into the page. */
+static bool amiga_accolade_page(void)
+{
+    return gfx_amiga_screens() && gfx_amiga_picture("pics/title2", 0, 0);
 }
 
 /* PORT: the Accolade picture again after a graphics switch, the bull in its place. */
@@ -90,6 +186,11 @@ static void accolade_redraw(void *ctx)
     (void)ctx;
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
+    if (amiga_accolade_page()) {
+        gfx_amiga_sprite("pics/titlecar.shp", "bull", 0, 0, AMIGA_AT_OWN);
+        flow_show_page();
+        return;
+    }
     FarPtr a = load_shapes(0x71F9);                  /* "accolade" */
     blit_copy_own(res_find(a, 0x7202));              /* "acc_" */
     blit_copy_own(res_find(a, 0x7207));              /* "pres" */
@@ -97,6 +198,31 @@ static void accolade_redraw(void *ctx)
     blit_copy_own(res_find(a, 0x7211));              /* "bull" */
     mem_release_cache_old(a);
     flow_show_page();
+}
+
+/* PORT: the rest of the Amiga's "Accolade presents", the picture in the page: it dissolves in, then the
+ * bar "bull" (pics/titlecar.shp, a black box with the bar at its right end) slides in at its own row
+ * from the left edge to its own x, drawn whole so that it cuts a black line through the letters
+ * ($2becc). At the Amiga's pace 4 pixels a frame, as duel; at the DOS pace 2 pixels a tick, as TD2. */
+static s16 amiga_accolade(void)
+{
+    host_sound_event(SOUND_ACCOLADE, 0, NULL);
+    s16 r = screen_reveal(1);
+    s16 end, row;
+    if (r != 0 || !gfx_amiga_sprite_own("pics/titlecar.shp", "bull", &end, &row)) return r;
+    bool amiga = host_amiga_pace();
+    u32 t0 = ticks_get();
+    for (s16 x = 0, n = 1;; x = (s16)(x + (amiga ? 4 : 2)), n++) {
+        if (gfx_pending_backend()) {                 /* the live switch ends the slide */
+            flow_switch_redraw(accolade_redraw, NULL);
+            return 0;
+        }
+        DSL(DS_deadline) = t0 + (amiga ? amiga_ticks((u32)n) : (u32)n);
+        select_screen();
+        gfx_amiga_sprite("pics/titlecar.shp", "bull", x, 0, AMIGA_BOX_AT_X);
+        if (x >= end) return 0;
+        if ((r = (s16)getkey_until_deadline()) != 0) return r;
+    }
 }
 
 /* 00c0:027a accolade_screen — game_flow.md §4.5 (verified) */
@@ -107,6 +233,7 @@ s16 accolade_screen(void)
     gfx_clear_clip(0);
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
+    if (amiga_accolade_page()) return amiga_accolade();   /* PORT */
     FarPtr a = load_shapes(0x71F9);                  /* "accolade" */
     blit_copy_own(res_find(a, 0x7202));              /* "acc_" */
     blit_copy_own(res_find(a, 0x7207));              /* "pres" */
@@ -152,6 +279,7 @@ s16 intro_sequence(void)
     if (host_amiga_pace() && (r = (s16)getkey_timeout_redraw(amiga_ticks(5), NULL, NULL)) != 0)
         return r;                                    /* PORT: as duel */
     if ((r = title_screen()) != 0) return r;
+    if (gfx_amiga_screens() && amiga_title_data()) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
     if ((r = credits()) != 0) return r;
     if (DSS(DS_nscenes) == 0) return r;
     return hisc_show(700);

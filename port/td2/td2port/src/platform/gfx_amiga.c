@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "gfx_ega.h"
+#include "../amiga/hunk.h"
 #include "../amiga/ilbm.h"
 #include "../amiga/shp.h"
 
@@ -141,18 +142,19 @@ static u32 amiga_rgb(const u8 c[3])
     return (c[0] >> 4) * 17u << 16 | (c[1] >> 4) * 17u << 8 | (c[2] >> 4) * 17u;
 }
 
-/* The picture's colours for the selected target. */
-static void set_target_palette(const AmigaPicture *p)
+/* Colours for the selected target: rgb (n of them used by the game's colour numbers), from line split
+ * down rgb2. */
+static void set_target_rgb(const u32 rgb[32], int n, u16 split, const u32 rgb2[32])
 {
     TargetColours *t = target_colours();
     if (!t) return;
     t->amiga = true;
-    for (int i = 0; i < 32; i++) t->rgb[i] = amiga_rgb(p->pal[i]);
-    t->split = p->split;
-    for (int i = 0; i < 32; i++) t->rgb2[i] = amiga_rgb(p->pal2[i]);
+    memcpy(t->rgb, rgb, sizeof t->rgb);
+    t->split = split;
+    memcpy(t->rgb2, rgb2, sizeof t->rgb2);
     for (int c = 0; c < 16; c++) {
         int best = 0, dist = 0x7FFFFFFF;
-        for (int i = 0; i < (1 << p->planes) && i < 32; i++) {
+        for (int i = 0; i < n && i < 32; i++) {
             int dr = (int)(t->rgb[i] >> 16) - ega_colours[c][0];
             int dg = (int)(t->rgb[i] >> 8 & 0xFF) - ega_colours[c][1];
             int db = (int)(t->rgb[i] & 0xFF) - ega_colours[c][2];
@@ -162,6 +164,67 @@ static void set_target_palette(const AmigaPicture *p)
         t->map[c] = (u8)best;
     }
     if (t == &screen) show_screen_colours();
+}
+
+/* The picture's colours for the selected target. */
+static void set_target_palette(const AmigaPicture *p)
+{
+    u32 rgb[32], rgb2[32];
+    for (int i = 0; i < 32; i++) rgb[i] = amiga_rgb(p->pal[i]);
+    for (int i = 0; i < 32; i++) rgb2[i] = amiga_rgb(p->pal2[i]);
+    set_target_rgb(rgb, 1 << p->planes, p->split, rgb2);
+}
+
+void gfx_amiga_colours(const u16 *colours, int n)
+{
+    u32 rgb[32] = { 0 };
+    for (int i = 0; i < n && i < 32; i++)
+        rgb[i] = (colours[i] >> 8 & 15) * 17u << 16 | (colours[i] >> 4 & 15) * 17u << 8 | (colours[i] & 15) * 17u;
+    set_target_rgb(rgb, n, 0, rgb);
+}
+
+/* Byte off of plane k of the selected target, or NULL. */
+static u8 *plane_byte(int k, u16 off)
+{
+    if (CSW(GFX_CUR_PLANE0) == VRAM_SEG) return &gfx_ega.plane[k][off];
+    return ram_plane(k) ? mp(ram_plane(k), off) : NULL;
+}
+
+void gfx_amiga_plane_clear(int k)
+{
+    for (u16 y = 0; y < 200; y++)
+        for (u16 bx = 0; bx < 40; bx++) {
+            u8 *b = plane_byte(k, (u16)(row_at(y) + bx));
+            if (b) *b = 0;
+        }
+    if (CSW(GFX_CUR_PLANE0) == VRAM_SEG) gfx_ega.dirty = true;
+}
+
+void gfx_amiga_plane_line(int k, s16 x0, s16 y0, s16 x1, s16 y1)
+{
+    int dx = SDL_abs(x1 - x0), dy = -SDL_abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    int err = dx + dy;
+    for (;;) {
+        if (x0 >= 0 && x0 < 320 && y0 >= 0 && y0 < 200) {
+            u8 *b = plane_byte(k, (u16)(row_at((u16)y0) + (x0 >> 3)));
+            if (b) *b |= (u8)(0x80 >> (x0 & 7));
+        }
+        if (x0 == x1 && y0 == y1) break;
+        int e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x0 = (s16)(x0 + sx); }
+        if (e2 <= dx) { err += dx; y0 = (s16)(y0 + sy); }
+    }
+    if (CSW(GFX_CUR_PLANE0) == VRAM_SEG) gfx_ega.dirty = true;
+}
+
+bool gfx_amiga_duel_data(u32 addr, void *out, u32 n)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/duel", amiga_dir);
+    bool ok = path && hunk_read(path, addr, out, n);
+    SDL_free(path);
+    return ok;
 }
 
 bool gfx_amiga_picture(const char *file, s16 x, s16 y)
@@ -222,11 +285,28 @@ bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPla
     bool ok = path && shp_load(path, name, &s);
     SDL_free(path);
     if (!ok) return false;
-    x = at == AMIGA_AT_OWN ? s.x : (s16)(x - s.hot_x);
+    bool box = at == AMIGA_BOX_AT_X;
+    x = at == AMIGA_AT_OWN ? s.x : box ? x : (s16)(x - s.hot_x);
     y = at == AMIGA_AT_HOT ? (s16)(y - s.hot_y) : s.y;
     for (int r = 0; r < s.h; r++)
         for (int c = 0; c < s.w; c++)
             if (s.mask[r * s.w + c]) put_pixel((s16)(x + c), (s16)(y + r), s.pix[r * s.w + c]);
+            else if (box) put_pixel((s16)(x + c), (s16)(y + r), s.set);
+    shp_free(&s);
+    return true;
+}
+
+bool gfx_amiga_sprite_own(const char *file, const char *name, s16 *x, s16 *y)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaSprite s;
+    bool ok = path && shp_load(path, name, &s);
+    SDL_free(path);
+    if (!ok) return false;
+    *x = s.x;
+    *y = s.y;
     shp_free(&s);
     return true;
 }

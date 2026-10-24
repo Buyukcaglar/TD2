@@ -18,7 +18,7 @@ static bool decode(const u8 *d, u32 len, AmigaSprite *s)
     s->hot_y = (s16)be16(d + 6);
     s->x = (s16)be16(d + 8);
     s->y = (s16)be16(d + 10);
-    u8 ones = (u8)(d[12] | d[13]);
+    s->set = d[13];                     /* duel's blit ($1f0f6) clears the planes of +12, sets those of +13 */
     int planes = 0;
     while (planes < 6 && d[14 + planes]) planes++;
     u32 n = (u32)wb * s->h;
@@ -37,7 +37,7 @@ static bool decode(const u8 *d, u32 len, AmigaSprite *s)
                 }
         }
     for (u32 i = 0; i < (u32)s->w * s->h; i++)
-        if (s->mask[i]) s->pix[i] |= ones;
+        if (s->mask[i]) s->pix[i] |= s->set;
     return true;
 }
 

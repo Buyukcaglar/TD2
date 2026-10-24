@@ -3,8 +3,9 @@
 Each sprite is a 20-byte header and its bitplanes:
   +0  width in bytes        +2  height
   +4  hot spot x, y (signed) +8  position x, y (signed)
-  +12, +13 planes set to one wherever the sprite is drawn (bit n = plane n); the fuel gauge's +13 = 10h
-          gives exactly the dashboard picture's colours. Why there are two bytes is still open.
+  +12 planes cleared wherever the sprite is drawn, +13 planes set (bit n = plane n), as duel's blit
+          ($1f0f6) does it; +12 is the planes the stored ones leave out, the fuel gauge's +13 = 10h
+          gives exactly the dashboard picture's colours
   +14 the planes stored, one bit each, in order, up to six bytes, ended by 0
   +20 the stored planes, each width x height bytes
 
@@ -50,7 +51,7 @@ class Sprite:
                             cover[base + b] = 1
         for i in range(len(pix)):
             if cover[i]:
-                pix[i] |= self.ones | self.flags
+                pix[i] |= self.flags
         self.pixels = bytes(pix)
         self.mask = bytes(cover)    # drawn where any stored plane is set (the blitter's cookie)
 

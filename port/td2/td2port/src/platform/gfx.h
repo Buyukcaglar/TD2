@@ -128,15 +128,25 @@ bool gfx_amiga_screens(void);                   /* the Amiga backend is on and h
 /* Draws a picture of the Amiga game (an ILBM, by its path in the Amiga folder) into the selected target
  * at (x, y), x a multiple of 8, and gives the target its colours. False if it is not there. */
 bool gfx_amiga_picture(const char *file, s16 x, s16 y);
-/* Where gfx_amiga_sprite puts a sprite: its hot spot at (x, y), its own position, or its hot spot at x
- * and its own top row (duel's difficulty arrow). */
-typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X } AmigaPlace;
+/* Where gfx_amiga_sprite puts a sprite: its hot spot at (x, y), its own position, its hot spot at x and
+ * its own top row (duel's difficulty arrow), or its top left corner at x and its own top row as a whole
+ * box, with no mask (the bar that slides in on "Accolade presents"). */
+typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X, AMIGA_BOX_AT_X } AmigaPlace;
 /* Draws sprite name of an Amiga sprite archive into the selected target. False if it is not there. */
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at);
+bool gfx_amiga_sprite_own(const char *file, const char *name, s16 *x, s16 *y);   /* its own position */
 /* Draws the part (sx, sy, sw, sh) of an Amiga picture scaled to w x h at (x, y) of the selected target,
  * each pixel the mean colour of its part of the picture, as the nearest of the target's colours for that
  * row. For an icon on a screen that already has its colours. False if the picture is not there. */
 bool gfx_amiga_picture_scaled(const char *file, s16 sx, s16 sy, s16 sw, s16 sh, s16 x, s16 y, s16 w, s16 h);
+/* Gives the selected target n colours as Amiga colour words (0RGB, 4 bits each). */
+void gfx_amiga_colours(const u16 *colours, int n);
+/* Clears plane k of the selected target, or sets plane k along a line; duel draws in one plane by
+ * giving a screen's bitmap that plane alone. */
+void gfx_amiga_plane_clear(int k);
+void gfx_amiga_plane_line(int k, s16 x0, s16 y0, s16 x1, s16 y1);
+/* n bytes of the Amiga game's program duel at addr, as tools/amiga/hunk.py lays it out. */
+bool gfx_amiga_duel_data(u32 addr, void *out, u32 n);
 #define AMIGA_PEN(n) ((u16)(0x20 + (n)))        /* a colour argument: pen n of the target's Amiga colours */
 /* The Amiga screen changes (duel $10bf6-$10d4c; game/amiga_wipe.c draws duel's shapes): a mask that
  * grows step by step, through which the screen shows the page (in), or black (out). An in change
