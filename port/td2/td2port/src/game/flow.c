@@ -75,6 +75,17 @@ void flow_pace(u32 ticks)
     while (ticks_get() - t0 < ticks) host_pump();
 }
 
+u32 amiga_ticks(u32 frames) { return (frames * 10000u + 3002u) / 6005u; }
+
+u16 wait_sound_end(void)
+{
+    for (u32 t = 0; t < 1000 && host_sound_busy(); t++) {
+        u16 k = getkey_timeout(1);
+        if (k) return k;
+    }
+    return 0;
+}
+
 /* PORT: the live graphics switch on the screens outside a race (docs/native-windows.md section 1).
  * The screens that wait for keys (main menu, car and scenery select, difficulty) read them with
  * getkey_timeout_switch, which returns KEY_SWITCH as soon as a switch is pending. The screen then

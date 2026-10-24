@@ -360,4 +360,10 @@ static void amiga_drive(const DriveSound *d)
     race_step();
 }
 
-const AudioBackend audio_amiga = { "Amiga", amiga_reset, amiga_speaker, amiga_render, amiga_event, amiga_drive };
+static bool amiga_busy(void)
+{
+    return mode == MUSIC && (form_waiting || speech_next || starter_wait > 0 || song_sfx_status(2));
+}
+
+const AudioBackend audio_amiga = { "Amiga", amiga_reset, amiga_speaker, amiga_render, amiga_event, amiga_drive,
+                                   amiga_busy, true };

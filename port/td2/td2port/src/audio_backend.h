@@ -47,6 +47,8 @@ typedef struct AudioBackend {
     void (*render)(s16 *out, int n);                /* the next n stereo frames: left, right */
     void (*event)(SoundEvent e, int n, const char *car);    /* NULL: not needed */
     void (*drive)(const DriveSound *d);                     /* NULL: not needed */
+    bool (*busy)(void);     /* a sample effect plays or waits to play; NULL: never */
+    bool amiga_pace;        /* the intro waits as long as the Amiga game's (its samples belong to them) */
 } AudioBackend;
 
 extern const AudioBackend audio_pc_speaker;         /* speaker.c */

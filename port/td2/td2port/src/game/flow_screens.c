@@ -63,6 +63,10 @@ s16 title_screen(void)
     host_sound_event(SOUND_TITLE, 0, NULL);          /* PORT: sample-based audio (the Amiga's speech) */
     k = screen_reveal(1);
     if (k != 0) return k;
+    if (host_amiga_pace()) {                         /* PORT: duel's title ends with its speech, then 220 frames */
+        if ((k = (s16)wait_sound_end()) != 0) return k;
+        return (s16)getkey_timeout(amiga_ticks(220));
+    }
     return (s16)getkey_timeout(300);
 }
 
@@ -104,10 +108,14 @@ s16 intro_sequence(void)
         mem_release_cache(load_shapes(DS_disk_path));
     }
     if ((r = accolade_screen()) != 0) return r;
-    if ((r = (s16)getkey_timeout(300)) != 0) return r;
+    if (host_amiga_pace()) {                         /* PORT: duel's intro (overlay 1204h) waits for the speech */
+        if ((r = (s16)wait_sound_end()) != 0) return r;
+        if ((r = (s16)getkey_timeout(amiga_ticks(5))) != 0) return r;
+    } else if ((r = (s16)getkey_timeout(300)) != 0) return r;
     r = showroom_intro(100);
     host_sound_event(SOUND_SHOWROOM_END, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
     if (r != 0) return r;
+    if (host_amiga_pace() && (r = (s16)getkey_timeout(amiga_ticks(5))) != 0) return r;   /* PORT: as duel */
     if ((r = title_screen()) != 0) return r;
     if ((r = credits()) != 0) return r;
     if (DSS(DS_nscenes) == 0) return r;
@@ -187,8 +195,26 @@ s16 credits(void)
  * Segment 0143: showroom
  * ============================================================================================== */
 
+/* PORT: the intro's showroom at the Amiga's pace (host_amiga_pace), as duel's overlay 1776h runs it in
+ * frames: the first car stays 200 frames (80 to the starter sound, 120 more), its window opens one
+ * picture every 8 frames, then the car gains 15E0h/10000h pixels a frame every frame and its window
+ * goes on one picture every 2 frames. The second car keeps the first's final speed (duel never resets
+ * it). The DOS pictures and distances stay. */
+static bool amiga_showroom;
+static s32 amiga_speed;                             /* pixels a frame, 16.16 */
+static s16 showroom_intro_dos(s16 unused);
+
+s16 showroom_intro(s16 unused)                      /* PORT: the intro's showroom drives may take the Amiga's pace */
+{
+    amiga_showroom = true;
+    amiga_speed = 0;
+    s16 r = showroom_intro_dos(unused);
+    amiga_showroom = false;
+    return r;
+}
+
 /* 0143:000a showroom_intro — game_flow.md §4.6 (verified) */
-s16 showroom_intro(s16 unused)
+static s16 showroom_intro_dos(s16 unused)
 {
     char name[20];
     s16 first = 0, second = 1;
@@ -253,6 +279,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
     s16 r = 0;
     char pathc[32];
     snprintf(pathc, sizeof pathc, "%s", path);       /* path may be DS:8644, which ensure_disk rewrites */
+    bool amiga = amiga_showroom && host_amiga_pace();   /* PORT */
 
     names[0] = 0;
     if (anim) {
@@ -294,10 +321,11 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
             select_screen();
             blit_copy_clip_hot(carS, x, y);
         }
-        r = (s16)getkey_timeout(0x96);
+        r = (s16)getkey_timeout(amiga ? amiga_ticks(200) : 0x96);
         if (r != 0) goto out;
         for (DSS(DS_ss_frame) = 0; DSS(DS_ss_frame) < count; DSS(DS_ss_frame)++) {   /* window opens */
-            deadline_set((u32)(s32)DSS(DS_ss_frame_ticks));
+            u32 f = (u32)DSS(DS_ss_frame);
+            deadline_set(amiga ? amiga_ticks(8 * (f + 1)) - amiga_ticks(8 * f) : (u32)(s32)DSS(DS_ss_frame_ticks));
             s16 fi = DSS(DS_ss_frame);
             if (fi >= 0 && fi < nwin) blit_copy_clip_hot(win[fi], x, y);   /* PORT: bounded */
             r = (s16)getkey_until_deadline();
@@ -308,7 +336,20 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
     DSS(DS_showroom_speed) = (x > 300) ? 0xC8 : 0;
     DSS(DS_ss_ticks) = 0;
     timer_add_routine(codeptr_far(FN_showroom_tick));
+    s16 window = DSS(DS_ss_frame);
+    s32 amiga_dist = 0;
+    u32 frames = 0;
     for (;;) {
+        if (amiga) {                                 /* PORT: duel's steps, one per frame of the ticks so far */
+            u32 due = (u32)(u16)DSS(DS_ss_ticks) * 6005u / 10000u;
+            for (; frames < due; frames++) {
+                amiga_dist += amiga_speed >> 16;
+                amiga_speed += 0x15E0;
+            }
+            DSS(DS_showroom_dist) = (s16)(amiga_dist < 0x7000 ? amiga_dist : 0x7000);
+            s16 fi = (s16)(window + (s16)((frames ? frames - 1 : 0) / 2));
+            DSS(DS_ss_frame) = fi < DSS(DS_ss_frames) ? fi : (s16)(DSS(DS_ss_frames) - 1);
+        }
         if ((s16)(x - DSS(DS_showroom_dist)) <= -200) break;
         s16 d = DSS(DS_showroom_dist);
         s16 w = flow_imod(flow_idiv(d, 12), 3);

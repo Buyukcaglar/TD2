@@ -95,6 +95,10 @@ const AudioBackend *host_audio_backend(void);
 /* The game's sound events and, ten times a second during a race, the car's state (audio_backend.h). */
 void host_sound_event(SoundEvent e, int n, const char *car);
 void host_sound_drive(const DriveSound *d);
+/* The pace of the intro follows the sound: with the Amiga's samples the intro waits as long as the Amiga
+ * game does, so the pictures stay with their sounds. host_sound_busy: an effect plays or waits. */
+bool host_amiga_pace(void);
+bool host_sound_busy(void);
 
 /* ---- Developer aid: with TD2_STATE_DIR set, the sim timer routine's entry state (the 1 MiB of memory,
  * then the leftover BP and CX as little-endian words) is saved as stateNNN.bin every TD2_STATE_EVERY

@@ -36,6 +36,8 @@ void host_speaker(u16 divisor, u8 port61_bits) { (void)divisor; (void)port61_bit
 void host_sim_state(const u8 *memory, u32 size, u16 bp, u16 cx) { (void)memory; (void)size; (void)bp; (void)cx; }
 void host_sound_event(SoundEvent e, int n, const char *car) { (void)e; (void)n; (void)car; }
 void host_sound_drive(const DriveSound *d) { (void)d; }
+bool host_amiga_pace(void) { return false; }
+bool host_sound_busy(void) { return false; }
 void host_set_user_dir(const char *dir) { (void)dir; }
 char *host_game_path(const char *name, bool create) { (void)name; (void)create; return NULL; }
 void host_free(void *p) { free(p); }

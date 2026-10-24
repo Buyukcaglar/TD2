@@ -797,6 +797,8 @@ void host_set_audio_backend(const AudioBackend *b)
 }
 
 const AudioBackend *host_audio_backend(void) { return audio_be; }
+bool host_amiga_pace(void) { return audio_be->amiga_pace; }
+bool host_sound_busy(void) { return audio_be->busy && audio_be->busy(); }
 
 void host_speaker(u16 divisor, u8 port61_bits)
 {

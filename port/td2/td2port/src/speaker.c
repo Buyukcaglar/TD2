@@ -82,4 +82,4 @@ static void pcs_render(s16 *out, int n)
     for (int i = n - 1; i >= 0; i--) out[2 * i + 1] = out[2 * i] = out[i];   /* mono to both sides */
 }
 
-const AudioBackend audio_pc_speaker = { "PC speaker", pcs_reset, pcs_speaker, pcs_render, NULL, NULL };
+const AudioBackend audio_pc_speaker = { "PC speaker", pcs_reset, pcs_speaker, pcs_render, NULL, NULL, NULL, false };

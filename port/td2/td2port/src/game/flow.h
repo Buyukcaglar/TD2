@@ -58,6 +58,11 @@ int  flow_stricmp(u16 a_ds, u16 b_ds);
 char *flow_concat(char *buf, size_t n, const char *a, const char *b);
 /* PORT: pacing for effects the original ran at CPU speed: present, then wait n timer ticks. */
 void flow_pace(u32 ticks);
+/* PORT: the Amiga's pace (host_amiga_pace). duel counts NTSC frames (60.05 a second), the DOS game its
+ * 100 Hz timer ticks. amiga_ticks: the ticks of that many frames. wait_sound_end: waits while a sample
+ * effect plays (at most 10 s); returns the key that ended it, or 0. */
+u32  amiga_ticks(u32 frames);
+u16  wait_sound_end(void);
 /* 16bb/0x94C7-style lookup of concatenated 4-character names into a C array (at most max entries). */
 int  flow_find_list(FarPtr arc, const char *names, FarPtr *out, int max);
 
