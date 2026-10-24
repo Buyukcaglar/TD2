@@ -40,4 +40,6 @@ Python analysis tools need `PYTHONPATH=analysis/tools/python`, which provides Un
 
 ## Phase order (user requirement)
 
-EGA → CGA → all DOS resources → native Windows → Amiga recovery → live graphics/audio switching plus Northern Germany Challenge scenery. DOS audio is PC Speaker only.
+EGA → CGA → all DOS resources (Hercules only) → native Windows → Amiga recovery → Amiga sound and music switching plus Northern Germany Challenge scenery. DOS audio is PC Speaker only.
+
+Native Windows (`docs/native-windows.md`): live graphics switching by one key combination that is the same on Windows and a later macOS build, a single portable exe, every dialog and window in the OS theme, no app features inside the game picture (only the app's context menu and question windows), and only the base DOS game required (two cars, Master scenery); expansions and the Amiga version are optional.

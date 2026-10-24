@@ -1,0 +1,114 @@
+# Native Windows phase: design and plan
+
+What the "native Windows" phase means now that the game runs on SDL3, what it has to change, and in what order. The requirements are the user's (2026-10-24):
+
+- Graphics, and later the Amiga version's sound and music, switch on the fly with one key combination that is the same on Windows and on a later macOS build.
+- The app ships as a single portable exe.
+- Every dialog and window follows the operating system's theme (light or dark).
+- No in-game features. Every app feature lives in the app's own context menu or in question windows, never inside the game picture.
+- The user needs at least the base DOS game: two cars and the Master scenery. The car and scenery expansions and the Amiga version are optional and can be added later.
+
+## 1. Live graphics switching
+
+### What a switch has to rebuild
+
+The port always runs TD2EGA's game logic. EGA, CGA and Hercules differ only in the graphics backend (`platform/gfx_backend.h`), in which sprite files they load (`.PES`/`.ESH` or `.PCS`/`.CSH`), and in one scenery colour word per stage. EGA and CGA runs reach identical game states at identical times (snapshot runs), so a switch never touches the simulation. It has to rebuild the following.
+
+- **Loaded sprite archives.** Every screen loads its archives by name through `load_shapes`, which picks the extension from the backend. Most screens load, draw and release them at once. A race keeps ten archives for the whole stage (`stage_handles[]` in `game/flow_stage.c`: road, cop, dash, opponent road, the scenery's three traffic cars, scenery, signs and font; signs and font are not graphics but sit in the same load order).
+- **Handle tables.** A race looks up thirteen sprite tables by name in those archives: in `main_view_load`, `mirror_load`, `stage_load` (scenery, road, three traffic sets, two cop sets) and `cockpit_load` (dash, dash digits). The simulation and the drawing code refer to sprites only through these tables (`hnd()`); nothing else in the race keeps a pointer into an archive.
+- **Buffers.** The page buffer, which is freed during a race, and in a race the main view, the mirror, the instrument cluster and the gear box (`gfx_create_buffer`). Their layout depends on the backend, and their descriptors live in the backend's pool.
+- **Scenery colours.** `scene_colours_load` reads the CGA or EGA word from the stage file.
+- **Adapter state.** The EGA palette, the CGA registers, the Hercules mode register, and the picture on the screen.
+
+### How a switch is applied
+
+A switch request (key combination or context menu) only sets a pending flag. The game applies it at a safe point, where nothing is half drawn.
+
+- **In a race**, at the top of the drive loop in `run_stage`, between two frames. The switch frees the race buffers and releases the race archives in reverse load order, swaps the backend, loads the same files again with the other extension, and runs the graphics halves of `stage_load`, `main_view_load`, `mirror_load` and `cockpit_load` again: the table lookups, the buffers, the scenery colours, and the cockpit drawn onto the screen. It does not run their resets of positions, fuel and timers. It then sets the HUD, gear gate and instrument redraw flags. The race goes on from the same state on the next frame. During a message, the crash sequence or the stage-end sequence, the switch waits for the drive loop.
+- **On every other screen** (titles, menus, car and scenery choice, difficulty, gas station, police stop, results, high scores) the archives are already released, so the screen has to draw itself again. Each screen's input wait returns a redraw signal when a switch is pending; the screen applies the switch, then draws again from its top with its current choices kept. `main_menu` already reloads and redraws on each loop, so it needs almost nothing. The other screens need a small change each; there are about fifteen.
+- **Applying the switch** calls the backend's `shutdown`, `gfx_set_backend`, then `reset` and `set_mode`, and re-points the host's frame source, which changes the window's size ratio (Hercules is 640 × 300).
+
+### How it is tested
+
+- Switching EGA → CGA → EGA during a scripted race must give the same frames afterwards as a run that never switched. The same holds for menus.
+- A switch to CGA at a given time must give the same frames, from the next screen or frame on, as a CGA run from the start. This works because EGA and CGA runs reach identical states.
+- Both become snapshot runs in `tools/snapshots.py`.
+
+### Sound
+
+DOS sound is PC Speaker only, so there is nothing to switch until the Amiga phase. The same pending-switch mechanism and the same key combination family will switch between PC Speaker and the Amiga's samples and music then.
+
+## 2. App UI: context menu and question windows
+
+The game picture stays the original game. App features live in a small platform layer, `platform/app_ui.h`, with one implementation per operating system: `app_ui_win32.c` now, `app_ui_macos.m` later.
+
+- **Context menu.** It opens with a right click on the window and with the key combination. It lists:
+  - Graphics: EGA, CGA, Hercules.
+  - Hercules monitor colour: white, green or amber. This answers the open phosphor question without a decision now.
+  - Window size, full screen.
+  - Game files: show what is installed, add an expansion folder.
+  - About, and Quit.
+  On Windows it is a Win32 popup menu (`TrackPopupMenuEx`) on the SDL window's handle. On macOS it is an `NSMenu`.
+- **Question windows.** Used for errors, confirmations and the first-start setup. On Windows, the standard message box and task dialog do not follow dark mode. So the layer draws its own small dialogs with Win32 controls themed for dark mode, or with standard ones in light mode. The folder picker is `SDL_ShowOpenFolderDialog` (the Windows file dialog, which follows the theme). On macOS, `NSAlert` and `NSOpenPanel` follow the theme by themselves.
+- **Theme.** `SDL_GetSystemTheme` and `SDL_EVENT_SYSTEM_THEME_CHANGED` say which theme is active.
+  - The title bar uses `DwmSetWindowAttribute(DWMWA_USE_IMMERSIVE_DARK_MODE)`, which is documented.
+  - Popup menus need uxtheme's `SetPreferredAppMode`, which is undocumented (ordinal 135, Windows 10 1903 and later). It is the common way, used by Notepad++ and others. Without it, menus stay light.
+- **Pausing.** While a menu or dialog is open the game stops: the emulated timer, the frame pacing and the speaker. A Win32 popup menu runs its own message loop, so the game must not count that time.
+- **Keys.** The app swallows its own combinations before the game's keyboard handler sees them. The game reads raw scan codes, so the combinations must avoid every key it uses. Ctrl+Alt is not usable: on many European layouts, Turkish included, it is AltGr.
+
+## 3. Game files
+
+### What the base game is
+
+The base DOS game is 73 files, about 600 KB:
+- the three executables (`TD2EGA.EXE`, `TD2CGA.EXE`, `TD2TDY.EXE`) and `DUEL.EXE`;
+- the common screens (`ACCOLADE`, `TESTDRV2`, `DSITITLE`, `GAMEOPT`, `GAMEDIFF`, `GASSTUFF`, `ENDGAME`, `COP`, `ROAD`);
+- `SONGS.BIN` and `VOICES.BIN`;
+- the catalogues `CARS.DAT`, `SCENES.DAT`, `SELECT.DAT` and `DISKID.DAT`;
+- the two cars, Ferrari F40 (`F40*`) and Porsche 959 (`P959*`);
+- the Master scenery (`TDS2*`).
+
+Each sprite file comes as `.PES` and `.PCS`. The port needs `TD2EGA.EXE`, because it runs that image's data. The optional sets in this copy are:
+
+| Set | Files | Prefixes |
+|---|---|---|
+| The Supercars | 55 | ROSS, COUN, LOTU, RUF, VETT |
+| The Muscle Cars | 55 | CAMA, DODG, GOAT, GT50, STNG |
+| California Challenge | 32 | CCC |
+| European Challenge | 34 | EC_ |
+
+A car is its `.BIN`, `O.BIN`, `.SS`, and its `DASH`, `REAR`, `ROAD` and `ST` sprite files. A scenery is its stage `.DAT` and `.SGN` files, its font, its `CAR1`–`CAR3` traffic and its other sprite files.
+
+### How the app finds them
+
+The game learns which cars and sceneries exist from `CARS.DAT` and `SCENES.DAT`, which the original expansion installers rewrote. The app does not trust or rewrite them. It builds both catalogues in memory from the files it finds, in the original order (base first). So adding an expansion is: pick its folder, and the next menu lists it. Expansion folders may be separate from the base folder, so the original disks or copies of them can be used as they are.
+
+- On first start without a known base folder, a question window explains what is needed and opens the folder picker. A `Game` folder next to the exe is found without asking.
+- The game files are read in place and never changed. High scores and `SELECT.DAT` go to the settings folder, as `--user-dir` does now.
+
+## 4. Single portable exe
+
+- **SDL3 must be linked statically.** The SDK in `analysis/external/sdl3-3.4.18` has only the DLL build. The static library has to be built from the SDL 3.4.18 source with `SDL_STATIC=ON`.
+- **The C runtime must be linked statically too** (`/MT`, CMake's `MSVC_RUNTIME_LIBRARY`). Otherwise the exe needs the Visual C++ runtime DLLs, which a clean machine may not have.
+- **An embedded manifest** gives common controls v6 (themed controls), per-monitor DPI awareness v2 and the UTF-8 code page. A version resource and our own icon go with it. No original media is embedded.
+- **Settings** go to a file next to the exe when that folder is writable, which makes the app truly portable. Otherwise they go to the per-user folder (`%APPDATA%\TestDrive2`, the current default).
+- The command-line options stay for scripts and tests.
+
+## 5. Order of work
+
+1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. The snapshots must stay the same.
+2. **Pending-switch mechanism and the race switch.** Includes the snapshot tests for switching and switching back.
+3. **Screen redraw on switch** for the other screens.
+4. **App UI layer on Windows.** Context menu with dark mode, the key combination, pausing, question windows. The graphics choice moves into the menu.
+5. **Game data manager.** Base-game check, catalogues built from the files found, expansion folders, first-start setup, settings file.
+6. **macOS** (later): the same `app_ui` interface with AppKit.
+
+## Open decisions for the user
+
+- **The key combination.** The proposal is:
+  - Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules);
+  - Ctrl+Shift+S, later, switches the sound;
+  - Ctrl+Shift+M or a right click opens the menu.
+  Ctrl is the Control key on both Windows and Mac keyboards, so the combination is really the same. On a Mac, though, users expect Cmd.
+- **Where settings live.** Next to the exe when writable (portable), or always in the per-user folder.
+- **Downloading the SDL 3.4.18 source** to build the static library: the 3.4.18 release from the official libsdl-org GitHub, about 15 MB, into `analysis/external/`.
