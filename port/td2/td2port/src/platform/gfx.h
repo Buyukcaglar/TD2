@@ -1,6 +1,7 @@
 #pragma once
-/* Planar EGA graphics — port of the TD2EGA.EXE assembly graphics library in segment 06c9
+/* Graphics library — port of the TD2EGA.EXE assembly graphics library in segment 06c9
  * (port/spec/platform.md §2.1, §3.1, §4.1–4.5, §4.12; scene_render.md for 06c9:5c98 / 06c9:5ca6).
+ * The pixel routines run on the active backend (gfx_backend.h; EGA today), the rest in gfx.c.
  *
  * Model (platform.md §4.1): a draw *target* is the original's 13-word descriptor, living in
  * code-segment memory (the CS row pool CS:B26B..CS:BA3A, or the screen descriptor CS:AF54):
@@ -44,15 +45,13 @@ static inline FarPtr gfx_desc_sprite(FarPtr desc)
 
 /* ---- port setup / presentation (no original counterpart) */
 
-/* Resets the EGA model (planes, registers, default mode-0Dh palette), checks the statically
- * initialised target state in CS and installs gfx_compose with host_set_frame_source(.., 320, 200).
- * Call once after mem_load_exe() and host_init(), before the game's main(). */
+/* Resets the backend's video model (EGA: planes, registers, default mode-0Dh palette), checks the
+ * statically initialised target state in CS and installs gfx_compose with host_set_frame_source at
+ * the backend's frame size. Call once after mem_load_exe() and host_init(), before the game's main(). */
 void gfx_init(void);
-/* Fills xrgb (320x200) from the EGA planes through the current palette; returns true if VRAM or the
- * palette changed since the last call. */
+/* Fills xrgb from the backend's screen; returns true if the screen or the palette changed since the
+ * last call. */
 bool gfx_compose(u32 *xrgb);
-/* Read access to the emulated VRAM (verification tools / debugging): plane k (0..3), 64 KB each. */
-const u8 *gfx_vram_plane(int k);
 
 /* ---- video mode, palette */
 void gfx_video_hook(void);                                              /* 06c9:5d00 (empty retf in EGA) */

@@ -1,4 +1,5 @@
-/* Sprite blitters of TD2EGA (port/spec/platform.md §4.2): 24 entry points, clipped body 06c9:9189 /
+/* EGA sprite blitters of TD2EGA (port/spec/platform.md §4.2): the body of the 24 entry points (the
+ * entry points themselves are in gfx.c), clipped body 06c9:9189 /
  * 91c1 / 91f3, unclipped body 06c9:9c75 / 9cad / 9cdf, the per-shift routine tables and the
  * constant-plane helpers (RAM 06c9:82d0 / 8336 / 839c, EGA 06c9:ad22 / ad8b / adf4).
  *
@@ -19,7 +20,7 @@
  * Blocks beyond the 4 destination slots of the original's stack frame are not emulated (see TODO). */
 #include "gfx_ega.h"
 
-enum { OP_REPLACE, OP_OR, OP_AND, OP_XOR };
+enum { OP_REPLACE = BLIT_REPLACE, OP_OR = BLIT_OR, OP_AND = BLIT_AND, OP_XOR = BLIT_XOR };
 enum { RECT_CLEAR, RECT_SET, RECT_XOR };
 
 static const u8 op_gcfunc[4] = { 0x00, 0x10, 0x08, 0x18 };   /* [bp-42h] */
@@ -447,32 +448,4 @@ static void blit_body(FarPtr spr, u16 px, u16 py, int op, bool clip)
     gc_out(3, 0);
 }
 
-/* ------------------------------------------------------------------------------------------------ */
-/* Entry points                                                                                     */
-
-static inline u16 hdr_hot_x(FarPtr s) { return rd16(s.seg, (u16)(s.off + 4)); }
-static inline u16 hdr_hot_y(FarPtr s) { return rd16(s.seg, (u16)(s.off + 6)); }
-static inline u16 hdr_own_x(FarPtr s) { return rd16(s.seg, (u16)(s.off + 8)); }    /* TD2: not masked */
-static inline u16 hdr_own_y(FarPtr s) { return rd16(s.seg, (u16)(s.off + 0x0A)); }
-
-#define BLIT_FAMILY(name_hot, name_raw, name_own, op, clip)                                              \
-    void name_hot(FarPtr spr, s16 x, s16 y)                                                              \
-    { blit_body(spr, (u16)((u16)x - hdr_hot_x(spr)), (u16)((u16)y - hdr_hot_y(spr)), op, clip); }       \
-    void name_raw(FarPtr spr, s16 x, s16 y) { blit_body(spr, (u16)x, (u16)y, op, clip); }               \
-    void name_own(FarPtr spr) { blit_body(spr, hdr_own_x(spr), hdr_own_y(spr), op, clip); }
-
-/* 06c9:916c/91a4/91d6 */ BLIT_FAMILY(blit_copy_clip_hot, blit_copy_clip_raw, blit_copy_clip_own, OP_REPLACE, true)
-/* 06c9:a6d8/a6f8/a718 */ BLIT_FAMILY(blit_or_clip_hot, blit_or_clip_raw, blit_or_clip_own, OP_OR, true)
-/* 06c9:7d7c/7d9c/7dbc */ BLIT_FAMILY(blit_and_clip_hot, blit_and_clip_raw, blit_and_clip_own, OP_AND, true)
-/* 06c9:bac8/bae8/bb08 */ BLIT_FAMILY(blit_xor_clip_hot, blit_xor_clip_raw, blit_xor_clip_own, OP_XOR, true)
-/* 06c9:9c58/9c90/9cc2 */ BLIT_FAMILY(blit_copy_hot, blit_copy_raw, blit_copy_own, OP_REPLACE, false)
-/* 06c9:a9d2/a9f2/aa12 */ BLIT_FAMILY(blit_or_hot, blit_or_raw, blit_or_own, OP_OR, false)
-/* 06c9:808a/80aa/80ca */ BLIT_FAMILY(blit_and_hot, blit_and_raw, blit_and_own, OP_AND, false)
-/* 06c9:c132/c152/c172 */ BLIT_FAMILY(blit_xor_hot, blit_xor_raw, blit_xor_own, OP_XOR, false)
-
-/* 06c9:c958 draw_cursor_glyph: XOR hotspot blit of the CS glyph CS:[CS:C8FE + idx*2] at (x & ~7, y) */
-void draw_cursor_glyph(s16 x, s16 y, u16 idx)
-{
-    u16 off = CSW((u16)(CS_cursor_glyph_tab + (u16)(idx * 2)));
-    blit_xor_hot(far_make(ASM_SEG, off), (s16)((u16)x & 0xFFF8), y);
-}
+void ega_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip) { blit_body(spr, px, py, (int)op, clip); }
