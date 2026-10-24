@@ -60,7 +60,8 @@ static u32 ega_rgb(u8 v)
 }
 
 /* Colours 0-15 are the palette registers' and, with five planes, 16-31 the Amiga backend's; with an
- * Amiga palette on the screen all 32 are its. */
+ * Amiga palette on the screen all 32 are its, and the rows from its split line down show its second
+ * palette. */
 bool gfx_ega_compose(u32 *xrgb)
 {
     if (!gfx_ega.dirty) return false;
@@ -69,7 +70,11 @@ bool gfx_ega_compose(u32 *xrgb)
     for (int i = 0; i < 32; i++)
         pal[i] = i < 16 && !gfx_ega.amiga_palette ? ega_rgb(gfx_ega.palette[i]) : gfx_ega.rgb[i];
     bool five = gfx_ega.planes == 5;
+    u32 pal2[32];
+    for (int i = 0; i < 32; i++) pal2[i] = gfx_ega.rgb2[i];
+    u16 split = gfx_ega.amiga_palette ? gfx_ega.split : 0;
     for (int y = 0; y < 200; y++) {
+        const u32 *row_pal = split && y >= split ? pal2 : pal;
         for (int bx = 0; bx < 40; bx++) {
             u32 off = (u32)(y * 40 + bx);
             u8 p0 = gfx_ega.plane[0][off], p1 = gfx_ega.plane[1][off];
@@ -78,7 +83,7 @@ bool gfx_ega_compose(u32 *xrgb)
                 int s = 7 - b;
                 int idx = (p0 >> s & 1) | (p1 >> s & 1) << 1 | (p2 >> s & 1) << 2 | (p3 >> s & 1) << 3
                         | (p4 >> s & 1) << 4;
-                xrgb[y * 320 + bx * 8 + b] = pal[idx];
+                xrgb[y * 320 + bx * 8 + b] = row_pal[idx];
             }
         }
     }

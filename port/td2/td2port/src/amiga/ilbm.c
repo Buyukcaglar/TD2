@@ -27,6 +27,9 @@ bool ilbm_read(const u8 *f, u32 len, AmigaPicture *p)
             packed = c[10];
         } else if (memcmp(f + at, "CMAP", 4) == 0) {
             memcpy(p->pal, c, n < sizeof p->pal ? n : sizeof p->pal);
+        } else if (memcmp(f + at, "CMP2", 4) == 0 && n >= 4) {
+            p->split = be16(c);                         /* the line, a word, then a CMAP */
+            memcpy(p->pal2, c + 4, n - 4 < sizeof p->pal2 ? n - 4 : sizeof p->pal2);
         } else if (memcmp(f + at, "BODY", 4) == 0) {
             body = c;
             body_len = n;

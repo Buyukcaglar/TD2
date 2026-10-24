@@ -30,6 +30,8 @@ typedef struct {
      * without, 0-15 are the palette registers' and colour_map is the identity. */
     bool amiga_palette;
     u32 rgb[32];
+    u16 split;           /* an Amiga palette: from this line down the screen shows rgb2 (0: none) */
+    u32 rgb2[32];
     u8 colour_map[16];   /* the colour each EGA colour number draws on the screen */
     bool dirty;
 } EgaState;

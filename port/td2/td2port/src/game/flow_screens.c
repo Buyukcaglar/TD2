@@ -581,6 +581,64 @@ void scenery_select(void)
     }
 }
 
+/* PORT: the Amiga game's file prefix of each car, by its DOS code, for the Amiga graphics. */
+static const char *amiga_car_prefix(const char *code)
+{
+    static const struct { const char *code, *prefix; } cars[] = {
+        { "F40", "cars/f40" }, { "P959", "cars/p959" }, { "CAMA", "cars1/cars/camo" },
+        { "DODG", "cars1/cars/dodge" }, { "GT50", "cars1/cars/gt500" }, { "GOAT", "cars1/cars/gto" },
+        { "STNG", "cars1/cars/stingray" }, { "COUN", "cars2/cars/coun" }, { "LOTU", "cars2/cars/lotu" },
+        { "ROSS", "cars2/cars/ross" }, { "RUF", "cars2/cars/ruf" }, { "VETT", "cars2/cars/vett" },
+    };
+    for (size_t i = 0; i < sizeof cars / sizeof cars[0]; i++) {
+        const char *a = code, *b = cars[i].code;
+        while (*a && (*a | 0x20) == (*b | 0x20)) a++, b++;
+        if (!*a && !*b) return cars[i].prefix;
+    }
+    return NULL;
+}
+
+/* PORT: the option screen in its Amiga form (duel $2e07c): its picture, each car's logo in its box and
+ * the scenery's icon. False without the Amiga graphics. */
+static bool amiga_menu_page(void)
+{
+    if (!gfx_amiga_screens() || !gfx_amiga_picture("pics/gameoptionscreen", 0, 0)) return false;
+    gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
+    const char *cars[2] = { DSTR(DS_player_car_code), DSTR(DS_opp_car_code) };
+    char file[48];
+    for (int i = 0; i < 2; i++) {
+        const char *car = amiga_car_prefix(cars[i]);
+        s16 x = (s16)(i * 0x4E + 7);
+        if (!car || !gfx_amiga_sprite(flow_concat(file, sizeof file, car, "logo.shp"), "rcar",
+                                      (s16)(x + 0x22), 0xBE, false))
+            gfx_draw_text(i ? 0x7463 : 0x7455, i ? 0x6C : 0x1C, 0xAA);              /* "N/A" */
+    }
+    const char *scn = amiga_scenery_prefix(DSTR(DS_scn_code));
+    if (!scn || !gfx_amiga_sprite(flow_concat(file, sizeof file, scn, "gameoption.shp"), "scn0", 0, 0, true))
+        gfx_draw_text(0x7471, 0xBC, 0xAA);                                          /* "N/A" */
+    gfx_set_text_colours(COL(0x0F, 3), 0);
+    return true;
+}
+
+/* PORT: the Amiga highlight (duel $2dc40): three rectangles round the selected box (the boxes at
+ * $24bb4, in the DOS order of the icons), in pen 14 in the top row and 16 in the bottom row. */
+static void amiga_menu_highlight(void)
+{
+    static const s16 boxes[6][4] = {
+        { 46, 30, 149, 110 }, { 166, 30, 269, 110 },
+        { 5, 137, 78, 195 }, { 83, 137, 156, 195 }, { 161, 137, 234, 195 }, { 239, 137, 312, 195 },
+    };
+    const s16 *b = boxes[DSS(DS_menu_sel)];
+    u16 pen = AMIGA_PEN(DSS(DS_menu_sel) < 2 ? 14 : 16);
+    for (s16 k = 0; k < 3; k++) {
+        s16 x0 = (s16)(b[0] - k), y0 = (s16)(b[1] - k), x1 = (s16)(b[2] + k), y1 = (s16)(b[3] + k);
+        gfx_fill_rect(x0, y0, (s16)(x1 - x0 + 1), 1, pen);
+        gfx_fill_rect(x0, y1, (s16)(x1 - x0 + 1), 1, pen);
+        gfx_fill_rect(x0, y0, 1, (s16)(y1 - y0 + 1), pen);
+        gfx_fill_rect(x1, y0, 1, (s16)(y1 - y0 + 1), pen);
+    }
+}
+
 /* Highlight box of the selected GAMEOPT icon (019e:0a2f-0ad3). */
 static void menu_draw_highlight(void)
 {
@@ -592,41 +650,50 @@ static void menu_draw_highlight(void)
     draw_rect_outline((s16)(x + 1), (s16)(y - 1), (s16)((s16)(w * gfx_px_per_byte()) + x - 2), (s16)(y + h), 0xFFFF);
 }
 
+/* The car logos and the scenery icon of the DOS option screen, as main_menu draws them. */
+static void dos_menu_icons(void)
+{
+    char name[26];
+    FarPtr a;
+    if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x744B)),
+                      DSS(DS_car_disk), 0) == 0) {                              /* "rear" */
+        a = load_shapes(DS_disk_path);
+        blit_copy_clip_hot(res_find(a, 0x7450), 0x28, 0xBF);                     /* "logS" */
+        mem_release_cache(a);
+    } else {
+        gfx_draw_text(0x7455, 0x1C, 0xAA);                                      /* "N/A" */
+    }
+    if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_opp_car_code), DSTR(0x7459)),
+                      DSS(DS_opp_disk), 0) == 0) {                              /* "rear" */
+        a = load_shapes(DS_disk_path);
+        blit_copy_clip_hot(res_find(a, 0x745E), 0x78, 0xBF);                     /* "logS" */
+        mem_release_cache(a);
+    } else {
+        gfx_draw_text(0x7463, 0x6C, 0xAA);                                      /* "N/A" */
+    }
+    if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_scn_code), DSTR(0x7467)),
+                      DSS(DS_scn_disk), 0) == 0) {                              /* "icon" */
+        a = load_shapes(DS_disk_path);
+        blit_copy_own(res_find(a, 0x746C));                                      /* "pics" */
+        mem_release_cache(a);
+    } else {
+        gfx_draw_text(0x7471, 0xBC, 0xAA);                                      /* "N/A" */
+    }
+}
+
 /* 019e:06c5 main_menu — game_flow.md §4.7 (verified against the disassembly) */
 s16 main_menu(void)
 {
     char name[26];
     for (;;) {
-        FarPtr a, g;
+        FarPtr g;
         flow_switch_graphics();
         DSS(DS_menu_prev_sel) = (s16)(DSS(DS_menu_sel) + 1);
         gfx_select_target(flow_page_desc());
         gfx_clear_clip(0);
         gfx_set_text_colours(COL(0x0F, 3), 0);
-        if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x744B)),
-                          DSS(DS_car_disk), 0) == 0) {                              /* "rear" */
-            a = load_shapes(DS_disk_path);
-            blit_copy_clip_hot(res_find(a, 0x7450), 0x28, 0xBF);                     /* "logS" */
-            mem_release_cache(a);
-        } else {
-            gfx_draw_text(0x7455, 0x1C, 0xAA);                                      /* "N/A" */
-        }
-        if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_opp_car_code), DSTR(0x7459)),
-                          DSS(DS_opp_disk), 0) == 0) {                              /* "rear" */
-            a = load_shapes(DS_disk_path);
-            blit_copy_clip_hot(res_find(a, 0x745E), 0x78, 0xBF);                     /* "logS" */
-            mem_release_cache(a);
-        } else {
-            gfx_draw_text(0x7463, 0x6C, 0xAA);                                      /* "N/A" */
-        }
-        if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_scn_code), DSTR(0x7467)),
-                          DSS(DS_scn_disk), 0) == 0) {                              /* "icon" */
-            a = load_shapes(DS_disk_path);
-            blit_copy_own(res_find(a, 0x746C));                                      /* "pics" */
-            mem_release_cache(a);
-        } else {
-            gfx_draw_text(0x7471, 0xBC, 0xAA);                                      /* "N/A" */
-        }
+        bool amiga = amiga_menu_page();
+        if (!amiga) dos_menu_icons();
         if (ensure_disk(0x7475, DSS(DS_data_disk), 0) != 0) return 1;                /* "gamediff" */
         mem_release_cache(load_shapes(DS_disk_path));                                /* preload */
         if (ensure_disk(0x747E, DSS(DS_data_disk), 0) != 0) return 1;                /* "gameopt" */
@@ -636,7 +703,8 @@ s16 main_menu(void)
             flow_find_list(g, DSTR(0x7486), spr, 9);         /* "cloccompycarocarsceninsttxt0txt1arrw" */
             for (int i = 0; i < 9; i++) ds_far_wr((u16)(DS_gameopt_spr + 4 * i), spr[i]);
         }
-        for (int i = 0; i < 9; i++) blit_or_own(ds_far((u16)(DS_gameopt_spr + 4 * i)));
+        if (!amiga)
+            for (int i = 0; i < 9; i++) blit_or_own(ds_far((u16)(DS_gameopt_spr + 4 * i)));
         screen_reveal(3);
         kbd_flush();
 
@@ -658,7 +726,8 @@ s16 main_menu(void)
             if (DSS(DS_menu_sel) > 5) DSS(DS_menu_sel) = 0;
             if (DSS(DS_menu_prev_sel) != DSS(DS_menu_sel)) {
                 blit_copy_own(flow_page_sprite());   /* erase the old highlight */
-                menu_draw_highlight();
+                if (amiga) amiga_menu_highlight();
+                else menu_draw_highlight();
             }
             k = getkey_timeout_switch(DSW(DS_demo_mode) ? 100 : 3000);
             if (k == KEY_SWITCH) continue;

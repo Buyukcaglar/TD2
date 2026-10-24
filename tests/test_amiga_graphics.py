@@ -1,8 +1,9 @@
 """The Amiga graphics backend with the Amiga game's files (platform/gfx_amiga.c).
 
 Runs the port headless with --amiga-graphics and the amiga setting, through the menus to the scenery
-choice, and checks that the screen there is the Master scenery's Amiga picture (scen/sc1_icon) in its
-own colours, as the Amiga shows them (the top 4 bits of each component), below the disk name.
+choice, and checks the option screen's title against its Amiga picture (pics/gameoptionscreen) and the
+scenery choice against the Master scenery's Amiga picture (scen/sc1_icon), in their own colours, as the
+Amiga shows them (the top 4 bits of each component).
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -24,12 +25,16 @@ KEYS = ('30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,42:Down,43:Return,4
         '55:Escape,60:Right,60.5:Right,61:Return')
 
 
+def amiga_colours(pic):
+    return [tuple((c >> 4) * 17 for c in rgb) for rgb in pic.palette]
+
+
 @unittest.skipUnless(EXE.exists() and GAME.exists() and (AMIGA / 'scen/sc1_icon').exists(),
                      'needs build/td2port.exe, runs/game and runs/amiga')
 class AmigaGraphicsTest(unittest.TestCase):
-    def test_scenery_choice_picture(self):
+    @classmethod
+    def setUpClass(cls):
         from PIL import Image
-        import ilbm
         with tempfile.TemporaryDirectory() as tmp:
             tmp = Path(tmp)
             (tmp / 'settings.ini').write_text(f'amiga={AMIGA.as_posix()}\n')
@@ -39,17 +44,30 @@ class AmigaGraphicsTest(unittest.TestCase):
                        TD2_RUN_SECONDS='64', TD2_SNAPSHOT_DIR=str(shots), TD2_SNAPSHOT_MS='20', TD2_KEYS=KEYS)
             p = subprocess.run([str(EXE), '--amiga-graphics', '--game-dir', str(GAME), '--user-dir', str(tmp)],
                                env=env, capture_output=True, text=True, timeout=300)
-            self.assertEqual(p.returncode, 0, p.stderr)
-            # the last frame of the dissolve that opens the scenery choice
+            assert p.returncode == 0, p.stderr
             times = [(float(w[2]), w[0]) for w in (ln.split() for ln in p.stderr.splitlines())
                      if len(w) == 4 and w[0].startswith('snap') and w[1] == 'at']
-            name = max(n for t, n in times if 61 <= t < 63)
-            frame = Image.open(shots / name).convert('RGB')
-        pic = ilbm.parse((AMIGA / 'scen/sc1_icon').read_bytes())
-        pal = [tuple((c >> 4) * 17 for c in rgb) for rgb in pic.palette]
-        diff = [(x, y) for y in range(8, 200) for x in range(320)
+
+            def last(t0, t1):
+                return Image.open(shots / max(n for t, n in times if t0 <= t < t1)).convert('RGB')
+            cls.option_screen = last(30, 39)       # the option screen, before the first key there
+            cls.scenery_choice = last(61, 63)      # the last frame of the dissolve that opens the scenery choice
+
+    def assert_picture(self, frame, file, rows):
+        import ilbm
+        pic = ilbm.parse((AMIGA / file).read_bytes())
+        pal = amiga_colours(pic)
+        diff = [(x, y) for y in rows for x in range(320)
                 if frame.getpixel((x, y)) != pal[pic.pixels[y * 320 + x]]]
-        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ from the Amiga picture')
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ from {file}')
+
+    def test_option_screen_picture(self):
+        # the title above the boxes, in the picture's colours above its split line
+        self.assert_picture(self.option_screen, 'pics/gameoptionscreen', range(0, 27))
+
+    def test_scenery_choice_picture(self):
+        # below the disk name
+        self.assert_picture(self.scenery_choice, 'scen/sc1_icon', range(8, 200))
 
 
 if __name__ == '__main__':

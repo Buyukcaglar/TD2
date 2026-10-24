@@ -128,6 +128,9 @@ bool gfx_amiga_screens(void);                   /* the Amiga backend is on and h
 /* Draws a picture of the Amiga game (an ILBM, by its path in the Amiga folder) into the selected target
  * at (x, y), x a multiple of 8, and gives the target its colours. False if it is not there. */
 bool gfx_amiga_picture(const char *file, s16 x, s16 y);
+/* Draws sprite name of an Amiga sprite archive into the selected target: at its own position if own,
+ * else with its hot spot at (x, y). False if it is not there. */
+bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, bool own);
 #define AMIGA_PEN(n) ((u16)(0x20 + (n)))        /* a colour argument: pen n of the target's Amiga colours */
 
 /* ---- sprite blitters (platform.md §4.2)

@@ -11,11 +11,14 @@
 
 #include "gfx_ega.h"
 #include "../amiga/ilbm.h"
+#include "../amiga/shp.h"
 
 typedef struct {
     u16 seg;            /* the buffer's plane 0 segment */
     bool amiga;         /* an Amiga palette, else the EGA's */
     u32 rgb[32];
+    u16 split;          /* from this line down, rgb2 (0: none) */
+    u32 rgb2[32];
     u8 map[16];
 } TargetColours;
 
@@ -35,6 +38,7 @@ static const u8 ega_colours[16][3] = {
 static void ega_colours_of(TargetColours *t)
 {
     t->amiga = false;
+    t->split = 0;
     for (int i = 0; i < 16; i++) t->map[i] = (u8)i;
 }
 
@@ -43,6 +47,8 @@ static void show_screen_colours(void)
 {
     gfx_ega.amiga_palette = screen.amiga;
     memcpy(gfx_ega.rgb, screen.rgb, sizeof gfx_ega.rgb);
+    gfx_ega.split = screen.split;
+    memcpy(gfx_ega.rgb2, screen.rgb2, sizeof gfx_ega.rgb2);
     memcpy(gfx_ega.colour_map, screen.map, sizeof gfx_ega.colour_map);
     gfx_ega.dirty = true;
 }
@@ -129,16 +135,21 @@ bool gfx_amiga_screens(void)
     return gfx_backend() == &gfx_amiga_backend && amiga_dir;
 }
 
-/* The picture's colours for the selected target: the Amiga shows the top 4 bits of each component. */
+/* An ILBM colour as the Amiga shows it: the top 4 bits of each component. */
+static u32 amiga_rgb(const u8 c[3])
+{
+    return (c[0] >> 4) * 17u << 16 | (c[1] >> 4) * 17u << 8 | (c[2] >> 4) * 17u;
+}
+
+/* The picture's colours for the selected target. */
 static void set_target_palette(const AmigaPicture *p)
 {
     TargetColours *t = target_colours();
     if (!t) return;
     t->amiga = true;
-    for (int i = 0; i < 32; i++) {
-        u32 r = (p->pal[i][0] >> 4) * 17u, g = (p->pal[i][1] >> 4) * 17u, b = (p->pal[i][2] >> 4) * 17u;
-        t->rgb[i] = r << 16 | g << 8 | b;
-    }
+    for (int i = 0; i < 32; i++) t->rgb[i] = amiga_rgb(p->pal[i]);
+    t->split = p->split;
+    for (int i = 0; i < 32; i++) t->rgb2[i] = amiga_rgb(p->pal2[i]);
     for (int c = 0; c < 16; c++) {
         int best = 0, dist = 0x7FFFFFFF;
         for (int i = 0; i < (1 << p->planes) && i < 32; i++) {
@@ -184,5 +195,43 @@ bool gfx_amiga_picture(const char *file, s16 x, s16 y)
     if (on_screen) gfx_ega.dirty = true;
     set_target_palette(&p);
     ilbm_free(&p);
+    return true;
+}
+
+/* One pixel of the selected target, within its clip. */
+static void put_pixel(s16 x, s16 y, u8 v)
+{
+    if (x < (s16)(CSW(GFX_CUR_CLIP_X0) * 8) || x >= (s16)(CSW(GFX_CUR_CLIP_X1) * 8)) return;
+    if (y < (s16)CSW(GFX_CUR_CLIP_Y0) || y >= (s16)CSW(GFX_CUR_CLIP_Y1)) return;
+    u16 off = (u16)(row_at((u16)y) + (u16)(x >> 3));
+    u8 bit = (u8)(0x80 >> (x & 7));
+    bool on_screen = CSW(GFX_CUR_PLANE0) == VRAM_SEG;
+    for (int k = 0; k < 5; k++) {
+        u8 *b = on_screen ? &gfx_ega.plane[k][off] : ram_plane(k) ? mp(ram_plane(k), off) : NULL;
+        if (b) *b = (u8)(v >> k & 1 ? *b | bit : *b & ~bit);
+    }
+    if (on_screen) gfx_ega.dirty = true;
+}
+
+bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, bool own)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaSprite s;
+    bool ok = path && shp_load(path, name, &s);
+    SDL_free(path);
+    if (!ok) return false;
+    if (own) {
+        x = s.x;
+        y = s.y;
+    } else {
+        x = (s16)(x - s.hot_x);
+        y = (s16)(y - s.hot_y);
+    }
+    for (int r = 0; r < s.h; r++)
+        for (int c = 0; c < s.w; c++)
+            if (s.mask[r * s.w + c]) put_pixel((s16)(x + c), (s16)(y + r), s.pix[r * s.w + c]);
+    shp_free(&s);
     return true;
 }
