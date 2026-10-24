@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000385"
+  ],
+  "vectors": 85440,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ea79fed4125614fa23a0466511f78822d443a0d8c446f74a3477e4810f8dbe72",
+  "source_sha256": "907645faebf7455ddb09c59fcb4a0d8a79d4c8fa2198baf8b8a3bda722570fd5",
+  "validator_sha256": "11c7b1154235da6c4d9b4583bc720ac849d1ced12b2ea04149e56bcd3d4014d1",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_window_controllers.py",
+      "sha256": "c324866dc1944a0d69852dabd8d705cfa999978c7cbf3910087650f3659f9363"
+    },
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-byte-div-reference-v1.json",
+      "sha256": "8d48a8989d196a92a2bea15d2b2390d41a73e66117230c5bd604b79e3cd2c991"
+    }
+  ],
+  "original_instructions_executed": 7104452,
+  "instruction_sites_in_fence": 196,
+  "instruction_sites_exercised": 196,
+  "fixture_coverage": {
+    "root_near_return": 83120,
+    "guard_CALLs": 57800,
+    "parent_4A2E_CALLs": 56032,
+    "child_control_setter_ring_CALLs": 166656,
+    "control_4612_CALLs": 54720,
+    "CPU_bus_writes": 1320740,
+    "DS_equals_SS_cases": 44352,
+    "raw_root_returns": 320,
+    "completed_byte_DIVs": 30960,
+    "AH_remainder_lookup_cases": 20928,
+    "forced_state_stores": 43212,
+    "forced_after_BP_below20": 96,
+    "low_path_postBP_ge20_without_force": 96,
+    "prefix_guard": 512,
+    "prefix_parent_sample": 256,
+    "prefix_child": 128,
+    "prefix_control": 96,
+    "raw_product_return": 192,
+    "raw_control_return": 192,
+    "raw_setter_return": 192,
+    "raw_sample_root_return": 368,
+    "raw_ring_return": 384
+  },
+  "masked_selector_values": 128,
+  "byte_DIV_inputs": 98,
+  "external_lookup_word_offsets": 98,
+  "external_lookup_max_word_offset": 2084,
+  "signed_byte_coefficients": 256,
+  "limits": "Actual4C85/fullSS/currentDS-maskedtoken/inline-or-ESwidth/BYTE-DIV5-keepsAHlookup/BYTE-signedIMUL50/wrappedinterval/actual4D26-requiredZF/actualnear4A2E/frozenfullSSfamily/cachedprechildBP>=20forcedstate/globalCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. No actualcaller-table-allwriters-objects-capacities-fieldunits-sharedsource-reset-IRQ-lifetime-core acceptance. NoDOSsession/renderer/audio/fullresourcecodec/fullstate/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure."
+}

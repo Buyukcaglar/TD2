@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_long_arithmetic.cmd",
+    "sha256": "8aea09ca16b431e6d2f90dcab730b97c39053d4b493e1bc3d49e6039b7dc5fea"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_long_arithmetic.c",
+      "sha256": "8e925d1d0ee7003ad7cb4b31c59f2b0980b7e54c32ede007dd50b462478411b0"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.c",
+      "sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc"
+    },
+    {
+      "path": "src/recovered/td2ega_long_arithmetic.h",
+      "sha256": "bce2723cbe98c9f30b34174e4733ee757d5fec6b9c6b5380552c0d6d98b61414"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.h",
+      "sha256": "1ca9473ab53fa3b545dcb697df135ddcea989691dc877628b76c90bd4bc4663f"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/long-arithmetic-repro/td2ega_long_arithmetic.dll",
+      "sha256": "1fd5f16e657c881af7ca955ff4786979b9984d557efff4896e39ac57decc8281",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/long-arithmetic-repro/td2ega_long_arithmetic.obj",
+      "sha256": "776235fff9b868f858035ff3e40059fa2d06261dfafba11979774a026ab81227",
+      "bytes": 9552
+    },
+    {
+      "path": "analysis/build/long-arithmetic-repro/td2ega_signed_motion.obj",
+      "sha256": "95658a4835665f22ac2dc9e42e4e2484c898af93b46a7462f31a9d737a2be89c",
+      "bytes": 3114
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/long-arithmetic-build-v1.log",
+    "sha256": "31a2d7ef677641524924388098be7918273198a14523eae6dafb8f883e03aaee"
+  },
+  "limit": "Actual2E42quotient/2F1Cremainder+actual2EE8 instructions against word-level C roots and frozenactualmultiply C with sourceSSABI adapter. FourSSoperandwords rewritten to magnitudes, twoDIVfastpath/SHR-RCRnormalize/correction/general multiply, actualSSsaves/args/farframes andliteralRETF8 atchildandroot(fullbus/GPR/BP/CFIFDF/control). Parentguards excludeonlyfive multiplyfastbranch sites alreadycovered byseparatemultiplyunit. UndefinedsuccessfulDIVFLAGS unadmitted; exposedprefix/rootCF definedbyotheroperations. DIVfaultprefixbeforeinstruction/exceptiondelivery; nativebefore-shift/CALL budgets separate. INT_MIN/-1 rawwrapreturnedwithout host signedUB, quotient/remainder mathematicalbitpattern checks separateassertionsoncompletedcases. Actualcaller/type/storage/exclusion/lifetime/otherFLAGS/core/session/gameplay/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000343",
+    "FN-EGA-000345"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000344"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-long-arithmetic-context-v1.json",
+    "sha256": "4eee18cc7f2f3d42526c2d304fe77af16c0b4482a56bdf9acc9006c0f86b787c"
+  }
+}

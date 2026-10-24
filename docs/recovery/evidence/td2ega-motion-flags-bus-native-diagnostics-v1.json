@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 22,
+  "script_sha256": "477a0d96e284ead9e591ad482938769ef63ef268864326fc9072a9fcfbb44353",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "e0def1d876bee850ec18c8adeeecf0a0669ced5374011345293dbe3733dcfe57",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_motion_flags_bus.py",
+      "sha256": "ac079cd6dc1877be8b4793115a100a4b0daf38b75578c9d3b5d0f510c71d4365"
+    }
+  ],
+  "limits": "Nativeonlyinvalidbeforeeffects/rawFLAGS-mask-Stateconsistency/nulloutput/actualSSargumentandfarframes/budgetprefixNEGDX/actualRETF8thenplainRETF/terminalpreclampCMPversusdampingSUB/fullFLAGSdefined/IFDFpreserved. Originalequivalence separate; whole420A-403B/caller-writers-domain-capacity-lifetime-IRQ-core/game/fidelity open."
+}

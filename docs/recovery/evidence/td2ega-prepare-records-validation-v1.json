@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000083",
+  "result": "pass",
+  "vectors": 6240,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "eb9e8e0a3f3475cd02083dd61adb50b546539693b70c1a329f4caff45bab1f81",
+  "source_sha256": "49bb5d9af7ecc44b2218028a6303dad720bd11f0bbf449b843244df004b2ea11",
+  "validator_sha256": "871b2def19017d942879051e818169ea40b6da839b673f8cbbb330925b375474",
+  "validator_dependencies": [
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    }
+  ],
+  "original_instructions_executed": 38530622,
+  "fixture_coverage": {
+    "all_record_count_boundaries": 1530,
+    "divide_fault_prefix": 648,
+    "normal_return": 5592,
+    "same_DS_SS_True": 6162,
+    "delete_threshold_cursor_patterns": 280,
+    "multiply_divide_prefixes": 256,
+    "independent_SS_without_deletion": 72,
+    "same_DS_SS_False": 78,
+    "conditional_SS_alias_writes": 6,
+    "varied_terminated_tables": 4096
+  },
+  "instruction_sites_exercised": 64,
+  "instruction_sites_in_fence": 64,
+  "original_DIV_fault_prefixes": 648,
+  "limits": "Complete1E59+actual780E andlinkednativebyte-source composition, serializedsynthetic20bitbus. SS BP+SI fields distinctfromDSglobals/deletion/ring; count/threshold/cursor/overlap/divideprefix andconsumption order retained. FreshCPUafterDIVfault; nativebudgetdiagnostics separate. ConditionalSSalias fixtures are notactualcaller/resetproof. No realresources/IRQ/exclusion/fullstate/gamecore/RNGmeaning/gameplay/fidelity acceptance."
+}

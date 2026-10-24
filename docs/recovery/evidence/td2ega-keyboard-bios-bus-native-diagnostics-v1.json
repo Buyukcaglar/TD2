@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 16,
+  "script_sha256": "7ad2011a74e4c5e56875752e7cfe3fe8199b0a35328a15e6e5c78d4401fc8ff4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "e76c859540553f48ef0e4dea1dc90b5d08702fbd140ae9b2781d8abb49e219d3",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_keyboard_bios_bus.py",
+      "sha256": "50b53ddacbde5be2ae202f8c149f034dd5bbc14b6c7341bfd0aa8c0e6a9d2678"
+    }
+  ],
+  "limits": "Native-only invalid-before-effects/nulloutput/PUSHDS-beforependingread/AH0clear-savedDS-BX-IRETIP-FLAGSwordaliases/AH1RETF2-IF1-entryDF-versusIRETactualsavedCFZFIFDF/AH2ALonly/unhandledAH/preunqualifiedRETF2-IRETboundaries. Separatefromoriginalcomparison/actualINT-IRQdelivery/caller-allwriters-lifetime/whole420A-403B-core/game-fidelity."
+}

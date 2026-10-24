@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_runtime_message.cmd",
+    "sha256": "f1c4d175348afb91e7c937959fb4364004a5e38e466a998c13899f1d7398bb27"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_runtime_message.c",
+      "sha256": "257a111ed894575e4339675a4e4363d673236384966e0c98ada04029b608ba8a"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_message.h",
+      "sha256": "204e7a9ed73c68887ba10cf34907895dc900609c31820caacf98ee822f1cf780"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/runtime-message-repro/td2ega_runtime_message.dll",
+      "sha256": "046fb5048a79942acc8b445b90acdc180f1ab7725446785526ab1cd210001864",
+      "bytes": 105984
+    },
+    {
+      "path": "analysis/build/runtime-message-repro/td2ega_runtime_message.obj",
+      "sha256": "be56e056224c3487963980121a7818358521ab83e55509a12259206c18e2f9b1",
+      "bytes": 6512
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/runtime-message-build-v1.log",
+    "sha256": "f45e0079fbb5c7e4b8474dfb1d56e3783ee1c30b74318b3f6623d055386f9ac4"
+  },
+  "limit": "Actual088Crawcatalog lookup and08B7actualnestedlookup/outputscan/RETF2callee cleanup, incomingDF/word wrap, SSarguments/saves/farframes/fullbus/GPR/BP/CFIFDF/control. SyntheticDOS40 fullreturnedstate/DS/BP/IFDF/SSsave mutations, realINTframes/file/device effects unadmitted. Nativebefore-element/INT/adapterdiagnostics separate. Originalcatalog/message bytes external; caller/NUL/capacity/otherFLAGS/writers/lifetime/core/resourcefedP2/P3/device/session/game/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000269",
+    "FN-EGA-000270"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-runtime-message-context-v1.json",
+    "sha256": "f90522049c4103affeb72b691124c84455156cd89b3cb73d0e5c8e050dcb01ac"
+  }
+}

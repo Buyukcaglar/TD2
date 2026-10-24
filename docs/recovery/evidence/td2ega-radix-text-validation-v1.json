@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000330",
+    "FN-EGA-000331"
+  ],
+  "vectors": 85760,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "04fe565687b579bf36fdcd3697e4ec1bc397c8b9eff34503df61654e7b2cda34",
+  "source_sha256": "b05243100bceeccf86d5337fc3feb8ac288b0224c01fa80f8d5d420de31a1ecb",
+  "validator_sha256": "5b4b190b9aea002e0051f140289f8e9913d56a6f88e90a0a44bf23789e3a54b2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 7053424,
+  "instruction_sites_in_fence": 71,
+  "instruction_sites_exercised": 71,
+  "fixture_coverage": {
+    "entry_0": 46912,
+    "budget_prefix": 48232,
+    "digit_steps": 306688,
+    "reverse_steps": 59480,
+    "successful_DIV": 379256,
+    "bus_write_events": 891280,
+    "raw_far_returns": 5796,
+    "minimumSP32_cases": 5120,
+    "DS_equals_SS_cases": 42880,
+    "radix_one_nonzero_budget_prefixes": 5952,
+    "radix_above36_cases": 34560,
+    "DIV_fault_prefix": 4832,
+    "far_returns": 32696,
+    "entry_1": 38848
+  },
+  "limits": "Actual29D0/29EC/shared2BBC word/dword raw radix conversion, selector0 decimal wordCWD/sign prefix only, all raw radix values/byte digits/wrap, CLD/ESDS, actualSSsaves/arguments/farframe, do-once reversal and source-order aliases. Fullbus/GPR/BP/CFIFDF/control. DIVfault prefix stops before faulting instruction/exception delivery with unchanged GPR; successfulDIV undefinedFLAGS unadmitted and later defined arithmetic/OR/CMP establishes modeledCF. Native beforedigit/reverse budget, radix1 nonprogress, zeroDIVfault and raw far return targets distinct from normalconversion. Caller buffer capacity/writers/lifetime/FLAGS/core/resource-fedP2/P3/session/gameplay/fidelity remain open."
+}

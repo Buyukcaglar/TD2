@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000293"
+  ],
+  "vectors": 27528,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "61e5caa02aff4ba6f4b4ab3f0c7377a9c4975e128e488f0b3f20284b35b738bc",
+  "source_sha256": "da851e7fc970f649681c599186020e2ac2960e81696ac86b47f7a7d18284e366",
+  "validator_sha256": "4ce1f6fb79840351427db144b03decde00f67c2adb589ed380d1af6f5de94514",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_stream_push_byte.py",
+      "sha256": "23099500710425a264a72f683424c1c093bad520bdabf8ffbf37a33c9bbdac4c"
+    },
+    {
+      "path": "tools/validate_stream_pull_byte.py",
+      "sha256": "e49efb1573b30abe0bbccccd3872674ce0397ac2a3c52732c4590b6fcb47e94e"
+    },
+    {
+      "path": "tools/validate_read_span.py",
+      "sha256": "a570a528b85ef41f9dfae1ea2f70426cd2535752a0288a9769b0692c546d789a"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-pull-byte-context-v1.json",
+      "sha256": "4ddfed77ee8a7ec8b3a30d444b78fd7aa29b3a4448134449a753a7608c7e6e39"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+      "sha256": "65d518ee6ce722a813526195268fdd4bddbbab5c31d294b8ab54963ed1ea1ee8"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-block-align-context-v1.json",
+      "sha256": "17eb3ab4b3448388f562f5e931eee9e4f7f1b10c18e684bcea9ca3aba38c96ac"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-walk-context-v1.json",
+      "sha256": "befaff58842ac3ec6e08e4c7b29dceeb4ac2fea1723fe675611009c5ac003f7d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-public-context-v1.json",
+      "sha256": "3e53c9df3304789785d54ca029d9dfc11839699b80e172eb9bd2024ef293d261"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-buffer-context-v1.json",
+      "sha256": "58a7481b14dad9637e7ae24f12a4041f39cffdbeb362926cdf3c677d47378e8c"
+    }
+  ],
+  "original_instructions_executed": 2538376,
+  "instruction_sites_in_fence": 543,
+  "instruction_sites_exercised": 514,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2871",
+        "13A8:2875",
+        "13A8:2876",
+        "13A8:2878",
+        "13A8:287A",
+        "13A8:287C",
+        "13A8:287F",
+        "13A8:2882",
+        "13A8:2883",
+        "13A8:2886",
+        "13A8:2887",
+        "13A8:2889",
+        "13A8:288C",
+        "13A8:2890",
+        "13A8:2892",
+        "13A8:2894",
+        "13A8:289C",
+        "13A8:289E",
+        "13A8:28A1",
+        "13A8:28A3",
+        "13A8:28A5",
+        "13A8:28A7",
+        "13A8:28A9",
+        "13A8:28AB",
+        "13A8:28AD",
+        "13A8:28AE",
+        "13A8:28B0",
+        "13A8:28B3",
+        "13A8:28B7"
+      ],
+      "scope": "2852enteredonlythroughactual2830fixedmode1/highguard0frame",
+      "reason": "Same29entry-specificdispositions asfrozenwrapperproof; standalone2852all53passed, notglobaldead."
+    }
+  ],
+  "fixture_coverage": {
+    "root_far_return": 18278,
+    "next_CALLs": 22160,
+    "pull_CALLs": 21136,
+    "stream_CALLs": 3036,
+    "public_CALLs": 3450,
+    "heap_CALLs": 1680,
+    "root_iterations": 33696,
+    "child_iterations": 7920,
+    "bus_write_events": 601544,
+    "service_write_events": 16180,
+    "syntheticDOS4A": 792,
+    "read_mapper_CALLs": 7314,
+    "read_LODS_steps": 13486,
+    "read_services": 26150,
+    "IOCTL_requests": 306,
+    "lookahead_requests": 8584,
+    "seekback_requests": 408,
+    "initial_DS_equals_SS_cases": 13768,
+    "minimumSP78_cases": 12104,
+    "root_LODSW_DF1": 688,
+    "raw_root_returns": 68,
+    "fast_root_returns": 5308,
+    "slow_root_returns": 12970,
+    "returned_ZF0": 12970,
+    "prefix_parent_call": 344,
+    "prefix_root_iteration": 380,
+    "public_CALL_26E5_cases": 2716,
+    "prefix_global_service": 2724,
+    "returned_ZF1": 5308,
+    "raw_child_return": 360,
+    "public_CALL_26BA_cases": 734,
+    "prefix_wrapper_call": 80,
+    "root_CALL_27A1_cases": 880,
+    "root_CALL_27B5_cases": 528,
+    "root_CALL_27AD_cases": 272,
+    "actual_changedBP_child_raw_cases": 32,
+    "prefix_read_step": 2634,
+    "prefix_mapper_call": 2620,
+    "preRET_qualification": 48,
+    "prefix_next_call": 60
+  },
+  "limits": "Actual18B0 PUSHCS+nearCALL farframe/fullSS/currentDS83EEcount-83F2stream/DECSFguard/cursorINCbeforebytefetch/actual0B42-fullallocator-reader/globalDOSbudget/rawRET-qualification. Wholebus/GPR-BP-CFIFDF/rootZF/requests/control/counts. Serialized20bitRAM/noMEM_READhook/syntheticDOSnoINTframes/historicalCPU-A20unqualified. No actualcaller/allwriters-indexdomains-bufferbounds-storage-capacity-ownership-lifetime-exclusion/core/resource/device/session/gameplay/fidelity closure."
+}

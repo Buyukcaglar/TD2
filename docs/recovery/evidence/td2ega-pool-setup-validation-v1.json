@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000176",
+    "FN-EGA-000177",
+    "FN-EGA-000178"
+  ],
+  "result": "pass",
+  "vectors": 137072,
+  "native_only_diagnostics": 3,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4e42c5960d8150816b3c2ee5b9682e709284cd137ea40bd232f4dc2719758f8f",
+  "source_sha256": "1a15c49ca2df6ad7d864f7f8e0f227d988e56b5b8372f946b67f5feea27c67ed",
+  "validator_sha256": "94c72685efa8e032b32154a480175e4062d4e7eb099cd3a9cb492cf729c6138a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_targets.py",
+      "sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2"
+    }
+  ],
+  "original_instructions_executed": 1500112,
+  "fixture_coverage": {
+    "setup": 4800,
+    "allocate_resize": 5760,
+    "word_near_wrap": 1500,
+    "fixed": 1200,
+    "initialized_skip": 240,
+    "all_active_near_pointers": 131072
+  },
+  "limits": "Complete6F1E/6F86/6FD6, serialized syntheticordinarygroup/DOSAX-BX-CF profiles. IgnoredCF, retainedBX/AXlowthroughresizes, initializedskip, interiorstatusreset, near/wordwrap andallcapacityactivepointers. No actualDOSallocation/process/payload/lifetime, callerflag/IRQ/core/resource/game/fidelity acceptance; native service/budgetdiagnostics outsideoriginal. ReturnES0/nearoffset0 remain coordinates, nothostNULL."
+}

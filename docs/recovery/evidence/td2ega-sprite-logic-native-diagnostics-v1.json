@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 6,
+  "script_sha256": "965693ed1d722145e61a8a995a5f818ce1dfd647916b6e82f9ebac4b2223b3f2",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a2ef462642769ec5e3c69bb2b61286e09a50412d5b6eba2a4a22fa60467f69bb",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sprite_draw.py",
+      "sha256": "b19c16f1126ec5608572bd9ae03cbe1b5de910d532cfbefcf184a98611c165f2"
+    }
+  ],
+  "limits": "Six native-only invalid bus/entry/root-frame/resume-frame/adapter/flag checks. Separate from original far returns, raw control transfers and work prefixes; no actual device/renderer/IRQ/core/gameplay/fidelity acceptance."
+}

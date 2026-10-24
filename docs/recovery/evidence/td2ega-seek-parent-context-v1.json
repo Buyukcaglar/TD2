@@ -1,0 +1,394 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "edbc54a6fb4b4b2955fe8d43e9d2e6e6959ced58753e787ddb15f223773466ff",
+  "instruction_observations": [
+    {
+      "site": "13A8:2AD8",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "13A8:2AD9",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "13A8:2ADB",
+      "bytes": "83ec08",
+      "text": "sub sp, 8"
+    },
+    {
+      "site": "13A8:2ADE",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:2ADF",
+      "bytes": "8b7606",
+      "text": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:2AE2",
+      "bytes": "b80100",
+      "text": "mov ax, 1"
+    },
+    {
+      "site": "13A8:2AE5",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2AE6",
+      "bytes": "2bc0",
+      "text": "sub ax, ax"
+    },
+    {
+      "site": "13A8:2AE8",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2AE9",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2AEA",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:2AEB",
+      "bytes": "9a5e22a813",
+      "text": "lcall 0x13a8, 0x225e"
+    },
+    {
+      "site": "13A8:2AF0",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "13A8:2AF3",
+      "bytes": "8946f8",
+      "text": "mov word ptr [bp - 8], ax"
+    },
+    {
+      "site": "13A8:2AF6",
+      "bytes": "8956fa",
+      "text": "mov word ptr [bp - 6], dx"
+    },
+    {
+      "site": "13A8:2AF9",
+      "bytes": "3dffff",
+      "text": "cmp ax, 0xffff"
+    },
+    {
+      "site": "13A8:2AFC",
+      "bytes": "750e",
+      "text": "jne 0x2b0c"
+    },
+    {
+      "site": "13A8:2AFE",
+      "bytes": "83faff",
+      "text": "cmp dx, -1"
+    },
+    {
+      "site": "13A8:2B01",
+      "bytes": "7509",
+      "text": "jne 0x2b0c"
+    },
+    {
+      "site": "13A8:2B03",
+      "bytes": "b8ffff",
+      "text": "mov ax, 0xffff"
+    },
+    {
+      "site": "13A8:2B06",
+      "bytes": "99",
+      "text": "cdq "
+    },
+    {
+      "site": "13A8:2B07",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "13A8:2B08",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "13A8:2B0A",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:2B0B",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:2B0C",
+      "bytes": "b80200",
+      "text": "mov ax, 2"
+    },
+    {
+      "site": "13A8:2B0F",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2B10",
+      "bytes": "2bc0",
+      "text": "sub ax, ax"
+    },
+    {
+      "site": "13A8:2B12",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2B13",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2B14",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:2B15",
+      "bytes": "9a5e22a813",
+      "text": "lcall 0x13a8, 0x225e"
+    },
+    {
+      "site": "13A8:2B1A",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "13A8:2B1D",
+      "bytes": "8946fc",
+      "text": "mov word ptr [bp - 4], ax"
+    },
+    {
+      "site": "13A8:2B20",
+      "bytes": "8956fe",
+      "text": "mov word ptr [bp - 2], dx"
+    },
+    {
+      "site": "13A8:2B23",
+      "bytes": "2bc0",
+      "text": "sub ax, ax"
+    },
+    {
+      "site": "13A8:2B25",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:2B26",
+      "bytes": "ff76fa",
+      "text": "push word ptr [bp - 6]"
+    },
+    {
+      "site": "13A8:2B29",
+      "bytes": "ff76f8",
+      "text": "push word ptr [bp - 8]"
+    },
+    {
+      "site": "13A8:2B2C",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:2B2D",
+      "bytes": "9a5e22a813",
+      "text": "lcall 0x13a8, 0x225e"
+    },
+    {
+      "site": "13A8:2B32",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "13A8:2B35",
+      "bytes": "8b46fc",
+      "text": "mov ax, word ptr [bp - 4]"
+    },
+    {
+      "site": "13A8:2B38",
+      "bytes": "8b56fe",
+      "text": "mov dx, word ptr [bp - 2]"
+    },
+    {
+      "site": "13A8:2B3B",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "13A8:2B3C",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "13A8:2B3E",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:2B3F",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_far_callees": [
+    {
+      "site": "13A8:2AEB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:225E"
+    },
+    {
+      "site": "13A8:2B15",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:225E"
+    },
+    {
+      "site": "13A8:2B2D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:225E"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0432:04F1",
+      "site": "0432:06CB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2AD8"
+    }
+  ],
+  "caller_instruction_windows": [
+    {
+      "owner": "0432:04F1",
+      "call_site": "0432:06CB",
+      "instructions": [
+        {
+          "site": "0432:06BD",
+          "bytes": "0bc0",
+          "text": "or ax, ax"
+        },
+        {
+          "site": "0432:06BF",
+          "bytes": "7503",
+          "text": "jne 0x6c4"
+        },
+        {
+          "site": "0432:06C1",
+          "bytes": "e9e4fe",
+          "text": "jmp 0x5a8"
+        },
+        {
+          "site": "0432:06C4",
+          "bytes": "8bd8",
+          "text": "mov bx, ax"
+        },
+        {
+          "site": "0432:06C6",
+          "bytes": "8a4707",
+          "text": "mov al, byte ptr [bx + 7]"
+        },
+        {
+          "site": "0432:06C9",
+          "bytes": "98",
+          "text": "cwde "
+        },
+        {
+          "site": "0432:06CA",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:06CB",
+          "bytes": "9ad82aa813",
+          "text": "lcall 0x13a8, 0x2ad8"
+        },
+        {
+          "site": "0432:06D0",
+          "bytes": "83c402",
+          "text": "add sp, 2"
+        },
+        {
+          "site": "0432:06D3",
+          "bytes": "8b5ebe",
+          "text": "mov bx, word ptr [bp - 0x42]"
+        },
+        {
+          "site": "0432:06D6",
+          "bytes": "d1e3",
+          "text": "shl bx, 1"
+        },
+        {
+          "site": "0432:06D8",
+          "bytes": "d1e3",
+          "text": "shl bx, 1"
+        },
+        {
+          "site": "0432:06DA",
+          "bytes": "8987268a",
+          "text": "mov word ptr [bx - 0x75da], ax"
+        }
+      ]
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-seek-handle-context-v1.json",
+      "sha256": "4624847281772cd1ef99549a3e617eb29f45a66c4f7e754a8257e8595de847cf"
+    }
+  ],
+  "static_excluded_sites": [
+    "13A8:227F",
+    "13A8:2281",
+    "13A8:2283",
+    "13A8:2286",
+    "13A8:2288",
+    "13A8:228A",
+    "13A8:228F",
+    "13A8:2291",
+    "13A8:2294",
+    "13A8:2297",
+    "13A8:229F",
+    "13A8:22A2",
+    "13A8:22A5",
+    "13A8:22A7",
+    "13A8:22AA",
+    "13A8:22AC",
+    "13A8:22AF",
+    "13A8:22B2",
+    "13A8:22B4",
+    "13A8:22B7",
+    "13A8:22BA",
+    "13A8:22BD",
+    "13A8:22BF"
+  ],
+  "exclusion_scope": "Only225E enteredthroughactual2AD8pools withnormalchildreturncoordinates, noexecuting-codewrites. Notglobaldead; standalone225E coversallthese23sites.",
+  "facts": [
+    "OneSSword rawhandle; PUSHBP/SUBSP8/PUSHSI, loadSIargument. Firstactualfar225E pool(mode1,high0,low0,SI); storesreturnedAX/DXtoSSBP-8/-6. OnlybothFFFF triggerearlyreturnAXFFFF/wordCWDDXFFFF. GenuineoffsetFFFFFFFF isnotdistinguishedfromerror.",
+    "Secondpool(mode2,high0,low0,currentSI), storesreturnedAX/DXtoSSBP-4/-2 evenonerror. Thirdpool(mode0,actualsavedhigh/low,currentSI) invokesactual225E; itsAX/DXerrorresultignored, thenactualSSsavedsecondresultloaded. No compensatingtransaction/rollback invented.",
+    "FullreturnedchildBP/SI/DS/CFIFDF andmemoryeffects retained; nextpoolhandle usesactualcurrentSI, notcachedoriginalhandle. Savedlocals/rereads andPOPSI/MOVSPreturnedBP/POPBP/farRET4 useactualSS.",
+    "ThreeactualfarCALLframes/childplainfarRET4 checkedCS/IP/SP; changedchild/mappercoordinatesexposedafteractualRET neverfollowed. EachADDSP8 performsactualcallerargcleanup/definesCF. RootSP48 leaveschildSP24 after12saved/localbytes+8pool+4farframe.",
+    "Firstandsecond literaloffsethigh0 selectnonnegative225Epath. Third literalmode0 eitherrejectsnegativehigh immediately orselectsfinalseek; noquery/end/restorepreflight. Thus23listedchildsites infeasiblefromthesepools evenwithreturnedBP/SIchanges; otherstandalone225Eprofiles exerciseall.",
+    "NativeparentbeforefarCALL occursafterpoolwrites; perchildINTbudget separate/resetateachCALL. SourceDOSfullreturnedstate/syntheticbus model retained, noactualINTframes/DOSsession.",
+    "Actualcallerwindows inventoried, fullparents/handle-source/storage/writer/lifetime/exclusion/FLAGS/IRQ/core remainopen."
+  ],
+  "limits": "Staticwhole2AD8/actual225Epoolproof/callerwindows plus boundedactualchild comparison. No allcaller/writer/ownership/capacity/lifetime/IRQ/fullstate/core/actualDOS/resource/device/session/gameplay/fidelity admission."
+}

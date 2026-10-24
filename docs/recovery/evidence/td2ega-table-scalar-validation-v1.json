@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000272",
+    "FN-EGA-000340",
+    "FN-EGA-000420",
+    "FN-EGA-000393",
+    "FN-EGA-000394"
+  ],
+  "vectors": 41280,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ad6cbe7c76c2089bad9aad69a5684391d4556817c78219e861b35436ec1c9e5f",
+  "source_sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556",
+  "validator_sha256": "1160ff0475d15f526f3ba8d96230e5e811c99f4fdbbf9acb4e01eff088decc48",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 686488,
+  "instruction_sites_in_fence": 105,
+  "instruction_sites_exercised": 105,
+  "fixture_coverage": {
+    "entry_0": 18112,
+    "bus_write_events": 73688,
+    "carry_set_returns": 14712,
+    "raw_returns": 672,
+    "entry_1": 4096,
+    "entry_2": 16384,
+    "entry_3": 1920,
+    "entry_4": 768
+  },
+  "limits": "Actual error byte/currentDS XLAT/word signextension, six currentCS byte lookup, signedAL/externalword table and raw signed threshold/selection helpers; original near/far returns and actualSSsavedframes. Fullbus/GPR/BP/CFIFDF/actualcontrol coordinates, overwrittenreturns exposed notfollowed. Externaltables private fixture/original views, no bundledtablepayload or sourceCtype/fieldunits inferred. Caller/tablebounds/otherFLAGS/writers/lifetime/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalid checks separate."
+}

@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_file_paragraphs.cmd",
+    "sha256": "208d76323d20105e1f81da3a75a84e13b4bef5ade909e5b75c2b30a65c74dc69"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_file_paragraphs.c",
+      "sha256": "cce97b73953fe6635bfc15ac44725b2e2b28a72584d3491020dccfb684273679"
+    },
+    {
+      "path": "src/recovered/td2ega_file_paragraphs.h",
+      "sha256": "76607bb2c204ac54327f2fe2fb124838f09b7e460392da25e1f5f24cbe7e442c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/file-paragraphs-repro/td2ega_file_paragraphs.dll",
+      "sha256": "5d945a40e583df1ed63a46260bb09baa03b504fa3d7dbb3bc7a99f3f6f29416a",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/file-paragraphs-repro/td2ega_file_paragraphs.obj",
+      "sha256": "9f88806b47f8b69a02c3d10bbefd079937ad76cb56fdc324cea74640ca6c5fcd",
+      "bytes": 6851
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/file-paragraphs-build-v1.log",
+    "sha256": "0d72357d01ec78c00dab9066199d9980733f6d5dcc3a0db8bdf5e1140107f6a9"
+  },
+  "limit": "File/headerparagraphs5E1C/5E8A, explicitservice/stackseed normalreturn andfatalprefix only; noactualDOS/resource/caller/fatalcleanup/game acceptance.",
+  "function_ids": [
+    "FN-EGA-000141",
+    "FN-EGA-000142"
+  ]
+}

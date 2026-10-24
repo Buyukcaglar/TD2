@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000348",
+    "FN-EGA-000158"
+  ],
+  "vectors": 432,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2fb96b0fcc698da29b16438fbb575cbd3635b50db54a93c327bedb51def8b884",
+  "source_sha256": "05895c7895015fa54483bc3e4b1c231039d09f8046ccd3caf5731ce224a89672",
+  "validator_sha256": "3e20735e64df8a5bde63a40dd31a391782477fd6d23a2f4a857c0fe3e208d9f5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_report_bus.py",
+      "sha256": "12040977ac27f17f21bfcaf91c20e0c170519fec3f3dcda6162d7aa8445c639d"
+    },
+    {
+      "path": "analysis/history/runtime-report-alias-supplement-setup-v1.json",
+      "sha256": "56f4c939b26506b57f9963ac8efabb6c6244c9b4120bcb6bf25bd53c38d8e91a"
+    },
+    {
+      "path": "tools/validate_runtime_dispatch_bus.py",
+      "sha256": "75f3fed1b274b409e88e343821ea8b571edc5b46c50b2845c24b27b30018d2c3"
+    },
+    {
+      "path": "tools/validate_video_reset.py",
+      "sha256": "683293ea484ba06b073f74d8bb326b7d29c1c38c4b63f3aa618708f390796cdf"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    },
+    {
+      "path": "tools/validate_timer_control_bus.py",
+      "sha256": "378971d63e2554b02b2cbd3439e0bef5fcdc098aca05d544a51a584ee5fbd60e"
+    },
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/runtime-report-bus-build-setup-v1.json",
+      "sha256": "e5bf029f086c88bd65537077aba57389b35d23172e4e54bef1ddf552d288e962"
+    },
+    {
+      "path": "analysis/reviews/runtime-report-bus-frontier-v1.json",
+      "sha256": "daca762367857084d35941398e2f10afd84fe936c8dde10d12532c73b464e805"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-dispatch-bus-validation-v2.json",
+      "sha256": "21a5a36e1ce8204d49e82765b5a79fa9bc5e9b9394c4f2be4f5f5055c84e29fd"
+    }
+  ],
+  "original_instructions_executed": 7344,
+  "instruction_sites_in_fence": 342,
+  "instruction_sites_exercised": 22,
+  "parent_instruction_sites_admitted": 13,
+  "parent_instruction_sites_exercised": 0,
+  "keyboard_instruction_sites_admitted": 22,
+  "keyboard_instruction_sites_exercised": 22,
+  "synthetic_callback_RETF_instructions": 0,
+  "fixture_coverage": {
+    "entry_1": 432,
+    "status_0": 432,
+    "tag_physical_root_alias": 432,
+    "stage_0": 432,
+    "CPU_writes": 1080,
+    "music_ports": 1296,
+    "device_bytes": 0,
+    "formatters": 0,
+    "late_forwarding_all5678": 0,
+    "prepared_exit_requests": 0,
+    "changed_keyboard_root_words": 192
+  },
+  "supplementary": true,
+  "limits": "Supplementonly:216low-memorykeyboard-rootcasesperload/SS0IVTwordsandSS40BDA0417aliases/all22cleanupsites/actualfarwords/wholeRAM-GPR-BP-CFIFDF-definedFLAGS-ports-writes. Primaryparentcorpusretainedseparately. No addedparentcoverage. Actual16A7reportparent/68C4cleanup/actual642E-840A-610A-29F6-runtimecallee bodies/fullSS-latefivewordreads/returnedBPaliases/callerADDSP0A/wholeRAM-GPR-BP-CFIFDF-definedFLAGS/orderedBIOS-device-music-DOS/independentCPUwrites. Formatter0B00andotherindirectbodies remainexplicitretiredABIeffects+genericRETF/notbodyproof. PreparedDOSexitnotexecuted; parentpostterminalPOPBP-RETFnotinvented. No fullformatter/actual16A7historicalterminal/B0FEdatafallthroughpruning/allwriters-lifetime-IRQcore-P1-GATE/DOSsession-renderer-audio-game-fidelity. CGAbehindEGAclosure/physical086Cunassigned."
+}

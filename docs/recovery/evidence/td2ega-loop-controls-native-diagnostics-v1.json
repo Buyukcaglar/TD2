@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "786b0077f578a0a70c12dc093ed9e3f08197ccf53878bc021cc1aec81c1176d7",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "56dfe60a66b3772a54756d765dc3c787e2247a5c8d2aa22512b1cd456daf0bb2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_loop_controls.py",
+      "sha256": "4ec63c0e575abb760b9776b82ae9862fac2553ceea9979ef5d4b6366fc2b4c42"
+    }
+  ],
+  "limits": "Five native-only frame/budget/near-far response checks, excluded from original differential/error equivalence. No originalinstructions/graphics/resources/device/IRQ/core/game/fidelity."
+}

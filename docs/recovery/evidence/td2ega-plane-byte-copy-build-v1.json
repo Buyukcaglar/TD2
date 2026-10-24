@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_plane_byte_copy.cmd",
+    "sha256": "902799fdd574677723ac0049bb11d26a7ad7be23cc3af9fa155513ad86e324a7"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_plane_byte_copy.c",
+      "sha256": "90ba2e5d543f928a52a9b4a331f246100645b77511a8fde99ca751f47b6e0199"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_byte_copy.h",
+      "sha256": "64a27d6414895920c77a46ec406f6272939c81a8bed4aa7e4ab7fced87e86d98"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/plane-byte-copy-repro/td2ega_plane_byte_copy.dll",
+      "sha256": "7c113c8979ae7c880850f67629f8b9a6a296f6475f2c019bcdd0bfc0c9a14e80",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/plane-byte-copy-repro/td2ega_plane_byte_copy.obj",
+      "sha256": "b2dfbb40db080ff91d15f34e531bec80d6e578b255b99e01dcd6fddea28a0194",
+      "bytes": 7617
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/plane-byte-copy-build-v1.log",
+    "sha256": "4e51531a0ec99db7b454b3ae774c52544563b9518f9e0847ceab40c07962a938"
+  },
+  "limit": "ActualC784/fullSS-sixargs/SSlocal-rereads/in-placeSAR3source-destX/SAR3width/CSsource-destrow-plane-strides/DSA000-CLD/fourplanes-zero-skip/byteOUT/atomicbyteCOPYrawRAMprofile/do-oncerows-wideDECJG/globalworkrowhead-port-copybudgets/wholebus/GPR-BP-CFIFDF/actualSSFNs-farwords/native5preRET. SourceoriginalMOVSBstill executesidempotentbytewrite/actualCPUwrites. No realEGAreadselector-latch-controller/renderer/clipping-coordinatebounds/allwriters-storage-lifetime-exclusion/historicalCPU-A20/core/resource/CGA/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000418"
+  ],
+  "covered_original_local_helpers": [],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-plane-byte-copy-context-v1.json",
+    "sha256": "c09467c529a335a7f1ad513226492c9c762d333ac01558285efe00fb3fd4cce9"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [],
+  "failure_resolution": "No C/build/comparison/native/static-review mismatch. Actual SS locals/argument writes retained; raw RAM COPY transaction/DEC-JG wide condition/host row-port-copy budget qualified separately from hardware."
+}

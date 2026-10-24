@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "unicorn_version": "2.1.4",
+  "script_sha256": "69afd7ee9be794135010d0b14284c214410c1948042089ea498298a84587ba66",
+  "result": "tool_limitation_reproduced",
+  "cases": [
+    {
+      "hook": "none",
+      "correct_return": true,
+      "actual": {
+        "cs": 32768,
+        "ip": 256,
+        "sp": 32772
+      },
+      "callback_reads": []
+    },
+    {
+      "hook": "low_memory_only",
+      "correct_return": true,
+      "actual": {
+        "cs": 32768,
+        "ip": 256,
+        "sp": 32772
+      },
+      "callback_reads": []
+    },
+    {
+      "hook": "all_memory",
+      "correct_return": false,
+      "actual": {
+        "cs": 32768,
+        "ip": 515,
+        "sp": 32772
+      },
+      "callback_reads": [
+        {
+          "address": 491520,
+          "size": 2
+        },
+        {
+          "address": 491522,
+          "size": 2
+        }
+      ]
+    }
+  ],
+  "scope": "SyntheticMOV/RETF only; no original instructions/data or DOS execution.",
+  "workaround": "Accepted external-word fixture restricts read callbacks tolow64KiB and verifies finalCS/IP/SP. This does not validate unhooked full-system emulation."
+}

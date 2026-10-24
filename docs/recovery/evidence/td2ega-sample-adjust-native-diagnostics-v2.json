@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 80,
+  "script_sha256": "d8d8a693696434f2605c6b91b8ce8cf248072f2e36e936d72e83e61e08d902c4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2930ba1da6a04494d6464dbead7428e44bdb9974a4ef1a3146f485e361211915",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    }
+  ],
+  "limits": "Native4A2E/fullSS/actualcontrol-setter-ring/IF1caller/sourceorderedwrappedstate-arithmetic/rawselector-to-near-jumptable-onebytewriters/budgets/control-setter-ring-return-and-savedSIaliases/rootnearRET/zero-highDS only. Originalcomparison/staticproofseparate; serializednoIRQdelivery-exclusion-reset-sharedsource-lifetime/core/RNG-purpose/allwriters-validindices-resourcecodec/session/fidelity admission."
+}

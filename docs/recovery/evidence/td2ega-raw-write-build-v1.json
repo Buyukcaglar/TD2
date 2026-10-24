@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_raw_write.cmd",
+    "sha256": "cf7a4354dfd9998968510d27940ae1dd16118ab79ae252d502cbc6d29d4ebd2b"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_raw_write.c",
+      "sha256": "3c0ce60c1faac626886ab4d67d8745ac46bb61d426edab5834feebbf956800a8"
+    },
+    {
+      "path": "src/recovered/td2ega_raw_write.h",
+      "sha256": "7651b81b15e92295a1b749bf22d0b74467b2ad4d7b9402116e56649fa834594b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/raw-write-repro/td2ega_raw_write.dll",
+      "sha256": "4a7482a505a425825d62dd272ba753c5d15c8bade7257d6b68ef176b78358ede",
+      "bytes": 105984
+    },
+    {
+      "path": "analysis/build/raw-write-repro/td2ega_raw_write.obj",
+      "sha256": "709b4adfa72479b216a1c9cd7be701145770be8ebf3437ccdd9c93fcaeadbbb3",
+      "bytes": 7457
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/raw-write-build-v1.log",
+    "sha256": "e6bb08d4e211f011dd0a7d8cc481319cce543c7366d4eacea608410242f4c044"
+  },
+  "limit": "Two rawcreate/write/close wrappers withsyntheticDOS3C/40/3E, fullreturnedDS/BP/CFIFDF andsharedbus includingcallerlength/source-segment/savedframes. LengthSUB/SBB beforewrite,400segmentadvance evenaftershortsuccess, stalehandleclose onoptionalcreatefailure andignoredcloseCF retained. Before-INTnativebudgetprefix separate; policy0errors stopatactual16A7:0002farcalleeentry afterpreparednearargs/farframe. ErrorcalleeFN348 contractpending, no body/no-return/normalhandler-return assumption admitted. SyntheticINT profile omitsrealinterruptframes/OS/files, noactualfile writes/resource decode/device/session/core/game/fidelity. Allactualproducer/caller/capacity/lifetime/IRQ/errorhandler integration andresource-fedP2/P3 remainopen; nativeinvalid/adapterchecks separate.",
+  "function_ids": [
+    "FN-EGA-000192",
+    "FN-EGA-000193"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-raw-write-context-v1.json",
+    "sha256": "11077151c8654290bf8ec2a1fe78ab59cf737820e773a6f3592493979ceb8611"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684"
+  }
+}

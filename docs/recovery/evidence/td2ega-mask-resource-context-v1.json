@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "2553fa8c4b1fe869861eaa85274f672c95b6c53cab47f9ccb8199498e0d703a3",
+  "spans": [
+    {
+      "id": "RS-DOS-000258",
+      "segment": 1737,
+      "offset": 33480,
+      "length": 8,
+      "sha256": "8f72b04012a4e5202adcf52e73cb12da84207744ff926b5b0c04c2240dd9dbc4",
+      "consumers": [
+        "FN-EGA-000212",
+        "FN-EGA-000213",
+        "FN-EGA-000214"
+      ],
+      "observation": "Eight externalinitializedCSmask candidates beforehelperentry; rawBXnotmaskedinsidehelper. Known916C/91A4setupderivesalignment&7 butallcaller/frame/alias/writer proofopen. No originalvaluesexported."
+    },
+    {
+      "id": "RS-DOS-000259",
+      "segment": 1737,
+      "offset": 44314,
+      "length": 8,
+      "sha256": "8f72b04012a4e5202adcf52e73cb12da84207744ff926b5b0c04c2240dd9dbc4",
+      "consumers": [
+        "FN-EGA-000238",
+        "FN-EGA-000239",
+        "FN-EGA-000240"
+      ],
+      "observation": "Eight externalinitializedCSmask candidates beforehelperentry; rawBXnotmaskedinsidehelper. Known916C/91A4setupderivesalignment&7 butallcaller/frame/alias/writer proofopen. No originalvaluesexported."
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:82E3",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x7d38]"
+    },
+    {
+      "site": "06C9:8349",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x7d38]"
+    },
+    {
+      "site": "06C9:83B3",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x7d38]"
+    },
+    {
+      "site": "06C9:AD39",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x52e6]"
+    },
+    {
+      "site": "06C9:ADA2",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x52e6]"
+    },
+    {
+      "site": "06C9:AE0D",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x52e6]"
+    },
+    {
+      "site": "06C9:9262",
+      "instruction": "and ax, 7"
+    },
+    {
+      "site": "06C9:9265",
+      "instruction": "mov word ptr [bp - 0x34], ax"
+    },
+    {
+      "site": "06C9:938E",
+      "instruction": "mov bx, word ptr [bp - 0x34]"
+    },
+    {
+      "site": "06C9:94CA",
+      "instruction": "mov bx, word ptr [bp - 0x34]"
+    }
+  ],
+  "limits": "StaticinitializedCSspans/instruction/defaultsegment/index-producer observations only. Caller/frame/allwriter/IRQ/sourceownership notclosed; rawstandaloneBXmayselectoutsidecandidate8bytes. No originalpayload/fullresourcecodec/actualdevice/renderer/session/core/game/fidelity acceptance. LaterresourcefedP2-01/06/09/P3-05 separately."
+}

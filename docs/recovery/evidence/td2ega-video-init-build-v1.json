@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_video_init.cmd",
+    "sha256": "39056274ea989fbe0c4135e8be44b512b5f3ca692227f790ec6906524bbb0e89"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_video_init.c",
+      "sha256": "8317bb8e1d7030d858747a66d301d1a9a03bd72f89d678c83479864fbb59c00d"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.c",
+      "sha256": "06180015c596dea0c596f877ff38c1f686089f3a385bd21b2591542786eeef1a"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.h",
+      "sha256": "adb78ac1f3babe7472f8018f5373a3f8412435f94054d3e195a01d36d4237155"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_video_init.h",
+      "sha256": "9377e70a3d5ad53753d1d45b558655e5895ed574821d685f80724eb676767ddb"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/video-init-repro/td2ega_video_init.dll",
+      "sha256": "773b1042cdcd997a864cb7f5ecee8c1320d0cd2ec002441d3be8105f19bfe62d",
+      "bytes": 107008
+    },
+    {
+      "path": "analysis/build/video-init-repro/td2ega_video_init.obj",
+      "sha256": "0b0c7ded94ff925623f35cc5ea45d653602459a32713fc8990b4448bcd56e937",
+      "bytes": 8050
+    },
+    {
+      "path": "analysis/build/video-init-repro/td2ega_plane_fill.obj",
+      "sha256": "39ff2af6e773aa1b4d93d989277de94fea86fca4e03e319b03ea74775ff7e0ec",
+      "bytes": 4682
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/video-init-build-v1.log",
+    "sha256": "a60a17d60f3d110c67ca8309aa6c4ffbbebf52bf242d08fd48cd2835cc92a295"
+  },
+  "limit": "ActualEGA06C9:90E8 far/noargs/eightsetupOUTs/actual840Afarframe-zeroarg-currentDF-fullSS/sharedglobaleventbudget/CALLbudget/rawchildRETafterinstructionneverfollowed/ADDSP2/BDAphysical0410mask/BIOS10AX000D-fullreturnedstate thenESactualreturnedDS-DX6848/AX1002-17bytepayloadinterface/fullreturnedstate. Typedbyteport-deviceeffects/rawRAMadapter/wholebus/GPR-BP-CFIFDF/control/events/BIOSrequests-payloadsnapshots. Native5childSPorrootSP>FFFCpreRETqualification/fullworkretained/nohistoricalfaultdeliveryclaim. No realBIOS-INTframes/EGAregister-latch-palettehardware/renderer/CPU-A20/callerDF-IF-stackdomain/writers/storage/exclusion/core/resource/session/gameplay/fidelity acceptance; noCGAeditionrecovery.",
+  "function_ids": [
+    "FN-EGA-000222"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000215"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-video-init-context-v1.json",
+    "sha256": "8bab927b237aa7e06de30dd3f5167b1e09de0eec2a757195adc6bb360d985ea4"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "BIOS_palette_reference": {
+    "path": "docs/recovery/evidence/ibm-ega-bios-palette-reference-v1.json",
+    "sha256": "6b31425b38557dbffeff20e17a666cbea34291524dd2c498a05409a20d6b5f87"
+  },
+  "prior_failed_attempt": [],
+  "failure_resolution": "NoC/build/comparisonmismatch. Comparisonv1passed418/all74; v2adds4palette17-rootfarframealiases/C-DLLunchanged. Native5child/rootpreRETframequalification inheritedfromselectedplane-fill-v2; nohistoricalfaultclaim."
+}

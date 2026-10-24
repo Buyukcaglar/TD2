@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000157",
+    "FN-EGA-000158",
+    "FN-EGA-000159",
+    "FN-EGA-000160"
+  ],
+  "result": "pass",
+  "vectors": 38400,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "76fae7ec4b75c483cc88cc147f464267599f39485ff89bea4068846a3c01b87f",
+  "source_sha256": "4fb8e7e0db25cf61c5e4573b5c0cbd4fceb1019d88cc2b9f687fe0eb0b250ec4",
+  "validator_sha256": "b0c8613e11e8deeee2b341faaa7e037fe66cc19961f9170b5eed4bb783408144",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    }
+  ],
+  "original_instructions_executed": 1287070,
+  "fixture_coverage": {
+    "all_scans_modifiers": 16384,
+    "all_translated_bytes": 2560,
+    "all_BIOS_operations": 5120,
+    "query_logic_flags": 8192,
+    "shift_byte_OR": 2048,
+    "all_PIC_masks_vector_guards": 2048,
+    "all_PIC_masks_restore_guards": 2048
+  },
+  "instruction_sites_exercised": 155,
+  "instruction_sites_in_fence": 155,
+  "limits": "Four serializedkeyboard install/restore/IRQ09/INT16 entries, syntheticfullbus andtypedports. Allscancodes/modifierpriorities/translatedbytes/PICmasks/BIOSAH, pendingword/logicflag boundaries, offsetonlyvector guard andconditionalBIOS417clear. ActualIRET vsAH1RETF2 flags/cleanup/frames checked; AFundefined onORquery excluded. No actualkeyboard/PIC/BIOS/IRQ/nesting/inputsession/callbackdispatch/game/fidelity. Nativeargument/adapterdiagnostics separate."
+}

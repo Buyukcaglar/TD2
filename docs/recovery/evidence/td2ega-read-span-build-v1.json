@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_read_span.cmd",
+    "sha256": "109913ab8516626f3da0ed2fcc6684fd6c8299a156f76e356f0d464a93416439"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_read_span.c",
+      "sha256": "8fd845013fd65a8d5974de5ad5de9d4ec8a71e1c717acb823b311e4e89b75dca"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_read_span.h",
+      "sha256": "55feb4ff0bd8eb1a8aeb159e1e28a1b7d0e2a20a3e87f1c95e30d43351a6eda3"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/read-span-repro/td2ega_read_span.dll",
+      "sha256": "bb173e1726a2368604b4b244f017b88c388d91a66b816b7caf82549b97fa083f",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/read-span-repro/td2ega_read_span.obj",
+      "sha256": "4d15273948f0aad59916ccddefab3d630049ec075fb6e6eeb60b7e32d74fc0d2",
+      "bytes": 7957
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/read-span-build-v1.log",
+    "sha256": "30ac9d70f149149fa96e0836bf24baec6029ef5ed81abce4af9eeb5ef13c6980"
+  },
+  "limit": "Actual247C/094A/fullSS/currentDSflags-nearbuffer-vs-SSlookaheadlocal/primary3F-fullstate/CR-firstLF-1A/bytestoresdefaultDS/currentDFLODS/4400-3F-4201lookahead-fullstate/actualAHmarker-CX-BP-DS-DI-SIreturns/CALL-service-LODSbudgets/rawmapperRETafterinstructionneverfollowed/actualrootfarRET-preRETqualification/fullbus-GPR-BP-CFIFDF. SyntheticDOSnoINTframes/returnprofilesnotrealDOSpreservationmodel. No actualfileI/O/fullresourcecodec/writers-bufferbounds-storage-lifetime-exclusion/historicalCPU-A20/core/CGA/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000314"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000272"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+    "sha256": "65d518ee6ce722a813526195268fdd4bddbbab5c31d294b8ab54963ed1ea1ee8"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/read-span-review-attempt-v1.json",
+      "sha256": "e7d2753051ee3f57773570b7fdc26dbe443d1b226579fd33b8ccc6b64a8ecd8a"
+    }
+  ],
+  "failure_resolution": "No C/build/instructioncomparison/native mismatch. Unrecorded12-caseprobevalidatorarchivedbeforeaddinginvalidhandlecases. Reviewv1lineasserttreated43formfeedsasnewlines; primaryblobunchanged/fixLFlinebasis/contextv2. Privateactual094AfullSS avoidsfrozenstandaloneSPdomain borrowing."
+}

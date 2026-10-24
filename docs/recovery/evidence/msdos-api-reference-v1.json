@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "source": "Microsoft MS-DOS2.0 syscall reference",
+  "repository": "https://github.com/microsoft/MS-DOS",
+  "commit": "2d04cacc5322951f187bb17e017c12920ac8ebe2",
+  "url": "https://github.com/microsoft/MS-DOS/blob/2d04cacc5322951f187bb17e017c12920ac8ebe2/v2.0/source/SYSCALL.txt",
+  "private_path": "analysis/external/msdos-2d04cacc/SYSCALL.txt",
+  "sha256": "72271dc62a60960c885da6a3d822202a80ef338d2e2f3e54570eda9dc3453da7",
+  "bytes": 59136,
+  "retrieved_on": "2026-10-13",
+  "relevant_line_ranges": [
+    [
+      216,
+      283
+    ],
+    [
+      533,
+      559
+    ],
+    [
+      1568,
+      1568
+    ],
+    [
+      1626,
+      1635
+    ]
+  ],
+  "use": "Historical interface naming/layout corroboration for AH1A/4E/4F and48/4A; original TD2EGA instructions and synthetic comparisons establish game-side effects. No Microsoft implementation code copied into recovered C.",
+  "limits": "Historical documented API reference, not evidence of actual deployed DOS version/runtime behavior or a game session."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000314"
+  ],
+  "vectors": 3272,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "bb173e1726a2368604b4b244f017b88c388d91a66b816b7caf82549b97fa083f",
+  "source_sha256": "8fd845013fd65a8d5974de5ad5de9d4ec8a71e1c717acb823b311e4e89b75dca",
+  "validator_sha256": "a570a528b85ef41f9dfae1ea2f70426cd2535752a0288a9769b0692c546d789a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_write_span.py",
+      "sha256": "c380147a806c2917229e70e2d19d8ec41fb9ab03dc9b93cd298d34e544e7f8c4"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 128364,
+  "instruction_sites_in_fence": 118,
+  "instruction_sites_exercised": 118,
+  "fixture_coverage": {
+    "root_far_return": 2676,
+    "mapper_CALLs": 336,
+    "DOS_services": 3884,
+    "LODS_steps": 3508,
+    "CPU_bus_writes": 13176,
+    "adapter_byte_writes": 4640,
+    "DS_equals_SS_cases": 1616,
+    "incomingDF1_cases": 1636,
+    "raw_root_returns": 112,
+    "IOCTL_requests": 360,
+    "lookahead_requests": 784,
+    "seek_back_requests": 188,
+    "prefix_mapper": 72,
+    "prefix_LODS": 144,
+    "prefix_service": 352,
+    "preRET_qualification": 24,
+    "raw_mapper_return": 4
+  },
+  "limits": "Actual247C/094A/fullSS/currentDSflags-nearbuffer-vs-SSlookaheadlocal/primary3F-fullstate/CR-firstLF-1A/bytestoresdefaultDS/currentDFLODS/4400-3F-4201lookahead-fullstate/actualAHmarker-CX-BP-DS-DI-SIreturns/CALL-service-LODSbudgets/rawmapperRETafterinstructionneverfollowed/actualrootfarRET-preRETqualification/fullbus-GPR-BP-CFIFDF. SyntheticDOSnoINTframes/returnprofilesnotrealDOSpreservationmodel. No actualfileI/O/fullresourcecodec/writers-bufferbounds-storage-lifetime-exclusion/historicalCPU-A20/core/CGA/session/gameplay/fidelity closure."
+}

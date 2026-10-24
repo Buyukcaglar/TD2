@@ -1,0 +1,246 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "bda46ed5c1b37876e653c2edf9f3e97bcac4e0d8e13d7b4241579a79c0906aba",
+  "instruction_observations": [
+    {
+      "site": "13A8:0924",
+      "bytes": "7213",
+      "text": "jb 0x939"
+    },
+    {
+      "site": "13A8:0926",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "13A8:0928",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "13A8:092A",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:092B",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:0939",
+      "bytes": "e80e00",
+      "text": "call 0x94a"
+    },
+    {
+      "site": "13A8:093C",
+      "bytes": "b8ffff",
+      "text": "mov ax, 0xffff"
+    },
+    {
+      "site": "13A8:093F",
+      "bytes": "99",
+      "text": "cdq "
+    },
+    {
+      "site": "13A8:0940",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "13A8:0942",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:0943",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:223E",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "13A8:223F",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "13A8:2241",
+      "bytes": "8b5e06",
+      "text": "mov bx, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:2244",
+      "bytes": "3b1ea26d",
+      "text": "cmp bx, word ptr [0x6da2]"
+    },
+    {
+      "site": "13A8:2248",
+      "bytes": "7206",
+      "text": "jb 0x2250"
+    },
+    {
+      "site": "13A8:224A",
+      "bytes": "b80009",
+      "text": "mov ax, 0x900"
+    },
+    {
+      "site": "13A8:224D",
+      "bytes": "f9",
+      "text": "stc "
+    },
+    {
+      "site": "13A8:224E",
+      "bytes": "eb0b",
+      "text": "jmp 0x225b"
+    },
+    {
+      "site": "13A8:2250",
+      "bytes": "b43e",
+      "text": "mov ah, 0x3e"
+    },
+    {
+      "site": "13A8:2252",
+      "bytes": "cd21",
+      "text": "int 0x21"
+    },
+    {
+      "site": "13A8:2254",
+      "bytes": "7205",
+      "text": "jb 0x225b"
+    },
+    {
+      "site": "13A8:2256",
+      "bytes": "c687a46d00",
+      "text": "mov byte ptr [bx + 0x6da4], 0"
+    },
+    {
+      "site": "13A8:225B",
+      "bytes": "e9c6e6",
+      "text": "jmp 0x924"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:0978",
+      "site": "13A8:09C4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:223E"
+    }
+  ],
+  "caller_instruction_windows": [
+    {
+      "owner": "13A8:0978",
+      "call_site": "13A8:09C4",
+      "instructions": [
+        {
+          "site": "13A8:09B6",
+          "bytes": "56",
+          "text": "push si"
+        },
+        {
+          "site": "13A8:09B7",
+          "bytes": "9af00da813",
+          "text": "lcall 0x13a8, 0xdf0"
+        },
+        {
+          "site": "13A8:09BC",
+          "bytes": "83c402",
+          "text": "add sp, 2"
+        },
+        {
+          "site": "13A8:09BF",
+          "bytes": "8a4407",
+          "text": "mov al, byte ptr [si + 7]"
+        },
+        {
+          "site": "13A8:09C2",
+          "bytes": "98",
+          "text": "cwde "
+        },
+        {
+          "site": "13A8:09C3",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "13A8:09C4",
+          "bytes": "9a3e22a813",
+          "text": "lcall 0x13a8, 0x223e"
+        },
+        {
+          "site": "13A8:09C9",
+          "bytes": "83c402",
+          "text": "add sp, 2"
+        },
+        {
+          "site": "13A8:09CC",
+          "bytes": "0bc0",
+          "text": "or ax, ax"
+        },
+        {
+          "site": "13A8:09CE",
+          "bytes": "7c5b",
+          "text": "jl 0xa2b"
+        },
+        {
+          "site": "13A8:09D0",
+          "bytes": "837efa00",
+          "text": "cmp word ptr [bp - 6], 0"
+        },
+        {
+          "site": "13A8:09D4",
+          "bytes": "7458",
+          "text": "je 0xa2e"
+        }
+      ]
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-table-scalar-build-v1.json",
+      "sha256": "ef76626ff4c4f15510467b12633dc37ca80c04b2d04455fa8e21681ada9eae73"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-table-scalar-validation-v1.json",
+      "sha256": "b4ba062ccee85b9f84ecddb4eeadace058410c1e656e32828ccd328046019b05"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-sign-extension-context-v1.json",
+      "sha256": "d3f14fc69d6e087683da6e0e25a57d8976b84b71a8a8d97437110236ae1cd6d6"
+    }
+  ],
+  "api_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684",
+    "source_path": "analysis/external/msdos-2d04cacc/SYSCALL.txt",
+    "source_sha256": "72271dc62a60960c885da6a3d822202a80ef338d2e2f3e54570eda9dc3453da7",
+    "url": "https://github.com/microsoft/MS-DOS/blob/2d04cacc5322951f187bb17e017c12920ac8ebe2/v2.0/source/SYSCALL.txt",
+    "service_identifiers": {
+      "CLOSE": 62
+    },
+    "relevant_line_ranges": [
+      [
+        1615,
+        1615
+      ]
+    ]
+  },
+  "facts": [
+    "OneSSword rawhandle, PUSHBP/MOVBP, unsignedBX<DS6DA2 guard. RejectedindexAX0900/STC reachesactual094A withoutDOSservice; no signed/hostdescriptor bound invented.",
+    "AcceptedhandleMOVAH3E preservesALandcomparisonCF beforeINT21. Historicalprimarysource identifies3E asCLOSE. Syntheticservice fullreturnedGPR/BP/DS/CFIFDF andbuswrites explicit, SS/SP/CS preserved; noactualINTentryframes/DOScall.",
+    "OnserviceCFclear, clearbyte atreturnedDS:[returnedBX+6DA4] with16bitwrappedEA. It doesnotrereadorrestoreoriginalhandle/index/DS; allaliasesretained. Shared0924successXORAX0/CF0 preservesreturnedDX.",
+    "Failureactualnear094A pushes093C; rawchildCS/IP/SP exposedafterRET neverfollowed. NormalmapperthenAXFFFF/wordCWD DXFFFF preservingmapperCF; literalMOVSPreturnedBP/actualPOPBP/plainfarRETF consumes4, callerargremains.",
+    "RootSP20 preservesfrozenmapperSP16 aftersavedBP/nearCALL. NativebeforeINTbudget/adapterfailure separatefromoriginalDOSerror/invalidindex/normalreturn.",
+    "Actualcallerwindows inventoried, completeparents/handlewriters/indexcapacity/ownership/lifetime/otherFLAGS/IRQ/core remainopen."
+  ],
+  "limits": "Staticwhole223E/historicalDOSidentity/callerwindows plus boundedactualmapper/syntheticservice comparisons. No actualDOS/fileoperation/device/IRQ/session/game/core/fidelity admission; resource-fedP2/P3 separate."
+}

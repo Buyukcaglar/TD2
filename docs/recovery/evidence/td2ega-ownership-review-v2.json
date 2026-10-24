@@ -1,0 +1,1849 @@
+{
+  "schema": 1,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "2cb9b6aa4047619f40a00d3d8af46095dd7b8094b6bb2ea11303e070b2e9c4ae",
+  "families": {
+    ".bin": {
+      "id": "DOS-BIN",
+      "expected": 26,
+      "producers": [
+        "0000:083B",
+        "0000:084E",
+        "0267:189F",
+        "0267:195F"
+      ],
+      "interfaces": [
+        "06C9:6D18",
+        "06C9:75C8",
+        "06C9:758A"
+      ],
+      "scope": "Voices/songs and selected car/opponent raw binary family; field semantics/full input bounds pending."
+    },
+    ".pes": {
+      "id": "DOS-PES",
+      "expected": 82,
+      "producers": [
+        "1748:005C",
+        "1748:00A6",
+        "1748:010F"
+      ],
+      "interfaces": [
+        "1748:000E",
+        "06C9:6D50",
+        "06C9:C838"
+      ],
+      "scope": "EGA implicit/explicit graphics extension path; perasset producer and pixel/format semantics pending."
+    },
+    ".pcs": {
+      "id": "DOS-PCS",
+      "expected": 82,
+      "producers": [
+        "0432:0CB6"
+      ],
+      "interfaces": [],
+      "scope": "PCS name table referenced by EGA media-management code; graphics semantics deferred to ordered CGA recovery afterP1-11."
+    },
+    ".ss": {
+      "id": "DOS-SS",
+      "expected": 12,
+      "producers": [
+        "0143:00C2",
+        "0143:01F4",
+        "019E:0BAC"
+      ],
+      "interfaces": [
+        "0000:0297",
+        "13A8:0A6E"
+      ],
+      "scope": "Selected car text-family filename builders; stream parsing/display contracts pending."
+    },
+    ".dat": {
+      "id": "DOS-DAT",
+      "expected": 26,
+      "producers": [
+        "0267:1A03",
+        "0432:00BA",
+        "0432:01C3",
+        "0432:02CF",
+        "0432:038D",
+        "0432:03A5",
+        "0645:001B",
+        "0645:022D"
+      ],
+      "interfaces": [
+        "0000:0297",
+        "13A8:0A6E",
+        "06C9:6D50",
+        "06C9:6D18"
+      ],
+      "scope": "Catalog/selection/diskid/highscore and19 numbered route files have distinct raw producers; no shared format inferred."
+    },
+    ".sgn": {
+      "id": "DOS-SGN",
+      "expected": 14,
+      "producers": [
+        "0267:1B7C",
+        "0267:1BD9"
+      ],
+      "interfaces": [
+        "06C9:7273",
+        "06C9:5EF4",
+        "06C9:6D18"
+      ],
+      "scope": "Persection sign filename; cache/existence path; absent-sign branch1BD3 skips to1C32. Field decoding and exact persection path pending."
+    },
+    ".fnt": {
+      "id": "DOS-FNT",
+      "expected": 3,
+      "producers": [
+        "0267:1BE8",
+        "0267:1C23"
+      ],
+      "interfaces": [
+        "06C9:6D18"
+      ],
+      "scope": "Selected route font filename built inside sign-present path; header/glyph schema pending."
+    },
+    ".exe": {
+      "id": "DOS-EXECUTABLE",
+      "expected": 4,
+      "producers": [],
+      "interfaces": [],
+      "scope": "Executable/embedded-container identities. EGA admitted now; CGA remains afterEGA closure; TDY supporting and DUEL launcher context. No original instructions in final native core."
+    }
+  },
+  "dos_file_count": 249,
+  "resources": [
+    {
+      "logical_path": "reference/dos/ACCOLADE.PCS",
+      "sha256": "71f9a093c3b0500abf57d744e0c3f5dc2689dbaa02909c629bd5fb72ce3d05e8",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ACCOLADE.PES",
+      "sha256": "5abcae8cd38037048f41674a04517bf53f0e7d1d02163a7565e913263acfc1a6",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMA.BIN",
+      "sha256": "d892915b0b93742734283daba08e5f26793389a3f2a136232d16014cb681e1c2",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMA.SS",
+      "sha256": "240f2fa3d929bac0d6dd0c5edaf045be0fa76445007e6aebd8ae3396033e8a0c",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMADASH.PCS",
+      "sha256": "f69d82d162c83c5068471d542a3e983fc3698ddf50fc4f4f7341d482f9565840",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMADASH.PES",
+      "sha256": "3556058fc69b7c1e1d3ae6b5757721a0acb4f8eb864a4a2a6288599d9ea74c26",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAO.BIN",
+      "sha256": "31443bee6703b40b6c8c438660d9c43e95515947c607cb8b84ba4ff850cb1fa8",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAREAR.PCS",
+      "sha256": "550f7b3c7846fe644a39781e837837c2ede75055a09fb1c34de0b17dab1d26fc",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAREAR.PES",
+      "sha256": "dcc5f205ac3989690372cf532b8e6738a12601c4720dae7a0219531abfce95a9",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAROAD.PCS",
+      "sha256": "7a7dc95c873c18ee141d0caff89128c4dd6a7b35e75cd51378784db8e9f9d31a",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAROAD.PES",
+      "sha256": "41acc05f6d7fa23516bfaf093f939242f867a199a80a59300aca12168f58dab7",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAST.PCS",
+      "sha256": "aeb70903b0b0c241b1df5de07cd0b9b92e4ae731d94cc7c6948b72284ba90b63",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CAMAST.PES",
+      "sha256": "86ee20566e92ed21201d1f653be22d1cf464abe2cb47c7fca1274623c7f172f3",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CARS.DAT",
+      "sha256": "92fe1947430749503ff21b65f105acc46e77912f87ac8237e56eebbf63dc9617",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC.FNT",
+      "sha256": "224ffd27148eeec78e02e866c18fb6a25943af9722116041804752f51fdf5152",
+      "family_id": "DOS-FNT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC0.DAT",
+      "sha256": "cd80234e65d53f5f1c61d8e082f3f8d1d4f330317f41201c706a804beddfba08",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC0.SGN",
+      "sha256": "adf1882c43b24411a7fd356e384256056d901bb6101074dd6991bfd34434a813",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC1.DAT",
+      "sha256": "27587516e7c0e72171c755c02d7ead4988c818c9017364ba7cc2ed7ae9e2a67c",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC1.SGN",
+      "sha256": "2f6b9d07052e374d240042ac815a0d96a83a220849cab50f9136e37c61c27938",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC2.DAT",
+      "sha256": "64ed6c9bfd48fd010e9e58426b6bf512d68dbaaae8c4366e59e9a69b8f2b1546",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC2.SGN",
+      "sha256": "cce0b2b85ec3c61ad2e96f9e07f15a265956c259fd5c562c22d16f53d1e7007e",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC3.DAT",
+      "sha256": "5eafe19d8bb511d6bc665f4c88753de906c6dc061fb990223ae07d402508f585",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC3.SGN",
+      "sha256": "a42fd594f1dbc2409a3ba78de7921a99fe1ed2b1095b60494f1abb6abd23874d",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC4.DAT",
+      "sha256": "5f1472643763b0aab57f1ae35c3400de70795d64abe128db5b548a85ab93f9bb",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC4.SGN",
+      "sha256": "8a022ecc0ce5618b8f242036afd97e8b51fd0b4f63be68bc25c1cacabdd4c6b8",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC5.DAT",
+      "sha256": "c7d9d5efc2d81b32544ab0e88a9594b6bd9290e7fa27af6f6b1cf1ae9764c2b1",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC5.SGN",
+      "sha256": "444d31923802a0f60b4816d2c92bca4664b4078ad7be4d0847a2920f7cb8bc29",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC6.DAT",
+      "sha256": "c887107b53054fc9d6fe9954a34edfd8d32fbf131b7571b7271b91c392f0c431",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCC6.SGN",
+      "sha256": "2388ec789d8e44607d18b0d62b540e743341743e23d0d7286f4e8e8c088e4393",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCCAR1.PCS",
+      "sha256": "1e6a0a3a53fc535693c284452fa01f81aa1d5234d96db23c4c745e51f965137d",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCCAR1.PES",
+      "sha256": "91a1223ee3c1fb8536fe105a2d79991e52440c2582fd297894611f6efb19be85",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCCAR2.PCS",
+      "sha256": "dcac29537ed2d5fe30e1c87ea29502b2b8f39d86b8f56ae89cb249f13b520a4b",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCCAR2.PES",
+      "sha256": "31b4526b213f72089909322182c08ea83843ccf584b4712616b6cbbbb7eaaeb5",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCCAR3.PCS",
+      "sha256": "21d38dfbbf07af9bd3dc34ce84519d704e37a51382797cb586d39d71b557f731",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCCAR3.PES",
+      "sha256": "2d27df41477ff1e0af8c6de3e46ddfbd0ecd9f68daad9f86cfed2dff45259f31",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCFRISC.PCS",
+      "sha256": "7b339c9144ffe5247bdf0538bc7a63c51a2035199b2f57f3317eb654d09ecdc5",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCFRISC.PES",
+      "sha256": "226dc9ca5807630644d164a3f43022a1def639e1c33a66212e57afca1ea73595",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCHISC.DAT",
+      "sha256": "36a015d3d2435d794607d579c8e62940ef3dbc813ff6af9e98b1636227e9dab5",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCICON.PCS",
+      "sha256": "3d271344b2f9b10b4f6a32f343b415f0942151e5bb34eabc8abcabe8b7c036ec",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCICON.PES",
+      "sha256": "ccfb873b63953b45c85dd4c979e0427821d25dfafe74f19f9be9655264b34301",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCRED.PCS",
+      "sha256": "8f8fe07ef6dd7212abed419e6344d6d860f002b3646a63a9aaf36d11907e958e",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCRED.PES",
+      "sha256": "8a9d1e62d29b6fe385dfb97eaa2176c7049206943be99ff6466933399d407696",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCSOUT.PCS",
+      "sha256": "b9d10808cb3c49374872b9bb8c779c1310f7b2e5448949d6318220037fc43eb1",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCSOUT.PES",
+      "sha256": "078381696779f0c87a14d5775753d317a8357b45e66f3f4ae57ff143311dd258",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCSOUTH.PCS",
+      "sha256": "2e53d3258c9bd47104307d0efec264273eb418bf4db2585115fe244b2e6ac4bf",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/CCCSOUTH.PES",
+      "sha256": "f0c852bac71a9429aabd1531009523748eff0f7df669b785a93dfb4b27830c2f",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COP.PCS",
+      "sha256": "748d8bb4bcaf6be798076f0e2128bcb44ac1e50843447c0382778f4d872efd98",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COP.PES",
+      "sha256": "b310304f656397162edaf7edc838f982b449c6aa4edaff9e1324e76e7240c2b5",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUN.BIN",
+      "sha256": "af72f9149ef61d3876d13bf23533106035a3fc6765061fb0e8659dbdd5e2cbb4",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUN.SS",
+      "sha256": "e4564b1d75bfe39c1fbea6ca587fda735e0989106b8ae91970a816dda038d3e8",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNDASH.PCS",
+      "sha256": "27b5cba6e568172ae61fb9d3f26aad42a08c7388a357b023b0cabeabb6a6601d",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNDASH.PES",
+      "sha256": "fe435bef883c2542bc19877949b6a87da3ee11a6672e208c98f5de920523b540",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNO.BIN",
+      "sha256": "5eee5f5587da3ca746864f2aa111ead8995d2b18d22da6f7bdd1788543ed9a84",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNREAR.PCS",
+      "sha256": "f7f454d5e146946300ca101412dd5e8ece7302f8aae7fa09480371287d3cba7c",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNREAR.PES",
+      "sha256": "43e109c580576742404d38b139f41a746d7e084eeb6139a32deb418663ea74bc",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNROAD.PCS",
+      "sha256": "ad78ca5a7620493660a848138a57f706d4ee71d25bdebc8727829d5ae7c5e437",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNROAD.PES",
+      "sha256": "56043ccd577012cce849d57992e757bd1f02dda8f1e8f08aa12d34c13396cf0e",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNST.PCS",
+      "sha256": "b13c942db22f8b76770d3c5ede2f5089207219ad0ce7f32ed44565b22c74b03f",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/COUNST.PES",
+      "sha256": "6b50f2548fc4b4a0ffc2d7b64f00c947f1dbed130c99eb4186936fc2d4673f89",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DISKID.DAT",
+      "sha256": "a8301f3a6573b69989ce5680088086ce325aab464996aa1e739841e7678ee02a",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODG.BIN",
+      "sha256": "0f77babc51646ae7724c27ee097971adb4e1385c8cb0302c138590799706f0b6",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODG.SS",
+      "sha256": "905ea335c9029afd5a447fdd0fa4f7b7852ba03930d2e90c30c0134963cd6823",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGDASH.PCS",
+      "sha256": "10dbc59826aa3c642d206c72134513ee7a58853d29e2be0bdb512cc607e98aa3",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGDASH.PES",
+      "sha256": "39c57774491bcfd347bb76e5340de48ead05e906b8e71fca06c1ffbe49372f3c",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGO.BIN",
+      "sha256": "ee29a29fef46d1e176febb6133cd7a0b619b448b723a271d2666d8085767c6c5",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGREAR.PCS",
+      "sha256": "6b34b2b002101a8c90a61d98ed18acd04e107cc876a9c2bd143df0f3510b38a9",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGREAR.PES",
+      "sha256": "0e734502d4f9fe1fc241be668472081b5e5fbb2e743bd3e771d9879d4efa6d11",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGROAD.PCS",
+      "sha256": "47cfca43d0bb73853a0eb031653593242aad88c6fb92a8413bf3b4760ad08706",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGROAD.PES",
+      "sha256": "8b21c642f4a435cd556ab28ae5fb4ae065c276ec18b4be3826438911620c7187",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGST.PCS",
+      "sha256": "3ba05ba53c68d9ba9bb56803983fb1d75442cb5b3559bdfa5382548345b1cdb5",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DODGST.PES",
+      "sha256": "1f204443280969f28746adadc40678c27e5520f0626c2d83d6098bb250c0311c",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DSITITLE.PCS",
+      "sha256": "7ce3fe93b09571c30704087d6098b7dee0d4e88e3da7011d8066c0dcac0a15c8",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DSITITLE.PES",
+      "sha256": "0c577a8b0c621afd5262388187d3b2596ef839930ac7ea2514d9f44078c328e0",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/DUEL.EXE",
+      "sha256": "76d5ba36c4c755a86a3a15f61e32b4a5d2fab0efcb2182bb8cc474a48e2ef25f",
+      "family_id": "DOS-EXECUTABLE",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_.FNT",
+      "sha256": "224ffd27148eeec78e02e866c18fb6a25943af9722116041804752f51fdf5152",
+      "family_id": "DOS-FNT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_0.DAT",
+      "sha256": "cc1623ae49f7e07e1b321aca32f117b8900c7e3e664884431cf05c44044bfaad",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_0.PCS",
+      "sha256": "ab999e645a44f21ea760079d33d60b75c669127f1dd9ff1fb72c72dc0877e9fc",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_0.PES",
+      "sha256": "1806dc6723d2accc14e41076ce804a7f7b0319e995bbe215a05b4cf8e0887ab1",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_0.SGN",
+      "sha256": "073fa474b4f3bc721a3e5c760ac273ebf4eaceb27f7288fef23f9efd8f03eadf",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_1.DAT",
+      "sha256": "bceee0e7c2e18a20a272a9f5533b703995ae3784bd6f390be232a67df4be289f",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_1.PCS",
+      "sha256": "d87d47fe3b35c0d70bfd9b58a7033567e88af79dac8219e9237ff3ae7da8fe95",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_1.PES",
+      "sha256": "5b808f3e3e47640a1c7496558f65d064eb815cea9970c8cea81561ba8f8a32e9",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_1.SGN",
+      "sha256": "a0cf39cb862cda1bf35e84eac106a848830ee6f31c208682a72ad533f442ad80",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_2.DAT",
+      "sha256": "558313d4a08743a07e893199436217376a2297d6ba1f6e7a8651614d19ac8d74",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_2.PCS",
+      "sha256": "300659c3961c634dae533aabed2ac9bb7cc6a4c6fef7c43e9b757bdf31f23db9",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_2.PES",
+      "sha256": "1140670f04e9b05540a4a6c2037568025603dad80f5680e90be4d53081c86eff",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_2.SGN",
+      "sha256": "6e5e4e68376495c4e60388aab2ee4d2b14ab871e0d3926019c5d408fcdb42d1b",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_3.DAT",
+      "sha256": "3cb2a0911e0f46d2c04b031c92f94e4f7cda530be7f70c2b90fe854f79210b11",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_3.PCS",
+      "sha256": "cee3379593d7ca4b29f6a887c5f56750fbf1ea5556126a27b328b0a0e6fc71d1",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_3.PES",
+      "sha256": "6e58aa931672ccaf1a577449f8a8d376fb7a80922925d58b84f99457e7c23787",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_3.SGN",
+      "sha256": "b305e78f4d0f5bc700c994e0d572ad82db1cd25fa77a9ec3649e23f98e45067b",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_4.DAT",
+      "sha256": "50ea1d49f5f715390e78e594096d342d344dc59a92799bb2df0dabd961c0855f",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_4.PCS",
+      "sha256": "ad913ffd6ed40f05b8b7a8e8a642acbffd0f9ab32b94932faa8406922952aeb1",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_4.PES",
+      "sha256": "2e27462198263b43e51841eba1f315553e10de2723056d0e3b4c805f3b3d64f0",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_4.SGN",
+      "sha256": "8b50404da2ce577c44f4bf3a9d2c69d03e40a67d25d662d0f77ce32ce34269b8",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_5.DAT",
+      "sha256": "fb1cc5b269273b7169fe57db40c2ea47aab6dcf59e768bf2550a49314a549ea2",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_5.PCS",
+      "sha256": "67f69e944fcc1f60a50f9e7f7ff4e07eb178ed4bac240c339b3092db8ef711a0",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_5.PES",
+      "sha256": "3baf3a79dee493a0fbd502a76cb06896e4d34220786f5d8bf7fb22c64ca4f283",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_5.SGN",
+      "sha256": "4566e48d5d0f7fe1669d29aea059962bd100f8ce1861cc17c294614ec9b54f9f",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_CAR1.PCS",
+      "sha256": "3bd0e67fa00c684ee43ef0b66d4774e6b857fc5bb2e276c18e3b7398e98a7385",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_CAR1.PES",
+      "sha256": "43a7144f6d705e59325cabd9823fb56110b03652faa4a67a824376916c89edda",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_CAR2.PCS",
+      "sha256": "2d60d3ee92470835e824fda22bace91837af9690e4511f3abd080b02b5c3e455",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_CAR2.PES",
+      "sha256": "f9ff0448eff76bc7d8d4922f46e00ebbbf1d980179336553080e2e8ed48ddee6",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_CAR3.PCS",
+      "sha256": "f6cfc7e8660da22870eb410d42c0a71965ac88d8ca82c74f3952fa00a9d56905",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_CAR3.PES",
+      "sha256": "d493da2203105d94a36c82e44c33051758f92f65c34cae8ff28fe8b7753b7252",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_HISC.DAT",
+      "sha256": "ccba8486827de8866452004893dd1288a56e80316e9b0e689dac22903e1d2787",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_ICON.PCS",
+      "sha256": "76fcfd474c3cb3b36c4fcab0ed096fa37171c184b50d3cc1f98487be47fab8ab",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/EC_ICON.PES",
+      "sha256": "91dec175e819f1fa1aaf98af7ebc808e941d32e02028f73f7d80dce8219ffb2d",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ENDGAME.PCS",
+      "sha256": "492bb3460b86b87d591582bec03d24374aaa3f2ea1736a03b4d612bbf179f590",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ENDGAME.PES",
+      "sha256": "d42f15fb55b2c4b52f040f2d474fe09f678b311fe304c8fc3cfca4fdb8fa0ae2",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40.BIN",
+      "sha256": "22a6383571cddb95306fa8aab54efe9523470a599d3371f1b1b6ddbcba13dfd8",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40.SS",
+      "sha256": "defed02c91e88a4f0b34c671fc4b8986b5ae66002dcbcd2105f011b8fdb15919",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40DASH.PCS",
+      "sha256": "568733bc2207435d7c41a9f4f95149648ddbbdfcd63e3cdfc98e237769e24bc1",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40DASH.PES",
+      "sha256": "8ee365e3b26a4638e61c1dcdd35acdb2125cde687b7a0089d9e5c4c55b03bb62",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40O.BIN",
+      "sha256": "597182914ca1d85a0871287e15552bf0e15b265f24ffc6ce4e4a3be1d160a204",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40REAR.PCS",
+      "sha256": "739396e2fde59774464ff770c6c2d1d3b7ff442de76f41724d65d32d3ec62840",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40REAR.PES",
+      "sha256": "0e497caae3e7e9942f896fbf091921acfce752785452c15606d0c27d33931e8f",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40ROAD.PCS",
+      "sha256": "64aec264b07ea7b368e3a7f30037d787d9a0e44aaf3960d6272164ebc4dffc31",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40ROAD.PES",
+      "sha256": "9ba747998e758b4ebe5305d8eb0be8668707643b6ce50461ac356c6068248ea1",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40ST.PCS",
+      "sha256": "83caf64c6ffc07b9b5481a9580c73eef9590181349da423b1d4a5e4e274f1c0d",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/F40ST.PES",
+      "sha256": "f79e0a7c0c17e2e3692d34a3c56d81bc4ed7d12c7498fe37409ae3c9438268a4",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GAMEDIFF.PCS",
+      "sha256": "ce86184cafc5d9e70b74379884d99bc9648c9298d22d1346fa078b2aa2105fe5",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GAMEDIFF.PES",
+      "sha256": "6c45f12ac737d6d488c58aec7b34fec02cf2eb87bf109599e10e42fb73a8ab5c",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GAMEOPT.PCS",
+      "sha256": "4a1f48fe9e85f57436def96dc5b2b2baeda4fe8144e1efc50e21f71d8a561a4b",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GAMEOPT.PES",
+      "sha256": "31f5825f9091a5351a313d508a503cfab5f832af29a9b686843137557eb77e68",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GASSTUFF.PCS",
+      "sha256": "4205b245e0e8090b1be89912dfcbfef236e9c7b9877bbd81609c0754dc6f1498",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GASSTUFF.PES",
+      "sha256": "360403a14191d33382f6c18194bd4a4afb717703be21490712673004f6bfad08",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOAT.BIN",
+      "sha256": "2bb6047ed022260f06948f1da4bd395927bd84539d3643c8751cfa4cad4915d9",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOAT.SS",
+      "sha256": "1f39b8662bf86be6c99444ee26b91070a14fa588915e09f6bddb98dc20c92721",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATDASH.PCS",
+      "sha256": "0a84faa4c581060639aabb4487174e454b5150f20cbef8f8a4096c929226be9e",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATDASH.PES",
+      "sha256": "e278148086544b5d9675b3cefeb0cea0bba5bcb7b470e667e9cb589b900f8a71",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATO.BIN",
+      "sha256": "9710f89583af84e09ceabf949a5e1a8594a189b7e31d31283aab8762e60eb474",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATREAR.PCS",
+      "sha256": "773ee3cd1e61d82b0c6b5c4b82d79debd031c004a68b6a0e7bb0d8144e829057",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATREAR.PES",
+      "sha256": "4776b96f25f7935e401291e63db64142083b2f9719fd3e894ed64b0a7c657305",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATROAD.PCS",
+      "sha256": "384fb656ec523eae503fd5a364ac9a2a7d8ef6aaa86992d2cf7cdf4a3a34eed5",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATROAD.PES",
+      "sha256": "f047b2ccc0ae4d2fbd5d441e8bbbb8587ba507b05e98b019592fb1ddc5f13a02",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATST.PCS",
+      "sha256": "5e78c5194699273cf7cfdaedf27bc6ad0a8dcf0543464be3d808b1dc3589aad2",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GOATST.PES",
+      "sha256": "4dd4317d391c6117cf75f65339c534e9c550b9096ce483e06ce024f9092ff13d",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50.BIN",
+      "sha256": "779b6977c96a9af0622662d19a05aa93982935d48b9ce6b09c658d4d2541479e",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50.SS",
+      "sha256": "1f39b8662bf86be6c99444ee26b91070a14fa588915e09f6bddb98dc20c92721",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50DASH.PCS",
+      "sha256": "089d7d0ce7be5ded2ab0c1e522c1358d75e7abd7a07b67fc64ed6ece4935ac5e",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50DASH.PES",
+      "sha256": "da70f20ce2ffcba4fe16d3cd8ed55e106afda0a83beb7245cf5c1093d5647aca",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50O.BIN",
+      "sha256": "627858b3dcc52af0d01bd9b21b6560893827c63fb0a3b44055019eadf432730a",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50REAR.PCS",
+      "sha256": "ebaeb2ce81eefa37720d8bcb51b09baff5cab599dc33d3b538d0627a03cd5824",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50REAR.PES",
+      "sha256": "32d2eab203870f2410e1adf045da0840a5c44c1829ef12dfa78277210cbf59a6",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50ROAD.PCS",
+      "sha256": "6fbb86d51b21c286bccf465bcc2699788d8882c8a8dcfe7a7ddc439ed53a1cad",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50ROAD.PES",
+      "sha256": "f5e4902569ac2171b5cb27bd45e210709a368d2db24c63e1cf0a014005e85734",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50ST.PCS",
+      "sha256": "eb6df37b30db18d83c74000edbed297e3680385f0e8b14c1b5dea5f64cf9957c",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/GT50ST.PES",
+      "sha256": "dc07522c84b54ce0f7026a4dbb3e8e81d341aa9248f26dbcc3e3883f42bf1e92",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTU.BIN",
+      "sha256": "5dfb384c03b6fa2775f2173985c7b9bb063c9ae92f7215ce9ba2d1f7baa3e115",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTU.SS",
+      "sha256": "defed02c91e88a4f0b34c671fc4b8986b5ae66002dcbcd2105f011b8fdb15919",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUDASH.PCS",
+      "sha256": "56c94b36b12bc808cc5b9d171bcffb7d7dae987c5d2de34eccc89ee7aa1ee0c6",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUDASH.PES",
+      "sha256": "e7d48102db5583bd1cb78d646caa2ff27f2285170bbe1b86e630434ccd13a799",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUO.BIN",
+      "sha256": "d6592da7e22904356b8bf70118204992ffeaaa0860a1263ad9ae4abc3ae9c457",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUREAR.PCS",
+      "sha256": "7dcfeef6e73fc0537c34cb977f3a7c9aa0bafb4e9a50536867e7cdb17156d734",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUREAR.PES",
+      "sha256": "d5735580a25da500a3445021f489c539c5ca7a9b38b9e600e2d842fbcc2d00d7",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUROAD.PCS",
+      "sha256": "2d2cb4acf0891b4c0b22553f2bb23e7f2d1fecaa1462b2e424bae707f015d97b",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUROAD.PES",
+      "sha256": "41d98f859fd80e1e31c6e38778c747630fd7b268d97b1a3db99ea96d8eaeb81a",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUST.PCS",
+      "sha256": "6fd393e59533ba18a987bdee96fca7adf85c485ad75697d9e8db90640e2d71db",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/LOTUST.PES",
+      "sha256": "f7269120ecf3fc88cf92c2b59b6f38924e0640b70b83c2b4a8e7f1ed5b81506f",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959.BIN",
+      "sha256": "1c3ad8cd4f4dd461f38067fd6292d52e3f12493bf5f2f4404c10dbde3bf9369e",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959.SS",
+      "sha256": "47df4d14da2b1d59e8eb6cc77c4da7c9061102afb8125edeb24e7f88cc1ff06c",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959DASH.PCS",
+      "sha256": "2664c0c94f015f3291057c97efd492ef3390727c36dcb39a219203ef40fc3f8a",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959DASH.PES",
+      "sha256": "ef0aa901edf3bfc4746e7dc02878fedaf2179e4e1a95295521dddfd5edcc8d26",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959O.BIN",
+      "sha256": "11d311bf7b64ed12ee16ef1cb1f769e20f9ab2206a56535ff223012c848776a1",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959REAR.PCS",
+      "sha256": "160f7c56c4f9efe3d4fa7c054c8538d7c7879a0559159881daffbc3fb9f46de5",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959REAR.PES",
+      "sha256": "a82afebb0b333d329ed1c588ca7f60fe7dda6972e2f91f603d4df8ffe5fd5b03",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959ROAD.PCS",
+      "sha256": "98561e2d2321912d2b5902f953e27e13309ce1a0c7ad9bd00f5ae8c90e7f2396",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959ROAD.PES",
+      "sha256": "6f301ec22de5e4e4ddc7a9ef374f35ec1e245b1fb7eb4d2a09d7bdf501532933",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959ST.PCS",
+      "sha256": "73be32ab4d1fabf31c072c480dc19c3b3a450aaf79103935a0b0f5a4702bbb9f",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/P959ST.PES",
+      "sha256": "8f48bdd7526c719bd3b7fc47aa548adb7e7fe47cf563f2c56b20f879e4af6724",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROAD.PCS",
+      "sha256": "0e1fbb4bb6fea3067c77aefebde8789048c507c9006101a88e5d819d5e585f65",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROAD.PES",
+      "sha256": "d7ec58c35f5998a0f2c64c9b6a959a9cfc8609ef775f9602db293ddcb9bfd2e8",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSS.BIN",
+      "sha256": "0a98a75e5e70dbe05d17e0d71a45c4d653ceb66aa0974665008adabaf9b202f6",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSS.SS",
+      "sha256": "c18bcba520c218f315d0e454436533a78c9fbd3708b1be47f4357f7f0a53bf0e",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSDASH.PCS",
+      "sha256": "94e3a2ae7df65ed397922b09d7c770d250b224f81cc93a97eeb844e9aa5051ac",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSDASH.PES",
+      "sha256": "4ebb15aba8c046dda7573a4353a9c40875e00cbad964e49150b85aa983c3c3ba",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSO.BIN",
+      "sha256": "aaa43573a7f1c5e5d54fca8b700a68e58cfecea83e3cefb1236deb32d779b931",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSREAR.PCS",
+      "sha256": "99f6d32a3e0bdf11971a4ffe713887bc5d49617c6269e5a54b33813fc3b87c14",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSREAR.PES",
+      "sha256": "32f9eb8d5e24544e99d6199ee7645bb32eef68e2f1188cd98a7ae9b68c79224c",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSROAD.PCS",
+      "sha256": "62c1b798c92b12a9d08d90dc2850d79c6b221e3b0f0bbcc8fc33355bb2edee34",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSROAD.PES",
+      "sha256": "41dc7bb318879f53ee159a12e445c8765f9c6bb53d5e5cc2387f415a5b123b4c",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSST.PCS",
+      "sha256": "982b9d386601f579eae4db64f0faa4c4af2edb153cf44786c208f4d5c0d7d452",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/ROSSST.PES",
+      "sha256": "62d7275dc2255b465e8fd3018b2985aafbd540d038beddf352d1b6e4e738b9d7",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUF.BIN",
+      "sha256": "ee19f566facdb8c32b57ca231c09fcde0ac36725c30baf56bd4d89f6460c55f0",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUF.SS",
+      "sha256": "c18bcba520c218f315d0e454436533a78c9fbd3708b1be47f4357f7f0a53bf0e",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFDASH.PCS",
+      "sha256": "e8cd9841b04642430d04a991376e9b1d54ecbf3e91717c32c15fabbefda9068e",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFDASH.PES",
+      "sha256": "a447eb34e621ca4104bd3d122ed33930e2a73975cbf98b6fd168e012998bd0f1",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFO.BIN",
+      "sha256": "488ba6ef8fbccd78ae653d81948f0478cafae58ba75ec9259e02ae9db7d7fb4f",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFREAR.PCS",
+      "sha256": "75e0d8b3fabdac02046ae1b90972fbd946370c5f0662f057832bdd151acec8b0",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFREAR.PES",
+      "sha256": "2cd52a9fcab317a8a6a8ec29de82e03898a2012adae94eb50d49f38b8b1969f8",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFROAD.PCS",
+      "sha256": "38b01470dbf7458f4137974a58f536a37727ca1413d0d27fcc48cb96d4d644af",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFROAD.PES",
+      "sha256": "2b1ff4e959506420f6350a62e360b5947ccc3ed2eeff304e34e02f3a18e8817d",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFST.PCS",
+      "sha256": "72425bf48b48d1968836873f7b3a83ded9c33e31cf61af810e803f7255d8183f",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/RUFST.PES",
+      "sha256": "423c2a733052d5d3a27e0db32148d930b68cf13f68ddc3173c9e02dad08511ef",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/SCENES.DAT",
+      "sha256": "d061a7e917c3d2a15d66c864f27610efaf283ed4a87f8552d25450e8bf5be3ce",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/SELECT.DAT",
+      "sha256": "b0a21227c92567459a8038b929ac8f1d99106000117389bc3618628920ec91b4",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/SONGS.BIN",
+      "sha256": "8f0bd7a2af35efe54dd98baf67f7f701bd4c721d8effde94b257559da60d824c",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNG.BIN",
+      "sha256": "4010f324214547bc92d1636827b27d03fbe0c1e1e93d43ba207746c5e80f72b7",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNG.SS",
+      "sha256": "240f2fa3d929bac0d6dd0c5edaf045be0fa76445007e6aebd8ae3396033e8a0c",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGDASH.PCS",
+      "sha256": "c56da5bedaefee4bc5e5a206b35bacbf585203fbee6ea7c24bd9afab1b1951ad",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGDASH.PES",
+      "sha256": "efa0a8677fbf0b23d44a4ffe3fd4a4bbf200ed058dff5ed928e0c62bc168fb62",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGO.BIN",
+      "sha256": "5e6f8808fa652fdd6f27494352cdd94ce7f451390d2f4c304b2e255d0a409d04",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGREAR.PCS",
+      "sha256": "f976bc92de9f6928979e3d5b7564cf04c4d73af651091829c38f437d8a7dc6a9",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGREAR.PES",
+      "sha256": "94c8123a90c3828a757b2b640a825fdf073ff9b50330c857e783cc7e30e966e9",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGROAD.PCS",
+      "sha256": "6e01d31014e6a9bd93f79ae4573a270324ee5fb8b7436331602261ac7e0702d5",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGROAD.PES",
+      "sha256": "7bebbf2ef7851966abb2176c6306fe7eb5bd99b83260e59b71e108c15963a422",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGST.PCS",
+      "sha256": "49cc75d3159a695c1b2cc497b8b65f51d9d1ed0c5c081fdd160c168e79f2e5d0",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/STNGST.PES",
+      "sha256": "89a36318ac84f3ab759ca36b0575b621da137a97d00cda287af5f4a882968525",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TD2CGA.EXE",
+      "sha256": "3e254f317b8d91c6b6d1e1b3d873f80f71c630e30f77a7cf7243cbe7eec979ba",
+      "family_id": "DOS-EXECUTABLE",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TD2EGA.EXE",
+      "sha256": "eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+      "family_id": "DOS-EXECUTABLE",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TD2TDY.EXE",
+      "sha256": "6a22aeeb809b483f6c19bc201eb9e267fd6800ca1dfd1af427a05622ce2293fa",
+      "family_id": "DOS-EXECUTABLE",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2.FNT",
+      "sha256": "71f3bf8f2d4afa2bf58360a391f92739f9752659b424ef1d298cf98279d1b660",
+      "family_id": "DOS-FNT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS20.DAT",
+      "sha256": "d1a039a741e374e810b1acef010123b513bc1d4b3a26c5843ebf16ff75c8dd81",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS20.SGN",
+      "sha256": "b3fecc669c3e01bdf1134e0ff5cd3274e115099f5303d09ee5bc650b6b29c55d",
+      "family_id": "DOS-SGN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS21.DAT",
+      "sha256": "54d43f4d3b33495345fe838e21adabe1e03feabdfeccccc2f83da5bda1db0ef3",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS22.DAT",
+      "sha256": "a2380ad6ea5942c109cde45c4eaef5eab978e5fdac9fd130ff7b1463bb075c56",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS23.DAT",
+      "sha256": "91a096c4c481ac3902288496f1834812843b3dd076ef8ee060042fdc70cdb132",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS24.DAT",
+      "sha256": "e5d4f89a66ade7be247db6d3331b802690a0d95848a90b6e2d807d5049c9bce4",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS25.DAT",
+      "sha256": "bc1d6de4cf255f80bbfda56c630c8753033762a94e94ef1c033d947c6f8ab187",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2CAR1.PCS",
+      "sha256": "1e6a0a3a53fc535693c284452fa01f81aa1d5234d96db23c4c745e51f965137d",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2CAR1.PES",
+      "sha256": "91a1223ee3c1fb8536fe105a2d79991e52440c2582fd297894611f6efb19be85",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2CAR2.PCS",
+      "sha256": "dcac29537ed2d5fe30e1c87ea29502b2b8f39d86b8f56ae89cb249f13b520a4b",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2CAR2.PES",
+      "sha256": "31b4526b213f72089909322182c08ea83843ccf584b4712616b6cbbbb7eaaeb5",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2CAR3.PCS",
+      "sha256": "21d38dfbbf07af9bd3dc34ce84519d704e37a51382797cb586d39d71b557f731",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2CAR3.PES",
+      "sha256": "f331039a6d7a847363f6d443b5a0a9b6056a7e25c40bb1eb7333d550736f5611",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2DEST.PCS",
+      "sha256": "2e9698e51f4bdf5d054406898647284926e22a5d4272a67fb77e701fb372c16f",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2DEST.PES",
+      "sha256": "f755cd17be07f1a3f0651f3733d82df0da5de3b577873cb668ac5ae43b7c4285",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2HISC.DAT",
+      "sha256": "f2ebacaa06dc1e0b94207829841b241b643e9a1cddc0614ce8b69260577c82c6",
+      "family_id": "DOS-DAT",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2ICON.PCS",
+      "sha256": "aec92a49574fdb16237bbef8b210fe2d6687596ab9b7959c7126badda4e503ab",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2ICON.PES",
+      "sha256": "91b01bd61be52a9f36b88ef43843316f77d91f76e71ad2f008bc724016be05f4",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2TRES.PCS",
+      "sha256": "6283ea14224156907f64311968de896f858719426d15e89ce9ba5f1c9235e41a",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2TRES.PES",
+      "sha256": "fa72cb1cc9ad955df48e566a393eed7fbe182310ceddad012e828797035259b6",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2TUNN.PCS",
+      "sha256": "eae41c4293aa8f91083c28cb941c44d616f3d6877c37c31ca82d610674eaf047",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TDS2TUNN.PES",
+      "sha256": "f39c2851445ea3e4d646160127a2cd2e22b78b3e7610cd72be5ce2f226284da2",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TESTDRV2.PCS",
+      "sha256": "82127c72a193020d1801e261fc71c4f6924554a08e5b52d42c6ba6bea14e3280",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/TESTDRV2.PES",
+      "sha256": "e67c74a235f3229f66928d07e2eea79eb7cbfd7190b95c2fee2914cec56cf31d",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETT.BIN",
+      "sha256": "7d738978754f9f4922926b2b7e98f259b09495f07abde172df18af2446683409",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETT.SS",
+      "sha256": "c18bcba520c218f315d0e454436533a78c9fbd3708b1be47f4357f7f0a53bf0e",
+      "family_id": "DOS-SS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTDASH.PCS",
+      "sha256": "1928f40fd136e3002079ed2931687ef207719e2e04302ae3cb7d683ef7a7f619",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTDASH.PES",
+      "sha256": "e7e209217fc4d3446d0f3ffeaaba1ef876c8ed81e6be2245447dba5e827c2a8d",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTO.BIN",
+      "sha256": "8884729c62aec92a5401ae40fb1c0f60f5f400271aba3d32fedc5a03981597c7",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTREAR.PCS",
+      "sha256": "52be6f214f5f0269075f752ae6951562d58327e6cfd5b6041fbe50fa3a7560e4",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTREAR.PES",
+      "sha256": "45dffc2e689d7e88fc5af3220cfb8bf0b4ad666b1905131c68e10482ac8334f9",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTROAD.PCS",
+      "sha256": "53c795c82bd3b7ae50c637807e330669c31f97b86b5422819fec8d656c546583",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTROAD.PES",
+      "sha256": "0f09870e486661f9449d37e1db972b5545e2b44e1ad8f25537dbc626b042d289",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTST.PCS",
+      "sha256": "bc4dafb6fc7ddad448d11123766c8f0a8bbdf089b9b94f48a203c146bd28a494",
+      "family_id": "DOS-PCS",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VETTST.PES",
+      "sha256": "75aa462d063261f5256d3485226dfe2884efe826d2bc943f6269ad9d1a4bc8b8",
+      "family_id": "DOS-PES",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    },
+    {
+      "logical_path": "reference/dos/VOICES.BIN",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "family_id": "DOS-BIN",
+      "claim": "Scoped family interface/producer map only; exact perfile consumer/lifetime/schema acceptance pending"
+    }
+  ],
+  "state5490_direct_writes": [
+    {
+      "site": "06C9:1C87",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 0,
+      "source_operand": "byte ptr [0x5490], 0",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:1E3E",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": null,
+      "source_operand": "byte ptr [0x5490], al",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4031",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": null,
+      "source_operand": "byte ptr [0x5490], al",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:40C0",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:424C",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 255,
+      "source_operand": "byte ptr [0x5490], 0xff",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4277",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 255,
+      "source_operand": "byte ptr [0x5490], 0xff",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:44BF",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 255,
+      "source_operand": "byte ptr [0x5490], 0xff",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:466D",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 3,
+      "source_operand": "byte ptr [0x5490], 3",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4791",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 4,
+      "source_operand": "byte ptr [0x5490], 4",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4A4B",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 8,
+      "source_operand": "byte ptr [0x5490], 8",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4A78",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 5,
+      "source_operand": "byte ptr [0x5490], 5",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4A94",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 6,
+      "source_operand": "byte ptr [0x5490], 6",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4AAC",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 7,
+      "source_operand": "byte ptr [0x5490], 7",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4ACE",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 7,
+      "source_operand": "byte ptr [0x5490], 7",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4AE1",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 7,
+      "source_operand": "byte ptr [0x5490], 7",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4B42",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 1,
+      "source_operand": "byte ptr [0x5490], 1",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4B51",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 9,
+      "source_operand": "byte ptr [0x5490], 9",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4B57",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 4,
+      "source_operand": "byte ptr [0x5490], 4",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4BD3",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4D20",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4E5B",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:4EA6",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:56D9",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:59BE",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:5A01",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    },
+    {
+      "site": "06C9:5AC4",
+      "mnemonic": "mov",
+      "width": 1,
+      "immediate_value": 2,
+      "source_operand": "byte ptr [0x5490], 2",
+      "segment_assumption": "Principal DSgroup; indexed/aliased writers not excluded"
+    }
+  ],
+  "state5490_observed_immediate_domain": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    255
+  ],
+  "embedded_byte_source": {
+    "id": "RS-DOS-000250",
+    "container": "reference/dos/TD2EGA.EXE",
+    "transform": "TD2EGA-UNPACK-V1",
+    "module_offset": 122838,
+    "length": 258,
+    "span_sha256": "8a97c8967e7c95b4843739376796876a77245379cb3c2fd5ab6418c74ecce91a",
+    "initial_cursor": 0,
+    "table_offset": 122840,
+    "table_length": 256,
+    "publication": "Original initialized byte-source state stays external; no table bytes in source.",
+    "ownership": "Group66E6/66E8 shared by application and timer callback consumers; reset/alias/masking proof still open."
+  },
+  "limits": "Family mapping/direct writes/initial-span provenance only. No complete perfile coverage, indexed alias proof, state-machine acceptance, format decoder, gameplay or fidelity."
+}

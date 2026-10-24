@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "2024fbc38c8b4e355ed06c2a8b85cd659648cab4671d93fe11a0bebfc961d46a",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cf325d8e4b3902ad395b0ca3ccc610d1335e4c30514db91edee4184d92963daf",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_relative_wait.py",
+      "sha256": "2b07a1671a13ae178bc51048b3c29477fc9adec46a334812e0d2173c97bed3aa"
+    }
+  ],
+  "limits": "Nine invalid profiles without bus effects, before-call budget, observer rejection retaining actual child frame/before CLI and minimumSP32 normal IF1. Native diagnostics separate from original comparison totals, source errors, real counter writer/IRQ/timer/session/gameplay/fidelity."
+}

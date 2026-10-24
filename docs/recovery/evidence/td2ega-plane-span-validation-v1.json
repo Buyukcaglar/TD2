@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000076",
+    "FN-EGA-000077"
+  ],
+  "vectors": 9504,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "0f3aa728080d3cbf00da2628ac6569a83073cd32a550de8281dd79f89ab11428",
+  "source_sha256": "3ccd939d1bd7f959d2212faa073ee0df943fa77506dd6f1346e68c7fd2b841b4",
+  "validator_sha256": "8129765dcf32fe631ad4741703226d7762ac795e825f7a4524560ed10a3f3df9",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 782472,
+  "instruction_sites_exercised": 100,
+  "instruction_sites_in_fence": 100,
+  "fixture_coverage": {
+    "C17": 6336,
+    "near_return": 8488,
+    "plane_writes": 502848,
+    "far_8582_calls": 1600,
+    "near_jump": 1016,
+    "D01": 3168
+  },
+  "limits": "ActualC17body throughnearRET ordiscardnearreturn/JMPDS0702 boundary, currentDS palette/plane words andSSBPmask andorderedmasked/REPbytewrites, unsignedCLcount/truncatedCH/signedSAR/DF/aliases/16bitDIwrap, GPR/BP/CFIFDF compared. D01actualbody withfar8582ordinaryreturnABImock/5words/callerADDSP10. SyntheticRAMplanes noEGAhardware/renderer, dynamiccontinuationtarget value notwriterdomain/reachability proof. LiveSSframes separate; no actualcaller/producer/capacity/resource/IRQ/core/game/fidelity. Native diagnostics separate."
+}

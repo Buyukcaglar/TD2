@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000182",
+  "result": "pass",
+  "vectors": 73654,
+  "native_only_diagnostic_cases": 3,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 56627,
+      "length": 164,
+      "unrelocated_sha256": "3ab1bdf6745e4f002a20d21cd9a6d990aca77441fb92b07269aa87dcc871595b"
+    },
+    {
+      "module_offset": 56595,
+      "length": 32,
+      "unrelocated_sha256": "f926e5ccb0c3d7dd7bee434dfcfb09e5568a48049e1b46d2bfec48be06de6f31"
+    }
+  ],
+  "library_sha256": "e8559d9b6063f314d253f14516c4b4efa995dcdda2e5df7f1e3863b86df53009",
+  "source_sha256": "99f0decfe4eefc0edae2bd484973b855144391ebea9aa397463419eed8211984",
+  "validator_sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da",
+  "original_instructions_executed": 15225120,
+  "event_counts": {
+    "0": 31205,
+    "2": 42439,
+    "1": 10
+  },
+  "fixture_coverage": {
+    "all_descriptor_boundaries": 7350,
+    "all_request_words": 65536,
+    "all_name_bytes": 256,
+    "varied_segment_edges": 512
+  },
+  "coverage": [
+    "All admissible active/cache descriptor boundaries",
+    "Every uint16 request value on fixed empty arena",
+    "Success AX0/DXsegment and preserved far-frame/registers",
+    "Full synthetic DS64KiB including mutations preceding fatal call",
+    "Every filename byte value and fixed twelve-byte copy after NUL",
+    "512 segment-edge arenas with explicit uint16 wrap"
+  ],
+  "limits": "Stable disjoint synthetic metadata and names. Failure stops before external fatal16A7:0002; no cleanup, termination, payload memory, DOS, codec, real resource, complete allocator lifetime or gameplay acceptance."
+}

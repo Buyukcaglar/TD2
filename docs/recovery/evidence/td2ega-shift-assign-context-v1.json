@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "ee3c1aaffd6056b3ed47ce4900b857f2870b5cac4c2990d6ed592d4b244aae81",
+  "instruction_observations": [
+    {
+      "site": "13A8:2FD3",
+      "instruction": "mov bx, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:2FD6",
+      "instruction": "mov ax, word ptr [bx]"
+    },
+    {
+      "site": "13A8:2FD8",
+      "instruction": "mov dx, word ptr [bx + 2]"
+    },
+    {
+      "site": "13A8:2FDB",
+      "instruction": "mov cx, word ptr [bp + 8]"
+    },
+    {
+      "site": "13A8:2FDE",
+      "instruction": "lcall 0x13a8, 0x2fc4"
+    },
+    {
+      "site": "13A8:2FE3",
+      "instruction": "mov bx, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:2FE6",
+      "instruction": "mov word ptr [bx], ax"
+    },
+    {
+      "site": "13A8:2FE8",
+      "instruction": "mov word ptr [bx + 2], dx"
+    },
+    {
+      "site": "13A8:2FEB",
+      "instruction": "mov sp, bp"
+    },
+    {
+      "site": "13A8:2FEE",
+      "instruction": "retf 4"
+    },
+    {
+      "site": "13A8:2FC4",
+      "instruction": "xor ch, ch"
+    },
+    {
+      "site": "13A8:2FC6",
+      "instruction": "jcxz 0x2fce"
+    },
+    {
+      "site": "13A8:2FC8",
+      "instruction": "shl ax, 1"
+    },
+    {
+      "site": "13A8:2FCA",
+      "instruction": "rcl dx, 1"
+    },
+    {
+      "site": "13A8:2FCC",
+      "instruction": "loop 0x2fc8"
+    },
+    {
+      "site": "13A8:2FCE",
+      "instruction": "retf"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:155C",
+      "site": "13A8:1678",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2FD0"
+    },
+    {
+      "owner": "13A8:155C",
+      "site": "13A8:15D5",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2FD0"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "calling_convention": "TwoSSwords[currentDSnearPointer,countWord]. Child2FC4plainfarRET consumes4framebytes; rootRETF imm4 consumes4frame+4argumentbytes, rootSP+8 withoutarithmeticflagchange.",
+  "facts": [
+    "ClearCH meansCLbytecount, notfullCX ormaskedhost32bitshiftcount. RepeatedsinglebitSHLAX/RCLDX retains16bitcarry andzeroresultafter32steps.",
+    "CurrentDSnearwordpair reads andSSpointer/count reads distinct; pointerrereadafteractualfarhelper thenAX/DXstoresinorder.",
+    "MOVSPBP/POPBP/RETFimm4 preservechildCF; cleanupisnotADDSP4 arithmetic.",
+    "RawAX/DX/registerobservations do notestablishoriginalCreturntype orsigned32bitsourcetype."
+  ],
+  "limits": "Staticinstruction/byte/callerinventory only. Actualcaller/otherFLAGSconsumers/nearfieldbounds/lifetime/IRQ/fullstate/core/resource-fedP2/P3/device/session/game/fidelity remainopen. Originaldata/media external; nooriginalpayloadexported."
+}

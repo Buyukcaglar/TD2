@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 20,
+  "script_sha256": "3434f4977b8436e7570978c08919ffdd780def049730228448d20be7864acbb5",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "195f4d948da0af51e380c756a6369d61bbe301094e2967fab2497d142790578b",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_block_tail.py",
+      "sha256": "addd5d2f937875556140f7f8e392601411b36571e1535039aea623473fef22d2"
+    }
+  ],
+  "limits": "Nativeinterfaces/fourCALL-recordbudgetlevels/realSSframes/requiredwrapperZF/DECDXZF/SUBCF/orderedmetadata/actualPOPAX-CX-DX/rawchild diagnostics only. Originalcomparison separate; syntheticDOSnoINTframes, wholecaller/writers/capacity/core/session/fidelity open."
+}

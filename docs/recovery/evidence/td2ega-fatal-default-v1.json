@@ -1,0 +1,2364 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "12054d80d5d2320f13ae91037f772eb4bd62ec2f95740cbe6a678448297b6f87",
+  "vectors": 64,
+  "original_instructions_executed": 24704,
+  "cases": [
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 381
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 381
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 411
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 411
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 387
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 387
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 403
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 403
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 417
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 417
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 361
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 361
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 363
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 363
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 377
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 377
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 391
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 391
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 367
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 367
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 369
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 369
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 4096,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 381
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 381
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 411
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 411
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 387
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 387
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 403
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 403
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 417
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": false,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10,
+        252,
+        255,
+        1
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 417
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 361
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 361
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 363
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 363
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 377
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 377
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 391
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 0,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 391
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 367
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 0,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 367
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 369
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 1,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 369
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 21845,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 383
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        25824,
+        4660,
+        22136,
+        39612,
+        57072
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    },
+    {
+      "load_segment": 9029,
+      "checksum_ok": true,
+      "extra_vector": 1,
+      "handle_mask": 32767,
+      "packet": [
+        0,
+        65535,
+        0,
+        1,
+        2
+      ],
+      "diagnostic_codes": [
+        10
+      ],
+      "closed_handles": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "vectors": [
+        [
+          0,
+          8738,
+          4369
+        ],
+        [
+          36,
+          17476,
+          13107
+        ]
+      ],
+      "exit_code": 3,
+      "instructions": 397
+    }
+  ],
+  "conclusion": "Fatal16A7:0002 callsgraphics/input/timercleanup inthatorder andforwardsfivewords toformatter. Defaultsignal22 dispatchesruntimeexitcode3; exitclosesonlyflaggedruntimehandles5..19 andrequestsDOS4C03.08B7 iscallee-cleanRETF2 diagnosticcodeinterface, not acharacteremitter. No return tothe rawloader isobservedbeforeterminationrequest.",
+  "limits": "Cleanup/formatter/diagnostic calls areABImocks; onlydefaultnullsignal/hook profile andsyntheticDOSresponses. Actualformattedbytes, drivercleanup, process/handle termination, installedhandlers/hooks andsupportedruntimeprofile remainopen. NoDOSprocess/game/session orfidelity acceptance."
+}

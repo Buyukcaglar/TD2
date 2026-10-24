@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 19,
+  "script_sha256": "eab3a50e3acb8564ecda0bd2d74afb980d304b75c9969248ad829344a50492df",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b34fdab9d893ec6f79c24e8145652ae983dec05c373d0f4b8372f4f037925082",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_key_dispatch_bus.py",
+      "sha256": "1b6151044f9ae21dc38d7392b535bb1dcad3118c9b88eda63601804268e24c66"
+    }
+  ],
+  "limits": "Native-only invalidbeforeeffects/nulloutput/PUSHBPguardalias/nonzeroAX-missingtargetZF/beforeCALLsavedwordprefix/missing-malformedservice/retiredfarcontrol-rawneverfollowed/actualsavedSI-DI-BP-rootcoordinates/returnedDSguardclear/childCPUwritecount-forwarding/budget-boundaryprefixes. Callbackprofilesnotoriginalbodyproof; separatefromoriginalcomparison/IRQ/allwriters-lifetime/wholeinputpoll-420A-403B-core/game-fidelity."
+}

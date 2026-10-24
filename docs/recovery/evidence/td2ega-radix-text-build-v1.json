@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_radix_text.cmd",
+    "sha256": "c460a148152799a9f3ce3df4b194474cc5db7de6b8d34420bc962bd55378fa60"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_radix_text.c",
+      "sha256": "b05243100bceeccf86d5337fc3feb8ac288b0224c01fa80f8d5d420de31a1ecb"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_radix_text.h",
+      "sha256": "f3bd6d130e0746237fda0e1b6ab369278bb29823132c876b6b5d8ba48a07e6ef"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/radix-text-repro/td2ega_radix_text.dll",
+      "sha256": "04fe565687b579bf36fdcd3697e4ec1bc397c8b9eff34503df61654e7b2cda34",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/radix-text-repro/td2ega_radix_text.obj",
+      "sha256": "dd596347091e41e53b4282ef4dbefb25f0d455888b45b97a273a37a55aaa7c07",
+      "bytes": 6231
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/radix-text-build-v1.log",
+    "sha256": "620abbb2b4b215bc4e4da9cedc9e39ba9b7cf3311bccf5aabfdf6aae8fb59f06"
+  },
+  "limit": "Actual29D0/29EC/shared2BBC word/dword raw radix conversion, selector0 decimal wordCWD/sign prefix only, all raw radix values/byte digits/wrap, CLD/ESDS, actualSSsaves/arguments/farframe, do-once reversal and source-order aliases. Fullbus/GPR/BP/CFIFDF/control. DIVfault prefix stops before faulting instruction/exception delivery with unchanged GPR; successfulDIV undefinedFLAGS unadmitted and later defined arithmetic/OR/CMP establishes modeledCF. Native beforedigit/reverse budget, radix1 nonprogress, zeroDIVfault and raw far return targets distinct from normalconversion. Caller buffer capacity/writers/lifetime/FLAGS/core/resource-fedP2/P3/session/gameplay/fidelity remain open.",
+  "function_ids": [
+    "FN-EGA-000330",
+    "FN-EGA-000331"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-radix-text-context-v1.json",
+    "sha256": "3ba2eeecd776cca9f2072ac68068cefbb82c98673c48cf68760f74322c8f717b"
+  }
+}

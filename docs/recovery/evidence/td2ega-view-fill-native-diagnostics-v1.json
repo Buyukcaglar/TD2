@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 67,
+  "script_sha256": "b301b951b482e9408b91db1ee5060a76323c3fba34a0986c8e5d9ace5c29eeae",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "383cac953767f2b907df1406d6d75cee49097c72d930886ff81edf54cd4db3d7",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_view_fill.py",
+      "sha256": "c4a7474d41063ccc5da43b4d0d1712d6d18d3cc121a2670042b5fd8d7cabd9db"
+    }
+  ],
+  "limits": "Native843E/fullSS/threepaths/DFretained/packedwordIMULlowword-oddbyte-DLcolor/softwareSSwordcolorshift/wordSTOSDF1/hardwareBYTE-MULheightLow8-MULCF/liveES-afterports/cachedbranchqualifier/SSwidth-counter-color-saves-controlaliases/globalwork/ADDSPcarry only. Originalcomparison/staticproofseparate; no actualcallers-allwriters-geometry-capacities-storage-lifetime-exclusion/realEGA-latches-renderer/CPU-A20/core/resource/CGA/session/fidelity admission."
+}

@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000309"
+  ],
+  "vectors": 12080,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "28e4960e35e75a7e42d9936fbf699e18b6b3e338a341f3d9b3fca9da7c94eb45",
+  "source_sha256": "f552c646874d6100e00d07ba2b82502a2ab2c55c58ca775b7c749af9d16bcfbf",
+  "validator_sha256": "692179902d609c72d1952ab5a2accceac421bf1050da8b2bd12a667c4d83b662",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-block-align-context-v1.json",
+      "sha256": "17eb3ab4b3448388f562f5e931eee9e4f7f1b10c18e684bcea9ca3aba38c96ac"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-walk-context-v1.json",
+      "sha256": "befaff58842ac3ec6e08e4c7b29dceeb4ac2fea1723fe675611009c5ac003f7d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-public-context-v1.json",
+      "sha256": "3e53c9df3304789785d54ca029d9dfc11839699b80e172eb9bd2024ef293d261"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-buffer-context-v1.json",
+      "sha256": "58a7481b14dad9637e7ae24f12a4041f39cffdbeb362926cdf3c677d47378e8c"
+    }
+  ],
+  "original_instructions_executed": 666778,
+  "instruction_sites_in_fence": 386,
+  "instruction_sites_exercised": 357,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2871",
+        "13A8:2875",
+        "13A8:2876",
+        "13A8:2878",
+        "13A8:287A",
+        "13A8:287C",
+        "13A8:287F",
+        "13A8:2882",
+        "13A8:2883",
+        "13A8:2886",
+        "13A8:2887",
+        "13A8:2889",
+        "13A8:288C",
+        "13A8:2890",
+        "13A8:2892",
+        "13A8:2894",
+        "13A8:289C",
+        "13A8:289E",
+        "13A8:28A1",
+        "13A8:28A3",
+        "13A8:28A5",
+        "13A8:28A7",
+        "13A8:28A9",
+        "13A8:28AB",
+        "13A8:28AD",
+        "13A8:28AE",
+        "13A8:28B0",
+        "13A8:28B3",
+        "13A8:28B7"
+      ],
+      "scope": "2852enteredonlythroughactual2830fixedmode1/highguard0frame",
+      "reason": "Same29entry-specificdispositions asfrozenwrapperproof; standalone2852all53passed, notglobaldead."
+    }
+  ],
+  "fixture_coverage": {
+    "root_far_return": 11042,
+    "push_CALLs": 1866,
+    "stream_CALLs": 1866,
+    "public_CALLs": 2192,
+    "heap_CALLs": 754,
+    "root_iterations": 22838,
+    "child_iterations": 4124,
+    "bus_write_events": 123660,
+    "service_write_events": 224,
+    "syntheticDOS4A": 256,
+    "initial_DS_equals_SS_cases": 6040,
+    "minimumSP70_cases": 4288,
+    "root_LODSW_DF1": 84,
+    "raw_root_returns": 0,
+    "returned_ZF1": 9678,
+    "prefix_push_call": 288,
+    "prefix_root_iteration": 446,
+    "public_CALL_26E5_cases": 1580,
+    "public_CALL_26BA_cases": 612,
+    "prefix_wrapper_call": 100,
+    "prefix_service": 80,
+    "root_CALL_27A1_cases": 326,
+    "root_CALL_27AD_cases": 166,
+    "root_CALL_27B5_cases": 262,
+    "raw_child_return": 124,
+    "returned_ZF0": 1364,
+    "actual_changedBP_child_raw_cases": 32
+  },
+  "limits": "Actual13A8:21D6 far/twoSSwords-value-streamoffset/rawflags-bit1-FFFFguard/actual0BE8-family/fullSS/currentDS/cursor-countboundary/inc-dec-backwardbyte/sourceorderedaliases/signedbyte-times-six-metadata/plainfarRET. RootSP70/child60/actualSSsavedSI-DI-BP/ADDSP2callerownedchildargument. Wholebus/GPR-BP-CFIFDF/requirednormalZF/typedDOS4Arequests/control/counts. Serialized20bitsharedRAM/noMEM_READhook/realDOS-INTframesunexercised/historicalCPU-A20unqualified. Budgets/rawRETtargetsexposedafterinstructionneverfollowed. Actualcallers/allwriters/validindices/storage/capacity/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

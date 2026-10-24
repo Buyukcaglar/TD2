@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sprite_logic.cmd",
+    "sha256": "6d500f42f69a777d8ff1a0f21055e3322a581e473e6f04e6fd6f352f5c266f01"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sprite_logic.c",
+      "sha256": "81ac00e5aea7bf9920917c42a52eebf899d3d78e06b9231a331bbd36f4155f11"
+    },
+    {
+      "path": "src/recovered/td2ega_sprite_logic.h",
+      "sha256": "4db32216b65f83eae407c85e4230a15cd31f0e847a608f3cec1daa03d0e3536a"
+    },
+    {
+      "path": "src/recovered/td2ega_sprite_draw.h",
+      "sha256": "8f94174430f963669956aa0951306068fbd439acfc665d5997e9e59bbd014cd5"
+    },
+    {
+      "path": "src/recovered/td2ega_mask_span.c",
+      "sha256": "7ccc35f4e6ca67cc695d97d84fc9721f7b6dfd7945155f7606af3119c02381b1"
+    },
+    {
+      "path": "src/recovered/td2ega_mask_span.h",
+      "sha256": "a8e867a5fad71c8f2dc74bdc190383810efac829785ebe5258dc42e982c20581"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sprite-logic-repro/td2ega_sprite_logic.dll",
+      "sha256": "a2ef462642769ec5e3c69bb2b61286e09a50412d5b6eba2a4a22fa60467f69bb",
+      "bytes": 128000
+    },
+    {
+      "path": "analysis/build/sprite-logic-repro/td2ega_sprite_logic.obj",
+      "sha256": "9420718a488d28c74a739620735d8514893b4b501d029e1582806bb13c5814ba",
+      "bytes": 37529
+    },
+    {
+      "path": "analysis/build/sprite-logic-repro/td2ega_mask_span.obj",
+      "sha256": "fda025bd6fba8c4700ba76b1ae99eb9c34ae6415de1455962c2c998e23ccc6af",
+      "bytes": 10922
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sprite-logic-build-v1.log",
+    "sha256": "bea0b370f82d3e28ef0523b586c7dcbec8e005578bcfa0d4be19c8348b12b818"
+  },
+  "limit": "Threeentries7DBC/A718/BB08twoSSwords/headercoords plusstandalonelogic/copykernels, materializedSSsaved/local/near-returnframes/fullbus/GPR/BP/CFIFDF/farRETF4, byteAL-MUL/crop/plane-selection/currentDSversusSS/CS dispatch/actualnearRAM-device maskhelpers andexplicitOUT/MMIO traces matched. Nativeworkprefix andrawunsupportedindirectboundary distinct. Fixedentryflags1/2/4 choose distinct high-mask calls including actual839C/ADF4; maskhelpers separatelyvalidated. Syntheticflatdevicebus/copysourcefixtures only, noactualspritecorpus/allwriter/bounds/IRQ/device/renderer/state/core/game/fidelity acceptance; noallcaller/writer/alias/lifetime/exclusionclosure. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000208",
+    "FN-EGA-000232",
+    "FN-EGA-000440"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000212",
+    "FN-EGA-000213",
+    "FN-EGA-000214",
+    "FN-EGA-000238",
+    "FN-EGA-000239",
+    "FN-EGA-000240"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-sprite-logic-context-v1.json",
+    "sha256": "d29a4bcb6057df8d6e09bba35c19d99d73f87141b746c7eb3dd56b56bc75edd6"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate-sprite-logic-attempt-v1.py",
+      "sha256": "c588b9fbba19ca683316e3373bec2fd80f77fc0c7aeaacb5c9a978ffefa4d372"
+    },
+    {
+      "path": "analysis/history/validate-sprite-logic-attempt-v2.py",
+      "sha256": "127b87c46078ccef0ad95db5e6d99c358ba7790dd9f1f0c08923d5787386161a"
+    },
+    {
+      "path": "analysis/logs/sprite-logic-validation-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analysis/logs/sprite-logic-validation-v2.log",
+      "sha256": "22a38d27d0224100750a779b07f383a728bb9d9696b3d00e6294af2f4d915a63"
+    },
+    {
+      "path": "analysis/logs/sprite-logic-validation-v3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

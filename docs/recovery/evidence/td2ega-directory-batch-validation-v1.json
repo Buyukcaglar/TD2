@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000355",
+  "covered_original_local_helpers": [
+    "FN-EGA-000356"
+  ],
+  "result": "pass",
+  "vectors": 8000,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "dad28d9a719d025aade57057789ee26b1f7a08ac1f0516ce5e10c35a71201220",
+  "source_sha256": "b418f20fe5c19d1aef331c4917eaf126e578b809efeeda84792e8757b1588a2f",
+  "validator_sha256": "2d69ff05b3038c1f1211ec7184b779d253a740b63edb0e79078dfd844e95b413",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_directory.py",
+      "sha256": "c570d333efbdad3efae946e7c43acd789aab2468114b0a9af370e2ab5856676e"
+    }
+  ],
+  "original_instructions_executed": 7604810,
+  "fixture_coverage": {
+    "separate": 1000,
+    "shared_source_False": 4000,
+    "status_0": 6402,
+    "completed_0": 2400,
+    "shared_source_True": 4000,
+    "current_selector": 1000,
+    "next_selector": 1000,
+    "previous_selector": 1000,
+    "word_ffff": 1000,
+    "near_wrap": 1000,
+    "archive_table": 1000,
+    "archive_count": 1000,
+    "completed_1": 1730,
+    "completed_2": 1406,
+    "status_1": 1598,
+    "completed_7": 1098,
+    "completed_6": 134,
+    "completed_31": 1090,
+    "completed_30": 130,
+    "completed_4": 8,
+    "completed_15": 4
+  },
+  "limits": "Complete16EB:000A/004C callers with actual directory callees and composed native helper. Serialized synthetic principalDS/group and independentSS, mutable selector/output/source aliases and near/word wrapping; each invoked selector nonwrapping4byte. No supplied archive, resource ownership/IRQ, fatal cleanup, rendering/game/fidelity acceptance. Native bounds/work diagnostics outside original."
+}

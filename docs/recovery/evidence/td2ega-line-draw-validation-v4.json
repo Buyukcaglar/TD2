@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000217",
+  "vectors": 9848,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d696d94016b507231da70f8d9f585a603aba0e843fbc18bd98621a65346b6b31",
+  "source_sha256": "73afb106d449df69ca1822c2221ecaf4a32357c9a124b13245193dbbadcf0c36",
+  "validator_sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 46133541,
+  "instruction_sites_exercised": 419,
+  "instruction_sites_in_fence": 419,
+  "fixture_coverage": {
+    "normal": 7558,
+    "far_8A0C_calls": 712,
+    "OUT_bytes": 73088,
+    "device_reads": 32312,
+    "device_writes": 32312,
+    "plane_writes": 551273,
+    "prefix": 1266,
+    "fault": 1024
+  },
+  "limits": "Actual8582body/SSargs andvirtualframeprofile/DS=CS/restoreDS-SI-DI-BP/plainRETF4, horizontalverticalfar8A0C ABI mocks, generalfixedpoint/unsignedDIVfaultprefixes/CLIP/RAMplane orderedmaskedwrites andexplicitOUT/MMIOread-write trace matched. SyntheticflatRAM/devicebus adapter only, no actualEGAsemantics/renderer/device/IRQ/session/callerbounds/resourceformat/core/game/fidelity. Workbudgetnativeprefix separate; DIVCFpreinstructiononly/freshCPUafterfault, no postDIVarithmeticflags. Native diagnostics separate."
+}

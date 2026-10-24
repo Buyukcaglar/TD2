@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_plane_span_v2.cmd",
+    "sha256": "4c04bdf2da3a18132bd72c6da60ee8b826e8ca1a765a36c1232cfb63427bc70e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_plane_span.c",
+      "sha256": "3ccd939d1bd7f959d2212faa073ee0df943fa77506dd6f1346e68c7fd2b841b4"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_span.h",
+      "sha256": "53ea2da6dd232a2bb5d43b77c2f099c55888b91881fa2c91aa882b39b36233db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/plane-span-repro-v2/td2ega_plane_span.dll",
+      "sha256": "0f3aa728080d3cbf00da2628ac6569a83073cd32a550de8281dd79f89ab11428",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/plane-span-repro-v2/td2ega_plane_span.obj",
+      "sha256": "1080bb1a714956aa1045a14a06fb70702798c1c4d2cf4851e5fe734f1c88adc4",
+      "bytes": 6196
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/plane-span-build-v2.log",
+    "sha256": "32939ccb756a368d18a5f39ac1db43338c8665d133eb4d260af2dfcf864e4041"
+  },
+  "limit": "ActualC17body throughnearRET ordiscardnearreturn/JMPDS0702 boundary, currentDS palette/plane words andSSBPmask andorderedmasked/REPbytewrites, unsignedCLcount/truncatedCH/signedSAR/DF/aliases/16bitDIwrap, GPR/BP/CFIFDF compared. D01actualbody withfar8582ordinaryreturnABImock/5words/callerADDSP10. SyntheticRAMplanes noEGAhardware/renderer, dynamiccontinuationtarget value notwriterdomain/reachability proof. LiveSSframes separate; no actualcaller/producer/capacity/resource/IRQ/core/game/fidelity. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000076",
+    "FN-EGA-000077"
+  ],
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/plane-span-before-ss-fix-v1.c",
+      "sha256": "4b4c1e1f108c60330b22b8628d4504a786ec747618c9f398ae7f397d83e0a17d"
+    },
+    {
+      "path": "analysis/history/plane-span-before-ss-fix-v1.h",
+      "sha256": "efd09bb1bf6d02c2bd92a3ac65a275b63a4387694ad2a68784fb8cac46308abe"
+    },
+    {
+      "path": "analysis/history/plane-span-ss-fix-history-v1.json",
+      "sha256": "5f9ad7227798640986f50b43f35282d2edd145c014e74086251ded2ae7caf6ee"
+    },
+    {
+      "path": "tools/compile_plane_span.cmd",
+      "sha256": "a1f247fa33999917498a189cab8604d11398675f1372e89562ff8e9289a2f6de"
+    },
+    {
+      "path": "analysis/build/plane-span-repro/td2ega_plane_span.dll",
+      "sha256": "aa35c406349ffcf9479b3ed38c74c2cb283de9e9a851f05a06ef21c93d21029d"
+    },
+    {
+      "path": "analysis/logs/plane-span-build-v1.log",
+      "sha256": "5bdf2ebe734a2be4e029756d954b8612f69da8f4ab82b7695d443a02664cbf9d"
+    }
+  ]
+}

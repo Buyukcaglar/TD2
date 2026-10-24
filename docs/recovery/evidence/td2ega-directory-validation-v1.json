@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000174",
+  "covered_original_local_helpers": [
+    "FN-EGA-000175"
+  ],
+  "result": "pass",
+  "vectors": 11728,
+  "native_only_diagnostics": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "11e3bcfbe66f76e2db9e988d6c65a927633f5aef5a94d70961e0bfb8d7567ad1",
+  "source_sha256": "b3a0209715f37bbae9985c6ea74c90f4f2dba8e8dee9ad708690f104a07d32b4",
+  "validator_sha256": "1041a0adb8cb7fd32340762a6eadecdbcd69ed9aec868f8f3e212aed8b4e073a",
+  "executed_module_range": {
+    "offset": 56030,
+    "length": 207,
+    "sha256": "f9821ab46888725d97dfc3e9934526877a9eec85d2224e500cf14933721f85fb"
+  },
+  "original_instructions_executed": 1516234,
+  "fixture_coverage": {
+    "structured": 8640,
+    "found_0_status_0": 2230,
+    "found_0_status_1": 2230,
+    "found_1_status_0": 7268,
+    "signed_count": 16,
+    "all_selector_bytes": 1024,
+    "random_near_wrap": 2048
+  },
+  "limits": "Literal directory code contract with synthetic ordinary-memory source/selector views, two load bases, optional/required policy, signed count/near-wrap and32bit arithmetic. No archive format admission, actual resource decoding, source/pointer lifetime, IRQ, fatal cleanup or game/fidelity acceptance. Host bounds/work diagnostics remain outside original errors."
+}

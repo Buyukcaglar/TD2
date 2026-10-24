@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "coordinate": "unrelocated_module_segment_offset",
+  "status": "partial_review",
+  "additional_roots": [
+    {"entry": "06C9:6907", "evidence": "06C9:6885/688C install vector09 offset/CS; removed by68C4"},
+    {"entry": "06C9:69B7", "evidence": "06C9:68A3/68AA install vector16 offset/CS; removed by68C4"}
+  ],
+  "sites": {
+    "13A8:0822": {
+      "disposition": "saved_far_return", "targets": ["13A8:0482"], "complete": true,
+      "evidence": "0694/0698 pop savedIP/CS to6DD6/6DD8; startup047D far call; no other admitted caller"
+    },
+    "13A8:04BA": {
+      "disposition": "near_call_with_pushed_cs", "targets": ["13A8:0582"], "complete": true,
+      "evidence": "04A3 stores0582 toSS6D28;04B9 pushesCS;04BA near-indirect CALL; error path only"
+    },
+    "13A8:061B": {
+      "disposition": "far_callback_array", "targets": ["13A8:0A3A"], "complete": false,
+      "evidence": "060D walks reverse4byteSI..DI span; observed startup spans empty; exit7082..7086 contains relocated13A8:0A3A; indirect mutation not excluded"
+    },
+    "06C9:69FE": {
+      "disposition": "registered_far_callback", "targets": ["06C9:6A03", "06C9:65C5"], "complete": false,
+      "evidence": "InitialDS64DC/64DE pair6A03:06C9;0000:07FC..0804 passes65C5:06C9 to6A17; arbitrary setter arguments remain subject to caller audit"
+    },
+    "06C9:6DE9": {
+      "disposition": "bounded_far_dispatch", "targets": ["06C9:6B02", "06C9:7C16"], "complete": true,
+      "evidence": "6DD2 reads selector;DEC BL/JL rejects0;CMP BL2/JGE rejects>=3; twoSHL operations choose4byteCS6E2E entries; table module0DABE length8"
+    },
+    "0432:206A": {
+      "disposition": "bounded_near_dispatch", "targets": ["0432:204F", "0432:208D", "0432:2096", "0432:20A8", "0432:2100", "0432:2107", "0432:210D"], "complete": true,
+      "evidence": "205C..2067 unsignedAX<=6 guard then2*index;CS211A table module0643A length14"
+    },
+    "06C9:1432": {
+      "disposition": "bounded_near_dispatch", "targets": ["06C9:1439", "06C9:14CE", "06C9:151F", "06C9:15F0"], "complete": true,
+      "evidence": "1421..1430 AL nonzero andunsigned<21;DS12DA table indices1..20, module18BCA length42 includingunusedindex0; DS group is required precondition"
+    },
+    "06C9:2F90": {
+      "disposition": "bounded_near_dispatch", "targets": ["06C9:2F97", "06C9:3002", "06C9:3052", "06C9:30E4"], "complete": true,
+      "evidence": "2F7F..2F8E AL nonzero andunsigned<21;DS2C36 table indices1..20,module1A526 length42 includingunusedindex0; DS group required"
+    },
+    "06C9:0CFD": {
+      "disposition": "mutable_near_continuation", "targets": ["06C9:0B7B", "06C9:28BD"], "complete": false,
+      "evidence": "00EA stores0B7B and1F9C stores28BD toDS0702;0CFA discardsnearreturn beforeJMP; indexed writes and initialization order still toreview"
+    },
+    "06C9:1BA8": {
+      "disposition": "state_dispatch_bounds_open", "targets": ["06C9:1BAC", "06C9:1C51", "06C9:1C02", "06C9:1C23", "06C9:1C2A", "06C9:1C35", "06C9:1C3C", "06C9:1C43", "06C9:1C4A", "06C9:1C59"], "complete": false,
+      "evidence": "1B8D..1BA8 testsDS5490 signedbyte,CBW doublespositivevalue;DS2302 first10words arecodeoffsets; no localupperbound; allstatewriters/bounds required before admitting complete targetset"
+    }
+  },
+  "limits": "Review only named sites. New entries and sites discovered by expansion require further review. No full function contract, whole-graph closure or gameplay acceptance implied."
+}

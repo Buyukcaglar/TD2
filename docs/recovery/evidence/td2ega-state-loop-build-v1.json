@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_state_loop.cmd",
+    "sha256": "12f4c55c440dd3ff47c6a86a2b47165877a879f4b30b966c3d88f7f3ffee21c7"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_state_loop.c",
+      "sha256": "416712be754f09c738078e31af3e7ff579846b10fbe95e0a1229146a402f2135"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/state-loop-repro/td2ega_state_loop.dll",
+      "sha256": "1a4c7bcd9cee9b3698d760979a07f049a2f14f73f7bcc43f37f5e545accaf0cc",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/state-loop-repro/td2ega_state_loop.obj",
+      "sha256": "7fbc7441f3e1d1f6d99acbef504c6aba531755275dd581ac0756671a0c0f16bf",
+      "bytes": 10178
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/state-loop-build-v1.log",
+    "sha256": "cb6ac88c3c1f72d983220b719a5594ba173c109e351bddf08ffae4ec82ff1725"
+  },
+  "limit": "Complete1B2C orchestration/knowntarget/nonwrappingfarABI C17profile, mutableCLC/RETF tail/physical0086 andcallercleanup retained. Mostcallees ABIservices; separatevalidatorcasesdelegateactual1E59/780E nativeC. No fullcallee/state/domain/resource/IRQ/core/game/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000080"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000366",
+    "FN-EGA-000370",
+    "FN-EGA-000375"
+  ],
+  "result": "pass",
+  "vectors": 419868,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "333f5c9fd130b2c1889a99d9c68097fbb66ed3c6d487bcf4949525be4e370486",
+  "source_sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae",
+  "validator_sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2",
+  "original_instructions_executed": 5441756,
+  "fixture_coverage": {
+    "all_target_words": 393216,
+    "smoothing_signed_boundaries": 5776,
+    "counter_and_countdown": 4096,
+    "oscillator_wrap_and_sign": 160,
+    "all_second_table_indices_and_aliases": 4096,
+    "delta_signed_unsigned_boundaries": 4332,
+    "varied_sample_states": 4096,
+    "varied_delta_states": 4096
+  },
+  "limits": "Complete near412C/4441/4588 code effects, serialized syntheticfullgroup including indexedpostwritealiases, signed/unsigned wrappedarithmetic andscratchoutputs. Alltargetworddomains, smoothing/oscillator/delta boundaries. No resource/table schema/physicalunits, completecaller/IRQ/state-machine, renderer/audio/game/fidelity acceptance; incidentalflagconsumers remainopen."
+}

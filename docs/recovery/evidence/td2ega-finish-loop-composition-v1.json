@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 1024,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "632785772393eb8f8379813401724671e4ad42533d16e05fed7a61df12a70ee9",
+  "native_libraries": [
+    {
+      "path": "analysis/build/loop-controls-repro/td2ega_loop_controls.dll",
+      "sha256": "56dfe60a66b3772a54756d765dc3c787e2247a5c8d2aa22512b1cd456daf0bb2"
+    },
+    {
+      "path": "analysis/build/projection-repro/td2ega_projection.dll",
+      "sha256": "d48a5f0ab87794cea905f53ed7a7c5ac7711fdce7c7a247570e73f132f816c34"
+    },
+    {
+      "path": "analysis/build/record-interpolate-repro/td2ega_record_interpolate.dll",
+      "sha256": "2452a323003ce2f474ba8dfac9953f05658cc5a58ee1627db0f22b0968fe44a2"
+    },
+    {
+      "path": "analysis/build/view-limits-repro-v2/td2ega_view_limits.dll",
+      "sha256": "96572b807f038e642642e74e34e2fd01b98e766ddf5a177059db69ce356b9b65"
+    },
+    {
+      "path": "analysis/build/near-clamp-repro/td2ega_near_clamp.dll",
+      "sha256": "cf20eb4dda7d1cd01bc7b1c3cc655b2a72852c98c986265db532de695a1351d6"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_loop_controls.py",
+      "sha256": "4ec63c0e575abb760b9776b82ae9862fac2553ceea9979ef5d4b6366fc2b4c42"
+    },
+    {
+      "path": "tools/validate_projection.py",
+      "sha256": "394c411d1cfd1ba9ef88c080692480500fef4e18b52a978b644fd38b08c501ce"
+    },
+    {
+      "path": "tools/validate_record_interpolate.py",
+      "sha256": "a660c67288152201eb047c3e1ad0cbb148938b2df6cead6a2ebed19722a345a7"
+    },
+    {
+      "path": "tools/validate_view_limits.py",
+      "sha256": "449c9798e56061edc6e2546542c533aa04bfe22e6aec06652df5e3bbb6610e4a"
+    },
+    {
+      "path": "tools/validate_near_clamp.py",
+      "sha256": "8d4ae2b079b69e86fdfb37b762e2ae5c27b961dfe6976951bb6535048c1c85be"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "entry_fence": [
+    "06C9:1F71",
+    "06C9:21C3",
+    "13A3:0038",
+    "06C9:2477",
+    "06C9:06C3",
+    "06C9:2542",
+    "06C9:268A",
+    "06C9:088E"
+  ],
+  "instruction_sites_in_fence": 579,
+  "instruction_sites_exercised": 459,
+  "original_instructions_executed": 5394816,
+  "fixture_coverage": {
+    "lookups": 51200,
+    "line_calls": 2560,
+    "limit_calls": 3072,
+    "clamp_words": 46080,
+    "same_DS_SS_0": 512,
+    "initial_patch_form_0": 256,
+    "initial_patch_form_1": 256,
+    "initial_patch_form_2": 256,
+    "initial_patch_form_3": 256,
+    "same_DS_SS_1": 512
+  },
+  "limits": "Actual1F71+21C3/13A3:0038+2477/06C3+2542/268A+088E, four near body boundaries without ABI-value mocks. Synthetic zero-weight heights/width16/sentinel-empty list, boundednormal 2C2A/088E counts only. Equal/independent DS-SS views and four initial06C3 codeforms, freshCPU each fixture. Full nonframe bus/GPR/BP/CFIFDF/rootRETF4 compared. Entry fence not all-path coverage; no actual producer/resource-fed capacities/allwriters/SS-DS integration/IRQ exclusion/core/state/game/fidelity. Child fault/budget prefixes remain separate helper evidence. No hardware/OS services or DOS session."
+}

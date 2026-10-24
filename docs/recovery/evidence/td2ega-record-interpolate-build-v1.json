@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_interpolate.cmd",
+    "sha256": "ac110e55445a628c82bfdb9efa9cf6130ebc1aa9b281d0c12260279567382ae8"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_interpolate.c",
+      "sha256": "5441ce416510399e08c31b49ac2ef0671951f27f24e4dc87ad26008aff4a5b8b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_interpolate.h",
+      "sha256": "f0fff5c2cb3825d92dbbc1efe1b67af311ba1549d0b51d6be3dc5ce0b1d1a322"
+    },
+    {
+      "path": "src/recovered/td2ega_line_step.c",
+      "sha256": "0d36ced359488773b1261ee9a5d7022e5a1d1a93ce791929e08d24a665727ef4"
+    },
+    {
+      "path": "src/recovered/td2ega_line_step.h",
+      "sha256": "299d3dd30131b77d3658540066f4f4d9499f499d78ac340af80133b25c145252"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-interpolate-repro/td2ega_record_interpolate.dll",
+      "sha256": "2452a323003ce2f474ba8dfac9953f05658cc5a58ee1627db0f22b0968fe44a2",
+      "bytes": 107008
+    },
+    {
+      "path": "analysis/build/record-interpolate-repro/td2ega_record_interpolate.obj",
+      "sha256": "1ad3bd7df15c5d8fa16a3ac573e43473e13fc3d12d2a06f4423897a0345a5155",
+      "bytes": 5652
+    },
+    {
+      "path": "analysis/build/record-interpolate-repro/td2ega_line_step.obj",
+      "sha256": "abd8a7baa6c15aa31249a194d08030235a1f3d00403f87d10c9d93c351f265dc",
+      "bytes": 5771
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-interpolate-build-v1.log",
+    "sha256": "36fdc2e8af396020566f6cd080a3e73814a4dc740457f01d6b71887a8495fd8c"
+  },
+  "limit": "Complete2477+actual06C3 serializedcallercomposition: DS-current/SS-previous, ESDS/DF0, signedSUB-JGE/CL1notCX1, prepared15words/fiveRET6reverse-ordercalls, attribute-before-linewrites/snapshot/source/outputaliases andpersistentINC-DECpair compared. Prefixesstopbeforeoriginalwork, notnormalreturn/error. Actualcaller/SS-DS/record/outputbounds/IRQreentry/fullmutablegraph/resource/renderer/core/game/fidelity pending; native diagnostics separate.",
+  "function_id": "FN-EGA-000090",
+  "covered_original_local_helpers": [
+    "FN-EGA-000069"
+  ]
+}

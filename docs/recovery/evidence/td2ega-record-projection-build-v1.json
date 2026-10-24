@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_projection.cmd",
+    "sha256": "d9587b8f34ff67e02a14fa331270d09f19db3c3d6e49a7837fae2386d1e8f78e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_projection.c",
+      "sha256": "ee1ebd2eff9ceef979dcd420a42db407d2bd51aa085117da5572eb6073154c9e"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_projection.h",
+      "sha256": "07fe96bfe5f64586822261c979334f7b9cb33ae675836b3829cb473902a171fa"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-projection-repro/td2ega_record_projection.dll",
+      "sha256": "88fcf45a2971594b37922774816ada46cc05517ec3b221c681d867f1de53d124",
+      "bytes": 105984
+    },
+    {
+      "path": "analysis/build/record-projection-repro/td2ega_record_projection.obj",
+      "sha256": "479a8e889fd5a57d6ec19c2ac09a4108c9a30f7c183b5824fae15a2709de9ff3",
+      "bytes": 6496
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-projection-build-v1.log",
+    "sha256": "3d070a6fd3c1397e3ae7909599c76a779938247e1dfb62ddd30c0099195f856b"
+  },
+  "limit": "Actual06C9:0201/far/noargs, literal17wordREPSTOSW/CLD/ESDS, twodo-once8byterecordloops/currentDS/orderedcountandrecordrereads/partial6byteoutputin8bytestride. Fullbus/SS/GPR/BP/CFIFDF/control/writecounts. SBBimmediateJGEuseswide signedborrowpredicate, unsigned60filter, BPactualclobber, finalSHLcarry. Nativebefore-recordbudget/rawfarreturn exposedafterRETneverfollowed. No capacity/units/allwriters/caller/DS-SS/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000066"
+  ],
+  "covered_original_local_helpers": [],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-record-projection-context-v1.json",
+    "sha256": "06bd1d0065d98b66bbc493927bfe22ff1dfeca1b3191a42fbb97f2d105e5857a"
+  }
+}

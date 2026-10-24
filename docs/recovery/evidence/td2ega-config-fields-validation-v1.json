@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000140",
+    "FN-EGA-000194"
+  ],
+  "vectors": 480,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "0190c6806015a08d52496572c9313bbfb0397dc35cb3f9d39c95783188f3ee96",
+  "source_sha256": "fa9f0b0aebcfee913fb888787cc7fb831d97da6ed9b930e2a7d1971cfb4043cc",
+  "validator_sha256": "6a6e0da83c688aaf8ae2120c190b582c6411ebfd649ef71239e8b1b25c151855",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_copy_config.py",
+      "sha256": "7273f1b63c632c782c928bfbf2866fa480fd25b91094d3a714ab783cab65c8ac"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 12600,
+  "instruction_sites_in_fence": 31,
+  "instruction_sites_exercised": 31,
+  "fixture_coverage": {
+    "setter": 120,
+    "far_returns": 248,
+    "copy_words": 5616,
+    "bus_write_events": 7656,
+    "setter_argument_CS_output_aliases": 40,
+    "snapshot": 360,
+    "prefix": 216,
+    "raw_root_returns": 16
+  },
+  "limits": "FourorderedSSwordreread->CSboundstores withDFpreserved, and26wordCSsnapshot->currentDSnearoffset withCLD; fullbusincludingSSsaved/controlframes/GPR/BP/CFIFDF/farRETF4. SetterSS=CS argument/outputaliases, oddCSsource-destinationoverlaps/wrap andsnapshotoutputoverSSsaved/returnframes tested. Nativeprefixseparate; intentionalrootreturnaliases stopafteractualRETF andexposeactualCS:IP/SP, notfollowed. Native0meansoriginalfarreturnoperation, notsupportedcaller/gamecompletion. Actualbounds/producers/allwriters/lifetime/IRQexclusion/fullstate/core/device/resource-fedP2/P3/game/fidelity remainopen; nooriginalconfiguration/media payloadembedded; nativeinvalidchecks separate."
+}

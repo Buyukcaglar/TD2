@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_discard_wrappers.cmd",
+    "sha256": "b610562fc7827418b8b076ed7d3f27d8ba2ce3f9fbdfdf799766e233d2e939a7"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_discard_wrappers.c",
+      "sha256": "5ba3b079349b0456f0fb89ccfd92241c65c8fbc967a99edd727081519da07451"
+    },
+    {
+      "path": "src/recovered/td2ega_discard_object.c",
+      "sha256": "8f0f049686afda04fc13ee9a65c1b847a8fcdbab3aff1ce12527661fa8337ce4"
+    },
+    {
+      "path": "src/recovered/td2ega_discard_object.h",
+      "sha256": "884ab8df73b8f6d00ce3f9aa4b4a2a9887a1f4791b4b1c033aa97cbdf4a1571b"
+    },
+    {
+      "path": "src/recovered/td2ega_discard_wrappers.h",
+      "sha256": "e12fc40884a68894798a90c06d854b096d93576cd880b9fce53f63900cb307a2"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/discard-wrappers-repro/td2ega_discard_wrappers.dll",
+      "sha256": "048bf3820693fce02c55c6ce406851ca11950a9999a8514e3adc6aca673edc91",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/discard-wrappers-repro/td2ega_discard_wrappers.obj",
+      "sha256": "e59fb0dc265aa9f4704f898dbda408d1b0a26913feca6d5331b42cad70b33ddb",
+      "bytes": 5234
+    },
+    {
+      "path": "analysis/build/discard-wrappers-repro/td2ega_discard_object.obj",
+      "sha256": "9c65de17ef20f568f878143f4785405907813c9a8960f5a2324ab061682357b4",
+      "bytes": 6971
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/discard-wrappers-build-v1.log",
+    "sha256": "7a2bf8898435b00be4feb89aacb0514ffeb1d025372e9bf8036d54215f737c2b"
+  },
+  "limit": "Actual0083-38D4/782C-7490/fullSS/currentDSdescriptorpointers/entry1deferredADDSP8/actualchildfarframes/CSB269wordwrap/cacheignorestatus-toptrim/globalCALL-scanbudgets/full20bitbus/CFIFDF/native1rawchildRETneverfollowed/native5preRETqualification/native6fatalpreCALL. No arena/size/descriptorbounds-storage-lifetime-writers/exclusion/CPU-A20/fatalcleanup/core/resource/CGA/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000062",
+    "FN-EGA-000110"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000191",
+    "FN-EGA-000188"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-discard-wrappers-context-v1.json",
+    "sha256": "51324dee9c6e127fd1755c3ddb0578ee23b79595fc0808f45a657eea983fa4f9"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [],
+  "failure_resolution": "NoC/build/comparison/native mismatch; frozenactualdiscard_objectbuildv2source linked. ChildrawRET/fatalpreCALL/budget/qualificationpropagated, globalCALL-searchlimits acrossbothactualcalls."
+}

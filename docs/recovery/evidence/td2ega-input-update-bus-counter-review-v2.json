@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "94ebca1c7ddd44d82591ede3dae13fada4a2cd6f844727f798638c84053c7114",
+  "legacy_counter_interpretation": {
+    "root_RETF": {
+      "actual_meaning": "Normaloriginal420AnearREToperations, legacynameonly. OpcodeC3at06C9:4280; notfarRETF.",
+      "count": 82528
+    },
+    "actual_far_calls": {
+      "actual_meaning": "AllbudgeteddirectCALLoperations, bothnearandfar, nativecallsaggregate. Separate6559nearcallbackCALLcounter excluded.",
+      "count": 574424
+    }
+  },
+  "direct_CALL_site_census": {
+    "total": 15,
+    "near": 8,
+    "far": 7,
+    "sites": [
+      {
+        "owner": "06B3:0008",
+        "site": "06B3:0114",
+        "kind": "lcall",
+        "size": 5,
+        "target": "13A8:2EE8"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:4266",
+        "kind": "lcall",
+        "size": 5,
+        "target": "06C9:6601"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:4211",
+        "kind": "lcall",
+        "size": 5,
+        "target": "06C9:6620"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:421A",
+        "kind": "lcall",
+        "size": 5,
+        "target": "06C9:6828"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:427D",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:44A6"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:4251",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:4281"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:425E",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:448A"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:425B",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:43C3"
+      },
+      {
+        "owner": "06C9:420A",
+        "site": "06C9:4261",
+        "kind": "lcall",
+        "size": 5,
+        "target": "06B3:0008"
+      },
+      {
+        "owner": "06C9:4281",
+        "site": "06C9:4332",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:4612"
+      },
+      {
+        "owner": "06C9:4281",
+        "site": "06C9:4335",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:4441"
+      },
+      {
+        "owner": "06C9:43C3",
+        "site": "06C9:443A",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:4612"
+      },
+      {
+        "owner": "06C9:43C3",
+        "site": "06C9:443D",
+        "kind": "call",
+        "size": 3,
+        "target": "06C9:4441"
+      },
+      {
+        "owner": "06C9:6601",
+        "site": "06C9:6617",
+        "kind": "lcall",
+        "size": 5,
+        "target": "06C9:6528"
+      },
+      {
+        "owner": "06C9:6620",
+        "site": "06C9:6680",
+        "kind": "lcall",
+        "size": 5,
+        "target": "06C9:6686"
+      }
+    ]
+  },
+  "facts": [
+    "The37rootinstructions contain4nearCALLs/4farCALLs andoneplainnearRET. Actual2EE8calleeRETF8 andinstalled69B7IRET-vsRETF2 remainseparate sourceconventions.",
+    "Legacycounterlabels do notchange comparedCPUcontrol/SP/fullRAM/GPR/FLAGS/events. Selectedcomparisonbytes/maker/C-DLL remainfrozen. No dynamicfar-onlyCALLtotal canbededucedfromtheaggregate; do notreport574424asfarCALLs.",
+    "82528normalrootreturns include448changednearreturnwords, reportedwithoutfollowing. 2112rawchildreturns andnativeprefixes areseparate outcomes.",
+    "Typedkeycallbacks executeactualnearCALLBX withPUSHCS/farframe; syntheticcallbackRETF notactualcallbackbodyproof."
+  ],
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+      "sha256": "92fca5b5a4de5b8000516bf9809686350a679adf38fd179cf9e5186ea1815776"
+    },
+    {
+      "path": "tools/validate_input_update_bus.py",
+      "sha256": "f4f2a6ef4296794aa9c83ed92633f9e3c139498038bec1cd6c7de06290d646f0"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+      "sha256": "535b52e9eb41b4a4870365ff67fcbc29eac9d3dee69bb09a6349ed859725b616"
+    }
+  ],
+  "limits": "Countermetadata/near-far ABI interpretation only; no newcomparisons/helpervectors/functionentries/resources/gateclosure. Whole403B/writers-lifetime-IRQ/core/P1 andruntime-fidelity boundaries remainopen."
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000091",
+    "FN-EGA-000092"
+  ],
+  "vectors": 46080,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "96572b807f038e642642e74e34e2fd01b98e766ddf5a177059db69ce356b9b65",
+  "source_sha256": "ae124be461d0faaa2b3ac1329736042b5257cafa756038e79e46e5e15bdb89bb",
+  "validator_sha256": "449c9798e56061edc6e2546542c533aa04bfe22e6aec06652df5e3bbb6610e4a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 2040336,
+  "instruction_sites_exercised": 144,
+  "instruction_sites_in_fence": 144,
+  "fixture_coverage": {
+    "value": 27648,
+    "same_DS_SS_False": 23040,
+    "same_DS_SS_True": 23040,
+    "actual_helper_calls": 36864,
+    "finish": 18432
+  },
+  "limits": "Complete2542+actual268A/standalone268A, all256flagbytes, signedowner/limit/zero/highbit/wrapadjustments, currentDS selectors andorderedinput-outputaliases, returnedGPR/BP/CFIFDF/plainnearRET compared. Finishedbounds0..80 checked, 2C2Aownerwriter notnormalized. No actualcaller/producer/SS-DS/tablegeometry/resource/IRQ/renderer/core/game/fidelity; native diagnostics separate."
+}

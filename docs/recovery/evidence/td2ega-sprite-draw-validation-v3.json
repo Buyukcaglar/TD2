@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000223",
+    "FN-EGA-000224",
+    "FN-EGA-000225"
+  ],
+  "vectors": 17424,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f510e2ea8a70131577840bb417f451064db21a95bd4143410073cef58da8e84e",
+  "source_sha256": "9e08e75087a0a56ca64162d7538d7dc5025b600a918c9efde4e0490d8c28d205",
+  "validator_sha256": "b19c16f1126ec5608572bd9ae03cbe1b5de910d532cfbefcf184a98611c165f2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_mask_span.py",
+      "sha256": "da92ba339aa226cad6ac24eb6155ccb8f40acd1833603b9fba78c48b16f0e72a"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 8572498,
+  "owned_sprite_instruction_sites": 1088,
+  "owned_sites_exercised": 1086,
+  "near_helper_sites_exercised": 200,
+  "static_unreachable_under_initialized_mode3": [
+    "0x93b8",
+    "0x94f3"
+  ],
+  "fixture_coverage": {
+    "entry": 11136,
+    "root_arg_words_4": 9536,
+    "normal": 14832,
+    "mask_calls": 4848,
+    "OUT_bytes": 134752,
+    "device_reads": 260934,
+    "device_writes": 276982,
+    "byte_writes": 769214,
+    "prefix": 2496,
+    "root_arg_words_2": 4768,
+    "kernel": 3120,
+    "unknown": 96,
+    "transfer": 96,
+    "entry_top": 1536,
+    "entry_wide": 1536
+  },
+  "limits": "Threeentries916C/91A4fourSSwords and91D6twoSSwords/headercoords plusstandalonecopykernels, materializedSSsaved/local/near-returnframes/fullbus/GPR/BP/CFIFDF/farRETF4, byteAL-MUL/crop/plane-selection/currentDSversusSS/CS dispatch/actualnearRAM-device maskhelpers andexplicitOUT/MMIO traces matched. Nativeworkprefix andrawunsupportedindirectboundary distinct. Initializedframe mode3 makes839C/ADF4pointer-assignmentbranches unreachable intheseentries; maskhelpers separatelyvalidated. Syntheticflatdevicebus/copysourcefixtures only, noactualspritecorpus/allwriter/bounds/IRQ/device/renderer/state/core/game/fidelity acceptance; noothercallerAND/OR/XORkernel-familyclosure. Native diagnostics separate."
+}

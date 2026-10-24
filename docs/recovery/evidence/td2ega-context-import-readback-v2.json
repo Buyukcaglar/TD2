@@ -1,0 +1,35 @@
+{
+  "method": "Read saved Ghidra program; independent whole-image relocation calculation",
+  "image_bytes_checked": 130240,
+  "relocations_checked": 1652,
+  "mismatched_bytes": 0,
+  "load_segment": 4096,
+  "program": "TD2EGA.unpacked.exe",
+  "imported_mz_sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2",
+  "relocated_image_sha256": "e36b827719c4692f9f89c5ba5d647111a82e61e8843f4d8b32ee653b7280ba99",
+  "tool_register_contexts": [
+    {
+      "address": "23a8:03f8",
+      "CS": "23a8",
+      "DS": "unknown",
+      "SS": "30d2",
+      "ES": "unknown"
+    },
+    {
+      "address": "23a8:0471",
+      "CS": "23a8",
+      "DS": "278f",
+      "SS": "278f",
+      "ES": "unknown"
+    },
+    {
+      "address": "1000:07b3",
+      "CS": "1000",
+      "DS": "278f",
+      "SS": "278f",
+      "ES": "unknown"
+    }
+  ],
+  "register_context_limit": "Unknown/wrong tool DS or SS is not evidence against instruction-derived startup values. Do not admit decompiler prototypes until manually reconciled.",
+  "result": "pass"
+}

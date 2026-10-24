@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000395"
+  ],
+  "vectors": 38280,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "116e666f524bdcf4e66161b8690de3b5f5211d5bf75c4da3ff8d979c00d6e455",
+  "source_sha256": "0f14abe716d13b9d633286d44fc6e167ad5abf5767351ad9658c4914e96ce397",
+  "validator_sha256": "81f63d908b8912b77ce2bca68cbb44385f1ebb580fe88ac31347f7ebc9e977fd",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 2263930,
+  "instruction_sites_in_fence": 531,
+  "instruction_sites_exercised": 530,
+  "static_site_dispositions": [
+    {
+      "site": "06C9:5303",
+      "scope": "52FD entered from actual56ED under53A6",
+      "reason": "Adjacent JLE/JG exhaust unchanged ZF/SF/OF; not global dead code."
+    }
+  ],
+  "fixture_coverage": {
+    "root_return": 14814,
+    "root_CALLs": 15068,
+    "nested_CALLs": 46304,
+    "bus_write_events": 349088,
+    "minimumSP36_cases": 8480,
+    "DS_equals_SS_cases": 19320,
+    "raw_root_returns": 88,
+    "prefix_root_call": 11136,
+    "prefix_leaf_call": 5248,
+    "prefix_iteration": 3264,
+    "parent_target_5518": 648,
+    "parent_target_5527": 360,
+    "parent_target_5531": 472,
+    "parent_target_5561": 330,
+    "parent_target_556C": 390,
+    "nonlocal_root_return": 280,
+    "parent_target_55B4": 394,
+    "parent_target_5603": 390,
+    "parent_target_560E": 302,
+    "parent_target_5620": 2128,
+    "parent_target_5637": 952,
+    "parent_target_5679": 1660,
+    "prefix_indirect": 3494,
+    "parent_target_55BE": 374,
+    "OF1_before_5592": 1182,
+    "parent_target_55A5": 416,
+    "OF1_before_5505": 150,
+    "OF1_before_53E3": 156,
+    "raw_child_return": 44
+  },
+  "limits": "Actual53A6/56ED/5299/5446/52FD/5334/535B/4612 C andliteralSSframes/fullbus/GPR/BP/CFIFDF/control/counts. Known actualnearwordtargets at5514/55A1 union13 and57A7 three; unknownnative6beforeJMP preservesoperand, notdomainclosure. 56EDPOPAX+nearRET consumesleaf/rootwords andexitsparent, noextraRET. Mode7savedAXactualSSreread after4612/post2F5Bwrite. OR-after-SBBwrapped-sign vs immediateJGEwide signedpredicate retained withOF1 witnesses. Nativebudget/rawreturn/unknownprefixes separate; allwriters/modes/actual403Bcaller/DS-SS/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

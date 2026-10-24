@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000362",
+  "result": "pass",
+  "vectors": 13346,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "eedc02ee01f57847e2a874bb4d8d56078c4c3310ce7c2c0762b6855422cfd4ae",
+  "source_sha256": "ab776b90165e996f9a5cdb22d701632e73d56c44fdd8666da5213817ba804804",
+  "validator_sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2",
+  "original_instructions_executed": 809726,
+  "fixture_coverage": {
+    "entry_gates": 108,
+    "all_note_bytes": 3072,
+    "counter_boundaries": 864,
+    "all_command_operands": 2560,
+    "masked_shift_counts": 2048,
+    "pitch_signed_boundaries": 560,
+    "voice_group_alias_copy": 22,
+    "source_offset_wrap": 16,
+    "varied_finite_states": 4096
+  },
+  "instruction_sites_exercised": 185,
+  "instruction_sites_in_fence": 185,
+  "limits": "Serialized75EA with synthetic20bit bus, explicit finite song/voice fixtures, source/group alias copies, effectiveoffset/ordinaryword wrap, register/IF/DF/farframe andtypedport effects. x86maskedshift profile, no actual PIT/speaker/IRQ/timebase, sourceformat/corpus/VOICES2bytebounds, timer exclusion, game/audio/fidelity acceptance. Nativebudget/adapterdiagnostics separate."
+}

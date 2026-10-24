@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000269",
+    "FN-EGA-000270"
+  ],
+  "vectors": 24032,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "046fb5048a79942acc8b445b90acdc180f1ab7725446785526ab1cd210001864",
+  "source_sha256": "257a111ed894575e4339675a4e4363d673236384966e0c98ada04029b608ba8a",
+  "validator_sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 3101888,
+  "instruction_sites_in_fence": 47,
+  "instruction_sites_exercised": 47,
+  "fixture_coverage": {
+    "prefix": 17896,
+    "operations": 2592048,
+    "catalog_rows": 25712,
+    "DOSservices": 832,
+    "bus_write_events": 156288,
+    "service_write_events": 544,
+    "reverseDF_fixtures": 12016,
+    "raw_root_returns": 272,
+    "full_no_NUL_output_requests": 16,
+    "far_RETF2_returns": 6136
+  },
+  "limits": "Actual088Crawcatalog lookup and08B7actualnestedlookup/outputscan/RETF2callee cleanup, incomingDF/word wrap, SSarguments/saves/farframes/fullbus/GPR/BP/CFIFDF/control. SyntheticDOS40 fullreturnedstate/DS/BP/IFDF/SSsave mutations, realINTframes/file/device effects unadmitted. Nativebefore-element/INT/adapterdiagnostics separate. Originalcatalog/message bytes external; caller/NUL/capacity/otherFLAGS/writers/lifetime/core/resourcefedP2/P3/device/session/game/fidelity remainopen."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000261"
+  ],
+  "vectors": 45344,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "afd37751be3d83b3e4046b6c8d0b28d5082327518406751b7bbf9bf5efb80fa1",
+  "source_sha256": "9c50be81f5d9e57aeae9eb5c1e772831cf59b4749e36b0e1416ebfae16396da5",
+  "validator_sha256": "c2429c19528712e65f106747a82d7d963d2534cd8101bf220b200ed9a29ba863",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_runtime_message.py",
+      "sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210"
+    },
+    {
+      "path": "tools/validate_finalizer_list.py",
+      "sha256": "8e94c103da8b9b4c447e54c0befd95da859f109b7648ccbdf5ef8058820ab553"
+    }
+  ],
+  "original_instructions_executed": 11730328,
+  "instruction_sites_in_fence": 131,
+  "instruction_sites_exercised": 124,
+  "prepared_exit_boundary_sites": [
+    "13A8:05DE"
+  ],
+  "unreachable_under_fixed_empty_spans": [
+    "13A8:0611",
+    "13A8:0614",
+    "13A8:0616",
+    "13A8:0619",
+    "13A8:061B",
+    "13A8:061D"
+  ],
+  "fixture_coverage": {
+    "budget_prefix": 25744,
+    "close_iterations": 309520,
+    "close_requests": 136656,
+    "more_than_15_close_iterations_cases": 1280,
+    "DOSservices": 169096,
+    "callbacks": 15632,
+    "synthetic_callback_RETF_instructions": 15632,
+    "bus_write_events": 719760,
+    "allbyte_exitword_compositions": 2048,
+    "minimumSP80_cases": 2304,
+    "prepared_exit_request": 10672,
+    "raw_child_return": 8928
+  },
+  "limits": "Actual0599/twoempty060Dnearwalks/066E/0620/088C/08B7/05E0 bodies throughpreparedDOS4C boundary, noactualexitINT/delivery orprocess termination. Fullbus/nestedSS/GPR/BP/CFIFDF/serviceABI/control, rawfullAX->SSexitword andservice-mutatedBX/CXcloseLOOP retained. Six060Dbody sites unreachableunderfixedemptyrootspans; helperunitseparatelycoversallnine. 05DEobserved/preparednotexecuted. SyntheticDOS/callbackbodies/RETFseparate. Nativeprefix/rawchild/adapter distinct. Actualcaller/source/targets/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity open."
+}

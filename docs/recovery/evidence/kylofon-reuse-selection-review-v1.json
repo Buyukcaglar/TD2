@@ -1,0 +1,410 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Read-only independent P1-R04 source-unit selection review; not actualimport/newtest/game/recoverygate acceptance",
+  "upstream_commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "input_receipts": [
+    {
+      "path": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+      "sha256": "b4d92c11381dae416e490418768f849da12fb0c4b37022b21c76f5fd89a34954"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+      "sha256": "219cbb195ce223df13d31084df7222e6e96a9f67ddeecd8d36416c9e3b81ebc3"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+      "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+      "sha256": "5e5149d46f03180c242d7b4abd007ebf0ec5f73b785183e0a535942433497aa8"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-address-admission-v1.json",
+      "sha256": "8a65805699c9b2b9c41479711e32834bd476f1c25f93758abfc44f2b7a234177"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-source-admission-v1.json",
+      "sha256": "df3fa2889e7e3ccfa3dbf2f4a49b78958976601b1ca924f8b6972a76b710baf6"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-r02-r03-verification-v1.json",
+      "sha256": "259c913aa4382686f3129249ee382ccad7386bb3412ff7f0dde9f9153c44d7b2"
+    },
+    {
+      "path": "docs/recovery/functions.json",
+      "sha256": "7ce01708fd170fa200ff4dd5c11562a4d7fc7eeeb020dbbcc76b3c0bed1ca4a1"
+    }
+  ],
+  "selected_original_entries": 11,
+  "selected_records": [
+    {
+      "id": "KRSEL-01",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "native_byte_ring",
+      "entries": [
+        "06C9:780E"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000003"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "rand8"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+        "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "selected_ranges": [
+          {
+            "start_line": 1103,
+            "end_line": 1111,
+            "span_sha256": "83779a6f52accc37eff7476766dd5e12134685e598c45b78fc5a50d83263fec8"
+          }
+        ]
+      },
+      "representative_vectors": 278,
+      "domain": "FixedDGROUPcursor/table, declareddisjointscratch, serializedsample; notseed/consumptionhistory",
+      "dependency_closure": [
+        "mem.h scalar/fixedDGROUPaccess",
+        "symbols.h DS_rand8_idx/tab"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-02",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "literal_word_and_modulo_subtract",
+      "entries": [
+        "06C9:5D83",
+        "06C9:5D8D"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000138",
+        "FN-EGA-000139"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "bios_ticks",
+        "bios_ticks_since"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/timer.c",
+        "file_sha256": "e65548ac984788df8e7f8aeb51fac751efb345778fa15906a0b472253bcb17bb",
+        "selected_ranges": [
+          {
+            "start_line": 208,
+            "end_line": 216,
+            "span_sha256": "31ded3b388465c455db60ee4a11388c01300b179ec6730e97f3180e6cc43a2a9"
+          }
+        ]
+      },
+      "representative_vectors": 270,
+      "domain": "Literalphysical086C only, noassignedclockunits; valueargs; repairedrd16",
+      "dependency_closure": [
+        "mem.h rd16"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-03",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "native_far_words",
+      "entries": [
+        "06C9:6A17",
+        "06C9:6A28"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000163",
+        "FN-EGA-000414"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "kbd_set_getkey_fn",
+        "kbd_get_getkey_fn"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/input.c",
+        "file_sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+        "selected_ranges": [
+          {
+            "start_line": 301,
+            "end_line": 309,
+            "span_sha256": "6db69c29107b4ad0301dc106d4462ddeb7d8decf5ac7423188f534426d14f6c8"
+          }
+        ]
+      },
+      "representative_vectors": 256,
+      "domain": "Materializedfarvalues anddisjoint originalframes; no actualSSalias/targetexecution/IRQ",
+      "dependency_closure": [
+        "mem.h ds_far/ds_far_wr/far_rd/far_wr/scalarhelpers",
+        "symbols.h DS_getkey_fn"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-04",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "native_simulation_leaf",
+      "entries": [
+        "06C9:448A"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000371"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "curve_sum"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+        "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+        "selected_ranges": [
+          {
+            "start_line": 360,
+            "end_line": 366,
+            "span_sha256": "901c0892b138090096e2f048932a9ee7afdd70b15823c74c57fc71f30af73196"
+          }
+        ]
+      },
+      "representative_vectors": 320,
+      "domain": "Eight signedbytes/current speed; no roadfeed/lifetime/tickacceptance",
+      "dependency_closure": [
+        "mem.h fixedDGROUP byte/wordlvalues",
+        "symbols.h DS_curve_ring/sum/speed_copy/speed"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-05",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "native_drag_with_neutral_brake_tail",
+      "entries": [
+        "06C9:45BF"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000376"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "drag_apply",
+        "brake"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+        "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+        "selected_ranges": [
+          {
+            "start_line": 442,
+            "end_line": 469,
+            "span_sha256": "d8379b44d2b2807875ac06a2571ef4b307be7449784101555fc54486a288fe53"
+          }
+        ]
+      },
+      "representative_vectors": 162,
+      "domain": "Observedforce/speededges/throttle00FF; gear0forFFbraketail; brake onlytransitive neutralprofile",
+      "dependency_closure": [
+        "update_rpm NULL,NULL",
+        "fixedDGROUPstate/dragbyte"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-06",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "native_rpm_state_only",
+      "entries": [
+        "06C9:4612"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000378"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "update_rpm"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+        "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+        "selected_ranges": [
+          {
+            "start_line": 472,
+            "end_line": 482,
+            "span_sha256": "b7e9aba888c8a6bf97b9330c1087ef065fff5af73e839c1fc6d55835e7fe46d8"
+          }
+        ]
+      },
+      "representative_vectors": 243,
+      "domain": "NULLoutputpointers; declaredspeedratioedges/gear00,01,FF; nonNULLaliasnotadmitted",
+      "dependency_closure": [
+        "mem.h fixedDGROUPstate",
+        "symbols.h gear/ratio/rpm/speed/dirty"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-07",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "clip_state_assignment",
+      "entries": [
+        "06C9:5DFB"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000140"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "gfx_set_clip_current"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/gfx.c",
+        "file_sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+        "selected_ranges": [
+          {
+            "start_line": 173,
+            "end_line": 179,
+            "span_sha256": "fe88b7dfb4fdd2b11b225f232984677ac096eb3651ee1319e0e1833b79ad864c"
+          }
+        ]
+      },
+      "representative_vectors": 128,
+      "domain": "RawfourwordvalueAPI only; no descriptorownership/rasterpolicy",
+      "dependency_closure": [
+        "CSview AF46..AF4C"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-08",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "ram_planar_plot_only",
+      "entries": [
+        "06C9:BA3C"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000243"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "gfx_plot RAM branch"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/gfx.c",
+        "file_sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+        "selected_ranges": [
+          {
+            "start_line": 496,
+            "end_line": 500,
+            "span_sha256": "cb29c7bf9056045c770fb09ee6dbb1ecd6ed6bc036f228107b4fb20fccd98099"
+          },
+          {
+            "start_line": 511,
+            "end_line": 518,
+            "span_sha256": "4e6af03912beb99568d62c5f9589916a45258c0203fa784715028e08863be521"
+          }
+        ]
+      },
+      "representative_vectors": 384,
+      "domain": "Plane0notA000; testedRAMplanes0/7000/7100/7200/7300/FFFF,rowtable/bitmaskfields; noEGAhardwarebranch",
+      "dependency_closure": [
+        "row_at",
+        "mem.h repaired rd8/wr8",
+        "currentCS descriptor",
+        "externalDSplotbit table"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    },
+    {
+      "id": "KRSEL-09",
+      "decision": "qualified_bounded_native_reuse",
+      "unit": "bounded_run_only",
+      "entries": [
+        "06C9:6B02"
+      ],
+      "local_original_ids": [
+        "FN-EGA-000169"
+      ],
+      "all_local_code_contracts_already_passed": true,
+      "symbols_or_branches": [
+        "rle_decode highbitbranch",
+        "rle_run_pass"
+      ],
+      "source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+        "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "selected_ranges": [
+          {
+            "start_line": 373,
+            "end_line": 421,
+            "span_sha256": "6d431c9ce8f9c5ab2f90ff9b0c5e8e9736cf43da5b84b612513b47b56dae18a5"
+          },
+          {
+            "start_line": 430,
+            "end_line": 439,
+            "span_sha256": "d36955d468b344349829fff4e71599fc44552565a5a43fa5ae82102f3afbcb1b"
+          }
+        ]
+      },
+      "representative_vectors": 192,
+      "domain": "DS=SS278F/SPE000; ec81,83,8B; fixeddeclaredinput/outputspans; safeheader20bytes; nosequence/fullzeroLOOP/malformed/overlap",
+      "dependency_closure": [
+        "mem.h repairedrd8/wr8",
+        "FarPtr types",
+        "localzeroescape-map"
+      ],
+      "whole_file_import_allowed": false,
+      "distribution_allowed": false,
+      "integrated_import_requires_fresh_composition_evidence": true
+    }
+  ],
+  "admitted_original_body_vectors": 2233,
+  "support_components": [
+    "mem.h repairedscalaraccess",
+    "idiv32_16 guard/result logic witherrorpresentationexcluded",
+    "canonicalpackedEXEonly loader",
+    "host_paths.c local-derivedWindowsprofileadapter"
+  ],
+  "support_cases_separate": 380,
+  "excluded_ss_alias_witnesses": 4,
+  "excluded_and_deferred": [
+    "sequencefirst/huffman/fullparser",
+    "EGAhardware/latch/blitter/constructor",
+    "shortDATtailconsumers",
+    "inheritedcockpit/traffic/collisionregisters",
+    "neutralclutchevents",
+    "fulltiming/audio",
+    "callbacktarget/IRQ/allwriter/lifetime",
+    "CGA/Amiga/NorthernGermany/liveproviders"
+  ],
+  "whole_file_import_allowed": false,
+  "license": {
+    "path": "reference/repos/kylofon-test-drive-2-sdl3/LICENSE",
+    "sha256": "2263aab3114518b1bbafc67924f8d29f8548f3a112af54ae6b6e63673fda5ed3",
+    "notice": "2026 Krzysztof Kania MIT; retain fullnotice; originalgamedata excluded",
+    "host_paths_origin": "Local-derived adapter; lookup derives fromupstreamhost.c498-517"
+  },
+  "effort_limits": [
+    "All11sampledentries already have localpassedboundedcodecontracts/source; none are newlyrecoveredfunctions",
+    "Build/testwalltime is notdeveloperthroughput orpercentagesaved",
+    "Largeintegratedgame/resource/renderflow potential remains conditional until admitted",
+    "Keepacceptance andmissingCGA/Amiga/switching workfullybudgeted"
+  ],
+  "report": "docs/recovery/kylofon-reuse-selection-review.md"
+}

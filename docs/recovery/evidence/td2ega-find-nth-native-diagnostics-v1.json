@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 3,
+  "native_only": true,
+  "original_instructions_executed": 0,
+  "script_sha256": "4960e4ab0724c1817fe37872c5b324c649ecac59700e5f0aaab3f4c3ef2ee64d",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_find_nth.py",
+      "sha256": "9eebd3aefe4f4ca9ca37647e9f55ec8067f04ad2800bf9c1b7806cf0220def88"
+    }
+  ],
+  "native_libraries": [
+    {
+      "path": "analysis/build/find-nth-repro/td2ega_find_nth.dll",
+      "sha256": "cdbf0e251cdb04b96e19bb52f5fcff0f47b75eb7bfad5592cbbc453d90300fa6"
+    }
+  ],
+  "cases": [
+    {
+      "case": "missing_adapter",
+      "status": 2,
+      "next_calls": 0,
+      "index": 0
+    },
+    {
+      "case": "budget_zero",
+      "status": 2,
+      "next_calls": 0,
+      "index": 1
+    },
+    {
+      "case": "budget_one",
+      "status": 2,
+      "next_calls": 1,
+      "index": 2
+    }
+  ],
+  "limits": "Three native-only API diagnostic cases with allzero syntheticgroup/adapters; no original instructions/DOS/filesystem execute. Not included in original/native differential vector count; no original error equivalence or runtime/game/fidelity acceptance."
+}

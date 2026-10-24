@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 26,
+  "script_sha256": "8d1d9f026ca7069e55823e64c1ffe5558a293f2ac4b7daad310b156903297b55",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4a4c4cacf5d2d7721acfd3b5f1c501376b17f2c244feec6600adb8cddfa1e675",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_write_span.py",
+      "sha256": "c380147a806c2917229e70e2d19d8ec41fb9ab03dc9b93cd298d34e544e7f8c4"
+    }
+  ],
+  "limits": "Nativeinterfaces/exactDOS40request/shortnonzerowrite/zeroSPAN/zeroWRITE/nonlocalparentfarRET/ADDSP8carryall8entryvalues/DOSCFoverwrite/ctrlZCLC/mapperORAH-CF/errorword-nearreturnalias/actualsavedAX-rootreturn/adapter-budgetgates only. Originalcomparison separate; syntheticDOSnoINTframes/historicalCPU-A20unqualified, whole2558/callers/writers/capacity/ownership/lifetime/exclusion/core/session/fidelity open."
+}

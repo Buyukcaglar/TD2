@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_line_draw_v2.cmd",
+    "sha256": "0b9d9df64f352ea9f8ac1e70d36d03a1e8423fe3880bc0a75c2e17c52161f27e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_line_draw.c",
+      "sha256": "73afb106d449df69ca1822c2221ecaf4a32357c9a124b13245193dbbadcf0c36"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/line-draw-repro-v2/td2ega_line_draw.dll",
+      "sha256": "d696d94016b507231da70f8d9f585a603aba0e843fbc18bd98621a65346b6b31",
+      "bytes": 112128
+    },
+    {
+      "path": "analysis/build/line-draw-repro-v2/td2ega_line_draw.obj",
+      "sha256": "019e6cb46ee63abc26161711a4f1501c21905b68dddfb476d09dc9a19338a547",
+      "bytes": 14533
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/line-draw-build-v2.log",
+    "sha256": "ef074ed019489671e1826524b5d3515cd9e1b071fec6b00a040666e80818d3f2"
+  },
+  "limit": "Actual8582body/SSargs andvirtualframeprofile/DS=CS/restoreDS-SI-DI-BP/plainRETF4, horizontalverticalfar8A0C ABI mocks, generalfixedpoint/unsignedDIVfaultprefixes/CLIP/RAMplane orderedmaskedwrites andexplicitOUT/MMIOread-write trace matched. SyntheticflatRAM/devicebus adapter only, no actualEGAsemantics/renderer/device/IRQ/session/callerbounds/resourceformat/core/game/fidelity. Workbudgetnativeprefix separate; DIVCFpreinstructiononly/freshCPUafterfault, no postDIVarithmeticflags. Native diagnostics separate.",
+  "function_id": "FN-EGA-000217",
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/line-draw-before-call-prefix-fix-v1.c",
+      "sha256": "31bfef7935eddf4e29f967a38f044dd773f7361100e838066d1d0b1cf3ec1815"
+    },
+    {
+      "path": "analysis/history/line-draw-before-call-prefix-fix-v1.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "analysis/history/line-draw-prefix-fix-history-v1.json",
+      "sha256": "16a4f69621bd1b7099829d3c491d7a5a6185ce0171a78dd0ae41c5fa5f895ea6"
+    },
+    {
+      "path": "analysis/history/validate-line-draw-attempt-v1.py",
+      "sha256": "8ea4a24e6ff06539af53d2c4546bb483461a2ec95695d6d834ebb5d008760c23"
+    },
+    {
+      "path": "analysis/history/validate-line-draw-attempt-v2.py",
+      "sha256": "c52f9bec2e8568129bc733754b02552a86172a507824ca77af5156133037ceb8"
+    },
+    {
+      "path": "analysis/history/validate-line-draw-attempt-v3.py",
+      "sha256": "25f224495330c48ee1e4f16949050501fca74e7b7629de8636759a41fd5a445c"
+    },
+    {
+      "path": "tools/compile_line_draw.cmd",
+      "sha256": "b300c03011e9dc35d6716fc1419633d408e03ee1c7134ba297901401ae9c221a"
+    },
+    {
+      "path": "analysis/build/line-draw-repro/td2ega_line_draw.dll",
+      "sha256": "f4c1010f2c38bc4cd7ae7f25eb803f4fc5356401ef652d2d1404fbf7a5d5f36a"
+    },
+    {
+      "path": "analysis/logs/line-draw-build-v1.log",
+      "sha256": "940aa0012d27225c7cce3248d6aead023e41f43d8bc1ad46e94f26eeb36532d9"
+    }
+  ],
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-div-reference-v1.json",
+    "sha256": "ff5d56e7aff194d0ab06fbbb3aa1f236e876e2e96b26d1f404e40dcf2be38e28"
+  }
+}

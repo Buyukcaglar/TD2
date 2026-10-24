@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000347"
+  ],
+  "vectors": 9600,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "687adffdd2e11194de1a8705030920403a3ea8b80b9bdc6e4a72a54481cf89c6",
+  "source_sha256": "9443b0f2942d30ff193452d725b150a2ceea80f4b7fd7529033225a8cd9b53ac",
+  "validator_sha256": "12208493f650f0f13ae2c2bd5a52ad1a18de559a0de2bbc5ff9e57910c2bd7b2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 3424512,
+  "instruction_sites_in_fence": 19,
+  "instruction_sites_exercised": 19,
+  "distinct_CL_counts": 256,
+  "fixture_coverage": {
+    "far_returns": 9472,
+    "bus_write_events": 48000,
+    "root_returns_with_CF1": 688,
+    "stack_data_alias_profiles": 440,
+    "high_count_byte_nonzero": 512,
+    "raw_root_returns": 128
+  },
+  "limits": "Actual13A8:2FD0+2FC4, currentDSnear32bitwordpair/SSpointer-count args, all256CL counts/CHdiscard andorderedpointerreread/AX-DXstores. FullbusincludingnestedSSframes/GPR/BP/CFIFDF/actualRETF imm4 consumes4farframe+4argumentbytes ->entrySP+8 withoutchangingCF. NearwordEAwrap/odddata andstackargument/saved/returnaliases tested; rawrootRETcoordinates exposedafteractualinstruction, notfollowed. NooriginalCreturntype/signedsource32bittype inferred, nohostovershift. Actualcaller/otherflagconsumers/bounds/lifetimes/IRQ/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalidchecks separate."
+}

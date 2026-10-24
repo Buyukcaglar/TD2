@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_block_tail.cmd",
+    "sha256": "7caa5c475bb46b3f44c0bc3378827ce09e236eabe63465215a1a144f33dcbc13"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_block_tail.c",
+      "sha256": "ff44c14c9a9216e6c2f1351a270ea965144976c5c004700c20c56f504355b405"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.c",
+      "sha256": "9ee2e00e3c16608a4c641d826e84de98a539dc1597c78e0f78e9193500b1a0dd"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.c",
+      "sha256": "f1b581c93578503f35e7f17bb0f734931df5700b1dd8371f4cf9d93d0d43787c"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.c",
+      "sha256": "7479905e9074c4de5b9fd6c48f7902a3dec03127728ae9f777a1c1eda5698186"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.h",
+      "sha256": "d56d77af874656170dedc475b46af63d5470473684fc4d324e6d0f583dbb30a5"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.h",
+      "sha256": "b6ee29221e4c33dfc140b6d21c061efc64da4633a3c3b46527aa0f5bea6a4099"
+    },
+    {
+      "path": "src/recovered/td2ega_block_tail.h",
+      "sha256": "3c263df5597b90a84b8527b686782f3a7806f10b1eedfb15a8cd34883508bbfc"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.h",
+      "sha256": "8696944455f3ab7cabf0e637bcd42d1717e7b00805396e1396e69b24af798981"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/block-tail-repro/td2ega_block_tail.dll",
+      "sha256": "195f4d948da0af51e380c756a6369d61bbe301094e2967fab2497d142790578b",
+      "bytes": 110592
+    },
+    {
+      "path": "analysis/build/block-tail-repro/td2ega_block_tail.obj",
+      "sha256": "a3ec476a72ab77956a1f449ee87b179078b86a9e97ee8e13b673af048e5082dd",
+      "bytes": 4221
+    },
+    {
+      "path": "analysis/build/block-tail-repro/td2ega_block_wrapper.obj",
+      "sha256": "39dad473fb3cec11fe1c3a64659dedb79d15551f272b733b248210fa134c5274",
+      "bytes": 4325
+    },
+    {
+      "path": "analysis/build/block-tail-repro/td2ega_block_request.obj",
+      "sha256": "99abf52f8f18d3776c2b9d3b3e664bf1299c1894e9f771c275792cc57e045a36",
+      "bytes": 7630
+    },
+    {
+      "path": "analysis/build/block-tail-repro/td2ega_block_adjust.obj",
+      "sha256": "eea360fd9e4252701167c7f50c834bf8d5a36c61d7db4a99369cca1114edd9fc",
+      "bytes": 4907
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/block-tail-build-v1.log",
+    "sha256": "cf1336acf006e859b2cc526bcd6789d2e695e3a2d55b6ba26c2dbcaa3484f2f2"
+  },
+  "limit": "Actual13A8:280E/2830/2852mode1/28C0 fullSS/currentDS/orderedmetadata/requiredZF. RootPUSHDX-CX/nearCALL2830 consumesexplicitZF; optionalPUSHDI/DI=SI/SI=childAX+actualchildDX/threewordstores/SUBDXDI-DECDX/actualPOPAX-CX-DX/nearRET. CFfromSUBpreservedDEC, ZFfromDEC onbodyorwrapperZF1onskip, explicitnormalflagsvalid. 29parentmode-specificsitesinfeasibleonlyfromliteral2830frame, standalone2852fullbodypassed. SyntheticDOS4Afullreturnedstate/bus/SS-SP-CSfixed/realINTframesomitted. Budgets/rawRETtargetsexposedafterinstructionneverfollowed. Actualhigher26F1/27D4/metadatawriters/domain/capacity/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000322"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000323",
+    "FN-EGA-000324",
+    "FN-EGA-000325"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-block-tail-context-v2.json",
+    "sha256": "0438d1419d083356ff03b2fb59c06a468fc3ba04ded16307b7e2dae96a7d73d5"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+    "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_block_tail_before_twenty_bit_alias_v1.py",
+      "sha256": "7628a1ef5f8ac5cb75400f9058907361a37c7e9ba159ce1678b4b032697a1089"
+    },
+    {
+      "path": "analysis/history/validate_block_tail_before_dependency_closure_v2.py",
+      "sha256": "328ad61cc5e691405c93054c81ed80d5a733b1a7c5e8892687ad44b69fa50536"
+    },
+    {
+      "path": "analysis/history/review_ega_block_tail_before_alias_v1.py",
+      "sha256": "450f5fdc46c1e921946356521d0a2201850102a5dae13f09662efb454133ba3e"
+    },
+    {
+      "path": "analysis/history/validate_block_tail_diagnostics_before_alias_v1.py",
+      "sha256": "84e1057305b8bab65bea5f5958bac0d0846057f070e4af72cb6e2ff83ada115a"
+    },
+    {
+      "path": "analysis/history/validate_twenty_bit_bus_before_fresh_uc_v1.py",
+      "sha256": "0d833cfb25575a0d68f6eb16781d06eafc6ab256980b9099ae0d1766750cf6a4"
+    },
+    {
+      "path": "analysis/probe_twenty_bit_bus_v1.py",
+      "sha256": "e27e7bf23ab0b40a8380f2a0020e03c00a549c21badfd184cce8b8e466d12159"
+    },
+    {
+      "path": "analysis/logs/block-tail-validation-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analysis/logs/block-tail-validation-v2.log",
+      "sha256": "0d2352a2d04625dabb60759c1402c6108866c177491cc3f224e887658952ecce"
+    }
+  ],
+  "failure_resolution": "NoC/build/instructioncomparisonmismatch. Initialfixture1MiBUnicornmapping rejectedhighlinearDSFFFFdatawrite; serialized20bitprofile nowtwoaliasguestviews/onehostallocation, noMEM_READhook. MappingprobeinitialreusedUCcachedrewrittenopcodeform; freshUCpercodeformpasses5microchecks. v2originalcomparisonpassed27408/all101, finalv3capturescompletehelper/probedependencyhashes afterfailedshellquotingmetadataedit. Nativev2addsactualDSFFFFcrossboundarywordstore. C/DLLunchanged."
+}

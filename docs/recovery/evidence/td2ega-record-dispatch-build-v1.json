@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_dispatch.cmd",
+    "sha256": "ca363e5a2443e47c91157be97e4e6b1f11744dc8cdece5a225f7aa54e7fb1f5d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_dispatch.c",
+      "sha256": "b3c8d5f8bc9e7f114e70a5f0f26099881c9fc85e117b07985e67ebf47715ca0c"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.c",
+      "sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_dispatch.h",
+      "sha256": "404b94b54853638be0ae3d4b7ada6732050fa51f52c2e287674a87955599f1df"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.h",
+      "sha256": "d4bdef46a5afd3f4a7c9051a17765db281741dd6c9f21fd690c630675c661099"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-dispatch-repro/td2ega_record_dispatch.dll",
+      "sha256": "928ecc4a71ffd60c3f94521242b568538feeeb8db595024ec0e8c649ac3a2072",
+      "bytes": 119808
+    },
+    {
+      "path": "analysis/build/record-dispatch-repro/td2ega_record_dispatch.obj",
+      "sha256": "d3250d8b96e42380c33dfc33c7d653350c378afe9699c6fd12676195e08c843a",
+      "bytes": 11306
+    },
+    {
+      "path": "analysis/build/record-dispatch-repro/td2ega_record_math.obj",
+      "sha256": "40f91388ef02ca39f1be15cb5adcaa8a5c96d1fb9dbaadcb561d03f05880d0eb",
+      "bytes": 10927
+    },
+    {
+      "path": "analysis/build/record-dispatch-repro/td2ega_small_algorithms.obj",
+      "sha256": "76644f80fefc8bd52ce114a049ea74c214f507e1f5df7c7ab6a24f1d7dfe25d7",
+      "bytes": 5922
+    },
+    {
+      "path": "analysis/build/record-dispatch-repro/td2ega_table_scalar.obj",
+      "sha256": "324b4bcc0caa52ac5cdd893bf7764ff89639031cf44273eb404a7e3907b44506",
+      "bytes": 5794
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-dispatch-build-v1.log",
+    "sha256": "c7ad4def96e66d073e7caed557e07fc931373549de100ba015357ad43b49c9e1"
+  },
+  "limit": "Actual56ED plus actual5299/52FD/5334/535B C, fullSS/bus/GPR/BP/CFIFDF/control/counts. ActualmutableDS[3460+wrapped2*(byte33B8-1)] supportsrawtargets57AB/57B7/57CF; unknownnative6 stopsbefore57A7JMP/operandretained, notsourceerror/domainclosure. RootnormalRET2 orliteralPOPAX+RET2 consumesTWO SSwords, AXactualdiscardedword/return_kind1; actual53A6caller/nonlocalintegration separate. NoABI-valuemock/SSscratch exclusion. NativeCALL-loop/unknownindirect/rawRET prefixes distinct, rawtargetsexposedafterRET neverfollowed. Alltargetwriters/modebounds/caller/DS-SS/tablevalues/lifetime/IRQ/core/resource/device/session/gameplay/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000397"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000391",
+    "FN-EGA-000392",
+    "FN-EGA-000393",
+    "FN-EGA-000394"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-record-dispatch-context-v1.json",
+    "sha256": "68b6331aeba992e4b9f10979e796f972fcd92de16b271516c6ca254c07460091"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_record_dispatch_before_table_restore_v1.py",
+      "sha256": "8f809160ad3a6c41546337c382130e7a0b3dcb28a2631fb98be12e6d01fdd9f2"
+    },
+    {
+      "path": "analysis/logs/record-dispatch-validation-v1.log",
+      "sha256": "111f31ecb6049cbd79c3daaa8a61d376a4dee4746c595eb9d0ac21f78e7bfab7"
+    },
+    {
+      "path": "analysis/refine_record_dispatch_fixtures_v1.py",
+      "sha256": "9830f1a4fdd9325fb68dbb45ad11d4f1e48f89c53833531c2ecf28a5506fced9"
+    }
+  ],
+  "failure_resolution": "No C/build/instruction-comparison failure. v1matched38608cases butraw32EEtablefixtureoverwroteinitializedjumpwords andcoupledinputsmissedfourfeasiblesites. Selectedv2 restoresfinalinitializeddispatchbytes afterrawtablefill, retainsmutableretargetprofiles, adds128predicate/signedwrapcases andcovers249feasible/5303disposition. C/DLLunchanged."
+}

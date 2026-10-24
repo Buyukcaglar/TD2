@@ -1,0 +1,21 @@
+"""Review raw far member address and its actual three-word caller interface."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(image).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());md=Cs(CS_ARCH_X86,CS_MODE_16);f=next(f for f in g['functions'] if f['entry']=='06C9:C701');observations=[]
+    for ip in sorted(f['instructions']):
+        i=next(md.disasm(image[0x6c90+ip:0x6c90+ip+15],ip,count=1));observations.append({'site':f'06C9:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str})
+    expected={0xc705:'8e4608',0xc708:'8b7606',0xc70b:'268b4404',0xc713:'8b5e0a',0xc71a:'03d8',0xc71c:'83c306',0xc71f:'d1e0',0xc721:'050600',0xc738:'03c1',0xc73d:'260307',0xc740:'26135702',0xc746:'83e30f',0xc755:'d1ea',0xc757:'d1d8',0xc759:'8bd0',0xc75b:'8bc3',0xc75f:'cb',0xc856:'ff76fc',0xc859:'ff7608',0xc85c:'ff7606',0xc869:'83c406',0xc872:'8bf0',0xc874:'8eda'}
+    for ip,raw in expected.items():assert image[0x6c90+ip:0x6c90+ip+len(raw)//2].hex()==raw
+    caller_view=[]
+    for ip in [0xc841,0xc844,0xc846,0xc849,0xc84b,0xc851,0xc856,0xc859,0xc85c,0xc85f,0xc862,0xc864,0xc869,0xc86c,0xc86f,0xc872,0xc874,0xc876,0xc879]:
+        i=next(md.disasm(image[0x6c90+ip:0x6c90+ip+15],ip,count=1));caller_view.append({'site':f'06C9:{ip:04X}','text':i.mnemonic+' '+i.op_str,'bytes':i.bytes.hex()})
+    callers=[{'owner':f['entry'],**c} for f in g['functions'] for c in f['calls'] if c['target']=='06C9:C701'];assert len(callers)==1 and callers[0]['site']=='06C9:C864';linear_cases=[0,1,15,16,0xffff,0x10000,0xfffff,0x100000,0xffffffff]
+    for linear in linear_cases:assert (((linear>>4)&65535)<<4)+(linear&15)==(linear&0xfffff)
+    record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'instruction_observations':observations,'direct_caller_candidates':callers,'caller_instruction_view':caller_view,'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'normalization_identity_cases':len(linear_cases),'facts':['ThreeSSwords headeroffset/headersegment/index; actualSSBP/SIsaves, ESargumentsegment/SIoffset. HeaderwordES:SI+4, tableBXword4*headerword+4*index+6, baseword8*headerword+6. TableaddressesnotSI-relative andbasehighcarrytruncatedbeforesegmentadd.','ADDAXES[BX]/ADCDXES[BX+2] aretwo separatelywrapped16bitEAs; raw32bitaddition thenfourSHRDX/RCRAX givesAXnibble/DXsegmentword. BXnibble/CXlowES<<4/ESsource/DSincoming/actualSI-BPrestore, CFlinearbit3; plainfarRETF4/caller6bytescleanup.','OnlydirectcallerC838atC864 pushesindex/segment/offset, restoresDSprincipalatC862, ADDSP6aftercall, storesAX/DX thenMOVSIAX/MOVDSDX andreadsresourcebytes. Thisprovestheactualfar-addressconsumer anddirectarithmeticFLAGS redefinition; producer/header-alignment/tableextent/lifetime notclosed.','Nonzeroheaderoffset isnotnormalizedintothetablebase. Offsetzero/nonzerosegment output isvalidmachineaddress, nohostNULL conversion. Ninearithmeticnormalizationidentity checks separatefromnativevectors.','SourceESfixture ranges0..9000/flatbus andrawnormalizedoutputs do notqualifyA20/device/actualDOS behavior ororiginalresourceformat. Nooriginaltablepayloadembedded.'],'limits':'Static operands/singlecaller/normalized-pair identity only. Actualproducer/headeroffset/index/table/buffer/outputcapacity/writers/lifetime/exclusion/newcallerFLAGS/core andresourcefedP2/P3/device/session/game/fidelity open; nofullresource decoding.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','sites':len(observations),'callers':len(callers),'caller_view_sites':len(caller_view),'normalization_checks':len(linear_cases)}))
+if __name__=='__main__':main()

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000154",
+    "FN-EGA-000357"
+  ],
+  "result": "pass",
+  "vectors": 131104,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f5ad0749018c80c530a9313a19fbc05381e57d04fc3a5048f206dbf84a56b49a",
+  "source_sha256": "1fe6bb73f3ca9f1f465a85a95f2480588c75357609d6d0b9d12a85a9ef915ac4",
+  "validator_sha256": "acdc76bfde962dde629bf5ac9ea6c609c1f4a6655107136fddb4589a289dac5e",
+  "original_instructions_executed": 1447482,
+  "fixture_coverage": {
+    "extended_read": 266,
+    "positive_write": 254,
+    "no_effect": 65272,
+    "negative_write": 65280,
+    "ring_cursor_alias": 2,
+    "complete_installer": 32
+  },
+  "discovered_setter_calls": [
+    {
+      "owner": "16FC:0002",
+      "site": "16FC:000E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6585"
+    },
+    {
+      "owner": "16FC:0002",
+      "site": "16FC:0022",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6585"
+    },
+    {
+      "owner": "16FC:0002",
+      "site": "16FC:0036",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6585"
+    },
+    {
+      "owner": "16FC:0002",
+      "site": "16FC:004A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6585"
+    },
+    {
+      "owner": "16FC:0002",
+      "site": "16FC:005E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6585"
+    },
+    {
+      "owner": "16FC:0002",
+      "site": "16FC:0072",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6585"
+    }
+  ],
+  "actual_installer_keys": [
+    10,
+    11,
+    16,
+    17,
+    19,
+    24
+  ],
+  "actual_installer_callbacks": [
+    25690,
+    25711,
+    25864,
+    25799,
+    25736,
+    25880
+  ],
+  "limits": "All65536 literal keywords at two loadbases plus32 completeinstaller cases; synthetic fullgroup, IF/DF, ignoredsegment and orderedwriters. Only six discovered calls have smallconstant keydomain. General negative-key alias writes are literal helper effects, not evidence of their reachability or ring reset. No actual keyboard/callback/IRQ, caller lifetime/platform/game/fidelity acceptance."
+}

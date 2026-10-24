@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000147",
+    "FN-EGA-000148",
+    "FN-EGA-000149"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "source_sha256": "cfad1442cfd114bebeeb113863bf0b6344c46eb2ec4917ee61da4239a56cb4f3",
+  "validator_sha256": "2a0a29c10246e859c07466e8d4a9de49d6faea5567581172a393a9e14d6fb7ae",
+  "library_sha256": "23688cc508c88cc834a34c59b3a4071aa323bd80bd7beee028322231955c9dda",
+  "vectors": 6656,
+  "vectors_by_operation": {
+    "divisor": 5632,
+    "fixed": 512,
+    "cleanup": 512
+  },
+  "divide_fault_prefixes": 2048,
+  "native_only_diagnostics": 6,
+  "original_instructions_executed": 703488,
+  "limits": "Serialized syntheticport/vector/data snapshots only. Divisors/rawcounterwords have nounitsassigned; external086C reader untouched. No realhardware/IRQ/oldhandler/cadence, fullconcurrency/caller/platform/game/fidelity acceptance."
+}

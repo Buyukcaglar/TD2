@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 37,
+  "script_sha256": "a2343101a459a815e69e6e5a52572de1de7c5b89878947ea8e1e1fa6ffed8aba",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "8af3fa7f7b40cf0e2445c037517c1746c42ca2ce4514605838fefb8d674acdef",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_point_sequence.py",
+      "sha256": "5be175b6bfed1af7b1bbe93756d43d7b200f77d145daee484a08b232503c2156"
+    }
+  ],
+  "limits": "Native3A91 actualthree3AB8near-BA3Cfarcompositions/liveinputrereads/sharedouterCALL-pixelCALL-devicebudgets/lastactualchildCF-ZF/rawchildnearRET-rootnearRET/nestedqualification only. Originalcomparison/staticproofseparate. RawRAMdeviceprofile/nohardwarelatches-renderer/allwriters-coordinatebounds-storage-capacity-lifetime-exclusion/CPU-A20/core/resource/CGA/session/fidelity admission."
+}

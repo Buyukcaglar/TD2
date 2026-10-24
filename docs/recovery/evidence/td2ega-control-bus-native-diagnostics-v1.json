@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 17,
+  "script_sha256": "f94a6d692d6c27ff92bd3c1fbe9409acf6458f43b243c6975c13bcfcb867a82c",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ae8f2a2420396c2816923b2c53765c71e778c664902ec8739cfc79aa3ea54dbd",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_control_bus.py",
+      "sha256": "30e578ccc0753d4848180646c642285a64d52a3051c1508c71eba28e1d890c1c"
+    }
+  ],
+  "limits": "Nineinvalid/noeffects/nullresult/beforeCALL/minSP18/unsignedMUL-CMPcarry/actualchild-rootRETaliases/4588carry-equality checks. Nativeonly, notallcaller/writer/lifetime/IRQ/core/resource/device/session/gameplay/fidelity acceptance."
+}

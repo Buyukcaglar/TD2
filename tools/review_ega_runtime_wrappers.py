@@ -1,0 +1,19 @@
+"""Review two runtime guards/resets, actual children and four caller frames."""
+import argparse,hashlib,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(image).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());md=Cs(CS_ARCH_X86,CS_MODE_16)
+ def view(ip):
+  i=next(md.disasm(image[0x13a80+ip:0x13a80+ip+15],ip,count=1));return {'site':f'13A8:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str}
+ selected=[f for f in g['functions'] if f['entry'] in ['13A8:184A','13A8:0DF0','13A8:190E','13A8:2696']];observations=[{'entry':f['entry'],**view(ip)} for f in selected for ip in sorted(f['instructions'])];assert len(observations)==55;expected={0x184d:'837e06ff',0x1856:'f687576f04',0x185d:'0e',0x185e:'e8ad00',0x1861:'0bc0',0xdf7:'f6440683',0xdfd:'f6440608',0xe03:'ff7404',0xe06:'9a9626a813',0xe0b:'83c402',0xe0e:'806406f7',0xe14:'8904',0xe16:'894404',0xe19:'894402'}
+ for ip,raw in expected.items():assert image[0x13a80+ip:0x13a80+ip+len(raw)//2].hex()==raw,hex(ip)
+ callers=[{'owner':f['entry'],**c} for f in g['functions'] for c in f['calls'] if c['target'] in ['13A8:184A','13A8:0DF0']];assert len(callers)==4;windows=[]
+ for c in callers:
+  f=next(f for f in g['functions'] if f['entry']==c['owner']);site=int(c['site'][5:],16)
+  if c['kind']=='call':assert image[0x13a80+site-1]==0x0e
+  post=view(site+c['size']);assert post['text']=='add sp, 2',post
+  windows.append({'caller':c,'instructions':[view(ip) for ip in sorted(f['instructions']) if site-12<=ip<=site+14]})
+ record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'instruction_observations':observations,'direct_caller_candidates':callers,'caller_instruction_windows':windows,'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'facts':['184AoneSSword: onlyFFFFisearlyreject, otherwiseBXrawindex/byteDS[BX+6F57]bit4guard. PUSHCS+nearCALL190E suppliesactualfarframe; actual190Eflag83E4/counter83DAcontract, ORAXBooleanizesnonzero to1/zero0, CF0. No hosthandle validity/type inferred.','0DF0oneSSnearrecord: TESTbyte+6mask83 and8; onbothguards pushactualword+4/far2696, thenADDSP2, ANDflagsF7, AX0, orderedwordstores recordbase,+4,+2. Skippedguard preservesincomingAX, notforcedzero. ActualchildreturnedGPR/BP/DS/CFIFDF retained until later sourceoperations.','2696bufferwordzero skipsits own free-bit write; that specificguard isnot a global near0/hostNULL policy. Nonzero pointer ORsDS[ptr-2]bit1 andmayalterSSframe/save words. ActualSSI/BP restoration and farRET target effects arepreserved.','RootminSP22/26 ensuresfrozenchildSP16. Nativeprefix184A stopsbeforePUSHCS185D;0DF0 stopsatfarCALLE06 afterpushingonearg. Prefixstackownership differs and isretained. No actualIRQ/reentry assumed.','Fourdirectcallers:0978:09B7far0DF0,16FC:1763/1797/17FAnear184AwithprecedingPUSHCS; allfour immediatelyADDSP2. ArithmeticFLAGS redefinedbeforelaterconsumption. ParentplainRETFconsumes4,callerownsoneword.'],'limits':'Complete bounded source bodies and four caller windows only; no hoststreamtype/wholeparent/handleorrecordvalidity/arenaextent/allwriters/aliaslifetime/IRQexclusion/otherFLAGS/core/resource-fedP2/P3/DOSsession/gameplay/fidelity acceptance.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','sites':55,'direct_callers':4}))
+if __name__=='__main__':main()

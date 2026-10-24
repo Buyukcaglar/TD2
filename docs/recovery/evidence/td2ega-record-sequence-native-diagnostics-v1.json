@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "05c7a6d64f34f7e84828719aa92bcd2067699de01b411f2ff966da4a6b1b3270",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cbe580fa4524c0a1dc96fb979332620409e503149c14500e8c4936817355ff17",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_sequence.py",
+      "sha256": "d23cee6a47e6a8a0380a821589cb5bacc5894ca2ddf171fe93402c0aae8e26e5"
+    }
+  ],
+  "limits": "Eight invalid profiles/noeffects, nullresultnoeffects, parentbeforeCALL, actualchildloop/nearframe prefix and minimumSP24 fourchild normalreturn. Native only, not actual1B2Cstate/writer/capacity/lifetime/core/runtime/gameplay/fidelity admission."
+}

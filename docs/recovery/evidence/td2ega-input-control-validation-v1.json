@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000368",
+    "FN-EGA-000369"
+  ],
+  "result": "pass",
+  "vectors": 343840,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "6264085089e62bcdd1e39886c49d2578e061fa290d83f888162096b632c1636a",
+  "source_sha256": "00814079c3ab0b64867a741d92dfcad027147c2d4126d58e47a7fc4c7d499450",
+  "validator_sha256": "b83db6972a4eff97c8ae6fbcfa24c84a35cdad55d6418bb4e1421b07ca46614d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_targets.py",
+      "sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2"
+    }
+  ],
+  "original_instructions_executed": 16214260,
+  "fixture_coverage": {
+    "all_retained_BH_and_low_indices": 131072,
+    "all_input_byte_and_branch_profiles": 61440,
+    "all_alternate_record_byte_indices": 131072,
+    "pair_signed_step_boundaries": 3872,
+    "varied_update_states": 8192,
+    "varied_pair_states": 8192
+  },
+  "limits": "Complete4281/43C3 with actual4612/4441, serialized syntheticfullgroup, retainedbytehalves/indexaliases andBPclobber/preserve, signed/unsigned boundary andstatepublication. Actualresourcefield/table schema/units, callerflag/IRQ/fullstate/game/fidelity remainopen. NoBIOS/input/device ororiginalresource executes."
+}

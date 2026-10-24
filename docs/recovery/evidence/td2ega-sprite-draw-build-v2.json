@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sprite_draw_v2.cmd",
+    "sha256": "45f5aafa2843f5c3557c42aa10111a9b14d58869fb4bad49d5bf92e1f443ec00"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sprite_draw.c",
+      "sha256": "9e08e75087a0a56ca64162d7538d7dc5025b600a918c9efde4e0490d8c28d205"
+    },
+    {
+      "path": "src/recovered/td2ega_sprite_draw.h",
+      "sha256": "8f94174430f963669956aa0951306068fbd439acfc665d5997e9e59bbd014cd5"
+    },
+    {
+      "path": "src/recovered/td2ega_mask_span.c",
+      "sha256": "7ccc35f4e6ca67cc695d97d84fc9721f7b6dfd7945155f7606af3119c02381b1"
+    },
+    {
+      "path": "src/recovered/td2ega_mask_span.h",
+      "sha256": "a8e867a5fad71c8f2dc74bdc190383810efac829785ebe5258dc42e982c20581"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sprite-draw-repro-v2/td2ega_sprite_draw.dll",
+      "sha256": "f510e2ea8a70131577840bb417f451064db21a95bd4143410073cef58da8e84e",
+      "bytes": 123904
+    },
+    {
+      "path": "analysis/build/sprite-draw-repro-v2/td2ega_sprite_draw.obj",
+      "sha256": "c5bdd5398f7877b2a13ef4b8f08fee74d751d74375f46888f84621aa2c0ec394",
+      "bytes": 31777
+    },
+    {
+      "path": "analysis/build/sprite-draw-repro-v2/td2ega_mask_span.obj",
+      "sha256": "57bd5f3a017f015eada9c3e1f4d557f57e6f31d09bdb0dc355b7833c91dcaa37",
+      "bytes": 10922
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sprite-draw-build-v2.log",
+    "sha256": "cf08f41dec63fd415f64cc9349aa2c29f24430a005e948a8425a997695a80bd5"
+  },
+  "limit": "Threeentries916C/91A4fourSSwords and91D6twoSSwords/headercoords plusstandalonecopykernels, materializedSSsaved/local/near-returnframes/fullbus/GPR/BP/CFIFDF/farRETF4, byteAL-MUL/crop/plane-selection/currentDSversusSS/CS dispatch/actualnearRAM-device maskhelpers andexplicitOUT/MMIO traces matched. Nativeworkprefix andrawunsupportedindirectboundary distinct. Initializedframe mode3 makes839C/ADF4pointer-assignmentbranches unreachable intheseentries; maskhelpers separatelyvalidated. Syntheticflatdevicebus/copysourcefixtures only, noactualspritecorpus/allwriter/bounds/IRQ/device/renderer/state/core/game/fidelity acceptance; noothercallerAND/OR/XORkernel-familyclosure. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000223",
+    "FN-EGA-000224",
+    "FN-EGA-000225"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000212",
+    "FN-EGA-000213",
+    "FN-EGA-000214",
+    "FN-EGA-000238",
+    "FN-EGA-000239",
+    "FN-EGA-000240"
+  ],
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/sprite-draw-initial-v1.c",
+      "sha256": "9e08e75087a0a56ca64162d7538d7dc5025b600a918c9efde4e0490d8c28d205"
+    },
+    {
+      "path": "analysis/history/sprite-draw-interface-v1.h",
+      "sha256": "e30b152318b918b81ffba4d6a8d2c3e002ca956bee68fbf8071c80865e47f12e"
+    },
+    {
+      "path": "analysis/history/sprite-draw-interface-history-v1.json",
+      "sha256": "f99e307f362edc939cafd96a16b28353ef02e94b7eb4a83410d9c48e1ec4cdac"
+    },
+    {
+      "path": "analysis/history/validate-sprite-draw-attempt-v1.py",
+      "sha256": "0d5732c62ec25b690f7ca77040e7bf28058b43f2eae2b1edc51033f3d5d91aa8"
+    },
+    {
+      "path": "analysis/history/validate-sprite-draw-attempt-v2.py",
+      "sha256": "8079834b14a3a6ce5e6399b50e770d662333aba25844f4d2bf0e1317bfeda5fa"
+    },
+    {
+      "path": "tools/compile_sprite_draw.cmd",
+      "sha256": "54077f31c903f8a4509b66842b756570b28267485ea0bda6bcbcc8bcf08f66d7"
+    },
+    {
+      "path": "analysis/build/sprite-draw-repro/td2ega_sprite_draw.dll",
+      "sha256": "485be20cff47922803fc1cdc4939f6093b6c63c0b3db0e52a7f9517ee45ab23b"
+    },
+    {
+      "path": "analysis/logs/sprite-draw-build-v1.log",
+      "sha256": "4ac3a6cd22848be18cf41dd12519fe71666de4ff73c8b937a093ab1a8ccdc465"
+    }
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-sprite-context-v1.json",
+    "sha256": "52e393885c36bdd2b944ee61edf9f38b9a780f9f2a73768bde18a0ad8944e71c"
+  }
+}

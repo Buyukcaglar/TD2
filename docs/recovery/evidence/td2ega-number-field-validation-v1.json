@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000306"
+  ],
+  "vectors": 8144,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "44a9cf01334dcf033401fab1d3ac487ebbb0511aef71f93eeb620e3bc3200b8a",
+  "source_sha256": "550a1b967f573d3be8965edfa6e570868a84bb617f2fb202f5c13ab24d9fff77",
+  "validator_sha256": "1eaa5cdfb7222050ffb4d099f1101191095dcb41b2ba791a28612dcbb2aaa48f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 295120,
+  "instruction_sites_in_fence": 54,
+  "instruction_sites_exercised": 54,
+  "fixture_coverage": {
+    "far_return": 6656,
+    "digits": 6076,
+    "bus_write_events": 40896,
+    "DS_equals_SS_cases": 4072,
+    "minimumSP16_cases": 1536,
+    "raw_far_returns": 638,
+    "IMUL_overflow_return": 32,
+    "before_digit_prefix": 1488
+  },
+  "limits": "Actual13A8:20F0/far twoSSnearoffsetarguments, literalSSlocals/saves/orderedDS reads-writes/fullbus/GPR/BP/CFIFDF/control. StarDS8404rawcursor/word; optionalminus/local sign reread/decimalwordwrap/signedbyteASCII guards/leadingzeroDS8402 conditional/wordIMUL CF. IncomingDF unchanged. Nativebefore213Cdigitbudget/rawfarreturn exposedafterRET neverfollowed. Noformat/schema/inputbounds/caller/writer/lifetime/IRQ/core/device/session/gameplay/fidelity closure."
+}

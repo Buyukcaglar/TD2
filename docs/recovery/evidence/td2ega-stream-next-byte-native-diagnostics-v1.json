@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 31,
+  "script_sha256": "27baa8e76e409059480399b1b7fe9fe7d1a6d8216d93e7bb7c9fb0a3bb20ae21",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "61e5caa02aff4ba6f4b4ab3f0c7377a9c4975e128e488f0b3f20284b35b738bc",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_stream_next_byte.py",
+      "sha256": "4ce1f6fb79840351427db144b03decde00f67c2adb589ed380d1af6f5de94514"
+    }
+  ],
+  "limits": "Nativeinterfaces/literalDECSFguard incl8000fast/unsignedAX/currentDScounter-stream/count-counter-cursor-savedSI-farframealiases/actual0B42read/outer-nested-globalbudgets/adapterfailure/readerqualification only. Originalcomparison separate; actualcallers-allwriters-bufferbounds-storage-capacity-ownership-lifetime-exclusion/historicalCPU-A20/core/resource/device/session/fidelity open."
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "13980caf4d59a401721d9e7844d6f4e106e3207174b4562be9d671fa2df57952",
+  "library_sha256": "2423e05530c67de68bfb16a87a1ce86203d528045a83c9479132769f098ba246",
+  "native_source_sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74",
+  "vectors": 45056,
+  "original_instructions_executed": 991232,
+  "boundary_cases": {
+    "780E": 4096,
+    "780F": 4096,
+    "7813": 4096,
+    "7817": 4096,
+    "781B": 4096,
+    "781F": 4096,
+    "7821": 4096,
+    "7823": 4096,
+    "7827": 4096,
+    "7829": 4096,
+    "782A": 4096
+  },
+  "state_mismatches_against_two_serial_calls": {
+    "780E": 0,
+    "780F": 0,
+    "7813": 4096,
+    "7817": 0,
+    "781B": 0,
+    "781F": 0,
+    "7821": 0,
+    "7823": 0,
+    "7827": 0,
+    "7829": 0,
+    "782A": 0
+  },
+  "nonserial_witness": {
+    "load_segment": 4096,
+    "initial_cursor": 0,
+    "phase": 0,
+    "pause_before": "06C9:7813",
+    "final_cursor": 65534,
+    "inner_ax": 221,
+    "outer_ax": 186,
+    "changed_indexes": [
+      254
+    ],
+    "serial_changed_indexes": [
+      254,
+      255
+    ]
+  },
+  "conclusion": "Nested call after outerDEC butbeforeMOVSI makesbothinvocations updatetheinnerselectedbyte; outerselectedindex isskipped, cursorstilldecrements twice. Other testedboundaries matchserialfinalstate underpreservedregister nesting. AtomicCstep alone cannotrepresent thismodelledinterleaving.",
+  "limits": "Synthetic one-level preserved-register nestedcall model only. No realIRQ delivery, actualcallbackguard feasibility, timing/rate, supportedgame schedule, wholefunctionreentrancy orcore/fidelity acceptance. Existing byte-ring C remainsunchanged andmodelsserialized invocations."
+}

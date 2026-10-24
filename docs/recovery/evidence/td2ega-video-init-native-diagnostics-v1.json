@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 37,
+  "script_sha256": "e145c37bf7173cb72d4d1e9419bab40258f20acbe2a04d5368babff5ff9acce2",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "773b1042cdcd997a864cb7f5ecee8c1320d0cd2ec002441d3be8105f19bfe62d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_video_init.py",
+      "sha256": "1c132ea4f135e2b2fc0f8ae61209a23e76023a13f01691d993a9020c9b32d6e5"
+    }
+  ],
+  "limits": "Nativeinterfaces/literal8setup-6childOUTs/actual840Afarframe-zeroarg-ADDSP2/sharedglobalbudget/BDA0410mask/modeBIOSfullstate-ESactualreturnedDS/palette17snapshot-lastBIOSfullstate/BIOS-device-memorychanges/child-rootSSFNs-aliases/rawchildRET-beforefollow/child-rootpreRETqualification/adapterfailures only. Originalcomparison separate; no actualROM-EGApalette-register-latchhardware/renderer/historicalCPU/caller-domain/writers/storage/lifetime/exclusion/core/session/fidelity acceptance."
+}

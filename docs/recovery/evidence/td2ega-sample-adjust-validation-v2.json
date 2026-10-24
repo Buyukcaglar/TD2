@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000381"
+  ],
+  "vectors": 28984,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2930ba1da6a04494d6464dbead7428e44bdb9974a4ef1a3146f485e361211915",
+  "source_sha256": "d8e9e7a14bb38872c2e0ec5eb1636555114022f88569d6ef3ff23048a4c706e9",
+  "validator_sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+      "sha256": "269f0a21c5b58e8327bd1fe31b7cd5edd82ba7fe3e3e861bbd30c8ff3d8ff00e"
+    }
+  ],
+  "original_instructions_executed": 1683520,
+  "instruction_sites_in_fence": 117,
+  "instruction_sites_exercised": 117,
+  "fixture_coverage": {
+    "root_near_return": 26872,
+    "outer_CALLs": 83592,
+    "control_4612_CALLs": 23704,
+    "actual_IF1_ring_CALLs": 27192,
+    "CPU_bus_writes": 521152,
+    "DS_equals_SS_cases": 15532,
+    "raw_root_returns": 280,
+    "normal_IF1_returns": 26872,
+    "high_or_zero_DS_cases": 128,
+    "prefix_outer": 960,
+    "prefix_control": 288,
+    "raw_control_return": 160,
+    "raw_setter_return": 320,
+    "raw_ring_return": 320,
+    "raw_product_return": 64
+  },
+  "actual_late_write_target_range": [
+    13247,
+    13502
+  ],
+  "actual_late_write_target_count": 256,
+  "limits": "Actual4A2Enear/fullSS/actual45FC-4612/fullSS7977CLI-pointer-store-STI-farRET/actual780Ecursor-byte-Ctransform-fullSS/IF1ringCALL/rawsample-signedALgate/wrapped-counter-and-state-arithmetic/raw256late-indexwriters/near-farreturnaliases/globalouter-controlCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. Serializednoasyncdelivery/noIRQexclusion-reset-sharedsource-lifetime/core/RNG-purpose proof. ConditionalwriterdomainsincludeRS271andinitializednear-jumptableRS270-272-273; no globalvalidselector/allwriters-ownership closure. No DOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity admission; physical086Cunassigned/CGAbehindEGAclosure."
+}

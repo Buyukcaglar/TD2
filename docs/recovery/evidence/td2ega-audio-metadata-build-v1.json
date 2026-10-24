@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_audio_metadata.cmd",
+    "sha256": "8aeba3ed31ca4c65c40090fca3b4c93d11b195b41cf43eb0c1bc05113c25aeba"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_audio_metadata.c",
+      "sha256": "6ecfd488f8a131327a86c4445bfce40921df57089864b5d9f1ffd63b38540746"
+    },
+    {
+      "path": "src/recovered/td2ega_audio_metadata.h",
+      "sha256": "3545175fa84343c15da2f08ed0218b65b8af7ea72e10edbd32e69b43c201e80e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/audio-metadata-repro/td2ega_audio_metadata.dll",
+      "sha256": "91ec28f3a22c99e16c5ed68680624478b3a2eabbb2fd9c0d35592c4cb924ed68",
+      "bytes": 103424
+    },
+    {
+      "path": "analysis/build/audio-metadata-repro/td2ega_audio_metadata.obj",
+      "sha256": "b57a630e201939c7799c3f46d1bf8a3c20b3b5b8d9ed85ab0666c161f9f3b706",
+      "bytes": 2184
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/audio-metadata-build-v1.log",
+    "sha256": "2d687fd544ad10bc685bffc02734095dee009bb19660e2133ecec720d72976aa"
+  },
+  "limit": "Five pointer/flag metadata entries, disjointsyntheticsource/state, localownership/IF only. Noactualsource/IRQ/sequencer/device/audio/game acceptance.",
+  "function_ids": [
+    "FN-EGA-000189",
+    "FN-EGA-000190",
+    "FN-EGA-000196",
+    "FN-EGA-000197",
+    "FN-EGA-000198"
+  ]
+}

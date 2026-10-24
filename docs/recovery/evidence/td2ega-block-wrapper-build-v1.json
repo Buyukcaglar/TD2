@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_block_wrapper.cmd",
+    "sha256": "4d6ad76e5a0230c46e05ddc8a3f19ccb9f6f16de327caff18aa6b8050b2f9e4d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_block_wrapper.c",
+      "sha256": "9ee2e00e3c16608a4c641d826e84de98a539dc1597c78e0f78e9193500b1a0dd"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.c",
+      "sha256": "f1b581c93578503f35e7f17bb0f734931df5700b1dd8371f4cf9d93d0d43787c"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.c",
+      "sha256": "7479905e9074c4de5b9fd6c48f7902a3dec03127728ae9f777a1c1eda5698186"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.h",
+      "sha256": "d56d77af874656170dedc475b46af63d5470473684fc4d324e6d0f583dbb30a5"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.h",
+      "sha256": "b6ee29221e4c33dfc140b6d21c061efc64da4633a3c3b46527aa0f5bea6a4099"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.h",
+      "sha256": "8696944455f3ab7cabf0e637bcd42d1717e7b00805396e1396e69b24af798981"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/block-wrapper-repro/td2ega_block_wrapper.dll",
+      "sha256": "60bffcdb254c47090eb0b562082f252070b19c5a31bc3d4a80f0efe518c031ab",
+      "bytes": 109056
+    },
+    {
+      "path": "analysis/build/block-wrapper-repro/td2ega_block_wrapper.obj",
+      "sha256": "010fa2c6bbe2fdd5d5bf4ab151053d03198a6f66963ece2a1a1f6b1f992c7388",
+      "bytes": 4329
+    },
+    {
+      "path": "analysis/build/block-wrapper-repro/td2ega_block_request.obj",
+      "sha256": "99aeda972091f4f2ab366d3a3f0c03a76bdd8b66f0bd180e6fc84581d35fd250",
+      "bytes": 7634
+    },
+    {
+      "path": "analysis/build/block-wrapper-repro/td2ega_block_adjust.obj",
+      "sha256": "f24a9eaf1df85244c78e63d5dd08832a46e8bf46752f79a3318bd5b72c016293",
+      "bytes": 4911
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/block-wrapper-build-v1.log",
+    "sha256": "c8ffeabdba6c2e83493dff0e2790e4701100e1954cc516790869712bae68cba0"
+  },
+  "limit": "Actual13A8:2830+2852mode1+28C0/fullSS/DS-to-ESswitch/fiveSSargs/actualfar-nearframes/savedAXpoppedDX/DS-BXrestores/requiredreturnedZF. FlagsvalidonlynormalrootRET; childDXFFFFCMPbeforepops skipsORDX, elseZFofactualrestoredDX. Caller26BDJNE/2813JE requiresZF, CF0bothnormalpaths. 29parentmode-specificsitesstaticinfeasibleonlyfromliteralwrapperargumentframe; standalone2852coversfullbody. SyntheticDOS4Afullreturnedstate/bus, SS-SP-CSpreserved/realINTframesomitted. Budgets/rawRETtargetsexposedafterinstructionneverfollowed. No wholecaller/allwriters/domain/capacity/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000323"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000324",
+    "FN-EGA-000325"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-block-wrapper-context-v1.json",
+    "sha256": "fa610a2a14ad4de0464f2c5ea4bd46d609521993c711ed8b5bb3d15d9d7e5add"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_block_wrapper_before_savedAX_v1.py",
+      "sha256": "00c0b1bfde1dff363ba75002aaa0842777d2840ad6ea2a3e128a15d2fee72cb3"
+    },
+    {
+      "path": "analysis/history/validate_block_wrapper_diagnostics_before_alias_v1.py",
+      "sha256": "e1124d5b47de20b344411c7e1475a6315f799341632e487cc816ae909a738686"
+    },
+    {
+      "path": "analysis/logs/block-wrapper-validation-v1.log",
+      "sha256": "1a00c2209b2e10689b485c7d61c3e835352b220471cdbfb8ac7ffb03819bb2bb"
+    }
+  ],
+  "failure_resolution": "NoC/build/instructioncomparisonfailure. v1passed20432cases/all83feasible butDS_equals_SSlabelactuallymeantmetadataDS/ESinputequalsSS. Selectedv2 correctslabel/addsinitialDSlabel and672directsavedAXservice-mutationcases, fullrequiredZF. Nativev2 strengthensspecificSSmetadataaliasboundary assertion. C/DLLunchanged."
+}

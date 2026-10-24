@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000384"
+  ],
+  "vectors": 31434,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "fb054fadf4302d363ccf51e4d724ae8442a632f9aa8401ca1ec91bb827b6e4b5",
+  "source_sha256": "1e716661f708daa96e5128d0b391330e689cf3ad18943dac081779bd23165296",
+  "validator_sha256": "d6f7bf8fafbd857f5f11fd018c891f33e12b80fedeebb713adb7e65a29776b85",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 859858,
+  "instruction_sites_in_fence": 108,
+  "instruction_sites_exercised": 108,
+  "fixture_coverage": {
+    "root_near_return": 30194,
+    "table_row_heads": 25066,
+    "outer_45FC_CALLs": 6250,
+    "control_4612_CALLs": 5962,
+    "completed_IDIVs": 1722,
+    "CPU_bus_writes": 69554,
+    "DS_equals_SS_cases": 16028,
+    "raw_root_returns": 88,
+    "full_index_wrap_scans": 2,
+    "normal_BP_changed": 4106,
+    "fault_zero": 40,
+    "fault_overflow": 880,
+    "prefix_rows": 80,
+    "prefix_control": 192,
+    "raw_product_return": 24,
+    "raw_control_return": 24
+  },
+  "limits": "Actual4B9A/fullSS/currentDSsignedthresholds/orderedstatewrites/indexed8byte-rawrows/wordSIwrap/signedIMUL-IDIV-truncation/zero-overflowpreIDIVprefix/noexceptiondelivery/actual45FC-4612-globalrow-controlbudgets/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. Actual48A8caller/full4674/alltablewriters-validbounds-units-storage-lifetime-IRQ-core open. NoDOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure."
+}

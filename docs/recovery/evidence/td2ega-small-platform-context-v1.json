@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "9c4d3aa8a175034e27363387831918d19f37b711f5552f568d2ab35f4206a9da",
+  "instruction_observations": [
+    {
+      "site": "06C9:5D50",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:5D56",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:5D74",
+      "instruction": "int 0x11"
+    },
+    {
+      "site": "13A8:2E33",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:5D67",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:5D61",
+      "instruction": "mov ax, 0x4301"
+    },
+    {
+      "site": "06C9:5D64",
+      "instruction": "mov cx, 2"
+    },
+    {
+      "site": "06C9:5D30",
+      "instruction": "int 0x1a"
+    },
+    {
+      "site": "06C9:5D42",
+      "instruction": "mov word ptr [0x52c2], cx"
+    },
+    {
+      "site": "06C9:5D46",
+      "instruction": "mov word ptr [0x52c4], dx"
+    }
+  ],
+  "api_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684",
+    "source_path": "analysis/external/msdos-2d04cacc/SYSCALL.txt",
+    "source_sha256": "72271dc62a60960c885da6a3d822202a80ef338d2e2f3e54570eda9dc3453da7",
+    "source_bytes": 59136,
+    "url": "https://github.com/microsoft/MS-DOS/blob/2d04cacc5322951f187bb17e017c12920ac8ebe2/v2.0/source/SYSCALL.txt",
+    "service_identifiers": {
+      "SET_DEFAULT_DRIVE": 14,
+      "GET_DEFAULT_DRIVE": 25,
+      "CHMOD": 67
+    },
+    "relevant_line_ranges": [
+      [
+        814,
+        843
+      ],
+      [
+        1557,
+        1557
+      ],
+      [
+        1567,
+        1567
+      ],
+      [
+        1620,
+        1620
+      ]
+    ]
+  },
+  "claims": [
+    "AH19 andAH0E historicalget/set-default-drive identities; gamewrapper forwardsreturnedAL throughDL thenreturnssecondAL withAH0.",
+    "AX4301/CX2 historicalset-attributes identity; gamewrapper convertsCFerror toAX1 andsuccess toAX0, noactualfilechanges.",
+    "RawBIOS11 and1AAH00 responseoperands/codeeffects documented; noBIOSversion/timebase/frequency orrealdevicebehavior inferred.",
+    "DS52C2/52C4 publications overlapknownDATcopy destination; actualwriter/lifetime ownership remainsopen."
+  ],
+  "limits": "Staticinstruction/APIidentifier corroborationonly. NoMicrosoft implementationcode copiedintoC; noactualDOS/BIOS/IRQ/session/device/render/audio/core/game/fidelity admission. Physical086C remainsa separate rawanomaly."
+}

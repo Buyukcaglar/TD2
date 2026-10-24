@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_control.cmd",
+    "sha256": "e040d0141aa899bcbda5b36e581eb6affb3a9fb0f030d0284b1e1bf307f88c20"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_input_control.c",
+      "sha256": "0c64fc94f82da90fd039803c46e54c08d7bf6386dd1d121226ae9d0f55494632"
+    },
+    {
+      "path": "src/recovered/td2ega_input_control.h",
+      "sha256": "abe2bda3514528703f4c92a82206e6798b5f39e7ee2c1b91a23f7819a36c1ae7"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.c",
+      "sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-control-repro-v2/td2ega_input_control.dll",
+      "sha256": "2c0ebbdb5d2be0651680732dcc50bdba2648c317e95fa58ccd0709ad2090d127",
+      "bytes": 105984
+    },
+    {
+      "path": "analysis/build/input-control-repro-v2/td2ega_input_control.obj",
+      "sha256": "c1614e92e577135787fccbf14ab9e085bf53164d91d127c0b88a1a4c56bfedf7",
+      "bytes": 5624
+    },
+    {
+      "path": "analysis/build/input-control-repro-v2/td2ega_sim_primitives.obj",
+      "sha256": "9802a518d19aee70d992f0e86f19c8b5caa7bcfda73df7bd5d41370faac01167",
+      "bytes": 4591
+    },
+    {
+      "path": "analysis/build/input-control-repro-v2/td2ega_sim_targets.obj",
+      "sha256": "ef3419be8e0c454d27b43c338ac3fa92d6539a4a0c99f2dbbfa7308cbfe93cd3",
+      "bytes": 4395
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-control-build-v2.log",
+    "sha256": "49ed730d0b01b2172c8f72dacf77540a185d3d0787ad26c198830b9f589abcbe"
+  },
+  "limit": "Explicit initial/prepared branch-form inputs at424A/4275/42AD where applicable. Complete4281/43C3 andcompiled4612/4441 serializedsyntheticgroup effects, bytehalves/BP/indexaliases preserved. Actualcaller/flags/resourcefield/table units andIRQ/fullstate remainopen.",
+  "function_ids": [
+    "FN-EGA-000368",
+    "FN-EGA-000369"
+  ],
+  "historical_initial_only": "docs/recovery/evidence/td2ega-initial-input-contract-history-v1.json"
+}

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_near_clamp.cmd",
+    "sha256": "d1e087ec7113175da13344c2a26cce54ccadbc8d3dd1a75412142394a4e658a6"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_near_clamp.c",
+      "sha256": "4da4898c6e0b758da0e96d893d597417f5816831bf5facbbe81174cba5a50c4a"
+    },
+    {
+      "path": "src/recovered/td2ega_near_clamp.h",
+      "sha256": "851d29ac9ea78a0ff27dc07f442840d587c7502a7fc1b83dd4ca3840ca9cd974"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/near-clamp-repro/td2ega_near_clamp.dll",
+      "sha256": "cf20eb4dda7d1cd01bc7b1c3cc655b2a72852c98c986265db532de695a1351d6",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/near-clamp-repro/td2ega_near_clamp.obj",
+      "sha256": "a4340c7accc9d2cca7dfd8c36937a99bd801b951d35d69dbcb0171aebe2f07a2",
+      "bytes": 3053
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/near-clamp-build-v1.log",
+    "sha256": "d818c0aea973a08710829cd8906380a492f6b85e65a69fd85533811757062eaf"
+  },
+  "limit": "Complete088E orderedfivemutableDSpasses/signedlowerthenupper/negativeupperbounds/capturedBX/LOOPzero65536/wordwrap/CFIFDF/nearRET compared. Widecases useSSseparatefromDS/controlframes; nozero-countnormalization. PrefixesstopbeforeoriginalnextLODSW, not originalerror/normalreturn. Actual1F71 AX2C2A/BP17 writer/callerbounds/graphics/layout/resource/IRQ/core/game/fidelity pending. Native diagnostics separate.",
+  "function_id": "FN-EGA-000071"
+}

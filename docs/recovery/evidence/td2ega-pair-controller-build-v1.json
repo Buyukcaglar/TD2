@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_pair_controller.cmd",
+    "sha256": "ff53e899ff79d54d6ca23e85c6195886e44ee38f68d0f7d08fac6e5d851f150d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_pair_controller.c",
+      "sha256": "08045fc91d0ff298ec86e815de46425963efa80ac361b017fd29a7b88218189b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.c",
+      "sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_pair_controller.h",
+      "sha256": "6f895dadf3b269a0fb521fa4599f39923ee438d3bc8c3d5b29afb9a4cf9b5cec"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.h",
+      "sha256": "46be463e0d8382fac77f4114180df0d0feed44e045785183427a38d9b63d25b8"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/pair-controller-repro/td2ega_pair_controller.dll",
+      "sha256": "d8baf5d30ae77e6cebef36cc4f6fabb9cf8eeeb2ec0caa5e885298bf1936359d",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/pair-controller-repro/td2ega_pair_controller.obj",
+      "sha256": "7dbf64db96b8402ac33c83f00c659ae59f659edd58eb6f187535ffd75ab9e9db",
+      "bytes": 7859
+    },
+    {
+      "path": "analysis/build/pair-controller-repro/td2ega_small_arithmetic.obj",
+      "sha256": "f74fdf9b69e29e348eeaabf40c73c91348e1cc4fc1a5c34462463d242fae1155",
+      "bytes": 6178
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/pair-controller-build-v1.log",
+    "sha256": "73a409eaaf343d588e6e8e63ff0258c64e08e5cabc942adfc8c118cfb09e0293"
+  },
+  "limit": "Actual595F with actualfrozen5A25 pairupdate C, noABI-valuemock/SSscratch exclusion. Fullbus/actualSSnearframes/rootRET/GPR/BP/CFIFDF/control/counts. NativebeforeCALL/rawchildRET prefixes distinct; rawroottargetexposedafteractualRET neverfollowed. SignedCX/BX branches and orderedpair/global/flag/counterwrites retained, no physicalunits/collisionmeaning inferred. Actual403Bcaller/FLAGS-liveness/allwriters/ownership/capacity/lifetime/IRQexclusion/fullstate/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000399"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000400"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-pair-controller-context-v1.json",
+    "sha256": "c41f04ad3249847a0bbc010213fc194613ac466f042fde3407784c84cc56cffc"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_pair_controller_before_child_return_alias_v1.py",
+      "sha256": "23d0f8911f21350466a966898f1fb273bb722a86f14b2a955fe958df443de686"
+    },
+    {
+      "path": "analysis/history/validate_pair_controller_before_ret_site_fix_v1.py",
+      "sha256": "389affd675f1ba0dc4ee567c32b312119206144ed2383ef15d2c5623e66b6d42"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-pair-controller-validation-v1.json",
+      "sha256": "ac7d2492a5ef1a5eccbaecc73979dfbfe652b60fb54802800d399e1b1db75f84"
+    },
+    {
+      "path": "analysis/logs/pair-controller-validation-v1.log",
+      "sha256": "8d56a5a04305de566294851a19b9494d1bea08ebf5f63cb0040f8c513bffbbac"
+    },
+    {
+      "path": "analysis/logs/pair-controller-validation-v2.log",
+      "sha256": "2eb1bcefcac2f91132d1b3918ce40c6a27647db960c506d70f1b30fff96787ea"
+    }
+  ],
+  "failure_resolution": "No C/build failure. v1matched20384normal-child/budgetcases/all96sites. v2newrawchildalias escapedoriginalfence becausevalidator incorrectlynamed5A59 instead ofactual5A6C/5A6E RETsites. Selectedv3correctlystops/executesbothactualRETinstructions andadds24rawchildcases. C/DLLunchanged. Priornativev1dependencyhashsupersededbyv2."
+}

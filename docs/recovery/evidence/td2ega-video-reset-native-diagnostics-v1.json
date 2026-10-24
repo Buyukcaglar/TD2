@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 33,
+  "script_sha256": "6c63ae7ea1d2936345b7b57c55e87db8ec0eb3b59605ed7af52244cc9f33ab25",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "872dbb38ab35a3d879250462c339ba95b77ae452f85bf0aba2738d544befa996",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_video_reset.py",
+      "sha256": "683293ea484ba06b073f74d8bb326b7d29c1c38c4b63f3aa618708f390796cdf"
+    }
+  ],
+  "limits": "NativeABI/literal6OUTs/actual840Aframe/fullSS-currentDF/sharedbudget/BDA0410/modeBIOSfullstate-AH0BreturnedAL-BX0/lastBIOSfullstate/aliasfarframes/rawchildRET/child-rootqualification/adapterdiagnostics. Originalcomparison separate; no actualROM-devicehardware/renderer/historicalCPU/caller-domain/writers/storage/lifetime/exclusion/core/session/fidelity acceptance."
+}

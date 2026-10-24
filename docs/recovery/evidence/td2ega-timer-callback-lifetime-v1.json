@@ -1,0 +1,512 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "fa624e7af2a66a04beb91899fef7a4b311f5a6828c620fe54510d79272169aab",
+  "vectors": 16,
+  "original_instructions_executed": 6224,
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_control.py",
+      "sha256": "2a0a29c10246e859c07466e8d4a9de49d6faea5567581172a393a9e14d6fb7ae"
+    },
+    {
+      "path": "tools/validate_timer_callbacks.py",
+      "sha256": "87d7c5047fb49e40a549454b074548739358d50c2b693a9883bac7b84251652b"
+    }
+  ],
+  "native_libraries": [
+    {
+      "path": "analysis/build/timer-control-repro/td2ega_timer_control.dll",
+      "sha256": "23688cc508c88cc834a34c59b3a4071aa323bd80bd7beee028322231955c9dda"
+    },
+    {
+      "path": "analysis/build/timer-callbacks-repro/td2ega_timer_callbacks.dll",
+      "sha256": "9112e852fcb366a422406e7224b4794c379f03e66bd598b16aad30f5aca9737b"
+    }
+  ],
+  "cases": [
+    {
+      "load_segment": 4096,
+      "port_seed": 0,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 0,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 3,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 3,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 165,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 165,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 255,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 4096,
+      "port_seed": 255,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        5833,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        5833,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        5833,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 0,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 0,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 3,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 3,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 165,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 165,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 255,
+      "initial_if": 0,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    },
+    {
+      "load_segment": 9029,
+      "port_seed": 255,
+      "initial_if": 1,
+      "installed_words": [
+        25193,
+        10766,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_exit_words": [
+        0,
+        0,
+        16443,
+        10766,
+        4373,
+        0
+      ],
+      "after_music_words": [
+        30186,
+        10766,
+        16443,
+        0,
+        4373,
+        0
+      ],
+      "instructions": 389
+    }
+  ],
+  "conclusion": "Actual3FD9tail installs601C thenregisters6269/403B. Actual1BEBcall601C clearsfirstcallbackpair beforestate-returnepilogue; laterrowsremainstale butfirstsegment0 terminateswalk. Subsequent75EA registration clearsnextsegment, hidingstale403B. These effectsagreewithcombinednative timercontrol/callbacks.",
+  "limits": "Fenced caller tails/syntheticdata/ports only; no callbackbody oractualIRQ, earlier3F40/1B2C/sessionguards, completephaseownership/movingresourceexclusion, timerunits orgame/fidelity acceptance. StopsbeforeconditionalCLC/RETFepilogue."
+}

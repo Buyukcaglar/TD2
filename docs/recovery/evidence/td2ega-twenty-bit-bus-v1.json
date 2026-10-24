@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "98ba736ef4a41451e39605efcce7f3547c078aa08c9c45f47b3bdc34cb3654cf",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "validator_dependencies": [
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/tools/python/unicorn/unicorn_py3/unicorn.py",
+      "sha256": "b4de7d560790a587157b17edd71c83b4f2d2bade2447d1a5433c497468ac8aeb"
+    }
+  ],
+  "checks": [
+    "low_api_write_visible_in_high_view",
+    "high_api_write_visible_in_low_view",
+    "guest_word_read_and_write_high_view_alias_low_bytes",
+    "guest_word_write_crosses_physical_20bit_boundary",
+    "cross_boundary_second_byte_shared_in_both_views"
+  ],
+  "guest_write_observations": [
+    [
+      [
+        1048578,
+        2,
+        4660
+      ]
+    ],
+    [
+      [
+        1048575,
+        2,
+        22136
+      ]
+    ]
+  ],
+  "limits": "Five private mapping/ISA microchecks, no original game functions or helper-vector count. Two guest mappings shareone1MiBhostallocation, explicitserialized20bitRAMfixtureprofile/noMEM_READhook. Wordwritehookeventcheckedatphysicalboundary; nothardwarebuscycles. HistoricalCPU/A20gate/segmentlimits/IRQ/device/session/core/gameplay/fidelity remainunqualified."
+}

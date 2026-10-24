@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000311"
+  ],
+  "vectors": 26576,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "150d9840599e297ba567ab8b1759dc7454bad09688c4f00a18c9ae3764754b80",
+  "source_sha256": "4a8fa40785affe9afa1fed4008cdcc439a985f3267a9b21689ca588d4519b878",
+  "validator_sha256": "a5d3fd5d21a0b0a95adda87c164a64a1dff0e97d5ec6d1bbea3dd0b91782c1c7",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_close_handle.py",
+      "sha256": "4670edbe58587ec7f01995d05ebc7160c959f6742b896617c365817b0f335efc"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 687030,
+  "instruction_sites_in_fence": 74,
+  "instruction_sites_exercised": 74,
+  "fixture_coverage": {
+    "prefix": 3904,
+    "raw_root_returns": 3760,
+    "syntheticDOSservices": 11480,
+    "actual_error_calls": 19908,
+    "bus_write_events": 92152,
+    "service_write_events": 5736,
+    "minimumSP24_cases": 8192,
+    "DS_equals_SS_cases": 13288,
+    "root_far_return": 19728,
+    "DOS_site_22CC": 5516,
+    "raw_mapper_return": 2944,
+    "DOS_site_2286": 4316,
+    "DOS_site_22AA": 1064,
+    "DOS_site_22BD": 584
+  },
+  "limits": "Actual225E/shared0937tail/actual094A, fourSSwords/twolocals/actualnear-farframes/fullbus/GPR/BP/CFIFDF/control/writecount. SyntheticDOS42fullreturnedstate/busmutations/SS-SP-CS preserved, actualINTentryframes omitted. Rawmode/negativeoffset/query/end/restore/finalseek andignoredCF sourcepaths, unsignedhandlelimit/returnedDS-BXbyteflagclear retained. NativebeforeINT/adapterfailure/rawreturns distinct fromoriginalerrors/normalreturns, targetsexposedafterRET neverfollowed. Actualcaller/record-handlewriters/capacity/lifetime/IRQ/core/actualDOS/resource/device/session/gameplay/fidelity open."
+}

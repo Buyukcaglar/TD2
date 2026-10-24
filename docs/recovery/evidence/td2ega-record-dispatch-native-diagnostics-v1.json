@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "898852457b9a9a7795dba4a43137ddf73e5d735c11bf1ec7677c9feb12b38df2",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "928ecc4a71ffd60c3f94521242b568538feeeb8db595024ec0e8c649ac3a2072",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_dispatch.py",
+      "sha256": "8a856908ae0ed776a7f1a59bc9ae8015d1b0e746114464b50a8163c077f348e6"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects/nullresult/root-childbudgets/byte0wrappedunknownJMP/knownactualtarget/ordinaryRET2/literalPOPAX+RET2 andactualdiscardwordalias. Nativeonly, notindirectdomainclosure/allwriters/whole53A6/caller/lifetime/IRQ/core/resource/device/session/gameplay/fidelity acceptance."
+}

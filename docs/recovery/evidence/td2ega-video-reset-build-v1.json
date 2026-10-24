@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_video_reset.cmd",
+    "sha256": "d06faef507cd35b679445a315cd0e2449b17b638189f7b2c1b6d5c57c174cf45"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_video_reset.c",
+      "sha256": "74877562acc37652fb89a6ac4e0d61434f741ea929b9b3b8a3ed4f7f73e988de"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.c",
+      "sha256": "06180015c596dea0c596f877ff38c1f686089f3a385bd21b2591542786eeef1a"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.h",
+      "sha256": "adb78ac1f3babe7472f8018f5373a3f8412435f94054d3e195a01d36d4237155"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_video_reset.h",
+      "sha256": "3fe98ed44e8679a0045d008203c0e2ed3494b446b3a63150bd80647127686b7b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/video-reset-repro/td2ega_video_reset.dll",
+      "sha256": "872dbb38ab35a3d879250462c339ba95b77ae452f85bf0aba2738d544befa996",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/video-reset-repro/td2ega_video_reset.obj",
+      "sha256": "55217a2e091fff2851481d75f93ac780a36415313f58520391130bdce3576df0",
+      "bytes": 6144
+    },
+    {
+      "path": "analysis/build/video-reset-repro/td2ega_plane_fill.obj",
+      "sha256": "b9da7e2c8154d9795d6ec7df97d41ef87985601decb9dd7bdebd1d38a10f631e",
+      "bytes": 4682
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/video-reset-build-v1.log",
+    "sha256": "828041c1a96467299413d48df0cb5c6803ce2b92a4b2bed16a53b339ef8de935"
+  },
+  "limit": "Actual06C9:642E far/noargs/XORAX-PUSHzero/actual840Afarframe-fullSS-currentDF/shareddevice-BIOSeventbudget/CALLbudget/childrawRETafterinstruction-neverfollowed/ADDSP2/BDA0410mask/BIOS10AX0003fullreturnedstate thenAH0B-retainreturnedAL-BX0/fullreturnedstate/rootRETaftereffects. Native5child-rootpreRETqualification/fullbody/nohistoricalfaultclaim. No realBIOS-INTframes/devicehardware/renderer/historicalCPU-A20/caller-domain/writers/storage/exclusion/core/resource/CGA/session/gameplay/fidelity acceptance.",
+  "function_ids": [
+    "FN-EGA-000152"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000215"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-video-reset-context-v1.json",
+    "sha256": "16403cfb248c240b372ebf33efa5ca1197c5e01de9bd5a3fdd3402e78d91d841"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [],
+  "failure_resolution": "NoC/build/comparisonmismatch. AllSPbody/native5child-rootpreRETqualification inheritedfromselectedplane-fill-v2; nohistoricalfaultclaim."
+}

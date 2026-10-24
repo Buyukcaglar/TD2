@@ -1,0 +1,18 @@
+"""Review original string primitive operands, raw direction and direct callers."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(image).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());entries=[0x2916,0x2956,0x2988,0x2b40,0x2b82];targets={f'13A8:{ip:04X}' for ip in entries};md=Cs(CS_ARCH_X86,CS_MODE_16);observations=[]
+    for f in g['functions']:
+        if f['entry'] not in targets:continue
+        for ip in sorted(f['instructions']):
+            i=next(md.disasm(image[0x13a80+ip:0x13a80+ip+15],ip,count=1));assert i.mnemonic!='cld';observations.append({'owner':f['entry'],'site':f'13A8:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str})
+    expected={0x292e:'8b7e08',0x293c:'8b4606',0x2945:'a4',0x2949:'f3a5',0x294b:'13c9',0x2974:'a801',0x29a4:'f3a6',0x29a8:'1bc0',0x29aa:'1dffff',0x2b7d:'98',0x2b90:'8b4e0a',0x2ba4:'f3ab',0x2bac:'93'}
+    for ip,raw in expected.items():assert image[0x13a80+ip:0x13a80+ip+len(raw)//2].hex()==raw
+    callers=[{'owner':f['entry'],**c} for f in g['functions'] for c in f['calls'] if c['target'] in targets];dep='docs/recovery/evidence/td2ega-sign-extension-context-v1.json';assert json.loads((ROOT/dep).read_text())['result']=='pass';record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'validator_dependencies':[{'path':dep,'sha256':hashlib.sha256((ROOT/dep).read_bytes()).hexdigest()}],'instruction_observations':observations,'direct_caller_candidates':callers,'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'facts':['All five roots use current DS near arguments and actual SS BP/far frames, plain RETF/caller clean; no CLD.','2916 scans destination then source, computes raw tail pointer via DI-1 and second DI-NOTCX, rereads SS destination before copies. 2956 scans source then reads SS destination.','Both copies peel one byte according to source parity (2916) or destination parity (2956), then word REP and ADC residual-byte REP. Sequential overlap and DF retained.','2988 scans second string then subtracts scanned count irrespective of DF, REPE CMPSB including terminator/count, mismatch SBB/SBB gives AX1/FFFF and CF1; equal AX0/CF0.','2B40 BX advances +1 while LODSB SI follows DF; differing bytes fold ASCII41..5A with raw byte arithmetic, CL final mask from first byte. Unprefixed98 gives word AX sign extension.','2B82 zero count preserves incoming CF and leaves BX=incomingDS after XCHG; nonzero repeated-byte AX and word/byte stores, final BX=repeated-byte word, CF0. DI restored via DX, AX near destination.'],'limits':'Static original instruction and caller-candidate inventory only. Actual caller capacity/NUL/DF/otherFLAGS/DS-SS views/writers/lifetime/exclusion/core remain open; no host string substitutions/source C types or device/session/game/fidelity acceptance.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','sites':len(observations),'callers':len(callers)}))
+if __name__=='__main__':main()

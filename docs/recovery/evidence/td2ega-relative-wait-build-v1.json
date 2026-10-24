@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_relative_wait.cmd",
+    "sha256": "87e5a16de807f305ee015de074cbf44ca62f842f6026960f2642c8798cb7694c"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_relative_wait.c",
+      "sha256": "b61bcf3944406e1d47d8798df01c0c81e1842cf4cef24b9cb2aac988482290dd"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.c",
+      "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577"
+    },
+    {
+      "path": "src/recovered/td2ega_input_bridge.h",
+      "sha256": "7ae28c50bb851033b38267c6161de8abc033db6cff8531cdb7f79c180bad0d43"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_relative_wait.h",
+      "sha256": "d5c93b989891d39b69d9a3e130395ca98f3bdab03332418136d4eb503cbc59a5"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.h",
+      "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_control.h",
+      "sha256": "dcc7aab925ae2dc11dc41bc7b2688f7ee1db0056629a8e3f2f2f732dba57148e"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_roots.h",
+      "sha256": "0aa9959eb53d841c1537e839aa02b14291cb45ba59979f3cb1c8ac432cbcc9d0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/relative-wait-repro/td2ega_relative_wait.dll",
+      "sha256": "cf325d8e4b3902ad395b0ca3ccc610d1335e4c30514db91edee4184d92963daf",
+      "bytes": 108544
+    },
+    {
+      "path": "analysis/build/relative-wait-repro/td2ega_relative_wait.obj",
+      "sha256": "e0fc7630504b908d185be781f2ea0c734aac047c05bc7912805c47a058f14174",
+      "bytes": 5549
+    },
+    {
+      "path": "analysis/build/relative-wait-repro/td2ega_small_state.obj",
+      "sha256": "644f6d616d6447223941ed0b19631bd6ec12bb1612715850df1fc27dec30986b",
+      "bytes": 9592
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/relative-wait-build-v1.log",
+    "sha256": "b2212990a2d1a7519d875e3087203271e7e00dca497d268646d14d8645f74b89"
+  },
+  "limit": "ActualC6C5+actualC692CLI/read/STI/RETF, rawADD/ADCtwoSSarguments/orderedSSlocals, unsignedhighANDlow guards notlex. Fullbus/nestedSS/GPR/BP/CFIFDF/observerABI/control, criticalwordreadsIF0 andreturnedIF1. Optionalobserver memory-onlysyntheticcounter/SSmutations beforeC692CLI; NULLstablebus, no actualIRQ/timerdelivery orfrequency. Nativebefore-readbudget/observerfailure/rawchildreturns separate. Actualcaller/DSview/sourcewriters/lifetime/bounds/IRQexclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen; physical086C separateunassignedsource.",
+  "function_ids": [
+    "FN-EGA-000417"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000249"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-relative-wait-context-v1.json",
+    "sha256": "364020d8e6ad72dcaccb2e04a26796a16fc52b43729378e94dd3f5ad4d7bac41"
+  }
+}

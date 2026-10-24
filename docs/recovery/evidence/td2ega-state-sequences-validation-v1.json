@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000098",
+    "FN-EGA-000099"
+  ],
+  "vectors": 972,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f5af29b590a6145d709380533ea2e48d881d563548e53b338a8e1f9258f5ef02",
+  "source_sha256": "46aab52201874083f58a12d0b781b8428d14ac96a2da375a06b1a30d59fc9017",
+  "validator_sha256": "7241c98aad0e1004f80aaf513fea8289a499be54ae7d970b84a627eb2a5d2fbe",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_messages.py",
+      "sha256": "d8e8cca9a85ab0371e19ed936e9dc962eb1f1bf6377f62b533e80f71a781a477"
+    }
+  ],
+  "original_instructions_executed": 1042728,
+  "instruction_sites_exercised": 143,
+  "instruction_sites_in_fence": 143,
+  "fixture_coverage": {
+    "3532": 492,
+    "leaf_calls": 86280,
+    "same_DS_SS_0": 486,
+    "zero_count256": 64,
+    "point_offset_wrap": 12,
+    "same_DS_SS_1": 486,
+    "3643": 480
+  },
+  "limits": "Complete3532/3643 plusactual5C98 instruction/nativecomposition; SS count/point tables versusDSglobals, CBW onlyfirstcoordinate andretainedAHsecond, bytezero256iterations, offsetwrap, seven/ten control loops, pairedargumentlifetimes, savedDI/SI andreturnedDS/CFIFDF retained. Mostfarcallees ABI mocks; actualgraphics/text/resources/timing/input/IRQ/statewriter/core/game/fidelity pending. Native diagnostics separate."
+}

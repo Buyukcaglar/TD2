@@ -1,0 +1,267 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "b42f8938e1eae5a452d3c505bf8fe61c54ae06451e1bd39e468e0c9b05565755",
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "instruction_observations": [
+    {
+      "site": "06C9:69B7",
+      "bytes": "53",
+      "text": "push bx"
+    },
+    {
+      "site": "06C9:69B8",
+      "bytes": "1e",
+      "text": "push ds"
+    },
+    {
+      "site": "06C9:69B9",
+      "bytes": "bb8f17",
+      "text": "mov bx, 0x178f"
+    },
+    {
+      "site": "06C9:69BC",
+      "bytes": "8edb",
+      "text": "mov ds, bx"
+    },
+    {
+      "site": "06C9:69BE",
+      "bytes": "80fc00",
+      "text": "cmp ah, 0"
+    },
+    {
+      "site": "06C9:69C1",
+      "bytes": "740f",
+      "text": "je 0x69d2"
+    },
+    {
+      "site": "06C9:69C3",
+      "bytes": "80fc01",
+      "text": "cmp ah, 1"
+    },
+    {
+      "site": "06C9:69C6",
+      "bytes": "7416",
+      "text": "je 0x69de"
+    },
+    {
+      "site": "06C9:69C8",
+      "bytes": "80fc02",
+      "text": "cmp ah, 2"
+    },
+    {
+      "site": "06C9:69CB",
+      "bytes": "741c",
+      "text": "je 0x69e9"
+    },
+    {
+      "site": "06C9:69CD",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:69CF",
+      "bytes": "1f",
+      "text": "pop ds"
+    },
+    {
+      "site": "06C9:69D0",
+      "bytes": "5b",
+      "text": "pop bx"
+    },
+    {
+      "site": "06C9:69D1",
+      "bytes": "cf",
+      "text": "iret "
+    },
+    {
+      "site": "06C9:69D2",
+      "bytes": "fa",
+      "text": "cli "
+    },
+    {
+      "site": "06C9:69D3",
+      "bytes": "a1b662",
+      "text": "mov ax, word ptr [0x62b6]"
+    },
+    {
+      "site": "06C9:69D6",
+      "bytes": "c706b6620000",
+      "text": "mov word ptr [0x62b6], 0"
+    },
+    {
+      "site": "06C9:69DC",
+      "bytes": "ebf1",
+      "text": "jmp 0x69cf"
+    },
+    {
+      "site": "06C9:69DE",
+      "bytes": "a1b662",
+      "text": "mov ax, word ptr [0x62b6]"
+    },
+    {
+      "site": "06C9:69E1",
+      "bytes": "fb",
+      "text": "sti "
+    },
+    {
+      "site": "06C9:69E2",
+      "bytes": "0bc0",
+      "text": "or ax, ax"
+    },
+    {
+      "site": "06C9:69E4",
+      "bytes": "1f",
+      "text": "pop ds"
+    },
+    {
+      "site": "06C9:69E5",
+      "bytes": "5b",
+      "text": "pop bx"
+    },
+    {
+      "site": "06C9:69E6",
+      "bytes": "ca0200",
+      "text": "retf 2"
+    },
+    {
+      "site": "06C9:69E9",
+      "bytes": "a0e462",
+      "text": "mov al, byte ptr [0x62e4]"
+    },
+    {
+      "site": "06C9:69EC",
+      "bytes": "0a06f062",
+      "text": "or al, byte ptr [0x62f0]"
+    },
+    {
+      "site": "06C9:69F0",
+      "bytes": "ebdd",
+      "text": "jmp 0x69cf"
+    }
+  ],
+  "instruction_sites_in_fence": 27,
+  "installer_vector_and_clear": [
+    {
+      "site": "06C9:68A3",
+      "bytes": "26c7065800b769",
+      "text": "mov word ptr es:[0x58], 0x69b7"
+    },
+    {
+      "site": "06C9:68AA",
+      "bytes": "268c0e5a00",
+      "text": "mov word ptr es:[0x5a], cs"
+    },
+    {
+      "site": "06C9:68B7",
+      "bytes": "bfba62",
+      "text": "mov di, 0x62ba"
+    },
+    {
+      "site": "06C9:68BA",
+      "bytes": "b95a00",
+      "text": "mov cx, 0x5a"
+    }
+  ],
+  "principalDS_immediate_relocation": 54858,
+  "initial_ledger_INT16_sites": [
+    {
+      "site": "06C9:65C7",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:65CD",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:6603",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:6614",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:6A05",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:6A0E",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:6A3D",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    },
+    {
+      "site": "06C9:6A46",
+      "bytes": "cd16",
+      "text": "int 0x16"
+    }
+  ],
+  "external_span_candidates": [
+    {
+      "name": "raw-installed-keyword-view",
+      "segment": 6031,
+      "segment_offset": 25270,
+      "offset": 121766,
+      "length": 2,
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "relocations": [],
+      "scope": "Initializedidentity/rawconsumer-producerfootprint only; actualinstallation-IRQ-history/allwriters-capacity-lifetime-exclusion remainopen."
+    },
+    {
+      "name": "raw-installed-key-flags-view",
+      "segment": 6031,
+      "segment_offset": 25274,
+      "offset": 121770,
+      "length": 90,
+      "sha256": "988a09c9a6ee66322f9f274fe0ede1186eaf12b1c9fdd5f62152f998223521db",
+      "relocations": [],
+      "scope": "Initializedidentity/rawconsumer-producerfootprint only; actualinstallation-IRQ-history/allwriters-capacity-lifetime-exclusion remainopen."
+    }
+  ],
+  "return_profiles": {
+    "AH1": "ActualPUSHBX-PUSHDS/principalDSread/STI/ORAX/poppedDS-BX/RETF2. CF0/ZFfromactualAX/IF1/entryDF; savedSSFLAGSskipped.",
+    "other_AH": "ActualPUSHBX-PUSHDS/principalDSread-or-clear/modifiers-or-AX0/poppedDS-BX/IRET. CFZFIFDFfromactualSSFLAGSafterallbodywrites.",
+    "boundaries": "SP>FFFC beforeRETF2 orSP>FFFA beforeIRET reportsnative5; no execution/fault/historicalISA claim beyondselectedanalysisboundary."
+  },
+  "facts": [
+    "PUSHBX andPUSHDS occur beforeprincipalDS pendingwordread. SS=principal/SP62B8 overwritespendingwordwithincomingBX;SP62BA withincomingDS. Theseareactualbodyaliases, notasyncIRQ evidence.",
+    "AH0 pendingclear canoverwriteownsavedDS/BX/returnIP-CS-FLAGS; realpop/returnreadsretainorder. WithSSprincipal/SP62B2, pendingwordisthe savedFLAGSword; clearingit changesIRET flags.",
+    "Bothreturnforms consume6bytes fromhandler entry. AH1RETF2 retainsOR-definedflags/forcesIF1; IRET restoresactualsavedframeCFZFIFDF. Nointerruptframeis synthesizedbythisstandalone API; futureINT16callercompositionmustmaterializeit.",
+    "BP/SI/DI/CX/DX/ES remainbody-preserved; returnedBX/DS dependactualSSsavedwords andpendingclear aliases, notblanketpreservation. Nativepointerresultdisjointbus; serialized20bitRAM/noMMIO-or-executingcodewrite profile.",
+    "6860publishes69B7inIVT16 atphysical58/5A andclears90bytes62BA..6313. Installerdoesnotclearpending62B6. KnownIRQ6907publishespendingkeyword andkeyflags; allinstalledhandlerownership/producers/writers/storage-lifetime/exclusion open.",
+    "Two initializedrawviews: pendingword62B6 and90keyflagbytes62BA..6313; handlerreadsmodifierbytes62E4/62F0insidethe latter. Neitherbyteidentitynoroldfield-levelproducercomparisonqualifiesactualIRQdelivery orformat/capacity acceptance.",
+    "InitialledgerINT16inventoryisboundedby35547decodedlocations; mutable/unclassified/externalservice domainsseparate. ExistingtypedBIOSprofilesandpriorcompositionreceipts remainfrozen; newfullSSbodydoesnotautomaticallyadmittheircallerstackdomain.",
+    "OtherFLAGS/traps/reservedbits/actualCPU/INT-IRQdelivery/PIC/runtime/full420A-403B-core remainopen. Physical086Cunassigned/CGAbehindEGAclosure/noDOSsession-renderer-audio-complete-state-machine-gameplay-fidelity."
+  ],
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-keyboard-validation-v1.json",
+      "sha256": "75a955ef7023e3a3b9c86939bd420ade773d075597efb5f374ee71d082440618"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-installed-keyboard-poll-v1.json",
+      "sha256": "7e311a6688d48b7d17e68aed65ffbad973078a91021621bd5a83fc0dcaadc594"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-installed-keyboard-update-v1.json",
+      "sha256": "df412ff1e3789fcf7930c155a013a136fe5a4dc379522955882c1d676b3fed53"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "limits": "27sites/additionalactualSS69B7/knowninstalledvectorpublication/orderedpending-savedwordaliases/IRET-versusRETF2/CFZFIFDF/rawfieldviews andboundedinitialledgerINT16sites. NoactualINT-IRQdelivery/installerownership/allwriters-capacity-lifetime-exclusion/caller420A-403B/core/P1-GATE acceptance."
+}

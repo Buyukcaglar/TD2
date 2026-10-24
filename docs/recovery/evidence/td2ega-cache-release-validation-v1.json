@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000186",
+    "FN-EGA-000187"
+  ],
+  "result": "pass",
+  "vectors": 8184,
+  "native_only_diagnostic_cases": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 57174,
+      "length": 165,
+      "unrelocated_sha256": "0c95fd2e8c4d6a4c46b4e181a2ce24bd3532361b842e15205a53537161a8c2c2"
+    },
+    {
+      "module_offset": 57339,
+      "length": 293,
+      "unrelocated_sha256": "ad5547a9541ff7c441153fca809cd5a55bfa007ab4c887cc190134d01dcac4ad"
+    },
+    {
+      "module_offset": 56440,
+      "length": 72,
+      "unrelocated_sha256": "fd89188541b8f5e7b5b4c49930b436c762fb41875db0281e25841e4bd555fc50"
+    },
+    {
+      "module_offset": 56512,
+      "length": 83,
+      "unrelocated_sha256": "00e1b6f9fddf61341dfa884a9dfa1ecd0f924ef82b9f0bc3521ac3fa15ff51b5"
+    }
+  ],
+  "library_sha256": "c6dfc27c203689932fc575234b8215646c3d2260a54490c800a10a530cc026fe",
+  "source_sha256": "53ebe137f6606b6f7cab09c523733a73f8cc0c5237ef9822fd222e567374c90a",
+  "validator_sha256": "2de095837ba2ba17e3f2d41999b091c9d4dd5600882de7cc01dcf194f130cdcb",
+  "validator_dependency": {
+    "path": "tools/validate_cache_allocate.py",
+    "sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da"
+  },
+  "original_instructions_executed": 9710375,
+  "fixture_coverage": {
+    "fast_empty_unknown": 1,
+    "actual_forward_moves": 41819,
+    "actual_backward_moves": 5368,
+    "fast_all_boundaries_top_interior_unknown": 3528,
+    "fast_trim_free_predecessors": 48,
+    "fast_varied_active_holes_targets": 512,
+    "fast_exact_gap_equals_size": 1,
+    "fast_row48_source_destination_alias": 1,
+    "fast_highest_duplicate_segment": 1,
+    "shift_empty_unknown": 1,
+    "shift_all_boundaries_top_interior_unknown": 3528,
+    "shift_trim_free_predecessors": 48,
+    "shift_varied_active_holes_targets": 512,
+    "shift_exact_gap_equals_size": 1,
+    "shift_row48_source_destination_alias": 1,
+    "shift_highest_duplicate_segment": 1
+  },
+  "event_counts": {
+    "fast_unknown": 1177,
+    "fast_normal": 2915,
+    "shift_unknown": 1177,
+    "shift_normal": 2915
+  },
+  "coverage": [
+    "All active/cache boundary pairs withtop/interior/unknown requests",
+    "Free active rows, trimruns, duplicates andvariedoffsets",
+    "Gap equality distinguishesfast andshift policies",
+    "Row48 late-source alias preservesoriginal identitycopy",
+    "Actual original forward/backward instructions; wholeDS andsynthetic128KiB payload/guards",
+    "Return/frame/arguments/registers, conditionalES/DF; externalfatal stopsbeforeentry"
+  ],
+  "limits": "Bounded exclusive synthetic arena/pool prefixes only. Descriptor-boundary aliases preserved ratherthan presumedvalidintegration. Fullcaller preconditions/lifetime/exclusion andexternalfatal cleanup remainopen. No realresource, DOS, codec, rendering/audio orgameplay acceptance."
+}

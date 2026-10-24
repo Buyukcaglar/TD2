@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_number_field.cmd",
+    "sha256": "cadee8a3fa0e49c27eee36dcc723511494d0f81976b7e682db4f61e086ebe3d9"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_number_field.c",
+      "sha256": "550a1b967f573d3be8965edfa6e570868a84bb617f2fb202f5c13ab24d9fff77"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_number_field.h",
+      "sha256": "767159dd68fda3d40b2d2aa6d954d8a3b70ef61885762af31217f4e0cea157ed"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/number-field-repro/td2ega_number_field.dll",
+      "sha256": "44a9cf01334dcf033401fab1d3ac487ebbb0511aef71f93eeb620e3bc3200b8a",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/number-field-repro/td2ega_number_field.obj",
+      "sha256": "bd173e574cfbc7187dbea8db38dfdd90c97b7fba90d821ad7d9d893364dc0365",
+      "bytes": 5659
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/number-field-build-v1.log",
+    "sha256": "972e7d472c83c0fe13680eaa0c63fd4d803bb8dd397f443cf9c2aadef3f3a837"
+  },
+  "limit": "Actual13A8:20F0/far twoSSnearoffsetarguments, literalSSlocals/saves/orderedDS reads-writes/fullbus/GPR/BP/CFIFDF/control. StarDS8404rawcursor/word; optionalminus/local sign reread/decimalwordwrap/signedbyteASCII guards/leadingzeroDS8402 conditional/wordIMUL CF. IncomingDF unchanged. Nativebefore213Cdigitbudget/rawfarreturn exposedafterRET neverfollowed. Noformat/schema/inputbounds/caller/writer/lifetime/IRQ/core/device/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000306"
+  ],
+  "covered_original_local_helpers": [],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-number-field-context-v1.json",
+    "sha256": "6ba9196ed19e71f01ef58f0869ffa4cb3ace772e144cd75293082346c7b03188"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_number_field_diagnostics_before_ss_v1.py",
+      "sha256": "339f876f4d34b0d8f76cb393804419e3f8215e13b720a652e2ca0eb22efee020"
+    }
+  ],
+  "failure_resolution": "Native diagnostic alias case initially resetSS4000 butinvokedSS9000; corrected explicitSS4000 inselectednativev2. NoC/build/originalcomparisonfailure."
+}

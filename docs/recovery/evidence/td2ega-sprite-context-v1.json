@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "208dab0b0626108b34ba18c57ddbb5c2b8175a27e66f243792bfbebd9a3b5fd0",
+  "spans": [
+    {
+      "id": "RS-DOS-000260",
+      "segment": 1737,
+      "offset": 37188,
+      "length": 40,
+      "sha256": "1cd15a2347d02e3db8c9ea40e582c38312a17fd598c005c804e4606a6c22b2df",
+      "consumers": [
+        "FN-EGA-000223",
+        "FN-EGA-000224",
+        "FN-EGA-000225"
+      ],
+      "observation": "External40byteCSselection/read-plane/write-mask/clear-mask/output-mask candidates9144..916B. Nonzero-nibble index0..3 anddecreasingselection predicates verified; originalvalues notexported. Caller/header/writer/lifetime/device domains stillopen."
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:9181",
+      "instruction": "mov byte ptr [bp - 0x42], 0"
+    },
+    {
+      "site": "06C9:9185",
+      "instruction": "mov byte ptr [bp - 0x41], 3"
+    },
+    {
+      "site": "06C9:91B9",
+      "instruction": "mov byte ptr [bp - 0x42], 0"
+    },
+    {
+      "site": "06C9:91BD",
+      "instruction": "mov byte ptr [bp - 0x41], 3"
+    },
+    {
+      "site": "06C9:91EB",
+      "instruction": "mov byte ptr [bp - 0x42], 0"
+    },
+    {
+      "site": "06C9:91EF",
+      "instruction": "mov byte ptr [bp - 0x41], 3"
+    },
+    {
+      "site": "06C9:9236",
+      "instruction": "mul byte ptr [si]"
+    },
+    {
+      "site": "06C9:92DC",
+      "instruction": "mul byte ptr [si]"
+    },
+    {
+      "site": "06C9:9316",
+      "instruction": "and bx, 0xf"
+    },
+    {
+      "site": "06C9:9321",
+      "instruction": "mov bl, byte ptr cs:[bx - 0x6ebc]"
+    },
+    {
+      "site": "06C9:9326",
+      "instruction": "and cl, byte ptr cs:[bx - 0x6e9c]"
+    },
+    {
+      "site": "06C9:93B8",
+      "instruction": "mov ax, 0x839c"
+    },
+    {
+      "site": "06C9:94F3",
+      "instruction": "mov ax, 0xadf4"
+    },
+    {
+      "site": "06C9:9446",
+      "instruction": "and bx, 0xf"
+    },
+    {
+      "site": "06C9:9450",
+      "instruction": "mov ah, byte ptr cs:[bx - 0x6ebc]"
+    },
+    {
+      "site": "06C9:9455",
+      "instruction": "mov al, byte ptr cs:[bx - 0x6eac]"
+    },
+    {
+      "site": "06C9:94B8",
+      "instruction": "mov al, byte ptr cs:[bx - 0x6e98]"
+    }
+  ],
+  "initialized_selection_predicates": {
+    "nonzero_nibble_index_bounded": true,
+    "RAM_remaining_mask_decreases": true,
+    "hardware_remaining_mask_decreases": true,
+    "hardware_write_mask_nonempty_subset": true,
+    "read_index_selected_by_write_mask": true,
+    "fixture_index_matches_initialized_nonzero_domain": true,
+    "fixture_write_mask_matches_initialized_nonzero_domain": true,
+    "fixture_clear_mask_effect_matches_all_nibbles": true,
+    "fixture_plane_output_mask_matches_initialized": true
+  },
+  "fixture_clear_mask_note": "Generatedclear-maskupperbits differfrominitializedbytes; ANDCL seesonlynibble0..15 afterAND BX15. All64nibble/index operand effects equal, verifiedabove. No originaltablevalues copiedintoC.",
+  "dispatch_tables": [
+    {
+      "segment": 1737,
+      "offset": 38242,
+      "length": 16,
+      "entries": 8,
+      "sha256": "fc26b0e6816f0c2a459386ac9d9c9ad01bc0316be29a01dbf984df0dc1665309",
+      "all_targets_supported_by_copy_kernel": true
+    },
+    {
+      "segment": 1737,
+      "offset": 38258,
+      "length": 16,
+      "entries": 8,
+      "sha256": "1fb6347d3ed3b662eabec015896ac43417bdb69ee9da64ff309b4c61ee749417",
+      "all_targets_supported_by_copy_kernel": true
+    }
+  ],
+  "constant_mode_scope": "Threeprologues initializeSSmode0/flags3. Underverifieddecreasingselection maps, RAMvectorDI<=14 beforeouterbound andhardwareDI<=32 acrossfourheaderbytes; vectorwrites startBP-1E/BP-26 andcannotreachmodeBP-42/flagsBP-41. Otherexplicitlocalwritesdonotoverlapthosebytes. Excludedexternal/plane/controlframewritersremainpreconditions. Thus93B8/94F3bit4 pointerassignment branches unreachable forthese initializedentries, notallshared callers.",
+  "limits": "Staticprivateimage/frame-mode/operand/predicate/dispatch identities only. DoesnotcloseallCS/SSwriters, sourcecapacity/headerformat/IRQexclusion/otherAND-OR-XORcallerfamilies oractualdevice/renderer/session/game/fidelity. Nooriginaltablepayload/fullresource decoding. Resource-fedP2-01/06/09/P3-05 separately."
+}

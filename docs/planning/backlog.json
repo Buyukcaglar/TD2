@@ -43,7 +43,7 @@
   "conditional_requirements": {
     "R16": "Northern Germany Challenge is required when necessary user supplied files validate. Candidate scen3 exists now; identify/completeness-check it first."
   },
-  "task_count": 63,
+  "task_count": 67,
   "tasks": [
     {
       "id": "P0-01",
@@ -157,6 +157,158 @@
       "completed_on": "2026-10-13"
     },
     {
+      "id": "P1-R01",
+      "phase": 1,
+      "title": "Freeze and review upstream SDL3 implementation candidate",
+      "status": "complete",
+      "depends_on": [
+        "P0-GATE"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R18"
+      ],
+      "deliverables": [
+        "Frozen external-source inventory",
+        "Whole-repository reviews",
+        "Static address/identity crosswalk",
+        "Gap and reuse decision records"
+      ],
+      "acceptance": "All85 tracked files reviewed/indexed,113 clone files frozen,250originals unchanged; complete crosswalk and bounded reuse assessment persisted. No imported source or runtime gate credit.",
+      "evidence": [
+        "docs/planning/kylofon-reuse-assessment.md",
+        "docs/planning/kylofon-game-core-review.md",
+        "docs/planning/kylofon-platform-review.md",
+        "docs/planning/kylofon-formats-tools-review.md",
+        "docs/planning/evidence/kylofon-reference-snapshot-v1.json",
+        "docs/planning/evidence/kylofon-static-crosscheck-v1.json",
+        "docs/planning/evidence/kylofon-reference-custody-v1.json",
+        "docs/planning/evidence/kylofon-gap-register-v1.json"
+      ],
+      "completed_on": "2026-10-22",
+      "reference_review_gaps": [
+        "KR-17"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
+    },
+    {
+      "id": "P1-R02",
+      "phase": 1,
+      "title": "Admit upstream source addresses and reconcile deviations",
+      "status": "complete",
+      "depends_on": [
+        "P1-R01"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R18"
+      ],
+      "deliverables": [
+        "Exact-image address/range crosswalk",
+        "Unmatched-start and symbol reconciliation",
+        "Behavior and embedded-data deviation register"
+      ],
+      "acceptance": "Resolve50 unmatched starts, literal086C versus046C, DS/SS/caller domains, mutable-code profiles and embedded data classifications against admitted original bytes. Candidate names and counts alone never close contracts.",
+      "evidence": [
+        "docs/recovery/kylofon-r02-r03-results.md",
+        "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+        "docs/recovery/kylofon-address-admission.md",
+        "docs/recovery/evidence/kylofon-address-admission-v1.json",
+        "docs/recovery/kylofon-source-admission.md",
+        "docs/recovery/evidence/kylofon-source-admission-v1.json"
+      ],
+      "reference_review_gaps": [
+        "KR-01",
+        "KR-02",
+        "KR-07",
+        "KR-08",
+        "KR-11",
+        "KR-13"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "completed_on": "2026-10-22",
+      "completion_scope": "All50 unmatched starts and76 symbol conflicts have evidence-backed dispositions;495address crosswalk,221string/26initializer inventory,38behavior decisions. Private representative admission only; unresolved/rejected families remain explicitly unadmitted and do not earn source-semantic or phase-gate credit."
+    },
+    {
+      "id": "P1-R03",
+      "phase": 1,
+      "title": "Validate representative upstream C against original-byte oracle",
+      "status": "complete",
+      "depends_on": [
+        "P1-R02"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R18"
+      ],
+      "deliverables": [
+        "Separate writable pinned candidate workspace",
+        "C17 build/dependency record",
+        "Representative differential results and debugging measurements"
+      ],
+      "acceptance": "Compare byte-ring/consumption, codec synthetic inputs, timer/input/SS, simulation and EGA primitive families with original evidence. Preserve source/build/executed fixture pins; no reference writes or full-resource/gameplay claims from this sample.",
+      "evidence": [
+        "docs/recovery/kylofon-r02-r03-results.md",
+        "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+        "docs/recovery/kylofon-differential-design.md",
+        "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+        "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+        "docs/recovery/evidence/kylofon-admission-support-v2.json"
+      ],
+      "reference_review_gaps": [
+        "KR-02",
+        "KR-03",
+        "KR-04",
+        "KR-10",
+        "KR-16"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "completed_on": "2026-10-22",
+      "completion_scope": "Actual baseline/candidate C17 builds;2233admitted original-body comparisons at11entries/116990instructions/0candidate mismatches vs291baseline disagreements. FourSSaliases excluded mismatches.380supportcases separate. W3 build only; no rawhelper W4WX, broaderABI/core/game/fidelity credit."
+    },
+    {
+      "id": "P1-R04",
+      "phase": 1,
+      "title": "Select qualified subsystem reuse and revise remaining effort",
+      "status": "complete",
+      "depends_on": [
+        "P1-R03"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R18"
+      ],
+      "deliverables": [
+        "Per-symbol/branch selection and exact origin manifest",
+        "Native caller profile, transitive dependency limits and raw-contract bridge",
+        "Remaining effort model with measured evidence and human-estimate limits"
+      ],
+      "acceptance": "Use actual R03 disagreements and recorded machine validation costs to select only qualified symbols/branches. Distinguish engineering judgment from unlogged human effort. Preserve independent fallback, MIT notices, raw original contracts and existing EGA-before-CGA phase gates.",
+      "evidence": [
+        "docs/recovery/kylofon-r04-reuse-decision.md",
+        "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+        "docs/recovery/evidence/kylofon-reuse-origin-manifest-v2.json",
+        "docs/planning/evidence/kylofon-effort-inputs-v1.json",
+        "docs/planning/kylofon-effort-review.md",
+        "docs/recovery/kylofon-reuse-selection-review.md",
+        "docs/recovery/evidence/kylofon-reuse-selection-review-v1.json",
+        "docs/recovery/kylofon-r04-boundary-review.md",
+        "docs/recovery/kylofon-r04-final-review.md"
+      ],
+      "reference_review_gaps": [
+        "KR-08",
+        "KR-14",
+        "KR-18"
+      ],
+      "reference_review": "docs/recovery/kylofon-r04-reuse-decision.md",
+      "completed_on": "2026-10-22",
+      "completion_scope": "Decision/provenance/planning only: ten groups (six value groups covering eleven already-recovered entries and four support groups), no primary source import, new recovery contract, compiler/game run or phase-gate credit. Larger families deferred; substantial current saving not booked."
+    },
+    {
       "id": "P1-01",
       "phase": 1,
       "title": "Verify EGA MZ and EXEPACK layout",
@@ -204,7 +356,7 @@
       "id": "P1-03",
       "phase": 1,
       "title": "Import segmented EGA and recover startup ABI",
-      "status": "in_progress",
+      "status": "complete",
       "depends_on": [
         "P1-02"
       ],
@@ -218,15 +370,150 @@
       "acceptance": "Loader, address base and register assumptions are manually verified.",
       "evidence": [
         "docs/recovery/td2ega-startup.md",
-        "docs/recovery/evidence/td2ega-ghidra-import.json"
+        "docs/recovery/evidence/td2ega-ghidra-import.json",
+        "docs/recovery/td2ega-startup-abi.md",
+        "docs/recovery/evidence/td2ega-context-v1.json",
+        "docs/recovery/evidence/td2ega-external-word-validation-v2.json",
+        "docs/recovery/evidence/td2ega-context-import-readback-v1.json",
+        "docs/recovery/evidence/td2ega-context-startup-v2.json",
+        "docs/recovery/evidence/td2ega-context-mutator-readback-v2.json",
+        "docs/recovery/evidence/td2ega-context-import-readback-v2.json",
+        "docs/recovery/evidence/td2ega-sign-extension-context-v1.json",
+        "docs/recovery/evidence/td2ega-operand-width-context-v1.json",
+        "docs/recovery/td2ega-finalizer-list.md",
+        "docs/recovery/evidence/td2ega-finalizer-list-context-v1.json",
+        "docs/recovery/td2ega-runtime-message.md",
+        "docs/recovery/evidence/td2ega-runtime-message-context-v1.json",
+        "docs/recovery/td2ega-runtime-diagnostic.md",
+        "docs/recovery/evidence/td2ega-runtime-diagnostic-context-v1.json",
+        "docs/recovery/td2ega-runtime-vectors.md",
+        "docs/recovery/evidence/td2ega-runtime-vectors-context-v1.json",
+        "docs/recovery/td2ega-runtime-exit.md",
+        "docs/recovery/evidence/td2ega-runtime-exit-context-v1.json",
+        "docs/recovery/td2ega-far-member.md",
+        "docs/recovery/evidence/td2ega-far-member-context-v1.json",
+        "docs/recovery/td2ega-relative-wait.md",
+        "docs/recovery/evidence/td2ega-relative-wait-context-v1.json",
+        "docs/recovery/td2ega-record-math.md",
+        "docs/recovery/evidence/td2ega-record-math-context-v1.json",
+        "docs/recovery/td2ega-radix-text.md",
+        "docs/recovery/evidence/td2ega-radix-text-context-v1.json",
+        "docs/recovery/td2ega-record-sequence.md",
+        "docs/recovery/evidence/td2ega-record-sequence-context-v1.json",
+        "docs/recovery/td2ega-member-reorder.md",
+        "docs/recovery/evidence/td2ega-member-reorder-context-v1.json",
+        "docs/recovery/td2ega-ring-selection.md",
+        "docs/recovery/evidence/td2ega-ring-selection-context-v1.json",
+        "docs/recovery/evidence/td2ega-ring-selection-save-alias-v1.json",
+        "docs/recovery/td2ega-runtime-wrappers.md",
+        "docs/recovery/evidence/td2ega-runtime-wrappers-context-v1.json",
+        "docs/recovery/td2ega-long-arithmetic.md",
+        "docs/recovery/evidence/td2ega-long-arithmetic-context-v1.json",
+        "docs/recovery/td2ega-record-flags.md",
+        "docs/recovery/evidence/td2ega-record-flags-context-v1.json",
+        "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+        "docs/recovery/td2ega-record-controller.md",
+        "docs/recovery/evidence/td2ega-record-controller-context-v1.json",
+        "docs/recovery/td2ega-pair-controller.md",
+        "docs/recovery/evidence/td2ega-pair-controller-context-v1.json",
+        "docs/recovery/td2ega-field-controller.md",
+        "docs/recovery/evidence/td2ega-field-controller-context-v1.json",
+        "docs/recovery/td2ega-close-handle.md",
+        "docs/recovery/evidence/td2ega-close-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-handle.md",
+        "docs/recovery/evidence/td2ega-seek-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-parent.md",
+        "docs/recovery/evidence/td2ega-seek-parent-context-v1.json",
+        "docs/recovery/td2ega-control-bus.md",
+        "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-control-table-context-v1.json",
+        "docs/recovery/td2ega-control-controllers.md",
+        "docs/recovery/evidence/td2ega-control-controllers-context-v1.json",
+        "docs/recovery/td2ega-secondary-fields.md",
+        "docs/recovery/evidence/td2ega-secondary-fields-context-v1.json",
+        "docs/recovery/td2ega-record-dispatch.md",
+        "docs/recovery/evidence/td2ega-record-dispatch-context-v1.json",
+        "docs/recovery/evidence/td2ega-record-name-select-context-v1.json",
+        "docs/recovery/evidence/td2ega-dual-name-select-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-fill-context-v2.json",
+        "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+        "docs/recovery/evidence/td2ega-fallback-mode-context-v1.json",
+        "docs/recovery/evidence/td2ega-video-init-context-v1.json",
+        "docs/recovery/evidence/td2ega-video-reset-context-v1.json",
+        "docs/recovery/evidence/td2ega-discard-object-context-v1.json",
+        "docs/recovery/evidence/td2ega-discard-wrappers-context-v1.json",
+        "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+        "docs/recovery/evidence/td2ega-exit-video-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-byte-copy-context-v1.json",
+        "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+        "docs/recovery/evidence/td2ega-stream-pull-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-stream-next-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-point-update-context-v1.json",
+        "docs/recovery/evidence/td2ega-point-sequence-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-gather-context-v2.json",
+        "docs/recovery/evidence/td2ega-plane-shift-strip-context-v1.json",
+        "docs/recovery/evidence/td2ega-view-fill-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-context-v1.json",
+        "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+        "docs/recovery/evidence/td2ega-sim-controller-row-cycle-review-v1.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-counter-review-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-timer-state-tick-prefix-v2.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-alias-validation-v1.json"
       ],
-      "remaining": "Reconcile range-specific DS/SS analysis context and reviewed startup helper/ABI contracts; unknown tool context and provisional prototypes remain explicit."
+      "completed_on": "2026-10-13"
     },
     {
       "id": "P1-04",
       "phase": 1,
       "title": "Classify functions data and indirect reachability",
-      "status": "pending",
+      "status": "complete",
       "depends_on": [
         "P1-03"
       ],
@@ -237,13 +524,56 @@
         "Function/code/data registry",
         "Dispatch and cross-reference map"
       ],
-      "acceptance": "All discovered reachable entries are accounted for; uncertainty is retained."
+      "acceptance": "All discovered reachable entries are accounted for; uncertainty is retained.",
+      "evidence": [
+        "docs/recovery/td2ega-control-flow.md",
+        "docs/recovery/functions.json",
+        "docs/recovery/evidence/td2ega-control-map-v178.json",
+        "docs/recovery/evidence/td2ega-control-map-verification-v6.json",
+        "docs/recovery/evidence/td2ega-indirect-review-v8.json",
+        "docs/recovery/evidence/td2ega-mutable-control-map-v3.json",
+        "docs/recovery/td2ega-mutable-platform.md",
+        "docs/recovery/evidence/td2ega-line-mutation-review-v1.json",
+        "docs/recovery/evidence/td2ega-control-map-verification-v6.json",
+        "docs/recovery/evidence/td2ega-mutable-control-map-v3.json",
+        "docs/recovery/evidence/td2ega-sign-extension-context-v1.json",
+        "docs/recovery/evidence/td2ega-operand-width-context-v1.json",
+        "docs/recovery/td2ega-finalizer-list.md",
+        "docs/recovery/evidence/td2ega-finalizer-list-context-v1.json",
+        "docs/recovery/td2ega-record-flags.md",
+        "docs/recovery/evidence/td2ega-record-flags-context-v1.json",
+        "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+        "docs/recovery/td2ega-record-controller.md",
+        "docs/recovery/evidence/td2ega-record-controller-context-v1.json",
+        "docs/recovery/td2ega-pair-controller.md",
+        "docs/recovery/evidence/td2ega-pair-controller-context-v1.json",
+        "docs/recovery/td2ega-field-controller.md",
+        "docs/recovery/evidence/td2ega-field-controller-context-v1.json",
+        "docs/recovery/td2ega-close-handle.md",
+        "docs/recovery/evidence/td2ega-close-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-handle.md",
+        "docs/recovery/evidence/td2ega-seek-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-parent.md",
+        "docs/recovery/evidence/td2ega-seek-parent-context-v1.json",
+        "docs/recovery/td2ega-control-bus.md",
+        "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-control-table-context-v1.json",
+        "docs/recovery/td2ega-control-controllers.md",
+        "docs/recovery/evidence/td2ega-control-controllers-context-v1.json",
+        "docs/recovery/td2ega-secondary-fields.md",
+        "docs/recovery/evidence/td2ega-secondary-fields-context-v1.json",
+        "docs/recovery/td2ega-record-dispatch.md",
+        "docs/recovery/evidence/td2ega-record-dispatch-context-v1.json",
+        "docs/recovery/evidence/td2ega-write-span-context-v1.json"
+      ],
+      "completed_on": "2026-10-13",
+      "completion_scope": "Discovery/disposition milestone:440 registered candidates,44 explicit indirect sites and one reconstructed saved-near RET mechanism. Four byte-state snapshots retain differing instruction boundaries.28 prior open bounds/writer obligations plus mutable transitions/caller/platform obligations prevent whole-code or portable-C acceptance."
     },
     {
       "id": "P1-05",
       "phase": 1,
       "title": "Recover state machine and raw resource contracts",
-      "status": "pending",
+      "status": "in_progress",
       "depends_on": [
         "P1-04"
       ],
@@ -255,7 +585,280 @@
         "State/ownership model",
         "Resource-consumer interface map"
       ],
-      "acceptance": "Startup through exit states, reads/writes and embedded-resource references have instruction evidence."
+      "acceptance": "Startup through exit states, reads/writes and embedded-resource references have instruction evidence.",
+      "evidence": [
+        "docs/recovery/td2ega-byte-ring-callers.md",
+        "docs/recovery/td2ega-state-and-consumers.md",
+        "docs/recovery/td2ega-resource-cache.md",
+        "docs/recovery/resources.json",
+        "docs/recovery/evidence/td2ega-resource-consumer-map-v175.json",
+        "docs/recovery/evidence/td2ega-ownership-review-v2.json",
+        "docs/recovery/td2ega-filename.md",
+        "docs/recovery/td2ega-cache-query.md",
+        "docs/recovery/td2ega-cache-allocate.md",
+        "docs/recovery/td2ega-cache-discard.md",
+        "docs/recovery/td2ega-main-state.md",
+        "docs/recovery/td2ega-moving-cache.md",
+        "docs/recovery/td2ega-prefix-stage.md",
+        "docs/recovery/evidence/td2ega-cache-callers-v1.json",
+        "docs/recovery/evidence/td2ega-main-review-v2.json",
+        "docs/recovery/evidence/td2ega-packed-loader-composition-v1.json",
+        "docs/recovery/td2ega-run-stage.md",
+        "docs/recovery/td2ega-mutable-platform.md",
+        "docs/recovery/evidence/td2ega-session-resource-review-v1.json",
+        "docs/recovery/evidence/td2ega-main-mutator-validation-v2.json",
+        "docs/recovery/evidence/td2ega-state-tail-modes-v1.json",
+        "docs/recovery/evidence/td2ega-retry-mutator-context-v1.json",
+        "docs/recovery/td2ega-timer-callbacks.md",
+        "docs/recovery/evidence/td2ega-byte-ring-nested-v1.json",
+        "docs/recovery/td2ega-raw-load.md",
+        "docs/recovery/evidence/td2ega-byte-ring-caller-if-v1.json",
+        "docs/recovery/evidence/td2ega-fatal-default-v1.json",
+        "docs/recovery/td2ega-file-paragraphs.md",
+        "docs/recovery/td2ega-audio-metadata.md",
+        "docs/recovery/td2ega-sim-primitives.md",
+        "docs/recovery/td2ega-timer-control.md",
+        "docs/recovery/td2ega-session-init.md",
+        "docs/recovery/td2ega-named-raw.md",
+        "docs/recovery/td2ega-packed-load.md",
+        "docs/recovery/td2ega-directory.md",
+        "docs/recovery/td2ega-directory-batch.md",
+        "docs/recovery/td2ega-key-bindings.md",
+        "docs/recovery/td2ega-pool-setup.md",
+        "docs/recovery/td2ega-find-files.md",
+        "docs/recovery/td2ega-find-nth.md",
+        "docs/recovery/td2ega-prepare-records.md",
+        "docs/recovery/td2ega-state-loop.md",
+        "docs/recovery/td2ega-state-messages.md",
+        "docs/recovery/evidence/td2ega-message-resource-context-v1.json",
+        "docs/recovery/td2ega-input-bridge.md",
+        "docs/recovery/td2ega-state-sequences.md",
+        "docs/recovery/evidence/td2ega-installed-input-bridge-v1.json",
+        "docs/recovery/td2ega-bios-block.md",
+        "docs/recovery/evidence/td2ega-sequence-resource-context-v1.json",
+        "docs/recovery/td2ega-wait-latch.md",
+        "docs/recovery/evidence/td2ega-sequence-platform-composition-v1.json",
+        "docs/recovery/evidence/td2ega-state-platform-composition-v1.json",
+        "docs/recovery/td2ega-state-platform-composition.md",
+        "docs/recovery/td2ega-loop-prepare.md",
+        "docs/recovery/evidence/td2ega-prepare-loop-composition-v1.json",
+        "docs/recovery/td2ega-prepare-loop-composition.md",
+        "docs/recovery/td2ega-loop-controls.md",
+        "docs/recovery/td2ega-near-clamp.md",
+        "docs/recovery/td2ega-projection.md",
+        "docs/recovery/evidence/td2ega-projection-resource-context-v1.json",
+        "docs/recovery/evidence/td2ega-line-mutation-review-v1.json",
+        "docs/recovery/td2ega-line-mutation.md",
+        "docs/recovery/td2ega-line-step.md",
+        "docs/recovery/td2ega-record-interpolate.md",
+        "docs/recovery/td2ega-view-limits.md",
+        "docs/recovery/evidence/td2ega-finish-loop-composition-v1.json",
+        "docs/recovery/td2ega-finish-loop-composition.md",
+        "docs/recovery/td2ega-draw-sequence.md",
+        "docs/recovery/td2ega-plane-span.md",
+        "docs/recovery/td2ega-plane-rows.md",
+        "docs/recovery/td2ega-edge-sequence.md",
+        "docs/recovery/evidence/td2ega-plane-resource-context-v1.json",
+        "docs/recovery/td2ega-line-draw.md",
+        "docs/recovery/evidence/td2ega-line-resource-context-v1.json",
+        "docs/recovery/td2ega-rectangle-draw.md",
+        "docs/recovery/evidence/td2ega-rectangle-resource-context-v1.json",
+        "docs/recovery/evidence/td2ega-drawing-composition-v1.json",
+        "docs/recovery/td2ega-drawing-composition.md",
+        "docs/recovery/td2ega-mask-span.md",
+        "docs/recovery/evidence/td2ega-mask-resource-context-v1.json",
+        "docs/recovery/td2ega-sprite-draw.md",
+        "docs/recovery/evidence/td2ega-sprite-context-v1.json",
+        "docs/recovery/evidence/td2ega-fill-sprite-composition-v1.json",
+        "docs/recovery/td2ega-fill-sprite-composition.md",
+        "docs/recovery/td2ega-sprite-logic.md",
+        "docs/recovery/evidence/td2ega-sprite-logic-context-v1.json",
+        "docs/recovery/td2ega-small-state.md",
+        "docs/recovery/evidence/td2ega-small-state-validation-v3.json",
+        "docs/recovery/td2ega-small-platform.md",
+        "docs/recovery/evidence/td2ega-small-platform-context-v1.json",
+        "docs/recovery/td2ega-copy-config.md",
+        "docs/recovery/evidence/td2ega-copy-config-context-v2.json",
+        "docs/recovery/td2ega-config-apply.md",
+        "docs/recovery/evidence/td2ega-config-apply-validation-v1.json",
+        "docs/recovery/td2ega-config-fields.md",
+        "docs/recovery/evidence/td2ega-config-fields-context-v1.json",
+        "docs/recovery/td2ega-raw-write.md",
+        "docs/recovery/evidence/td2ega-raw-write-context-v1.json",
+        "docs/recovery/td2ega-wait-roots.md",
+        "docs/recovery/evidence/td2ega-wait-roots-context-v1.json",
+        "docs/recovery/td2ega-shift-assign.md",
+        "docs/recovery/evidence/td2ega-shift-assign-context-v1.json",
+        "docs/recovery/td2ega-scalar-state.md",
+        "docs/recovery/evidence/td2ega-scalar-state-context-v1.json",
+        "docs/recovery/td2ega-scan-length.md",
+        "docs/recovery/evidence/td2ega-scan-length-context-v1.json",
+        "docs/recovery/td2ega-string-memory.md",
+        "docs/recovery/evidence/td2ega-string-memory-context-v1.json",
+        "docs/recovery/td2ega-table-scalar.md",
+        "docs/recovery/evidence/td2ega-table-scalar-context-v1.json",
+        "docs/recovery/td2ega-small-arithmetic.md",
+        "docs/recovery/evidence/td2ega-small-arithmetic-context-v1.json",
+        "docs/recovery/td2ega-delete-file.md",
+        "docs/recovery/evidence/td2ega-delete-file-context-v1.json",
+        "docs/recovery/td2ega-finalizer-list.md",
+        "docs/recovery/evidence/td2ega-finalizer-list-context-v1.json",
+        "docs/recovery/td2ega-runtime-message.md",
+        "docs/recovery/evidence/td2ega-runtime-message-context-v1.json",
+        "docs/recovery/td2ega-runtime-diagnostic.md",
+        "docs/recovery/evidence/td2ega-runtime-diagnostic-context-v1.json",
+        "docs/recovery/td2ega-runtime-vectors.md",
+        "docs/recovery/evidence/td2ega-runtime-vectors-context-v1.json",
+        "docs/recovery/td2ega-runtime-exit.md",
+        "docs/recovery/evidence/td2ega-runtime-exit-context-v1.json",
+        "docs/recovery/td2ega-stream-records.md",
+        "docs/recovery/evidence/td2ega-stream-records-context-v2.json",
+        "docs/recovery/td2ega-small-algorithms.md",
+        "docs/recovery/evidence/td2ega-small-algorithms-context-v1.json",
+        "docs/recovery/td2ega-far-member.md",
+        "docs/recovery/evidence/td2ega-far-member-context-v1.json",
+        "docs/recovery/td2ega-relative-wait.md",
+        "docs/recovery/evidence/td2ega-relative-wait-context-v1.json",
+        "docs/recovery/td2ega-record-math.md",
+        "docs/recovery/evidence/td2ega-record-math-context-v1.json",
+        "docs/recovery/td2ega-radix-text.md",
+        "docs/recovery/evidence/td2ega-radix-text-context-v1.json",
+        "docs/recovery/td2ega-record-sequence.md",
+        "docs/recovery/evidence/td2ega-record-sequence-context-v1.json",
+        "docs/recovery/td2ega-member-reorder.md",
+        "docs/recovery/evidence/td2ega-member-reorder-context-v1.json",
+        "docs/recovery/td2ega-ring-selection.md",
+        "docs/recovery/evidence/td2ega-ring-selection-context-v1.json",
+        "docs/recovery/evidence/td2ega-ring-selection-save-alias-v1.json",
+        "docs/recovery/td2ega-runtime-wrappers.md",
+        "docs/recovery/evidence/td2ega-runtime-wrappers-context-v1.json",
+        "docs/recovery/td2ega-long-arithmetic.md",
+        "docs/recovery/evidence/td2ega-long-arithmetic-context-v1.json",
+        "docs/recovery/td2ega-record-flags.md",
+        "docs/recovery/evidence/td2ega-record-flags-context-v1.json",
+        "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+        "docs/recovery/td2ega-record-controller.md",
+        "docs/recovery/evidence/td2ega-record-controller-context-v1.json",
+        "docs/recovery/td2ega-pair-controller.md",
+        "docs/recovery/evidence/td2ega-pair-controller-context-v1.json",
+        "docs/recovery/td2ega-field-controller.md",
+        "docs/recovery/evidence/td2ega-field-controller-context-v1.json",
+        "docs/recovery/td2ega-close-handle.md",
+        "docs/recovery/evidence/td2ega-close-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-handle.md",
+        "docs/recovery/evidence/td2ega-seek-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-parent.md",
+        "docs/recovery/evidence/td2ega-seek-parent-context-v1.json",
+        "docs/recovery/td2ega-control-bus.md",
+        "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-control-table-context-v1.json",
+        "docs/recovery/td2ega-control-controllers.md",
+        "docs/recovery/evidence/td2ega-control-controllers-context-v1.json",
+        "docs/recovery/td2ega-secondary-fields.md",
+        "docs/recovery/evidence/td2ega-secondary-fields-context-v1.json",
+        "docs/recovery/td2ega-record-dispatch.md",
+        "docs/recovery/evidence/td2ega-record-dispatch-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-table-context-v1.json",
+        "docs/recovery/evidence/td2ega-mode-controller-context-v1.json",
+        "docs/recovery/evidence/td2ega-number-field-context-v1.json",
+        "docs/recovery/evidence/td2ega-record-projection-context-v1.json",
+        "docs/recovery/evidence/td2ega-field-text-context-v1.json",
+        "docs/recovery/evidence/td2ega-block-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-block-request-context-v1.json",
+        "docs/recovery/evidence/td2ega-block-wrapper-context-v1.json",
+        "docs/recovery/evidence/td2ega-block-tail-context-v2.json",
+        "docs/recovery/evidence/td2ega-block-align-context-v1.json",
+        "docs/recovery/evidence/td2ega-heap-walk-context-v1.json",
+        "docs/recovery/evidence/td2ega-heap-public-context-v1.json",
+        "docs/recovery/evidence/td2ega-stream-buffer-context-v1.json",
+        "docs/recovery/evidence/td2ega-stream-push-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-write-span-context-v1.json",
+        "docs/recovery/evidence/td2ega-record-name-select-context-v1.json",
+        "docs/recovery/evidence/td2ega-dual-name-select-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-fill-context-v2.json",
+        "docs/recovery/evidence/td2ega-fallback-mode-context-v1.json",
+        "docs/recovery/evidence/td2ega-video-init-context-v1.json",
+        "docs/recovery/evidence/td2ega-video-reset-context-v1.json",
+        "docs/recovery/evidence/td2ega-discard-object-context-v1.json",
+        "docs/recovery/evidence/td2ega-discard-wrappers-context-v1.json",
+        "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+        "docs/recovery/evidence/td2ega-exit-video-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-byte-copy-context-v1.json",
+        "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+        "docs/recovery/evidence/td2ega-stream-pull-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-stream-next-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-point-update-context-v1.json",
+        "docs/recovery/evidence/td2ega-point-sequence-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-gather-context-v2.json",
+        "docs/recovery/evidence/td2ega-plane-shift-strip-context-v1.json",
+        "docs/recovery/evidence/td2ega-view-fill-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-context-v1.json",
+        "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+        "docs/recovery/evidence/td2ega-sim-controller-row-cycle-review-v1.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-counter-review-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-timer-state-tick-prefix-v2.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-alias-validation-v1.json"
+      ],
+      "remaining": "Complete startup-to-exit transitions and every actual moving resource lifetime/exclusion; prove DS5490 and all indexed aliases/indirect domains, raw reader/error paths, every dynamic/embedded consumer and shared byte-source reset/interleaving. Preserve packed-loader SI/DI shift, valid intermediate-count/final-pointer order, DS=SS headercopy andprefix-stage extra65536 lowword-zero write. 215 native exports covering292 original entries do not close the task. Review mutable-state transitions, DS/ES alias writes, conditional CLC/RETF return and equipment-query platform profiles; four static snapshots are not a transition-aware whole graph. The06C3orderedINC/DECopcodepair,2477nearRET6/SS-DSprevious/currentrecord contracts andactual1F71chainhaveboundednativeevidence; actualcaller/data/exclusion domains stillneedclosure; fourplatformsnapshots donotcoverall mutablefamilies.",
+      "reference_review_gaps": [
+        "KR-02",
+        "KR-08",
+        "KR-09"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-03",
+        "KRU-06"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P1-06",
@@ -274,7 +877,110 @@
         "RNG/seed model",
         "Recovered low-level C"
       ],
-      "acceptance": "Boundary vectors match original instruction effects and preserve RNG consumption."
+      "acceptance": "Boundary vectors match original instruction effects and preserve RNG consumption.",
+      "evidence": [
+        "docs/recovery/td2ega-sim-targets.md",
+        "docs/recovery/td2ega-control-ops.md",
+        "docs/recovery/td2ega-input-control.md",
+        "docs/recovery/td2ega-signed-motion.md",
+        "docs/recovery/evidence/td2ega-prepare-records-validation-v1.json",
+        "docs/recovery/td2ega-small-arithmetic.md",
+        "docs/recovery/evidence/td2ega-small-arithmetic-context-v1.json",
+        "docs/recovery/td2ega-runtime-diagnostic.md",
+        "docs/recovery/evidence/td2ega-runtime-diagnostic-context-v1.json",
+        "docs/recovery/td2ega-stream-records.md",
+        "docs/recovery/evidence/td2ega-stream-records-context-v2.json",
+        "docs/recovery/td2ega-small-algorithms.md",
+        "docs/recovery/evidence/td2ega-small-algorithms-context-v1.json",
+        "docs/recovery/td2ega-far-member.md",
+        "docs/recovery/evidence/td2ega-far-member-context-v1.json",
+        "docs/recovery/td2ega-relative-wait.md",
+        "docs/recovery/evidence/td2ega-relative-wait-context-v1.json",
+        "docs/recovery/td2ega-record-math.md",
+        "docs/recovery/evidence/td2ega-record-math-context-v1.json",
+        "docs/recovery/td2ega-radix-text.md",
+        "docs/recovery/evidence/td2ega-radix-text-context-v1.json",
+        "docs/recovery/td2ega-record-sequence.md",
+        "docs/recovery/evidence/td2ega-record-sequence-context-v1.json",
+        "docs/recovery/td2ega-member-reorder.md",
+        "docs/recovery/evidence/td2ega-member-reorder-context-v1.json",
+        "docs/recovery/td2ega-ring-selection.md",
+        "docs/recovery/evidence/td2ega-ring-selection-context-v1.json",
+        "docs/recovery/evidence/td2ega-ring-selection-save-alias-v1.json",
+        "docs/recovery/td2ega-runtime-wrappers.md",
+        "docs/recovery/evidence/td2ega-runtime-wrappers-context-v1.json",
+        "docs/recovery/td2ega-long-arithmetic.md",
+        "docs/recovery/evidence/td2ega-long-arithmetic-context-v1.json",
+        "docs/recovery/td2ega-record-flags.md",
+        "docs/recovery/evidence/td2ega-record-flags-context-v1.json",
+        "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+        "docs/recovery/td2ega-record-controller.md",
+        "docs/recovery/evidence/td2ega-record-controller-context-v1.json",
+        "docs/recovery/td2ega-pair-controller.md",
+        "docs/recovery/evidence/td2ega-pair-controller-context-v1.json",
+        "docs/recovery/td2ega-field-controller.md",
+        "docs/recovery/evidence/td2ega-field-controller-context-v1.json",
+        "docs/recovery/td2ega-control-bus.md",
+        "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-control-table-context-v1.json",
+        "docs/recovery/td2ega-control-controllers.md",
+        "docs/recovery/evidence/td2ega-control-controllers-context-v1.json",
+        "docs/recovery/td2ega-secondary-fields.md",
+        "docs/recovery/evidence/td2ega-secondary-fields-context-v1.json",
+        "docs/recovery/td2ega-record-dispatch.md",
+        "docs/recovery/evidence/td2ega-record-dispatch-context-v1.json",
+        "docs/recovery/evidence/td2ega-dual-name-select-context-v1.json",
+        "docs/recovery/evidence/td2ega-dual-name-select-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-validation-v2.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-context-v1.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-validation-v3.json",
+        "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+        "docs/recovery/evidence/td2ega-window-controllers-validation-v2.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-context-v1.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+        "docs/recovery/evidence/td2ega-sim-controller-row-cycle-review-v1.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-counter-review-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json"
+      ],
+      "reference_review_gaps": [
+        "KR-04",
+        "KR-05"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-01",
+        "KRU-04",
+        "KRU-08"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P1-07",
@@ -291,7 +997,126 @@
         "BIOS/DOS/port/interrupt map",
         "Scheduling and input contracts"
       ],
-      "acceptance": "Reachable platform interactions and handler lifetimes are classified."
+      "acceptance": "Reachable platform interactions and handler lifetimes are classified.",
+      "mapping_obligations": [
+        "Optional runtime hooks/signals, vector00/08/09/16 and callback installation/removal in td2ega-indirect-review-v8.json.",
+        "Physical086C read remains a verified literal unrelocated effect with unassigned source/timebase. Physical0086 write occurs only in CLC-tail state; main-called002E can replace the tail withRETF under reviewed synthetic query conditions.",
+        "Timer callback graph includes simulation403B and shared byte-ring consumption; callees7977/7946 executeSTI, so callback atomicity/nesting needs full review.",
+        "External fatal handler cleanup/exit and every DOS error/nonreturning condition remain platform contracts.",
+        "Callback614C/6180 five-slot scans/order have7232 native comparisons; addunmasked, matchedremove endsSTI. Byte-ring has45056 nestedmodelcases with7813 nonserialwitness; fullIRQ/callbackguardfeasibility andexclusion remainopen.",
+        "6585/16FC0002 native/ehaustive131104cases preserve signednegativekey aliaswrites, ignoredcallbacksegment andextendedslot624C read. Sixdiscoveredconstantcalls safeforring, butothercomputed/aliaswriters and6559farframes/callbackbodies remainopen."
+      ],
+      "evidence": [
+        "docs/recovery/td2ega-gameport.md",
+        "docs/recovery/td2ega-key-dispatch.md",
+        "docs/recovery/td2ega-input-poll.md",
+        "docs/recovery/td2ega-pool-setup.md",
+        "docs/recovery/td2ega-find-files.md",
+        "docs/recovery/td2ega-find-nth.md",
+        "docs/recovery/td2ega-timer-handler.md",
+        "docs/recovery/evidence/td2ega-timer-handler-validation-v1.json",
+        "docs/recovery/td2ega-key-actions.md",
+        "docs/recovery/evidence/td2ega-key-actions-validation-v1.json",
+        "docs/recovery/td2ega-keyboard.md",
+        "docs/recovery/evidence/td2ega-keyboard-validation-v1.json",
+        "docs/recovery/td2ega-wait-control.md",
+        "docs/recovery/evidence/td2ega-wait-control-validation-v1.json",
+        "docs/recovery/td2ega-delete-file.md",
+        "docs/recovery/evidence/td2ega-delete-file-context-v1.json",
+        "docs/recovery/td2ega-runtime-message.md",
+        "docs/recovery/evidence/td2ega-runtime-message-context-v1.json",
+        "docs/recovery/td2ega-runtime-diagnostic.md",
+        "docs/recovery/evidence/td2ega-runtime-diagnostic-context-v1.json",
+        "docs/recovery/td2ega-runtime-vectors.md",
+        "docs/recovery/evidence/td2ega-runtime-vectors-context-v1.json",
+        "docs/recovery/td2ega-runtime-exit.md",
+        "docs/recovery/evidence/td2ega-runtime-exit-context-v1.json",
+        "docs/recovery/td2ega-relative-wait.md",
+        "docs/recovery/evidence/td2ega-relative-wait-context-v1.json",
+        "docs/recovery/td2ega-ring-selection.md",
+        "docs/recovery/evidence/td2ega-ring-selection-context-v1.json",
+        "docs/recovery/evidence/td2ega-ring-selection-save-alias-v1.json",
+        "docs/recovery/td2ega-long-arithmetic.md",
+        "docs/recovery/evidence/td2ega-long-arithmetic-context-v1.json",
+        "docs/recovery/td2ega-record-flags.md",
+        "docs/recovery/evidence/td2ega-record-flags-context-v1.json",
+        "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+        "docs/recovery/td2ega-close-handle.md",
+        "docs/recovery/evidence/td2ega-close-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-handle.md",
+        "docs/recovery/evidence/td2ega-seek-handle-context-v1.json",
+        "docs/recovery/td2ega-seek-parent.md",
+        "docs/recovery/evidence/td2ega-seek-parent-context-v1.json",
+        "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+        "docs/recovery/evidence/td2ega-read-span-validation-v1.json",
+        "docs/recovery/evidence/td2ega-stream-pull-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-stream-pull-byte-validation-v2.json",
+        "docs/recovery/evidence/td2ega-stream-next-byte-context-v1.json",
+        "docs/recovery/evidence/td2ega-stream-next-byte-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-validation-v2.json",
+        "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+        "docs/recovery/evidence/td2ega-window-controllers-validation-v2.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-context-v1.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+        "docs/recovery/evidence/td2ega-sim-controller-row-cycle-review-v1.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-counter-review-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-timer-state-tick-prefix-v2.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-alias-validation-v1.json"
+      ],
+      "reference_review_gaps": [
+        "KR-01",
+        "KR-03",
+        "KR-05"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-02",
+        "KRU-03",
+        "KRU-07"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P1-08",
@@ -310,7 +1135,85 @@
         "Portable simulation/state C",
         "Function provenance and differential vectors"
       ],
-      "acceptance": "Code semantics are explained; raw resource contracts may await phase 2 without guessed values."
+      "acceptance": "Code semantics are explained; raw resource contracts may await phase 2 without guessed values.",
+      "evidence": [
+        "docs/recovery/td2ega-input-update.md",
+        "docs/recovery/evidence/td2ega-installed-keyboard-update-v1.json",
+        "docs/recovery/td2ega-small-algorithms.md",
+        "docs/recovery/evidence/td2ega-small-algorithms-context-v1.json",
+        "docs/recovery/td2ega-record-math.md",
+        "docs/recovery/evidence/td2ega-record-math-context-v1.json",
+        "docs/recovery/td2ega-record-sequence.md",
+        "docs/recovery/evidence/td2ega-record-sequence-context-v1.json",
+        "docs/recovery/td2ega-member-reorder.md",
+        "docs/recovery/evidence/td2ega-member-reorder-context-v1.json",
+        "docs/recovery/td2ega-record-controller.md",
+        "docs/recovery/evidence/td2ega-record-controller-context-v1.json",
+        "docs/recovery/td2ega-pair-controller.md",
+        "docs/recovery/evidence/td2ega-pair-controller-context-v1.json",
+        "docs/recovery/td2ega-field-controller.md",
+        "docs/recovery/evidence/td2ega-field-controller-context-v1.json",
+        "docs/recovery/td2ega-control-bus.md",
+        "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-control-table-context-v1.json",
+        "docs/recovery/td2ega-control-controllers.md",
+        "docs/recovery/evidence/td2ega-control-controllers-context-v1.json",
+        "docs/recovery/td2ega-secondary-fields.md",
+        "docs/recovery/evidence/td2ega-secondary-fields-context-v1.json",
+        "docs/recovery/td2ega-record-dispatch.md",
+        "docs/recovery/evidence/td2ega-record-dispatch-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-validation-v2.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-context-v1.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-validation-v3.json",
+        "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+        "docs/recovery/evidence/td2ega-window-controllers-validation-v2.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-context-v1.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+        "docs/recovery/evidence/td2ega-sim-controller-row-cycle-review-v1.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-counter-review-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+        "docs/recovery/evidence/td2ega-timer-state-tick-prefix-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json"
+      ],
+      "reference_review_gaps": [
+        "KR-04",
+        "KR-10"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-04"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P1-09",
@@ -329,7 +1232,47 @@
         "EGA primitive/presentation C",
         "Mask/palette/draw-order contracts"
       ],
-      "acceptance": "Original hardware effects and UI/presentation behavior are traceable to source instructions."
+      "acceptance": "Original hardware effects and UI/presentation behavior are traceable to source instructions.",
+      "mapping_obligations": [
+        "Drawing alignment-table bases, valid indexes, resource bounds and plane-mask dispatch slot bounds retained in td2ega-indirect-review-v8.json."
+      ],
+      "evidence": [
+        "docs/recovery/evidence/td2ega-plane-fill-context-v2.json",
+        "docs/recovery/evidence/td2ega-plane-fill-validation-v2.json",
+        "docs/recovery/evidence/td2ega-fallback-mode-context-v1.json",
+        "docs/recovery/evidence/td2ega-fallback-mode-validation-v1.json",
+        "docs/recovery/evidence/td2ega-video-init-context-v1.json",
+        "docs/recovery/evidence/td2ega-video-init-validation-v2.json",
+        "docs/recovery/evidence/td2ega-video-reset-context-v1.json",
+        "docs/recovery/evidence/td2ega-video-reset-validation-v1.json",
+        "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+        "docs/recovery/evidence/td2ega-pixel-point-validation-v1.json",
+        "docs/recovery/evidence/td2ega-exit-video-context-v1.json",
+        "docs/recovery/evidence/td2ega-exit-video-validation-v2.json",
+        "docs/recovery/evidence/td2ega-plane-byte-copy-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-byte-copy-validation-v1.json",
+        "docs/recovery/evidence/td2ega-point-update-context-v1.json",
+        "docs/recovery/evidence/td2ega-point-update-validation-v1.json",
+        "docs/recovery/evidence/td2ega-point-sequence-context-v1.json",
+        "docs/recovery/evidence/td2ega-point-sequence-validation-v1.json",
+        "docs/recovery/evidence/td2ega-plane-gather-context-v2.json",
+        "docs/recovery/evidence/td2ega-plane-gather-validation-v1.json",
+        "docs/recovery/evidence/td2ega-plane-shift-strip-context-v1.json",
+        "docs/recovery/evidence/td2ega-plane-shift-strip-validation-v2.json",
+        "docs/recovery/evidence/td2ega-view-fill-context-v1.json",
+        "docs/recovery/evidence/td2ega-view-fill-validation-v1.json"
+      ],
+      "remaining": "FullEGApresentationcode/primaryregister-planar-latchdevicecontracts/actualcallerDF-IF-stackdomains remainopen. 840AboundedrawRAMadaptertrace/fullSS/CPU-farframeprefix isnotrenderer/hardwareacceptance. EGAexefallback5F64rawBIOS-port-wordtrace/RS277doesnotstartCGAeditionrecovery oradmitdevicehardware. EGA90E8literalBIOSmode/fullstate/palette17interface andactual840Atrace passed; RS278runtimebindings-allwriters/ROM-hardware-renderer remainopen. EGA642EliteralBIOSAX3/AH0B-retainedAL-BX0/fullstate/actual840Atracepassed; actualROM-devicehardware-callerprofilesremainopen. BA3CactualwordOUTwidth/fullSS/rawbyteplanecontracts passed; clipping-coordinatebounds/allwriters/devicehardware-rendererremainopen. 5FBCbothliteralpaths/actual642E-840A-fullSS/globalbudgets andRS280rawportvaluespassed; actualROM-devicehardware-callerBP-stack-writers-exclusionremainopen/noCGAedition. C784fullSS-inplaceSAR3-liveheight-width-strides/CLD/rawCOPY-OUT/do-onceDECJGwidepassed; allwriters-coordinate-storage-lifetime-exclusion/devicehardware-rendererremainopen. AE62firstREPshift/optionalbyteMUL-strip/zero-width65536LOOP/fullSSboundedrawRAMpassed; realEGAwrite-mode-latch-renderer/caller-capacities-writers-lifetime-exclusionremainopen. 843Ethreefillpaths/DFretained/colorSSwordmutation-vs-DLshift/byte-vs-wordproducts/fullSSboundedrawRAMpassed; 35callerDF-geometry-writers-capacities-lifetime-exclusion/realEGA-latches-rendererremainopen.",
+      "reference_review_gaps": [
+        "KR-04",
+        "KR-10"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-05"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P1-10",
@@ -347,7 +1290,27 @@
         "PC Speaker sequencer/device contracts",
         "Music/effect event and data-source map"
       ],
-      "acceptance": "Reachable PC Speaker music/effect code, data sources, PIT/speaker interactions and scheduling are recovered from the supplied DOS program."
+      "acceptance": "Reachable PC Speaker music/effect code, data sources, PIT/speaker interactions and scheduling are recovered from the supplied DOS program.",
+      "evidence": [
+        "docs/recovery/td2ega-music-tick.md",
+        "docs/recovery/evidence/td2ega-music-tick-validation-v1.json",
+        "docs/recovery/td2ega-effect-tick.md",
+        "docs/recovery/evidence/td2ega-effect-tick-validation-v1.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json"
+      ],
+      "reference_review_gaps": [
+        "KR-05"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P1-11",
@@ -357,7 +1320,8 @@
       "depends_on": [
         "P1-08",
         "P1-09",
-        "P1-10"
+        "P1-10",
+        "P1-R04"
       ],
       "requirements": [
         "R02",
@@ -367,7 +1331,72 @@
         "Reviewed C recovery map",
         "Compilation and differential-contract record"
       ],
-      "acceptance": "All reachable EGA code has disposition; resource-fed integration is explicitly reserved for later phases."
+      "acceptance": "All reachable EGA code has disposition; resource-fed integration is explicitly reserved for later phases.",
+      "mapping_obligations": [
+        "Close all remaining indirect bounds/writers, unreviewed function semantics and unclassified prefix bytes; candidate inventory alone cannot pass this gate."
+      ],
+      "remaining": "Close allreachableEGAcode/indirecttargets-writers-context-storage-lifetime-exclusion/unclassifiedprefix obligations. ResolveAC64alternateprefix-entrydisposition/sharedAC82tail; no currentdirectcaller andAC40packetdoesnotadmitit. 4A2EconditionalbytewriterscanoverlapRS270-272-273near-controltables; bindactual2F56validselectorandallwriters beforeindirectclosure.",
+      "evidence": [
+        "docs/recovery/evidence/td2ega-plane-gather-context-v2.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-adjust-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+        "docs/recovery/evidence/td2ega-sample-guards-validation-v2.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-context-v1.json",
+        "docs/recovery/evidence/td2ega-threshold-transition-validation-v3.json",
+        "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+        "docs/recovery/evidence/td2ega-window-controllers-validation-v2.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-context-v1.json",
+        "docs/recovery/evidence/td2ega-indexed-sample-validation-v2.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sim-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-sample-fields-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+        "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+        "docs/recovery/evidence/td2ega-sim-controller-row-cycle-review-v1.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-scan-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-keyboard-bios-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-motion-flags-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-input-update-bus-counter-review-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-validation-v3.json",
+        "docs/recovery/evidence/td2ega-timer-state-tick-prefix-v2.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-effect-tick-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-handler-bus-flags-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-validation-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-dispatch-bus-context-v2.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-validation-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-context-v1.json",
+        "docs/recovery/evidence/td2ega-runtime-report-bus-alias-validation-v1.json"
+      ]
     },
     {
       "id": "P1-12",
@@ -384,7 +1413,12 @@
         "CGA derived-image record",
         "Eleven-byte remainder disposition"
       ],
-      "acceptance": "Same custody and independent validation as EGA; no tail bytes silently discarded."
+      "acceptance": "Same custody and independent validation as EGA; no tail bytes silently discarded.",
+      "reference_review_gaps": [
+        "KR-13",
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P1-13",
@@ -401,7 +1435,12 @@
         "Shared/variant function matrix",
         "Simulation comparison"
       ],
-      "acceptance": "Alignment uses behavior/control/data evidence, not address similarity."
+      "acceptance": "Alignment uses behavior/control/data evidence, not address similarity.",
+      "reference_review_gaps": [
+        "KR-13",
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P1-14",
@@ -419,7 +1458,11 @@
         "CGA portable presentation contracts",
         "Pixel/palette/memory specification"
       ],
-      "acceptance": "CGA packing, clipping, ordering, mode/aspect and loader paths are explained."
+      "acceptance": "CGA packing, clipping, ordering, mode/aspect and loader paths are explained.",
+      "reference_review_gaps": [
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P1-GATE",
@@ -455,7 +1498,11 @@
         "All-file disposition table",
         "Embedded range/transform map"
       ],
-      "acceptance": "All 249 baseline DOS files and executable-embedded resource families are accounted for."
+      "acceptance": "All 249 baseline DOS files and executable-embedded resource families are accounted for.",
+      "reference_review_gaps": [
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-02",
@@ -472,7 +1519,17 @@
         "Compression specifications",
         "Bounded readers and representative vectors"
       ],
-      "acceptance": "Both observed PCS prefixes and shared wrappers are proved from consumers; lengths/termination are checked."
+      "acceptance": "Both observed PCS prefixes and shared wrappers are proved from consumers; lengths/termination are checked.",
+      "reference_review_gaps": [
+        "KR-07",
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-06"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P2-03",
@@ -490,7 +1547,11 @@
         "Graphics schemas",
         "Full PCS/PES corpus results"
       ],
-      "acceptance": "All 82 pairs are decoded with palettes/masks/metrics/order and original-reference comparisons."
+      "acceptance": "All 82 pairs are decoded with palettes/masks/metrics/order and original-reference comparisons.",
+      "reference_review_gaps": [
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-04",
@@ -507,7 +1568,11 @@
         "Car/O/SS schemas",
         "All-car corpus results"
       ],
-      "acceptance": "All 12 cars including CAMA exception and repeated labels have explained fields/units."
+      "acceptance": "All 12 cars including CAMA exception and repeated labels have explained fields/units.",
+      "reference_review_gaps": [
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-05",
@@ -524,7 +1589,12 @@
         "Route/event schema",
         "Nineteen-section content model"
       ],
-      "acceptance": "All supplied section links, geometry and events are mapped without dropping fields."
+      "acceptance": "All supplied section links, geometry and events are mapped without dropping fields.",
+      "reference_review_gaps": [
+        "KR-09",
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-06",
@@ -541,7 +1611,11 @@
         "SGN/FNT schemas",
         "Consumer and glyph validation"
       ],
-      "acceptance": "Fourteen SGN and three fonts are understood; TDS2 companion absence has an evidence-backed explanation."
+      "acceptance": "Fourteen SGN and three fonts are understood; TDS2 companion absence has an evidence-backed explanation.",
+      "reference_review_gaps": [
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-07",
@@ -559,7 +1633,11 @@
         "Song/effect schema",
         "Timing and source map"
       ],
-      "acceptance": "SONGS, two-byte VOICES and embedded audio receive explicit dispositions."
+      "acceptance": "SONGS, two-byte VOICES and embedded audio receive explicit dispositions.",
+      "reference_review_gaps": [
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-08",
@@ -576,7 +1654,11 @@
       "deliverables": [
         "Metadata/read-write schemas"
       ],
-      "acceptance": "Case, terminators, historical writable values and exact update locations are understood."
+      "acceptance": "Case, terminators, historical writable values and exact update locations are understood.",
+      "reference_review_gaps": [
+        "KR-12"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-09",
@@ -596,7 +1678,11 @@
         "External EXE extraction contract",
         "Code-constant versus resource audit"
       ],
-      "acceptance": "No original media/text/table is quietly baked into native artifacts."
+      "acceptance": "No original media/text/table is quietly baked into native artifacts.",
+      "reference_review_gaps": [
+        "KR-11"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P2-GATE",
@@ -639,7 +1725,17 @@
         "Pinned CMake/SDL host",
         "Windows and second-host build results"
       ],
-      "acceptance": "Core is host independent; native launch requires no emulator or original instruction execution."
+      "acceptance": "Core is host independent; native launch requires no emulator or original instruction execution.",
+      "reference_review_gaps": [
+        "KR-14"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-07",
+        "KRU-08"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P3-02",
@@ -657,7 +1753,18 @@
         "Data-folder verification",
         "Atomic bounded loaders/cache"
       ],
-      "acceptance": "Valid originals load; absent/corrupt/unsupported mandatory files fail clearly and safely."
+      "acceptance": "Valid originals load; absent/corrupt/unsupported mandatory files fail clearly and safely.",
+      "reference_review_gaps": [
+        "KR-06",
+        "KR-07"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-09",
+        "KRU-10"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P3-03",
@@ -674,7 +1781,19 @@
       "deliverables": [
         "Native state/scheduling integration"
       ],
-      "acceptance": "Canonical ticks/RNG/events preserve recovered semantics through all state transitions."
+      "acceptance": "Canonical ticks/RNG/events preserve recovered semantics through all state transitions.",
+      "reference_review_gaps": [
+        "KR-05",
+        "KR-08"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-01",
+        "KRU-02",
+        "KRU-03"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P3-04",
@@ -690,7 +1809,12 @@
       "deliverables": [
         "Playable vehicle/road/opponent/progression integration"
       ],
-      "acceptance": "Complete sessions work beyond menus and first road entry."
+      "acceptance": "Complete sessions work beyond menus and first road entry.",
+      "qualified_reuse_units": [
+        "KRU-04"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P3-05",
@@ -707,7 +1831,12 @@
         "Native graphics providers",
         "Per-mode comparison results"
       ],
-      "acceptance": "Both modes independently meet pixels/palette/masks/animation/aspect acceptance."
+      "acceptance": "Both modes independently meet pixels/palette/masks/animation/aspect acceptance.",
+      "qualified_reuse_units": [
+        "KRU-05"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P3-06",
@@ -724,7 +1853,11 @@
         "Speaker sequencer/synthesis",
         "Event and listening comparisons"
       ],
-      "acceptance": "Timing, effects priority and output are assessed separately."
+      "acceptance": "Timing, effects priority and output are assessed separately.",
+      "reference_review_gaps": [
+        "KR-05"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P3-08",
@@ -742,7 +1875,16 @@
         "User-profile storage",
         "Source-write audit"
       ],
-      "acceptance": "No original writes; proven original format compatibility only where specified."
+      "acceptance": "No original writes; proven original format compatibility only where specified.",
+      "reference_review_gaps": [
+        "KR-06"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md",
+      "qualified_reuse_units": [
+        "KRU-10"
+      ],
+      "reuse_selection": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "reuse_integration_condition": "Source-selection only. Prove the actual caller/lifetime/alias profile, minimal transitive dependency closure and production guards; retain raw fallback and create fresh source/build/comparison evidence. Existing acceptance and phase prerequisites remain unchanged."
     },
     {
       "id": "P3-09",
@@ -780,7 +1922,11 @@
       "deliverables": [
         "All-content gameplay/state/visual/audio acceptance"
       ],
-      "acceptance": "All 12 cars and three scenery families/all sections and supported branches are covered."
+      "acceptance": "All 12 cars and three scenery families/all sections and supported branches are covered.",
+      "reference_review_gaps": [
+        "KR-16"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P3-11",
@@ -798,7 +1944,13 @@
         "Package manifest and media audit",
         "Valid/missing-data install tests"
       ],
-      "acceptance": "No original resources/caches/fixtures/manuals in release; external data and custody behavior verified."
+      "acceptance": "No original resources/caches/fixtures/manuals in release; external data and custody behavior verified.",
+      "reference_review_gaps": [
+        "KR-11",
+        "KR-16",
+        "KR-18"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P3-GATE",
@@ -889,7 +2041,11 @@
         "Recovered C contracts",
         "DOS/Amiga difference matrix"
       ],
-      "acceptance": "Reachable code and arithmetic/state semantics have evidence; no patched baseline is falsely called original."
+      "acceptance": "Reachable code and arithmetic/state semantics have evidence; no patched baseline is falsely called original.",
+      "reference_review_gaps": [
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P4-05",
@@ -996,7 +2152,11 @@
         "Route/geometry/sign/object/event adapter contract"
       ],
       "acceptance": "All supplied sections and gameplay fields map into DOS-core content without invented semantics.",
-      "input_condition": "Northern Germany Challenge input availability/identity must be investigated; if unavailable retain waiting-input status rather than claiming completion."
+      "input_condition": "Northern Germany Challenge input availability/identity must be investigated; if unavailable retain waiting-input status rather than claiming completion.",
+      "reference_review_gaps": [
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P4-11",
@@ -1057,7 +2217,11 @@
         "Stable ID/event/time interfaces",
         "Canonical-state contract"
       ],
-      "acceptance": "All providers read one DOS canonical simulation without changing physics/RNG."
+      "acceptance": "All providers read one DOS canonical simulation without changing physics/RNG.",
+      "reference_review_gaps": [
+        "KR-14"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P5-02",
@@ -1137,7 +2301,11 @@
       "deliverables": [
         "Prepare/commit/rollback graphics switch"
       ],
-      "acceptance": "Same session/tick/RNG/input/game events survive success/failure and repeated switches."
+      "acceptance": "Same session/tick/RNG/input/game events survive success/failure and repeated switches.",
+      "reference_review_gaps": [
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P5-06",
@@ -1153,7 +2321,11 @@
       "deliverables": [
         "Audio timeline handover and resource retirement"
       ],
-      "acceptance": "Preserve semantic position where proven; otherwise validate a deterministic restart/optional-fade policy at a safe boundary. No gameplay-state reset, stuck/duplicated cues or stale audio references."
+      "acceptance": "Preserve semantic position where proven; otherwise validate a deterministic restart/optional-fade policy at a safe boundary. No gameplay-state reset, stuck/duplicated cues or stale audio references.",
+      "reference_review_gaps": [
+        "KR-15"
+      ],
+      "reference_review": "docs/planning/kylofon-reuse-assessment.md"
     },
     {
       "id": "P5-07",
@@ -1275,7 +2447,25 @@
   },
   "authorization": {
     "date": "2026-10-13",
-    "scope": "Phase 0 and Phase 1, TD2EGA first; all original files unchanged; document and persist findings.",
+    "scope": "Phase0 and Phase1 through P1-GATE, TD2EGA portable code-contract closure before CGA; preserve originals and separate acceptance gates. Continued explicitly on2026-10-13.",
     "later_phases": "Not started; required order preserved."
+  },
+  "last_plan_review_date": "2026-10-22",
+  "external_reference_review": {
+    "assessment": "docs/recovery/kylofon-r04-reuse-decision.md",
+    "gap_register": "docs/planning/evidence/kylofon-gap-register-v1.json",
+    "route": "Qualified selective implementation reuse; no automatic completion of existing recovery gates",
+    "phase_order_unchanged": true,
+    "source_imported": false,
+    "candidate_runtime_exercised": true,
+    "admission_tasks": "P1-R01 through P1-R04 complete within their review/admission/selection scopes; existing core gates remain open",
+    "source_imported_to_primary_tree": false,
+    "candidate_runtime_scope": "Isolated native C calls and original-instruction oracle only; no game EXE session",
+    "candidate_game_session_exercised": false,
+    "reuse_register": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+    "origin_manifest": "docs/recovery/evidence/kylofon-reuse-origin-manifest-v2.json",
+    "remaining_effort_model": "docs/planning/evidence/kylofon-effort-inputs-v1.json",
+    "substantial_current_effort_saving_booked": false,
+    "next_core_task": "P1-05"
   }
 }

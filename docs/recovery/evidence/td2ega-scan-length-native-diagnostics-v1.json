@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "318d8f45f1966997417a22b3eaa8a8c42d5761c82d372624b3dd2773801bfa6f",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ddca699b4fc0af8c3ecd774e19cd2aef3e55bd307967ac6e1790a65e4f386ff2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_scan_length.py",
+      "sha256": "0abc9e9e7a733bd14d2a6f807a0e002cf94c56d7d01f01d1fe061aa9a2705386"
+    }
+  ],
+  "limits": "Eight native invalid bus/count/SP/null/boolean-flag profiles before effects. Separate from original REP semantics, caller bounds, core/device/session/game/fidelity."
+}

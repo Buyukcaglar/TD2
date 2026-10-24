@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 22,
+  "script_sha256": "c1bbf8b5562c60580e350a4d0bf91fc6fc0fb62288a23ea385528c91c03d80d7",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b786b3a3e9818d59131e71f61658e6eda1860f9904e5875cf3912f1d0fd1d1b9",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_heap_public.py",
+      "sha256": "e8e69495e0bf39c09040dd066e3efe62119ceaf79bb2eb688213c084836cedaa"
+    }
+  ],
+  "limits": "Nativeinterfaces/actualprologue-initSSwrites/currentDS-ES/requiredinitZF/heapZFnotallocationflag/onecallerownedcount/plainfarRET/actualsavedBP-metadataaliases/budget-adapter-rawRET diagnostics only. Originalcomparison separate; syntheticDOSnoINTframes/historicalCPU-A20unqualified, wholecallers/writers/capacity/ownership/lifetime/exclusion/core/session/fidelity open."
+}

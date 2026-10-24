@@ -1,0 +1,549 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Current per-site source admission after P1-R02/R03; preserves original38site ledger and existing18gap groups. No source/media/whole-core distribution admission.",
+  "prior_source_admission": {
+    "path": "docs/recovery/evidence/kylofon-source-admission-v1.json",
+    "sha256": "df3fa2889e7e3ccfa3dbf2f4a49b78958976601b1ca924f8b6972a76b710baf6"
+  },
+  "changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+  "results": "docs/recovery/kylofon-r02-r03-results.md",
+  "records": [
+    {
+      "id": "KAD-01",
+      "source": {
+        "path": "td2port/src/platform/timer.c",
+        "start_line": 207,
+        "end_line": 216,
+        "file_sha256": "83516651e2a1409ad0ab02e314ebb73e00a0ea90a45ef0ba0424644e0ecd3d4a",
+        "selected_lines_sha256": "20284f3729a9f4928f1daeb9d41009a9b2c222ad4c0d74120d43a7d023746bd8"
+      },
+      "selected_treatment": "fix_candidate",
+      "admission_decision": "Canonical helpers read0040:046C physical086C and preserve modulo16 subtraction. Host BIOS clock046C is separate; no units inferred.",
+      "current_result": "270actualoriginal literal read/subtract cases pass;250baseline mismatches corrected",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-02",
+      "source": {
+        "path": "td2port/src/mem.h",
+        "start_line": 10,
+        "end_line": 13,
+        "file_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+        "selected_lines_sha256": "1ca35aac1839331a9a34d13c77279e966c5d0c710c82e814eb479554a589353b"
+      },
+      "selected_treatment": "restrict_test_domain",
+      "admission_decision": "No global historical SS=DS admission. Native sample adapters must declare DS=SS or use original bus helpers; alias/allwriter/lifetime obligations remain pending.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-03",
+      "source": {
+        "path": "td2port/src/mem.h",
+        "start_line": 17,
+        "end_line": 37,
+        "file_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+        "selected_lines_sha256": "2281cda88aff4eb5ef59b2bb7db680fa86e0cdbdca265f775c3688072cfa05bc"
+      },
+      "selected_treatment": "fix_accessors_or_exclude",
+      "admission_decision": "Use20bit byte accessors in candidate. Direct lvalue macros still require in-range disjoint native domains until replaced; high physical aliases remain raw-oracle evidence.",
+      "current_result": "240scalar memory checks and384actualRAMplot cases pass;full typed/bulk domains remainexcluded",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-04",
+      "source": {
+        "path": "td2port/src/mem.h",
+        "start_line": 42,
+        "end_line": 54,
+        "file_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+        "selected_lines_sha256": "663479cda942354670ee486e609382778fcca99c277ea3f8ae5e9c948f2dbf31"
+      },
+      "selected_treatment": "restrict_test_domain",
+      "admission_decision": "Windows little-endian x64 private candidate builds may exercise bounded aligned spans; no second-host or portable-core admission. Replace typed overlays before portable import.",
+      "current_result": "Unsigned scalar dword shifts tested;typed lvalue alignment/host assumptions remainexcluded",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-05",
+      "source": {
+        "path": "td2port/src/mem.h",
+        "start_line": 82,
+        "end_line": 90,
+        "file_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+        "selected_lines_sha256": "2c11b57495a166836a5ac7e808c7f62246f754e480584b20d3842281c5b584eb"
+      },
+      "selected_treatment": "fix_candidate",
+      "admission_decision": "Check both zero and signed-minimum-over-minus-one before C division; preserve original quotient-overflow terminal behavior.",
+      "current_result": "77division support cases including explicit faults pass;baseline undefinedminimum/-1notexecuted",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-06",
+      "source": {
+        "path": "td2port/src/platform/input.c",
+        "start_line": 291,
+        "end_line": 297,
+        "file_sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+        "selected_lines_sha256": "101e5401ceba18f401f084c4c2787af8a3a8749091f71e6429e031d838806fff"
+      },
+      "selected_treatment": "reject_general_raw_substitution",
+      "admission_decision": "Representative native DS=SS keyboard interface is a narrow profile. IndependentSS/raw FLAGS/frame fixture must continue to use our admitted original-byte oracle.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-07",
+      "source": {
+        "path": "td2port/src/platform/res.c",
+        "start_line": 1116,
+        "end_line": 1135,
+        "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "selected_lines_sha256": "45c57e460b1c8df60a88f0c21d88754fccde1ef0f9f48c2e99d1b96fae56884c"
+      },
+      "selected_treatment": "restrict_test_domain",
+      "admission_decision": "No borrowed actualSS stack/frame equivalence. Require explicit disjoint near scratch and stable callbacks; exclude stack aliases/return-word mutation from native-value tests.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-08",
+      "source": {
+        "path": "td2port/src/platform/res.c",
+        "start_line": 302,
+        "end_line": 331,
+        "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "selected_lines_sha256": "3e6e56f55eb613239049ca324d3029a7875cf902bbbfbe1afdd24ec7d0136bec"
+      },
+      "selected_treatment": "fix_candidate_or_disable_io",
+      "admission_decision": "Separate writable profile root from original resource lookup. No candidate write may target reference; representative pure-memory tests disable host I/O.",
+      "current_result": "51profile/path checks pass with actual synthetic writes and preserved originals",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-09",
+      "source": {
+        "path": "td2port/src/mem.c",
+        "start_line": 26,
+        "end_line": 148,
+        "file_sha256": "7ae8673fc481804323987d29e272b74bda21b60bed1f086731cedcdb733056a5",
+        "selected_lines_sha256": "0b76fa4e5dfc58204188ae292a03b665b982c3d69945915092ea9efcfd568047"
+      },
+      "selected_treatment": "fix_candidate_or_bypass_with_pinned_image",
+      "admission_decision": "P1-R03 loader must check admitted exact input/image/ordered relocations before execution. Representative tests may load pinned validated image directly, clearly bypassing unadmitted loader paths.",
+      "current_result": "Canonical native loadedimage equality/1652relocations/fiveassignedbytes plus10identityrejections pass",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-10",
+      "source": {
+        "path": "td2port/src/mem.c",
+        "start_line": 158,
+        "end_line": 168,
+        "file_sha256": "7ae8673fc481804323987d29e272b74bda21b60bed1f086731cedcdb733056a5",
+        "selected_lines_sha256": "943ce968990877cf5fa417775440001e8262d07cfd7a409f60e56a9b2ca15576"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "Private native evaluation may select passed mutable state, recorded separately from raw initial/prepared code forms. No recovery closure for removed protection/runtime branches.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-11",
+      "source": {
+        "path": "td2port/src/game/flow.c",
+        "start_line": 253,
+        "end_line": 263,
+        "file_sha256": "a19205b0f22e26edb9e27525ea09daed4c2e30b1ec273744603145d279e7c636",
+        "selected_lines_sha256": "a5d5ed4be1045b2f9f04fc26bc5503210ccf039f589ac7f712d9777bffc47dab"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "External-file native disk adapter only; original diskID/device/error paths remain original-function dispositions, not semantically ported bodies.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-12",
+      "source": {
+        "path": "td2port/src/game/flow.c",
+        "start_line": 581,
+        "end_line": 584,
+        "file_sha256": "a19205b0f22e26edb9e27525ea09daed4c2e30b1ec273744603145d279e7c636",
+        "selected_lines_sha256": "dbf5cb40b3520fdfacb9641a883ebda45fb4bac9220f9c06b6443b00099d214c"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "Native installer/play-disk UI excluded from product requirements; preserve omitted original-function disposition and do not count it recovered.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-13",
+      "source": {
+        "path": "td2port/src/game/flow_stage.c",
+        "start_line": 518,
+        "end_line": 529,
+        "file_sha256": "ec077308fa13b0d2050f1cfbc60bbabd43e492bcf33da573d7b57a19079d2d1e",
+        "selected_lines_sha256": "d91a5308e36363dc5e0779af7ba0056426eba82e219fdf4503191a3da2ef4c96"
+      },
+      "selected_treatment": "reject_subsystem_pending_lifetime",
+      "admission_decision": "Do not import full stage loader or claim authentic zeros. Original fixed7774-byte reads and actual short-resource allocation/tail lifetime require consumer proof inP2.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-14",
+      "source": {
+        "path": "td2port/src/game/scene_project.c",
+        "start_line": 388,
+        "end_line": 406,
+        "file_sha256": "dd2bba3e0aef654ebc03568fc13bae6e30970b2e27e2ca517375df3351f823ef",
+        "selected_lines_sha256": "ad99fd2c4edec79378db10a362166130a7c49650b6eb8413c47245e0fc8ee2c5"
+      },
+      "selected_treatment": "fix_selected_helper_or_exclude_domain",
+      "admission_decision": "Full raw zero-count executes65536 iterations per pass. Native bounded rendering may reject malformed domain explicitly; never replace our complete raw clamp contract with early return.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-15",
+      "source": {
+        "path": "td2port/src/game/scene_draw.c",
+        "start_line": 121,
+        "end_line": 140,
+        "file_sha256": "d7293f98720f7f2c6ccaae7fc765973eb3dd17fc8494d3d41edf86e8b195835d",
+        "selected_lines_sha256": "3ad02eb87bcd56927ed0adee5ebaec1dc503cdbddeb92f462afe2a89392e3618"
+      },
+      "selected_treatment": "reject_subsystem_pending_bounds",
+      "admission_decision": "Projection/resource bounds must establish admitted positive span counts. Raw zero/full-cycle behavior remains a separate original-instruction contract.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-16",
+      "source": {
+        "path": "td2port/src/game/scene_cockpit.c",
+        "start_line": 207,
+        "end_line": 210,
+        "file_sha256": "aa77e6177f0ca1e5215eb82ac954d5b3b03d9a5a52cb74509dd76c526e848b7b",
+        "selected_lines_sha256": "ccbc4772c1845120756684d61594e61f7d00101aec4f4ffd1f336eb52e06eba5"
+      },
+      "selected_treatment": "reject_subsystem_pending_register_proof",
+      "admission_decision": "Do not fabricate inheritedCH. Need blitter postcondition and actual caller/corpus bounds; cockpit import remains rejected until resolved.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-17",
+      "source": {
+        "path": "td2port/src/game/scene_cockpit.c",
+        "start_line": 251,
+        "end_line": 260,
+        "file_sha256": "aa77e6177f0ca1e5215eb82ac954d5b3b03d9a5a52cb74509dd76c526e848b7b",
+        "selected_lines_sha256": "cb91a486c86bcfb389b0a17e49cc2a64ca15159e1245e15803b1d15c300cd816"
+      },
+      "selected_treatment": "reject_subsystem_pending_register_proof",
+      "admission_decision": "Need incomingSI and actual car-field combinations; source assertion about shipped cars is not a corpus receipt.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-18",
+      "source": {
+        "path": "td2port/src/game/sim.c",
+        "start_line": 265,
+        "end_line": 273,
+        "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+        "selected_lines_sha256": "11bb7b0ef194b42ab24d96967dabdd135f3dcc55b6e94f3fc99cd1dcc2724357"
+      },
+      "selected_treatment": "reject_subsystem_pending_register_proof",
+      "admission_decision": "Preserve omission as known native audio difference. Candidate decode_controls is not admitted for neutral-clutch fidelity; test narrower independent simulation leaf instead.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-19",
+      "source": {
+        "path": "td2port/src/game/sim_motion.c",
+        "start_line": 436,
+        "end_line": 439,
+        "file_sha256": "a0b7bfa6ca150b5ce8c182623150d8258ba01762ed7fb45f302fc775173ddf98",
+        "selected_lines_sha256": "156cdb6b70aba56d1a1e5f5a63f9d40aa8ed12141518d287b05192d67080a376"
+      },
+      "selected_treatment": "reject_subsystem_pending_register_proof",
+      "admission_decision": "Retain actualBP for types>=50h or prove valid native domain; no crash/collision family admission from unrelated simulation sample.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-20",
+      "source": {
+        "path": "td2port/src/game/sim_traffic.c",
+        "start_line": 360,
+        "end_line": 374,
+        "file_sha256": "d795bd71ead5a075b2209bc7200fd859485a8c7e7ea53123f367914df8469fd3",
+        "selected_lines_sha256": "a644f1ec9684241ab40705d7a5b4cf9a83e82108b9c0a2fe82e812f8315d60b7"
+      },
+      "selected_treatment": "reject_subsystem_pending_register_proof",
+      "admission_decision": "Need original caller DI and zero/all-ahead/tie profiles. Preserve65536iteration zeroCX domain and raw register evidence.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-21",
+      "source": {
+        "path": "td2port/src/game/sim_traffic.c",
+        "start_line": 241,
+        "end_line": 247,
+        "file_sha256": "d795bd71ead5a075b2209bc7200fd859485a8c7e7ea53123f367914df8469fd3",
+        "selected_lines_sha256": "9219d80233ce6152f771f238f2ee3eec1dbd242f94b83ef7ad8bdc365f42c7fa"
+      },
+      "selected_treatment": "reject_subsystem_pending_register_proof",
+      "admission_decision": "Need actual enteredCX and inactive-position caller sequence; no inferred native count admitted solely from source comment.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-22",
+      "source": {
+        "path": "td2port/src/game/sim_ai.c",
+        "start_line": 447,
+        "end_line": 451,
+        "file_sha256": "8f259c28a0408495e9651f9d13deb85268e530ad782e0abf1f90e49ebf07a9e8",
+        "selected_lines_sha256": "4105de2ca0a9e5f52a860823d1f48604dc9fc8498bee9b22d73e820191788578"
+      },
+      "selected_treatment": "retain_bounded_safety_policy",
+      "admission_decision": "Native safety fallback may reject unsupported states; record changed behavior and keep original raw target-domain obligation open.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-23",
+      "source": {
+        "path": "td2port/src/game/flow.h",
+        "start_line": 22,
+        "end_line": 22,
+        "file_sha256": "71445bb2de860bab06743b21c635a1f977d31629fd979d3fce1c5ddfd98f1e11",
+        "selected_lines_sha256": "6148bf08d247a41939d2d2ea05fbccd986c6b552fb0a1b4ea0792c5e21279bd2"
+      },
+      "selected_treatment": "retain_bounded_safety_policy",
+      "admission_decision": "Candidate cap is host robustness, not original parity. User supplied12car corpus unaffected by inventory count, but full catalogue/overflow semantics stay pending.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-24",
+      "source": {
+        "path": "td2port/src/game/flow_screens.c",
+        "start_line": 237,
+        "end_line": 317,
+        "file_sha256": "d0384363077932541c9c970370ec41a4d357f5ffd2f8312b72594c21f52e93e8",
+        "selected_lines_sha256": "cb693e24e490f2657fa6398c383d70b12b776b3c5f55017752021ef87d5c95bb"
+      },
+      "selected_treatment": "retain_bounded_safety_policy",
+      "admission_decision": "Only admitted in-range frame lists may be used; orderedSS labels/corpus coverage remainP2 and original memory-overwrite behavior is not inherited.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-25",
+      "source": {
+        "path": "td2port/src/game/flow_scores.c",
+        "start_line": 27,
+        "end_line": 43,
+        "file_sha256": "1be7cb6ee6b1809e3a3f13b1fd6bbfd5c2328707393a4703606c523b82d33c2a",
+        "selected_lines_sha256": "60715550076f3d4a975be3ff0647deca396d43c916a2b4c99a0f7fe490c8768b"
+      },
+      "selected_treatment": "fix_candidate_before_io_admission",
+      "admission_decision": "Reject truncated records atomically before checksum/state commit; size cap alone is insufficient. No scoreI/O tests may touch original source directories.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-26",
+      "source": {
+        "path": "td2port/src/game/flow.c",
+        "start_line": 184,
+        "end_line": 201,
+        "file_sha256": "a19205b0f22e26edb9e27525ea09daed4c2e30b1ec273744603145d279e7c636",
+        "selected_lines_sha256": "05de94c60faec203f8cec0b5b3bb52e9d3cac1892e44e7847515aa984684f39e"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "Record host presentation pacing separately from original tick/gameplay/RNG semantics; no physical timing acceptance from deterministic sample.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-27",
+      "source": {
+        "path": "td2port/src/game/scene.c",
+        "start_line": 411,
+        "end_line": 411,
+        "file_sha256": "d9d533c3a3718fae8e8cfd6d217cbe461039c7330212a0048b8888f962b006fd",
+        "selected_lines_sha256": "0a16f3237499dc23502813cb88ef1849cd2fe70b41d880853ee72cc607d49ef7"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "Do not claim original interrupt interleavings. Candidate runner must expose deterministic tick order; no whole-runner gameplay admission inR03.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-28",
+      "source": {
+        "path": "td2port/src/game/scene_cockpit.c",
+        "start_line": 169,
+        "end_line": 170,
+        "file_sha256": "aa77e6177f0ca1e5215eb82ac954d5b3b03d9a5a52cb74509dd76c526e848b7b",
+        "selected_lines_sha256": "a42582c8bc0f2ad03ecec24b8b7bc9038bfe908f71685d766a241777971365f1"
+      },
+      "selected_treatment": "reject_subsystem_pending_schedule",
+      "admission_decision": "Preserve frame-count dependence unless justified original mapping; presentation speed settings do not establish timer fidelity.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-29",
+      "source": {
+        "path": "td2port/src/platform/timer.c",
+        "start_line": 275,
+        "end_line": 305,
+        "file_sha256": "83516651e2a1409ad0ab02e314ebb73e00a0ea90a45ef0ba0424644e0ecd3d4a",
+        "selected_lines_sha256": "b33413c7c9cd95517471a9cb64b044eb2feef5e9b2d401899bea2d72333f11cd"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "Compare original disjunctive high/low deadline rule separately from host-safe wait policy; record wrap and stalled-clock domains.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-30",
+      "source": {
+        "path": "td2port/src/platform/sound.c",
+        "start_line": 54,
+        "end_line": 406,
+        "file_sha256": "ee5f9711f1009e778491662269860d7960927d0b9312e60f0b19f48495669cf8",
+        "selected_lines_sha256": "636e87b5e392b6f84a48d83378532545fddaff4c5a41d8869298d3f54cd3a61b"
+      },
+      "selected_treatment": "reject_audio_fidelity_admission",
+      "admission_decision": "Separate ordered PIT/gate/sequencer events fromPCM. VOICES heap adjacency and audible timbre require later source/allocation/corpus evidence, not copied song bytes.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-31",
+      "source": {
+        "path": "td2port/src/platform/res.c",
+        "start_line": 335,
+        "end_line": 540,
+        "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "selected_lines_sha256": "5adace1e095eabadbd7b68762c1f49484155509fd117bda74066930a0296cf16"
+      },
+      "selected_treatment": "restrict_test_domain",
+      "admission_decision": "Compare representative synthetic codec family under explicit positive/count/capacity inputs; full raw zero-lowword/65536 behavior and safe external parser are separate contracts.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-32",
+      "source": {
+        "path": "td2port/src/platform/gfx.c",
+        "start_line": 207,
+        "end_line": 260,
+        "file_sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+        "selected_lines_sha256": "51ce8ce188210bd8562960ff8091556fcf42ffb6a2cc3b2fe739dde2583f0f80"
+      },
+      "selected_treatment": "reject_constructor_admission",
+      "admission_decision": "Original wrapped arithmetic,height0 LOOP, allocator-beforecapacity ordering and fatalfallthrough require original caller evidence; no constructor import fromprimitive sample.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-33",
+      "source": {
+        "path": "td2port/src/platform/gfx_blit.c",
+        "start_line": 185,
+        "end_line": 477,
+        "file_sha256": "49007eb0db531df67250ce52862b5a2641df6d6dc356c2e54a49603559ff3047",
+        "selected_lines_sha256": "6d0c94c449f27455b92a11a4b509d2b4e4a82676d76768f9949d090e76dede49"
+      },
+      "selected_treatment": "restrict_test_domain",
+      "admission_decision": "Representative EGA primitive uses admitted dimensions/planes/descriptor ownership; preserve untested latches, clipping,overlap and raw alias domains as open.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-34",
+      "source": {
+        "path": "td2port/src/game/flow_stage.c",
+        "start_line": 43,
+        "end_line": 396,
+        "file_sha256": "ec077308fa13b0d2050f1cfbc60bbabd43e492bcf33da573d7b57a19079d2d1e",
+        "selected_lines_sha256": "dd2e3fc5e3ea314819fbd836acbe15f501fad47a4aa4c8d54ab1b5f2acddd218"
+      },
+      "selected_treatment": "block_distribution",
+      "admission_decision": "Private source/build evaluation only. Every classified game-format token must be externalized from admitted EXE or explicitly replaced; retainDSlocators and formatting proof.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-35",
+      "source": {
+        "path": "td2port/src/game/flow_scores.c",
+        "start_line": 139,
+        "end_line": 144,
+        "file_sha256": "1be7cb6ee6b1809e3a3f13b1fd6bbfd5c2328707393a4703606c523b82d33c2a",
+        "selected_lines_sha256": "56aff82280f7b11dea052444231fb3e0a915a342ac90314a2a69ab565e276ab8"
+      },
+      "selected_treatment": "block_distribution",
+      "admission_decision": "Load/format externalEXE text before packaging; no source-license inference overrides no-original-media requirement.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-36",
+      "source": {
+        "path": "td2port/src/game/flow_stage.c",
+        "start_line": 246,
+        "end_line": 321,
+        "file_sha256": "ec077308fa13b0d2050f1cfbc60bbabd43e492bcf33da573d7b57a19079d2d1e",
+        "selected_lines_sha256": "519d29daef043b43bb269ba128dcc675fc05d536e6a8dc03fa90ad7f3e55edb4"
+      },
+      "selected_treatment": "reject_unbounded_arithmetic_admission",
+      "admission_decision": "Use defined unsigned/widened operations or prove state bounds; no general signedoverflow portability claim fromMSVC compilation.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-37",
+      "source": {
+        "path": "td2port/src/platform/input.c",
+        "start_line": 81,
+        "end_line": 150,
+        "file_sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+        "selected_lines_sha256": "bd710e82a8d485c6dcc223ff25b777d69606453699c989076e11f5347fdbdfcf"
+      },
+      "selected_treatment": "retain_declared_native_adaptation",
+      "admission_decision": "Pure-memory key translation/handler tests do not prove realIRQ nesting,allwriters,device timing or callback lifetime.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    },
+    {
+      "id": "KAD-38",
+      "source": {
+        "path": "td2port/src/game/flow_screens.c",
+        "start_line": 444,
+        "end_line": 447,
+        "file_sha256": "d0384363077932541c9c970370ec41a4d357f5ffd2f8312b72594c21f52e93e8",
+        "selected_lines_sha256": "6580d85fd94f040f2684e998603f70ee99fb5195832f4b5b6717f283202ce387"
+      },
+      "selected_treatment": "block_distribution",
+      "admission_decision": "Load original matching EXE text rather than copying the literal into a distributable. Exact image occurrence is recorded in the literal inventory.",
+      "current_result": "Disposition retained: excluded/rejected or declared host adaptation; no new broad semantic acceptance from this sample.",
+      "source_distribution_status": "private evaluation only; distribution blocked"
+    }
+  ],
+  "representative_differential": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+  "support": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+  "next_task": "P1-R04",
+  "full_project_gates_unchanged": true
+}

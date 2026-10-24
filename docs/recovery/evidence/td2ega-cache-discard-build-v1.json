@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000188",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_cache_discard.cmd",
+    "sha256": "b845c68e48281f96331d9eaca3f7fd07bacab3fe60546d7a0766de6af0cbe4ed"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.h",
+      "sha256": "6891219bb4bab9bdbc41928da1f1cf2790c7de26fad9a3067d46feb975d8cf37"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_discard.c",
+      "sha256": "25ea43c9182d259c8ff48dc054037ee8a236087982b1a2cb75b620cb26876c83"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_discard.h",
+      "sha256": "cb39b4c09b07b2f1a293f79eba85f0fb8d959f5e6e620b7f9c0cc64180a58f56"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/cache-discard-repro/td2ega_cache_discard.obj",
+      "sha256": "6f1fb7820824947a503315f5694ca78bf9d8a4d84475ffb150763ed8f53e0331",
+      "bytes": 797
+    },
+    {
+      "path": "analysis/build/cache-discard-repro/td2ega_cache_discard.dll",
+      "sha256": "cd94c41f597b1e353016df516164d120293627c5e9a7c9235b37bdac36e27916",
+      "bytes": 102912
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/cache-discard-build-v1.log",
+    "sha256": "5a4fe2495056660804e69483062cabb5b99ba9ce3b87eb454194a2c44cab73a2"
+  },
+  "limit": "Metadata discard prefix through normal return or external fatal-call boundary. No payload/cache lifetime, DOS cleanup, core or second host accepted."
+}

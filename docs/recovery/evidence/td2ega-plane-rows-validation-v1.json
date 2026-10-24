@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000094",
+  "vectors": 3840,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "45fdbbf9c3b49515237b48cd34dcdf4ebef18a1fe25da551e2793b17ae00b1f1",
+  "source_sha256": "de9a0af958b4454abc2f5378e46aade4d6971b21a0a8d01fe27acb794253af45",
+  "validator_sha256": "410b82207d59ec65706e44e79f88c5f8edd56e071a9fc6f9f8ed8fbe414c4616",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 7708936,
+  "instruction_sites_exercised": 144,
+  "instruction_sites_in_fence": 144,
+  "fixture_coverage": {
+    "normal": 1056,
+    "calls": 80168,
+    "row_iterations": 16336,
+    "plane_writes": 5004032,
+    "discarded_return_continuations": 6784,
+    "external_jump": 1584,
+    "prefix": 1200
+  },
+  "limits": "Actual284F+C17body, earlydiscardnearreturn/JMP28BD skipsremainingrowcalls, otherrawDS0702targets explicitnonlocaloutcomes, normalRET2/nativecallbudget separate. CurrentDS/SSmask/CSlookup/RAMplanes/wordwrap/sharedaliases andGPR/BP/CFIFDF/fullnonframebus compared. No ABI-value leafmocks. Syntheticplanes/targets notactualwriterdomain/capacity/SS-DS/producer/resourceformat/IRQ/core/renderer/game/fidelity. Native diagnostics separate."
+}

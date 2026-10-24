@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000169",
+  "result": "pass",
+  "vectors": 848,
+  "native_only_diagnostic_cases": 3,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 55186,
+      "length": 534,
+      "unrelocated_sha256": "53b59873a58a87b642024461455e92ea9447a2fee19d9005ba890a4c9072bc63"
+    },
+    {
+      "module_offset": 56512,
+      "length": 83,
+      "unrelocated_sha256": "00e1b6f9fddf61341dfa884a9dfa1ecd0f924ef82b9f0bc3521ac3fa15ff51b5"
+    }
+  ],
+  "library_sha256": "6652ee96332bce3fb1a05a24a4eb1ac7396b789cca10e155522e9009fbddc54c",
+  "source_sha256": "78183ce381e5629b801c620a69ba8156079f992e3695472b00c1da7c01fcdcac",
+  "validator_sha256": "40cc001ade3e3c34cf0a3a4fa82e63914eb4ba633f8bfc2860dbf587250783ea",
+  "original_instructions_executed": 4378800,
+  "fixture_coverage": {
+    "all_literal_bytes": 256,
+    "block_byte_writes": 1554,
+    "run_byte_writes": 626056,
+    "paragraph_move_bytes": 67136,
+    "all_run_value_bytes": 256,
+    "all_marker_ranks": 66,
+    "duplicate_marker_last_rank": 1,
+    "block_repeat_counter_edges": 5,
+    "block_with_outer_literals": 1,
+    "zero_length_run": 1,
+    "zero_length_short_run": 1,
+    "run_wrap_rewrites_start": 1,
+    "run_normalizes_after_large_copy": 1,
+    "source_32KiB_threshold": 1,
+    "literal_counter_lowword_zero": 1,
+    "control1_early_return_count": 1,
+    "varied_literal_run_streams": 256
+  },
+  "coverage": [
+    "All256 literal/runvalue bytes",
+    "Allmarker counts1..11/ranks andduplicate overwrite",
+    "Block repetition including0/1 do-while edges withactual7030 moves",
+    "Zero runs,65535-byte REP wrap and32KiB rebasing",
+    "Literalcounter lowwordzero andcontrol1 early-return count",
+    "256 varied streams",
+    "Whole synthetic256KiB pool/guards, byte-write counts, farframe/registers andupdatedsource argument copies"
+  ],
+  "limits": "Bounded exclusive ordinary-memory synthetic profile withDS=SS andmarker counts1..11 only. Larger marker lists readpastcopiedheader intooriginalstack; nativeprofile diagnostic doesnotadmitthatbehavior. Nativebounds/work diagnostics outsideoriginalerror equivalence. No suppliedresource, fullformat/corpus, completecaller allocation, realDOS, renderer/audio orgameplay/fidelity."
+}

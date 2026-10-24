@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "upstream_commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "scope": "Private candidate only. Original reference, baseline files and src/recovered not edited. No imported subsystem or distribution approval.",
+  "changes": [
+    {
+      "path": "td2port/src/host.c",
+      "baseline_sha256": "f8e88d7827f83c283899c63773b7c64d905da54ad37c777bf4692ca5501a0ce6",
+      "candidate_sha256": "4e8eb9bb40204c3ae797a481ea633dc4a3a4d167839effe01b3a18aa76acdda0"
+    },
+    {
+      "path": "td2port/src/host.h",
+      "baseline_sha256": "a8d296f6def640590bc063eb5366c03c3d2c02cc840fcaf1a0bd5d21716be61e",
+      "candidate_sha256": "9f14e732f7f9fcf023137a7cd006d041a73bd65c09b8bef82cc3688bebd2e1fe"
+    },
+    {
+      "path": "td2port/src/host_paths.c",
+      "baseline_sha256": null,
+      "candidate_sha256": "3902436ae28b98f415df62e22498d43b7b4c9863c7c6178390d632bfb046cd09"
+    },
+    {
+      "path": "td2port/src/main.c",
+      "baseline_sha256": "6f35c607f91fd4614400a95723d3e042217a0181f3581977a3e306588506aa8e",
+      "candidate_sha256": "20799caf56adea1c11f7bc685eb00d9bd43bbd88f35d753aad58f97a0a82e385"
+    },
+    {
+      "path": "td2port/src/mem.c",
+      "baseline_sha256": "7ae8673fc481804323987d29e272b74bda21b60bed1f086731cedcdb733056a5",
+      "candidate_sha256": "9c2835756d613198629f5496f06ce92e68c91074ceaf5a24196429defc3aeebc"
+    },
+    {
+      "path": "td2port/src/mem.h",
+      "baseline_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+      "candidate_sha256": "0ae0c362bec4ef5c2907813adb27b32da1c8e4a96085c98ae7ccab92ceb75fed"
+    },
+    {
+      "path": "td2port/src/platform/timer.c",
+      "baseline_sha256": "83516651e2a1409ad0ab02e314ebb73e00a0ea90a45ef0ba0424644e0ecd3d4a",
+      "candidate_sha256": "e65548ac984788df8e7f8aeb51fac751efb345778fa15906a0b472253bcb17bb"
+    },
+    {
+      "path": "td2port/src/platform/timer.h",
+      "baseline_sha256": "5b56e750351c82d180854acb8826a0c554ae65a533bb25e80c3c7e62953aef70",
+      "candidate_sha256": "fd7182d2e5c0fd31e32c1f5ec792158ba83e4e3f5b7933241f22cf551fab25dd"
+    }
+  ],
+  "baseline_tracked_files_equal_upstream": 85,
+  "private_patch": {
+    "path": "analysis/candidates/kylofon-r03-v1/candidate-fixes-v2.patch",
+    "sha256": "cd4577fac65233f7a2c954432b257bda5fe1169dadfff399b3388610ba69e9d8"
+  },
+  "private_change_maker": {
+    "path": "analysis/candidates/kylofon-r03-v1/patch_candidate.py",
+    "sha256": "40fc750a19aa8888e5fc4e3477023359ce786740ce25b985c697b106d0aeea91",
+    "limit": "Initial scalar/loader patch helper; profile adapter and final diffs were separately applied. Final source/build pins are authoritative; this helper is not a replay recipe for every final change."
+  },
+  "build_receipt": {
+    "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+    "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+  },
+  "editions": {
+    "packed_exe_sha256": "eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+    "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+    "normalized_mz_sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2",
+    "relocations": 1652
+  },
+  "limits": [
+    "fixed DS/CS native lvalues",
+    "actualSS/frame/FLAGS notemulated",
+    "bulk and typed access portability pending",
+    "Windows-only admissionadapter",
+    "originalmedia strings retained onlyprivatebuild"
+  ]
+}

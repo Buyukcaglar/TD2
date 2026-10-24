@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 18,
+  "script_sha256": "2ed5bc4d03f3fe728f669e72fd02af48299c5568c129d537e4db0796cf60aa75",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "44a9cf01334dcf033401fab1d3ac487ebbb0511aef71f93eeb620e3bc3200b8a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_number_field.py",
+      "sha256": "1eaa5cdfb7222050ffb4d099f1101191095dcb41b2ba791a28612dcbb2aaa48f"
+    }
+  ],
+  "limits": "Native interfaces/budget/signedbyte/wordwrap/IMULCF/starcursor/leadingzero/actualSSfarreturn diagnostics only; originalinstructioncomparison separate, noformatter/format/caller/bounds/core/session/fidelity closure."
+}

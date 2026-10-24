@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_view_limits_v2.cmd",
+    "sha256": "62a52dc007356f814c9ffd2adabc5ef904cabdff67830a09d9971f6a65ca260b"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_view_limits.c",
+      "sha256": "ae124be461d0faaa2b3ac1329736042b5257cafa756038e79e46e5e15bdb89bb"
+    },
+    {
+      "path": "src/recovered/td2ega_view_limits.h",
+      "sha256": "88e042ea24927f2704b933584da16a4e053a03bace283a30e9693783d42d2934"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/view-limits-repro-v2/td2ega_view_limits.dll",
+      "sha256": "96572b807f038e642642e74e34e2fd01b98e766ddf5a177059db69ce356b9b65",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/view-limits-repro-v2/td2ega_view_limits.obj",
+      "sha256": "2273d52d6a187ad05fc5a975ec06bbafb52688822ea1b039a4e8cefac19501ff",
+      "bytes": 8086
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/view-limits-build-v2.log",
+    "sha256": "09a0f39bc95519ccee8a0e844f4db78e0156eca12a974756877673081c92e915"
+  },
+  "limit": "Complete2542+actual268A/standalone268A, all256flagbytes, signedowner/limit/zero/highbit/wrapadjustments, currentDS selectors andorderedinput-outputaliases, returnedGPR/BP/CFIFDF/plainnearRET compared. Finishedbounds0..80 checked, 2C2Aownerwriter notnormalized. No actualcaller/producer/SS-DS/tablegeometry/resource/IRQ/renderer/core/game/fidelity; native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000091",
+    "FN-EGA-000092"
+  ],
+  "failed_setup_attempt": [
+    {
+      "path": "tools/compile_view_limits.cmd",
+      "sha256": "d96805adab0b484543a8cf4e00be0ed4bf8003bb59dbf71b2809e7cf82f53a35"
+    },
+    {
+      "path": "analysis/logs/view-limits-build-v1.log",
+      "sha256": "7097e5b14fdec29bacd956cade4b0a8059a29aa1b9d716e0db89061bb698e207"
+    }
+  ]
+}

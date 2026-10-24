@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 43,
+  "script_sha256": "3593c50aba2a659c079d4b8c4d71a5c73511c190d9d33730956816440fa75fd8",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5e81c5698fc6c8335e26983bd4da1a5eb943b2a7c23eebeb22f6775ed863cefa",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_point_update.py",
+      "sha256": "e65ef73c30ed93dbf86a0fc72ab253e7bdc7186a4cf3bca7d4607ee17b86801b"
+    }
+  ],
+  "limits": "Native3AB8/fullSS/signedSUB-JGE-SAR5/equality-cachewrite-before-frames/cursorstate-savedSI-controlaliases/actualBA3C-old-newframes/globalCALL-eventlimits/nearRET-CF-ZF/childqualification only. Originalcomparison/staticproofs separate. RawRAMdeviceprofile/no hardwarelatches-renderer/allwriters-coordinatebounds-storage-lifetime-exclusion/CPU-A20/core/resource/CGA/session/fidelity admission."
+}

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "scope": "Exact input-pollv1/input-updatev2 sources/recipes/validators andfrozenreceipts beforeexplicitBIOSreturnedIFDF. Olderadapters admitpreservingIFDF only, notinstalled69B7 AH1IF1.",
+  "files": [
+    {
+      "original_path": "src/recovered/td2ega_input_poll.c",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/td2ega_input_poll.c",
+      "sha256": "344258fbf46e0ba22584e320458b11831998746405e74e54a96a76713189905b",
+      "bytes": 4460
+    },
+    {
+      "original_path": "src/recovered/td2ega_input_poll.h",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/td2ega_input_poll.h",
+      "sha256": "cbd49e98cd723977eef2e8f14f4b4bb28cdb1563d095220fb30ba61878506118",
+      "bytes": 1968
+    },
+    {
+      "original_path": "src/recovered/td2ega_input_update.c",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/td2ega_input_update.c",
+      "sha256": "147b869baf042b9c503f97961f1b2c88934d8d4d9aade70af41fd4ed4ae28bc5",
+      "bytes": 4461
+    },
+    {
+      "original_path": "src/recovered/td2ega_input_update.h",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/td2ega_input_update.h",
+      "sha256": "efb0d3f39dbf358159df52b878087f89a38ae8f4e73f776b62be0fc4d2b3f442",
+      "bytes": 1145
+    },
+    {
+      "original_path": "tools/validate_input_poll.py",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/validate_input_poll.py",
+      "sha256": "6e1125b558ce844cc97b91facfd7bf7201e6b9f2710420a477545fae51159bda",
+      "bytes": 14150
+    },
+    {
+      "original_path": "tools/validate_input_update.py",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/validate_input_update.py",
+      "sha256": "f19d6147b40b199759f14b75c7971ae19eaa90763f3a162713b9432fdb4886d6",
+      "bytes": 16039
+    },
+    {
+      "original_path": "tools/compile_input_poll.cmd",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/compile_input_poll.cmd",
+      "sha256": "9721cfbc22d399bff6d6ff291ba97502c48ad5806842b2b1c53a940206f28847",
+      "bytes": 749
+    },
+    {
+      "original_path": "tools/compile_input_update.cmd",
+      "archived_path": "analysis/history/bios-preserved-flags-v1/compile_input_update.cmd",
+      "sha256": "cbb96c37e70849c91e67cf66953605eb29cf65ddc668be218d64495d49a3c011",
+      "bytes": 931
+    }
+  ],
+  "evidence_records": [
+    {
+      "path": "docs/recovery/evidence/td2ega-input-poll-build-v1.json",
+      "sha256": "aa0d8703849e8fb2a26291ae71f1a4198f3d4ce67626461ce5c35cc2a97eceab"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-poll-validation-v1.json",
+      "sha256": "afcee41379e25c0b3bd7c72c5fb452ce2002117b713201a29a987c398999f4d2"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-build-v2.json",
+      "sha256": "3de61a8c0258e28413aff12b03d867e699f0d8d7824fefe2374dfef85b851da5"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-validation-v2.json",
+      "sha256": "56f38e3c3a0495c819635bfd432e40fa7647b47e08a8177ed4d831a49bbbfeb0"
+    }
+  ],
+  "limits": "Historicalcode/build/comparison custody, no newbehavior ordevice/gameacceptance."
+}

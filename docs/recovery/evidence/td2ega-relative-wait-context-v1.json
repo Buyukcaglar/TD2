@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "c135544fde5cb94fda240a2354b510414634aea877ea6d308ee4f82039f9fc6b",
+  "instruction_observations": [
+    {
+      "site": "06C9:C692",
+      "bytes": "fa",
+      "text": "cli "
+    },
+    {
+      "site": "06C9:C693",
+      "bytes": "a1905e",
+      "text": "mov ax, word ptr [0x5e90]"
+    },
+    {
+      "site": "06C9:C696",
+      "bytes": "8b16925e",
+      "text": "mov dx, word ptr [0x5e92]"
+    },
+    {
+      "site": "06C9:C69A",
+      "bytes": "fb",
+      "text": "sti "
+    },
+    {
+      "site": "06C9:C69B",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:C6C5",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:C6C6",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "06C9:C6C8",
+      "bytes": "83ec04",
+      "text": "sub sp, 4"
+    },
+    {
+      "site": "06C9:C6CB",
+      "bytes": "9a92c6c906",
+      "text": "lcall 0x6c9, 0xc692"
+    },
+    {
+      "site": "06C9:C6D0",
+      "bytes": "034606",
+      "text": "add ax, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:C6D3",
+      "bytes": "135608",
+      "text": "adc dx, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:C6D6",
+      "bytes": "8946fc",
+      "text": "mov word ptr [bp - 4], ax"
+    },
+    {
+      "site": "06C9:C6D9",
+      "bytes": "8956fe",
+      "text": "mov word ptr [bp - 2], dx"
+    },
+    {
+      "site": "06C9:C6DC",
+      "bytes": "9a92c6c906",
+      "text": "lcall 0x6c9, 0xc692"
+    },
+    {
+      "site": "06C9:C6E1",
+      "bytes": "3b56fe",
+      "text": "cmp dx, word ptr [bp - 2]"
+    },
+    {
+      "site": "06C9:C6E4",
+      "bytes": "72f6",
+      "text": "jb 0xc6dc"
+    },
+    {
+      "site": "06C9:C6E6",
+      "bytes": "3b46fc",
+      "text": "cmp ax, word ptr [bp - 4]"
+    },
+    {
+      "site": "06C9:C6E9",
+      "bytes": "72f1",
+      "text": "jb 0xc6dc"
+    },
+    {
+      "site": "06C9:C6EB",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "06C9:C6ED",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:C6EE",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:0301",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:C6C5"
+    },
+    {
+      "owner": "1769:000E",
+      "site": "1769:01BD",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:C6C5"
+    }
+  ],
+  "caller_instruction_view": [
+    {
+      "site": "16FC:02F3",
+      "bytes": "9a909cc906",
+      "text": "lcall 0x6c9, 0x9c90"
+    },
+    {
+      "site": "16FC:02F8",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "16FC:02FB",
+      "bytes": "ff760a",
+      "text": "push word ptr [bp + 0xa]"
+    },
+    {
+      "site": "16FC:02FE",
+      "bytes": "ff7608",
+      "text": "push word ptr [bp + 8]"
+    },
+    {
+      "site": "16FC:0301",
+      "bytes": "9ac5c6c906",
+      "text": "lcall 0x6c9, 0xc6c5"
+    },
+    {
+      "site": "16FC:0306",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "16FC:0309",
+      "bytes": "b8be00",
+      "text": "mov ax, 0xbe"
+    },
+    {
+      "site": "1769:01AF",
+      "bytes": "9a1879c906",
+      "text": "lcall 0x6c9, 0x7918"
+    },
+    {
+      "site": "1769:01B4",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "1769:01B7",
+      "bytes": "b80400",
+      "text": "mov ax, 4"
+    },
+    {
+      "site": "1769:01BA",
+      "bytes": "99",
+      "text": "cdq "
+    },
+    {
+      "site": "1769:01BB",
+      "bytes": "52",
+      "text": "push dx"
+    },
+    {
+      "site": "1769:01BC",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "1769:01BD",
+      "bytes": "9ac5c6c906",
+      "text": "lcall 0x6c9, 0xc6c5"
+    },
+    {
+      "site": "1769:01C2",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "1769:01C5",
+      "bytes": "e98600",
+      "text": "jmp 0x24e"
+    }
+  ],
+  "explicit_caller_DS_changes": [],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "C6C5 takes raw low/high SS argument words, adds them with ADD/ADC to the first C692 pair and writes real SS locals low then high. Later high and low guards are both required; this is not unsigned lexicographic comparison.",
+    "Actual C692 CLI/read DS5E90/read DS5E92/STI/plain RETF consumes its real far frame, leaving IF1 regardless of incoming IF; CF and DF survive the reader. No synthetic counter-return stub replaces it.",
+    "16FC:0301 forwards caller SS BP+8/BP+A raw words. 1769:01BD sets AX4 then unprefixed99 word CWD gives DX0 and pushes high/low. Both postcall ADDSP4 instructions redefine arithmetic FLAGS before any branch; plain root RETF consumes only its four-byte far frame.",
+    "Current DS is inherited and used by C692. Explicit caller DS instructions alone cannot prove transitive called-helper preservation, writer domains, IRQ exclusion or lifetime. No fixed global DS, source C type or clock unit is assigned.",
+    "Physical086C anomaly belongs to a separate source; no timer frequency, BIOS tick mapping or real IRQ delivery inferred."
+  ],
+  "limits": "Static byte operands and two direct caller windows only. Transitive DS/SS context, all counter writers, interrupt/reentry lifetime, FLAG needs outside these windows, execution-write exclusion, actual parent bodies and core integration remain open. No real DOS/device/session/gameplay/fidelity acceptance."
+}

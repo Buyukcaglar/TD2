@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "49886369f1590f76855910e73bc9dfd810f01799c17e899b89c021e1fd949761",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3e176792cf1c4796ed28f2a34e448ef2b22d45d5b034dbec9251c6f3ceaada21",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_draw_sequence.py",
+      "sha256": "36564079d9c47b3c281523b676776f1b5b04fbf9b6e5fac84fb964eb59428f61"
+    }
+  ],
+  "limits": "Two native-only invalid inputs beforeeffects. No original error equivalence, actualdrawing/IRQ/core/game/fidelity."
+}

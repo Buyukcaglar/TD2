@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-13",
+  "scope": "Recovery evidence/custody/dependency audit; not a game runtime or fidelity test.",
+  "result": "pass",
+  "problems": [],
+  "original_files": 250,
+  "original_hashes_unchanged": true,
+  "original_mtimes_attributes_unchanged": true,
+  "task_counts": {
+    "complete": 9,
+    "in_progress": 1,
+    "pending": 53
+  },
+  "active_requirements": 18,
+  "json_files_parsed": 64,
+  "local_links_checked": 82,
+  "function_records_validated": 439,
+  "resource_records_validated": 250,
+  "differential_vectors": 131584,
+  "private_paths_ignored": [
+    "reference/dos/TD2EGA.EXE",
+    "analysis/derived/td2ega-v1/TD2EGA.unpacked.exe",
+    "analysis/ghidra-projects/TD2EGA.gpr",
+    "analysis/build/byte-ring-repro/td2ega_byte_ring.dll"
+  ],
+  "staged_file_count": 0,
+  "audit_tool_sha256": "bf0da48436057525d34717c1758892907f5f64ae3dd15944aa07cfe7cf5044c2",
+  "separate_gates": {
+    "phase0": "passed",
+    "EGA_unpack": "passed",
+    "C_helper": "compiled and differential-passed only",
+    "complete_EGA_core": "pending",
+    "DOS_game_session": "not exercised",
+    "visual_audio_fidelity": "not established"
+  }
+}

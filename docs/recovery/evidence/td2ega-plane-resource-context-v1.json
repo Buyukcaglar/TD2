@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "414743e028ebfa09628fbe1e11c8f8b5d01e60cd6303cc399fef1c935d4f1f4d",
+  "spans": [
+    {
+      "id": "RS-DOS-000255",
+      "segment": 6031,
+      "offset": 21544,
+      "length": 72,
+      "sha256": "9d1ffc146931e986f55c2c520e095a4468af56502b2753ebf5da2e83630e2afc",
+      "consumers": [
+        "FN-EGA-000076",
+        "FN-EGA-000094"
+      ],
+      "observation": "Four16byte currentDS palette rows5428/5438/5448/5458 with BX&15; SS-default mask bytes at BP+5468. Initializedprincipal-group72byte span is candidate only for matching DS/SS views; BP/domain/allwriters/aliases remainopen."
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:0C27",
+      "instruction": "mov word ptr [0x9c0], ax"
+    },
+    {
+      "site": "06C9:0C2A",
+      "instruction": "and bx, 0xf"
+    },
+    {
+      "site": "06C9:0C2D",
+      "instruction": "mov cl, byte ptr [bx + 0x5428]"
+    },
+    {
+      "site": "06C9:0C35",
+      "instruction": "mov cl, byte ptr [bx + 0x5438]"
+    },
+    {
+      "site": "06C9:0C3D",
+      "instruction": "mov cl, byte ptr [bx + 0x5448]"
+    },
+    {
+      "site": "06C9:0C45",
+      "instruction": "mov cl, byte ptr [bx + 0x5458]"
+    },
+    {
+      "site": "06C9:0C56",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:0C5E",
+      "instruction": "mov bp, word ptr [0x9be]"
+    },
+    {
+      "site": "06C9:0C62",
+      "instruction": "mov al, byte ptr [bp + 0x5468]"
+    },
+    {
+      "site": "06C9:0CDE",
+      "instruction": "mov word ptr [0x9be], si"
+    },
+    {
+      "site": "06C9:0CE9",
+      "instruction": "mov word ptr [0x9be], si"
+    },
+    {
+      "site": "06C9:0CFA",
+      "instruction": "add sp, 2"
+    },
+    {
+      "site": "06C9:0CFD",
+      "instruction": "jmp word ptr [0x702]"
+    },
+    {
+      "site": "06C9:2865",
+      "instruction": "mov word ptr [0x9be], dx"
+    },
+    {
+      "site": "06C9:2869",
+      "instruction": "mov word ptr [0x9c0], dx"
+    },
+    {
+      "site": "06C9:1F9C",
+      "instruction": "mov word ptr [0x702], 0x28bd"
+    }
+  ],
+  "serialized_row_index_argument": "284FclearsDS9BE; C17recordsindex((AX-1)&7)+1 andresets8to0, preserving bounded0..7 acrossordinary/nonlocal28BDrowcalls absentotherwriters. Actualalias/IRQ/allwriter/SSview proof remainsopen. StandaloneC17incomingBPsource9BE isnotuniversallybounded.",
+  "limits": "Static72bytecandidate/operand/defaultsegment review only; palettes currentDS, BPmaskdefaultsSS. Principalimagecandidate notproofactualDS=SS/tableownership/lifetime/IRQexclusion. No originalvaluesexported/fullresourcedecode/actualEGAdevice/renderer/session/core/game/fidelity. LaterresourcefedchecksP2-01/06/09 andP3-05 remainseparate."
+}

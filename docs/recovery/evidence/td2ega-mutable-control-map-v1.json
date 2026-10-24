@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "original_image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "b047caa4d0abbcb2daeceec01dfd631b57e025c8516d8d641ff1dead63182c82",
+  "source_trace": "docs/recovery/evidence/td2ega-main-mutator-validation-v1.json",
+  "source_trace_sha256": "d4863ec0d19cd51f767f09874ce48db55689e8772fdf27e47435987ff76b4624",
+  "reviewed_explicit_indirect_mechanisms": 44,
+  "additional_saved_near_return_mechanisms": 1,
+  "saved_near_return": {
+    "site": "13A8:0162",
+    "targets": [
+      "13A8:006E",
+      "13A8:007B"
+    ],
+    "preconditions": "Onlythetwo002E callsinto007E, CS2Csavedword and480fencedmutator cases. RETtargets alreadyrepresentedbyconservativecallerfallthrough; notfollowedashelper-bodytail."
+  },
+  "registered_union_entries": 439,
+  "states": [
+    {
+      "name": "initial_image",
+      "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+      "ledger": "analysis/flow/mutable-states-v1/initial_image/direct-flow.json",
+      "ledger_sha256": "5542f4a7a622eab943016cca3499104c160ad5b0dcb6ae471710689a2efd7a23",
+      "function_candidates": 439,
+      "instruction_locations": 35534,
+      "syntactic_code_bytes": 92274,
+      "overlap_byte_count": 0,
+      "patches": []
+    },
+    {
+      "name": "prepared_high_drive",
+      "image_sha256": "e0b08302409b8a2ad03e4a60989e794cd7063335df48c50a93fef173cce9d067",
+      "ledger": "analysis/flow/mutable-states-v1/prepared_high_drive/direct-flow.json",
+      "ledger_sha256": "62d97f801e4641e7e1cead36002fa3def9493c7c90548d3c43d8f15fad3a3371",
+      "function_candidates": 439,
+      "instruction_locations": 35534,
+      "syntactic_code_bytes": 92272,
+      "overlap_byte_count": 0,
+      "patches": [
+        {
+          "module_offset": 34951,
+          "old_byte": 248,
+          "new_byte": 248
+        },
+        {
+          "module_offset": 44762,
+          "old_byte": 118,
+          "new_byte": 118
+        },
+        {
+          "module_offset": 44805,
+          "old_byte": 118,
+          "new_byte": 118
+        },
+        {
+          "module_offset": 44861,
+          "old_byte": 119,
+          "new_byte": 119
+        },
+        {
+          "module_offset": 80699,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 80852,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 81498,
+          "old_byte": 33,
+          "new_byte": 144
+        }
+      ]
+    },
+    {
+      "name": "prepared_low_drive",
+      "image_sha256": "fa10bfcfc75f186b1a2638593599fa583ce4b8629cd325a29d6cab459cc766fe",
+      "ledger": "analysis/flow/mutable-states-v1/prepared_low_drive/direct-flow.json",
+      "ledger_sha256": "0cc6b457885ddd942be6476698547254c2e109c878480d09ae89266ebfb0522f",
+      "function_candidates": 439,
+      "instruction_locations": 35530,
+      "syntactic_code_bytes": 92262,
+      "overlap_byte_count": 0,
+      "patches": [
+        {
+          "module_offset": 34951,
+          "old_byte": 248,
+          "new_byte": 203
+        },
+        {
+          "module_offset": 44762,
+          "old_byte": 118,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 44805,
+          "old_byte": 118,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 44861,
+          "old_byte": 119,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 80699,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 80852,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 81498,
+          "old_byte": 33,
+          "new_byte": 144
+        }
+      ]
+    }
+  ],
+  "limits": "Three conservative code-state snapshots andone reconstructednear-return mechanism, notcomplete mutablegraph/transition/interrupt/caller-domain orportableEGA/CGA/runtime/fidelity acceptance. Initial-image no-conflict metrics cannotbeappliedtoallcode states."
+}

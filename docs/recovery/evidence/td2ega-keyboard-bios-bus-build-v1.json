@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_keyboard_bios_bus.cmd",
+    "sha256": "7f60b7cc7ecb6567d0f486949532811fb737e947fc3369d3aa289b75712523eb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_keyboard_bios_bus.c",
+      "sha256": "7c8848efd22617512725db9e645de13c7ad412cd6570c1ad404cae58ec747faf"
+    },
+    {
+      "path": "src/recovered/td2ega_keyboard_bios_bus.h",
+      "sha256": "4d03e3c0abaa75ecfb0d3ac28a80aab73ddf3ba083b0e44e770fa0ab59528d50"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/keyboard-bios-bus-repro/td2ega_keyboard_bios_bus.dll",
+      "sha256": "e76c859540553f48ef0e4dea1dc90b5d08702fbd140ae9b2781d8abb49e219d3",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/keyboard-bios-bus-repro/td2ega_keyboard_bios_bus.obj",
+      "sha256": "1d4c89c8ae2268314f4285b792139fd1fa1525ed44cdff19f93ad8879e13258b",
+      "bytes": 4482
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/keyboard-bios-bus-build-v1.log",
+    "sha256": "f646d341fe5c90e84fa001731a191cfce9cf38478fabf642550342ca3a02af24"
+  },
+  "limit": "AdditionalactualSS69B7/27sites/PUSHBX-PUSHDS-beforeprincipalDSread/orderedpendingword-clear-savedwords-actualreturnaliases/full1MiB20bitRAM/GPR-BP-CFIFDF-normalZF. AH1ORAX/IF1/RETF2 ignoresstackFLAGS; othersIRETrestoreactualSSFLAGSword. Native5beforeRETF2SP>FFFC orIRETSP>FFFA isqualifiedanalysisboundary/nohistoricalfault-returnclaim. OtherFLAGS/traps/actualINT-IRQdelivery/PIC/installerownership/caller-allwriters-lifetime-exclusion/whole420A-403B-core remainopen; oldAPI-C-DLLreceiptsfrozen/sameentrycountedonce. NoDOSsession/device/renderer/audio/fullresources/complete-state-machine/gameplay/fidelity;physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000160"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-keyboard-bios-bus-context-v1.json",
+    "sha256": "a160d5b3cb5fe64149266ccd5e0e4fbef50bfb52963a6215b5699c3f05e3d5cf"
+  }
+}

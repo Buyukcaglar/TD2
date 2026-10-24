@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sample_adjust.cmd",
+    "sha256": "376799bf05f6cb6244a99ac396fb9b58e7b3963dd6e0b664c343f75cbf471504"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sample_adjust.c",
+      "sha256": "d8e9e7a14bb38872c2e0ec5eb1636555114022f88569d6ef3ff23048a4c706e9"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.h",
+      "sha256": "0c913a5b7eff7f98859d0f9117520a6704ae538f9c44105dfaf5656125bfced9"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sample-adjust-repro/td2ega_sample_adjust.dll",
+      "sha256": "2930ba1da6a04494d6464dbead7428e44bdb9974a4ef1a3146f485e361211915",
+      "bytes": 108544
+    },
+    {
+      "path": "analysis/build/sample-adjust-repro/td2ega_sample_adjust.obj",
+      "sha256": "c91a7ec971a4f701fa8dda98ff7c9875ae16153913c0b1094c9eaa2a9884eebf",
+      "bytes": 11101
+    },
+    {
+      "path": "analysis/build/sample-adjust-repro/td2ega_control_bus.obj",
+      "sha256": "9f23d35537a4c8ef9f62553701faf14e02e927f41062889f49a43f006acb56eb",
+      "bytes": 6547
+    },
+    {
+      "path": "analysis/build/sample-adjust-repro/td2ega_byte_ring.obj",
+      "sha256": "b70a3eb03026048154b87e9285f13436eadad70dbd099d46e9867b774c03b7f7",
+      "bytes": 696
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sample-adjust-build-v1.log",
+    "sha256": "5ad641ae0004178f45cacac6fffa790a162372cd9c93cf369fe6361fa61c8ada"
+  },
+  "limit": "Actual4A2Enear/fullSS/actual45FC-4612/fullSS7977CLI-pointer-store-STI-farRET/actual780Ecursor-byte-Ctransform-fullSS/IF1ringCALL/rawsample-signedALgate/wrapped-counter-and-state-arithmetic/raw256late-indexwriters/near-farreturnaliases/globalouter-controlCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. Serializednoasyncdelivery/noIRQexclusion-reset-sharedsource-lifetime/core/RNG-purpose proof. ConditionalwriterdomainsincludeRS271andinitializednear-jumptableRS270-272-273; no globalvalidselector/allwriters-ownership closure. No DOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity admission; physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000381"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-sample-adjust-context-v1.json",
+    "sha256": "9591215737b6dcb68f719b5d40ff68f1baa2f76a9b4314cc3675a48fba7d3774"
+  },
+  "prior_validation_refinement": {
+    "path": "analysis/history/sample-adjust-validation-refinement-v2.json",
+    "sha256": "2763cdaf301e6644d998e929776a951af81fafa5765689c6e82823d6cffb1d9f"
+  },
+  "prior_native_expectation_failure": {
+    "path": "analysis/history/sample-adjust-native-attempt-v1.json",
+    "sha256": "c76cbf25f7d60b184e4da90ad159e0c16039856231a546566b138ffaa2d52ba0"
+  }
+}

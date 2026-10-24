@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 19,
+  "script_sha256": "b231a96a4ae7f50f6c06ec122bcb946129c750df55db8ceb837eb930b0b2767b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1eb701d66ef8b681e968d1dd7cd48604f1ca9e29cf7d3b4378494cbcc93cca1d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_block_adjust.py",
+      "sha256": "d7e5d7a1fcfded2c77dbcc0ba6c687f610d7168a9a9cc0053d402bd17aeed78d"
+    }
+  ],
+  "limits": "NativeinheritedBP/invalid/budgets/adapterfailure/twentyrows/sizecarry/17bitrounding/returnedSICF/metadata-nearframe diagnostics only. SyntheticDOSrequest notactualDOS, originalcomparison separate; allwriters/domain/caller/core/session/gameplay/fidelity open."
+}

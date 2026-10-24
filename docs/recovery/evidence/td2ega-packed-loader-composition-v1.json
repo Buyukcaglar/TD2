@@ -1,0 +1,1875 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "e54a4084fb2a8d8af5cccca84a7264268277ae80fcb11cee71191aefb5174937",
+  "ledger_sha256": "0a9bd3eea97513b9381f0436c4c366d6951fdba8d041c5851c4838ef5d6e183b",
+  "vectors": 48,
+  "original_instructions_executed": 47680,
+  "actual_helper_entries": [
+    "06C9:6AA2",
+    "06C9:6B02",
+    "06C9:6B97",
+    "06C9:6C6E",
+    "06C9:6D50",
+    "06C9:6FE8",
+    "06C9:7030",
+    "06C9:7083",
+    "06C9:70A3",
+    "06C9:7147",
+    "06C9:71B4",
+    "06C9:7C16"
+  ],
+  "cases": [
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 11,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 543
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 11,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 543
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 26,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 753
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 26,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 753
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 553
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 553
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 569
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 569
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 679
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 679
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 807
+    },
+    {
+      "load_segment": 4096,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 807
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 11,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1104
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 11,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1104
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 30,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 26,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24576,
+      "final_di": 8738,
+      "instructions": 1812
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 30,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 26,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24576,
+      "final_di": 8738,
+      "instructions": 1812
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1176
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1176
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24578,
+      "final_di": 8738,
+      "instructions": 1192
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24578,
+      "final_di": 8738,
+      "instructions": 1192
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24584,
+      "final_di": 8738,
+      "instructions": 1302
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24584,
+      "final_di": 8738,
+      "instructions": 1302
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24592,
+      "final_di": 8738,
+      "instructions": 1430
+    },
+    {
+      "load_segment": 4096,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24592,
+      "final_di": 8738,
+      "instructions": 1430
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 11,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 543
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 11,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 543
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 26,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 753
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 26,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 753
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 553
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 553
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 569
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 569
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 679
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 679
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 42405,
+      "final_di": 8738,
+      "instructions": 807
+    },
+    {
+      "load_segment": 14449,
+      "mode": "one_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 13,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 1
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 15420,
+      "final_di": 8738,
+      "instructions": 807
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 11,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1104
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 11,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1104
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 30,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 26,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24576,
+      "final_di": 8738,
+      "instructions": 1812
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 16,
+      "run_fixture": false,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 30,
+      "payload_sha256": "a76be11a5fcfa5302de6937a2cc5b16148a9f87530fd826ef497755c3035b37f",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 26,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24576,
+      "final_di": 8738,
+      "instructions": 1812
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1176
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 1,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 1
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24577,
+      "final_di": 8738,
+      "instructions": 1176
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24578,
+      "final_di": 8738,
+      "instructions": 1192
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 17,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "444074d5328d52b4e0036d37b1b6ea0a9fe3b0c96872d1157fbf01b6fdb2ce8d",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 2
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24578,
+      "final_di": 8738,
+      "instructions": 1192
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24584,
+      "final_di": 8738,
+      "instructions": 1302
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 127,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "026134f6117e45a37c5c2dc2f330bdd274c6dc087526b91ecec4d6dac9bb7346",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 8
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24584,
+      "final_di": 8738,
+      "instructions": 1302
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 165,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24592,
+      "final_di": 8738,
+      "instructions": 1430
+    },
+    {
+      "load_segment": 14449,
+      "mode": "two_pass",
+      "synthetic_output_bytes": 255,
+      "run_fixture": true,
+      "stack_fill_byte": 60,
+      "synthetic_input_bytes": 25,
+      "payload_sha256": "ae53ef4fa49739df77cfc1f4074418f77bb99b00713f097514c8b404e458fedf",
+      "metadata_helper_mocks": [
+        {
+          "entry": "06C9:5E8A",
+          "ax": 16
+        },
+        {
+          "entry": "06C9:5E1C",
+          "ax": 2
+        }
+      ],
+      "dos_service_mocks": [
+        61,
+        63,
+        62
+      ],
+      "actual_codec_returns": [
+        {
+          "entry": "06C9:7C16",
+          "ax": 13,
+          "dx": 0
+        },
+        {
+          "entry": "06C9:6B02",
+          "ax": 0,
+          "dx": 24576
+        }
+      ],
+      "final_ax": 0,
+      "final_dx": 24576,
+      "final_si": 24592,
+      "final_di": 8738,
+      "instructions": 1430
+    }
+  ],
+  "conclusion": "Synthetic onepass6B02 returns AX0/DXdestination. Twopass7C16->6B02 composes intermediateDX:AX bytecount, roundedparagraphmove, finalAX0/DXdestination. Uncached SI/DI popshift remains withactualcallees. DS=SS required for6B02 initialheadercopy intoSSlocals.",
+  "limits": "Only bounded synthetic literal/run andfixed3bit canonical-code fixtures, successful metadata/DOS service mocks. No supplied resource decoding, corpus/format acceptance, malformed/error/wrap coverage, real DOS session, fullcaller ownership, renderer/audio, gameplay orfidelity."
+}

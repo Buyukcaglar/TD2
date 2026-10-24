@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000181",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_filename.cmd",
+    "sha256": "7772a96961d5ec9ca3297bda0518834a04e7b9f5abc1df60be2077bc6b9aef50"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_filename.c",
+      "sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.h",
+      "sha256": "7f0342e6882eafdf84c8960c98584a0c315f16e1c33c0ed578342439a5bac79f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/filename-repro/td2ega_filename.obj",
+      "sha256": "91863c7f1afb3bdc45b423b3df54afec153e85c5b296ff01ec21ca6e8bbbff94",
+      "bytes": 735
+    },
+    {
+      "path": "analysis/build/filename-repro/td2ega_filename.dll",
+      "sha256": "4aedc4f686969152566483d1614611962564aec08bfe08faceda8ce55104f775",
+      "bytes": 102912
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/filename-build-v1.log",
+    "sha256": "cfc2c4860062ab33c89e5c3d5df6a59bfd737ac2afd424b1e5ea382a729d2aca"
+  },
+  "limit": "Recovered bounded filename algorithm compiled onWindowsx64 only; no fullcore, secondcompiler/host, filesystem or resourceformat implementation."
+}

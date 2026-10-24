@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "a7ec8758247661d6d967ee3c4871c8c5581bead42881ed0a7b15765fe6726143",
+  "spans": [
+    {
+      "id": "RS-DOS-000253",
+      "segment": 6031,
+      "offset": 21856,
+      "length": 258,
+      "sha256": "2996c7ca415d4ec163bce7f063a96b73761388bb896af54125d648b562fd1eee",
+      "consumers": [
+        "FN-EGA-000254",
+        "FN-EGA-000089"
+      ],
+      "observation": "129 little-endian words selected by abs(signedAL), including index128; meanings/units/writers open."
+    },
+    {
+      "id": "RS-DOS-000254",
+      "segment": 6031,
+      "offset": 9974,
+      "length": 150,
+      "sha256": "66a50f6f333e5e82631a771b95a3ef077968a19e383ca60eea2a374169b084fe",
+      "consumers": [
+        "FN-EGA-000089"
+      ],
+      "observation": "Three contiguous25-word arrays at26F6/2728/275A; SI0..48 step2, rawunsignedMUL/shift inputs, meanings/units/writers open."
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:21DD",
+      "instruction": "and al, 0x7f"
+    },
+    {
+      "site": "06C9:21EB",
+      "instruction": "mov ax, word ptr [bx + 0x347e]"
+    },
+    {
+      "site": "06C9:2205",
+      "instruction": "mov ax, word ptr [bx + 0x3480]"
+    },
+    {
+      "site": "06C9:221E",
+      "instruction": "lcall 0x13a3, 0x38"
+    },
+    {
+      "site": "06C9:222E",
+      "instruction": "mul word ptr [si + 0x2728]"
+    },
+    {
+      "site": "06C9:2236",
+      "instruction": "mul word ptr [si + 0x2728]"
+    },
+    {
+      "site": "06C9:2275",
+      "instruction": "lcall 0x13a3, 0x38"
+    },
+    {
+      "site": "06C9:2285",
+      "instruction": "mul word ptr [si + 0x26f6]"
+    },
+    {
+      "site": "06C9:2297",
+      "instruction": "mul word ptr [si + 0x26f6]"
+    },
+    {
+      "site": "06C9:22A2",
+      "instruction": "mov cx, word ptr [si + 0x275a]"
+    },
+    {
+      "site": "06C9:23D0",
+      "instruction": "cmp word ptr [bx + 0x37a6], 0"
+    },
+    {
+      "site": "06C9:23FA",
+      "instruction": "idiv bp"
+    },
+    {
+      "site": "06C9:23FE",
+      "instruction": "mul word ptr [si + 0x275a]"
+    },
+    {
+      "site": "06C9:2468",
+      "instruction": "cmp si, 0x32"
+    },
+    {
+      "site": "13A3:003A",
+      "instruction": "cwde"
+    },
+    {
+      "site": "13A3:0043",
+      "instruction": "neg bx"
+    },
+    {
+      "site": "13A3:0045",
+      "instruction": "shl bx, 1"
+    },
+    {
+      "site": "13A3:0047",
+      "instruction": "mov ax, word ptr [bx + 0x5560]"
+    }
+  ],
+  "conditional_DAT_contract": "CurrentDS rawroute pointer2C26,128maskeddescriptor records347E..367D and37A6 sentinel/interpolation nodes fallwithin7774 DATcopy346A..52C7 whenactualDS/source/caller relation holds. No actualfile schema/bounds/lifetime admission.",
+  "limits": "Static initializedspans/instruction consumer bounds only; original tablevalues/payload notexported, no trigonometric/physicalmeaning assigned. Actualwriters/caller/listvalidity/DS-SS ownership andresourcefedgraphics pendingP1 plusP2-01/05/09/P3-05. No full resource decode, renderer/IRQ/session/core/game/fidelity."
+}

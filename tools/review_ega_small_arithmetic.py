@@ -1,0 +1,19 @@
+"""Pin raw record/word-divide/state operands and direct caller candidates."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(image).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());targets={'06C9:5C30','0143:019E','06C9:5A25','06C9:5C5A'};md=Cs(CS_ARCH_X86,CS_MODE_16);observations=[]
+    for f in g['functions']:
+        if f['entry'] not in targets:continue
+        s=int(f['entry'][:4],16)
+        for ip in sorted(f['instructions']):
+            i=next(md.disasm(image[16*s+ip:16*s+ip+15],ip,count=1));observations.append({'owner':f['entry'],'site':f'{s:04X}:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str})
+    expected={(0x6c9,0x5c30):'d1e9',(0x6c9,0x5c42):'1bda',(0x6c9,0x5c55):'e2e3',(0x143,0x1b7):'99',(0x143,0x1bb):'f7f9',(0x143,0x1c9):'f7f9',(0x6c9,0x5a64):'894502',(0x6c9,0x5a67):'8b04',(0x6c9,0x5c68):'f7e6',(0x6c9,0x5c79):'f7f7'}
+    for (s,ip),raw in expected.items():assert image[16*s+ip:16*s+ip+len(raw)//2].hex()==raw
+    callers=[{'owner':f['entry'],**c} for f in g['functions'] for c in f['calls'] if c['target'] in targets];unique=sorted({(c['site'],c['target']) for c in callers});dep='docs/recovery/evidence/td2ega-sign-extension-context-v1.json';assert json.loads((ROOT/dep).read_text())['result']=='pass';record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'validator_dependencies':[{'path':dep,'sha256':hashlib.sha256((ROOT/dep).read_bytes()).hexdigest()}],'instruction_observations':observations,'direct_caller_candidates':callers,'unique_direct_sites':[{'site':s,'target':t} for s,t in unique],'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'facts':['5C30 shifts incomingCX right3 then do-once scans eight-byte records at currentDS:SI. LowwordSUB feeds highwordSBB; signednegative correction usesDS380D, unsigned <=best selects latest tie. SI+8 sets finalCF, LOOPzero=65536, SI=DI, BP clobbered. Nearreturn.','0143:019E incrementsDS02DE and83C8, signedclamps02DEat200 thenwordCWD/IDIV20 andaddquotientto02E0. SecondwordIDIVby83CA mayfaultzero/overflow; remainderzero increments/clamps83CCagainst83CE. Farreturn; subsequentdefinedADD/OR/CMP establishesCF, undefinedIDIVflags unadmitted.','5A25 tests bothpairhighwords nonzero, lowSUB/highSBB thenDEC/XORsigngate, rawDX+180/-360 signedguards. Selects sourcehigh+1 or-1 bysignedBX, writesdestinationhigh before rereading sourcelow andwritingdestinationlow. CF1success/0reject, nearreturn.','5C5A rawBX comparedwithDS380F+3B42; SI*SI unsignedwordMUL, highwordtripled asDX:AX, DIVDI mayfaultzero/overflow, quotientSHR1 thenremainingdistancecompare. RejectwritesDS3344zero andAL1 preservingAH; acceptAX0. Nearreturn.'],'limits':'Static instruction and caller candidate/unique-site review only. Raw field/tableunits/types unassigned; actualcaller/otherFLAGS/bounds/writers/lifetime/exclusion/core/device/session/game/fidelity open. Word99width from rawprefix/context, no Capstone synonym-based32bit assumption.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','sites':len(observations),'caller_records':len(callers),'unique_caller_sites':len(unique)}))
+if __name__=='__main__':main()

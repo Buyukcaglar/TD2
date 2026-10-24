@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 39,
+  "script_sha256": "180514fbb0f2ba2365d09a9de589d3f0d69d0b3ab600031c3d45a36152fb0786",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "048bf3820693fce02c55c6ce406851ca11950a9999a8514e3adc6aca673edc91",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_discard_wrappers.py",
+      "sha256": "3aef91f3311ea21dbf6a23e99d8262ac88e46c0ea531094bb5214b46f0b18417"
+    }
+  ],
+  "limits": "Nativeinterfaces/actual782C-7490/fullSS/globalCALL-search-trimbudgets/entry1firstargsretained-ADDSP8/firstfatalprefix/threelevelreturnaliases/currentCSwordaliases/IFDF/finalcarry/child-rootpreRETqualifications only. Originalcomparison/staticproofsseparate; no callerwriters-storage-lifetime-exclusion/CPU-A20/fatalcleanup/core/resources/session/fidelity acceptance."
+}

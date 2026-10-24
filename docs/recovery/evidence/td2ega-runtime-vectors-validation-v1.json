@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000262"
+  ],
+  "vectors": 15360,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "daa36ef21b15d56ec162d5844616fefacfa4a7867ab2d0d4ede2a9df6a1799be",
+  "source_sha256": "56b94e2cacbb841971315d2cf8f66eeaf31e797703427e39c47dc8188e14be94",
+  "validator_sha256": "8fc05d37aaa0c6895ba2e555e35527f4b2ccf3bd31fbf9c42fbcdfbdf9d7aa88",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_runtime_message.py",
+      "sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210"
+    },
+    {
+      "path": "tools/validate_finalizer_list.py",
+      "sha256": "8e94c103da8b9b4c447e54c0befd95da859f109b7648ccbdf5ef8058820ab553"
+    }
+  ],
+  "original_instructions_executed": 132488,
+  "instruction_sites_in_fence": 18,
+  "instruction_sites_exercised": 18,
+  "fixture_coverage": {
+    "budget_prefix": 7736,
+    "DOSservices": 8656,
+    "callbacks": 9600,
+    "synthetic_callback_RETF_instructions": 9600,
+    "bus_write_events": 32392,
+    "service_write_events": 8192,
+    "raw_root_returns": 1392,
+    "minimumSP16_cases": 3072,
+    "stack_global_alias_cases": 4608,
+    "root_near_return": 5512,
+    "raw_child_return": 2112
+  },
+  "limits": "Actual05E0optionalDS7076farcallback/savedDS/LDS6D89/DOS2500/restoredDSguard6DC6/AL6DC7/LDS6DC8/DOS25/rootnearRET. Fullbus/actualSSframes/GPR/BP/CFIFDF/serviceABI/actualcontrol, orderedpost-PUSHaliases andsavedDSmutations retained. SyntheticDOS/callback body/RETF andrealINT/vector/IRQ delivery separate. Nativebudget/adapter/rawchildreturns distinct. Actualcaller/saved-vectorwriters/targets/lifetime/exclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity open."
+}

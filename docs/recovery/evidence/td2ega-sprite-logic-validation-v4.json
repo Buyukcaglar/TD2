@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000208",
+    "FN-EGA-000232",
+    "FN-EGA-000440"
+  ],
+  "vectors": 23568,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a2ef462642769ec5e3c69bb2b61286e09a50412d5b6eba2a4a22fa60467f69bb",
+  "source_sha256": "81ac00e5aea7bf9920917c42a52eebf899d3d78e06b9231a331bbd36f4155f11",
+  "validator_sha256": "0815a43b618fa6e69230dacc8b873280a86bb38cd0a869e996da6138c22cc93c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_mask_span.py",
+      "sha256": "da92ba339aa226cad6ac24eb6155ccb8f40acd1833603b9fba78c48b16f0e72a"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 11089922,
+  "owned_sprite_instruction_sites": 1988,
+  "owned_sites_exercised": 1988,
+  "near_helper_sites_exercised": 306,
+  "unexercised_owned_sites": [],
+  "fixture_coverage": {
+    "entry": 11136,
+    "root_arg_words_2": 14304,
+    "normal": 19786,
+    "mask_calls": 2784,
+    "OUT_bytes": 160104,
+    "device_reads": 352010,
+    "device_writes": 330966,
+    "byte_writes": 1003096,
+    "prefix": 3686,
+    "kernel": 9264,
+    "unknown": 96,
+    "transfer": 96,
+    "entry_top": 1536,
+    "entry_wide": 1536
+  },
+  "limits": "Threeentries7DBC/A718/BB08twoSSwords/headercoords plusstandalonelogic/copykernels, materializedSSsaved/local/near-returnframes/fullbus/GPR/BP/CFIFDF/farRETF4, byteAL-MUL/crop/plane-selection/currentDSversusSS/CS dispatch/actualnearRAM-device maskhelpers andexplicitOUT/MMIO traces matched. Nativeworkprefix andrawunsupportedindirectboundary distinct. Fixedentryflags1/2/4 choose distinct high-mask calls including actual839C/ADF4; maskhelpers separatelyvalidated. Syntheticflatdevicebus/copysourcefixtures only, noactualspritecorpus/allwriter/bounds/IRQ/device/renderer/state/core/game/fidelity acceptance; noallcaller/writer/alias/lifetime/exclusionclosure. Native diagnostics separate."
+}

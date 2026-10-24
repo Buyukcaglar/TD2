@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 3,
+  "script_sha256": "6425ed391412701b57370d59935b1d49e2e9f6767ec1d24550bebf38def2ea1d",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7f24d74e3841710c721d1e00bc81ca9bac6002b5707352f7d7776e5683e65ed3",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_mask_span.py",
+      "sha256": "da92ba339aa226cad6ac24eb6155ccb8f40acd1833603b9fba78c48b16f0e72a"
+    }
+  ],
+  "limits": "Three native-only invalidentry/adapter/flagchecks, separatefromoriginalerror equivalence. No actualdevice/renderer/IRQ/core/game/fidelity."
+}

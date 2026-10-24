@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_table_scalar.cmd",
+    "sha256": "f27e66dcc1aeff7de97ba3892ff883199777ea40d53bb86d650c79dab98956eb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/table-scalar-repro/td2ega_table_scalar.dll",
+      "sha256": "ad6cbe7c76c2089bad9aad69a5684391d4556817c78219e861b35436ec1c9e5f",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/table-scalar-repro/td2ega_table_scalar.obj",
+      "sha256": "c91e71e569189123c2824c318e962b93be968643e3b0af846ebf48c90e6bb9bb",
+      "bytes": 5794
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/table-scalar-build-v1.log",
+    "sha256": "650600460d55daceb1d798ee5b73a137380fd0557334c6508a1f0fcb8314ce5f"
+  },
+  "limit": "Actual error byte/currentDS XLAT/word signextension, six currentCS byte lookup, signedAL/externalword table and raw signed threshold/selection helpers; original near/far returns and actualSSsavedframes. Fullbus/GPR/BP/CFIFDF/actualcontrol coordinates, overwrittenreturns exposed notfollowed. Externaltables private fixture/original views, no bundledtablepayload or sourceCtype/fieldunits inferred. Caller/tablebounds/otherFLAGS/writers/lifetime/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalid checks separate.",
+  "function_ids": [
+    "FN-EGA-000272",
+    "FN-EGA-000340",
+    "FN-EGA-000420",
+    "FN-EGA-000393",
+    "FN-EGA-000394"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-table-scalar-context-v1.json",
+    "sha256": "1a1d6ad02445cf76ca358d05936af86072c47c2d3860fd0020621093d84f6c8a"
+  }
+}

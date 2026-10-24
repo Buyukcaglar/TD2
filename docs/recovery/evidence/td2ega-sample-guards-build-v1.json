@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sample_guards.cmd",
+    "sha256": "7c94ad0da676fd88e080ffdf30a7d4a2d11bdd0d0d9d936b196388a15e0f5158"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sample_guards.c",
+      "sha256": "60f672b8de84a680db60b6e4f75f6a1195e48ad912a26cae1c2ad8711d586c3b"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.c",
+      "sha256": "d8e9e7a14bb38872c2e0ec5eb1636555114022f88569d6ef3ff23048a4c706e9"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.h",
+      "sha256": "0c913a5b7eff7f98859d0f9117520a6704ae538f9c44105dfaf5656125bfced9"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_guards.h",
+      "sha256": "8112c9c5a8638fe1733860f1a5211d3b6b19ca511d9c988c5eb876ba4f36df52"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sample-guards-repro/td2ega_sample_guards.dll",
+      "sha256": "a65ab3dbc4d727ee2fd0d9de9649ce142b55594ba7e41f4408d4e7f9ae3370ba",
+      "bytes": 110592
+    },
+    {
+      "path": "analysis/build/sample-guards-repro/td2ega_sample_guards.obj",
+      "sha256": "c6b81aba8cece13f34c165454fb258a6412db30a0af930d59da79b74e4d7f83e",
+      "bytes": 6012
+    },
+    {
+      "path": "analysis/build/sample-guards-repro/td2ega_sample_adjust.obj",
+      "sha256": "8ec73c6a38f314ddf7d6eac308a7dec91c15ffa09d10f64e9b7db0bdaf5c6d09",
+      "bytes": 11101
+    },
+    {
+      "path": "analysis/build/sample-guards-repro/td2ega_control_bus.obj",
+      "sha256": "bcb2a4408a3db17210e0a8985891e0b513780a7199d6374f345e0182bdcedc60",
+      "bytes": 6547
+    },
+    {
+      "path": "analysis/build/sample-guards-repro/td2ega_byte_ring.obj",
+      "sha256": "3916d43074de3a6f021f36c79a46ed92663f5efa0059e2121eb1d71224277d02",
+      "bytes": 696
+    },
+    {
+      "path": "analysis/build/sample-guards-repro/td2ega_sim_primitives.obj",
+      "sha256": "a28ec8776d7d2986952cd3e313ead6e52dc877c9308eba8fc337a8cbd280f186",
+      "bytes": 4587
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sample-guards-build-v1.log",
+    "sha256": "9bb555873c2907652f090258d9efa29c28d5de9fa64a4b61c7a695bb253b9e09"
+  },
+  "limit": "Twoactualnearroots49E7/4A19/fullSS4D26guardframes/frozeninterval-arithmeticC/requiredZF/conditional4A2E-tail-fullcontrol-setter-ring/globalguard-sample-controlCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. No newspan. Actualindirectcaller-indexdomains/allwriters-reset-seed-sharedsource-lifetime-IRQexclusion/core/RNGpurpose open. NoDOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000436",
+    "FN-EGA-000438"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+    "sha256": "3d7fb2f89750afb5ff5107aa0c249f330035b89b1e805daa835ea67e48d5f89a"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/sample-guards-context-attempt-v1.json",
+      "sha256": "542b2beec528bab45081a911626bada70068b88a89cf061417eaaada4c6c75e3"
+    },
+    {
+      "path": "analysis/history/sample-guards-validation-attempt-v1.json",
+      "sha256": "6c4ebaf8f31a5049287235c96c48765f8ac9394d4d249d63688ada8eb0a54b16"
+    }
+  ]
+}

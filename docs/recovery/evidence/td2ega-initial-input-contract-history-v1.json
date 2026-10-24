@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "scope": "Exact initial-image-only input-control/input-update C/header/recipe/validator custody before explicit mutable branch-form version2. Frozen old DLLs/receipts retained; old APIs do not admit prepared branches.",
+  "files": [
+    {
+      "original_path": "src/recovered/td2ega_input_control.c",
+      "archived_path": "analysis/history/initial-input-contracts-v1/td2ega_input_control.c",
+      "sha256": "00814079c3ab0b64867a741d92dfcad027147c2d4126d58e47a7fc4c7d499450",
+      "bytes": 6136
+    },
+    {
+      "original_path": "src/recovered/td2ega_input_control.h",
+      "archived_path": "analysis/history/initial-input-contracts-v1/td2ega_input_control.h",
+      "sha256": "7842863717012546b0f9c6042e9a941fc28f4c37a2cddbbcf2f21b85d0b9a499",
+      "bytes": 902
+    },
+    {
+      "original_path": "src/recovered/td2ega_input_update.c",
+      "archived_path": "analysis/history/initial-input-contracts-v1/td2ega_input_update.c",
+      "sha256": "14f06f97a2c1700c37dbdd97e6485eea6e7858188382dc62b532dcb2f5260f09",
+      "bytes": 3651
+    },
+    {
+      "original_path": "src/recovered/td2ega_input_update.h",
+      "archived_path": "analysis/history/initial-input-contracts-v1/td2ega_input_update.h",
+      "sha256": "d9c449ff30c31101258a1db1773b5cface6e0a5664d7ab81a996ae4bb3965c31",
+      "bytes": 1075
+    },
+    {
+      "original_path": "tools/validate_input_control.py",
+      "archived_path": "analysis/history/initial-input-contracts-v1/validate_input_control.py",
+      "sha256": "b83db6972a4eff97c8ae6fbcfa24c84a35cdad55d6418bb4e1421b07ca46614d",
+      "bytes": 7743
+    },
+    {
+      "original_path": "tools/validate_input_update.py",
+      "archived_path": "analysis/history/initial-input-contracts-v1/validate_input_update.py",
+      "sha256": "9b10e77384184480a88464223dd7e669a3715ee1e769693c4cb81919de3587b6",
+      "bytes": 15074
+    },
+    {
+      "original_path": "tools/compile_input_control.cmd",
+      "archived_path": "analysis/history/initial-input-contracts-v1/compile_input_control.cmd",
+      "sha256": "6ce90f58188d0c2b59d2bcf1a5c43332900be82a6e5692668cc42102e3d1c521",
+      "bytes": 750
+    },
+    {
+      "original_path": "tools/compile_input_update.cmd",
+      "archived_path": "analysis/history/initial-input-contracts-v1/compile_input_update.cmd",
+      "sha256": "10b1894c888e370272be6dc85ff36be1aa5e6ee40558d51726c57444accd4b1b",
+      "bytes": 907
+    }
+  ],
+  "evidence_records": [
+    {
+      "path": "docs/recovery/evidence/td2ega-input-control-build-v1.json",
+      "sha256": "979103a0ffc237888f6f210a9dbc66b0bdea582c8f8f26968563c1ffed21462d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-control-validation-v1.json",
+      "sha256": "afc1310b6e0f0e3786b9532836f1bc71791db90cb5f23b1cf36e11d076cfcc50"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-build-v1.json",
+      "sha256": "8c2944660d03c408bea98d9bfa177a530e29b7d6fe471989b80ca5e249bb62e5"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-validation-v1.json",
+      "sha256": "e63f1437181f259a60ba5e28e3a80df880afc305cd43f0d4bd295e97e205817b"
+    }
+  ],
+  "limits": "Historical code/build/comparison identities only, no new behavioral or game acceptance."
+}

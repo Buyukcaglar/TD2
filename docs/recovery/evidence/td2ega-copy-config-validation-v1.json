@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000133",
+    "FN-EGA-000206",
+    "FN-EGA-000195"
+  ],
+  "vectors": 2816,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "adf897b5aada36c6b7d57516764d27683aed7059da86ad91f206392c9aa0577f",
+  "source_sha256": "7bba39bfbb8a8ec3135dde54d1eaa5c4f76131be229e63ceeda577b0f9b104fe",
+  "validator_sha256": "7273f1b63c632c782c928bfbf2866fa480fd25b91094d3a714ab783cab65c8ac",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 4272624,
+  "instruction_sites_in_fence": 52,
+  "instruction_sites_exercised": 52,
+  "fixture_coverage": {
+    "entry_0": 2304,
+    "far_returns": 1264,
+    "copy_units": 4233808,
+    "bus_write_events": 4245072,
+    "prefix": 1552,
+    "entry_1": 256,
+    "entry_2": 256
+  },
+  "limits": "Threeforwardcopybodies, five-wordbyte-farcopy/two-wordfar-source13wordCSconfig/one-wordnear-source26wordCSconfig ABIs, fullbusincludingSSsavedframes/GPR/BP/CFIFDF/farRETF4. REP0zero,65535bytecases, oddoverlaps/rawSI-DIwrap andsavedSI-DIoutputaliases tested; currentDS/SS/CS contrasts explicit. Nativeworkprefix separate. Actualproducer/argument/outputbounds, allCSconfigurationwriters/lifetime/IRQexclusion, complete state/core/device/resource-fedP2/P3/game/fidelity remainopen. Nooriginalconfiguration/media payloadembedded; nativeinvalidchecks separate."
+}

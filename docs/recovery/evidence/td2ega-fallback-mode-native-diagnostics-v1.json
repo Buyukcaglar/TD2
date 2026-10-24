@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 33,
+  "script_sha256": "2b110599af5159b89a6512193c7fd6705e23e46f48ea75077544079d5b44d139",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "6b1a33b59fe98dce9091d7814897d4dcae72c02d6224dd0352ffa771069634d4",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    }
+  ],
+  "limits": "Nativeinterfaces/exactBIOSAX4/BDAphysical0410mask-beforeINT/BIOSfullstate/tablebyteread-after-indexOUT/CLDafterBIOS/27byteports/16384rawRAMwords/SSFNs-BDA-flag-wordclear-lateOUTaliases/preRETqualification/adapter-budgetgates only. Originalcomparison separate; withinEGAexe/notCGAedition, no actualBIOS-devicehardware/renderer/historicalCPU/callerDF-IF-storage/writers/schema/lifetime/exclusion/core/session/fidelity acceptance."
+}

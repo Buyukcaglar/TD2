@@ -1,6 +1,16 @@
 # Tooling, primary sources, and verification limits
 
-Status: planning only. Verification date for every source below: **2026-10-13**. These are external documentation/source observations, not a claim that a tool was installed, a game was executed, or a resource was decoded. No original game files were modified, unpacked, or launched by this research task.
+The original source/tool research below is a historical planning snapshot verified on **2026-10-13**. Later bounded recovery/tool installation evidence lives in the recovery records. The separate upstream review below was verified on **2026-10-22**; no game or upstream decoder was executed by that review.
+
+## Pinned upstream C and formats reference, 22 October 2026
+
+The [completed P1-R04 source-selection decision](../recovery/kylofon-r04-reuse-decision.md) is governed by the [v2 allowlist](../recovery/evidence/kylofon-reuse-decisions-v2.json) and [v2 origin manifest](../recovery/evidence/kylofon-reuse-origin-manifest-v2.json). They select 10 bounded groups, including their explicit exercised dependencies, for later extraction/adaptation; whole-file copying, original-media distribution and broader subsystem acceptance are not admitted. Preserve MIT notices and the separate original-media classifications. P1-R04 reuses the frozen P1-R02/R03 receipts without rerunning their makers or importing source. Originals and the read-only reference clone remain unchanged.
+
+Subsequent [P1-R02/R03 build and comparisons](../recovery/kylofon-r02-r03-results.md) pin MSVC 19.44, SDK 10.0.26100.0 and the official SDL3 3.4.18 VC SDK (archive SHA-256 `78d84602ae616cfe26b33a73b7d3b9b6b56e8a6650e53d92c9c6ca938f747acd`). The [direct build receipt](../recovery/evidence/kylofon-candidate-build-v1.json) records actual recipes, headers, objects, libraries and outputs. Earlier source-only review statements below describe that initial review, before the authorized private candidate spike. No game EXE was launched.
+
+[kylofon/test-drive-2-sdl3](https://github.com/kylofon/test-drive-2-sdl3), commit `352b56824d8c91e938b8f0794a71afca9a276193`, is cloned read only under `reference/repos/kylofon-test-drive-2-sdl3`. Its [snapshot](evidence/kylofon-reference-snapshot-v1.json) records all tracked Git blobs and every clone file; the [full review](kylofon-reuse-assessment.md) links complete source/document/index coverage. The repository contains an EGA C11 SDL3 implementation and candidate DOS schemas/tools, with CGA/Tandy analysis indexes. Its LICENSE labels code/documentation MIT and excludes original game data; preserve notices on any import and review media-derived tables separately.
+
+These are source candidates, not our independent execution oracle. Do not run upstream SetDS.java/DecompileAll.java against accepted Ghidra projects: their global DGROUP pin conflicts with our qualified segment evidence. Inspect/adapt unpacking and decoder tools before future use on private derived inputs. Do not fetch/edit/build/run inside the frozen clone; use a separate writable pinned workspace and new evidence outputs. No upstream compilation/runtime or complete-corpus acceptance was performed in this review.
 
 The project order remains DOS EGA reconstruction, DOS CGA comparison, resource recovery, native Windows integration, Amiga reconstruction, then live presentation/audio switching. Tool recommendations below are conditional future work, not development performed during this planning phase. Local observations are recorded separately in the DOS/Amiga evidence documents.
 

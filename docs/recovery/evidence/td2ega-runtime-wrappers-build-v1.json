@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_runtime_wrappers.cmd",
+    "sha256": "725a1be76b4ba74985d046c13f2695c98233cd91ae7cda50f2309fcd7524ce82"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_runtime_wrappers.c",
+      "sha256": "32b8018d6defeba76f4cfaada7fb839a55785c11df3fb51067264a8f8903ac42"
+    },
+    {
+      "path": "src/recovered/td2ega_scalar_state.c",
+      "sha256": "416d5a660edd7f178a24808d79149530666b4385b7e3496604cfe262047dae9a"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.c",
+      "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_wrappers.h",
+      "sha256": "3c93230d90f9897c6b5ffff6bf08f96e0a206e314644359c6ed5500a7d38e0b0"
+    },
+    {
+      "path": "src/recovered/td2ega_scalar_state.h",
+      "sha256": "a31cbde260681305b08b6bcb7d08c195accfc77c5b0c36c2695661e92141fd5d"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.h",
+      "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/runtime-wrappers-repro/td2ega_runtime_wrappers.dll",
+      "sha256": "b2b0ecb7ab11ad3623419977df2564d592448f5d091dcd4f573b2085df28d56a",
+      "bytes": 110592
+    },
+    {
+      "path": "analysis/build/runtime-wrappers-repro/td2ega_runtime_wrappers.obj",
+      "sha256": "c2ff2125322d70029bd825b4b46f8b0f233a50e10d43f7db2f310b8b931d2840",
+      "bytes": 5688
+    },
+    {
+      "path": "analysis/build/runtime-wrappers-repro/td2ega_scalar_state.obj",
+      "sha256": "3ea39f5b7be4b97f433517cd82c7ba2718d04ba16d2ac123dd4129c5bfaf1626",
+      "bytes": 4561
+    },
+    {
+      "path": "analysis/build/runtime-wrappers-repro/td2ega_small_state.obj",
+      "sha256": "a476a0b9677753ba069de549f04eb993a9e72faa0241bccebbb0ae3de49f348d",
+      "bytes": 9592
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/runtime-wrappers-build-v1.log",
+    "sha256": "7ed2bce7dae25fdf17f1eaa5f7f16160f29e75f3ce3e7a902876c2b75d138fcd"
+  },
+  "limit": "Actual184A+190E PUSHCS/nearCALL far-return frames and0DF0+2696 farframes, actualfrozenCchild bodies/fullreturnedstate/orderedrecordflag/free-bit/base-buffer-count reset, fullbus/SSargs/saves/GPR/BP/CFIFDF/control. Sourceguard/value/counter/SSaliases andminimumSP22/26. NativebeforePUSHCS orbeforefarCALL prefixes, actualchangedchild/rootcoordinates exposed afterRET neverfollowed. No hoststream type, fullcaller/record/arena/writer/lifetime/IRQexclusion/otherFLAGS/core/resourcefedP2/P3/session/gameplay/fidelity acceptance.",
+  "function_ids": [
+    "FN-EGA-000291",
+    "FN-EGA-000282"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000295",
+    "FN-EGA-000318"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-runtime-wrappers-context-v1.json",
+    "sha256": "8232a970eb71467ba62f72d3c97cf09dc32ce23698a16083aa2e484467090bbf"
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "5ace4185f500c6e62973cd58752ff46f127a3a3f689be1c4d09ab343223b4405",
+  "instruction_observations": [
+    {
+      "site": "13A8:280E",
+      "bytes": "52",
+      "text": "push dx"
+    },
+    {
+      "site": "13A8:280F",
+      "bytes": "51",
+      "text": "push cx"
+    },
+    {
+      "site": "13A8:2810",
+      "bytes": "e81d00",
+      "text": "call 0x2830"
+    },
+    {
+      "site": "13A8:2813",
+      "bytes": "7418",
+      "text": "je 0x282d"
+    },
+    {
+      "site": "13A8:2815",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "13A8:2816",
+      "bytes": "8bfe",
+      "text": "mov di, si"
+    },
+    {
+      "site": "13A8:2818",
+      "bytes": "8bf0",
+      "text": "mov si, ax"
+    },
+    {
+      "site": "13A8:281A",
+      "bytes": "03f2",
+      "text": "add si, dx"
+    },
+    {
+      "site": "13A8:281C",
+      "bytes": "c744fefeff",
+      "text": "mov word ptr [si - 2], 0xfffe"
+    },
+    {
+      "site": "13A8:2821",
+      "bytes": "897706",
+      "text": "mov word ptr [bx + 6], si"
+    },
+    {
+      "site": "13A8:2824",
+      "bytes": "8bd6",
+      "text": "mov dx, si"
+    },
+    {
+      "site": "13A8:2826",
+      "bytes": "2bd7",
+      "text": "sub dx, di"
+    },
+    {
+      "site": "13A8:2828",
+      "bytes": "4a",
+      "text": "dec dx"
+    },
+    {
+      "site": "13A8:2829",
+      "bytes": "8955fe",
+      "text": "mov word ptr [di - 2], dx"
+    },
+    {
+      "site": "13A8:282C",
+      "bytes": "58",
+      "text": "pop ax"
+    },
+    {
+      "site": "13A8:282D",
+      "bytes": "59",
+      "text": "pop cx"
+    },
+    {
+      "site": "13A8:282E",
+      "bytes": "5a",
+      "text": "pop dx"
+    },
+    {
+      "site": "13A8:282F",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "13A8:2810",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:2830"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:26F1",
+      "site": "13A8:27A1",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:280E"
+    },
+    {
+      "owner": "13A8:26F1",
+      "site": "13A8:27AD",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:280E"
+    },
+    {
+      "owner": "13A8:27D4",
+      "site": "13A8:27FF",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:280E"
+    }
+  ],
+  "caller_windows": [
+    {
+      "call_site": "13A8:27A1",
+      "instructions": [
+        {
+          "site": "13A8:2798",
+          "bytes": "8b37",
+          "text": "mov si, word ptr [bx]"
+        },
+        {
+          "site": "13A8:279A",
+          "bytes": "ebbc",
+          "text": "jmp 0x2758"
+        },
+        {
+          "site": "13A8:279C",
+          "bytes": "8b7706",
+          "text": "mov si, word ptr [bx + 6]"
+        },
+        {
+          "site": "13A8:279F",
+          "bytes": "33c0",
+          "text": "xor ax, ax"
+        },
+        {
+          "site": "13A8:27A1",
+          "bytes": "e86a00",
+          "text": "call 0x280e"
+        },
+        {
+          "site": "13A8:27A4",
+          "bytes": "3bc6",
+          "text": "cmp ax, si"
+        },
+        {
+          "site": "13A8:27A6",
+          "bytes": "740d",
+          "text": "je 0x27b5"
+        },
+        {
+          "site": "13A8:27A8",
+          "bytes": "2401",
+          "text": "and al, 1"
+        },
+        {
+          "site": "13A8:27AA",
+          "bytes": "40",
+          "text": "inc ax"
+        },
+        {
+          "site": "13A8:27AB",
+          "bytes": "40",
+          "text": "inc ax"
+        },
+        {
+          "site": "13A8:27AC",
+          "bytes": "98",
+          "text": "cwde "
+        },
+        {
+          "site": "13A8:27AD",
+          "bytes": "e85e00",
+          "text": "call 0x280e"
+        },
+        {
+          "site": "13A8:27B0",
+          "bytes": "740d",
+          "text": "je 0x27bf"
+        },
+        {
+          "site": "13A8:27B2",
+          "bytes": "fe4dfe",
+          "text": "dec byte ptr [di - 2]"
+        }
+      ]
+    },
+    {
+      "call_site": "13A8:27AD",
+      "instructions": [
+        {
+          "site": "13A8:27A4",
+          "bytes": "3bc6",
+          "text": "cmp ax, si"
+        },
+        {
+          "site": "13A8:27A6",
+          "bytes": "740d",
+          "text": "je 0x27b5"
+        },
+        {
+          "site": "13A8:27A8",
+          "bytes": "2401",
+          "text": "and al, 1"
+        },
+        {
+          "site": "13A8:27AA",
+          "bytes": "40",
+          "text": "inc ax"
+        },
+        {
+          "site": "13A8:27AB",
+          "bytes": "40",
+          "text": "inc ax"
+        },
+        {
+          "site": "13A8:27AC",
+          "bytes": "98",
+          "text": "cwde "
+        },
+        {
+          "site": "13A8:27AD",
+          "bytes": "e85e00",
+          "text": "call 0x280e"
+        },
+        {
+          "site": "13A8:27B0",
+          "bytes": "740d",
+          "text": "je 0x27bf"
+        },
+        {
+          "site": "13A8:27B2",
+          "bytes": "fe4dfe",
+          "text": "dec byte ptr [di - 2]"
+        },
+        {
+          "site": "13A8:27B5",
+          "bytes": "e81c00",
+          "text": "call 0x27d4"
+        },
+        {
+          "site": "13A8:27B8",
+          "bytes": "7405",
+          "text": "je 0x27bf"
+        },
+        {
+          "site": "13A8:27BA",
+          "bytes": "96",
+          "text": "xchg si, ax"
+        },
+        {
+          "site": "13A8:27BB",
+          "bytes": "4e",
+          "text": "dec si"
+        },
+        {
+          "site": "13A8:27BC",
+          "bytes": "4e",
+          "text": "dec si"
+        },
+        {
+          "site": "13A8:27BD",
+          "bytes": "eb99",
+          "text": "jmp 0x2758"
+        },
+        {
+          "site": "13A8:27BF",
+          "bytes": "8cd8",
+          "text": "mov ax, ds"
+        }
+      ]
+    },
+    {
+      "call_site": "13A8:27FF",
+      "instructions": [
+        {
+          "site": "13A8:27F5",
+          "bytes": "03c2",
+          "text": "add ax, dx"
+        },
+        {
+          "site": "13A8:27F7",
+          "bytes": "720d",
+          "text": "jb 0x2806"
+        },
+        {
+          "site": "13A8:27F9",
+          "bytes": "f7d2",
+          "text": "not dx"
+        },
+        {
+          "site": "13A8:27FB",
+          "bytes": "23c2",
+          "text": "and ax, dx"
+        },
+        {
+          "site": "13A8:27FD",
+          "bytes": "2bc6",
+          "text": "sub ax, si"
+        },
+        {
+          "site": "13A8:27FF",
+          "bytes": "e80c00",
+          "text": "call 0x280e"
+        },
+        {
+          "site": "13A8:2802",
+          "bytes": "7508",
+          "text": "jne 0x280c"
+        },
+        {
+          "site": "13A8:2804",
+          "bytes": "f7d2",
+          "text": "not dx"
+        },
+        {
+          "site": "13A8:2806",
+          "bytes": "d1ea",
+          "text": "shr dx, 1"
+        },
+        {
+          "site": "13A8:2808",
+          "bytes": "75e5",
+          "text": "jne 0x27ef"
+        },
+        {
+          "site": "13A8:280A",
+          "bytes": "33c0",
+          "text": "xor ax, ax"
+        },
+        {
+          "site": "13A8:280C",
+          "bytes": "59",
+          "text": "pop cx"
+        },
+        {
+          "site": "13A8:280D",
+          "bytes": "c3",
+          "text": "ret "
+        }
+      ]
+    }
+  ],
+  "required_flags": {
+    "ZF": "Explicitnormalrootzero_flag/flags_valid; wrapperZF1skip retainsZF1, bodyZFcomesfromDECDXbeforeactualSSPOPs. 27ADnext27B0JE/27FFnext2802JNE useit; 27A1next27A4CMPAXSIkillsstatus.",
+    "CF": "WrapperCF0onskip, bodyunsignedSUBDXDICFpreservedbyDECDX/stores/POPs/RET. OtherarithFLAGS unexposed."
+  },
+  "parent_mode_proof": {
+    "argument_word_offsets_from_rootSP": {
+      "mode1": -14,
+      "increment_savedAX": -12,
+      "highguard0": -10,
+      "unused0": -8,
+      "key_savedDS": -6
+    },
+    "subsequent_prebranch_write_offsets": [
+      -16,
+      -18,
+      -20,
+      -22,
+      -24,
+      -26
+    ],
+    "parent_feasible_sites": [
+      "13A8:2852",
+      "13A8:2853",
+      "13A8:2855",
+      "13A8:2856",
+      "13A8:2857",
+      "13A8:2858",
+      "13A8:285C",
+      "13A8:285E",
+      "13A8:2861",
+      "13A8:2864",
+      "13A8:2867",
+      "13A8:2868",
+      "13A8:286A",
+      "13A8:286D",
+      "13A8:286F",
+      "13A8:2896",
+      "13A8:2899",
+      "13A8:289A",
+      "13A8:28B9",
+      "13A8:28BA",
+      "13A8:28BB",
+      "13A8:28BC",
+      "13A8:28BE",
+      "13A8:28BF"
+    ],
+    "parent_excluded_sites": [
+      "13A8:2871",
+      "13A8:2875",
+      "13A8:2876",
+      "13A8:2878",
+      "13A8:287A",
+      "13A8:287C",
+      "13A8:287F",
+      "13A8:2882",
+      "13A8:2883",
+      "13A8:2886",
+      "13A8:2887",
+      "13A8:2889",
+      "13A8:288C",
+      "13A8:2890",
+      "13A8:2892",
+      "13A8:2894",
+      "13A8:289C",
+      "13A8:289E",
+      "13A8:28A1",
+      "13A8:28A3",
+      "13A8:28A5",
+      "13A8:28A7",
+      "13A8:28A9",
+      "13A8:28AB",
+      "13A8:28AD",
+      "13A8:28AE",
+      "13A8:28B0",
+      "13A8:28B3",
+      "13A8:28B7"
+    ],
+    "scope": "SerializedRAM/noexecutingcodewrites/noasyncdelivery, SP30..FFE0 givesdistinctnonwrappingSSwords. Mode1/highguard0 fixedbyliteralpushes, no callback beforeguard/modebranch, no prologuewrite tothoseargumentwords. Mode1 takes286A; fallbackDOS48/secondnearcall unreachableonlyhere, notglobaldead. Standalone2852coversall53sites."
+  },
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-block-wrapper-context-v1.json",
+      "sha256": "fa610a2a14ad4de0464f2c5ea4bd46d609521993c711ed8b5bb3d15d9d7e5add"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    }
+  ],
+  "serialized_bus_profile": {
+    "bytes": 1048576,
+    "address_mask": "FFFFF",
+    "Unicorn_mapping": "Two guest views share one host allocation, explicit20bit aliasing withoutMEM_READhook. Five mapping/ISA checks verify low/high visibility andwordwrite acrossFFFFF withone logicalwritehookevent.",
+    "historical_CPU_A20_segment_limits": "Unqualified; analysisprofile only, nothardwarebuscycle proof."
+  },
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "Near/inheritedregistercontext280E PUSHDX/PUSHCX/nearCALL2830/JEusesactualwrapperZF. SP36preserveswrapperSP30 afterfourSSsavebytes/twonearframebytes, then2852SP12. No ownBPsave.",
+    "ZF1skipsmetadata/PUSHDIbody. ZF0PUSHDI thenDI=actualreturnedSI/SI=actualreturnedAX, ADDactualreturnedDX; wordDS[SI-2]=FFFE, wordDS[BX+6]=SI, DX=SI, SUBDXDI/DECDX, wordDS[DI-2]=DX, POPAXreadsactualsavedDI. SourcePOPAXisnotPOPDIsaved-registerrestore.",
+    "POPCX/POPDXreadactualrootsavedwords, nearRETreadsactualrootwordafterallmetadata/servicewrites. ChildactualwrapperGPR/DSrestores retained; sourceorderedmetadataaliases canshiftsaves/returnwords. No cachedSSfields/hostallocator semantics.",
+    "NormalZFfromwrapperonskiporDECDXonbody; requiredbyimmediate27B0JE/2802JNE. Firstcaller27A4CMPAXSIkillsreturnedstatus. CFfromSUBpreservedDEC; sourcebranchmustnotreplaceZFwithAX/DX/CFtest.",
+    "18root+20wrapper+24mode1parent+39leaf=101feasibleof130;29parentmode-specificdispositions inheritedfromfixed2830argumentproof, notglobaldead. Standalone2852full53passed.",
+    "SyntheticchildDOS4Afullreturnedstate/bus preservesSS-SP-CS/omitsrealINTframes. Nativebudgets/adapterfailure/rawchildRETprefixflags_valid0; actualrootRETflags_valid1/rawrootexposedafterinstructionneverfollowed. Whole26F1/27D4/capacity/metadatawriters/ownership/lifetime/IRQ/core open."
+  ],
+  "limits": "Whole18-site280E/staticactualwrapperZF/SSpartialstores/callerliveness/29entry-specificdispositions; fullbus-requiredZFcomparison separate. No wholecaller/allwriters/domain/capacity/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

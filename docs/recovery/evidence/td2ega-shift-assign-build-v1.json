@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_shift_assign.cmd",
+    "sha256": "3cfcd8083a849e8b855ad5d59e5b925bd7ccd0083fc4b8cdb8d809cc48092f79"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_shift_assign.c",
+      "sha256": "9443b0f2942d30ff193452d725b150a2ceea80f4b7fd7529033225a8cd9b53ac"
+    },
+    {
+      "path": "src/recovered/td2ega_shift_assign.h",
+      "sha256": "915de4623fbb7f2218735756c464f7872390afb24716f12f6b6cce3e40991901"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.c",
+      "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.h",
+      "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/shift-assign-repro/td2ega_shift_assign.dll",
+      "sha256": "687adffdd2e11194de1a8705030920403a3ea8b80b9bdc6e4a72a54481cf89c6",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/shift-assign-repro/td2ega_shift_assign.obj",
+      "sha256": "c3b8ec931301ab54b5766baa96160f2c89b9c06f1921940dc0d1e134bbdb946b",
+      "bytes": 3721
+    },
+    {
+      "path": "analysis/build/shift-assign-repro/td2ega_small_state.obj",
+      "sha256": "5d749821a027ccf1c0446195b67b03348c8d3edca616cb45ed983b6c0b9baefa",
+      "bytes": 9588
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/shift-assign-build-v1.log",
+    "sha256": "20ab87f249a8169fa92952cb2f0451b56af56e3374372197ba6679a315191daa"
+  },
+  "limit": "Actual13A8:2FD0+2FC4, currentDSnear32bitwordpair/SSpointer-count args, all256CL counts/CHdiscard andorderedpointerreread/AX-DXstores. FullbusincludingnestedSSframes/GPR/BP/CFIFDF/actualRETF imm4 consumes4farframe+4argumentbytes ->entrySP+8 withoutchangingCF. NearwordEAwrap/odddata andstackargument/saved/returnaliases tested; rawrootRETcoordinates exposedafteractualinstruction, notfollowed. NooriginalCreturntype/signedsource32bittype inferred, nohostovershift. Actualcaller/otherflagconsumers/bounds/lifetimes/IRQ/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalidchecks separate.",
+  "function_ids": [
+    "FN-EGA-000347"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000346"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-shift-assign-context-v1.json",
+    "sha256": "1b62f7963820044788ecb8db074660aff19b0c7dab0a5f6a662a2b011dda8b3e"
+  }
+}

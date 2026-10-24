@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "1dbb1442a727f8835144e4db76ffd3148d9e9120125b35b35a9b5f1ef91d4861",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-table-scalar-build-v1.json",
+      "sha256": "ef76626ff4c4f15510467b12633dc37ca80c04b2d04455fa8e21681ada9eae73"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-table-scalar-validation-v1.json",
+      "sha256": "b4ba062ccee85b9f84ecddb4eeadace058410c1e656e32828ccd328046019b05"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-table-scalar-context-v1.json",
+      "sha256": "1a1d6ad02445cf76ca358d05936af86072c47c2d3860fd0020621093d84f6c8a"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-sign-extension-context-v1.json",
+      "sha256": "d3f14fc69d6e087683da6e0e25a57d8976b84b71a8a8d97437110236ae1cd6d6"
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "13A8:0924",
+      "bytes": "7213",
+      "text": "jb 0x939"
+    },
+    {
+      "site": "13A8:0926",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "13A8:0928",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "13A8:092A",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:092B",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:0939",
+      "bytes": "e80e00",
+      "text": "call 0x94a"
+    },
+    {
+      "site": "13A8:093C",
+      "bytes": "b8ffff",
+      "text": "mov ax, 0xffff"
+    },
+    {
+      "site": "13A8:093F",
+      "bytes": "99",
+      "text": "cdq "
+    },
+    {
+      "site": "13A8:0940",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "13A8:0942",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:0943",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:2E20",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "13A8:2E21",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "13A8:2E23",
+      "bytes": "8b5606",
+      "text": "mov dx, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:2E26",
+      "bytes": "b441",
+      "text": "mov ah, 0x41"
+    },
+    {
+      "site": "13A8:2E28",
+      "bytes": "cd21",
+      "text": "int 0x21"
+    },
+    {
+      "site": "13A8:2E2A",
+      "bytes": "e9f7da",
+      "text": "jmp 0x924"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0432:088F",
+      "site": "0432:08E9",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2E20"
+    },
+    {
+      "owner": "13A8:0978",
+      "site": "13A8:0A1F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2E20"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "api_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684",
+    "source_path": "analysis/external/msdos-2d04cacc/SYSCALL.txt",
+    "source_sha256": "72271dc62a60960c885da6a3d822202a80ef338d2e2f3e54570eda9dc3453da7",
+    "url": "https://github.com/microsoft/MS-DOS/blob/2d04cacc5322951f187bb17e017c12920ac8ebe2/v2.0/source/SYSCALL.txt",
+    "service_identifiers": {
+      "UNLINK": 65
+    },
+    "relevant_line_ranges": [
+      [
+        1420,
+        1441
+      ],
+      [
+        1618,
+        1618
+      ]
+    ]
+  },
+  "facts": [
+    "OneSSnearfilename/currentDS, PUSHBP/BP, DXargument thenAH41/INT21; branchvia shared0924 tail usesreturnedCF.",
+    "SuccessXORAX0/CF0, MOVSPreturnedBP/POPBP/plainfarRETF; returnedDX preserved.",
+    "FailureactualnearCALL094A pushes093C inSS, mapperrawreturnednearcoordinate admitted. Unexpectedchildreturn exposednotfollowed. Normalchildreturn thenAXFFFF/unprefixed99wordCWD ->DXFFFF, preservingmapperCF, MOVSPreturnedBP/POPBP/farRETF.",
+    "NativeadmittedSP>=20leaves16byte-minimum mapperchildentry afterouterBPsave/nearCALL; invalidsmallerprofile rejectedbeforeeffects. No change to frozen mapper.",
+    "ReturnedDS/BP/IFDF andservicebusmutations explicit. Nativebudget/adapterfailure and syntheticINTboundary areseparate fromoriginalDOSerrors andactualinterruptframes."
+  ],
+  "limits": "Staticoperands/historicalDOSidentity/frozenmapper/callerinventory only. NoactualDOS/fileoperation/device/IRQ/session/game/core/fidelity admission. Actualfilenamebounds/otherFLAGS/writers/lifetime/exclusion remainopen."
+}

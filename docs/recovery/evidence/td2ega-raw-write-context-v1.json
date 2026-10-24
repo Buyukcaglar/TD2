@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "9060097aea16dfb82d19c2a796825a250d1edc9e184e1c56cd06047a81622aed",
+  "instruction_observations": [
+    {
+      "site": "06C9:786C",
+      "instruction": "mov word ptr [bp - 0xa], 0"
+    },
+    {
+      "site": "06C9:787A",
+      "instruction": "mov word ptr [bp - 0xa], 1"
+    },
+    {
+      "site": "06C9:787F",
+      "instruction": "sub sp, 4"
+    },
+    {
+      "site": "06C9:7887",
+      "instruction": "mov ah, 0x3c"
+    },
+    {
+      "site": "06C9:7889",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:788B",
+      "instruction": "jb 0x78d2"
+    },
+    {
+      "site": "06C9:788D",
+      "instruction": "mov word ptr [bp - 8], ax"
+    },
+    {
+      "site": "06C9:789C",
+      "instruction": "mov cx, 0x4000"
+    },
+    {
+      "site": "06C9:789F",
+      "instruction": "mov ax, word ptr [bp + 0xc]"
+    },
+    {
+      "site": "06C9:78A2",
+      "instruction": "sub word ptr [bp + 0xc], cx"
+    },
+    {
+      "site": "06C9:78A5",
+      "instruction": "sbb word ptr [bp + 0xe], 0"
+    },
+    {
+      "site": "06C9:78A9",
+      "instruction": "jae 0x78bc"
+    },
+    {
+      "site": "06C9:78B8",
+      "instruction": "add cx, 0x4000"
+    },
+    {
+      "site": "06C9:78BC",
+      "instruction": "mov ds, word ptr [bp + 0xa]"
+    },
+    {
+      "site": "06C9:78BF",
+      "instruction": "mov dx, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:78C2",
+      "instruction": "mov bx, word ptr [bp - 8]"
+    },
+    {
+      "site": "06C9:78C5",
+      "instruction": "mov ah, 0x40"
+    },
+    {
+      "site": "06C9:78C7",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:78C9",
+      "instruction": "jb 0x78d2"
+    },
+    {
+      "site": "06C9:78CB",
+      "instruction": "add word ptr [bp + 0xa], 0x400"
+    },
+    {
+      "site": "06C9:78D2",
+      "instruction": "cmp word ptr [bp - 0xa], 0"
+    },
+    {
+      "site": "06C9:78D6",
+      "instruction": "jne 0x78e7"
+    },
+    {
+      "site": "06C9:78D8",
+      "instruction": "mov ax, 0x6808"
+    },
+    {
+      "site": "06C9:78DB",
+      "instruction": "mov ds, word ptr [bp - 2]"
+    },
+    {
+      "site": "06C9:78DE",
+      "instruction": "push word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:78E1",
+      "instruction": "push ax"
+    },
+    {
+      "site": "06C9:78E2",
+      "instruction": "lcall 0x16a7, 2"
+    },
+    {
+      "site": "06C9:78E7",
+      "instruction": "mov bx, word ptr [bp - 8]"
+    },
+    {
+      "site": "06C9:78EA",
+      "instruction": "mov ah, 0x3e"
+    },
+    {
+      "site": "06C9:78EC",
+      "instruction": "int 0x21"
+    },
+    {
+      "site": "06C9:78EE",
+      "instruction": "xor ax, ax"
+    },
+    {
+      "site": "06C9:78F0",
+      "instruction": "add sp, 4"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0432:04F1",
+      "site": "0432:07C2",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7874"
+    },
+    {
+      "owner": "0645:0186",
+      "site": "0645:0264",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7866"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "api_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684",
+    "source_path": "analysis/external/msdos-2d04cacc/SYSCALL.txt",
+    "source_sha256": "72271dc62a60960c885da6a3d822202a80ef338d2e2f3e54570eda9dc3453da7",
+    "service_identifiers": {
+      "CREAT": 60,
+      "CLOSE": 62,
+      "WRITE": 64
+    },
+    "url": "https://github.com/microsoft/MS-DOS/blob/2d04cacc5322951f187bb17e017c12920ac8ebe2/v2.0/source/SYSCALL.txt",
+    "relevant_line_ranges": [
+      [
+        1613,
+        1617
+      ]
+    ]
+  },
+  "facts": [
+    "Policyword writtenatSSBP-A beforeSPallocation; handleSSBP-8 isinitializedonlyafterCREATEsuccess. Optionalcreateerror stillclosesstaleseededhandle.",
+    "Lengthlow/highwords decrementedbeforewrite withSUB/SBB; tailcountrecoveredafterborrow. Segment+400aftereveryCFclearwrite, returnedAXshortcount notcompared.",
+    "CloseCFignored, AX0/ADDSP4/plainfarRETF4; savedDIthenSIthenDSthenBP restoredfromactualSS.",
+    "Errorpolicy0 preparesnearfilename/format6808 underrestoredDS, thenfarCALL16A7:0002; preparedtwo words do notestablishcalleeformalarity/sourcevariadics.",
+    "FN348errorcalleecontractstillpending. Syntacticreturn/fallthrough andcleanup/formatter/exitcalls areunresolvedintegration, notno-return ornormalreturn proof."
+  ],
+  "limits": "Staticinstruction/historicalDOSidentity/callerinventory only. NoactualDOS/file writes, interruptframes/IRQ, resourceformat, fullstate/core/device/game/fidelity admission. Rawerrorcallboundary retaineduntilcalleecontract closes; actualsourceproducer/capacity/lifetime andP2/P3 resourcefedchecks separate."
+}

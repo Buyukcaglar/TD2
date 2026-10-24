@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000135",
+    "FN-EGA-000137",
+    "FN-EGA-000342",
+    "FN-EGA-000136",
+    "FN-EGA-000134"
+  ],
+  "vectors": 9600,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d862713e527e064ab48a239445d398e37df36f7689fe6f7c2d2393172cbfbca2",
+  "source_sha256": "d1b229550c8c427524fa77a943553f3463922a4c36ec569161c1e880da86cb78",
+  "validator_sha256": "46eea3dc57a971aa9a3c45a68e1f18d0fed4e9ab86b33e73b6e727f841b4b25e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 63744,
+  "instruction_sites_in_fence": 50,
+  "instruction_sites_exercised": 50,
+  "fixture_coverage": {
+    "entry_0": 1920,
+    "service_calls": 7040,
+    "prefix": 3840,
+    "far_returns": 5760,
+    "entry_1": 1920,
+    "entry_2": 1920,
+    "entry_3": 1920,
+    "entry_4": 1920
+  },
+  "limits": "Five finite wrappers, explicit syntheticINT21/11/1A requests andfullreturnedGPR/BP/CFIFDF includingmutatedDS/BP, currentSSargumentrereads/fullbus/materializedBP/farreturnframes andnativebefore-callprefixes. Modeled servicecontrol preservesSS/SP/CS; UnicornINT hook andnativeadapter omitrealinterrupt-entry/returnframes andactualOS/BIOS/IRQ/devicebehavior. RawAL-byte/DL/AH/CL/order andcurrentDS52C2/4 masks/stores retained, nofrequency/unit orphysical086C semantics assigned. Realplatform/caller/writer/lifetime/fullstate/core/gameplay/fidelity andresource-fedP2/P3 remainopen; nativeinvalid/adapterfailure checks separate."
+}

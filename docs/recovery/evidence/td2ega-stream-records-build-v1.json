@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_stream_records.cmd",
+    "sha256": "75ce65af15858f39ce2fefd3f1f557cf200d7e18d00961942226ddddbcb8cbb4"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_stream_records.c",
+      "sha256": "a6d57f620ae8245c412063c54b09f00b7b33616e1e492d7ea2beceab1450fe41"
+    },
+    {
+      "path": "src/recovered/td2ega_stream_records.h",
+      "sha256": "efeb7232a3d157e1ff3915238fa2c365d8081d40e21d581f8b341a9009e66e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/stream-records-repro/td2ega_stream_records.dll",
+      "sha256": "c360c6dfcfc33873500172307a6894fb45b3a2114214e82e8676ec274e44c893",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/stream-records-repro/td2ega_stream_records.obj",
+      "sha256": "00e4a3d0feff107bcd696489c5c48cc9229703043abb2524beee296086181a06",
+      "bytes": 5117
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/stream-records-build-v1.log",
+    "sha256": "d4211319d903977f0db8eda5b251848056471ffb9794557dc6833760736f0cac"
+  },
+  "limit": "Actual0F16specialrecord/signedbyte*6/sideflag orderedsetup,2170rawbyte membership/CHpreservation/INCSI,219Araw8byte scan/old-SI-inclusiveend/resetstores. Fullbus/actualSSsaves/farframes/GPR/BP/CFIFDF/control, all256indexbytes/negative/wrap/SSglobalaliases. Nativebefore-scanbudget separate; rawmissingNUL/nonalignedend maycycle. SourceCtypes/recordunits/actualcaller bounds/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000284",
+    "FN-EGA-000307",
+    "FN-EGA-000308"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-stream-records-context-v2.json",
+    "sha256": "1a0818cb2974e88f922c5d8c7533c6cec10367258ac8bde759461d3776705616"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate-stream-records-attempt-v1.py",
+      "sha256": "122a7cea6b4953d5bd2f0e0f3f93de172aa02edd796639c785bc1101eabfd614"
+    },
+    {
+      "path": "analysis/history/validate-stream-records-attempt-v2.py",
+      "sha256": "6df925d4cbaa057ec8c7e83f341e14094370b731134bae37bba18ed3e05cb847"
+    },
+    {
+      "path": "analysis/history/review-ega-stream-records-attempt-v1.py",
+      "sha256": "694e572027c3caef38b05bc035ba85a080aa2bad2e17b040cb1d1f23cc4a5f23"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-records-validation-v1.json",
+      "sha256": "eed95a9f15fec1e4cb173982474224ca5de3177fa1c335720b905d53202592fc"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-records-validation-v2.json",
+      "sha256": "a690872ac9e5e92c8994d43c452caff85fb5303e7614d506e93a1632422a0a7a"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-records-context-v1.json",
+      "sha256": "9c162f1a58b0d3eefa619a16249e2b0b0dc0449e65efd0964e56456c0bca0dd1"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-records-native-diagnostics-v1.json",
+      "sha256": "75665166eb7426b98349d7696c7effcec642865e268ffc68fdbcb5e2b33baf2e"
+    }
+  ],
+  "failure_resolution": "No C/build failure. V1subset passed; v2addedindex22/guard-clear-return aliases toexercise overlappingwritepaths; v3corrects raw-return metric againsteachfixtureinitialCS. Contextv2addsactualfourcallerflagredefinitions. Sources/DLL unchanged."
+}

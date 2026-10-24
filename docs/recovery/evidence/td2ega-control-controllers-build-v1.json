@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_control_controllers.cmd",
+    "sha256": "e9d219956dae691adf38ca5fbf207495ec5f41cd0ad4d8358831a22272c53b8f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_control_controllers.c",
+      "sha256": "85bf8a87e5a83ba6fc203decae1103ab64a3e0cf6b4e1ea71f3e322fcdb9761f"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_control_controllers.h",
+      "sha256": "78ec65326b45225867f6bd251db2d0db4588bb3aa2c8436b74d5c75bf80f13d6"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/control-controllers-repro/td2ega_control_controllers.dll",
+      "sha256": "89931e0de0125c964619c153dde4dae5469a636d70a272930365a5b822de083e",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/control-controllers-repro/td2ega_control_controllers.obj",
+      "sha256": "0e02d6eabdce3fa8d7dbdd262e2d919d99ad42ad8f622e772652ba46aecaab74",
+      "bytes": 8422
+    },
+    {
+      "path": "analysis/build/control-controllers-repro/td2ega_control_bus.obj",
+      "sha256": "00633270966b96cc3bc3f11c4f6c6f466c35276f06c850de4a1dd657002be602",
+      "bytes": 6551
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/control-controllers-build-v1.log",
+    "sha256": "7db139fc28178b012f2a831da5c351f1ea474304aa9e9530de715960d31c932f"
+  },
+  "limit": "Actual5A6F/44EA plus actualfrozencontrol_bus C, realouter/nestednearCALLframes andtailJMP/rootRET2, fullbus/SS/GPR/BP/CFIFDF/control/counts/noABImockorSSscratch exclusion. Sourceguard/counter/table/word-bytewrap/signed-vsunsigned effects retained, actualsourcecleared2F56 maychangevianearframe.4580boundedentry-specificstaticdisposition under serializedRAM; noIRQexclusion claim. NativeouterCALL/inner460Ebudgets distinct; rawtargets exposedafterRET neverfollowed. Actual403B/othercallers/writers/units/tablebounds/ownership/lifetime/IRQ/fullstate/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000374",
+    "FN-EGA-000401"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000373",
+    "FN-EGA-000375",
+    "FN-EGA-000376",
+    "FN-EGA-000377",
+    "FN-EGA-000378"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-control-controllers-context-v1.json",
+    "sha256": "61efd0bfb1783a6685b493fb3934df705d3bc135322b3355320a98a73dc2247c"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_control_controllers_before_positive_add_v1.py",
+      "sha256": "dfa8dbd44ead2a923ca963b875afc86fc87267fa52afe33523694b5e4c9cec0a"
+    },
+    {
+      "path": "analysis/logs/control-controllers-validation-v1.log",
+      "sha256": "0fd11964923dbcae77c99afc20a6e445c556a8def493d93076e1d8c05e2b1d7e"
+    },
+    {
+      "path": "analysis/refine_control_controllers_positive_add_v1.py",
+      "sha256": "915237fb1372612e3e052204639bbff4fc34b9eda6405490cf0bd4d7dc88faf9"
+    }
+  ],
+  "failure_resolution": "No C/build/instruction-comparison failure. v1matched40864cases butlacked45F1positiveADDAXDX throughactualparent. Selectedv2 adds64targetedactionprofiles with255byteMULinput/largeDH andcoversall162feasible/4580staticdisposition. C/DLLunchanged."
+}

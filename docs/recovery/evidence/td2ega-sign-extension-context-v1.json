@@ -1,0 +1,590 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 60,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "10a505eaee79ab670b9031feb5de7ab1b156b5646009db9386a31f989296d133",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/intel-sign-extension-reference-v1.json",
+      "sha256": "db7218b5cecf4fe27bfbae5ce3ddaa44e3cda5b33afc86143c0c9806a2b92764"
+    }
+  ],
+  "tools": {
+    "capstone": "5.0.7",
+    "unicorn": "2.1.4"
+  },
+  "capstone_16bit_decodes": [
+    {
+      "encoding": "98",
+      "mnemonic": "cwde",
+      "instruction_bytes": 1
+    },
+    {
+      "encoding": "6698",
+      "mnemonic": "cwde",
+      "instruction_bytes": 2
+    },
+    {
+      "encoding": "99",
+      "mnemonic": "cdq",
+      "instruction_bytes": 1
+    },
+    {
+      "encoding": "6699",
+      "mnemonic": "cdq",
+      "instruction_bytes": 2
+    }
+  ],
+  "original_site": {
+    "entry": "16AA:0002",
+    "instruction": "16AA:0018",
+    "module_offset": 92856,
+    "unprefixed_opcode": "98",
+    "operand_size": 16,
+    "effect": "AXsignextendsAL, upperEAXpreserved; noflagsmodified."
+  },
+  "microfixture_results": [
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779119488,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779119488,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779119488,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166554751,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166554751,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166554751,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147483520,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147483520,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147483520,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "98",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 4736,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 4736,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 4736,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 4294934655,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 4294934655,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 4294934655,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 128,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 128,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 128,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 127,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 127,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6698",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 127,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779058816,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779058816,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779058816,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166587519,
+      "EDX": 3065446399,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166587519,
+      "EDX": 3065446399,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166587519,
+      "EDX": 3065446399,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147418240,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147418240,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147418240,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "99",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065380864,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779058816,
+      "EDX": 4294967295,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779058816,
+      "EDX": 4294967295,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779058816,
+      "EDX": 4294967295,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166587519,
+      "EDX": 4294967295,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166587519,
+      "EDX": 4294967295,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166587519,
+      "EDX": 4294967295,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147418240,
+      "EDX": 0,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147418240,
+      "EDX": 0,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147418240,
+      "EDX": 0,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 0,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 0,
+      "flags_unchanged": true
+    },
+    {
+      "source": "syntheticISAbytes",
+      "encoding": "6699",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 0,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779119488,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779119488,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2779058816,
+      "initial_EDX": 3065385524,
+      "EAX": 2779119488,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166554751,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166554751,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2166587519,
+      "initial_EDX": 3065385524,
+      "EAX": 2166554751,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147483520,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147483520,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 2147418240,
+      "initial_EDX": 3065385524,
+      "EAX": 2147483520,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    },
+    {
+      "source": "originalFN42198",
+      "encoding": "98",
+      "initial_EAX": 305397887,
+      "initial_EDX": 3065385524,
+      "EAX": 305397887,
+      "EDX": 3065385524,
+      "flags_unchanged": true
+    }
+  ],
+  "limits": "48synthetic98/6698/99/6699 single-instruction fixtures and12executions oforiginalFN421unprefixed98 withfullEAX/EDX/FLAGSchecked. Originalbyteimage copiedtoasynthload withoutrelocation-dependentoperands forpure98. Capstonemnemonic alone insufficientforwidth; primaryIntelreference separatelyread. NotphysicalCPU/historicaltiming/DOS/game/fidelity acceptance, notanativehelper-suite orwholeFN421contract. Allotheroperands/callers needtheirown byte/semanticreview."
+}

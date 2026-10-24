@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000391",
+    "FN-EGA-000389",
+    "FN-EGA-000396",
+    "FN-EGA-000388",
+    "FN-EGA-000128"
+  ],
+  "vectors": 26520,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "8770d0bd396c4687f6f7019271fc84abe9ee3caef5c7c47edda48666c04517b5",
+  "source_sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8",
+  "validator_sha256": "822a352bd0fc94ea1e30c37c5b0e201442496d47519d560b794243556e527bba",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1760060,
+  "instruction_sites_in_fence": 267,
+  "instruction_sites_exercised": 267,
+  "fixture_coverage": {
+    "entry_0": 5304,
+    "budget_prefix": 7470,
+    "iterations": 80906,
+    "bus_write_events": 159528,
+    "raw_near_returns": 160,
+    "minimumSP16_cases": 8070,
+    "DS_equals_SS_cases": 13260,
+    "seeded_random_cases": 15000,
+    "near_returns": 19050,
+    "entry_1": 5304,
+    "entry_2": 5304,
+    "entry_3": 5304,
+    "entry_4": 5304
+  },
+  "limits": "Five actual no-call near roots5299/5022/5446/4F92/5B5A; signed SBB branches use full signed difference with low-word borrow, raw word records/rings and source-order rereads/writes, explicit DS:[BP+SI] overrides, actual SS saves/nearRET. Fullbus/GPR/BP/CFIFDF/control including native before-loop prefixes/raw altered RET target exposed after instruction, never followed. Synthetic fields/tables/unaligned bounds may cycle; no source units/fullformat/caller/writer/bounds/lifetime/exclusion/core/resource-fedP2/P3/device/session/game/fidelity admission."
+}

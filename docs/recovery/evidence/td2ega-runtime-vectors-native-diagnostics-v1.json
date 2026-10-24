@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 17,
+  "script_sha256": "8005c3640df85ddd79c260b060f31371f91cf7939484690207ee564c5cfc810d",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "daa36ef21b15d56ec162d5844616fefacfa4a7867ab2d0d4ede2a9df6a1799be",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_vectors.py",
+      "sha256": "8fc05d37aaa0c6895ba2e555e35527f4b2ccf3bd31fbf9c42fbcdfbdf9d7aa88"
+    }
+  ],
+  "limits": "Eightinvalidbus/count/SP/null/boolean profiles, minimumSP16 one/twoDOS/optionalcallback chains, missing/badDOS/callbackadapters, beforeINT/CALLbudgets. Nativeonly; actualvectors/targets/writers/lifetime/IRQ/session/game/core/fidelity separate."
+}

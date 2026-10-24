@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 28,
+  "script_sha256": "726700b686c5a31cc0ba6b147f0eef5582fa6b8e30bc1b0ebf2d86283d660e11",
+  "library_sha256": "2220e5cc7c16a3aba24691863080f5aa12072cc2ba7c7a94e07499ae7ddec103",
+  "source_sha256": "a2d4aeb58ddd7e6e06fb9b627a01e6ce92b913debc9d254265f344826455ef3c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_poll_bus.py",
+      "sha256": "df8258265d178161ee62ce29734299c0862373f41d906f14c88018f5e0932853"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    }
+  ],
+  "limits": "Nativeonlyinterface/prefix beforefirst403B4046CALL/actualfourSSsavedwords/principalDS-ESloadrelocation/retainedCFIFDF-beforeCLD/twoloads-SP46-FFE0/DS-SScontrast. No actualcallee/rootRET/originalcomparison/fullfunctionregistration/wholecore/FN3lifetime-IRQ/game/fidelity acceptance."
+}

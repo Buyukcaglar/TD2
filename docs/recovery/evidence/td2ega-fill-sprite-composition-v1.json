@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 3072,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "2aaac36b91cf6e535b353a33ab490685634abaf751627af8517c3b05a7185066",
+  "native_libraries": [
+    {
+      "path": "analysis/build/draw-sequence-repro/td2ega_draw_sequence.dll",
+      "sha256": "3e176792cf1c4796ed28f2a34e448ef2b22d45d5b034dbec9251c6f3ceaada21"
+    },
+    {
+      "path": "analysis/build/rectangle-draw-repro/td2ega_rectangle_draw.dll",
+      "sha256": "c9025b6bea3a524e9796373fc25b8f12b329bda1f4e18a9dd3a3fa76eadfcb34"
+    },
+    {
+      "path": "analysis/build/sprite-draw-repro-v2/td2ega_sprite_draw.dll",
+      "sha256": "f510e2ea8a70131577840bb417f451064db21a95bd4143410073cef58da8e84e"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_draw_sequence.py",
+      "sha256": "36564079d9c47b3c281523b676776f1b5b04fbf9b6e5fac84fb964eb59428f61"
+    },
+    {
+      "path": "tools/validate_sprite_draw.py",
+      "sha256": "b19c16f1126ec5608572bd9ae03cbe1b5de910d532cfbefcf184a98611c165f2"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "entry_fence": [
+    "06C9:26D8",
+    "06C9:89A2",
+    "06C9:916C",
+    "06C9:82D0",
+    "06C9:8336",
+    "06C9:839C",
+    "06C9:AD22",
+    "06C9:AD8B",
+    "06C9:ADF4"
+  ],
+  "instruction_sites_in_fence": 3006,
+  "instruction_sites_exercised": 966,
+  "original_instructions_executed": 2809712,
+  "fixture_coverage": {
+    "rectangles": 3072,
+    "sprites": 12288,
+    "mask_calls": 672,
+    "dispatches": 1536,
+    "far_boundaries": 15360,
+    "OUT_bytes": 31488,
+    "device_reads": 57024,
+    "device_writes": 52416
+  },
+  "limits": "Actual26D8 near-return root,89A2 far child and all four916C far children with16/12/8/4 retained SS words, materialized far frames and actual near mask bodies; byte bus event/GPR/BP/CFIFDF/full nonframe bus comparison.128 private SS scratch bytes excluded because parent uses virtual argument pools; standalone sprite receipt separately compares full SS bus. Synthetic source packets, normal children only; budgets/faults remain separate helper contracts. No all-writer/caller/lifetime/exclusion/capacity, real EGA hardware, renderer, supplied-resource decode, DOS session, full state-machine/core/gameplay/fidelity acceptance. Scoped vectors separate from helper totals."
+}

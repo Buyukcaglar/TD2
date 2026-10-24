@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_timer_callbacks.cmd",
+    "sha256": "db4b1550136ecdb4ad432436eb108e068785aaf2ad20aecee8a1e262847175f9"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_timer_callbacks.c",
+      "sha256": "193dea747f7c7112c07aafcd4a77c5b19ec521d47e7430d342876ad476a209d2"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callbacks.h",
+      "sha256": "d3eceb24b49e417a6f0980885f3ca8aaeb9588a6a8226432919fb0638669d2c0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/timer-callbacks-repro/td2ega_timer_callbacks.dll",
+      "sha256": "9112e852fcb366a422406e7224b4794c379f03e66bd598b16aad30f5aca9737b",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/timer-callbacks-repro/td2ega_timer_callbacks.obj",
+      "sha256": "7066043baf2b2505db8f1d96208c2b1a2972defadde76f8fa3f622e306020f4a",
+      "bytes": 4498
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/timer-callbacks-build-v1.log",
+    "sha256": "f259e27ce5f72355895c83881e3e6eb1bf97b89b4393df43c817481f4dbaed85"
+  },
+  "limit": "Two callbackmetadata exports, five slots plusfollowing segmentterminator; localstate andorderedwrites only. No actualIRQ/callback, completecaller/fatal/platform orcore acceptance.",
+  "function_ids": [
+    "FN-EGA-000150",
+    "FN-EGA-000151"
+  ]
+}

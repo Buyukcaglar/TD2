@@ -1,0 +1,435 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "4f654792ab409f0b85d5a124914b29c652a2960e8c67c2db122461da60833843",
+  "instruction_observations": [
+    {
+      "site": "0432:0006",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "0432:0007",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "0432:0009",
+      "bytes": "83ec02",
+      "text": "sub sp, 2"
+    },
+    {
+      "site": "0432:000C",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "0432:000D",
+      "bytes": "ff7608",
+      "text": "push word ptr [bp + 8]"
+    },
+    {
+      "site": "0432:0010",
+      "bytes": "ff7606",
+      "text": "push word ptr [bp + 6]"
+    },
+    {
+      "site": "0432:0013",
+      "bytes": "9a5629a813",
+      "text": "lcall 0x13a8, 0x2956"
+    },
+    {
+      "site": "0432:0018",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "0432:001B",
+      "bytes": "c746fe1100",
+      "text": "mov word ptr [bp - 2], 0x11"
+    },
+    {
+      "site": "0432:0020",
+      "bytes": "eb0c",
+      "text": "jmp 0x2e"
+    },
+    {
+      "site": "0432:0022",
+      "bytes": "8b5efe",
+      "text": "mov bx, word ptr [bp - 2]"
+    },
+    {
+      "site": "0432:0025",
+      "bytes": "8b7606",
+      "text": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "0432:0028",
+      "bytes": "c60000",
+      "text": "mov byte ptr [bx + si], 0"
+    },
+    {
+      "site": "0432:002B",
+      "bytes": "ff4efe",
+      "text": "dec word ptr [bp - 2]"
+    },
+    {
+      "site": "0432:002E",
+      "bytes": "837efe00",
+      "text": "cmp word ptr [bp - 2], 0"
+    },
+    {
+      "site": "0432:0032",
+      "bytes": "7e0b",
+      "text": "jle 0x3f"
+    },
+    {
+      "site": "0432:0034",
+      "bytes": "8b5efe",
+      "text": "mov bx, word ptr [bp - 2]"
+    },
+    {
+      "site": "0432:0037",
+      "bytes": "8b7606",
+      "text": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "0432:003A",
+      "bytes": "803820",
+      "text": "cmp byte ptr [bx + si], 0x20"
+    },
+    {
+      "site": "0432:003D",
+      "bytes": "74e3",
+      "text": "je 0x22"
+    },
+    {
+      "site": "0432:003F",
+      "bytes": "c746fe0000",
+      "text": "mov word ptr [bp - 2], 0"
+    },
+    {
+      "site": "0432:0044",
+      "bytes": "eb0b",
+      "text": "jmp 0x51"
+    },
+    {
+      "site": "0432:0046",
+      "bytes": "803c20",
+      "text": "cmp byte ptr [si], 0x20"
+    },
+    {
+      "site": "0432:0049",
+      "bytes": "7503",
+      "text": "jne 0x4e"
+    },
+    {
+      "site": "0432:004B",
+      "bytes": "c6045f",
+      "text": "mov byte ptr [si], 0x5f"
+    },
+    {
+      "site": "0432:004E",
+      "bytes": "ff46fe",
+      "text": "inc word ptr [bp - 2]"
+    },
+    {
+      "site": "0432:0051",
+      "bytes": "8b76fe",
+      "text": "mov si, word ptr [bp - 2]"
+    },
+    {
+      "site": "0432:0054",
+      "bytes": "037606",
+      "text": "add si, word ptr [bp + 6]"
+    },
+    {
+      "site": "0432:0057",
+      "bytes": "803c00",
+      "text": "cmp byte ptr [si], 0"
+    },
+    {
+      "site": "0432:005A",
+      "bytes": "75ea",
+      "text": "jne 0x46"
+    },
+    {
+      "site": "0432:005C",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "0432:005D",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "0432:005F",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "0432:0060",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "0432:0013",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0432:0D35",
+      "site": "0432:0F3C",
+      "kind": "call",
+      "size": 3,
+      "target": "0432:0006"
+    },
+    {
+      "owner": "0432:0F71",
+      "site": "0432:117A",
+      "kind": "call",
+      "size": 3,
+      "target": "0432:0006"
+    },
+    {
+      "owner": "0432:11AE",
+      "site": "0432:130C",
+      "kind": "call",
+      "size": 3,
+      "target": "0432:0006"
+    },
+    {
+      "owner": "0432:1341",
+      "site": "0432:149F",
+      "kind": "call",
+      "size": 3,
+      "target": "0432:0006"
+    }
+  ],
+  "caller_windows": [
+    {
+      "call_site": "0432:0F3C",
+      "instructions": [
+        {
+          "site": "0432:0F36",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:0F37",
+          "bytes": "8d46c0",
+          "text": "lea ax, [bp - 0x40]"
+        },
+        {
+          "site": "0432:0F3A",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:0F3B",
+          "bytes": "0e",
+          "text": "push cs"
+        },
+        {
+          "site": "0432:0F3C",
+          "bytes": "e8c7f0",
+          "text": "call 6"
+        },
+        {
+          "site": "0432:0F3F",
+          "bytes": "83c404",
+          "text": "add sp, 4"
+        },
+        {
+          "site": "0432:0F42",
+          "bytes": "b81e00",
+          "text": "mov ax, 0x1e"
+        },
+        {
+          "site": "0432:0F45",
+          "bytes": "f76eba",
+          "text": "imul word ptr [bp - 0x46]"
+        },
+        {
+          "site": "0432:0F48",
+          "bytes": "8bd8",
+          "text": "mov bx, ax"
+        }
+      ]
+    },
+    {
+      "call_site": "0432:117A",
+      "instructions": [
+        {
+          "site": "0432:1174",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:1175",
+          "bytes": "8d46c0",
+          "text": "lea ax, [bp - 0x40]"
+        },
+        {
+          "site": "0432:1178",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:1179",
+          "bytes": "0e",
+          "text": "push cs"
+        },
+        {
+          "site": "0432:117A",
+          "bytes": "e889ee",
+          "text": "call 6"
+        },
+        {
+          "site": "0432:117D",
+          "bytes": "83c404",
+          "text": "add sp, 4"
+        },
+        {
+          "site": "0432:1180",
+          "bytes": "8b5eba",
+          "text": "mov bx, word ptr [bp - 0x46]"
+        },
+        {
+          "site": "0432:1183",
+          "bytes": "b105",
+          "text": "mov cl, 5"
+        },
+        {
+          "site": "0432:1185",
+          "bytes": "d3e3",
+          "text": "shl bx, cl"
+        }
+      ]
+    },
+    {
+      "call_site": "0432:130C",
+      "instructions": [
+        {
+          "site": "0432:1306",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:1307",
+          "bytes": "8d46e8",
+          "text": "lea ax, [bp - 0x18]"
+        },
+        {
+          "site": "0432:130A",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:130B",
+          "bytes": "0e",
+          "text": "push cs"
+        },
+        {
+          "site": "0432:130C",
+          "bytes": "e8f7ec",
+          "text": "call 6"
+        },
+        {
+          "site": "0432:130F",
+          "bytes": "83c404",
+          "text": "add sp, 4"
+        },
+        {
+          "site": "0432:1312",
+          "bytes": "8d46e8",
+          "text": "lea ax, [bp - 0x18]"
+        },
+        {
+          "site": "0432:1315",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:1316",
+          "bytes": "b81e00",
+          "text": "mov ax, 0x1e"
+        }
+      ]
+    },
+    {
+      "call_site": "0432:149F",
+      "instructions": [
+        {
+          "site": "0432:1499",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:149A",
+          "bytes": "8d46e8",
+          "text": "lea ax, [bp - 0x18]"
+        },
+        {
+          "site": "0432:149D",
+          "bytes": "50",
+          "text": "push ax"
+        },
+        {
+          "site": "0432:149E",
+          "bytes": "0e",
+          "text": "push cs"
+        },
+        {
+          "site": "0432:149F",
+          "bytes": "e864eb",
+          "text": "call 6"
+        },
+        {
+          "site": "0432:14A2",
+          "bytes": "83c404",
+          "text": "add sp, 4"
+        },
+        {
+          "site": "0432:14A5",
+          "bytes": "8b76e4",
+          "text": "mov si, word ptr [bp - 0x1c]"
+        },
+        {
+          "site": "0432:14A8",
+          "bytes": "b105",
+          "text": "mov cl, 5"
+        },
+        {
+          "site": "0432:14AA",
+          "bytes": "d3e6",
+          "text": "shl si, cl"
+        }
+      ]
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-string-memory-build-v2.json",
+      "sha256": "e7936558d4cade82e3f8d12b470b8b5b074c95ea7f06199b5c837bb42b795243"
+    }
+  ],
+  "facts": [
+    "Far/twoSSwordsoutputnearoffsetBP+6/inputnearoffsetBP+8; actualPUSHBP/SUBSP2/PUSHSI, orderedPUSHargsource/output, farCALL2956, ADDSP4. RootSP30 keepschildentry16 aftersixparentframe/localsavebytes/fourargumentbytes/fourfarframebytes.",
+    "LiteralSSlocal17 controlsdownwardtrim: signedlocal>0 andDS[SSoutputarg+local]space =>bytezero/DECactualSSlocal. Slot0isnottrimmed. The17thbyteischeckedregardlessofNULearlier; no length/capacity validation inferred.",
+    "SSlocalreset0, sourceforwardscalarloopcomputesSIfromactualSSlocal+actualSSoutputarg, testsNUL, replacesbyte20with5F, INCwordlocal/repeats. ChildcopyusesincomingDF; scalarparentalwaysincrementslocal, no CLD substitution. RawSSaliascanchangebounds/arguments/locals/saves/return.",
+    "Actual2956 fullbus/GPR/BP/CFIFDF/farframe iscomposed; childalteredBPretainedintoactualparentSSaddressing. RawchangedchildreturnstopsafteractualRETF/native1; rootrawfarreturnexposedafterinstruction/native0, neitherfollowed.",
+    "OriginalrootrestoresSIfromactualSS thenMOVSPactualBP/POPBP/RETF; normalCF0fromNULCMP. CALL/childoperation/parentloopbudgets areindependentdiagnostics, notsourceerror/stringbound.",
+    "Callerwindowsregisteredwithoutwholecaller/NUL/DF/capacity/writer/lifetime/core admission. Textformat/resource/gameplay meaning remainunassigned."
+  ],
+  "limits": "Whole34-site root/staticactual2956/callerwindows andliteralSS/DF/trim proof; fullbuscomposition separate. No wholecaller/stringcapacity/NUL/allwriters/DS-SS/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

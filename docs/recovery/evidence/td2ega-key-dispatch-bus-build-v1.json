@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_key_dispatch_bus.cmd",
+    "sha256": "4c3a2a30a92b19ebd03c00fe17ce3db158b9ae06f4ebe57d4537e1bb057619fb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_key_dispatch_bus.c",
+      "sha256": "6f5dab553ec307cfe859bf6e83e41ca23899d16ddc8223466f5836b7b3177f89"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch_bus.h",
+      "sha256": "1bb5e26f9347ba4840acfe3149017ecf37b3fd95278a11bfc5846800aca9086d"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/key-dispatch-bus-repro/td2ega_key_dispatch_bus.dll",
+      "sha256": "b34fdab9d893ec6f79c24e8145652ae983dec05c373d0f4b8372f4f037925082",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/key-dispatch-bus-repro/td2ega_key_dispatch_bus.obj",
+      "sha256": "32d1022d3ecdb07fa78dff25e52dfc02b9497781fdc61a5681fae56a42181c83",
+      "bytes": 5001
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/key-dispatch-bus-build-v1.log",
+    "sha256": "38fa56b7382f90c325e09685db56472597baaae489efc3509fcf16a1b1e437e0"
+  },
+  "limit": "AdditionalactualSS6528/42originalsites/whole1MiB20bitRAM/GPR-BP-CFIFDF-normalZF/SSkeyrewrite-guard-table-aliases/savedDI-SI/PUSHCS-actualnearCALLBX/retiredfarcallbackresponse/actualrootRETF. Callbackbodies areexplicitABI effects plusprivategenericRETFinstruction; syntheticreturns excludedfromoriginalinstructioncount andnotbodyproof. Responsecanwrapactualrecoveredcallee later; unknown/rawreturnneverfollowed. NativebeforeCALL3/preunqualifiedfarRET5 prefixes separatefromoriginalerrors. Sameentrycountedonce/oldsource-DLL-receiptsfrozen. Callbackdomain-allwriters-lifetime-exclusion/actualIRQ/inputpoll-420A-403B-core/P1-GATE remainopen; noDOSsession/realdevices/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000153"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-key-dispatch-bus-context-v1.json",
+    "sha256": "f91ea4496cd70d7cac12499542f5b19aea1249f94d8ae40b10aeb815c60ff921"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000343",
+    "FN-EGA-000345"
+  ],
+  "vectors": 140416,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1fd5f16e657c881af7ca955ff4786979b9984d557efff4896e39ac57decc8281",
+  "source_sha256": "8e925d1d0ee7003ad7cb4b31c59f2b0980b7e54c32ede007dd50b462478411b0",
+  "validator_sha256": "659bd2af1c2434952bca37339ae859034fa4ea3630d32620224aa272aa06feac",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 7925630,
+  "instruction_sites_in_fence": 170,
+  "instruction_sites_exercised": 165,
+  "unreachable_under_parent_guards": [
+    "13A8:2EF8",
+    "13A8:2EFB",
+    "13A8:2EFD",
+    "13A8:2EFF",
+    "13A8:2F00"
+  ],
+  "fault_prefix_sites": {
+    "13A8:2E88": 3456,
+    "13A8:2F5F": 3456
+  },
+  "fixture_coverage": {
+    "entry_0": 70208,
+    "DIV_fault_prefix": 6912,
+    "actual_multiply_CALLs": 43708,
+    "successful_DIV": 161214,
+    "estimate_corrections": 1984,
+    "bus_write_events": 995020,
+    "minimumSP32_cases": 70208,
+    "DS_equals_SS_cases": 70208,
+    "seeded_random_cases": 16000,
+    "mathematical_bitpattern_checks": 99004,
+    "INT_MIN_minus_one_no_fault_returns": 384,
+    "root_RETF8": 99004,
+    "budget_prefix": 34500,
+    "entry_1": 70208
+  },
+  "limits": "Actual2E42quotient/2F1Cremainder+actual2EE8 instructions against word-level C roots and frozenactualmultiply C with sourceSSABI adapter. FourSSoperandwords rewritten to magnitudes, twoDIVfastpath/SHR-RCRnormalize/correction/general multiply, actualSSsaves/args/farframes andliteralRETF8 atchildandroot(fullbus/GPR/BP/CFIFDF/control). Parentguards excludeonlyfive multiplyfastbranch sites alreadycovered byseparatemultiplyunit. UndefinedsuccessfulDIVFLAGS unadmitted; exposedprefix/rootCF definedbyotheroperations. DIVfaultprefixbeforeinstruction/exceptiondelivery; nativebefore-shift/CALL budgets separate. INT_MIN/-1 rawwrapreturnedwithout host signedUB, quotient/remainder mathematicalbitpattern checks separateassertionsoncompletedcases. Actualcaller/type/storage/exclusion/lifetime/otherFLAGS/core/session/gameplay/fidelity remainopen."
+}

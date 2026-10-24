@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_timer_callback_bus.cmd",
+    "sha256": "5cd1c43675f75a67f224b6817c57bc187defcc352827ce69d70034ef4eca4fb3"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_timer_callback_bus.c",
+      "sha256": "46d93d3c8d0e8d139d3c84e7a2e9b075f12c8ebcab34fddeeb3ecf4be5d4ffa7"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callback_bus.h",
+      "sha256": "9f4315debfacd2acc2c528e96a37c8f55a6f7ec4fbec7788a73bc43c3c655c25"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/timer-callback-bus-repro/td2ega_timer_callback_bus.dll",
+      "sha256": "2ae704414d9010064629d5154a7e87147841270082f5cff40e31a618542390e9",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/timer-callback-bus-repro/td2ega_timer_callback_bus.obj",
+      "sha256": "1f1bb71627ada36711c97c9181443f4eaf85f2972728ca53faef112c8e865b07",
+      "bytes": 10988
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/timer-callback-bus-build-v1.log",
+    "sha256": "62218ccc33a0e2be7fce25adcaf2893d6fc1b288ee731eb308f12878184058ff"
+  },
+  "limit": "ActualSS614C-6180/wholeRAM-GPR-BP-CFIFDF-definedFLAGS/actualsavedBP-farRET/orderedargumentreads-and-publicationwrites/matchedremoveCLI-STI/5rowscan/fatalpreCALL6164withactualPUSHAX/qualifiedbudget-preRET. Sourcepublicationprefixafter6176-before6179withIF1andstalerow iswitnessed, notrealIRQfeasibility orhistoricalfailure. Fatalcallee notexecuted; no nativeproducer/actualIRQ-allwriters-reset-lifetime-exclusion/core/P1-GATE/game-fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000150",
+    "FN-EGA-000151"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+    "sha256": "bf3cfb67a2d3be7fe2d1ad26e601d3a5cb9616e11674ba363096f78446357806"
+  },
+  "build_setup": {
+    "path": "analysis/history/timer-callback-bus-build-setup-v1.json",
+    "sha256": "82281dbead80b4eb04a4c09674901899a6223b9bd0546c61fdc193a220f19c9f"
+  }
+}

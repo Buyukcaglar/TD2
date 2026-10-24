@@ -1,0 +1,513 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "a23a61ab1d15c74a4b98aa4c1bf2c81003698de728fa5e678fd0c70cf4559bcb",
+  "instruction_observations": [
+    {
+      "site": "06C9:4F92",
+      "bytes": "3e8b5a04",
+      "text": "mov bx, word ptr ds:[bp + si + 4]"
+    },
+    {
+      "site": "06C9:4F96",
+      "bytes": "2bd8",
+      "text": "sub bx, ax"
+    },
+    {
+      "site": "06C9:4F98",
+      "bytes": "3e8b5a02",
+      "text": "mov bx, word ptr ds:[bp + si + 2]"
+    },
+    {
+      "site": "06C9:4F9C",
+      "bytes": "1bda",
+      "text": "sbb bx, dx"
+    },
+    {
+      "site": "06C9:4F9E",
+      "bytes": "7e04",
+      "text": "jle 0x4fa4"
+    },
+    {
+      "site": "06C9:4FA0",
+      "bytes": "2b1e0d38",
+      "text": "sub bx, word ptr [0x380d]"
+    },
+    {
+      "site": "06C9:4FA4",
+      "bytes": "83fbfc",
+      "text": "cmp bx, -4"
+    },
+    {
+      "site": "06C9:4FA7",
+      "bytes": "7d01",
+      "text": "jge 0x4faa"
+    },
+    {
+      "site": "06C9:4FA9",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:4FAA",
+      "bytes": "803eb93300",
+      "text": "cmp byte ptr [0x33b9], 0"
+    },
+    {
+      "site": "06C9:4FAF",
+      "bytes": "751b",
+      "text": "jne 0x4fcc"
+    },
+    {
+      "site": "06C9:4FB1",
+      "bytes": "803eb43300",
+      "text": "cmp byte ptr [0x33b4], 0"
+    },
+    {
+      "site": "06C9:4FB6",
+      "bytes": "7f5f",
+      "text": "jg 0x5017"
+    },
+    {
+      "site": "06C9:4FB8",
+      "bytes": "81efb400",
+      "text": "sub di, 0xb4"
+    },
+    {
+      "site": "06C9:4FBC",
+      "bytes": "3e397a06",
+      "text": "cmp word ptr ds:[bp + si + 6], di"
+    },
+    {
+      "site": "06C9:4FC0",
+      "bytes": "7c55",
+      "text": "jl 0x5017"
+    },
+    {
+      "site": "06C9:4FC2",
+      "bytes": "81c76801",
+      "text": "add di, 0x168"
+    },
+    {
+      "site": "06C9:4FC6",
+      "bytes": "3e397a06",
+      "text": "cmp word ptr ds:[bp + si + 6], di"
+    },
+    {
+      "site": "06C9:4FCA",
+      "bytes": "7f4b",
+      "text": "jg 0x5017"
+    },
+    {
+      "site": "06C9:4FCC",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:4FCD",
+      "bytes": "8bfe",
+      "text": "mov di, si"
+    },
+    {
+      "site": "06C9:4FCF",
+      "bytes": "42",
+      "text": "inc dx"
+    },
+    {
+      "site": "06C9:4FD0",
+      "bytes": "3b161138",
+      "text": "cmp dx, word ptr [0x3811]"
+    },
+    {
+      "site": "06C9:4FD4",
+      "bytes": "7204",
+      "text": "jb 0x4fda"
+    },
+    {
+      "site": "06C9:4FD6",
+      "bytes": "2b160d38",
+      "text": "sub dx, word ptr [0x380d]"
+    },
+    {
+      "site": "06C9:4FDA",
+      "bytes": "3e894204",
+      "text": "mov word ptr ds:[bp + si + 4], ax"
+    },
+    {
+      "site": "06C9:4FDE",
+      "bytes": "3e895202",
+      "text": "mov word ptr ds:[bp + si + 2], dx"
+    },
+    {
+      "site": "06C9:4FE2",
+      "bytes": "83c203",
+      "text": "add dx, 3"
+    },
+    {
+      "site": "06C9:4FE5",
+      "bytes": "3b161138",
+      "text": "cmp dx, word ptr [0x3811]"
+    },
+    {
+      "site": "06C9:4FE9",
+      "bytes": "7204",
+      "text": "jb 0x4fef"
+    },
+    {
+      "site": "06C9:4FEB",
+      "bytes": "2b160d38",
+      "text": "sub dx, word ptr [0x380d]"
+    },
+    {
+      "site": "06C9:4FEF",
+      "bytes": "83c608",
+      "text": "add si, 8"
+    },
+    {
+      "site": "06C9:4FF2",
+      "bytes": "3bf1",
+      "text": "cmp si, cx"
+    },
+    {
+      "site": "06C9:4FF4",
+      "bytes": "7502",
+      "text": "jne 0x4ff8"
+    },
+    {
+      "site": "06C9:4FF6",
+      "bytes": "33f6",
+      "text": "xor si, si"
+    },
+    {
+      "site": "06C9:4FF8",
+      "bytes": "3bf7",
+      "text": "cmp si, di"
+    },
+    {
+      "site": "06C9:4FFA",
+      "bytes": "7417",
+      "text": "je 0x5013"
+    },
+    {
+      "site": "06C9:4FFC",
+      "bytes": "3e8b5a04",
+      "text": "mov bx, word ptr ds:[bp + si + 4]"
+    },
+    {
+      "site": "06C9:5000",
+      "bytes": "2bd8",
+      "text": "sub bx, ax"
+    },
+    {
+      "site": "06C9:5002",
+      "bytes": "3e8b5a02",
+      "text": "mov bx, word ptr ds:[bp + si + 2]"
+    },
+    {
+      "site": "06C9:5006",
+      "bytes": "1bda",
+      "text": "sbb bx, dx"
+    },
+    {
+      "site": "06C9:5008",
+      "bytes": "7c04",
+      "text": "jl 0x500e"
+    },
+    {
+      "site": "06C9:500A",
+      "bytes": "2b1e0d38",
+      "text": "sub bx, word ptr [0x380d]"
+    },
+    {
+      "site": "06C9:500E",
+      "bytes": "83fbfc",
+      "text": "cmp bx, -4"
+    },
+    {
+      "site": "06C9:5011",
+      "bytes": "7dc7",
+      "text": "jge 0x4fda"
+    },
+    {
+      "site": "06C9:5013",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:5014",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:5016",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:5017",
+      "bytes": "83c608",
+      "text": "add si, 8"
+    },
+    {
+      "site": "06C9:501A",
+      "bytes": "3bf1",
+      "text": "cmp si, cx"
+    },
+    {
+      "site": "06C9:501C",
+      "bytes": "7502",
+      "text": "jne 0x5020"
+    },
+    {
+      "site": "06C9:501E",
+      "bytes": "33f6",
+      "text": "xor si, si"
+    },
+    {
+      "site": "06C9:5020",
+      "bytes": "42",
+      "text": "inc dx"
+    },
+    {
+      "site": "06C9:5021",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "consumer_entry": "06C9:4D3F",
+  "consumer_instruction_windows": [
+    {
+      "range": "4E1D..4E2A",
+      "instructions": [
+        {
+          "site": "06C9:4E1D",
+          "bytes": "e87201",
+          "text": "call 0x4f92"
+        },
+        {
+          "site": "06C9:4E20",
+          "bytes": "a10c33",
+          "text": "mov ax, word ptr [0x330c]"
+        },
+        {
+          "site": "06C9:4E23",
+          "bytes": "89360c33",
+          "text": "mov word ptr [0x330c], si"
+        },
+        {
+          "site": "06C9:4E27",
+          "bytes": "9c",
+          "text": "pushf "
+        },
+        {
+          "site": "06C9:4E28",
+          "bytes": "3bc6",
+          "text": "cmp ax, si"
+        },
+        {
+          "site": "06C9:4E2A",
+          "bytes": "742c",
+          "text": "je 0x4e58"
+        }
+      ]
+    },
+    {
+      "range": "4E4A..4E60",
+      "instructions": [
+        {
+          "site": "06C9:4E4A",
+          "bytes": "a1ce52",
+          "text": "mov ax, word ptr [0x52ce]"
+        },
+        {
+          "site": "06C9:4E4D",
+          "bytes": "a35433",
+          "text": "mov word ptr [0x3354], ax"
+        },
+        {
+          "site": "06C9:4E50",
+          "bytes": "c606b73301",
+          "text": "mov byte ptr [0x33b7], 1"
+        },
+        {
+          "site": "06C9:4E55",
+          "bytes": "e8ee05",
+          "text": "call 0x5446"
+        },
+        {
+          "site": "06C9:4E58",
+          "bytes": "9d",
+          "text": "popf "
+        },
+        {
+          "site": "06C9:4E59",
+          "bytes": "7505",
+          "text": "jne 0x4e60"
+        },
+        {
+          "site": "06C9:4E5B",
+          "bytes": "c606905402",
+          "text": "mov byte ptr [0x5490], 2"
+        },
+        {
+          "site": "06C9:4E60",
+          "bytes": "803eb73307",
+          "text": "cmp byte ptr [0x33b7], 7"
+        }
+      ]
+    },
+    {
+      "range": "4E9D..4EAB",
+      "instructions": [
+        {
+          "site": "06C9:4E9D",
+          "bytes": "e8f200",
+          "text": "call 0x4f92"
+        },
+        {
+          "site": "06C9:4EA0",
+          "bytes": "89360e33",
+          "text": "mov word ptr [0x330e], si"
+        },
+        {
+          "site": "06C9:4EA4",
+          "bytes": "7505",
+          "text": "jne 0x4eab"
+        },
+        {
+          "site": "06C9:4EA6",
+          "bytes": "c606905402",
+          "text": "mov byte ptr [0x5490], 2"
+        },
+        {
+          "site": "06C9:4EAB",
+          "bytes": "803e793300",
+          "text": "cmp byte ptr [0x3379], 0"
+        }
+      ]
+    },
+    {
+      "range": "4ED1..4EEA",
+      "instructions": [
+        {
+          "site": "06C9:4ED1",
+          "bytes": "e8be00",
+          "text": "call 0x4f92"
+        },
+        {
+          "site": "06C9:4ED4",
+          "bytes": "89361033",
+          "text": "mov word ptr [0x3310], si"
+        },
+        {
+          "site": "06C9:4ED8",
+          "bytes": "7510",
+          "text": "jne 0x4eea"
+        },
+        {
+          "site": "06C9:4EDA",
+          "bytes": "803e753300",
+          "text": "cmp byte ptr [0x3375], 0"
+        },
+        {
+          "site": "06C9:4EDF",
+          "bytes": "7509",
+          "text": "jne 0x4eea"
+        },
+        {
+          "site": "06C9:4EE1",
+          "bytes": "c60675331e",
+          "text": "mov byte ptr [0x3375], 0x1e"
+        },
+        {
+          "site": "06C9:4EE6",
+          "bytes": "ff061c33",
+          "text": "inc word ptr [0x331c]"
+        },
+        {
+          "site": "06C9:4EEA",
+          "bytes": "8b361233",
+          "text": "mov si, word ptr [0x3312]"
+        }
+      ]
+    },
+    {
+      "range": "4F16..4F2F",
+      "instructions": [
+        {
+          "site": "06C9:4F16",
+          "bytes": "e87900",
+          "text": "call 0x4f92"
+        },
+        {
+          "site": "06C9:4F19",
+          "bytes": "89361233",
+          "text": "mov word ptr [0x3312], si"
+        },
+        {
+          "site": "06C9:4F1D",
+          "bytes": "7510",
+          "text": "jne 0x4f2f"
+        },
+        {
+          "site": "06C9:4F1F",
+          "bytes": "803e753300",
+          "text": "cmp byte ptr [0x3375], 0"
+        },
+        {
+          "site": "06C9:4F24",
+          "bytes": "7509",
+          "text": "jne 0x4f2f"
+        },
+        {
+          "site": "06C9:4F26",
+          "bytes": "c60675331e",
+          "text": "mov byte ptr [0x3375], 0x1e"
+        },
+        {
+          "site": "06C9:4F2B",
+          "bytes": "ff061c33",
+          "text": "inc word ptr [0x331c]"
+        },
+        {
+          "site": "06C9:4F2F",
+          "bytes": "803eb83300",
+          "text": "cmp byte ptr [0x33b8], 0"
+        }
+      ]
+    }
+  ],
+  "consumer_ZF_sites": [
+    "06C9:4E59",
+    "06C9:4EA4",
+    "06C9:4ED8",
+    "06C9:4F1D"
+  ],
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+    "sha256": "ccf9b7a97490a5ad70c29fc3f3246b21d9ab0cfba6cb427642430de8683d375d"
+  },
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+      "sha256": "ccf9b7a97490a5ad70c29fc3f3246b21d9ab0cfba6cb427642430de8683d375d"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "return_flag_sources": {
+    "06C9:4FA9": "CMPBX,FFFC; all arithmetic statusflags defined, ZF0 under rejectionguard.",
+    "06C9:5016": "XORAX,AX; CF0/OF0/SF0/ZF1/PF1, AFundefined excluded frommask.",
+    "06C9:5021": "INCDX; preservepriorCF, deriveOF/SF/ZF/AF/PF from incrementedDX. AXunchanged, not aZF proxy."
+  },
+  "facts": [
+    "Existingfrozenrecord_math C exposesCF/IF/DF only. Its sourcebody comparisonremainsvalidwithinthat scope; it cannot directlysupply4D3F JNE orPUSHF image. Newviewinvokesunchangedactualbody andcomputesdefinedreturnflags fromreadonlyserialized initialpathclassification/returnedvalues.",
+    "4E1D actualnear4F92, MOVAXDS330C/MOVDS330CSI preserveflags,4E27PUSHF savesflags beforeparentCMP.4E58POPF restoreswordthen4E59JNE consumesrestoredZF. OtherdirectJNE sitesfollow4F92+MOV withnointerveningflagsetter.",
+    "Rejectandupdatepaths distinguishAX0/ZF0 fromAX0/ZF1; skipINCDX canyieldnonzeroAX/ZF1. UseactualreturnedZF, not AX/equality/carry substitution.",
+    "DefinedmaskED7 includes modeledstatusflags/IF/DF/bit1. UpdatepathmaskEC7 excludesAF, prefixmask603 exposesonlyCF/IF/DF/bit1. Unknownbitszero in theview areplaceholders, not architectural zero claims.",
+    "Source previewextraRAMreads require serializedflatRAM/no readsideeffects/disjointnativeinput-result vsbus. It performsno extra ring/stateconsumption orbuswrites beyondfrozenbody. ActualDS overrides, SSsaves/RET and budgets retained.",
+    "Beforefull4D3F composition/core, provide a rawFLAGSimage contract forCPU-specificreserved/undefinedbits andactualPUSHF SSword/POPF lifetimes/aliases. Thedefinedview byitself isnot acompleteCPUFLAGScontext orprivate-stack proof."
+  ],
+  "limits": "DefinedreturnFLAGS andfouractualconsumer sites only. Full4D3F body, rawPUSHF image/POPF CPUprofile, flagwordownership/aliases/writers/lifetime/IRQexclusion/wholecaller/core andactualCPU/device/session/gameplay/fidelity remainopen."
+}

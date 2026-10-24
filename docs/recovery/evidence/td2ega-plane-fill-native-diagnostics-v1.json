@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 26,
+  "script_sha256": "96334f1be754892ed36cec9a3899ed1bef37899872b4beef7f06267e181337fd",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "8c3abf37ad376501a674fdb74787fc06ee8849d86ff6bce612d21f871360d019",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_plane_fill.py",
+      "sha256": "6a5e0518f01b21a7b09c4c4ce6e32e82b2a36666327d4f83ed2f67318afb9b96"
+    }
+  ],
+  "limits": "Nativeinterfaces/exactsetup-fill-restoreeventprefixes/8000rawRAMbytes/literalOUTs/portresponseGPRignored/AL-AH/DF1offsetwrap/SSargumentafterports/forward-reverse-fillfarframe-savesaliases/lateportbusmutation/SPFFFFwordadjacency/adapterrejectprefixes only. Originalcomparison separate; no EGAplanar-register-latchhardwareeffects/renderer/actualcaller-DF-IF-storage/writers/capacity/CPU-A20/IRQ/core/resource/session/fidelity acceptance."
+}

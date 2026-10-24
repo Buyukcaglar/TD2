@@ -1,0 +1,339 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "2de1f69d8df59e6284f982135c84887d35118c460a01a0c8623cc39be36a2320",
+  "instruction_observations": [
+    {
+      "site": "06C9:3AB8",
+      "bytes": "81ee513b",
+      "text": "sub si, 0x3b51"
+    },
+    {
+      "site": "06C9:3ABC",
+      "bytes": "7d03",
+      "text": "jge 0x3ac1"
+    },
+    {
+      "site": "06C9:3ABE",
+      "bytes": "bee0ff",
+      "text": "mov si, 0xffe0"
+    },
+    {
+      "site": "06C9:3AC1",
+      "bytes": "8b8f502f",
+      "text": "mov cx, word ptr [bx + 0x2f50]"
+    },
+    {
+      "site": "06C9:3AC5",
+      "bytes": "d1fe",
+      "text": "sar si, 1"
+    },
+    {
+      "site": "06C9:3AC7",
+      "bytes": "d1fe",
+      "text": "sar si, 1"
+    },
+    {
+      "site": "06C9:3AC9",
+      "bytes": "d1fe",
+      "text": "sar si, 1"
+    },
+    {
+      "site": "06C9:3ACB",
+      "bytes": "d1fe",
+      "text": "sar si, 1"
+    },
+    {
+      "site": "06C9:3ACD",
+      "bytes": "d1fe",
+      "text": "sar si, 1"
+    },
+    {
+      "site": "06C9:3ACF",
+      "bytes": "3bf1",
+      "text": "cmp si, cx"
+    },
+    {
+      "site": "06C9:3AD1",
+      "bytes": "7501",
+      "text": "jne 0x3ad4"
+    },
+    {
+      "site": "06C9:3AD3",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:3AD4",
+      "bytes": "89b7502f",
+      "text": "mov word ptr [bx + 0x2f50], si"
+    },
+    {
+      "site": "06C9:3AD8",
+      "bytes": "33db",
+      "text": "xor bx, bx"
+    },
+    {
+      "site": "06C9:3ADA",
+      "bytes": "52",
+      "text": "push dx"
+    },
+    {
+      "site": "06C9:3ADB",
+      "bytes": "53",
+      "text": "push bx"
+    },
+    {
+      "site": "06C9:3ADC",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:3ADD",
+      "bytes": "0bc9",
+      "text": "or cx, cx"
+    },
+    {
+      "site": "06C9:3ADF",
+      "bytes": "7c0b",
+      "text": "jl 0x3aec"
+    },
+    {
+      "site": "06C9:3AE1",
+      "bytes": "53",
+      "text": "push bx"
+    },
+    {
+      "site": "06C9:3AE2",
+      "bytes": "53",
+      "text": "push bx"
+    },
+    {
+      "site": "06C9:3AE3",
+      "bytes": "51",
+      "text": "push cx"
+    },
+    {
+      "site": "06C9:3AE4",
+      "bytes": "9a3cbac906",
+      "text": "lcall 0x6c9, 0xba3c"
+    },
+    {
+      "site": "06C9:3AE9",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:3AEC",
+      "bytes": "0bf6",
+      "text": "or si, si"
+    },
+    {
+      "site": "06C9:3AEE",
+      "bytes": "7c05",
+      "text": "jl 0x3af5"
+    },
+    {
+      "site": "06C9:3AF0",
+      "bytes": "9a3cbac906",
+      "text": "lcall 0x6c9, 0xba3c"
+    },
+    {
+      "site": "06C9:3AF5",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:3AF8",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "06C9:3AF0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:BA3C"
+    },
+    {
+      "site": "06C9:3AE4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:BA3C"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "06C9:3A91",
+      "site": "06C9:3A9A",
+      "kind": "call",
+      "size": 3,
+      "target": "06C9:3AB8"
+    },
+    {
+      "owner": "06C9:3A91",
+      "site": "06C9:3AA7",
+      "kind": "call",
+      "size": 3,
+      "target": "06C9:3AB8"
+    },
+    {
+      "owner": "06C9:3A91",
+      "site": "06C9:3AB4",
+      "kind": "call",
+      "size": 3,
+      "target": "06C9:3AB8"
+    }
+  ],
+  "caller_context_observations": [
+    {
+      "site": "06C9:3A91",
+      "bytes": "8b36ca52",
+      "text": "mov si, word ptr [0x52ca]"
+    },
+    {
+      "site": "06C9:3A95",
+      "bytes": "33db",
+      "text": "xor bx, bx"
+    },
+    {
+      "site": "06C9:3A97",
+      "bytes": "ba0c00",
+      "text": "mov dx, 0xc"
+    },
+    {
+      "site": "06C9:3A9A",
+      "bytes": "e81b00",
+      "text": "call 0x3ab8"
+    },
+    {
+      "site": "06C9:3A9D",
+      "bytes": "8b36d252",
+      "text": "mov si, word ptr [0x52d2]"
+    },
+    {
+      "site": "06C9:3AA1",
+      "bytes": "bb0200",
+      "text": "mov bx, 2"
+    },
+    {
+      "site": "06C9:3AA4",
+      "bytes": "ba0900",
+      "text": "mov dx, 9"
+    },
+    {
+      "site": "06C9:3AA7",
+      "bytes": "e80e00",
+      "text": "call 0x3ab8"
+    },
+    {
+      "site": "06C9:3AAA",
+      "bytes": "8b36da52",
+      "text": "mov si, word ptr [0x52da]"
+    },
+    {
+      "site": "06C9:3AAE",
+      "bytes": "bb0400",
+      "text": "mov bx, 4"
+    },
+    {
+      "site": "06C9:3AB1",
+      "bytes": "ba0e00",
+      "text": "mov dx, 0xe"
+    },
+    {
+      "site": "06C9:3AB4",
+      "bytes": "e80100",
+      "text": "call 0x3ab8"
+    },
+    {
+      "site": "06C9:3AB7",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "outer_caller_candidates": [
+    {
+      "owner": "06C9:391F",
+      "site": "06C9:3942",
+      "kind": "call",
+      "size": 3,
+      "target": "06C9:3A91"
+    }
+  ],
+  "caller_liveness_observations": [
+    {
+      "site": "06C9:3945",
+      "bytes": "803e5c2f00",
+      "text": "cmp byte ptr [0x2f5c], 0"
+    }
+  ],
+  "static_normalization_cases": 65536,
+  "normalized_signed_range": [
+    -1,
+    549
+  ],
+  "static_SP_cases": 65536,
+  "final_ADDSP6_carry_root_SP_values": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "unmodified_childframe_qualification_root_SP_values": {
+    "first_pixel": [
+      13,
+      14,
+      15
+    ],
+    "second_pixel": [
+      7,
+      8,
+      9
+    ]
+  },
+  "external_span_candidates": [
+    {
+      "resource_id": "RS-DOS-000281",
+      "segment": 6031,
+      "segment_offset": 12112,
+      "offset": 108608,
+      "length": 6,
+      "sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44",
+      "relocation_words_intersecting": 0,
+      "role": "Initializedthreewordcachedpointview inprincipalDS. Actual3A91BX0-2-4; public3AB8arbitraryBX/currentDS preserved; allwriters/totalcapacity/runtimebinding/lifetime open."
+    }
+  ],
+  "existing_resource_views": [
+    {
+      "resource_id": "RS-DOS-000279",
+      "via": "ActualBA3C",
+      "role": "Conditionalindirectmaskconsumer; xAND7bound/actualDS-allwriters open."
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+      "sha256": "11c33c8f625662e84ba997d5ab981bd7fdd85936aa66ba4d5888634b32494ffc"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "facts": [
+    "Near/registerSIincomingvalue-BXcacheoffset-DXnewcolor/noownprologue-save. SUBSI3B51/JGEsignedwide; negativedifferenceclampsSIFFE0thenfiveSARs->FFFF. OtherwiseSAR5gives0..549. All65536inputsclassified; signedoverflowretained/no unsignedsubstitutebranch.",
+    "CX=currentDS[BX+2F50]oldvaluebeforeSAR; compareSI-CX/equalitynearRETwithCF0ZF1. ChangedstorecurrentDS[BX+2F50]=SI BEFOREanySSframe ordeviceeffect; no rollbackonbudget-adapter-childqualification. Actual3A91threecallers useBX0/2/4, SI52CA/52D2/52DA, DX0C/09/0E; publicarbitraryBX/currentDS retained.",
+    "XORBX0/PUSHDX-PUSHBX-PUSHSI preparesnewpoint[color,y0,xnew] beforeORCX. OldCXnonnegative PUSHBX-BX-CX/actualfarBA3C(IP3AE9)/ADDSP6 erasesoldpointcolor0. CurrentreturnedSI testedafterchild; nonnegativeactualSI invokesactualBA3C(IP3AF5) onremainingoriginalSSnewpointargs; adaptercanmutateargs/savedSI/row-plane-mask beforesecondcall. No normalizedstate/recachedcolor.",
+    "ActualchildfullSS/devicewordOUT-read-write-OR/returnedstate adopted; sharedCALL/eventbudgetacrossboth, rawchildRETcheckedafterinstruction/native1neverfollowed; childnative5propagatesbeforecleanup. FinalADDSP6 setsCFforrootSP0..5/ZFrootSP0, thenactualnearRET2/currentCS. EqualitynearRETskipsallargs withliteralCMPflags. HistoricalCPU-A20-stacklimitsnotqualified.",
+    "ThreecallerarithFLAGSdead:afterfirsttwo MOVsetup thennext3AB8entrySUB; last3AB7nearRETthenouter391F3945CMPkillsall. IFDF/currentDS/SS/allwriter-indexbounds-capacity-storage-lifetime-exclusion-coreopen.",
+    "RS281minimalinitializedsixzero-byteidentity/threeknowncachewordview/no fullresourceformat. RS279conditionalindirectmaskconsumer/nohardwarelatch-rendererclaim. Rawdeviceadapterprofileonly; noDOSsession/fullresourcedecoding/audio/state-machine/gameplay/fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure."
+  ],
+  "limits": "Whole29-site3AB8/fullSS/signednormalization/cachewrite-before-old-newpixel/actualBA3C/sharedCALL-devicebudget/nearRET-SSfarframes/CF-ZF/domainproof/threecallercontext/sixbyteviewidentity. No actualcallers-allwriters-coordinatebounds-storage-capacity-ownership-lifetime-exclusion/devicehardware-renderer/CPU-A20/core/resource/CGA/session/fidelity closure."
+}

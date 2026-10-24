@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_plane_shift_strip.cmd",
+    "sha256": "06dc352b34191c6eb1127ac974bed8d5b6fe12c925a444e0c404d1779f0d6c25"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_plane_shift_strip.c",
+      "sha256": "35591aaa5b53bb00f7b59f3ee3bcda4c31ec2bc76f8bcf5b511703eccda5fb26"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_shift_strip.h",
+      "sha256": "7e6a982aa09484a1c2c74209ebde075102d60f9a6774b335bb926ef736efe852"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/plane-shift-strip-repro/td2ega_plane_shift_strip.dll",
+      "sha256": "ca488869aef7af9de4de65016f3b8dba5941830f28833b362d6f57e28cc2002b",
+      "bytes": 107008
+    },
+    {
+      "path": "analysis/build/plane-shift-strip-repro/td2ega_plane_shift_strip.obj",
+      "sha256": "8b4f46d2f516361a8fb7dcaf285a361f69dbfbe44447208f6d7b5622252e6ad3",
+      "bytes": 8182
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/plane-shift-strip-build-v1.log",
+    "sha256": "3cab10e7665cf05635330a37b06ca9886cf9c230a1995d46f104c3ffde63a4ca"
+  },
+  "limit": "ActualAE62/fullSS/eightargs/DS-ESA000CLD/unsignedxSHR3/firstREPshift-do-oncewideDECJG/optionalmembertwoAL-times-BL-MULs/highnibble-gap/zero-nibblewholeexit/seconddo-onceLODS-byteReadAH-byteWriteAL-LOOPwidth0wrap/liveSSsourceorderedaliases/globalrow-plane-port-copy-load-read-writework/actualSSrestores-farRET/native5qualification. Wholebus-GPR-BP-CFIFDF/deviceABI/control/counts. RawRAMadapterownsbyteeffects/originalMOV-MOVSBidempotentstore; no EGAwriteMode-latches-renderer/allwriters-format-capacities-storage-lifetime-exclusion/CPU-A20/core/resource/CGA/session/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000241"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-plane-shift-strip-context-v1.json",
+    "sha256": "364095c16fb8a7608f8c00444af58abd33f8887180660c1454c766a465557a2c"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_validation_refinement": {
+    "path": "analysis/history/plane-shift-strip-validation-refinement-v2.json",
+    "sha256": "8e8422d24360201b22b0683b81ba3d08412b1eed56730be5bd0be3920c031d26"
+  },
+  "refinement_scope": "Prior10680casespassed/all102; exactvalidatorarchivedbeforeaddingfourcomplete65536width0stripcases and24completedfarquadqualifications. Selectedcompv2/C-DLL unchanged/no failure."
+}

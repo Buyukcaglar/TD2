@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "880c65783753672e6d35ff98c03a02026ff6555aa09ae5b435b3b0864260915a",
+  "instruction_observations": [
+    {
+      "site": "06C9:0083",
+      "bytes": "ff36b409",
+      "text": "push word ptr [0x9b4]"
+    },
+    {
+      "site": "06C9:0087",
+      "bytes": "ff36b209",
+      "text": "push word ptr [0x9b2]"
+    },
+    {
+      "site": "06C9:008B",
+      "bytes": "9a2c78c906",
+      "text": "lcall 0x6c9, 0x782c"
+    },
+    {
+      "site": "06C9:0090",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "06C9:0093",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:38D4",
+      "bytes": "ff36622f",
+      "text": "push word ptr [0x2f62]"
+    },
+    {
+      "site": "06C9:38D8",
+      "bytes": "ff36602f",
+      "text": "push word ptr [0x2f60]"
+    },
+    {
+      "site": "06C9:38DC",
+      "bytes": "9a2c78c906",
+      "text": "lcall 0x6c9, 0x782c"
+    },
+    {
+      "site": "06C9:38E1",
+      "bytes": "ff366a2f",
+      "text": "push word ptr [0x2f6a]"
+    },
+    {
+      "site": "06C9:38E5",
+      "bytes": "ff36682f",
+      "text": "push word ptr [0x2f68]"
+    },
+    {
+      "site": "06C9:38E9",
+      "bytes": "9a2c78c906",
+      "text": "lcall 0x6c9, 0x782c"
+    },
+    {
+      "site": "06C9:38EE",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "06C9:38F1",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "06C9:008B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "site": "06C9:38DC",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "site": "06C9:38E9",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "06C9:1B2C",
+      "site": "06C9:1BE1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:0083"
+    },
+    {
+      "owner": "06C9:1B2C",
+      "site": "06C9:1BE6",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:38D4"
+    }
+  ],
+  "caller_liveness_observations": [
+    {
+      "site": "06C9:1BE1",
+      "bytes": "9a8300c906",
+      "text": "lcall 0x6c9, 0x83"
+    },
+    {
+      "site": "06C9:1BE6",
+      "bytes": "9ad438c906",
+      "text": "lcall 0x6c9, 0x38d4"
+    },
+    {
+      "site": "06C9:1BEB",
+      "bytes": "9a1c60c906",
+      "text": "lcall 0x6c9, 0x601c"
+    },
+    {
+      "site": "06C9:601C",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:6039",
+      "bytes": "eb5e",
+      "text": "jmp 0x6099"
+    },
+    {
+      "site": "06C9:6099",
+      "bytes": "fa",
+      "text": "cli "
+    },
+    {
+      "site": "06C9:60A7",
+      "bytes": "e461",
+      "text": "in al, 0x61"
+    },
+    {
+      "site": "06C9:60A9",
+      "bytes": "24fc",
+      "text": "and al, 0xfc"
+    }
+  ],
+  "external_span_candidates": [],
+  "static_arithmetic_proofs": {
+    "0": {
+      "static_SP_inputs": 65536,
+      "arithmetic_ADD_carry_rootSPs": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "limits": "Arithmeticformulaonly; earlieractualchildqualifications/budgets/rawreturns canpreventreachingrootcleanup. NohistoricalCPUfaultclaim."
+    },
+    "1": {
+      "static_SP_inputs": 65536,
+      "arithmetic_ADD_carry_rootSPs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "limits": "Arithmeticformulaonly; earlieractualchildqualifications/budgets/rawreturns canpreventreachingrootcleanup. NohistoricalCPUfaultclaim."
+    }
+  },
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-discard-object-context-v1.json",
+      "sha256": "6ed9d5c67d80de71f7c5662968d0b3b8d7d5a92456e4a473538efa1432cba6fd"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-discard-object-validation-v2.json",
+      "sha256": "913897743336d7a5dffd137eaf4333ad3fea453b19e8e7f32ad1d501b3b2a942"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-discard-object-native-diagnostics-v2.json",
+      "sha256": "c492e9d1d9844a4e997db60b401a6c4efd1ca37d11a23d5b47a04a09c148231a"
+    }
+  ],
+  "facts": [
+    "Far/noargs/noownSSFNs.0083rereadcurrentDS09B4PUSHthen09B2PUSH/actual782CfarCALL/ADDSP4/plainfarRET.38D4reread2F62then2F60/PUSHes/farCALL; retainsarg4whilecurrentDS2F6Athen2F68PUSHes/secondactualfarCALL/ADDSP8/plainfarRET. Sourcepointerwordsnotcleared/lifetimesnotinferred.",
+    "Everyactual782C/7490usesliveSSsaves-args-farframes/DS-CSwordupdate/cachealiases. AllfarCALLs-shareoneglobalCALLlimit; all7490search-trimiterations-shareoneglobalbudgetacrossbothoutercalls. ActualchildRETcheckedafterRET/rawnative1neverfollowed; childqualification/fatalprefix/budgetspropagatedwithoutnormalcleanup.",
+    "All16bitSPbody/rootqualification>FFFC. Entry1earlierchild782Cor7490qualificationcanpreemptfinalADDSP8carrycase; staticarithmeticformula notexecutionclaim. Fullbuscomparisonchecksactualreturnframesandnoearlycleanup.",
+    "Caller1BE1next38D4actual782C arithmeticupdatesbeforeFLAGSuse; 1BE6next601CpathMOVs-JMP6099CLI-STI-IN then60A9ANDALFCkillsarithflags beforeconditionalbranch. DeviceadapterpreservesarithFLAGSuntilthatAND; actualIRQ/asynchronousexclusionunadmitted.",
+    "No newembeddedspan: currentDS09B2/4,2F60/2,2F68/A aremutablefar-descriptorpointerviews; allwriters/rawstoragebounds/counterunits/lifetime/exclusion/core open. Frozenunderlyingdiscard_object/cache_discardAPIs unchanged.",
+    "Actual16A7:0002fatalCALLunexecuted/74B3explicitprefixdisposition. CPU-A20-stacklimits/hardware/renderer/resources/CGA/session/gameplay/fidelity remainseparate. Physical086Cunassigned."
+  ],
+  "limits": "Actual0083/38D4plus782C-7490/fullSS/currentDSfar-descriptorviews/delayedADDSP8/sharedglobalCALL-scanbudgets/actualchildRET/qualifications/fatalprefix/callerFLAGSliveness/staticSPproofs. No allwriters/storage-lifetime-exclusion/CPU-A20/fatalcleanup/core/resource/CGA/session/fidelity closure."
+}

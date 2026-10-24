@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "a27dea356c9a68f6a97953518ab52c855f9faf581d8d19dd7951d3e95167d57e",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b2b0ecb7ab11ad3623419977df2564d592448f5d091dcd4f573b2085df28d56a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_wrappers.py",
+      "sha256": "96d3cacb14f47d66ccafb3ee77c0414bfe3474d5fad47a7a85215438ac356db2"
+    }
+  ],
+  "limits": "Teninvalid/noeffects profiles andtwo minimum-SP distinctCALL-prefix profiles. Native only; source record/handle/lifetime/core/session/gameplay/fidelity acceptance separate."
+}

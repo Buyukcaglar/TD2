@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 13,
+  "script_sha256": "cea0634db4ac7f96ea7ee40e82ad0ffbbe53d95f6314539c2cdfc4a1f71f9496",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7ce7d7ad5ce2bbbf1eacd3b7bc8e8c04541e54cafe31c185332f6bdb57d3998e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_seek_parent.py",
+      "sha256": "c6843f9c9413ec842f73ded50e3a47b2d1161a6f8cacef8de3c91b7d6423d6e2"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects/nullresult/rootbeforeCALLpool/actualchildbeforeINT/minimumSP48mapper/thirdresultignored checks. Nativeonly, notallcaller/writer/lifetime/IRQ/core/actualDOS/resource/device/session/gameplay/fidelity admission."
+}

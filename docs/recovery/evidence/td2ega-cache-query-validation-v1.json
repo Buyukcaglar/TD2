@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000185",
+  "result": "pass",
+  "vectors": 1258,
+  "native_only_diagnostic_cases": 3,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 57091,
+      "length": 83,
+      "unrelocated_sha256": "423d01d83ce5e3bc700ce483544d8909be0f37234ab4ef4bf9aea3242f9bd62a"
+    },
+    {
+      "module_offset": 56595,
+      "length": 32,
+      "unrelocated_sha256": "f926e5ccb0c3d7dd7bee434dfcfb09e5568a48049e1b46d2bfec48be06de6f31"
+    }
+  ],
+  "library_sha256": "4c5bffe4e74c6ee7b95ba981ab0f42564f50cf11a30e85a1bf97704148401ed7",
+  "source_sha256": "7f33e08eda584032b3d7251a0eb17dad9c18e0f2b8bcf3dda6f8a2f0d4bec7d5",
+  "validator_sha256": "868c23bab241a3e89b63f52a6bc5cc6fe4102c31d157f56e0292d60d136a8822",
+  "original_instructions_executed": 104253,
+  "coverage": [
+    "Exactbyte/case and12byte prefix behavior",
+    "Optionalextension match onrequested terminator",
+    "Firstfree descriptor aborts search",
+    "first=end sentinel checkedonce, normalend excluded",
+    "All256 bytevalues inrequested/stored contexts",
+    "512 variedsynthetic descriptor/name snapshots",
+    "AXboolean, conditionalDX, farframe, preservedregisters/segments andreadonly guards"
+  ],
+  "limits": "Readonly stable snapshots andterminatednonwrapping names only. Nativeinvalid-bound diagnostics areoutside original-equivalence domain. No cachemovement/lifetime, DOS, codec, realresource or gameplay acceptance."
+}

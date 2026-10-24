@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "7e9837377623e8a12e8b1239d86482b88025ebcd0a3e2be8c51217cf0a73b539",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "135e2ec77ac0eda10a98d3555b617df112396ff4028bc7620261ba3ec34a13c8",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_member_reorder.py",
+      "sha256": "d56024c32147b701397a54f76feeeeb724da817a1d0e58b2bc55ff6fcc7bd006"
+    }
+  ],
+  "limits": "Eight invalid profiles/noeffects, nullresult, actual memberprefix, minSP54zerooffsetscratch/incomingDF1 and DEC8000signedOFguard. Native only; no actualallocator/packedproducer/fileformat/capacity/lifetime/core/device/session/gameplay/fidelity acceptance."
+}

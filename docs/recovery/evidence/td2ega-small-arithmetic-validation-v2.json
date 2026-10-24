@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000129",
+    "FN-EGA-000363",
+    "FN-EGA-000400",
+    "FN-EGA-000402"
+  ],
+  "vectors": 23360,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "bc6e232501683e0d135739c5d527312708390795c0cf72da52b70db290f84934",
+  "source_sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6",
+  "validator_sha256": "223544b5d4be490c48f6995dc080c9c7d93ebf58c3a39f1e9eb742eb0307efb7",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 10051308,
+  "instruction_sites_in_fence": 100,
+  "instruction_sites_exercised": 100,
+  "fixture_coverage": {
+    "entry_0": 1184,
+    "bus_write_events": 31484,
+    "budget_prefix": 912,
+    "iterations": 1062232,
+    "LOOP_zero_full_runs": 16,
+    "raw_returns": 2376,
+    "returns": 20144,
+    "entry_1": 6048,
+    "fault_prefix": 2304,
+    "entry_2": 7168,
+    "entry_3": 8960
+  },
+  "limits": "Actual record selector/raw counter IDIV/conditional pair update/square DIV helpers, currentDS/actualSS, word arithmetic/signed guards/SBB/LOOPzero/read-after-write aliases and near/farreturns. Fullbus/GPR/BP/CFIFDF/actualcontrol. Divide fault prefix separate, undefined DIVflags unadmitted; following defined operations determine returnedCF. Before-selector-iteration budget diagnostic separate. Actualcaller/otherFLAGS/bounds/tableunits/writers/lifetime/core/resource-fedP2/P3/device/session/game/fidelity remainopen."
+}

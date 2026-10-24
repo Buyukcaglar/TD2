@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_poll.cmd",
+    "sha256": "0bb416d74e46cda171c42e6d3e8eaef3d5159f946ff86076ba801034513f200e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_input_poll.c",
+      "sha256": "db346611e51e4e7e45df78efedc3013b393d664fc7f5b0f35ee42f317310c2a3"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll.h",
+      "sha256": "e656de9d0d943c2d5ea5b408ce64039df8a3bf277a7b7817a0229c1738c53c10"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.c",
+      "sha256": "5ba1a5663d3ab534b05362b734637fe5abcd4c4f45d5c3b7d2fbf52310a1dbc7"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.h",
+      "sha256": "17bbb527c847a3beb63b35ce097540a5cb5a6b1bb950695747792addab490c56"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.c",
+      "sha256": "ce85a66e28b75db3a1f002bbaa4832477116211dec3c73e917c207e4e51bf313"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.h",
+      "sha256": "db90386ecb2dd22f8efde0a40433a535d9c3b74c5c4dee8ce9021e7912115ed6"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-poll-repro-v2/td2ega_gameport.obj",
+      "sha256": "316e8e27f1eeac15f0bb901a2c44787d4d70e1c6fd2559f1d4aeec64976f08a4",
+      "bytes": 7558
+    },
+    {
+      "path": "analysis/build/input-poll-repro-v2/td2ega_input_poll.dll",
+      "sha256": "61dd3de984f45114a3f8a87525ba982b047cce88da097447ffe1a4d8a4d0cfe0",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/input-poll-repro-v2/td2ega_input_poll.obj",
+      "sha256": "ff69a825315952560c72dc751be4b9553e87317436b5813fe035aeafb23d77d3",
+      "bytes": 7978
+    },
+    {
+      "path": "analysis/build/input-poll-repro-v2/td2ega_key_dispatch.obj",
+      "sha256": "aa135711a9a14c16dcaecfeb30ee384f0096e0c8352b75d89b5abffbb5b1e529",
+      "bytes": 2279
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-poll-build-v2.log",
+    "sha256": "12ce31b8daf6bb0f73a24dcf46fc374aed08346d717706e7a61eda73c907cc28"
+  },
+  "limit": "ExplicitBIOSresponseIFDF servicecontract; Complete65C5/6601/6620 with compiled dispatcher/gameport and syntheticBIOS/port/farcallback adapters, DS=SS andindependentSS profiles. ActualBIOS/callbackbodies/IRQ/device/fullcaller acceptance remainopen.",
+  "function_ids": [
+    "FN-EGA-000155",
+    "FN-EGA-000410",
+    "FN-EGA-000411"
+  ],
+  "historical_preserving_flags": "docs/recovery/evidence/td2ega-bios-flag-contract-history-v1.json"
+}

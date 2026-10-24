@@ -1,0 +1,548 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "3f1f4bfcae84deeb2c21b9dd28fef9452aa064dcee1ea12774a04915b72a4270",
+  "instruction_observations": [
+    {
+      "site": "13A8:0B42",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "13A8:0B43",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "13A8:0B45",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "13A8:0B46",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:0B47",
+      "bytes": "8b7606",
+      "text": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:0B4A",
+      "bytes": "f6440683",
+      "text": "test byte ptr [si + 6], 0x83"
+    },
+    {
+      "site": "13A8:0B4E",
+      "bytes": "7406",
+      "text": "je 0xb56"
+    },
+    {
+      "site": "13A8:0B50",
+      "bytes": "f6440640",
+      "text": "test byte ptr [si + 6], 0x40"
+    },
+    {
+      "site": "13A8:0B54",
+      "bytes": "7408",
+      "text": "je 0xb5e"
+    },
+    {
+      "site": "13A8:0B56",
+      "bytes": "b8ffff",
+      "text": "mov ax, 0xffff"
+    },
+    {
+      "site": "13A8:0B59",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "13A8:0B5A",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "13A8:0B5B",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:0B5C",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:0B5E",
+      "bytes": "f6440602",
+      "text": "test byte ptr [si + 6], 2"
+    },
+    {
+      "site": "13A8:0B62",
+      "bytes": "7406",
+      "text": "je 0xb6a"
+    },
+    {
+      "site": "13A8:0B64",
+      "bytes": "804c0620",
+      "text": "or byte ptr [si + 6], 0x20"
+    },
+    {
+      "site": "13A8:0B68",
+      "bytes": "ebec",
+      "text": "jmp 0xb56"
+    },
+    {
+      "site": "13A8:0B6A",
+      "bytes": "804c0601",
+      "text": "or byte ptr [si + 6], 1"
+    },
+    {
+      "site": "13A8:0B6E",
+      "bytes": "8a4407",
+      "text": "mov al, byte ptr [si + 7]"
+    },
+    {
+      "site": "13A8:0B71",
+      "bytes": "98",
+      "text": "cwde "
+    },
+    {
+      "site": "13A8:0B72",
+      "bytes": "8bc8",
+      "text": "mov cx, ax"
+    },
+    {
+      "site": "13A8:0B74",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "13A8:0B76",
+      "bytes": "03c1",
+      "text": "add ax, cx"
+    },
+    {
+      "site": "13A8:0B78",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "13A8:0B7A",
+      "bytes": "8bf8",
+      "text": "mov di, ax"
+    },
+    {
+      "site": "13A8:0B7C",
+      "bytes": "81c7946e",
+      "text": "add di, 0x6e94"
+    },
+    {
+      "site": "13A8:0B80",
+      "bytes": "8025fb",
+      "text": "and byte ptr [di], 0xfb"
+    },
+    {
+      "site": "13A8:0B83",
+      "bytes": "f644060c",
+      "text": "test byte ptr [si + 6], 0xc"
+    },
+    {
+      "site": "13A8:0B87",
+      "bytes": "750f",
+      "text": "jne 0xb98"
+    },
+    {
+      "site": "13A8:0B89",
+      "bytes": "f60501",
+      "text": "test byte ptr [di], 1"
+    },
+    {
+      "site": "13A8:0B8C",
+      "bytes": "750a",
+      "text": "jne 0xb98"
+    },
+    {
+      "site": "13A8:0B8E",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:0B8F",
+      "bytes": "e85600",
+      "text": "call 0xbe8"
+    },
+    {
+      "site": "13A8:0B92",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "13A8:0B95",
+      "bytes": "eb06",
+      "text": "jmp 0xb9d"
+    },
+    {
+      "site": "13A8:0B98",
+      "bytes": "8b4404",
+      "text": "mov ax, word ptr [si + 4]"
+    },
+    {
+      "site": "13A8:0B9B",
+      "bytes": "8904",
+      "text": "mov word ptr [si], ax"
+    },
+    {
+      "site": "13A8:0B9D",
+      "bytes": "8a4407",
+      "text": "mov al, byte ptr [si + 7]"
+    },
+    {
+      "site": "13A8:0BA0",
+      "bytes": "98",
+      "text": "cwde "
+    },
+    {
+      "site": "13A8:0BA1",
+      "bytes": "8bd8",
+      "text": "mov bx, ax"
+    },
+    {
+      "site": "13A8:0BA3",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "13A8:0BA5",
+      "bytes": "03d8",
+      "text": "add bx, ax"
+    },
+    {
+      "site": "13A8:0BA7",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "13A8:0BA9",
+      "bytes": "ffb7966e",
+      "text": "push word ptr [bx + 0x6e96]"
+    },
+    {
+      "site": "13A8:0BAD",
+      "bytes": "ff7404",
+      "text": "push word ptr [si + 4]"
+    },
+    {
+      "site": "13A8:0BB0",
+      "bytes": "98",
+      "text": "cwde "
+    },
+    {
+      "site": "13A8:0BB1",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:0BB2",
+      "bytes": "9a7c24a813",
+      "text": "lcall 0x13a8, 0x247c"
+    },
+    {
+      "site": "13A8:0BB7",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "13A8:0BBA",
+      "bytes": "894402",
+      "text": "mov word ptr [si + 2], ax"
+    },
+    {
+      "site": "13A8:0BBD",
+      "bytes": "0bc0",
+      "text": "or ax, ax"
+    },
+    {
+      "site": "13A8:0BBF",
+      "bytes": "7f17",
+      "text": "jg 0xbd8"
+    },
+    {
+      "site": "13A8:0BC1",
+      "bytes": "0bc0",
+      "text": "or ax, ax"
+    },
+    {
+      "site": "13A8:0BC3",
+      "bytes": "7405",
+      "text": "je 0xbca"
+    },
+    {
+      "site": "13A8:0BC5",
+      "bytes": "b020",
+      "text": "mov al, 0x20"
+    },
+    {
+      "site": "13A8:0BC7",
+      "bytes": "eb03",
+      "text": "jmp 0xbcc"
+    },
+    {
+      "site": "13A8:0BCA",
+      "bytes": "b010",
+      "text": "mov al, 0x10"
+    },
+    {
+      "site": "13A8:0BCC",
+      "bytes": "084406",
+      "text": "or byte ptr [si + 6], al"
+    },
+    {
+      "site": "13A8:0BCF",
+      "bytes": "c744020000",
+      "text": "mov word ptr [si + 2], 0"
+    },
+    {
+      "site": "13A8:0BD4",
+      "bytes": "e97fff",
+      "text": "jmp 0xb56"
+    },
+    {
+      "site": "13A8:0BD8",
+      "bytes": "ff4c02",
+      "text": "dec word ptr [si + 2]"
+    },
+    {
+      "site": "13A8:0BDB",
+      "bytes": "8b1c",
+      "text": "mov bx, word ptr [si]"
+    },
+    {
+      "site": "13A8:0BDD",
+      "bytes": "ff04",
+      "text": "inc word ptr [si]"
+    },
+    {
+      "site": "13A8:0BDF",
+      "bytes": "8a07",
+      "text": "mov al, byte ptr [bx]"
+    },
+    {
+      "site": "13A8:0BE1",
+      "bytes": "2ae4",
+      "text": "sub ah, ah"
+    },
+    {
+      "site": "13A8:0BE3",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "13A8:0BE4",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "13A8:0BE5",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:0BE6",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "13A8:0B8F",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:0BE8"
+    },
+    {
+      "site": "13A8:0BB2",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:247C"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:10C6",
+      "site": "13A8:128E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:0B42"
+    },
+    {
+      "owner": "13A8:10C6",
+      "site": "13A8:12BE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:0B42"
+    },
+    {
+      "owner": "13A8:10C6",
+      "site": "13A8:13A6",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:0B42"
+    },
+    {
+      "owner": "13A8:18B0",
+      "site": "13A8:18CC",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:0B42"
+    }
+  ],
+  "caller_liveness_observations": [
+    {
+      "site": "13A8:1293",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "13A8:12C3",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "13A8:13AB",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "13A8:18D1",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    }
+  ],
+  "parent_mode_proof": {
+    "argument_word_offsets_from_rootSP": {
+      "mode1": -14,
+      "increment_savedAX": -12,
+      "highguard0": -10,
+      "unused0": -8,
+      "key_savedDS": -6
+    },
+    "subsequent_prebranch_write_offsets": [
+      -16,
+      -18,
+      -20,
+      -22,
+      -24,
+      -26
+    ],
+    "parent_feasible_sites": [
+      "13A8:2852",
+      "13A8:2853",
+      "13A8:2855",
+      "13A8:2856",
+      "13A8:2857",
+      "13A8:2858",
+      "13A8:285C",
+      "13A8:285E",
+      "13A8:2861",
+      "13A8:2864",
+      "13A8:2867",
+      "13A8:2868",
+      "13A8:286A",
+      "13A8:286D",
+      "13A8:286F",
+      "13A8:2896",
+      "13A8:2899",
+      "13A8:289A",
+      "13A8:28B9",
+      "13A8:28BA",
+      "13A8:28BB",
+      "13A8:28BC",
+      "13A8:28BE",
+      "13A8:28BF"
+    ],
+    "parent_excluded_sites": [
+      "13A8:2871",
+      "13A8:2875",
+      "13A8:2876",
+      "13A8:2878",
+      "13A8:287A",
+      "13A8:287C",
+      "13A8:287F",
+      "13A8:2882",
+      "13A8:2883",
+      "13A8:2886",
+      "13A8:2887",
+      "13A8:2889",
+      "13A8:288C",
+      "13A8:2890",
+      "13A8:2892",
+      "13A8:2894",
+      "13A8:289C",
+      "13A8:289E",
+      "13A8:28A1",
+      "13A8:28A3",
+      "13A8:28A5",
+      "13A8:28A7",
+      "13A8:28A9",
+      "13A8:28AB",
+      "13A8:28AD",
+      "13A8:28AE",
+      "13A8:28B0",
+      "13A8:28B3",
+      "13A8:28B7"
+    ],
+    "scope": "SerializedRAM/noexecutingcodewrites/noasyncdelivery, SP30..FFE0 givesdistinctnonwrappingSSwords. Mode1/highguard0 fixedbyliteralpushes, no callback beforeguard/modebranch, no prologuewrite tothoseargumentwords. Mode1 takes286A; fallbackDOS48/secondnearcall unreachableonlyhere, notglobaldead. Standalone2852coversall53sites."
+  },
+  "static_signed_byte_index_cases": 256,
+  "metadata_relation": {
+    "resource_id": "RS-DOS-000266",
+    "side_base": 28308,
+    "count_base": 28310,
+    "stride": 6,
+    "raw_signed_index_range": [
+      -128,
+      127
+    ],
+    "scaled_index_range": [
+      -768,
+      762
+    ],
+    "body_enforces_nominal_20_rows": false
+  },
+  "existing_resource_views": [
+    {
+      "resource_id": "RS-DOS-000262",
+      "via": "Actual247C/094A conditional mapper lookup",
+      "role": "CurrentDS20byteerror-translationview; allwriters/storage open."
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-buffer-context-v1.json",
+      "sha256": "58a7481b14dad9637e7ae24f12a4041f39cffdbeb362926cdf3c677d47378e8c"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+      "sha256": "65d518ee6ce722a813526195268fdd4bddbbab5c31d294b8ab54963ed1ea1ee8"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-sign-extension-reference-v1.json",
+      "sha256": "db7218b5cecf4fe27bfbae5ce3ddaa44e3cda5b33afc86143c0c9806a2b92764"
+    }
+  ],
+  "facts": [
+    "Far/onecaller-ownedSSnearstreamword/PUSHBP-MOVBP-SP-PUSHDI-PUSHSI. CurrentDSstream/actualSSsaves. RootSP70..FFE0 preservesactual0BE8entryminimum60 via6savebytes/PUSHargument2/nearframe2. Requiredargumentavailable; no actualcallerSPdomain inferred.",
+    "TESTstreamflags83zero returnsAXFFFF/CF0/ZF1; TEST40nonzero returnsFFFF/CF0/ZF0; TEST2nonzeroOR20thenFFFF/CF0/ZF0. OtherwiseOR1/readactualchannel/98wordCBW/SHL-ADD-SHLtimes6/DI=6E94+signedindex/ANDsideflagsFB. No nominal20rowbound; all256signedbyteindices retained.",
+    "Currentstreamflags0C orcurrentsideflags1 skipsallocation/resetcursorfrombase+4; elsePUSHactualSI/nearCALL0BE8(IP0B92)/fullSS-fullheapchild/ADDSP2. Childcurrentstate andbusadopted/noSS-DS-normalization. GlobalDOSservicebudgetclampsremainingheapservicecap andthenactualreaderremainingcap; separateparentCALL andnestedchildlimits retained.",
+    "RereadcurrentSI+7channel afteractualchild; signedCBWtimes6/SSPUSHcurrentDSsidecount6E96+index/basebufferSI+4/signedchannelhandle/actualfarCALL247C(IP0BB7)/ADDSP6. ReaderfullGPR-BP-DS-ES-CFIFDFandallbusadopted; parentusesCURRENTreturnedSI-DS-BP afterwards. Reader mapper rawRET andpreRETqualification propagate withoutparentcleanup.",
+    "StoreactualreturnedAXtoCURRENTDS[SI+2]beforeORAXAX/JG signedpositive. PositiveDECcount/BX=cursor/INCcursor THENfetchbyte[oldBX]/SUBAH-AH returns00..FF/CF0/ZF1. Cursorcanaliasitsownpointerfield: incrementcanchangebytebeforefetch. Zero count marksstreamflag10; negative/nonzero marks20; bothzero countfield/AXFFFF/CF0/ZF0. No count-range/capacity normalization.",
+    "ActualPOPSI-DI-BP/plainfarRET4 retainscaller-ownedarg2. FourknowncallersimmediateADDSP2killsarithFLAGS; callersegment-stack-profile/IFDF/storage/allwriters/lifetime/exclusion/core remainopen. ExistingRS266directsideconsumer/RS262conditionalviareader/no newinitializedspan. Physical086C remainsunassigned; no timer semantics.",
+    "Wholebus/GPR-BP-CFIFDF/normalrootZF/typedDOSrequests/control/counts comparisonseparate. SyntheticDOSnoINTframes/20bitRAM/historicalCPU-A20-stacklimitsunqualified. No realDOSI-O/fullresourcecodec/device/session/renderer/audio/gameplay/fidelity closure."
+  ],
+  "limits": "Whole70-site0B42/fullSS/actual0BE8heap +247C-094A/readguards-signedmetadata-sourceorderedcursorbyte/actualnear-farreturns/sharedDOSbudget/fourcallerFLAGS-liveness. No actualcallers/allwriters/bufferbounds-storage-capacity-ownership-lifetime-exclusion/realDOS-INTframes/CPU-A20/core/resource/CGA/session/fidelity closure."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000069",
+  "vectors": 12744,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "6d0e7ffde75eb135fbd905aa6949e22398dd0048009fc4f44f350961accae329",
+  "source_sha256": "0d36ced359488773b1261ee9a5d7022e5a1d1a93ce791929e08d24a665727ef4",
+  "validator_sha256": "612021b7f8be772474709d7e5c7bd5b93b16396257f4c65a297cc0d79bcd0ed6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 5715708,
+  "instruction_sites_exercised": 59,
+  "instruction_sites_in_fence": 59,
+  "fixture_coverage": {
+    "opcode_pair_0x40_0x40": 4180,
+    "endpoint_signed_grid": 11664,
+    "original_normal_RET6": 10504,
+    "DF_0": 6376,
+    "word_writes": 667740,
+    "work": 1180624,
+    "opcode_pair_0x48_0x48": 4184,
+    "DF_1": 6368,
+    "opcode_pair_0x40_0x48": 1470,
+    "opcode_pair_0x48_0x40": 1452,
+    "opcode_pair_0x90_0xcc": 1456,
+    "original_work_prefix": 2240,
+    "word_count_profiles": 960,
+    "ordered_patch_prefix": 112,
+    "opcode_pair_0x48_0xcc": 2,
+    "complete_count_wrap": 8
+  },
+  "limits": "Complete06C3 serializeddirect-entry/nearRET6/implicitCX-DX/DFSTOSW/signedclipping/suboverflow/unsignedbranch-signedloop/orderedCS071F0735INC-DECpatch effects compared. FreshCPUperfixture, includesmixed/unknowninitialunusedbytes andworkprefixesbetweenpatches/innernonprogress. Count0/1 interpolation quirks retained. Explicitnativeargs representoriginal3SSwords; controlframes/data/code separateexceptauthoredpatches. No actualIRQ/reentrancy/fullmutabletransitiongraph/callerbounds/2477integration/resource/renderer/core/game/fidelity; native diagnostics separate."
+}

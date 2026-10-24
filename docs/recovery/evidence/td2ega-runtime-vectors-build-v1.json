@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_runtime_vectors.cmd",
+    "sha256": "244c86b6e37860ebfc1bcc31872ff880fc12d8789b8ae2a9f30b01ed4cf72164"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_runtime_vectors.c",
+      "sha256": "56b94e2cacbb841971315d2cf8f66eeaf31e797703427e39c47dc8188e14be94"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_vectors.h",
+      "sha256": "f412c2cc5397d0d183c5e83e515f8092b1770fbdf434a927a660e019617f0b92"
+    },
+    {
+      "path": "src/recovered/td2ega_finalizer_list.h",
+      "sha256": "f80c7b1956c4de100efc4490512ba639f2ee07c0e6d3de646bb4c6f8350c183e"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/runtime-vectors-repro/td2ega_runtime_vectors.dll",
+      "sha256": "daa36ef21b15d56ec162d5844616fefacfa4a7867ab2d0d4ede2a9df6a1799be",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/runtime-vectors-repro/td2ega_runtime_vectors.obj",
+      "sha256": "2c637f6078b367dc9b1410c53bd9cde27bb3b4a70122a48cf8d0e78550440d85",
+      "bytes": 5605
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/runtime-vectors-build-v1.log",
+    "sha256": "d9a649e72416c09d8c98ddf98e89ab8c9645ade6218a902996e47115de96c290"
+  },
+  "limit": "Actual05E0optionalDS7076farcallback/savedDS/LDS6D89/DOS2500/restoredDSguard6DC6/AL6DC7/LDS6DC8/DOS25/rootnearRET. Fullbus/actualSSframes/GPR/BP/CFIFDF/serviceABI/actualcontrol, orderedpost-PUSHaliases andsavedDSmutations retained. SyntheticDOS/callback body/RETF andrealINT/vector/IRQ delivery separate. Nativebudget/adapter/rawchildreturns distinct. Actualcaller/saved-vectorwriters/targets/lifetime/exclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000262"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-runtime-vectors-context-v1.json",
+    "sha256": "765613da67622164686399eeabfda1a23e1a73501765ef25de34b5c729c9f584"
+  }
+}

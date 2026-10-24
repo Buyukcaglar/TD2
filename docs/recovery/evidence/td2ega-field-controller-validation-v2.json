@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000398"
+  ],
+  "vectors": 22432,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5099bfc822d4b49211b79b5a366f3eb7cefea386ed4c3c5c73dec9713f6bb240",
+  "source_sha256": "11d186bf49bda8ff5b4f3b9de86f5a3d460640548bd1b05ca2a5a676c8911aa4",
+  "validator_sha256": "32755c33086adcbaa84b3ae6e6ed24d54f5e57cd1698ad24685e7b54df334b18",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1449096,
+  "instruction_sites_in_fence": 208,
+  "instruction_sites_exercised": 207,
+  "static_site_dispositions": [
+    {
+      "site": "06C9:5303",
+      "scope": "From52FD entry under5880 calls only",
+      "reason": "AdjacentJLE/JG readunchangedZF/SF/OF andexhaust allcases; ADDCX380D cannotbefalleninto. Notglobaldeadcode.",
+      "evidence": "docs/recovery/evidence/td2ega-small-algorithms-context-v1.json"
+    }
+  ],
+  "fixture_coverage": {
+    "prefix_root": 7680,
+    "actual_near_CALLs": 42698,
+    "bus_write_events": 156110,
+    "minimumSP34_cases": 4608,
+    "DS_equals_SS_cases": 11216,
+    "raw_root_returns": 0,
+    "seeded_random_cases": 4000,
+    "prefix_child": 8192,
+    "root_near_return": 5536,
+    "raw_child_return": 1024
+  },
+  "limits": "Actual5880 plus fiveactualfrozenchildC bodies5299/5C5A/52FD/5334/535B, sixnearCALLsites/actualSSframes/RET2. NoABI-valuemock orSSscratch exclusion. Fullbus/GPR/BP/CFIFDF/control/writecount/childbudget. Rawtablebyte/wordlookups/lowbyteMUL/guardedDIV/signedfieldclamps andparentorderedrereads/branch/store effects retained; rawreturntargetsexposedafteractualRET neverfollowed. Source5299JL infeasiblefromselectedentry and52FD5303excluded byadjacentcomplementarysignedbranches requirestaticdisposition ifunexercised. Actual403B/fullcaller/writer/bounds/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

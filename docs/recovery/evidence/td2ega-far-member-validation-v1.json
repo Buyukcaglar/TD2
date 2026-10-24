@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000251"
+  ],
+  "vectors": 84096,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cf508c7e05c6221344a63b05f64ed4d1fdb0d8d8eeb8072df9c061913e187abd",
+  "source_sha256": "90c1d6efd6967ed0cb0ed7302c109591eac016d08305d64ba6d874f0d8402499",
+  "validator_sha256": "305b9d4bc58693362092950ddf6432dc65c73e3b6f197d558a1fa3939d68eb66",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 3700224,
+  "instruction_sites_in_fence": 44,
+  "instruction_sites_exercised": 44,
+  "fixture_coverage": {
+    "far_returns": 84096,
+    "bus_write_events": 168192,
+    "wrapped_table_high_reads": 12096,
+    "normalized_offset_zero_nonzero_segment": 4056,
+    "nonzero_header_offset_fixtures": 69120,
+    "minimumSP16_fixtures": 40320,
+    "ES_equals_SS_fixtures": 14016,
+    "carry_set_returns": 41600
+  },
+  "limits": "ActualC701SSthreewords/headerES:SI+4/separatelywrappedES-tableword reads/wordbase truncation/raw32bitadd/4SHR-RCR normalization toAXnibble/DXsegment/CFbit3; fullbus/SSsaves/farframe/GPR/BP/CFIFDF/control. Nonzeroheaderoffset retained, tableindicesnotSI-relative. Zerooffset/nonzerosegment validrawoutput, nohostNULL substitution. SourceESranges0..9000 andflatbus only, noA20/device/realDOS qualification. Actualcaller/header-alignment/index/table/buffer/outputbounds/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/session/game/fidelity open."
+}

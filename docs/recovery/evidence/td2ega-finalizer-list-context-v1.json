@@ -1,0 +1,268 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "e66959f21d232b0796132d34beb9126bec3d0ff6b453bcc22cf5866abfd603b3",
+  "instruction_observations": [
+    {
+      "site": "13A8:060D",
+      "bytes": "3bf7",
+      "text": "cmp si, di"
+    },
+    {
+      "site": "13A8:060F",
+      "bytes": "730e",
+      "text": "jae 0x61f"
+    },
+    {
+      "site": "13A8:0611",
+      "bytes": "83ef04",
+      "text": "sub di, 4"
+    },
+    {
+      "site": "13A8:0614",
+      "bytes": "8b05",
+      "text": "mov ax, word ptr [di]"
+    },
+    {
+      "site": "13A8:0616",
+      "bytes": "0b4502",
+      "text": "or ax, word ptr [di + 2]"
+    },
+    {
+      "site": "13A8:0619",
+      "bytes": "74f2",
+      "text": "je 0x60d"
+    },
+    {
+      "site": "13A8:061B",
+      "bytes": "ff1d",
+      "text": "lcall [di]"
+    },
+    {
+      "site": "13A8:061D",
+      "bytes": "ebee",
+      "text": "jmp 0x60d"
+    },
+    {
+      "site": "13A8:061F",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:03F8",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:03F8",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:049B",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:049B",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:04BE",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:04BE",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0582",
+      "site": "13A8:058B",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0582",
+      "site": "13A8:0594",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0582",
+      "site": "13A8:05A2",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0582",
+      "site": "13A8:05AB",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0599",
+      "site": "13A8:05A2",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0599",
+      "site": "13A8:05AB",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0644",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:0644",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:064A",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:064A",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:08E2",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:08E2",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:2558",
+      "site": "13A8:0575",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    },
+    {
+      "owner": "13A8:2558",
+      "site": "13A8:057E",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:060D"
+    }
+  ],
+  "unique_direct_sites": [
+    "13A8:0575",
+    "13A8:057E",
+    "13A8:058B",
+    "13A8:0594",
+    "13A8:05A2",
+    "13A8:05AB"
+  ],
+  "caller_constant_bounds": [
+    {
+      "site": "13A8:0575",
+      "si": 28802,
+      "di": 28802,
+      "initial_span_bytes": 0,
+      "empty": true,
+      "operand_source_bytes": "be8270bf8270"
+    },
+    {
+      "site": "13A8:057E",
+      "si": 28802,
+      "di": 28802,
+      "initial_span_bytes": 0,
+      "empty": true,
+      "operand_source_bytes": "be8270bf8270"
+    },
+    {
+      "site": "13A8:058B",
+      "si": 33818,
+      "di": 33818,
+      "initial_span_bytes": 0,
+      "empty": true,
+      "operand_source_bytes": "be1a84bf1a84"
+    },
+    {
+      "site": "13A8:0594",
+      "si": 28802,
+      "di": 28806,
+      "initial_span_bytes": 4,
+      "empty": false,
+      "operand_source_bytes": "be8270bf8670"
+    },
+    {
+      "site": "13A8:05A2",
+      "si": 28806,
+      "di": 28806,
+      "initial_span_bytes": 0,
+      "empty": true,
+      "operand_source_bytes": "be8670bf8670"
+    },
+    {
+      "site": "13A8:05AB",
+      "si": 28806,
+      "di": 28806,
+      "initial_span_bytes": 0,
+      "empty": true,
+      "operand_source_bytes": "be8670bf8670"
+    }
+  ],
+  "initialized_nonempty_target": {
+    "callsite": "13A8:0594",
+    "span": "DS:7082..7085",
+    "target_unrelocated": "13A8:0A3A",
+    "scope": "Only initial DS view and fixed caller operands; all aliases/writers/actual callback body/lifetime stillopen."
+  },
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "UnsignedSI<DI, DI-=4, word[DI]ORword[DI+2] skipzero; indirectfarCALL[DS:DI] pushes actualCS/061D, callbackreturnedGPR/BP/CFIFDF/DS/position used by nextiteration. RootnearRET2.",
+    "Zero test consists of two separately computed16bitEAs; indirectfaroperand usesonefourbyte memoryoperand. Boundaryfixture distinguishes views; stack-aliasfixtures review operand capture before CALL overwritesitsownaddress.",
+    "Six uniqueconstant-bound nearcall sites across20ownerrecords:0575/057E empty7082;058B empty841A;0594nonempty7082..7086;05A2/05ABempty7086. Direct0599doesnotinvoke the nonemptyspan;0582does.",
+    "Initialized7082farword is13A8:0A3A before relocation; callbackbody andall tablewriters/alias/lifetime/actualDSview remainopen. Existing061Bindirectcomplete=false retained."
+  ],
+  "limits": "Static caller-slice and raw mechanism review plus syntheticcallbackABI comparison only. No callbackbody/alltargets/writer/lifetime/otherFLAGS/core or actualplatform/session/game/fidelity acceptance. Originaltablepayload notembeddedinC."
+}

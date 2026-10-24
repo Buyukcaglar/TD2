@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 9,
+  "script_sha256": "07f27fabe3b740f8c095f6c2986cde928912a01171d34471158c3123467199f9",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "bc6e232501683e0d135739c5d527312708390795c0cf72da52b70db290f84934",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_small_arithmetic.py",
+      "sha256": "223544b5d4be490c48f6995dc080c9c7d93ebf58c3a39f1e9eb742eb0307efb7"
+    }
+  ],
+  "limits": "Nine native invalid bus/count/SP/null/selector/boolean-flag profiles before effects; separate from original semantics/caller/core/device/session/game/fidelity."
+}

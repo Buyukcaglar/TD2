@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_timer_handler.cmd",
+    "sha256": "332fd4f3ad295d09504a735243146c0ee5a401253825ccae371b3a9f001debda"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_timer_handler.c",
+      "sha256": "bf8214cf227a3c74f9b7d22d624c5c43010fc1ba5a662fb790e00273dafe6474"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_handler.h",
+      "sha256": "1060b6b5a0f5c95d5396b80a527176d19a2b2e66743a417dfb457dbd63c67516"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/timer-handler-repro/td2ega_timer_handler.dll",
+      "sha256": "e8e04fb008068831096754fe8850768df63886c96b20179b2445232351e54990",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/timer-handler-repro/td2ega_timer_handler.obj",
+      "sha256": "dd25bc282b17d113e42647f560cc21366b7e029bd4122b2f8c713a6fc1fa4dbd",
+      "bytes": 6701
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/timer-handler-build-v1.log",
+    "sha256": "5b0a8fd0659543ba17a2166b055fc685ae8d1a53b82e16504cb4831f2423d84d"
+  },
+  "limit": "Serialized61BF/6230 C17, fullsyntheticbus/PICport/oldINT08 IRET/farcallbackABI adapters. No actualIRQ/nesting/BIOS/callbackbody/timebase/game/audio/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000360",
+    "FN-EGA-000361"
+  ]
+}

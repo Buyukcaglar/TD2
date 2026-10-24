@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "29f0d45093f1026aed16d85ddeb80ed493691470d437664405b5eb62e12ce86b",
+  "instruction_observations": [
+    {
+      "site": "06C9:642E",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:6430",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:6431",
+      "bytes": "9a0a84c906",
+      "text": "lcall 0x6c9, 0x840a"
+    },
+    {
+      "site": "06C9:6436",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "06C9:6439",
+      "bytes": "b84000",
+      "text": "mov ax, 0x40"
+    },
+    {
+      "site": "06C9:643C",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "site": "06C9:643E",
+      "bytes": "26a11000",
+      "text": "mov ax, word ptr es:[0x10]"
+    },
+    {
+      "site": "06C9:6442",
+      "bytes": "25cfff",
+      "text": "and ax, 0xffcf"
+    },
+    {
+      "site": "06C9:6445",
+      "bytes": "0d1000",
+      "text": "or ax, 0x10"
+    },
+    {
+      "site": "06C9:6448",
+      "bytes": "26a31000",
+      "text": "mov word ptr es:[0x10], ax"
+    },
+    {
+      "site": "06C9:644C",
+      "bytes": "b400",
+      "text": "mov ah, 0"
+    },
+    {
+      "site": "06C9:644E",
+      "bytes": "b003",
+      "text": "mov al, 3"
+    },
+    {
+      "site": "06C9:6450",
+      "bytes": "cd10",
+      "text": "int 0x10"
+    },
+    {
+      "site": "06C9:6452",
+      "bytes": "b40b",
+      "text": "mov ah, 0xb"
+    },
+    {
+      "site": "06C9:6454",
+      "bytes": "bb0000",
+      "text": "mov bx, 0"
+    },
+    {
+      "site": "06C9:6457",
+      "bytes": "cd10",
+      "text": "int 0x10"
+    },
+    {
+      "site": "06C9:6459",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "06C9:6431",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:840A"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0000:07B3",
+      "site": "0000:0BFB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:642E"
+    },
+    {
+      "owner": "06C9:5FBC",
+      "site": "06C9:5FC4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:642E"
+    },
+    {
+      "owner": "16A7:0002",
+      "site": "16A7:0005",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:642E"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:01AB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:642E"
+    }
+  ],
+  "caller_liveness_observations": [
+    {
+      "site": "0000:0C00",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "0000:0C02",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "0000:0C03",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:5FC9",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:5FCA",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "16A7:000A",
+      "bytes": "9ac468c906",
+      "text": "lcall 0x6c9, 0x68c4"
+    },
+    {
+      "site": "06C9:68C8",
+      "bytes": "0c03",
+      "text": "or al, 3"
+    },
+    {
+      "site": "16FC:01B0",
+      "bytes": "2bc0",
+      "text": "sub ax, ax"
+    },
+    {
+      "site": "13A8:0495",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:0496",
+      "bytes": "9a8205a813",
+      "text": "lcall 0x13a8, 0x582"
+    },
+    {
+      "site": "13A8:060D",
+      "bytes": "3bf7",
+      "text": "cmp si, di"
+    }
+  ],
+  "external_span_candidates": [],
+  "preRET_qualification_policy": {
+    "child_entry_SP_formula": "(rootSP-6)&FFFF",
+    "root_SP_values_qualifying_at_child843D": [
+      3,
+      4,
+      5
+    ],
+    "root_SP_values_qualifying_at_root6459_after_childreturn": [
+      65533,
+      65534,
+      65535
+    ],
+    "static_SP_cases": 65536,
+    "limits": "Explicitnative5preRETqualification/fullprecedingwork retained/nohistoricalfaultdeliveryclaim."
+  },
+  "full_effect_counts": {
+    "farCALLs": 1,
+    "byte_OUTs": 6,
+    "device_bytes": 8000,
+    "BIOS10_calls": 2,
+    "events": 8008,
+    "CPU_bus_write_events": 8006
+  },
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-plane-fill-context-v2.json",
+      "sha256": "28aa037dd7afd0609daaa62df03e22bd0023f25c4c28a6c6ccdd73aa84b641f2"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "Far/noargs/XORAXclearsCF/PUSHzero/actual840Afarframe at6431/IP6436/zeroarg andchildBPDIsaves allactualSS/currentDF/noCLD. Sharedport-byte-BIOSeventbudget andseparateCALLbudget.",
+    "ChildboundedRETcheckedafterinstructionbeforeADDSP2. Changedchildtargetnative1neverfollowed; childpreRETqualification5propagated. Rootfarwordsrereadafterallbusmutations/native5rootSP>FFFCat6459.",
+    "Afterchildphysical0040:0010wordANDFFCF/OR10/store thenAX0003INT10at6450/fullsyntheticreturnedGPR-BP-DS-ES-CFIFDF adopted. AH0BonlyretainsactualreturnedAL/BX0/otherreturnedstateunchanged beforesecondINT10at6457; finalfullreturnedstateadopted. No fixedBIOSpreservedregs/semanticcolorinterpretation assumption.",
+    "Maincaller0BFBand5FC4returnviaepilogues withoutarithFLAGSconsumer tostartup0495PUSHAX/0582/060DCMPSIDI(killsflags). Fatal0005next68C4ORAL3killsarithflags beforebranch. 16FC01ABnextSUBAXAXkillsflags. Fullcallers/BIOSBP-DS-IF-DF-stack/exclusion profilesremainopen.",
+    "Physical0410equipmentworddistinctfromliteralunassigned086Cexternalread; no timerunits/frequency/writerassigned. No new embeddedspan/interfacecodec inferred.",
+    "Privateoriginalcomparison/rawRAMdeviceadapter/syntheticBIOSnoINTframes only. No ROM/devicecontroller/palette/renderer/historicalCPU-A20-stacklimits/IRQ/core/resources/session/gameplay/fidelity admission; CGAeditionrecovery remainsgated."
+  ],
+  "limits": "Whole17-site642Eplusactual30-site840A/fullSS-currentDF/twoBIOSfullreturns-ALretention/BDA0410/sharedbudget/callerliveness/qualificationpolicy. No fullcallersegments-stackdomain/writers/storage/lifetime/exclusion/ROM-device-hardware/CPU/renderer/core/resource/CGA/session/fidelity closure."
+}

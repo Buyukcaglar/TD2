@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "03e45b7b5962cff3224a02f4fc37442f2619d1b5c14460ae5df39f54ca300109",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2452a323003ce2f474ba8dfac9953f05658cc5a58ee1627db0f22b0968fe44a2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_interpolate.py",
+      "sha256": "a660c67288152201eb047c3e1ad0cbb148938b2df6cead6a2ebed19722a345a7"
+    }
+  ],
+  "limits": "Two native-only frame/flag-domain checks, excluded fromoriginal differential/error equivalence. Actualcaller/helper workprefixes separatelycounted inhelperreceipt. No originalinstructions/actualIRQ/renderer/resources/core/game/fidelity."
+}

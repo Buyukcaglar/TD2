@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000124",
+    "FN-EGA-000125",
+    "FN-EGA-000111",
+    "FN-EGA-000082",
+    "FN-EGA-000126"
+  ],
+  "vectors": 10546,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "50db84cef4e786a1774771f06493c8c28d4a90686281b93af40cee196568fbc2",
+  "source_sha256": "8a2c75d9839d62c804a79356347bd7b8a64f775a3e0a2c95ec674321072b1c3a",
+  "validator_sha256": "deef1850c251dd97d056520b45995320d22ce4823eac2623e1effc509cbb1e98",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validate_timer_startup_tail_bus.py",
+      "sha256": "e6b292caf3d778f8b5e052c0d6f0e6a4b5ce2e75d4136573e750a908abed9326"
+    },
+    {
+      "path": "tools/validate_timer_control_bus.py",
+      "sha256": "378971d63e2554b02b2cbd3439e0bef5fcdc098aca05d544a51a584ee5fbd60e"
+    },
+    {
+      "path": "tools/validate_timer_callback_bus.py",
+      "sha256": "12c05b9cf2c286a84287ce40c9e18949a1c76108d244fc8e41058af4c83e9025"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/session-init-bus-build-setup-v1.json",
+      "sha256": "8825788ef2350f336f6c63bbc56a365c93abb1e9784412d86e62aad015dcf29e"
+    },
+    {
+      "path": "analysis/reviews/session-init-bus-frontier-v1.json",
+      "sha256": "cfe5fed49e40d48ac2ce014aac7c13c74827257f0877a08ca982f524773a81b3"
+    },
+    {
+      "path": "analysis/history/session-init-bus-validation-refinement-v2.json",
+      "sha256": "50800ed7aba76703422c6d03805e18329829206e44414d64c96844fc8371b231"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+      "sha256": "990d67e5dcfeaf2a3cecf6ce42f563f329f9250bdddf5316494caf87c6f11a1b"
+    }
+  ],
+  "original_instructions_executed": 3194962,
+  "instruction_sites_in_fence": 188,
+  "instruction_sites_admitted": 187,
+  "instruction_sites_exercised": 187,
+  "preCALL_boundary_sites": [
+    "06C9:6164"
+  ],
+  "fixture_coverage": {
+    "entry_0": 4246,
+    "status_0": 7498,
+    "tag_base": 480,
+    "stage_0": 8292,
+    "CPU_writes": 473714,
+    "raw_ports": 24714,
+    "init_calls": 5310,
+    "tail_calls": 8158,
+    "DS_equals_SS": 7908,
+    "changed_root": 624,
+    "conditional_SS_ring_write_witnesses": 168,
+    "entry_0_SS_ring_write_witnesses": 56,
+    "published_6269_403B_sentinel": 2206,
+    "entry_1": 1574,
+    "entry_1_SS_ring_write_witnesses": 56,
+    "entry_2": 1578,
+    "entry_2_SS_ring_write_witnesses": 0,
+    "entry_3": 1570,
+    "entry_3_SS_ring_write_witnesses": 56,
+    "entry_4": 1578,
+    "entry_4_SS_ring_write_witnesses": 0,
+    "tag_all_masked_tokens": 1024,
+    "tag_live_SS_alias": 3680,
+    "status_1": 480,
+    "stage_101": 1216,
+    "status_6": 56,
+    "stage_102": 84,
+    "stage_103": 24,
+    "stage_2": 112,
+    "stage_3": 108,
+    "stage_1": 290,
+    "tag_live_source_BSS_SS_alias": 1840,
+    "status_3": 2492,
+    "tag_prefix_budget": 1600,
+    "tag_tail_budget": 1536,
+    "stage_100": 420,
+    "tag_SP_boundary": 78,
+    "status_5": 20,
+    "tag_partial_FLAGS": 90,
+    "tag_physical_alias": 90,
+    "tag_port_bus_mutation": 96,
+    "tag_word_wrap": 32
+  },
+  "limits": "Whole3F40-3FF9-38F2-1E31/actualnear5427/frozennative601C-614Ctail/fullSSfar-nearCALL-RET/orderedDSwrites-liveSSframes/fullGPR-BP-CFIFDF-definedFLAGS/wholeRAM-orderedports-independentCPUwrites. ConditionalSS66E6..67E7stackwrites arewitnessed, notintentionalringreset/seeding/RNGpurpose oractualcallerstackdomain proof. Budgets/rawchild/fatalpreCALL/preRET remainqualifications; no actualIRQ-allwriters-storage-lifetime-exclusion/startup-to-exit-complete-core/P1-GATE/DOSsession-renderer-audio-game-fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+}

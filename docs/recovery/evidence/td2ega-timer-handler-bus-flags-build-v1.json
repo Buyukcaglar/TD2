@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_timer_handler_bus_flags.cmd",
+    "sha256": "334de2e6c73c154cba35f9370a3b83459d5e48c1499d79a35728881f1a517d41"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus_flags.c",
+      "sha256": "dd47e0d6adbd40f248ae89a490cf5feb2aa26239cee0d70830b92b9d2d376e4f"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus.h",
+      "sha256": "ed1d5aea1ee1087fd27225cefb0956f8d9847dbb6bfa95c1fb52d683723b107a"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus_flags.h",
+      "sha256": "a8170f4dc370be30e6a7f09c5b01054f5ca2680360eae93dfa313792de44b71e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/timer-handler-bus-flags-repro/td2ega_timer_handler_bus_flags.dll",
+      "sha256": "0a1eeea2bb1ab9c0d257ed7556fee5c081e0e14ac84e5f112245af32413d6eaa",
+      "bytes": 110592
+    },
+    {
+      "path": "analysis/build/timer-handler-bus-flags-repro/td2ega_timer_handler_bus_flags.obj",
+      "sha256": "f6d91bdae37b7d98b3d269b22c78347272d3529979b64a9c1fe652815fc29238",
+      "bytes": 17071
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/timer-handler-bus-flags-build-v1.log",
+    "sha256": "bf8d50a24a4c4d1767ee178aff8f378e6f9d07829f27c9bf9d6f66ba0d225d1c"
+  },
+  "limit": "Additionalpartial-F72B-childFLAGS/fullSS61BF/6230 original71sites/fullRAM-GPR-BP-CFIFDF/definedFLAGS/actualsavedwords/farframes/modeledINT08-IRET-explicitAFstorage/IVTalias-order/rawreturns. External oldIRQ/farcallbacks remain ABI profiles with generic RETF/IRET, not actual body proof. Named real-address ISA profile/historicalCPU-IRQdelivery/callback403Bcomposition/allwriters-lifetime-core/P1-GATE remain open. Physical086Cunassigned/CGAbehindEGAclosure/noDOSgame-session-renderer-audio-complete-state-machine-gameplay-fidelity.",
+  "function_ids": [
+    "FN-EGA-000360",
+    "FN-EGA-000361"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-timer-handler-bus-flags-context-v1.json",
+    "sha256": "2523369d01a8bccf7962ec60b090ed9da8efb3a24527925591ec3d81cdc4c523"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/timer-handler-bus-flags-preparation-v1.json",
+      "sha256": "0cd161cad9747c2b6e55af2475ed9b86556b35586c549bc075b9088b228b2812"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-flags-build-setup-v1.json",
+      "sha256": "28e9638265bbf1add13bd83f87a54d7c33a5301e5528da1c05a1a4bba7f87e70"
+    }
+  ]
+}

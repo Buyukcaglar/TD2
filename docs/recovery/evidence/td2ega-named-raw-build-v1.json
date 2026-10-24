@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_named_raw.cmd",
+    "sha256": "9a6e15ca2a02bca172a2ddcce842872b11f33216a2369d9dba646b59ae9357aa"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_cache_acquire.c",
+      "sha256": "0196b41bde33c0ad0822d2d6e89bcce4f1b0a23e4a7cad8bac8bb8e6ad609380"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_acquire.h",
+      "sha256": "386a8199550a40cc90a4a4fdcbdd6951fdb5c12b82a803c408a5df1ce4b269ed"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.c",
+      "sha256": "99f0decfe4eefc0edae2bd484973b855144391ebea9aa397463419eed8211984"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.h",
+      "sha256": "6891219bb4bab9bdbc41928da1f1cf2790c7de26fad9a3067d46feb975d8cf37"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.c",
+      "sha256": "d7553649f01c3afb07c56b1f7d90c01ded7a148afa3ee0ec9ab72fce854b463a"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.h",
+      "sha256": "16f860c11a9b24a94ba11e55504ccb8ae079936ebda7aebf488f88c0ed3c4fde"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    },
+    {
+      "path": "src/recovered/td2ega_file_paragraphs.c",
+      "sha256": "cce97b73953fe6635bfc15ac44725b2e2b28a72584d3491020dccfb684273679"
+    },
+    {
+      "path": "src/recovered/td2ega_file_paragraphs.h",
+      "sha256": "76607bb2c204ac54327f2fe2fb124838f09b7e460392da25e1f5f24cbe7e442c"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.c",
+      "sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.h",
+      "sha256": "7f0342e6882eafdf84c8960c98584a0c315f16e1c33c0ed578342439a5bac79f"
+    },
+    {
+      "path": "src/recovered/td2ega_named_raw.c",
+      "sha256": "60603ec55b88ef5fffe9aaa7d38793666beb2b843b9e0d2b1b03fecd9223f006"
+    },
+    {
+      "path": "src/recovered/td2ega_named_raw.h",
+      "sha256": "306834dc03938ef12e96bfd43ed32423a016051cacd4d0bab1e42db09210c879"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.c",
+      "sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.h",
+      "sha256": "59e4700d541e3e08c417e742b835e0ac1699d6feeff43617f07a899fa40a6014"
+    },
+    {
+      "path": "src/recovered/td2ega_raw_load.c",
+      "sha256": "cccd7f8f965488c2401389c2891e89c71076a203032b1667e31616e52c940ad4"
+    },
+    {
+      "path": "src/recovered/td2ega_raw_load.h",
+      "sha256": "b450213bad70d48d6b4cadfc353bac48945c9b18d76050aba7c0a39e69690c06"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_cache_acquire.obj",
+      "sha256": "065b7afbb5aab2d0513fb8f811abb72240933dbc870dd007e5ea20abf99f78cb",
+      "bytes": 1982
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_cache_allocate.obj",
+      "sha256": "fa805a5ee344afcb661900ee32b7df83f65fe818c7f618fd0f8436acb28bce83",
+      "bytes": 1434
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_cache_compact.obj",
+      "sha256": "c9d3ebd848ee2fb074d3267a481f171f5b9f23c48c988313f2cd449d58e95391",
+      "bytes": 1408
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_file_paragraphs.obj",
+      "sha256": "7e43fa3b173a001d613e1ed7e6e236e9a3e7adad062972a437bc09d167245d4e",
+      "bytes": 6847
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_filename.obj",
+      "sha256": "e0a8dac7ebf572b3a2a77cf50dd07070b1c6514d6596192dc547cfcf8158e5ff",
+      "bytes": 735
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_named_raw.dll",
+      "sha256": "8ee7daad90811c4fe887a1da1b1135106eabf7152712aada078287f9782fbda7",
+      "bytes": 107008
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_named_raw.obj",
+      "sha256": "fe63711355978a82b4a2b62fab883cf40dbd1b9ee9fb46e2a4fe01bd98e9f7b7",
+      "bytes": 3740
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_paragraph_copy.obj",
+      "sha256": "ff5c709db5204b2cb5789c1415cf2ed4a99706a71c375fe5cc00566ef9bc4a76",
+      "bytes": 2510
+    },
+    {
+      "path": "analysis/build/named-raw-repro/td2ega_raw_load.obj",
+      "sha256": "921cc742dd493a88ada958ec49308162f5fcf80a49071937d9b40cebd78a2fb1",
+      "bytes": 4309
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/named-raw-build-v1.log",
+    "sha256": "7ac0a6f72225fcaa2637f9c4bf006eaf805db02983d5aa8d4c23900702457d07"
+  },
+  "limit": "Complete6D18 wrapper and reviewed native callees with synthetic serialized I/O/cache profile; no real DOS/resource/caller/IRQ integration or fatal cleanup.",
+  "function_id": "FN-EGA-000172"
+}

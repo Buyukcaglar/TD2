@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000088",
+  "vectors": 4264,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4147192d6706d9b3159fae40c044249550a4c1b4635ead41d5302854f98d6247",
+  "source_sha256": "73afcd10536544e27eac54e1eade2173ad8317d0c5385bba52691db1dca0162a",
+  "validator_sha256": "3a34f64777f5530e2e57c518adbc9b2c02b11d7e5996112a4b83db80ac5d8000",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 946134,
+  "instruction_sites_exercised": 108,
+  "instruction_sites_in_fence": 108,
+  "fixture_coverage": {
+    "word_arithmetic": 3520,
+    "same_DS_SS_0": 2132,
+    "original_normal_return": 4248,
+    "records": 35896,
+    "same_DS_SS_1": 2132,
+    "extent_and_output_order": 720,
+    "indexed_output_source_alias": 8,
+    "budget_prefix": 16,
+    "original_budget_prefix": 16
+  },
+  "limits": "Complete2089 serializedcurrentDS record/global/output effects, actualNEG/JGE SF==OF at8000, lowborrow/SBB/adjust/unsignedfilter, do-once loops, mutableindexedoutput-sourcealiases andCFIFDF/BP compared. Budget-prefix comparisons stopbeforeoriginalnextrecord, not originalerror/normalreturn equivalence.1E59 usesSS records separately; noactualcallerresourcebounds/units/graphics/state/IRQ/core/game/fidelity admission. Native diagnostics separate."
+}

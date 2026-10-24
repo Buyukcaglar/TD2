@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000205",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_prefix_stage.cmd",
+    "sha256": "88f4447e05a038ef51b47d83461b74650b57c0dbea78cc416d8af2d6da4fec86"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_prefix_stage.c",
+      "sha256": "827cdf564d6256e4ea86eef32909db58873b9e24c75a728b6b89c6b4927f5806"
+    },
+    {
+      "path": "src/recovered/td2ega_prefix_stage.h",
+      "sha256": "853a770be8cf3c097f7bb35e9e5a0a96edd34a3f9675ac5d4a123629d87b3cc4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/prefix-stage-repro/td2ega_prefix_stage.obj",
+      "sha256": "e7f91dbdadc3be7b9a91b7bc7be146f8d275344f4c7cd3c63bc1b59558f09e93",
+      "bytes": 3227
+    },
+    {
+      "path": "analysis/build/prefix-stage-repro/td2ega_prefix_stage.dll",
+      "sha256": "e3828c5c22cfb95c3641892d97bb3c7f4e800b164437c809d33e565970bdab32",
+      "bytes": 103936
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/prefix-stage-build-v1.log",
+    "sha256": "6edb9664ea3286307be4b40aabdf8b7e06c209586ccfc5ff481e2d0468ebe247"
+  },
+  "limit": "Bounded raw byte-producing code stage withsynthetic differentialvectors only; no suppliedresource, fullformat/corpus, loader, platform/core orsecondhost acceptance."
+}

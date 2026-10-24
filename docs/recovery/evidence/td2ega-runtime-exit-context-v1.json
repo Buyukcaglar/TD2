@@ -1,0 +1,330 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "ee220d993d67c34f6b05f95022262f938665e2f88d87c1a1bbae1872f1471553",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-finalizer-list-build-v1.json",
+      "sha256": "8a8da40f903c19da0627f00aa9aced7705fc7424653a2e9150ce936b37d35dcd"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-finalizer-list-validation-v2.json",
+      "sha256": "619f2772b3fed94926226359e2dbced85a7a58595c19ba65e35be70ca2a59b52"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-diagnostic-build-v1.json",
+      "sha256": "da00e7fb1da0f33302764df0c0aefe26825b17af9d2c5f7543ba3b4a2ecb81a9"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-diagnostic-validation-v1.json",
+      "sha256": "ba25cb6eb17f74e36b51ea6984921508eedcca09a4fa006b2894f3e89bcfb059"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-message-build-v1.json",
+      "sha256": "71da066ddb6091a33e6390cd4a90d39bfc3a09c886ae28adadc4f509706ffe1e"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-message-validation-v1.json",
+      "sha256": "ea796b0b800a65f47fc3de190d27b2d700750147f5c037e887c3fd70cb68e739"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-vectors-build-v1.json",
+      "sha256": "47b24734a8021e31b12f15cec29e2fec019b61885ae89c81901b3a1e55c67932"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-vectors-validation-v1.json",
+      "sha256": "8cf71ce413615937b1d209d0fbfc740d13ca074ad972aee7178f9c2bcf98406a"
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "13A8:0599",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "13A8:059A",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "13A8:059C",
+      "bytes": "be8670",
+      "text": "mov si, 0x7086"
+    },
+    {
+      "site": "13A8:059F",
+      "bytes": "bf8670",
+      "text": "mov di, 0x7086"
+    },
+    {
+      "site": "13A8:05A2",
+      "bytes": "e86800",
+      "text": "call 0x60d"
+    },
+    {
+      "site": "13A8:05A5",
+      "bytes": "be8670",
+      "text": "mov si, 0x7086"
+    },
+    {
+      "site": "13A8:05A8",
+      "bytes": "bf8670",
+      "text": "mov di, 0x7086"
+    },
+    {
+      "site": "13A8:05AB",
+      "bytes": "e85f00",
+      "text": "call 0x60d"
+    },
+    {
+      "site": "13A8:05AE",
+      "bytes": "9a6e06a813",
+      "text": "lcall 0x13a8, 0x66e"
+    },
+    {
+      "site": "13A8:05B3",
+      "bytes": "0bc0",
+      "text": "or ax, ax"
+    },
+    {
+      "site": "13A8:05B5",
+      "bytes": "740b",
+      "text": "je 0x5c2"
+    },
+    {
+      "site": "13A8:05B7",
+      "bytes": "837e0600",
+      "text": "cmp word ptr [bp + 6], 0"
+    },
+    {
+      "site": "13A8:05BB",
+      "bytes": "7505",
+      "text": "jne 0x5c2"
+    },
+    {
+      "site": "13A8:05BD",
+      "bytes": "c74606ff00",
+      "text": "mov word ptr [bp + 6], 0xff"
+    },
+    {
+      "site": "13A8:05C2",
+      "bytes": "b90f00",
+      "text": "mov cx, 0xf"
+    },
+    {
+      "site": "13A8:05C5",
+      "bytes": "bb0500",
+      "text": "mov bx, 5"
+    },
+    {
+      "site": "13A8:05C8",
+      "bytes": "f687a46d01",
+      "text": "test byte ptr [bx + 0x6da4], 1"
+    },
+    {
+      "site": "13A8:05CD",
+      "bytes": "7404",
+      "text": "je 0x5d3"
+    },
+    {
+      "site": "13A8:05CF",
+      "bytes": "b43e",
+      "text": "mov ah, 0x3e"
+    },
+    {
+      "site": "13A8:05D1",
+      "bytes": "cd21",
+      "text": "int 0x21"
+    },
+    {
+      "site": "13A8:05D3",
+      "bytes": "43",
+      "text": "inc bx"
+    },
+    {
+      "site": "13A8:05D4",
+      "bytes": "e2f2",
+      "text": "loop 0x5c8"
+    },
+    {
+      "site": "13A8:05D6",
+      "bytes": "e80700",
+      "text": "call 0x5e0"
+    },
+    {
+      "site": "13A8:05D9",
+      "bytes": "8b4606",
+      "text": "mov ax, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:05DC",
+      "bytes": "b44c",
+      "text": "mov ah, 0x4c"
+    },
+    {
+      "site": "13A8:05DE",
+      "bytes": "cd21",
+      "text": "int 0x21"
+    },
+    {
+      "site": "13A8:05E0",
+      "bytes": "8b0e7870",
+      "text": "mov cx, word ptr [0x7078]"
+    },
+    {
+      "site": "13A8:05E4",
+      "bytes": "e307",
+      "text": "jcxz 0x5ed"
+    },
+    {
+      "site": "13A8:05E6",
+      "bytes": "bb0200",
+      "text": "mov bx, 2"
+    },
+    {
+      "site": "13A8:05E9",
+      "bytes": "ff1e7670",
+      "text": "lcall [0x7076]"
+    },
+    {
+      "site": "13A8:05ED",
+      "bytes": "1e",
+      "text": "push ds"
+    },
+    {
+      "site": "13A8:05EE",
+      "bytes": "c516896d",
+      "text": "lds dx, ptr [0x6d89]"
+    },
+    {
+      "site": "13A8:05F2",
+      "bytes": "b80025",
+      "text": "mov ax, 0x2500"
+    },
+    {
+      "site": "13A8:05F5",
+      "bytes": "cd21",
+      "text": "int 0x21"
+    },
+    {
+      "site": "13A8:05F7",
+      "bytes": "1f",
+      "text": "pop ds"
+    },
+    {
+      "site": "13A8:05F8",
+      "bytes": "803ec66d00",
+      "text": "cmp byte ptr [0x6dc6], 0"
+    },
+    {
+      "site": "13A8:05FD",
+      "bytes": "740d",
+      "text": "je 0x60c"
+    },
+    {
+      "site": "13A8:05FF",
+      "bytes": "1e",
+      "text": "push ds"
+    },
+    {
+      "site": "13A8:0600",
+      "bytes": "a0c76d",
+      "text": "mov al, byte ptr [0x6dc7]"
+    },
+    {
+      "site": "13A8:0603",
+      "bytes": "c516c86d",
+      "text": "lds dx, ptr [0x6dc8]"
+    },
+    {
+      "site": "13A8:0607",
+      "bytes": "b425",
+      "text": "mov ah, 0x25"
+    },
+    {
+      "site": "13A8:0609",
+      "bytes": "cd21",
+      "text": "int 0x21"
+    },
+    {
+      "site": "13A8:060B",
+      "bytes": "1f",
+      "text": "pop ds"
+    },
+    {
+      "site": "13A8:060C",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:29F6",
+      "site": "13A8:2A0F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:0599"
+    },
+    {
+      "owner": "13A8:2C1C",
+      "site": "13A8:2C9C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:0599"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "api_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684",
+    "source_path": "analysis/external/msdos-2d04cacc/SYSCALL.txt",
+    "source_sha256": "72271dc62a60960c885da6a3d822202a80ef338d2e2f3e54570eda9dc3453da7",
+    "url": "https://github.com/microsoft/MS-DOS/blob/2d04cacc5322951f187bb17e017c12920ac8ebe2/v2.0/source/SYSCALL.txt",
+    "service_identifiers": {
+      "EXIT": 76,
+      "CLOSE": 62
+    },
+    "relevant_line_ranges": [
+      [
+        1106,
+        1122
+      ],
+      [
+        1615,
+        1615
+      ],
+      [
+        1631,
+        1631
+      ]
+    ]
+  },
+  "fixed_empty_span_proof": {
+    "sites": [
+      "13A8:05A2",
+      "13A8:05AB"
+    ],
+    "si": 28806,
+    "di": 28806,
+    "unreachable_helper_sites": [
+      "13A8:0611",
+      "13A8:0614",
+      "13A8:0616",
+      "13A8:0619",
+      "13A8:061B",
+      "13A8:061D"
+    ],
+    "scope": "Unchangedcode/serializednoasync context. Entire060Dhelperseparatelyreviewedall9sites; these6sites notgloballydead."
+  },
+  "facts": [
+    "0599PUSHBP/BP, twoactualnear060Dcalls withfixedSI=DI7086, actualfar066E. FullAXOR thenifnonzeroandSSwordBP+6zero writesword00FF. ThisisnotAL-onlyorchecksumAH-only logic.",
+    "CX15/BX5 then do-onceTESTcurrentDS[BX+6DA4]bit1; flagged ->AH3E/syntheticDOSclose. ReturnedBX/CX/BP/DS/CFIFDF feedINC/LOOP/nextread. INC/LOOPpreserveCF. Nominal15boundrequiresplatformcounter-preservation; rawlong/zero-CX paths budgeted.",
+    "Actualnear05E0/vectorcleanup thenreadSSwordreturnedBP+6, replaceAH4C, prepareINT21request. Exitlowbyte sent; initialFF00wordnonzero preventsFFrewritewhileitslowexitbyteiszero. RootBPsave/farframe remainlive, noepilogue/normalRET invented.",
+    "HistoricalDOS4Cterminatescurrentprocess andtransferscontroltoinvoker. ComparisonstopspreparedrequestbeforeINT05DE, noactualDOS/process exit/session. Syntacticfallthrough05E0after05DE notfollowedunderthatdocumentedplatformcontract; earliernear05E0fullycomposed.",
+    "NestednormalreturnrequiresactualCS/IP/SPexpectedframes; unexpectedcoordinates exposednotfollowed. Sixwalkbody sites unreachableonlyunderrootfixedemptyspans; notglobaldeadcallbackcode."
+  ],
+  "limits": "Static source/APItermination semantics and frozenhelperdependencies only. Preparedprocess-exit boundary isnot actualDOSexit/runtime/gameacceptance. Actualcaller/bounds/source/targets/writers/lifetime/IRQexclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen."
+}

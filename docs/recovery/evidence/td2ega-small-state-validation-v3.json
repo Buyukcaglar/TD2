@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000132",
+    "FN-EGA-000437",
+    "FN-EGA-000138",
+    "FN-EGA-000139",
+    "FN-EGA-000249",
+    "FN-EGA-000250",
+    "FN-EGA-000346",
+    "FN-EGA-000204",
+    "FN-EGA-000313",
+    "FN-EGA-000318",
+    "FN-EGA-000024",
+    "FN-EGA-000317",
+    "FN-EGA-000415",
+    "FN-EGA-000416"
+  ],
+  "vectors": 21632,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "330671df7661038b3dd6af0a3f967ec9064683ed27bd9739e8d23f1f2e8d4881",
+  "source_sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577",
+  "validator_sha256": "52760ebb08413dd3dd0043ba0e7a91b83ce3121789f3d8c75453da0454d9f2e1",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 6371264,
+  "instruction_sites_in_fence": 111,
+  "instruction_sites_exercised": 111,
+  "fixture_coverage": {
+    "entry_0": 384,
+    "bus_write_events": 19648,
+    "entry_1": 384,
+    "entry_2": 384,
+    "entry_3": 384,
+    "entry_4": 384,
+    "entry_5": 384,
+    "entry_6": 16384,
+    "entry_7": 384,
+    "entry_8": 384,
+    "entry_9": 384,
+    "entry_10": 384,
+    "entry_11": 384,
+    "entry_12": 512,
+    "entry_13": 512
+  },
+  "limits": "Fourteen finite bodies, actualnestedC692 inC69C, fullbusincludingSSframe/GPR/BP/CFIFDF andnear/farreturns. Literal0040:046C physical086C distinguishedfromcanonical0040:006C; no timer/frequency/sourcewriter semantics assigned. RawDSownedcounter/arithmetic, nearoffsetselector, CLbytecount, orderedpairedstatewords/byteflag and22byteforwardcopy retained. Noallcaller/bounds/aliases/IRQexclusion/lifetime, realBIOS/DOS/session/render/audio/core/gameplay/fidelity acceptance. Nativeinvalidchecks separate."
+}

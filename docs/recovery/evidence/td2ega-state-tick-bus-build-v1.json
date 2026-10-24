@@ -1,0 +1,551 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_state_tick_bus.cmd",
+    "sha256": "f19ff2ac5b0c69af66e613a112049aea9ff27cf3fad86dba4b4da65695c7621c"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_state_tick_bus.c",
+      "sha256": "a2d4aeb58ddd7e6e06fb9b627a01e6ce92b913debc9d254265f344826455ef3c"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_control_controllers.c",
+      "sha256": "85bf8a87e5a83ba6fc203decae1103ab64a3e0cf6b4e1ea71f3e322fcdb9761f"
+    },
+    {
+      "path": "src/recovered/td2ega_control_ops.c",
+      "sha256": "b787378cb4007d82e7c6e6ee3d9705d8f9066efe9fac9e38410c5f8a5ebcbd98"
+    },
+    {
+      "path": "src/recovered/td2ega_field_controller.c",
+      "sha256": "11d186bf49bda8ff5b4f3b9de86f5a3d460640548bd1b05ca2a5a676c8911aa4"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport_bus.c",
+      "sha256": "d538ab0b3d17bfe7441ad91374d0aedc403ce76885c7360df739ab5241dd1676"
+    },
+    {
+      "path": "src/recovered/td2ega_indexed_sample.c",
+      "sha256": "907645faebf7455ddb09c59fcb4a0d8a79d4c8fa2198baf8b8a3bda722570fd5"
+    },
+    {
+      "path": "src/recovered/td2ega_input_fields_bus.c",
+      "sha256": "5781034b41a2ab3aa45397357e3e195a982f2453f9b403f20387d023ee1293d9"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll_bus.c",
+      "sha256": "75feb51218b032b693376169fab985e8ec283e000e66eb97593bf91280512563"
+    },
+    {
+      "path": "src/recovered/td2ega_input_update_bus.c",
+      "sha256": "102e75f7cc383043e84b99c5c899d80727698ab53a466b13b96ad8200e3b459a"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch_bus.c",
+      "sha256": "6f5dab553ec307cfe859bf6e83e41ca23899d16ddc8223466f5836b7b3177f89"
+    },
+    {
+      "path": "src/recovered/td2ega_keyboard_bios_bus.c",
+      "sha256": "7c8848efd22617512725db9e645de13c7ad412cd6570c1ad404cae58ec747faf"
+    },
+    {
+      "path": "src/recovered/td2ega_mode_controller.c",
+      "sha256": "0f14abe716d13b9d633286d44fc6e167ad5abf5767351ad9658c4914e96ce397"
+    },
+    {
+      "path": "src/recovered/td2ega_motion_flags_bus.c",
+      "sha256": "84a2a6aef15f1a186f68147e9bef7e1493f27ccabea11b5bbc3cf7b793848156"
+    },
+    {
+      "path": "src/recovered/td2ega_motion_scan_bus.c",
+      "sha256": "a8a3d6e2511017734f5e768589577383cd5cf6833bdc633fad83b0f62af18988"
+    },
+    {
+      "path": "src/recovered/td2ega_pair_controller.c",
+      "sha256": "08045fc91d0ff298ec86e815de46425963efa80ac361b017fd29a7b88218189b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_controller.c",
+      "sha256": "049ad9bb352f09fdffb5e813425f9237ddd2bb08d40a368b739c180741fcd50a"
+    },
+    {
+      "path": "src/recovered/td2ega_record_dispatch.c",
+      "sha256": "b3c8d5f8bc9e7f114e70a5f0f26099881c9fc85e117b07985e67ebf47715ca0c"
+    },
+    {
+      "path": "src/recovered/td2ega_record_flags.c",
+      "sha256": "de43feceb89c165cd5320d03fdf10cd2a07e06ab9164336d507da1ab9e35c783"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.c",
+      "sha256": "d8e9e7a14bb38872c2e0ec5eb1636555114022f88569d6ef3ff23048a4c706e9"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_fields_bus.c",
+      "sha256": "978d52683d122c37c3ae57d2c2e163db38368e9fbfafd97dfd12f39808585d25"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_guards.c",
+      "sha256": "60f672b8de84a680db60b6e4f75f6a1195e48ad912a26cae1c2ad8711d586c3b"
+    },
+    {
+      "path": "src/recovered/td2ega_secondary_fields.c",
+      "sha256": "36a3630bc30ebaca88bcfa50fac8430fd7e263c6bb77d4b4f1bc6bf4fa387506"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.c",
+      "sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_controller.c",
+      "sha256": "6839f0b666c8314479bc4acc82a95c5e259d961b1c8be0c610db552c4ae43ff9"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_dispatch_bus.c",
+      "sha256": "f81d9e2361ad54c5cad79ff0626812b9a88fe7103fc6b6a39f079bb2d49dc072"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.c",
+      "sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.c",
+      "sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.c",
+      "sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_threshold_transition.c",
+      "sha256": "1e716661f708daa96e5128d0b391330e689cf3ad18943dac081779bd23165296"
+    },
+    {
+      "path": "src/recovered/td2ega_window_controllers.c",
+      "sha256": "6a3c5a0b45c83d42ae93d71305848bb4fb4b20ccd533c2fd18d6f625cc7eca88"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_control_controllers.h",
+      "sha256": "78ec65326b45225867f6bd251db2d0db4588bb3aa2c8436b74d5c75bf80f13d6"
+    },
+    {
+      "path": "src/recovered/td2ega_control_ops.h",
+      "sha256": "b0dca900b2d4497a6996e98397117b0c91382a9c0400f57d7366baa2d645f726"
+    },
+    {
+      "path": "src/recovered/td2ega_field_controller.h",
+      "sha256": "2c7d5a21f9c7613eab7afb0e9bdad80c15b6dc3c534666e181c8a46b102fc292"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport_bus.h",
+      "sha256": "ff6025c8866127c5c5f7885a7922cd756ab09266e3cc111535166c7f8656dae7"
+    },
+    {
+      "path": "src/recovered/td2ega_indexed_sample.h",
+      "sha256": "8c64fc39e603497e6c28ac33ddd1e73239b7a5d71416001ca6d70da8d861c3e0"
+    },
+    {
+      "path": "src/recovered/td2ega_input_fields_bus.h",
+      "sha256": "7432462f992e290569c88ab41c894cb69ba61a77878ff6a1a458ece6dba7e2cc"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll_bus.h",
+      "sha256": "f934a69f810fc04b7ace5a0389276a7606f80fcf60a6c67bd60954e1b1f0e62a"
+    },
+    {
+      "path": "src/recovered/td2ega_input_update_bus.h",
+      "sha256": "aae98c05a8ce6bc924fa9d09bde8d61ee43f90407a4125a8c74653db995dc12e"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch_bus.h",
+      "sha256": "1bb5e26f9347ba4840acfe3149017ecf37b3fd95278a11bfc5846800aca9086d"
+    },
+    {
+      "path": "src/recovered/td2ega_keyboard_bios_bus.h",
+      "sha256": "4d03e3c0abaa75ecfb0d3ac28a80aab73ddf3ba083b0e44e770fa0ab59528d50"
+    },
+    {
+      "path": "src/recovered/td2ega_mode_controller.h",
+      "sha256": "6524ca4330fef1db11464d4e50d9c0286dfdb30b2ac9b49773906e4063277f4a"
+    },
+    {
+      "path": "src/recovered/td2ega_motion_flags_bus.h",
+      "sha256": "00378735184a29f8b4175bd9c06374a387ec591bd4bb0931880200d7bf53aab9"
+    },
+    {
+      "path": "src/recovered/td2ega_motion_scan_bus.h",
+      "sha256": "d5e0803cbb83a94c0025345d88e0bfea84018e3d70073680c9da06e16309da82"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_pair_controller.h",
+      "sha256": "6f895dadf3b269a0fb521fa4599f39923ee438d3bc8c3d5b29afb9a4cf9b5cec"
+    },
+    {
+      "path": "src/recovered/td2ega_record_controller.h",
+      "sha256": "e04f86f9bdf8c629665c380b1027984d0e6997e1e66d31bdfb102b4e4edbb33a"
+    },
+    {
+      "path": "src/recovered/td2ega_record_dispatch.h",
+      "sha256": "404b94b54853638be0ae3d4b7ada6732050fa51f52c2e287674a87955599f1df"
+    },
+    {
+      "path": "src/recovered/td2ega_record_flags.h",
+      "sha256": "b5603b606ef4bc69a9b296c8bbd7bfabdcfb0ffa2261a53cb099b1650a54aec4"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.h",
+      "sha256": "0c913a5b7eff7f98859d0f9117520a6704ae538f9c44105dfaf5656125bfced9"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_fields_bus.h",
+      "sha256": "337a9880aaf6f045f0ab51f158b5e411263a3351de08a1f038430ad4299758b8"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_guards.h",
+      "sha256": "8112c9c5a8638fe1733860f1a5211d3b6b19ca511d9c988c5eb876ba4f36df52"
+    },
+    {
+      "path": "src/recovered/td2ega_secondary_fields.h",
+      "sha256": "48027424a340df4bb449a97694a5233aa8956c02326a05c34442ce409880b112"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.h",
+      "sha256": "1ca9473ab53fa3b545dcb697df135ddcea989691dc877628b76c90bd4bc4663f"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_controller.h",
+      "sha256": "35c1a1eee260b1df073be9ff3a0e78976f804889d294e92ed0023e3e90158517"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_dispatch_bus.h",
+      "sha256": "11753b58cc2629d3cd3bad53b50ef83dca4796ddcf39a89bd44b246af18220dd"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.h",
+      "sha256": "d4bdef46a5afd3f4a7c9051a17765db281741dd6c9f21fd690c630675c661099"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.h",
+      "sha256": "46be463e0d8382fac77f4114180df0d0feed44e045785183427a38d9b63d25b8"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_tick_bus.h",
+      "sha256": "204800f1d8c039e9d79eb60498f00b3d38e8993e56dcc2c43594faa797a565a7"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    },
+    {
+      "path": "src/recovered/td2ega_threshold_transition.h",
+      "sha256": "787e9a89b9189e28823c1d76057d5dc858cf288e78264896164047d7d7e15a77"
+    },
+    {
+      "path": "src/recovered/td2ega_window_controllers.h",
+      "sha256": "d1bbaf540a1d06fd120188bac25c88b8eca21dbf650013cace5f91b2d0388aad"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_state_tick_bus.dll",
+      "sha256": "2220e5cc7c16a3aba24691863080f5aa12072cc2ba7c7a94e07499ae7ddec103",
+      "bytes": 224768
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_state_tick_bus.obj",
+      "sha256": "24567dca3428cb48931a5a862c9e85159ce5b77826b97b65e025701d096b40e3",
+      "bytes": 10547
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_byte_ring.obj",
+      "sha256": "6c0a64895f120dae9cc2e8bbfdaa607c436afcbd7b01aa4fca8d24b7cb708785",
+      "bytes": 696
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_control_bus.obj",
+      "sha256": "2f815a68e93ca24d256e9528388b9f74a6b445ccfb4deb0d61f39baa53b5fc8e",
+      "bytes": 6547
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_control_controllers.obj",
+      "sha256": "a44f1fe900defb1d028f5d411c12b32390a7074dd7070b310e3c57a1e5941116",
+      "bytes": 8418
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_control_ops.obj",
+      "sha256": "b5160c98013f35e4283cd70baadf2f16c7940f370d546dff3ae331b9b35c0bb9",
+      "bytes": 5256
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_field_controller.obj",
+      "sha256": "43797cfbe0a726d4e04de911ae3168f81e5621a9a33070800155d3ab7844d12c",
+      "bytes": 9158
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_gameport_bus.obj",
+      "sha256": "a26e405e79293a9509584648feedaeaece97506a0dec197b7b4d5335583f6f24",
+      "bytes": 9137
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_indexed_sample.obj",
+      "sha256": "bf1edcf2515666067f503e57f2b1af9b9423e89b06cf4e7d3a3bbee27fc3fd1d",
+      "bytes": 8875
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_input_fields_bus.obj",
+      "sha256": "6d551ccfad4d85eebf49e9222a6141521ca5ca378d0aa16dd902ae93c26c8003",
+      "bytes": 16081
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_input_poll_bus.obj",
+      "sha256": "254f5f0fed798625074d29c87e7014b3182bc5b2ed5eacfd4d30f73448f51705",
+      "bytes": 16659
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_input_update_bus.obj",
+      "sha256": "edcfca15d7aba0c7a64885cdb371945aae7ad2a562183b54e4e3df49656412f1",
+      "bytes": 21169
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_key_dispatch_bus.obj",
+      "sha256": "039f4a44e7cc925b1cd6cd0f68cf215863e1dde478a5b1c68e68b94d8aab7c5b",
+      "bytes": 4997
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_keyboard_bios_bus.obj",
+      "sha256": "d444ee439ce5f4b9558534ebb189239894d4f73d54ba98689439942c89d42e43",
+      "bytes": 4478
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_mode_controller.obj",
+      "sha256": "d4edb022eb1af5268491939fa09e67bfe2c45e02abef44150619494fe793e1c3",
+      "bytes": 18703
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_motion_flags_bus.obj",
+      "sha256": "c60253eccc2609552a8b340eafb5012fb0e684ad286b8a255293c408ea9eb20a",
+      "bytes": 14889
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_motion_scan_bus.obj",
+      "sha256": "050f5f1747f1f6ac9102cd96401eb0fd8d137b3707c379a1e5df09c107711665",
+      "bytes": 10511
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_pair_controller.obj",
+      "sha256": "1264d424ca5aa7a0570d7175be35e2e73fddff9585fa2a7d93c63a1904833a74",
+      "bytes": 7859
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_record_controller.obj",
+      "sha256": "f5e595be295f8cf59dd3dd594a2d5f1a1ac5277b67fd519c7a2f6569099cf7a9",
+      "bytes": 12718
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_record_dispatch.obj",
+      "sha256": "a1d53f1b45651e78106a21db4225755b741902f99733499efe5282c14237a1f5",
+      "bytes": 11306
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_record_flags.obj",
+      "sha256": "455c51e89efc78adf15071360ac4ce3583b86999cf4fae77fececf9c97103b38",
+      "bytes": 5876
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_record_math.obj",
+      "sha256": "54cf988f6ddcf019245a085e082d60f0a7ec57670b39e3fd558a313893d36b04",
+      "bytes": 10927
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sample_adjust.obj",
+      "sha256": "1ead74c06f69796f0ddb0d35116aca20631d88ba9ad9f101c9b420320aa14774",
+      "bytes": 11101
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sample_fields_bus.obj",
+      "sha256": "4fad12ff18859d122d87f8eac4420a993b4c430c6759334a04b142500a2ae726",
+      "bytes": 5931
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sample_guards.obj",
+      "sha256": "2a79ce541e35b26060620a8f4732a0751e16794e98e4230c951ee2b5467bcc86",
+      "bytes": 6012
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_secondary_fields.obj",
+      "sha256": "ef5827b689521b28e593d36a693bbd4918c67ba8a38eefeccc798d5f5c42b959",
+      "bytes": 12096
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_signed_motion.obj",
+      "sha256": "bc34169c54e40f2cc9945f7fd229d87cfa8c57978f0f61ddb159d9a120c42af6",
+      "bytes": 3110
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sim_controller.obj",
+      "sha256": "4b60132d89e802a2812fb541414a4a7b03f88c280f2cbec1d47cb92aa4a3e168",
+      "bytes": 23055
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sim_dispatch_bus.obj",
+      "sha256": "a383cc9ca804c3fb440cfcf988df87295967a29aac0c71ffa94301a6f0a19b72",
+      "bytes": 5126
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sim_primitives.obj",
+      "sha256": "7041d405d6b9c777d90114fa0b15326246997bbedd979e47542d8d6f3a49538a",
+      "bytes": 4591
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_sim_targets.obj",
+      "sha256": "4809c28d3803bbaf16a597d4c448c9c187585fcaf13fc89204c6d748f0789d6e",
+      "bytes": 4395
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_small_algorithms.obj",
+      "sha256": "00096d099bf9e4e931e5a90cc2c80fa5870e0118b734b03b51837776f8403812",
+      "bytes": 5922
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_small_arithmetic.obj",
+      "sha256": "259a92c60f0f979745e8c709c14de9b2fc29fff9e142ccd4c68b2b25ad44d0f7",
+      "bytes": 6178
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_table_scalar.obj",
+      "sha256": "d7cdb05ce8c10f543474e3a08b45cb9a7b53cc6bd2df86ca633aa33c540bf464",
+      "bytes": 5794
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_threshold_transition.obj",
+      "sha256": "7abdf365bed91f8751b833a1a5e694905c8cc184d7bf06e88609d31b4b6c7251",
+      "bytes": 6920
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_window_controllers.obj",
+      "sha256": "b88ee4ac2a61fd9931649c40eb9e6e0d77ea16bf8430c22587e2488b5ea56759",
+      "bytes": 9117
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/state-tick-bus-build-v1.log",
+    "sha256": "d8728501e60810cdff127c87f76c8653484541863d414710ce953ed1c509b44e"
+  },
+  "limit": "Whole403B originalroot80sites/11CALLs plusactualoriginalcalleeinstructions; previouslyunit-reviewedchildcodecoverage remainsseparatefromthiscallerprofile. ActualSS/farrootRET/DS-ES-DI-BP restoration/motionfullFLAGS-inputINT/actual69B7/actual56EDnonlocalPOPAX-RET/actualPUSHF-POPFprofile/wholeRAM-GPR-CFIFDF-control-writecounts. UndefinedAF materializedonlyatmodeledINTFLAGS orpostCPU-PUSHF storage; noCODE-hookEFLAGSrewrites. Explicitbudgets/unknownindirect/division-or-POPFprefixes distinctfromsourceerrors. Keycallbacks ABIeffects+genericRETF/notbodyproof; sourcewriter-reset-lifetime-IRQ/core/P1-GATE remainopen. NoDOSsession/realdevices/renderer/audio/fullresources/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000365"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+    "sha256": "99ad5245ec3268e3412b65baf4fe5e8ac8b5ccb36de3ca39009298de4ba83be2"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/state-tick-bus-build-setup-v1.json",
+      "sha256": "1f9f4d48763c04112a29915b1b37659abf1cd555fa7ae736e7276e1ea58c2126"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-refinement-v2.json",
+      "sha256": "cdddc4674219cbd1b42ca4a6e2751035f61088882b5e4e71ac358fb7174d2ea8"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-refinement-v3.json",
+      "sha256": "037341414ae09ebb186d58f886dcc0c5bc75ca6660feffaac0382f123b2ff2bf"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-refinement-v4.json",
+      "sha256": "0f7d97911b30c7ac264f0254d6c5f13475d376988f66cb99a68e4d687f1c02c7"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-attempt-v4.json",
+      "sha256": "9857de75b2421dac2f22cae7ac37b057ccf414a6431a3a1181495c958fb75b0c"
+    },
+    {
+      "path": "analysis/history/state-tick-prefix-probe-v1.json",
+      "sha256": "3487c439c2027d4edbf1951a16b5e12a3ed4843283b1240aa056db087b44dd5e"
+    },
+    {
+      "path": "analysis/history/state-tick-nonlocal-probe-v1.json",
+      "sha256": "fb7c273cc7f2368f31cc20cadef2a9073251162d54c6d8745871aa290b431a6a"
+    },
+    {
+      "path": "analysis/history/state-tick-context-refinement-v2.json",
+      "sha256": "7f9a6c706810375ecf41b0562852b02113644c2d5684c5841de2271bf3021508"
+    },
+    {
+      "path": "analysis/history/state-tick-diagnostics-preparation-v2.json",
+      "sha256": "a5c66f7398418c67bc93a738ff740935801d0ab1e4d035e2b17a7718f878ffb9"
+    }
+  ]
+}

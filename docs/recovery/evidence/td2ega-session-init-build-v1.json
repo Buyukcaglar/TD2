@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_session_init.cmd",
+    "sha256": "c4dd89e6ef891c0cf000b5aa1f9d79249947aad191f76511ba0cf04c90ae730e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_session_init.c",
+      "sha256": "da30b12bddacd01629219b32d8339a5765404df0ed399acedb86ff6360bf7c0a"
+    },
+    {
+      "path": "src/recovered/td2ega_session_init.h",
+      "sha256": "5460d697d18d68aa5ab9a5d47dbf259fa9d56e26497c98d5cedef4501d5805e4"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control.c",
+      "sha256": "cfad1442cfd114bebeeb113863bf0b6344c46eb2ec4917ee61da4239a56cb4f3"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control.h",
+      "sha256": "ac6396140ab0acc4e0a392a72791ed3981f5e394828f844edf2f6f548931ff26"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callbacks.c",
+      "sha256": "193dea747f7c7112c07aafcd4a77c5b19ec521d47e7430d342876ad476a209d2"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callbacks.h",
+      "sha256": "d3eceb24b49e417a6f0980885f3ca8aaeb9588a6a8226432919fb0638669d2c0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/session-init-repro/td2ega_session_init.dll",
+      "sha256": "ef0f7249ca999b3a63f5ffc1c26eb40cd4d50b0da5bfe3df06d4f79988e110f4",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/session-init-repro/td2ega_session_init.obj",
+      "sha256": "2f19373668a74a10d696b7460da8afe7e73fcf8be54a9b5d2cec9b3350857094",
+      "bytes": 7357
+    },
+    {
+      "path": "analysis/build/session-init-repro/td2ega_sim_primitives.obj",
+      "sha256": "4d1ad49f48642e01d6be1b0e4c39c798d3297dbf8c5ded583ec135d50b44d912",
+      "bytes": 4587
+    },
+    {
+      "path": "analysis/build/session-init-repro/td2ega_timer_callbacks.obj",
+      "sha256": "188547e36fc727f41e2040d2308b15fd4ecf4f8651f35f6c3476bb1eb6d7bcff",
+      "bytes": 4494
+    },
+    {
+      "path": "analysis/build/session-init-repro/td2ega_timer_control.obj",
+      "sha256": "f72a64ac957421bc4f9fcb043a8f4a825b39b6d6b17e70c73e03ffa7b8613cdd",
+      "bytes": 6206
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/session-init-build-v1.log",
+    "sha256": "219b026e7804665bbf543cef4ee6cdbfacfe278ae0bb83a7be76746c355a3bcb"
+  },
+  "limit": "Four complete initialization entries, compiled helper composition and serialized synthetic group/device effects; no full state machine, actual resource/IRQ/game/fidelity acceptance.",
+  "function_ids": [
+    "FN-EGA-000125",
+    "FN-EGA-000111",
+    "FN-EGA-000082",
+    "FN-EGA-000124"
+  ]
+}

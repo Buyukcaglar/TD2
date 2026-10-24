@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 27,
+  "script_sha256": "0049195873593b36083dadfd65b4a5f17995d72f4bbb1e84404145986dcffa7e",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3c86a03417985bd5bcf9a1c6ac2ca21483a837361f831bf401abc99d16411adc",
+  "source_sha256": "8fcc4f600c032a1a24ba226aab5214e7d719c4724ecbc4f7e043d282ef63e1c6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_early_exit.py",
+      "sha256": "b9f50025ed6aec1102be383f669ef80f6f3af2b7c0ac981e96babb28962ff448"
+    }
+  ],
+  "limits": "Native0582prefix-finalizersegmentonly/returnedDIrepeat/SSframealiases/inheritedtail/preparedexit; actual0A3A andformatterbody remainopen. Nineinvalidbus/count/SP/null/boolean profiles, minimumSP80preparedexit/actualhelperchain, exit/checksum/closebudgets, missing/badDOS/callback/vectoradapters andrawcallbackreturn. Nativeonly; noactualDOS4C/process exit/device/session/game/core/fidelity."
+}

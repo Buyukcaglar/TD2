@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000089",
+    "FN-EGA-000254"
+  ],
+  "vectors": 8392,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d48a5f0ab87794cea905f53ed7a7c5ac7711fdce7c7a247570e73f132f816c34",
+  "source_sha256": "d092db813319736cd4a1c76485f605030c97ec314578d5c277e5c161ad40257d",
+  "validator_sha256": "394c411d1cfd1ba9ef88c080692480500fef4e18b52a978b644fd38b08c501ce",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 5095116,
+  "instruction_sites_exercised": 261,
+  "instruction_sites_in_fence": 261,
+  "fixture_coverage": {
+    "projection_normal": 1024,
+    "projection": 1024,
+    "same_DS_SS_0": 4196,
+    "same_DS_SS_1": 4196,
+    "projection_fault": 8,
+    "divide_zero": 4,
+    "divide_overflow": 4,
+    "projection_prefix": 192,
+    "work_prefix": 192,
+    "standalone_lookup": 7168,
+    "lookup": 7168
+  },
+  "limits": "Complete21C3+actual13A30038 serializedDS/table/list/indexeddata/25iteration body andsignedALlookup, arithmeticflags/unsignedMUL/signedIDIVfaultprefixes/workprefixes/CFIFDF andnear-vs-farreturns compared. FreshCPUafteractualdividefault; faultCF comparedwithpre-IDIVflags, no post-IDIVarithmeticflagclaim. Original tablecontents/geometry/units/callerbounds/listlifetimes/DS-SSintegration/renderer/IRQ/core/game/fidelity remainopen; no resource decode. Native diagnostics separate."
+}

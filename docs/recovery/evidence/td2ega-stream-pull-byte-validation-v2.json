@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000279"
+  ],
+  "vectors": 27080,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "e1e0310107066d3f9a9ae7080e740e88ab89c50fa38d54d31579e849c1cc0231",
+  "source_sha256": "6b069628e40f8bf8be5a6433427d537a93376900e288ab9d1dbbc61de1b4dd05",
+  "validator_sha256": "e49efb1573b30abe0bbccccd3872674ce0397ac2a3c52732c4590b6fcb47e94e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_stream_push_byte.py",
+      "sha256": "23099500710425a264a72f683424c1c093bad520bdabf8ffbf37a33c9bbdac4c"
+    },
+    {
+      "path": "tools/validate_read_span.py",
+      "sha256": "a570a528b85ef41f9dfae1ea2f70426cd2535752a0288a9769b0692c546d789a"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-read-span-context-v2.json",
+      "sha256": "65d518ee6ce722a813526195268fdd4bddbbab5c31d294b8ab54963ed1ea1ee8"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-block-align-context-v1.json",
+      "sha256": "17eb3ab4b3448388f562f5e931eee9e4f7f1b10c18e684bcea9ca3aba38c96ac"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-walk-context-v1.json",
+      "sha256": "befaff58842ac3ec6e08e4c7b29dceeb4ac2fea1723fe675611009c5ac003f7d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-public-context-v1.json",
+      "sha256": "3e53c9df3304789785d54ca029d9dfc11839699b80e172eb9bd2024ef293d261"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-stream-buffer-context-v1.json",
+      "sha256": "58a7481b14dad9637e7ae24f12a4041f39cffdbeb362926cdf3c677d47378e8c"
+    }
+  ],
+  "original_instructions_executed": 2761674,
+  "instruction_sites_in_fence": 527,
+  "instruction_sites_exercised": 498,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2871",
+        "13A8:2875",
+        "13A8:2876",
+        "13A8:2878",
+        "13A8:287A",
+        "13A8:287C",
+        "13A8:287F",
+        "13A8:2882",
+        "13A8:2883",
+        "13A8:2886",
+        "13A8:2887",
+        "13A8:2889",
+        "13A8:288C",
+        "13A8:2890",
+        "13A8:2892",
+        "13A8:2894",
+        "13A8:289C",
+        "13A8:289E",
+        "13A8:28A1",
+        "13A8:28A3",
+        "13A8:28A5",
+        "13A8:28A7",
+        "13A8:28A9",
+        "13A8:28AB",
+        "13A8:28AD",
+        "13A8:28AE",
+        "13A8:28B0",
+        "13A8:28B3",
+        "13A8:28B7"
+      ],
+      "scope": "2852enteredonlythroughactual2830fixedmode1/highguard0frame",
+      "reason": "Same29entry-specificdispositions asfrozenwrapperproof; standalone2852all53passed, notglobaldead."
+    }
+  ],
+  "fixture_coverage": {
+    "root_far_return": 16570,
+    "push_CALLs": 23068,
+    "stream_CALLs": 4584,
+    "public_CALLs": 5450,
+    "heap_CALLs": 2564,
+    "root_iterations": 58502,
+    "child_iterations": 11846,
+    "bus_write_events": 526928,
+    "service_write_events": 16094,
+    "syntheticDOS4A": 792,
+    "read_mapper_CALLs": 7568,
+    "read_LODS_steps": 13400,
+    "read_services": 26212,
+    "IOCTL_requests": 380,
+    "lookahead_requests": 8478,
+    "seekback_requests": 302,
+    "initial_DS_equals_SS_cases": 13544,
+    "minimumSP70_cases": 11912,
+    "root_LODSW_DF1": 688,
+    "raw_root_returns": 68,
+    "returned_ZF1": 4198,
+    "prefix_parent_call": 642,
+    "prefix_root_iteration": 962,
+    "public_CALL_26E5_cases": 3924,
+    "returned_ZF0": 12372,
+    "prefix_global_service": 2902,
+    "raw_child_return": 444,
+    "public_CALL_26BA_cases": 1526,
+    "prefix_wrapper_call": 260,
+    "root_CALL_27A1_cases": 1286,
+    "root_CALL_27AD_cases": 424,
+    "root_CALL_27B5_cases": 854,
+    "actual_changedBP_child_raw_cases": 32,
+    "prefix_read_step": 2632,
+    "prefix_mapper_call": 2620,
+    "preRET_qualification": 48
+  },
+  "limits": "Actual0B42 far/oneSSnearstreamword/rawreadguards/actual0BE8-fullheap-family and247C-094A/fullSS/currentDS/sharedDOSservicebudget/cursorpostincrement-before-bytefetch/signedchannel/plainfarRET. Wholebus/GPR-BP-CFIFDF/requiredrootZF/typedDOSrequests/control/counts. Serialized20bitRAM/noMEM_READhook/syntheticDOSnoINTframes/historicalCPU-A20unqualified. Budgets/rawRETtargets exposed afterinstruction never followed; reader preRETqualification propagated. Actualcallers/allwriters/indexdomains/bufferbounds-storage-capacity-ownership-lifetime/exclusion/core/resource/device/session/gameplay/fidelity open."
+}

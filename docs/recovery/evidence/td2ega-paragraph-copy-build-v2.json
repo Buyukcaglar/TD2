@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_paragraph_copy.cmd",
+    "sha256": "5a48e425b14c13e3ae06dbcbfcca8f34dd29061efadc9c835105490f3e7e5d94"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.c",
+      "sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.h",
+      "sha256": "59e4700d541e3e08c417e742b835e0ac1699d6feeff43617f07a899fa40a6014"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/paragraph-copy-repro-v2/td2ega_paragraph_copy.obj",
+      "sha256": "1bc1059c8b04f39e512030e57e7070a6d67c17a6188bf6fb423600d118c75ddc",
+      "bytes": 2518
+    },
+    {
+      "path": "analysis/build/paragraph-copy-repro-v2/td2ega_paragraph_copy.dll",
+      "sha256": "4a5c472db0dad8768d1f9504851dc0f187c315118e9dbad7e67b72b144bd78a9",
+      "bytes": 103936
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/paragraph-copy-build-v2.log",
+    "sha256": "68701b6fd3d4e437a4ad2138bdc88a79b85b493dc9e3c3921f37e9cae7fe915e"
+  },
+  "limit": "Bounded nonwrapping external byte-pool contract only; no real media, complete caller lifetime, OS, core or second host accepted.",
+  "function_ids": [
+    "FN-EGA-000179",
+    "FN-EGA-000180"
+  ]
+}

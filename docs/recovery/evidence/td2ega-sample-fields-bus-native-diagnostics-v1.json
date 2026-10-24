@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 11,
+  "script_sha256": "eb24766c5f9c9156c6be63402255b3081cdef01aaf2f0ad87f4379526baf7755",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7f0f40a24c1a8baa8b41c1a62f1bdb324cb75a09b19c39325d58c0f8f12725fa",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_fields_bus.py",
+      "sha256": "5651d6aace1c2629d447a355685d60568a8eb4a94179c9a6cc56780eb53c80f9"
+    }
+  ],
+  "limits": "Elevennative-onlyinvalid/null/DEC80-JL-overflow/post332Astore-tablealias intentchecks. Separatefromoriginalequivalence/whole403B/caller-platform-IRQ-core/game-fidelity."
+}

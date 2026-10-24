@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12800,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "validator_sha256": "ad2f758b25bac4510c8b24427a805a5bb995d4cbea0f778f6239ae022d59a8ed",
+  "native_libraries": [
+    {
+      "path": "analysis/build/timer-handler-bus-repro-v3/td2ega_timer_handler_bus.dll",
+      "sha256": "02a37ddf99af0c514b6ff21681f1f963f5b20a92a402018c6fe0c46ade5e63e2"
+    },
+    {
+      "path": "analysis/build/state-tick-bus-repro/td2ega_state_tick_bus.dll",
+      "sha256": "2220e5cc7c16a3aba24691863080f5aa12072cc2ba7c7a94e07499ae7ddec103"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validate_input_poll_bus.py",
+      "sha256": "df8258265d178161ee62ce29734299c0862373f41d906f14c88018f5e0932853"
+    },
+    {
+      "path": "tools/validation/validate_state_tick_bus_diagnostics.py",
+      "sha256": "726700b686c5a31cc0ba6b147f0eef5582fa6b8e30bc1b0ebf2d86283d660e11"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+      "sha256": "134d06fa3184ab9146b68f063711073431d99429278c803fcc8f117523b4a229"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-handler-bus-validation-v3.json",
+      "sha256": "13290cfa5f91241db44eb20226317f07e6171c8292d59b4def3fd8c5f235e1e7"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+      "sha256": "23c4a5e0a90e4e8745d7cc667417784daba17d4b3aeba6606add9a82624dd762"
+    },
+    {
+      "path": "analysis/history/timer-state-tick-prefix-refinement-v2.json",
+      "sha256": "c2b5324a86031c7336e6913f11cca7111c38b1bb30a543302fc1164fe8b03d0a"
+    },
+    {
+      "path": "analysis/history/validate_timer_state_tick_prefix_attempt_v1.py",
+      "sha256": "1dedd9ca4bd887afc83e7d7ac2794794c72568b53fe1eeee13e21bf5862dd7d6"
+    }
+  ],
+  "original_instructions_executed": 1570592,
+  "instruction_sites_exercised": 227,
+  "fixture_coverage": {
+    "tag_all_counter_bytes": 8192,
+    "actual403B_callbacks": 12800,
+    "modeled_INT16_frame_writes": 9312,
+    "SS_equals_principalDS": 6400,
+    "source_DF_0": 6400,
+    "source_SP_0x44": 3200,
+    "tag_paused_controls": 4608,
+    "source_DF_1": 6400,
+    "source_SP_0xa3ce": 3200,
+    "source_SP_0xe000": 3200,
+    "source_SP_0xffe0": 3200
+  },
+  "limits": "Additionalactual61BF->403B->412C/paused420A->actual69B7->5A6F/actualcontrolhelpers->farRET->actualhandlerIRET composition. All2563368bytes/paused1-2-4/DS-SScontrast/SP68-A3CE-E000-FFE0/DF0-1/twoloads/fullRAM-GPR-BP-CFIFDF/definedcallerORFLAGS/actualsavedwords/wholeCPUwrites. A3CE is a static startup candidate, not observed runtime. Onlynormalearly-paused403B paths admitted here; full420A-4674-mode-record-nonlocal/FN3consumption and actual6269-first-registrationorder/oldIRQ/nesting/writers-reset-lifetime-exclusion/core remainopen. Callback-row403B-onlyfixture is not historicalregistration-lifetimeproof. Childunexposedarithbits proven dead at621BADDDI4, not fabricated outputFLAGS acceptance. No genericcallbackRET for403B and noC-valuemock in originalbody. Supplementaryvectors excludedfromhelper totals. NoDOSsession/realIRQ-devices/renderer-audio-complete-state-machine-gameplay-fidelity; physical086Cunassigned/CGAbehindEGAclosure."
+}

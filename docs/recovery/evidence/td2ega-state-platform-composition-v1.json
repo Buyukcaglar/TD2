@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 864,
+  "script_sha256": "cce1c88365decd4a8be619ceb7d65d9867e780f8513a2676907fce3dcae1ea04",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "native_libraries": [
+    {
+      "path": "analysis/build/state-sequences-repro/td2ega_state_sequences.dll",
+      "sha256": "f5af29b590a6145d709380533ea2e48d881d563548e53b338a8e1f9258f5ef02"
+    },
+    {
+      "path": "analysis/build/wait-latch-repro/td2ega_wait_latch.dll",
+      "sha256": "9b27ec20c8679fc53f53e0ef7aff825babbc2cc068fc5d7c85e79faa3cde8124"
+    },
+    {
+      "path": "analysis/build/wait-control-repro/td2ega_wait_control.dll",
+      "sha256": "eb34769e316cf2f789d7929ca986f3744c1e31d2931728d04085bd50896039f5"
+    },
+    {
+      "path": "analysis/build/input-bridge-repro/td2ega_input_bridge.dll",
+      "sha256": "4be54572a011df0f5a4208533f26d1a44f333732bfe91784e121d84880e52e1b"
+    },
+    {
+      "path": "analysis/build/keyboard-repro/td2ega_keyboard.dll",
+      "sha256": "76fae7ec4b75c483cc88cc147f464267599f39485ff89bea4068846a3c01b87f"
+    },
+    {
+      "path": "analysis/build/bios-block-repro/td2ega_bios_block.dll",
+      "sha256": "5b1cac688211ea183c3ba68ff80983b390be706526b0bd3acb923853c3322463"
+    },
+    {
+      "path": "analysis/build/state-loop-repro/td2ega_state_loop.dll",
+      "sha256": "1a4c7bcd9cee9b3698d760979a07f049a2f14f73f7bcc43f37f5e545accaf0cc"
+    },
+    {
+      "path": "analysis/build/state-messages-repro/td2ega_state_messages.dll",
+      "sha256": "45509894feaadf906bb519040a8b427b623f4befc2d855633b46326351984dd8"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    },
+    {
+      "path": "tools/validate_state_messages.py",
+      "sha256": "d8e8cca9a85ab0371e19ed936e9dc962eb1f1bf6377f62b533e80f71a781a477"
+    },
+    {
+      "path": "tools/validate_wait_control.py",
+      "sha256": "89b440d8e0ab395505e5b6d6a4a54b83cd85cf7f12a4ec0b4508f458e17e983b"
+    },
+    {
+      "path": "tools/validate_input_bridge.py",
+      "sha256": "d7a431f9ab538c76d3944cb0e08d925a6d82d4f15e4927b80449a35575bcb488"
+    },
+    {
+      "path": "tools/validate_keyboard.py",
+      "sha256": "b0c8613e11e8deeee2b341faaa7e037fe66cc19961f9170b5eed4bb783408144"
+    },
+    {
+      "path": "tools/validate_bios_block.py",
+      "sha256": "7f95d9761c78be7061d178f2088d995b758ad64efddd1c48597c3e4ac7e4bb47"
+    }
+  ],
+  "original_instructions_executed": 486768,
+  "fixture_coverage": {
+    "state_1": 96,
+    "returns_state_0": 432,
+    "same_DS_SS_0": 432,
+    "counter_boundaries": 10360,
+    "BIOS16_actual_handler_calls": 5232,
+    "BIOS10_ABI_calls": 768,
+    "returns_state_1": 432,
+    "same_DS_SS_1": 432,
+    "state_2": 96,
+    "state_3": 96,
+    "state_4": 96,
+    "state_5": 96,
+    "state_6": 96,
+    "state_7": 96,
+    "state_8": 96,
+    "state_9": 96
+  },
+  "limits": "Actual1B2C withall11message/sharedentries,3532/3643,7A10/7A27/7A55/6A6A/79C8,69FE->6A03/6A3B/installed69B7/ABFA:24entry instruction/nativecomposition. Observedtarget6A03, syntheticcounterevents/interruptframes andcontrolledstatewriters; BIOS10/graphics/otherrootleaves ABImocks. Bothmutabletailstates are separateCPUs, nottransitioncoverage. NativeSSargument scratchmaterializedinsideexcludedliveframearea. No actualIRQ/rate/tickhistory/device/rendering/fullstate/resource/core/game/fidelity; separate fromhelpertotals."
+}

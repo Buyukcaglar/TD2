@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 9984,
+  "script_sha256": "3fca97d2ce708a3a6fb49610ad0c6968b0a4acc9e825d447765eab17f637eed7",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "native_libraries": [
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_input_update.dll",
+      "sha256": "2817296be44a59f0aa35ce7e1bb170ccea75c0473038f1fbb0f1fc70511be104"
+    },
+    {
+      "path": "analysis/build/keyboard-repro/td2ega_keyboard.dll",
+      "sha256": "76fae7ec4b75c483cc88cc147f464267599f39485ff89bea4068846a3c01b87f"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_update.py",
+      "sha256": "7b209d66dc51f16d3c7d9da59098ace6768f88f707b4343426d888212fe205f9"
+    },
+    {
+      "path": "tools/validate_keyboard.py",
+      "sha256": "b0c8613e11e8deeee2b341faaa7e037fe66cc19961f9170b5eed4bb783408144"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    }
+  ],
+  "original_instructions_executed": 1728608,
+  "fixture_coverage": {
+    "initial": 4992,
+    "paused_0": 4992,
+    "shared_ES_0": 4992,
+    "same_DS_SS_False": 4992,
+    "prepared": 4992,
+    "shared_ES_1": 4992,
+    "paused_1": 4992,
+    "same_DS_SS_True": 4992
+  },
+  "limits": "Actual420A+13calleeentries+69B7 instructioncomposition, syntheticINT16 frames, nativeinputupdate+nativekeyboardBIOSadapter; noBIOSreturnvaluemocks. ActualAH1IF1, bothobservedstablebranchforms, paused/activity/DSvsSS/ES profiles, busy/missingcallback/disabledgameport; no fullmutatortransition reachability. BIOSoutputsconsumedbyroot/callees compared; incidentalAH0flags outsideAPIprofile. SSframearea separate, no actualkeyboard/BIOS/IRQ/inputsession/callbackbody/core/resource/game/fidelity acceptance."
+}

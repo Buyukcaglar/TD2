@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "task": "P1-R04",
+  "upstream_commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "decision_scope": "Approve defined symbols/branches for bounded reuse in their existing phase tasks. This is a source-selection decision, not source integration, new recovery contracts, runtime/game/fidelity or distribution admission.",
+  "maker": {
+    "path": "tools/record_kylofon_reuse_decision_v2.py",
+    "bytes": 21987,
+    "sha256": "3724d53d89cff0b71d05fc46136348d282dbf663f070b91c49ae1d31647922a0"
+  },
+  "supersedes_draft": {
+    "decision": {
+      "path": "docs/recovery/evidence/kylofon-reuse-decisions-v1.json",
+      "bytes": 53439,
+      "sha256": "05ea97de36a4de1ccf2c515be6b18485547524b6f8167b8426c61292da1984eb"
+    },
+    "origin_manifest": {
+      "path": "docs/recovery/evidence/kylofon-reuse-origin-manifest-v1.json",
+      "bytes": 6867,
+      "sha256": "40592ab22d611ca10bff71c9948da9149cd60293f97f4f90d158091275aec407"
+    },
+    "maker": {
+      "path": "tools/record_kylofon_reuse_decision_v1.py",
+      "bytes": 19795,
+      "sha256": "d0315c8eb0dc56ebb0344ebe88094be7a036ad0792f78933617fb78f7db7071b"
+    },
+    "reason": "Explicit transitive helper/declaration closure; no broadened behavioral admission. Preserve prior draft and consumed maker."
+  },
+  "dependency_policy": "Only enumerated observed transitive helper contexts qualify; extract a minimal buildable dependency closure and production guards under fresh integration evidence.",
+  "evidence": [
+    {
+      "path": "docs/recovery/evidence/kylofon-address-admission-v1.json",
+      "bytes": 2530877,
+      "sha256": "8a65805699c9b2b9c41479711e32834bd476f1c25f93758abfc44f2b7a234177"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-source-admission-v1.json",
+      "bytes": 251567,
+      "sha256": "df3fa2889e7e3ccfa3dbf2f4a49b78958976601b1ca924f8b6972a76b710baf6"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+      "bytes": 242343,
+      "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+      "bytes": 28504,
+      "sha256": "b4d92c11381dae416e490418768f849da12fb0c4b37022b21c76f5fd89a34954"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+      "bytes": 64076,
+      "sha256": "219cbb195ce223df13d31084df7222e6e96a9f67ddeecd8d36416c9e3b81ebc3"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+      "bytes": 3474,
+      "sha256": "5e5149d46f03180c242d7b4abd007ebf0ec5f73b785183e0a535942433497aa8"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-r04-baseline-verification-v1.json",
+      "bytes": 5992,
+      "sha256": "259c913aa4382686f3129249ee382ccad7386bb3412ff7f0dde9f9153c44d7b2"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-selection-review-v1.json",
+      "bytes": 14412,
+      "sha256": "928a3b6597a29570dddd24fa42e5a382ea1223c85c85ce5f134a2e14626581fe"
+    }
+  ],
+  "license": {
+    "declared_license": "MIT",
+    "copyright": "Copyright (c) 2026 Krzysztof Kania",
+    "upstream_notice": {
+      "path": "reference/repos/kylofon-test-drive-2-sdl3/LICENSE",
+      "bytes": 1240,
+      "sha256": "2263aab3114518b1bbafc67924f8d29f8548f3a112af54ae6b6e63673fda5ed3"
+    },
+    "candidate_notice": {
+      "path": "analysis/candidates/kylofon-r03-v1/candidate/LICENSE",
+      "bytes": 1240,
+      "sha256": "2263aab3114518b1bbafc67924f8d29f8548f3a112af54ae6b6e63673fda5ed3"
+    },
+    "retain_notice_on_substantial_copy": true,
+    "original_game_media_rights_not_included": true
+  },
+  "files": [
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+        "bytes": 21118,
+        "sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c"
+      },
+      "selected_decision_ids": [
+        "KRU-04"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/host_paths.c",
+        "bytes": 4870,
+        "sha256": "3902436ae28b98f415df62e22498d43b7b4c9863c7c6178390d632bfb046cd09"
+      },
+      "selected_decision_ids": [
+        "KRU-10"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.c",
+        "bytes": 8618,
+        "sha256": "9c2835756d613198629f5496f06ce92e68c91074ceaf5a24196429defc3aeebc"
+      },
+      "selected_decision_ids": [
+        "KRU-09"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.h",
+        "bytes": 6889,
+        "sha256": "0ae0c362bec4ef5c2907813adb27b32da1c8e4a96085c98ae7ccab92ceb75fed"
+      },
+      "selected_decision_ids": [
+        "KRU-07",
+        "KRU-08"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/gfx.c",
+        "bytes": 39654,
+        "sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e"
+      },
+      "selected_decision_ids": [
+        "KRU-05"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/input.c",
+        "bytes": 17705,
+        "sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5"
+      },
+      "selected_decision_ids": [
+        "KRU-03"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+        "bytes": 38031,
+        "sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c"
+      },
+      "selected_decision_ids": [
+        "KRU-01",
+        "KRU-06"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    },
+    {
+      "candidate": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/timer.c",
+        "bytes": 8585,
+        "sha256": "e65548ac984788df8e7f8aeb51fac751efb345778fa15906a0b472253bcb17bb"
+      },
+      "selected_decision_ids": [
+        "KRU-02"
+      ],
+      "whole_file_copy_authorized": false,
+      "license_notice_required": true
+    }
+  ],
+  "derived_origin_notes": [
+    {
+      "candidate": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/host_paths.c",
+      "origin": "reference/repos/kylofon-test-drive-2-sdl3/td2port/src/host.c",
+      "upstream_lookup_lines": "498-517",
+      "classification": "local-derived adapter plus local admission changes; retain upstream notice"
+    }
+  ],
+  "change_receipt": {
+    "path": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+    "bytes": 3474,
+    "sha256": "5e5149d46f03180c242d7b4abd007ebf0ec5f73b785183e0a535942433497aa8"
+  },
+  "private_patch": {
+    "path": "analysis/candidates/kylofon-r03-v1/candidate-fixes-v2.patch",
+    "bytes": 15774,
+    "sha256": "cd4577fac65233f7a2c954432b257bda5fe1169dadfff399b3388610ba69e9d8"
+  },
+  "distribution_admitted": false,
+  "primary_source_import_performed": false,
+  "normative_decision": {
+    "path": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+    "bytes": 58108,
+    "sha256": "7d2cb862a4f0b98f923322d75b8799a5e9542ea295b8c83708d9aa695eb75326"
+  }
+}

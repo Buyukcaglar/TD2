@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000351",
+  "result": "pass",
+  "vectors": 131986,
+  "native_only_diagnostics": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cdbf0e251cdb04b96e19bb52f5fcff0f47b75eb7bfad5592cbbc453d90300fa6",
+  "source_sha256": "23bfef114229dc367b14fe1d11bd4990aa31d91b0ea4b8a7d8731d6a3609e668",
+  "validator_sha256": "9eebd3aefe4f4ca9ca37647e9f55ec8067f04ad2800bf9c1b7806cf0220def88",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_find_files.py",
+      "sha256": "9596c97b14468b56dd8f71086969c1116438a8b87bfd0192a4706cc3a95ebf9c"
+    }
+  ],
+  "original_instructions_executed": 30586380,
+  "fixture_coverage": {
+    "all_signed_ordinal_words": 131072,
+    "first_failure_continuation_cases": 264,
+    "conditional_ring_write_witness": 32,
+    "stale_failure_and_sequence_profiles": 912,
+    "maximum_signed_ordinal_sequence": 2
+  },
+  "limits": "Complete16B8:0000 plusactual5EF4/5F4E, recoverednativecomposition andsyntheticDOSsearch responses. Signedordinaldomain,firstfailure-nextfallthrough, globalDTA/stalebasename andconditionalalias effects preserved. Syntheticnextsuccessafterfirstfailure isnotactualDOSbehavior orreachable ringreset proof; documentedvalidsearch-block/callerlifetime remainsopen. Nofilesystem/resource/IRQ/core/game/fidelity acceptance."
+}

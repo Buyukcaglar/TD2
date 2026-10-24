@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_seek_handle.cmd",
+    "sha256": "bfaa3807800300bf9ecc277eb3df7b9703a0d5f7fb8360577a7d9048c75bb643"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_seek_handle.c",
+      "sha256": "4a8fa40785affe9afa1fed4008cdcc439a985f3267a9b21689ca588d4519b878"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_seek_handle.h",
+      "sha256": "ab9483017f35a2938583107acd2d88c9d417951e9eeaca32ff74ae521a2f89a7"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/seek-handle-repro/td2ega_seek_handle.dll",
+      "sha256": "150d9840599e297ba567ab8b1759dc7454bad09688c4f00a18c9ae3764754b80",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/seek-handle-repro/td2ega_seek_handle.obj",
+      "sha256": "097378b4c090cacf3e9484dd719b73da1ec14ce49a8a849030575b7f405cb03b",
+      "bytes": 6732
+    },
+    {
+      "path": "analysis/build/seek-handle-repro/td2ega_table_scalar.obj",
+      "sha256": "0da00e59014bbce64d4e43089251b95fb3ed59aa06c9ba1f37b852483c6b61e0",
+      "bytes": 5790
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/seek-handle-build-v1.log",
+    "sha256": "22015e76bcc3bc78db467b973fd71b47a1e4247a53b0255d94d88dd1a5338605"
+  },
+  "limit": "Actual225E/shared0937tail/actual094A, fourSSwords/twolocals/actualnear-farframes/fullbus/GPR/BP/CFIFDF/control/writecount. SyntheticDOS42fullreturnedstate/busmutations/SS-SP-CS preserved, actualINTentryframes omitted. Rawmode/negativeoffset/query/end/restore/finalseek andignoredCF sourcepaths, unsignedhandlelimit/returnedDS-BXbyteflagclear retained. NativebeforeINT/adapterfailure/rawreturns distinct fromoriginalerrors/normalreturns, targetsexposedafterRET neverfollowed. Actualcaller/record-handlewriters/capacity/lifetime/IRQ/core/actualDOS/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000311"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000272"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-seek-handle-context-v1.json",
+    "sha256": "4624847281772cd1ef99549a3e617eb29f45a66c4f7e754a8257e8595de847cf"
+  }
+}

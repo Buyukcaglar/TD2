@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "1a3df4fb19ec1f1c498eafc260d3dac9cd281734d83c8f1029f672c2903255ae",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "89931e0de0125c964619c153dde4dae5469a636d70a272930365a5b822de083e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_control_controllers.py",
+      "sha256": "fbf99dd3a189b64c1d53e77c469723863a51d5140ff507c07d67eeb17cb81ca6"
+    }
+  ],
+  "limits": "Nineinvalid/noeffects/nullresult/root-innerprefix/minSP20/tailRET/sourceclearedflag re-enabledbyactualCALLframe checks. Nativeonly, not403B/fullcaller/writers/FLAGSliveness/lifetime/IRQ/core/resource/device/session/gameplay/fidelity acceptance."
+}

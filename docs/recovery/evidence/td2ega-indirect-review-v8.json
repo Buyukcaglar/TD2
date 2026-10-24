@@ -1,0 +1,558 @@
+{
+  "schema": 1,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "coordinate": "unrelocated_module_segment_offset",
+  "status": "partial_review",
+  "additional_roots": [
+    {
+      "entry": "06C9:6907",
+      "evidence": "06C9:6885/688C install vector09 offset/CS; removed by68C4"
+    },
+    {
+      "entry": "06C9:69B7",
+      "evidence": "06C9:68A3/68AA install vector16 offset/CS; removed by68C4"
+    },
+    {
+      "entry": "06C9:61BF",
+      "evidence": "06C9:60ED/60F4 install vector08 offset61BF/CS;610A guardedrestore;6230 temporarilyrestores savedvector andINT08 before reinstall"
+    },
+    {
+      "entry": "13A8:049B",
+      "evidence": "13A8:04D4..04DA installsDOSvector00 usingCS:049B; codealreadytraversedconservatively throughstartupfallthrough, nowregisteredasseparatehandlerentry."
+    },
+    {
+      "entry": "06C9:BB08",
+      "evidence": "Exact XOR-mode prologue establishes SS frame, mode18/flags4 and jumps91F3; explicit candidate, caller/reachability unproven. Two-word source far pointer; shared tail far return."
+    }
+  ],
+  "sites": {
+    "13A8:0822": {
+      "disposition": "saved_far_return",
+      "targets": [
+        "13A8:0482"
+      ],
+      "complete": true,
+      "evidence": "0694/0698 pop savedIP/CS to6DD6/6DD8; startup047D far call; no other admitted caller"
+    },
+    "13A8:04BA": {
+      "disposition": "near_call_with_pushed_cs",
+      "targets": [
+        "13A8:0582"
+      ],
+      "complete": true,
+      "evidence": "04A3 stores0582 toSS6D28;04B9 pushesCS;04BA near-indirect CALL; error path only"
+    },
+    "13A8:061B": {
+      "disposition": "far_callback_array",
+      "targets": [
+        "13A8:0A3A"
+      ],
+      "complete": false,
+      "evidence": "060D walks reverse4byteSI..DI span; observed startup spans empty; exit7082..7086 contains relocated13A8:0A3A; indirect mutation not excluded"
+    },
+    "06C9:69FE": {
+      "disposition": "registered_far_callback",
+      "targets": [
+        "06C9:6A03",
+        "06C9:65C5"
+      ],
+      "complete": false,
+      "evidence": "InitialDS64DC/64DE pair6A03:06C9;0000:07FC..0804 passes65C5:06C9 to6A17; arbitrary setter arguments remain subject to caller audit Expandedcallers16FC:0186/0460 install6A03:06C9,01C6/0477 restorethepairsavedby6A28;knownliteral targetsetunchanged."
+    },
+    "06C9:6DE9": {
+      "disposition": "bounded_far_dispatch",
+      "targets": [
+        "06C9:6B02",
+        "06C9:7C16"
+      ],
+      "complete": true,
+      "evidence": "6DD2 reads selector;DEC BL/JL rejects0;CMP BL2/JGE rejects>=3; twoSHL operations choose4byteCS6E2E entries; table module0DABE length8"
+    },
+    "0432:206A": {
+      "disposition": "bounded_near_dispatch",
+      "targets": [
+        "0432:204F",
+        "0432:208D",
+        "0432:2096",
+        "0432:20A8",
+        "0432:2100",
+        "0432:2107",
+        "0432:210D"
+      ],
+      "complete": true,
+      "evidence": "205C..2067 unsignedAX<=6 guard then2*index;CS211A table module0643A length14"
+    },
+    "06C9:1432": {
+      "disposition": "bounded_near_dispatch",
+      "targets": [
+        "06C9:1439",
+        "06C9:14CE",
+        "06C9:151F",
+        "06C9:15F0"
+      ],
+      "complete": true,
+      "evidence": "1421..1430 AL nonzero andunsigned<21;DS12DA table indices1..20, module18BCA length42 includingunusedindex0; DS group is required precondition"
+    },
+    "06C9:2F90": {
+      "disposition": "bounded_near_dispatch",
+      "targets": [
+        "06C9:2F97",
+        "06C9:3002",
+        "06C9:3052",
+        "06C9:30E4"
+      ],
+      "complete": true,
+      "evidence": "2F7F..2F8E AL nonzero andunsigned<21;DS2C36 table indices1..20,module1A526 length42 includingunusedindex0; DS group required"
+    },
+    "06C9:0CFD": {
+      "disposition": "mutable_near_continuation",
+      "targets": [
+        "06C9:0B7B",
+        "06C9:28BD"
+      ],
+      "complete": false,
+      "evidence": "00EA stores0B7B and1F9C stores28BD toDS0702;0CFA discardsnearreturn beforeJMP; indexed writes and initialization order still toreview"
+    },
+    "06C9:1BA8": {
+      "disposition": "state_dispatch_bounds_open",
+      "targets": [
+        "06C9:1BAC",
+        "06C9:1C51",
+        "06C9:1C02",
+        "06C9:1C23",
+        "06C9:1C2A",
+        "06C9:1C35",
+        "06C9:1C3C",
+        "06C9:1C43",
+        "06C9:1C4A",
+        "06C9:1C59"
+      ],
+      "complete": false,
+      "evidence": "1B8D..1BA8 testsDS5490 signedbyte,CBW doublespositivevalue;DS2302 first10words arecodeoffsets; no localupperbound; allstatewriters/bounds required before admitting complete targetset"
+    },
+    "13A8:1319": {
+      "disposition": "bounded_near_dispatch",
+      "targets": [
+        "13A8:131E",
+        "13A8:133C",
+        "13A8:1342",
+        "13A8:1346",
+        "13A8:1350",
+        "13A8:1356",
+        "13A8:13F2",
+        "13A8:13F8",
+        "13A8:1447"
+      ],
+      "complete": true,
+      "evidence": "1309..1318 subtract63h;unsigned<=15h guard then2*index;CS13FE 22words"
+    },
+    "13A8:1AB3": {
+      "disposition": "bounded_near_dispatch",
+      "targets": [
+        "13A8:1AB8",
+        "13A8:1ACC",
+        "13A8:1AD0",
+        "13A8:1AE4",
+        "13A8:1AEA",
+        "13A8:1B3E",
+        "13A8:1B44",
+        "13A8:1B4E",
+        "13A8:1B54",
+        "13A8:1B60"
+      ],
+      "complete": true,
+      "evidence": "1AA1..1AB2 subtract63h;unsigned<=15h guard then2*index;CS1BAC 22words"
+    },
+    "13A8:2C5F": {
+      "disposition": "bounded_near_dispatch",
+      "targets": [
+        "13A8:2C90",
+        "13A8:2C98",
+        "13A8:2CA7"
+      ],
+      "complete": true,
+      "evidence": "2D57 lookup of6 signalcodes returnsCX0..5 withCFclear;2C47 guardsCF;CS2C10 sixwords"
+    },
+    "06C9:93EF": {
+      "disposition": "selected_near_call",
+      "targets": [
+        "06C9:8336",
+        "06C9:839C"
+      ],
+      "complete": true,
+      "evidence": "93AF..93BB selects literalnearfunction inSSBP-48;ordinarynearreturnframe"
+    },
+    "06C9:9536": {
+      "disposition": "selected_near_call",
+      "targets": [
+        "06C9:AD8B",
+        "06C9:ADF4"
+      ],
+      "complete": true,
+      "evidence": "94EA..94F6 selects literalnearfunction inSSBP-48;ordinarynearreturnframe"
+    },
+    "06C9:9E3E": {
+      "disposition": "selected_near_call",
+      "targets": [
+        "06C9:8336",
+        "06C9:839C"
+      ],
+      "complete": true,
+      "evidence": "9DFF..9E0B selects literalnearfunction inSSBP-48;ordinarynearreturnframe"
+    },
+    "06C9:9F79": {
+      "disposition": "selected_near_call",
+      "targets": [
+        "06C9:AD8B",
+        "06C9:ADF4"
+      ],
+      "complete": true,
+      "evidence": "9F2E..9F3A selects literalnearfunction inSSBP-48;ordinarynearreturnframe"
+    },
+    "06C9:8E27": {
+      "disposition": "local_near_dispatch",
+      "targets": [
+        "06C9:8E2A",
+        "06C9:8E93"
+      ],
+      "complete": false,
+      "evidence": "8D13..8D36 nibblemask decomposition copiesCS8CB8-selectedcodeoffset intoSSBP+DI-30"
+    },
+    "06C9:9061": {
+      "disposition": "local_near_dispatch",
+      "targets": [
+        "06C9:9064",
+        "06C9:90CD"
+      ],
+      "complete": false,
+      "evidence": "Mirrored mask decomposition copiesCS8EF2-selectedcodeoffset intoSSBP+DI-30"
+    },
+    "06C9:9416": {
+      "disposition": "alignment_table_near_dispatch",
+      "targets": [
+        "06C9:7DEC",
+        "06C9:7E21",
+        "06C9:7E74",
+        "06C9:7ECC",
+        "06C9:7F28",
+        "06C9:7F85",
+        "06C9:7FE0",
+        "06C9:8037",
+        "06C9:9582",
+        "06C9:95B2",
+        "06C9:9607",
+        "06C9:9661",
+        "06C9:96BF",
+        "06C9:9721",
+        "06C9:9781",
+        "06C9:97DD",
+        "06C9:A748",
+        "06C9:A77D",
+        "06C9:A7CD",
+        "06C9:A822",
+        "06C9:A87B",
+        "06C9:A8D5",
+        "06C9:A92D",
+        "06C9:A981",
+        "06C9:BB48",
+        "06C9:BB7D",
+        "06C9:BBCD",
+        "06C9:BC22",
+        "06C9:BC7B",
+        "06C9:BCD5",
+        "06C9:BD2D",
+        "06C9:BD81"
+      ],
+      "complete": false,
+      "evidence": "Shareddrawingentry prologues assignSSBP-40 orBP-4A code-tablebase;alignmentindex masked7 then doubled;union ofreviewed tablebases 7DDC,9562,A738,BB28"
+    },
+    "06C9:9E5B": {
+      "disposition": "alignment_table_near_dispatch",
+      "targets": [
+        "06C9:80FA",
+        "06C9:8129",
+        "06C9:8160",
+        "06C9:8199",
+        "06C9:81D5",
+        "06C9:8213",
+        "06C9:8251",
+        "06C9:828D",
+        "06C9:9FBE",
+        "06C9:9FE8",
+        "06C9:A024",
+        "06C9:A063",
+        "06C9:A0A4",
+        "06C9:A0E7",
+        "06C9:A12A",
+        "06C9:A16B",
+        "06C9:AA42",
+        "06C9:AA71",
+        "06C9:AAA5",
+        "06C9:AADB",
+        "06C9:AB14",
+        "06C9:AB4F",
+        "06C9:AB8A",
+        "06C9:ABC3",
+        "06C9:C1B2",
+        "06C9:C1E1",
+        "06C9:C215",
+        "06C9:C24B",
+        "06C9:C284",
+        "06C9:C2BF",
+        "06C9:C2FA",
+        "06C9:C333"
+      ],
+      "complete": false,
+      "evidence": "Shareddrawingentry prologues assignSSBP-40 orBP-4A code-tablebase;alignmentindex masked7 then doubled;union ofreviewed tablebases 80EA,9F9E,AA32,C192"
+    },
+    "06C9:955C": {
+      "disposition": "alignment_table_near_dispatch",
+      "targets": [
+        "06C9:9835",
+        "06C9:98BB",
+        "06C9:9935",
+        "06C9:99B3",
+        "06C9:9A35",
+        "06C9:9AB8",
+        "06C9:9B39",
+        "06C9:9BB6",
+        "06C9:BDD1",
+        "06C9:BE55",
+        "06C9:BECE",
+        "06C9:BF4B",
+        "06C9:BFC9",
+        "06C9:C045",
+        "06C9:C0BD"
+      ],
+      "complete": false,
+      "evidence": "Shareddrawingentry prologues assignSSBP-40 orBP-4A code-tablebase;alignmentindex masked7 then doubled;union ofreviewed tablebases 9572,BB38"
+    },
+    "06C9:9F98": {
+      "disposition": "alignment_table_near_dispatch",
+      "targets": [
+        "06C9:A1AA",
+        "06C9:A271",
+        "06C9:A2D2",
+        "06C9:A335",
+        "06C9:A39A",
+        "06C9:A401",
+        "06C9:A468",
+        "06C9:A4CD",
+        "06C9:C36A",
+        "06C9:C3B8",
+        "06C9:C410",
+        "06C9:C46B",
+        "06C9:C4C8",
+        "06C9:C527",
+        "06C9:C586",
+        "06C9:C5E3"
+      ],
+      "complete": false,
+      "evidence": "Shareddrawingentry prologues assignSSBP-40 orBP-4A code-tablebase;alignmentindex masked7 then doubled;union ofreviewed tablebases 9FAE,C1A2"
+    },
+    "13A8:04F5": {
+      "disposition": "optional_runtime_service",
+      "targets": [],
+      "complete": false,
+      "evidence": "SS7076 farpointer;guard7078 initiallyzero;writer/alias audit remains open"
+    },
+    "13A8:050B": {
+      "disposition": "optional_runtime_service",
+      "targets": [],
+      "complete": false,
+      "evidence": "SS7076 farpointer;under same init guard;writer/alias audit remains open"
+    },
+    "13A8:05E9": {
+      "disposition": "optional_runtime_service",
+      "targets": [],
+      "complete": false,
+      "evidence": "DS7076 farpointer;guard7078 initiallyzero;writer/alias audit remains open"
+    },
+    "13A8:0633": {
+      "disposition": "optional_runtime_error_hook",
+      "targets": [],
+      "complete": false,
+      "evidence": "DS6DCC farpointer;guard6DCE initiallyzero;writer/alias audit remains open"
+    },
+    "13A8:066A": {
+      "disposition": "optional_runtime_stack_hook",
+      "targets": [],
+      "complete": false,
+      "evidence": "DS6DD0 farpointer;initialFFFF:FFFF takes termination path;writer/alias audit remains open"
+    },
+    "13A8:2C83": {
+      "disposition": "registered_signal_handler",
+      "targets": [],
+      "complete": false,
+      "evidence": "2D57 returns one ofsixDS7058 fourbyte handlerpairs;caller snapshots pair toSSBP-4;writer/alias audit remains open"
+    },
+    "06C9:6559": {
+      "disposition": "registered_near_call_with_segment_push",
+      "targets": [
+        "06C9:645A",
+        "06C9:646F",
+        "06C9:6508",
+        "06C9:64C7",
+        "06C9:6488",
+        "06C9:6518"
+      ],
+      "complete": false,
+      "evidence": "BXfromDS6048[2*(input&7Fh)], initially allzero;6585 setter writesAX;6555..6558 pushesrelocated06C9 code-segmentword before nearCALLBX. Setter callsites and pointeraliases need review.16FC:0002..0077 contains six literalregistrations via6585 forkeycodes0A,0B,10,11,13,18. Callerpushes anunusedthirdsegmentword;setterreads key+offset only andcallpathpushesfixed06C9."
+    },
+    "13A8:1834": {
+      "disposition": "runtime_optional_format_hook",
+      "targets": [
+        "13A8:0644"
+      ],
+      "complete": false,
+      "evidence": "Initial relocated farpairDS6F44 points13A8:0644 (runtime termination code2); callbackwriters and supportedformat reachability remain underreview."
+    },
+    "13A8:1E57": {
+      "disposition": "runtime_optional_format_hook",
+      "targets": [
+        "13A8:0644"
+      ],
+      "complete": false,
+      "evidence": "Initial relocated farpairDS6F3C points13A8:0644 (runtime termination code2); callbackwriters and supportedformat reachability remain underreview."
+    },
+    "13A8:1E7C": {
+      "disposition": "runtime_optional_format_hook",
+      "targets": [
+        "13A8:0644"
+      ],
+      "complete": false,
+      "evidence": "Initial relocated farpairDS6F40 points13A8:0644 (runtime termination code2); callbackwriters and supportedformat reachability remain underreview."
+    },
+    "13A8:1E95": {
+      "disposition": "runtime_optional_format_hook",
+      "targets": [
+        "13A8:0644"
+      ],
+      "complete": false,
+      "evidence": "Initial relocated farpairDS6F48 points13A8:0644 (runtime termination code2); callbackwriters and supportedformat reachability remain underreview."
+    },
+    "13A8:1EB3": {
+      "disposition": "runtime_optional_format_hook",
+      "targets": [
+        "13A8:0644"
+      ],
+      "complete": false,
+      "evidence": "Initial relocated farpairDS6F4C points13A8:0644 (runtime termination code2); callbackwriters and supportedformat reachability remain underreview."
+    },
+    "13A8:2C93": {
+      "disposition": "runtime_optional_signal_service",
+      "targets": [],
+      "complete": false,
+      "evidence": "FarcallSS707E; initialpair0000:0000; reached through bounded signaldispatch; callerconditions andwriter/alias audit remainopen."
+    },
+    "06C9:6217": {
+      "disposition": "timer_far_callback_array",
+      "targets": [
+        "0143:019E",
+        "06C9:6269",
+        "06C9:75EA",
+        "06C9:403B"
+      ],
+      "complete": false,
+      "evidence": "0000:0822..082A registers75EA:06C9 via614C;614C scans5 fourbytepairs atDS5F12, writesnextsegmentzero sentinel;61BFhandleriterates untilsegmentzero. Callbackwriter/alias andboundsaudit needed. Additionalsetters:0143:044C..0454 registers0143:019E;06C9:3FDE..3FE3 registers06C9:6269;3FEB..3FF0 registers06C9:403B."
+    },
+    "06C9:7667": {
+      "disposition": "bounded_audio_command_dispatch",
+      "targets": [
+        "06C9:761E",
+        "06C9:7678",
+        "06C9:7683",
+        "06C9:76B1",
+        "06C9:76BA"
+      ],
+      "complete": true,
+      "evidence": "7654..7665 loads signedbyte;nonnegative notesbranch76D1;negative belowFB(-5) rejected;NEG BL then2*index selectsCS766C entries1..5."
+    },
+    "06C9:44BA": {
+      "disposition": "bounded_scan_near_dispatch",
+      "targets": [
+        "06C9:44BF",
+        "06C9:44C5",
+        "06C9:44D2"
+      ],
+      "complete": true,
+      "evidence": "44AA..44B8 backwardSCASB over5 bytes,remainingCX0..4 doubled;ES=DSgroup is required"
+    },
+    "06C9:491D": {
+      "disposition": "resource_record_near_callback",
+      "targets": [
+        "06C9:4929",
+        "06C9:4947",
+        "06C9:494D",
+        "06C9:495D",
+        "06C9:499A",
+        "06C9:49C9",
+        "06C9:49CF",
+        "06C9:49D5",
+        "06C9:49DB",
+        "06C9:49E1",
+        "06C9:49E7",
+        "06C9:4A18",
+        "06C9:4A19"
+      ],
+      "complete": false,
+      "evidence": "4904..491B selectorfromfourbyteDS347E record,byte3;48observedtablewords;recordwriter/bounds proofpending"
+    },
+    "06C9:5514": {
+      "disposition": "simulation_mode_near_dispatch",
+      "targets": [
+        "06C9:5518",
+        "06C9:5527",
+        "06C9:5531",
+        "06C9:5561",
+        "06C9:556C"
+      ],
+      "complete": false,
+      "evidence": "DS33B6 minus1 selectsfiveobservedcodeoffsets;callerstate-domain proofpending"
+    },
+    "06C9:55A1": {
+      "disposition": "simulation_mode_near_dispatch",
+      "targets": [
+        "06C9:55A5",
+        "06C9:55B4",
+        "06C9:55BE",
+        "06C9:5603",
+        "06C9:560E",
+        "06C9:5620",
+        "06C9:5637",
+        "06C9:5679"
+      ],
+      "complete": false,
+      "evidence": "DS33B7 minus1 selectseightobservedcodeoffsets;callerstate-domain proofpending"
+    },
+    "06C9:57A7": {
+      "disposition": "simulation_mode_near_dispatch",
+      "targets": [
+        "06C9:57AB",
+        "06C9:57B7",
+        "06C9:57CF"
+      ],
+      "complete": false,
+      "evidence": "DS33B8 minus1 selectsfiveobservedcodeoffsets;callerstate-domain proofpending"
+    },
+    "06C9:632F": {
+      "disposition": "bounded_effect_command_dispatch",
+      "targets": [
+        "06C9:62FD",
+        "06C9:634C",
+        "06C9:635B",
+        "06C9:6370",
+        "06C9:6385",
+        "06C9:639A",
+        "06C9:63B4",
+        "06C9:63CE",
+        "06C9:63E8",
+        "06C9:63FF",
+        "06C9:6416"
+      ],
+      "complete": true,
+      "evidence": "6324 NEG BL;BHzero;unsignedBX<=11 guard;CS6334 table12words. Entry0conservative;actualnegativecommanddomain stilldescribed in audio contract."
+    }
+  },
+  "limits": "Everycurrentlydiscoveredindirectsite now has a reviewed mechanism or explicit open writer/bounds obligation. Targetsets withcompletefalse are conservative candidates and require further contractreview."
+}

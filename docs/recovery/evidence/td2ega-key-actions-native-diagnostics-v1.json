@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "71ad578fe3d559a88cc9716f73126b9e1d9d746363ee12e990cc52df27baddae",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1f630d43df348a7ca44fa9e7504ab24b1b0be60ade2fe18d82532d81957e25d4",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_key_actions.py",
+      "sha256": "1ff4e1c43e38a7407f9272e1e3a9bc26e7d9e812c6e4acedea40432f211de406"
+    }
+  ],
+  "limits": "Four native-only argument/rejected-UI diagnostics. No original instruction/UI/IRQ executes; excluded from original differential totals/error equivalence."
+}

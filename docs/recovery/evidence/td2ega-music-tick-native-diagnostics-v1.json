@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "19a4cebc5668992d50e9d686e98e23006caebf5ee41f47432eb5c28ed7b4eb93",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "eedc02ee01f57847e2a874bb4d8d56078c4c3310ce7c2c0762b6855422cfd4ae",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    }
+  ],
+  "limits": "Four native-only diagnostics. No original instructions/device/IRQ executes; excluded from differential vectors and original error equivalence."
+}

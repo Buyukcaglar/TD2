@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_heap_walk.cmd",
+    "sha256": "b210440031dbd87209141dce7ae4a08d82fcf20de7f9e59b231700bd23d6e5b5"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_heap_walk.c",
+      "sha256": "56203918b05936b160114e66f3613672fe30feac50974a734f46005b272ca73b"
+    },
+    {
+      "path": "src/recovered/td2ega_block_align.c",
+      "sha256": "c9891748f744d820941b950e6d1b75a7c24da3c39bb992c0bf72b73d451201b6"
+    },
+    {
+      "path": "src/recovered/td2ega_block_tail.c",
+      "sha256": "ff44c14c9a9216e6c2f1351a270ea965144976c5c004700c20c56f504355b405"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.c",
+      "sha256": "9ee2e00e3c16608a4c641d826e84de98a539dc1597c78e0f78e9193500b1a0dd"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.c",
+      "sha256": "f1b581c93578503f35e7f17bb0f734931df5700b1dd8371f4cf9d93d0d43787c"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.c",
+      "sha256": "7479905e9074c4de5b9fd6c48f7902a3dec03127728ae9f777a1c1eda5698186"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.h",
+      "sha256": "d56d77af874656170dedc475b46af63d5470473684fc4d324e6d0f583dbb30a5"
+    },
+    {
+      "path": "src/recovered/td2ega_block_align.h",
+      "sha256": "d7ed05ec5f93233074c480337c93ee7ac61116fbc10b5dc22d1558907813a936"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.h",
+      "sha256": "b6ee29221e4c33dfc140b6d21c061efc64da4633a3c3b46527aa0f5bea6a4099"
+    },
+    {
+      "path": "src/recovered/td2ega_block_tail.h",
+      "sha256": "3c263df5597b90a84b8527b686782f3a7806f10b1eedfb15a8cd34883508bbfc"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.h",
+      "sha256": "8696944455f3ab7cabf0e637bcd42d1717e7b00805396e1396e69b24af798981"
+    },
+    {
+      "path": "src/recovered/td2ega_heap_walk.h",
+      "sha256": "5faac122f0cc6d854bfa52a9fc4c307976207191d00f5aac68e76591f6fd556b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_heap_walk.dll",
+      "sha256": "c6d5ee4d3d575744bd47d161208318f8b28864c2a12f5e9e16145542df76895c",
+      "bytes": 116224
+    },
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_heap_walk.obj",
+      "sha256": "258bcf3cbe8cff23108b7000c5282e0158d6048ff3fc4fabf8403dcf998d7740",
+      "bytes": 9667
+    },
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_block_align.obj",
+      "sha256": "4b0c77d906c757919929912cdd6d42b9f2f49295f8aa63f017dd81c65ec8a77a",
+      "bytes": 4662
+    },
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_block_tail.obj",
+      "sha256": "c94004c355f2d054386195bb7ea7aa327b14d3940d51005315c92cf183c1b641",
+      "bytes": 4217
+    },
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_block_wrapper.obj",
+      "sha256": "5d81d2320d10174a1e19937286c60d0638f6f085f990dd71f5c649c8cae7034e",
+      "bytes": 4325
+    },
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_block_request.obj",
+      "sha256": "d8ac1920273b59dc784c142a45cbaca97ffe7ae0803eda939c995d604ad44d82",
+      "bytes": 7630
+    },
+    {
+      "path": "analysis/build/heap-walk-repro/td2ega_block_adjust.obj",
+      "sha256": "65cdf588cdfac76ae410c11bdcf504f140b1f7b6a15e5de2e810469b49ac8197",
+      "bytes": 4907
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/heap-walk-build-v1.log",
+    "sha256": "fe934b83869d4dde3b64f6729259fd7d6cddf236cfb9f14ce83f67321908ef00"
+  },
+  "limit": "Actual13A8:26F1/full107-sites plusactual280E/27D4/2830/2852mode1/28C0/fullSS/currentDS-ES/wordheadertraversal-coalescing-splitting/byteupdates/initialCLD-thenactualreturnedDFLODSW/DSswitches/actualrequiredchildZF/globalservicebudget/root-childrenbudgets. SuccessAXoffsetSI-DXsegmentDS/CF-ZFfromDSvsSS; failureXORAX/wordCWDDX0/ZF1/CF0, actualnearRET. Serialized20bitsharedbus/noMEM_READhook/realDOS-INTframesunexercised/historicalCPU-A20unqualified. Budgets/rawRETtargetsexposedafterinstructionneverfollowed. Whole26A8/publiccallers/metadatawriters/domain/capacity/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000320"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000321",
+    "FN-EGA-000322",
+    "FN-EGA-000323",
+    "FN-EGA-000324",
+    "FN-EGA-000325"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-heap-walk-context-v1.json",
+    "sha256": "befaff58842ac3ec6e08e4c7b29dceeb4ac2fea1723fe675611009c5ac003f7d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_heap_walk_before_align_failure_v1.py",
+      "sha256": "b5983d4ba39786e011c0bb867d0fa06065bd08bb01f5174c4719bc61d7b917da"
+    },
+    {
+      "path": "analysis/history/validate_heap_walk_before_service_profiles_v2.py",
+      "sha256": "0a98ff8199bdc7b1dd2cf47b92e237a53fec2178e1fa39373d3265e5aac7ded5"
+    },
+    {
+      "path": "analysis/logs/heap-walk-probe-v1.log",
+      "sha256": "5866519e03cf237edbe8ebee01638f0bfcb491f90bb34a76e2883fab7feb4441"
+    },
+    {
+      "path": "analysis/logs/heap-walk-validation-v1.log",
+      "sha256": "abfddc4da8b1fe14b2d9a2e8714c7ae8521600422178241cc780f9339e45c501"
+    },
+    {
+      "path": "analysis/logs/heap-walk-validation-v2.log",
+      "sha256": "339443cafc03b77b190597fb3db7329ac299ff75b7bb658f5ee31447838b9b37"
+    }
+  ],
+  "failure_resolution": "NoC/build/instructioncomparisonmismatch. v1matched10224cases butmissedalign2804/280Afailurepaths; v2adds64focusedalignmentfailurecases/all237. Selectedv3adds672growthserviceprofiles/fullreturnedGPR-BP-DS-IFDF/stackmutations beyondDF1-preservingprofile. 2192actualrootLODSWDF1/256rawchild/996rawroot. C/DLLunchanged."
+}

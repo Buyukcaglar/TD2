@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000397"
+  ],
+  "vectors": 38736,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "928ecc4a71ffd60c3f94521242b568538feeeb8db595024ec0e8c649ac3a2072",
+  "source_sha256": "b3c8d5f8bc9e7f114e70a5f0f26099881c9fc85e117b07985e67ebf47715ca0c",
+  "validator_sha256": "8a856908ae0ed776a7f1a59bc9ae8015d1b0e746114464b50a8163c077f348e6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 2442462,
+  "instruction_sites_in_fence": 250,
+  "instruction_sites_exercised": 249,
+  "static_site_dispositions": [
+    {
+      "site": "06C9:5303",
+      "scope": "From52FD entry under56ED calls only",
+      "reason": "AdjacentJLE/JG exhaust unchangedZF/SF/OF, nofallthroughADDCX380D; notglobaldead."
+    }
+  ],
+  "fixture_coverage": {
+    "prefix_root": 14976,
+    "actual_near_CALLs": 79744,
+    "bus_write_events": 270126,
+    "minimumSP34_cases": 6992,
+    "DS_equals_SS_cases": 19368,
+    "raw_root_returns": 176,
+    "actual_discarded_word_changed_cases": 8,
+    "mutable_known_target_cases": 2576,
+    "prefix_child": 15360,
+    "prefix_indirect": 3376,
+    "raw_child_return": 768,
+    "normal_RET2": 3986,
+    "handled_target_57AB": 1184,
+    "handled_target_57CF": 1480,
+    "handled_target_57B7": 1592,
+    "POPAX_then_RET2": 270
+  },
+  "limits": "Actual56ED plus actual5299/52FD/5334/535B C, fullSS/bus/GPR/BP/CFIFDF/control/counts. ActualmutableDS[3460+wrapped2*(byte33B8-1)] supportsrawtargets57AB/57B7/57CF; unknownnative6 stopsbefore57A7JMP/operandretained, notsourceerror/domainclosure. RootnormalRET2 orliteralPOPAX+RET2 consumesTWO SSwords, AXactualdiscardedword/return_kind1; actual53A6caller/nonlocalintegration separate. NoABI-valuemock/SSscratch exclusion. NativeCALL-loop/unknownindirect/rawRET prefixes distinct, rawtargetsexposedafterRET neverfollowed. Alltargetwriters/modebounds/caller/DS-SS/tablevalues/lifetime/IRQ/core/resource/device/session/gameplay/fidelity remainopen."
+}

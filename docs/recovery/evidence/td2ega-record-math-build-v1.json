@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_math.cmd",
+    "sha256": "da665711501c29ff9bca519aa7c3e0d8acfe13160d43ef0009d6aee510d66986"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-math-repro/td2ega_record_math.dll",
+      "sha256": "8770d0bd396c4687f6f7019271fc84abe9ee3caef5c7c47edda48666c04517b5",
+      "bytes": 109568
+    },
+    {
+      "path": "analysis/build/record-math-repro/td2ega_record_math.obj",
+      "sha256": "c1ebc3644de032ebeaf7d7978192633758869cd5ca041f6c383e488cf0b2622d",
+      "bytes": 10923
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-math-build-v1.log",
+    "sha256": "0b794ca38cc201642be3dd7c3bc1088e4bf27796edab201ae0cdd0b3ae0164f6"
+  },
+  "limit": "Five actual no-call near roots5299/5022/5446/4F92/5B5A; signed SBB branches use full signed difference with low-word borrow, raw word records/rings and source-order rereads/writes, explicit DS:[BP+SI] overrides, actual SS saves/nearRET. Fullbus/GPR/BP/CFIFDF/control including native before-loop prefixes/raw altered RET target exposed after instruction, never followed. Synthetic fields/tables/unaligned bounds may cycle; no source units/fullformat/caller/writer/bounds/lifetime/exclusion/core/resource-fedP2/P3/device/session/game/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000391",
+    "FN-EGA-000389",
+    "FN-EGA-000396",
+    "FN-EGA-000388",
+    "FN-EGA-000128"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-record-math-context-v1.json",
+    "sha256": "e516370d40f2b73cff90a7da88252fb8878f4389739ed4c9eb175e87d85fa178"
+  }
+}

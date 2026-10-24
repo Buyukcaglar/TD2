@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_write_span.cmd",
+    "sha256": "efaa1dccf18692c1ac490ff3677829ae9408b80de1ef0872e77cf3d098a499a6"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_write_span.c",
+      "sha256": "67dba81407f8113c0a2e9ba18b91a0ac482061bce9abf86c48b451321248c58d"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_write_span.h",
+      "sha256": "355a83f9dac4fa95366ac540372cc9b678d085f6eb806667d8b0e51b44c8c6fa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/write-span-repro/td2ega_write_span.dll",
+      "sha256": "4a4c4cacf5d2d7721acfd3b5f1c501376b17f2c244feec6600adb8cddfa1e675",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/write-span-repro/td2ega_write_span.obj",
+      "sha256": "c3424902da0cb0355ddbcb3573d84335380fb96065629b27017f431d9abf9a81",
+      "bytes": 7100
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/write-span-build-v1.log",
+    "sha256": "ced52a868c2dfaea5ab456ed44fe4dde446ea6efc097948376c6901df4e35847"
+  },
+  "limit": "Actual13A8:2600 near/inheritedBP-DX-DI/fullSS/threeactualsaves/typedDOS40/currentreturnedGPR-BP-DS-IFDF/addactualcount/normalnearRET orADDSP8carry-replacesDOSCF/rawhandleflags-1A/sharednonlocalfarRET/actual094Anearframe-rawreturn. All16bitSPprofile inclwrap/wholebus/GPR-BP-CFIFDF/control/counts. OtherarithFLAGSunexposed/knowncallerslivenessreviewseparate. Serialized20bitRAM/noMEM_READhook/realDOS-INTframesunexercised/historicalCPU-A20unqualified. Nativebudgets/rawRETtargetsexposedafterinstructionneverfollowed. Whole2558/allwriters/storage/domains/capacity/lifetime/exclusion/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000316"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000272"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-write-span-context-v1.json",
+    "sha256": "3b89f3b025e5574c24f67a1d3e474a7e4bed4867dcd7302728cd571ff7915e58"
+  },
+  "prior_failed_attempt": [],
+  "failure_resolution": "NoC/build/comparisonmismatch. Inlineactual094A busbody/nearframe preservesinheritednonlocalSPdomain withoutborrowingfrozenstandaloneAPI SP16..FFE0fixtureadmission. AHnonzero09/1Cproofselects8of21mapper sites; standalone094Aall21passed. All51feasibleof64/13entry-specificmapperdispositions."
+}

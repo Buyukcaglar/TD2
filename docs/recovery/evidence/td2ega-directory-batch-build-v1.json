@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_directory_batch.cmd",
+    "sha256": "223abf94258fd1c0384d8bb07780d40b063de043897fc60b361434c15f5cefcb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_directory_batch.c",
+      "sha256": "b418f20fe5c19d1aef331c4917eaf126e578b809efeeda84792e8757b1588a2f"
+    },
+    {
+      "path": "src/recovered/td2ega_directory_batch.h",
+      "sha256": "2bf6888cb4bb2f2e584e5b4f3ddd8fba5cceacd3baf5796b7574d2577b17fba8"
+    },
+    {
+      "path": "src/recovered/td2ega_directory.c",
+      "sha256": "b3a0209715f37bbae9985c6ea74c90f4f2dba8e8dee9ad708690f104a07d32b4"
+    },
+    {
+      "path": "src/recovered/td2ega_directory.h",
+      "sha256": "3adb8de02725aa32d962064d19b7560df29f2ddf80bb76eef5b970a1a667c6d4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/directory-batch-repro/td2ega_directory.obj",
+      "sha256": "6ea2ae674b94da7326300d41786728c041b187eb93336e7317d95c41d57c4901",
+      "bytes": 2437
+    },
+    {
+      "path": "analysis/build/directory-batch-repro/td2ega_directory_batch.dll",
+      "sha256": "dad28d9a719d025aade57057789ee26b1f7a08ac1f0516ce5e10c35a71201220",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/directory-batch-repro/td2ega_directory_batch.obj",
+      "sha256": "c533592e2416658320db38b076c8477712161f299ebfe341fcf6abfe0b9d1a4a",
+      "bytes": 2523
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/directory-batch-build-v1.log",
+    "sha256": "d7432c468f28325b5f895ab6e39e347191c8e6fc546f17657469ca74d2ee8f12"
+  },
+  "limit": "One native export covers required16EB:000A/optional004C callers plus compiled directory helper, serialized principalDS/group and disjointSS; list/output/source aliases retained. Actual archives/ownership/IRQ/fatal cleanup remain open.",
+  "function_id": "FN-EGA-000355",
+  "covered_original_local_helpers": [
+    "FN-EGA-000356"
+  ]
+}

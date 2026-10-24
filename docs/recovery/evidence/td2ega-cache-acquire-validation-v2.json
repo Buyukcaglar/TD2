@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000184",
+  "result": "pass",
+  "vectors": 3510,
+  "native_only_diagnostic_cases": 1,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 56900,
+      "length": 191,
+      "unrelocated_sha256": "939a3f5cf63cffadb1108bbab4411e4b81d8d41a2feab8db5a7555641c530b03"
+    },
+    {
+      "module_offset": 56595,
+      "length": 32,
+      "unrelocated_sha256": "f926e5ccb0c3d7dd7bee434dfcfb09e5568a48049e1b46d2bfec48be06de6f31"
+    },
+    {
+      "module_offset": 56440,
+      "length": 72,
+      "unrelocated_sha256": "fd89188541b8f5e7b5b4c49930b436c762fb41875db0281e25841e4bd555fc50"
+    },
+    {
+      "module_offset": 56791,
+      "length": 109,
+      "unrelocated_sha256": "285d87ffff47de852511fa36e96692b59d3bd3ac3f9aac6789da66ff127796ca"
+    },
+    {
+      "module_offset": 56512,
+      "length": 83,
+      "unrelocated_sha256": "00e1b6f9fddf61341dfa884a9dfa1ecd0f924ef82b9f0bc3521ac3fa15ff51b5"
+    }
+  ],
+  "library_sha256": "afc348520d2058dcdd8c1033a9b51831ff45d309b610950181825b321c5e5bd1",
+  "source_sha256": "0196b41bde33c0ad0822d2d6e89bcce4f1b0a23e4a7cad8bac8bb8e6ad609380",
+  "validator_sha256": "1427802b69ed91764edd39b2a4fcd6de8f5528075456a0bbe3bd98d04f74a19f",
+  "validator_dependency": {
+    "path": "tools/validate_cache_allocate.py",
+    "sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da"
+  },
+  "original_instructions_executed": 2212499,
+  "fixture_coverage": {
+    "all_active_cached_boundaries": 1225,
+    "actual_forward_moves": 1798,
+    "actual_backward_moves": 5109,
+    "all_boundaries_miss": 1225,
+    "name_semantics_and_target_rows": 240,
+    "firstfree_aborts": 48,
+    "every_name_byte": 256,
+    "successful_twelvebyte_prefix": 3,
+    "zero_sized_acquisition": 1,
+    "varied_cached_holes_statuses": 512
+  },
+  "event_counts": {
+    "1": 1798,
+    "0": 1712
+  },
+  "coverage": [
+    "All active/cache boundary pairs withhit/miss",
+    "Every realcachedtarget row andname/case/extension/12byte semantics",
+    "Every bytevalue filename fixture",
+    "Firstfree abort and512 variedstatus/hole snapshots",
+    "Actual original basename/forwardcopy/compactor/backwardcopy instructions, no mocks",
+    "FullDS andsynthetic128KiB payload/guards, return/segments/registers, conditionalES andDF"
+  ],
+  "limits": "Exclusive nonwrapping bounded synthetic arenas/pools with no matching endsentinel andsufficient realrow/segment space. Allactualcaller lifetime/preconditions remainopen. No realresource, DOS, codec, rendering/audio orgameplay acceptance."
+}

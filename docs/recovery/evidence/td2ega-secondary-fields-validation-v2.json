@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000390"
+  ],
+  "vectors": 31648,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7b519d35ff801183d7c799a93e3050f064da210608e58254043d3a0d5cd3a1c3",
+  "source_sha256": "36a3630bc30ebaca88bcfa50fac8430fd7e263c6bb77d4b4f1bc6bf4fa387506",
+  "validator_sha256": "ab2b7196f913a248e7baf0db6e5b191a36526e3a80ac8e1a3a54627f35655b2d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1495858,
+  "instruction_sites_in_fence": 304,
+  "instruction_sites_exercised": 303,
+  "static_site_dispositions": [
+    {
+      "site": "06C9:5303",
+      "scope": "From52FD entry under50A1 calls only",
+      "reason": "AdjacentJLE/JG readunchangedZF/SF/OF andexhaust allcases; ADDCX380D cannotbefalleninto. Notglobaldeadcode.",
+      "evidence": "docs/recovery/evidence/td2ega-small-algorithms-context-v1.json"
+    }
+  ],
+  "word_lookup_5616_indices_observed": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    18,
+    20,
+    22,
+    28
+  ],
+  "byte_lookup_324A_indices_observed": [
+    1,
+    2,
+    6,
+    8,
+    14,
+    15,
+    18,
+    20,
+    21,
+    27,
+    36,
+    42,
+    44,
+    56,
+    59
+  ],
+  "fixture_coverage": {
+    "root_near_return": 27692,
+    "actual_near_CALLs": 38864,
+    "bus_write_events": 172264,
+    "minimumSP34_cases": 6912,
+    "DS_equals_SS_cases": 15824,
+    "raw_root_returns": 592,
+    "seeded_random_cases": 4000,
+    "prefix_root": 1812,
+    "prefix_child": 1920,
+    "raw_child_return": 120,
+    "before_DIV_fault_prefix": 104
+  },
+  "limits": "Actual50A1 plus fiveactualfrozenchildC bodies5299/5C5A/52FD/5334/535B, tennearCALLsites/actualSSframes/RET2. NoABI-valuemock orSSscratch exclusion. Fullbus/GPR/BP/CFIFDF/control/writecount/childbudget. Rawtablebyte/wordlookups/lowbyteMUL/guardedDIV/signedfieldclamps andparentorderedrereads/branch/store effects retained; rawreturntargetsexposedafteractualRET neverfollowed. Source5299JL infeasiblefromselectedentry and52FD5303excluded byadjacentcomplementarysignedbranches requirestaticdisposition ifunexercised. DynamicDI=(3318highbyte)*4 may0, before5C79DIVfaultprefix5 withoutdelivery; byte-only52D0store/ordered52D2/fieldcurve/table5616evenindex0..30 and324A0..63 retained. Actual403B/fullcaller/writer/bounds/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

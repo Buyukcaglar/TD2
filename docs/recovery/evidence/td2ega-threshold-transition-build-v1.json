@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-16",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_threshold_transition.cmd",
+    "sha256": "f84fa08a7f8c54ac5ee94d5681860e49d64d675721077cf29b94a688a16803e5"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_threshold_transition.c",
+      "sha256": "1e716661f708daa96e5128d0b391330e689cf3ad18943dac081779bd23165296"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_threshold_transition.h",
+      "sha256": "787e9a89b9189e28823c1d76057d5dc858cf288e78264896164047d7d7e15a77"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/threshold-transition-repro/td2ega_threshold_transition.dll",
+      "sha256": "fb054fadf4302d363ccf51e4d724ae8442a632f9aa8401ca1ec91bb827b6e4b5",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/threshold-transition-repro/td2ega_threshold_transition.obj",
+      "sha256": "3dbb09f435677e0180ef15c0624305e421e4978e3ba813f9543a4241b287e05a",
+      "bytes": 6928
+    },
+    {
+      "path": "analysis/build/threshold-transition-repro/td2ega_control_bus.obj",
+      "sha256": "dae61aa538513e8cdaec63ae67ae217cd5d82bf4819e6da226093424bf9b404e",
+      "bytes": 6551
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/threshold-transition-build-v1.log",
+    "sha256": "688505d3fe712e69d22d2932ceb4f0a10711db44f4f619c29d188f83b72c5c70"
+  },
+  "limit": "Actual4B9A/fullSS/currentDSsignedthresholds/orderedstatewrites/indexed8byte-rawrows/wordSIwrap/signedIMUL-IDIV-truncation/zero-overflowpreIDIVprefix/noexceptiondelivery/actual45FC-4612-globalrow-controlbudgets/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. Actual48A8caller/full4674/alltablewriters-validbounds-units-storage-lifetime-IRQ-core open. NoDOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000384"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-threshold-transition-context-v1.json",
+    "sha256": "4b2bc53d07815d0d98d78a79cb1df559a5216b07d52b44d5f9ecacd109dedde7"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-idiv-reference-v1.json",
+    "sha256": "cf501c510ea26d39f05ad250dd3a0220c8d5dd6d4940fcebb16ddae859da6ab5"
+  },
+  "prior_validation_refinement": {
+    "path": "analysis/history/threshold-transition-wrap-refinement-v2.json",
+    "sha256": "370c53ebd9bf2667e8fc04de930aa08a1008f31ee6662f9a052638bff7eb7281"
+  },
+  "validation_counter_refinement": {
+    "path": "analysis/history/threshold-transition-counter-refinement-v3.json",
+    "sha256": "ce37cd4f94cb6b398bba1989bba3c5b7e8c0919440dc082ad60f020561796b3d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_threshold_transition_diagnostics_attempt_v1.py",
+      "sha256": "4e5985c70bc28c5c0dc22b63f3464ef2c471f4e6f8835b89df21ec2b2334d1a1"
+    },
+    {
+      "path": "analysis/logs/threshold-transition-native-v1.log",
+      "sha256": "f3dca5d6142a21bcfe80fd668c88c939c56cfb4bcdf5f7d79cb4c2d08a9b9451"
+    }
+  ]
+}

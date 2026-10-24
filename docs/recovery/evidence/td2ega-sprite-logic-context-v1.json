@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "bc385dca942b2fe5777ac2606a8ebb82498e67dadcca94e7acfb29bdd6f42b10",
+  "instruction_observations": [
+    {
+      "site": "06C9:7DBC",
+      "instruction": "push bp"
+    },
+    {
+      "site": "06C9:7DBD",
+      "instruction": "mov bp, sp"
+    },
+    {
+      "site": "06C9:7DBF",
+      "instruction": "push ds"
+    },
+    {
+      "site": "06C9:7DC0",
+      "instruction": "push si"
+    },
+    {
+      "site": "06C9:7DC1",
+      "instruction": "push di"
+    },
+    {
+      "site": "06C9:7DC2",
+      "instruction": "sub sp, 0x44"
+    },
+    {
+      "site": "06C9:7DC5",
+      "instruction": "mov ax, 0x7ddc"
+    },
+    {
+      "site": "06C9:7DC8",
+      "instruction": "mov word ptr [bp - 0x40], ax"
+    },
+    {
+      "site": "06C9:7DCB",
+      "instruction": "mov ax, 0x9572"
+    },
+    {
+      "site": "06C9:7DCE",
+      "instruction": "mov word ptr [bp - 0x4a], ax"
+    },
+    {
+      "site": "06C9:7DD1",
+      "instruction": "mov byte ptr [bp - 0x42], 8"
+    },
+    {
+      "site": "06C9:7DD5",
+      "instruction": "mov byte ptr [bp - 0x41], 1"
+    },
+    {
+      "site": "06C9:7DD9",
+      "instruction": "jmp 0x91f3"
+    },
+    {
+      "site": "06C9:A718",
+      "instruction": "push bp"
+    },
+    {
+      "site": "06C9:A719",
+      "instruction": "mov bp, sp"
+    },
+    {
+      "site": "06C9:A71B",
+      "instruction": "push ds"
+    },
+    {
+      "site": "06C9:A71C",
+      "instruction": "push si"
+    },
+    {
+      "site": "06C9:A71D",
+      "instruction": "push di"
+    },
+    {
+      "site": "06C9:A71E",
+      "instruction": "sub sp, 0x44"
+    },
+    {
+      "site": "06C9:A721",
+      "instruction": "mov ax, 0xa738"
+    },
+    {
+      "site": "06C9:A724",
+      "instruction": "mov word ptr [bp - 0x40], ax"
+    },
+    {
+      "site": "06C9:A727",
+      "instruction": "mov ax, 0x9572"
+    },
+    {
+      "site": "06C9:A72A",
+      "instruction": "mov word ptr [bp - 0x4a], ax"
+    },
+    {
+      "site": "06C9:A72D",
+      "instruction": "mov byte ptr [bp - 0x42], 0x10"
+    },
+    {
+      "site": "06C9:A731",
+      "instruction": "mov byte ptr [bp - 0x41], 2"
+    },
+    {
+      "site": "06C9:A735",
+      "instruction": "jmp 0x91f3"
+    },
+    {
+      "site": "06C9:BB08",
+      "instruction": "push bp"
+    },
+    {
+      "site": "06C9:BB09",
+      "instruction": "mov bp, sp"
+    },
+    {
+      "site": "06C9:BB0B",
+      "instruction": "push ds"
+    },
+    {
+      "site": "06C9:BB0C",
+      "instruction": "push si"
+    },
+    {
+      "site": "06C9:BB0D",
+      "instruction": "push di"
+    },
+    {
+      "site": "06C9:BB0E",
+      "instruction": "sub sp, 0x44"
+    },
+    {
+      "site": "06C9:BB11",
+      "instruction": "mov ax, 0xbb28"
+    },
+    {
+      "site": "06C9:BB14",
+      "instruction": "mov word ptr [bp - 0x40], ax"
+    },
+    {
+      "site": "06C9:BB17",
+      "instruction": "mov ax, 0xbb38"
+    },
+    {
+      "site": "06C9:BB1A",
+      "instruction": "mov word ptr [bp - 0x4a], ax"
+    },
+    {
+      "site": "06C9:BB1D",
+      "instruction": "mov byte ptr [bp - 0x42], 0x18"
+    },
+    {
+      "site": "06C9:BB21",
+      "instruction": "mov byte ptr [bp - 0x41], 4"
+    },
+    {
+      "site": "06C9:BB25",
+      "instruction": "jmp 0x91f3"
+    },
+    {
+      "site": "06C9:91F3",
+      "instruction": "mov ds, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:91F6",
+      "instruction": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:91F9",
+      "instruction": "mov ax, word ptr [si + 8]"
+    },
+    {
+      "site": "06C9:91FC",
+      "instruction": "mov word ptr [bp - 8], ax"
+    },
+    {
+      "site": "06C9:91FF",
+      "instruction": "mov ax, word ptr [si + 0xa]"
+    },
+    {
+      "site": "06C9:9202",
+      "instruction": "mov word ptr [bp - 0xa], ax"
+    },
+    {
+      "site": "06C9:7E02",
+      "instruction": "and byte ptr es:[di], al"
+    },
+    {
+      "site": "06C9:7E05",
+      "instruction": "inc di"
+    },
+    {
+      "site": "06C9:A75E",
+      "instruction": "or byte ptr es:[di], al"
+    },
+    {
+      "site": "06C9:A761",
+      "instruction": "inc di"
+    },
+    {
+      "site": "06C9:BB5E",
+      "instruction": "xor byte ptr es:[di], al"
+    },
+    {
+      "site": "06C9:BB61",
+      "instruction": "inc di"
+    },
+    {
+      "site": "06C9:BBB6",
+      "instruction": "xor byte ptr es:[di], ah"
+    },
+    {
+      "site": "06C9:BDB9",
+      "instruction": "xor byte ptr es:[di], dh"
+    },
+    {
+      "site": "06C9:BDF4",
+      "instruction": "mov al, byte ptr es:[di]"
+    },
+    {
+      "site": "06C9:BE19",
+      "instruction": "stosb byte ptr es:[di], al"
+    },
+    {
+      "site": "06C9:BE1A",
+      "instruction": "mov ah, byte ptr es:[di]"
+    },
+    {
+      "site": "06C9:BE24",
+      "instruction": "mov byte ptr es:[di], dh"
+    }
+  ],
+  "dispatch_tables": [
+    {
+      "segment": 1737,
+      "offset": 32220,
+      "length": 16,
+      "entries": 8,
+      "sha256": "b4cd00e3247c7eeb28f23cd78c5bd2dfba61f326c3b8386d61001cd90261e1be",
+      "targets": [
+        "06C9:7DEC",
+        "06C9:7E21",
+        "06C9:7E74",
+        "06C9:7ECC",
+        "06C9:7F28",
+        "06C9:7F85",
+        "06C9:7FE0",
+        "06C9:8037"
+      ]
+    },
+    {
+      "segment": 1737,
+      "offset": 42808,
+      "length": 16,
+      "entries": 8,
+      "sha256": "c2cf6de1c893fb66afb8a84cd6c1f5043aa4c56c567bdfa29724c27b03698dff",
+      "targets": [
+        "06C9:A748",
+        "06C9:A77D",
+        "06C9:A7CD",
+        "06C9:A822",
+        "06C9:A87B",
+        "06C9:A8D5",
+        "06C9:A92D",
+        "06C9:A981"
+      ]
+    },
+    {
+      "segment": 1737,
+      "offset": 47912,
+      "length": 16,
+      "entries": 8,
+      "sha256": "a993601e71fd0ddc3350c90b1c9b26f2aa7576fe5971ce315e287dcee58be84d",
+      "targets": [
+        "06C9:BB48",
+        "06C9:BB7D",
+        "06C9:BBCD",
+        "06C9:BC22",
+        "06C9:BC7B",
+        "06C9:BCD5",
+        "06C9:BD2D",
+        "06C9:BD81"
+      ]
+    },
+    {
+      "segment": 1737,
+      "offset": 47928,
+      "length": 16,
+      "entries": 8,
+      "sha256": "1a94f23bc892cd1932cfd345baf8394dd86215d6394de055eaf146cdd636c94e",
+      "targets": [
+        "06C9:9835",
+        "06C9:BDD1",
+        "06C9:BE55",
+        "06C9:BECE",
+        "06C9:BF4B",
+        "06C9:BFC9",
+        "06C9:C045",
+        "06C9:C0BD"
+      ]
+    }
+  ],
+  "shared_source_args": "TwoSSwords[sourceOffset,segment]; coordinates fromsource+8/+A. Sourcefarptr independent ofcallerDS; SSsaved/localframe andactualplainfarreturn.",
+  "RAM_direction": "LODSB followsDF; logicmemoryoperation thenexplicitINCDI+1 regardlessDF. Alignment0 LOOP0 means65536, noREP0 substitution.",
+  "XOR_tail": "Alignmentone usesAH atBBB6; alignments2..7 useDH. Hardwareunaligned initialALread, STOSBAL andsubsequentAHread/newDI, tailMOVDH withoutcopymerge retained.",
+  "selector_dependency": "ExternalRS-DOS-000260 selection span andCS82C8/AD1A mask spans. Priorinitializedselectionpredicate receipt remainsseparate. Rawdispatch table payload notembedded; code target addresses document provenance.",
+  "limits": "Staticprologue/operand/tableidentity only. Actualcaller/reachability forBB08 remainsunproven; alltablewriters/sourcebounds/lifetime/frame-output/exclusion, realdevice/renderer/fullstate/core/gameplay/fidelity andCGA gates remainopen."
+}

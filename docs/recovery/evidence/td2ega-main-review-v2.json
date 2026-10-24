@@ -1,0 +1,715 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "ledger_sha256": "0a9bd3eea97513b9381f0436c4c366d6951fdba8d041c5851c4838ef5d6e183b",
+  "script_sha256": "110ff2107b6e42481fe98912de41ffc083b1adfc2fd85928c6b85b85a929a6c9",
+  "function_entry": "0000:07B3",
+  "instruction_locations": 360,
+  "call_sites": 56,
+  "reviewed_instruction_checks": 39,
+  "regions": [
+    {
+      "begin": "07B3",
+      "end_exclusive": "07D5",
+      "name": "startup_pool_sample",
+      "contract_observation": "Initializes locals, pool6F86 andsamples externalword5D83; no tick/time unit admitted."
+    },
+    {
+      "begin": "07D5",
+      "end_exclusive": "0837",
+      "name": "device_and_handlers",
+      "contract_observation": "Nearargv[1] compared with externalherc string; alternatevideo/device path; inputcallback/vector09/16/timer08 installs andmusic callback registration."
+    },
+    {
+      "begin": "0837",
+      "end_exclusive": "089C",
+      "name": "persistent_media",
+      "contract_observation": "Rawvoices/songs farpairs storedin942A/C and8640/2, suppliedtoaudio consumers; B0FE allocates320x200 fourplane-shaped surface into8CA2/4."
+    },
+    {
+      "begin": "089C",
+      "end_exclusive": "0928",
+      "name": "current_drive_media",
+      "contract_observation": "Currentdrive query writeslocal, diskid recognizer05C0 onlyadmitsIDs0/4 first; recordsdrive/media tables, requires0477 result1; initializesdrive enumeration."
+    },
+    {
+      "begin": "0928",
+      "end_exclusive": "0959",
+      "name": "drive_search_sample",
+      "contract_observation": "Signeddrive loop through922C, stoponmediaID3; externaldifference5D8D storedunscaled inlocalword. ID3 jumpsdirectly toA07."
+    },
+    {
+      "begin": "0959",
+      "end_exclusive": "098A",
+      "name": "master_play_prompt",
+      "contract_observation": "Tryopening externaltestdrv2.pes withr mode. Failure callsnear0090 prompt; zero retries, nonzero cleanup. No resourcedecode inthis path."
+    },
+    {
+      "begin": "098A",
+      "end_exclusive": "0A07",
+      "name": "retry_drive_media",
+      "contract_observation": "Closesprobe stream, obtainscurrentdrive, recognizesdiskid, updatesmedia/drive tables, calls0477. At09D5 CMPAX1 isfollowedby unconditionalJMP09FB; returnAXminus1 stored5657."
+    },
+    {
+      "begin": "0A07",
+      "end_exclusive": "0A3E",
+      "name": "media_selection_begin",
+      "contract_observation": "Resamplesexternalword, storesmediaID8A8C, updatesdrive/media tables andcalls0432:02BF; nonzero returns tocleanup."
+    },
+    {
+      "begin": "0A3E",
+      "end_exclusive": "0A91",
+      "name": "catalog_selection",
+      "contract_observation": "Clears8A7A and90AA, calls0432:00A9. Zero8A7A comparesactive/admittedmedia, possibly1D25 thenretriesvia0950. Nonzero calls01B2;90AAzero returns tomedia comparison."
+    },
+    {
+      "begin": "0A91",
+      "end_exclusive": "0AB9",
+      "name": "selection_bind",
+      "contract_observation": "Copies8A7A to843C; near0651/0730 bindselection,0645:0000 gatescleanup; addsunscaled externaldifference modulo65536 tolocalaccumulator."
+    },
+    {
+      "begin": "0AB9",
+      "end_exclusive": "0B37",
+      "name": "menu_exit_prompt",
+      "contract_observation": "00C0:039C returnsword;1B opensdrawnexitconfirmation usingexternaltext71D3. 6A6A getsinput withlongargument3000; repeated1B rewaits;79/59 confirmswrite/exit,other returns tomenu."
+    },
+    {
+      "begin": "0B37",
+      "end_exclusive": "0BAE",
+      "name": "session_setup",
+      "contract_observation": "Zeroresult sets8A9A1, otherwise7C; firstiteration conditionallyvalidatesselectedmedia/scenery, loads1D44, setsfirstiterationlocal."
+    },
+    {
+      "begin": "0BAE",
+      "end_exclusive": "0BE4",
+      "name": "session_or_menu",
+      "contract_observation": "Unsignedlocalaccumulator>500 sets7C1; calls019E:06C5. Zero returns tomenuAB9, nonzerocleanup; no complete session contract admitted."
+    },
+    {
+      "begin": "0BE4",
+      "end_exclusive": "0C04",
+      "name": "cleanup_return",
+      "contract_observation": "Restorestimer610A thenkeyboard68C4, alternate5FBC or642E cleanup; returnsAXleftbyfinalhelper, notanexplicitconstant0."
+    }
+  ],
+  "branches": [
+    {
+      "site": "0000:07E9",
+      "condition": "jne",
+      "target": "0x7f7"
+    },
+    {
+      "site": "0000:07F5",
+      "condition": "jmp",
+      "target": "0x7fc"
+    },
+    {
+      "site": "0000:08BC",
+      "condition": "je",
+      "target": "0x8c5"
+    },
+    {
+      "site": "0000:08C0",
+      "condition": "je",
+      "target": "0x8c5"
+    },
+    {
+      "site": "0000:08C2",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:08FB",
+      "condition": "je",
+      "target": "0x900"
+    },
+    {
+      "site": "0000:08FD",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:092E",
+      "condition": "jg",
+      "target": "0x942"
+    },
+    {
+      "site": "0000:0940",
+      "condition": "jne",
+      "target": "0x985"
+    },
+    {
+      "site": "0000:0954",
+      "condition": "jne",
+      "target": "0x959"
+    },
+    {
+      "site": "0000:0956",
+      "condition": "jmp",
+      "target": "0xa07"
+    },
+    {
+      "site": "0000:096E",
+      "condition": "jne",
+      "target": "0x98a"
+    },
+    {
+      "site": "0000:0980",
+      "condition": "je",
+      "target": "0x959"
+    },
+    {
+      "site": "0000:0982",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0988",
+      "condition": "jmp",
+      "target": "0x928"
+    },
+    {
+      "site": "0000:09D8",
+      "condition": "jmp",
+      "target": "0x9fb"
+    },
+    {
+      "site": "0000:0A39",
+      "condition": "je",
+      "target": "0xa3e"
+    },
+    {
+      "site": "0000:0A3B",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0A5F",
+      "condition": "jne",
+      "target": "0xa7a"
+    },
+    {
+      "site": "0000:0A68",
+      "condition": "jne",
+      "target": "0xa6d"
+    },
+    {
+      "site": "0000:0A6A",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0A77",
+      "condition": "jmp",
+      "target": "0x950"
+    },
+    {
+      "site": "0000:0A8F",
+      "condition": "je",
+      "target": "0xa61"
+    },
+    {
+      "site": "0000:0AA6",
+      "condition": "je",
+      "target": "0xaab"
+    },
+    {
+      "site": "0000:0AA8",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0AC4",
+      "condition": "jne",
+      "target": "0xb37"
+    },
+    {
+      "site": "0000:0B30",
+      "condition": "je",
+      "target": "0xb35"
+    },
+    {
+      "site": "0000:0B32",
+      "condition": "jmp",
+      "target": "0xbc9"
+    },
+    {
+      "site": "0000:0B35",
+      "condition": "jmp",
+      "target": "0xb1c"
+    },
+    {
+      "site": "0000:0B3B",
+      "condition": "jne",
+      "target": "0xb45"
+    },
+    {
+      "site": "0000:0B43",
+      "condition": "jmp",
+      "target": "0xb4b"
+    },
+    {
+      "site": "0000:0B4F",
+      "condition": "jne",
+      "target": "0xbae"
+    },
+    {
+      "site": "0000:0B56",
+      "condition": "jne",
+      "target": "0xb5f"
+    },
+    {
+      "site": "0000:0B5D",
+      "condition": "je",
+      "target": "0xb6f"
+    },
+    {
+      "site": "0000:0B6D",
+      "condition": "jne",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0B74",
+      "condition": "je",
+      "target": "0xb9a"
+    },
+    {
+      "site": "0000:0B7B",
+      "condition": "je",
+      "target": "0xb9a"
+    },
+    {
+      "site": "0000:0B8B",
+      "condition": "je",
+      "target": "0xb94"
+    },
+    {
+      "site": "0000:0B92",
+      "condition": "jmp",
+      "target": "0xb9a"
+    },
+    {
+      "site": "0000:0BA7",
+      "condition": "jne",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0BB3",
+      "condition": "jbe",
+      "target": "0xbbb"
+    },
+    {
+      "site": "0000:0BC2",
+      "condition": "jne",
+      "target": "0xbc7"
+    },
+    {
+      "site": "0000:0BC4",
+      "condition": "jmp",
+      "target": "0xab9"
+    },
+    {
+      "site": "0000:0BC7",
+      "condition": "jmp",
+      "target": "0xbe4"
+    },
+    {
+      "site": "0000:0BCD",
+      "condition": "je",
+      "target": "0xbd8"
+    },
+    {
+      "site": "0000:0BD3",
+      "condition": "je",
+      "target": "0xbd8"
+    },
+    {
+      "site": "0000:0BD5",
+      "condition": "jmp",
+      "target": "0xab9"
+    },
+    {
+      "site": "0000:0BF2",
+      "condition": "je",
+      "target": "0xbfb"
+    },
+    {
+      "site": "0000:0BF9",
+      "condition": "jmp",
+      "target": "0xc00"
+    }
+  ],
+  "explicit_memory_writes": [
+    {
+      "site": "0000:07B9",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65534,
+      "width": 2
+    },
+    {
+      "site": "0000:07BE",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65526,
+      "width": 2
+    },
+    {
+      "site": "0000:07C3",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65520,
+      "width": 2
+    },
+    {
+      "site": "0000:07D2",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65528,
+      "width": 2
+    },
+    {
+      "site": "0000:07F0",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65526,
+      "width": 2
+    },
+    {
+      "site": "0000:0843",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 37930,
+      "width": 2
+    },
+    {
+      "site": "0000:0846",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 37932,
+      "width": 2
+    },
+    {
+      "site": "0000:0856",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 34368,
+      "width": 2
+    },
+    {
+      "site": "0000:0859",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 34370,
+      "width": 2
+    },
+    {
+      "site": "0000:0895",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 36002,
+      "width": 2
+    },
+    {
+      "site": "0000:0898",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 36004,
+      "width": 2
+    },
+    {
+      "site": "0000:08AB",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35998,
+      "width": 2
+    },
+    {
+      "site": "0000:08B6",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65524,
+      "width": 2
+    },
+    {
+      "site": "0000:08C8",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 36092,
+      "width": 2
+    },
+    {
+      "site": "0000:08CB",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65522,
+      "width": 2
+    },
+    {
+      "site": "0000:08D4",
+      "segment_default_or_override": "ds",
+      "base": "bx",
+      "displacement_word": 64,
+      "width": 2
+    },
+    {
+      "site": "0000:08E0",
+      "segment_default_or_override": "ds",
+      "base": "bx",
+      "displacement_word": 35356,
+      "width": 2
+    },
+    {
+      "site": "0000:08E7",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35356,
+      "width": 2
+    },
+    {
+      "site": "0000:0904",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 22103,
+      "width": 2
+    },
+    {
+      "site": "0000:090C",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 124,
+      "width": 2
+    },
+    {
+      "site": "0000:0914",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 37420,
+      "width": 2
+    },
+    {
+      "site": "0000:091D",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65532,
+      "width": 2
+    },
+    {
+      "site": "0000:0920",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 33830,
+      "width": 2
+    },
+    {
+      "site": "0000:0923",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65524,
+      "width": 2
+    },
+    {
+      "site": "0000:093A",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65524,
+      "width": 2
+    },
+    {
+      "site": "0000:094D",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65520,
+      "width": 2
+    },
+    {
+      "site": "0000:0969",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65530,
+      "width": 2
+    },
+    {
+      "site": "0000:0985",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65532,
+      "width": 2
+    },
+    {
+      "site": "0000:09AB",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65524,
+      "width": 2
+    },
+    {
+      "site": "0000:09AE",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 36092,
+      "width": 2
+    },
+    {
+      "site": "0000:09B7",
+      "segment_default_or_override": "ds",
+      "base": "bx",
+      "displacement_word": 64,
+      "width": 2
+    },
+    {
+      "site": "0000:09C3",
+      "segment_default_or_override": "ds",
+      "base": "bx",
+      "displacement_word": 35356,
+      "width": 2
+    },
+    {
+      "site": "0000:09FC",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 22103,
+      "width": 2
+    },
+    {
+      "site": "0000:0A04",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 124,
+      "width": 2
+    },
+    {
+      "site": "0000:0A0C",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65528,
+      "width": 2
+    },
+    {
+      "site": "0000:0A12",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35468,
+      "width": 2
+    },
+    {
+      "site": "0000:0A1B",
+      "segment_default_or_override": "ds",
+      "base": "bx",
+      "displacement_word": 64,
+      "width": 2
+    },
+    {
+      "site": "0000:0A27",
+      "segment_default_or_override": "ds",
+      "base": "bx",
+      "displacement_word": 35356,
+      "width": 2
+    },
+    {
+      "site": "0000:0A3E",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35450,
+      "width": 2
+    },
+    {
+      "site": "0000:0A44",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 37034,
+      "width": 2
+    },
+    {
+      "site": "0000:0A72",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65524,
+      "width": 2
+    },
+    {
+      "site": "0000:0A94",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 33852,
+      "width": 2
+    },
+    {
+      "site": "0000:0AB6",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65520,
+      "width": 2
+    },
+    {
+      "site": "0000:0ABE",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65532,
+      "width": 2
+    },
+    {
+      "site": "0000:0B2A",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65532,
+      "width": 2
+    },
+    {
+      "site": "0000:0B3D",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35482,
+      "width": 2
+    },
+    {
+      "site": "0000:0B48",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35482,
+      "width": 2
+    },
+    {
+      "site": "0000:0B94",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 35468,
+      "width": 2
+    },
+    {
+      "site": "0000:0B9A",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 37046,
+      "width": 2
+    },
+    {
+      "site": "0000:0BA9",
+      "segment_default_or_override": "ss",
+      "base": "bp",
+      "displacement_word": 65534,
+      "width": 2
+    },
+    {
+      "site": "0000:0BB5",
+      "segment_default_or_override": "ds",
+      "base": null,
+      "displacement_word": 124,
+      "width": 2
+    }
+  ],
+  "special_cases": [
+    "09D5 CMP flags discardedby09D8 unconditionalJMP;09FB decrementshelper AX ratherthanreloadingdrive.",
+    "Localexternalwordaccumulation wraps16bit;literal500 and3000 areobservedvalues withoutclockunit assignment.",
+    "Cleanupreturns finalhelperAX, withnoexplicitmainreturncode.",
+    "Nearargv[1] unconditionallyread; nearoffset0 remainsmachineaddress, nothostNULL."
+  ],
+  "cs_write_review": {
+    "syntactic_prefixed_writes": 41,
+    "direct_literal_aliases_at_anomaly_code": [],
+    "limit": "No direct CS literal alias found doesnotprove immutableanomalybytes. IndexedCS writers, DS/ESaliases andunclassified/indirect paths remainopen."
+  },
+  "limits": "Static mainregions/branch/write review only. Callee contracts, variable/array domains, fullstartup-to-exit state validation, allownership lifetimes andruntime/fidelity remainpending."
+}

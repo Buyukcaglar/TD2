@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "e6a5d9f6d3dfb6af67f3eac2062914550334863a2691e5f30ed4d07f458c332b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "046fb5048a79942acc8b445b90acdc180f1ab7725446785526ab1cd210001864",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_message.py",
+      "sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210"
+    }
+  ],
+  "limits": "Teninvalidbus/count/SP/null/selector/boolean profiles, minimumSP32lookup/outputRETF2, missing/badadapter andbeforeINTbudget. Nativeonly, separatefromoriginalcatalog/endmarker/caller/key/realDOS/device/session/game/core/fidelity."
+}

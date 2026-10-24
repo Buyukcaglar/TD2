@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000205",
+  "result": "pass",
+  "vectors": 797,
+  "native_only_diagnostic_cases": 8,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_range": {
+    "module_offset": 59558,
+    "length": 328,
+    "unrelocated_sha256": "47752256b201a70b460a765997022ec00e17fb5b4368c5b82bed058776581b56"
+  },
+  "library_sha256": "e3828c5c22cfb95c3641892d97bb3c7f4e800b164437c809d33e565970bdab32",
+  "source_sha256": "827cdf564d6256e4ea86eef32909db58873b9e24c75a728b6b89c6b4927f5806",
+  "validator_sha256": "2d33aa00a35a89f3ff5aa19b44572d77fd51fd1d63501acea819714c8e5097be",
+  "original_instructions_executed": 13450159,
+  "synthetic_output_bytes_compared": 534154,
+  "fixture_coverage": {
+    "all_symbol_bytes_delta": 512,
+    "fixed_depth_tables": 18,
+    "mixed_depth_and16bit_threshold": 6,
+    "varied_tables_streams": 256,
+    "zero_lowword_extra65536": 4,
+    "inplace_unread_input_overlap": 1
+  },
+  "coverage": [
+    "All256 bytevalues withdelta on/off",
+    "Fixeddepth1..8/16 andmixedtables including256symbols/16bit thresholdwrap",
+    "256 varied tables/streams",
+    "Near-source streamwrap anddestination64KiB crossings",
+    "Declared lowword0 writesextra65536 while returningdeclaredcount",
+    "Aliased input/output preservesunread-input overwrite order",
+    "Wholebytes/guards, sourceconsumption, scratch/codebounds, farreturn/arguments/registers/ES/DF"
+  ],
+  "limits": "Bounded synthetic valid-code streams only; nativeinvalid/short diagnostics areoutsideoriginalerror equivalence. No suppliedresource decoded, fullformat/corpus orloader acceptance, sharedscratch reentry, realDOS, renderer/audio orgameplay/fidelity."
+}

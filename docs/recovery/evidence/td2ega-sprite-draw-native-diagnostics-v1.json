@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 6,
+  "script_sha256": "8cc1f1c0d6563e92d42768c0a98d187451c78aa6b8c774d8b0531666b7586b09",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f510e2ea8a70131577840bb417f451064db21a95bd4143410073cef58da8e84e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sprite_draw.py",
+      "sha256": "b19c16f1126ec5608572bd9ae03cbe1b5de910d532cfbefcf184a98611c165f2"
+    }
+  ],
+  "limits": "Six native-only invalidbus/entry/rootframe/resumeframe/adapter/flagchecks. Separatefromoriginalreturns/errors/rawindirecttransfer comparison, noactualdevice/renderer/IRQ/core/game/fidelity."
+}

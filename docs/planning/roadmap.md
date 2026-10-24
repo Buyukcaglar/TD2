@@ -2,6 +2,18 @@
 
 Planning baseline: 13 October 2026. This roadmap preserves the user's requested order. The user subsequently authorized Phase 0 and Phase 1, TD2EGA first. Phase 0 is complete and Phase 1 is in progress; see the [current recovery checkpoint](../recovery/README.md) and task-specific status in `backlog.json`. Later phases and integrated gameplay/fidelity gates remain pending.
 
+## 22 October 2026: implementation reuse update
+
+Current checkpoint: **P1-R04 is complete as a source-selection decision**. The [decision report](../recovery/kylofon-r04-reuse-decision.md), [normative allowlist](../recovery/evidence/kylofon-reuse-decisions-v2.json) and [origin manifest](../recovery/evidence/kylofon-reuse-origin-manifest-v2.json) select 10 groups: six value groups covering 11 already-recovered entries and four support groups. The [P1-R02/R03 results](../recovery/kylofon-r02-r03-results.md) remain 2,233 admitted original-body vectors and 380 separate support checks; four live-SS aliases remain excluded. Source extraction/integration and all broader gates remain pending, recovered totals are unchanged, and P1-05 remains the frontier. The initial review rationale below is historical context; the narrower P1-R04 allowlist governs source selection.
+
+The complete [Kylofon SDL3 review](kylofon-reuse-assessment.md) identifies an integrated EGA C port and DOS format implementations that can replace substantial repeated discovery/translation work with candidate review, adaptation and original-byte validation. Its read-only snapshot is pinned at `352b56824d8c91e938b8f0794a71afca9a276193`; no source was imported or runtime acceptance earned in this review. Detailed [game](kylofon-game-core-review.md), [platform](kylofon-platform-review.md) and [formats/tools](kylofon-formats-tools-review.md) reports cover all 85 tracked upstream files.
+
+The preferred route is qualified selective reuse with our independent original-byte oracle retained. New backlog tasks P1-R01..R04 cover the completed review, exact-image/source/deviation admission, a representative C17/differential spike in a separate writable workspace, and measured subsystem adoption decisions. P1-11 now also depends on P1-R04. Existing P1-05..P1-GATE statuses and all later phase dependencies remain unchanged. Candidate builds for P1 evidence do not authorize early integrated native gameplay work.
+
+Before importing source, reconcile the literal physical086C reader, DS/SS/stack/alias domains, wrapping/arithmetic, timing/RNG, dropped historical paths and embedded text/tables. Phase2 uses upstream schemas as candidates and still closes all249 DOS identities plus embedded resources. Phase3 reuses admitted host/game/rendering code with separate profile writes, external media and host-independent C17 state/provider boundaries. CGA, Amiga, Northern Germany Challenge and live switching retain their complete obligations. The [gap register](evidence/kylofon-gap-register-v1.json) maps findings to tasks and acceptance conditions.
+
+The [current effort review](kylofon-effort-review.md) and [reproducible estimate inputs](evidence/kylofon-effort-inputs-v1.json) budget 203–461 engineer-days, approximately 41–93 engineer-weeks before reserve. No substantial saving is booked for the present selection. The broader 185–410 day / 37–82 week route is conditional on later subsystem admission and is not the current budget. The [initial effort sensitivity model](kylofon-reuse-assessment.md#time-saving-assessment) remains historical context. The required phase order and existing gates are unchanged.
+
 ## Required result
 
 1. Disassemble and recover portable C from the DOS game, primarily `TD2EGA.EXE`, then analyze `TD2CGA.EXE` and recover its graphics behavior.
@@ -46,7 +58,7 @@ Within phase 1, inspect resource access routines and the minimum bytes needed to
 ## Phase 0 establish custody and evidence
 
 1. Read all planning documents and refresh the file manifest. Record any additions, differences or edition changes; never silently replace the baseline.
-2. Create a version controlled source workspace, excluding `reference`, extracted game payloads, memory dumps, screenshots, captures and local caches from publication. No repository has been initialized by this planning session.
+2. Maintain the initialized version controlled source workspace, excluding `reference`, extracted game payloads, memory dumps, screenshots, captures and local caches from publication. External source clones have separate exact inventories; they never expand the immutable original-media baseline.
 3. Record tool versions, configuration hashes, input hashes and output provenance. Choose one canonical DOS EGA edition; name other variants explicitly.
 4. Create derived analysis directories and read only original access. Future game runs use complete private working copies because selections and high scores may be writable.
 5. Establish evidence records for functions, resources, trace fixtures, differences and decisions. Every record needs a locator, method, confidence, dependencies and acceptance status.

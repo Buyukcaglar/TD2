@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "17109eeae10325c994ebe9b5105363357def4ad81c4e0b84aab36d9862d36583",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c9025b6bea3a524e9796373fc25b8f12b329bda1f4e18a9dd3a3fa76eadfcb34",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_rectangle_draw.py",
+      "sha256": "2665fc5fe5113e7ab1fafb241a0ba63cbef7a495f87ef7b686907e869230ee28"
+    }
+  ],
+  "limits": "Two native-only invalidentry/flagchecks separatefromoriginalcomparison/error equivalence. No actualdevice/renderer/IRQ/core/game/fidelity."
+}

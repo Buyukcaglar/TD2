@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_rectangle_draw.cmd",
+    "sha256": "675bfd1ec264c24ad6415d26dcfbe86d7671760aea00144756dd368e39f7f1e6"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_rectangle_draw.c",
+      "sha256": "e137b9d8c90e79f2746bfcf775a26d5c6b35b9cba325a94330d0ae2df0d32727"
+    },
+    {
+      "path": "src/recovered/td2ega_rectangle_draw.h",
+      "sha256": "b86468de20bc28343e66a72a7aa1d8bae87afaafe969f50637e9cdc74334db73"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/rectangle-draw-repro/td2ega_rectangle_draw.dll",
+      "sha256": "c9025b6bea3a524e9796373fc25b8f12b329bda1f4e18a9dd3a3fa76eadfcb34",
+      "bytes": 111104
+    },
+    {
+      "path": "analysis/build/rectangle-draw-repro/td2ega_rectangle_draw.obj",
+      "sha256": "7bf3fb2984ed203ed0f6f62664d4af44a6be42d01ac48007837cfe3680a54d0e",
+      "bytes": 14149
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/rectangle-draw-build-v1.log",
+    "sha256": "4e1fbace014799c70b5bbe585803f1c46948805f6feaa44ea9184484edde4d8b"
+  },
+  "limit": "Actual89A2clipping+8A0Csharedbody/plainRETF4, SSargumentmutationsincludingwideRAMcolorbyteSHR/highbytepreservation, DS6838/6840masks/currentCSlookup-plane-stride/RAMmasked-REPbytewrites andexplicitOUT/MMIOread/write/STOSBtraces matched. ClippedearlyDFversusrawCLD, REP0/LOOP0/rawword/SAR/signedOFbranches andnativeworkprefix retained. SyntheticflatRAM/devicebus only, no actualEGAdevice/renderer/producer/caller/local-framebounds/resourcefed/IRQ/state/core/game/fidelity. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000218",
+    "FN-EGA-000219"
+  ]
+}

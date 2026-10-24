@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000200",
+    "FN-EGA-000201"
+  ],
+  "vectors": 3072,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "9b27ec20c8679fc53f53e0ef7aff825babbc2cc068fc5d7c85e79faa3cde8124",
+  "source_sha256": "c28ff8e294dc8be53af1cc00da4ddf6eabfb6a0059c832532549ac7478b62226",
+  "validator_sha256": "15be8c3980fca1b7a34536b61bde0b0f2c43fdf1597fbb316f5d178f030e0e09",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_wait_control.py",
+      "sha256": "89b440d8e0ab395505e5b6d6a4a54b83cd85cf7f12a4ec0b4508f458e17e983b"
+    }
+  ],
+  "original_instructions_executed": 48704,
+  "instruction_sites_exercised": 21,
+  "instruction_sites_in_fence": 21,
+  "fixture_coverage": {
+    "set": 2048,
+    "events": 3968,
+    "argument_alias_0": 2816,
+    "mutable_global_deadline": 256,
+    "wait": 1024,
+    "argument_alias_1": 128,
+    "argument_alias_2": 128
+  },
+  "limits": "Complete7A10/7A27+actual79C8 instructions/nativecounter composition, SSargument reads aftersnapshot, ADDADC32/CF, orderedDS6818/A publication, mutableglobaldeadline unsignedcompare andIF1/DF/BP retained. Counterboundarybusupdates only, noIRQ/clockrate/history/physical086Cmeaning/device/core/game/fidelity. Argument-dataaliases checked; native diagnostics separate."
+}

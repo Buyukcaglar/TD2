@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000147",
+    "FN-EGA-000148",
+    "FN-EGA-000149"
+  ],
+  "vectors": 3234,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5a90ce057789bf3daea826288f99d81171d7ee48e0459d7deefcace2dc776ec2",
+  "source_sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933",
+  "validator_sha256": "378971d63e2554b02b2cbd3439e0bef5fcdc098aca05d544a51a584ee5fbd60e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/timer-control-bus-build-setup-v1.json",
+      "sha256": "82fd5212677e5abb2ce1ad13fe9bc34109e48f9fa04859f088e2143fe5a2daf6"
+    },
+    {
+      "path": "analysis/reviews/timer-startup-bus-frontier-v1.json",
+      "sha256": "b0fe6df8a3c5d8f0060589055b961aa512daa0e34721f0aade6408dd8cfa9204"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-idiv-reference-v1.json",
+      "sha256": "cf501c510ea26d39f05ad250dd3a0220c8d5dd6d4940fcebb16ddae859da6ab5"
+    }
+  ],
+  "original_instructions_executed": 327336,
+  "instruction_sites_in_fence": 91,
+  "instruction_sites_exercised": 91,
+  "fixture_coverage": {
+    "entry_0": 898,
+    "status_0": 2364,
+    "tag_base": 96,
+    "CPU_writes": 95736,
+    "raw_ports": 22460,
+    "postIDIV_CF_unknown_prefix": 26,
+    "DS_equals_SS": 402,
+    "changed_root": 196,
+    "entry_1": 1438,
+    "entry_2": 898,
+    "status_6": 144,
+    "tag_live_divisor_SS": 540,
+    "tag_all_port_bytes": 1536,
+    "status_3": 702,
+    "tag_budget": 720,
+    "tag_actual_SS_alias": 192,
+    "status_5": 24,
+    "tag_IVT_frame_alias": 24,
+    "tag_port_bus_mutation": 72,
+    "tag_incoming_partial": 54
+  },
+  "limits": "AdditionalactualSS601C-6059-610A/currentDS/fullGPR-BP-IFDF-definedCF-FLAGS/maskF72ApostIDIV/actualSSdivisor reread afterquotientpublications/literalIVTindependentoffset-segmentcomparisons/40histogramwrites/orderedbyteports/actualfarRET-aftereffects/whole1MiBRAM. Budgets/portfailure/preIDIV/preRETqualifications separatefromsourceerror-return orhistoricalexceptiondelivery. No assignedclockunits/physical086Csemantics/realIRQ-nesting/allwriters-reset-lifetime/fullnativeproducer/core/P1-GATE/DOSsession-audio-game-fidelity; CGAbehindEGAclosure."
+}

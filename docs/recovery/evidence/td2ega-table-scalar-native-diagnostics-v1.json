@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 9,
+  "script_sha256": "fbc6b190185510e573a378dcca407e523e4db0e43f00b15477fbef8e61452823",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ad6cbe7c76c2089bad9aad69a5684391d4556817c78219e861b35436ec1c9e5f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_table_scalar.py",
+      "sha256": "1160ff0475d15f526f3ba8d96230e5e811c99f4fdbbf9acb4e01eff088decc48"
+    }
+  ],
+  "limits": "Nine native invalid bus/count/SP/null/selector/boolean-flag profiles before effects; separate from original semantics/caller/core/device/session/game/fidelity."
+}

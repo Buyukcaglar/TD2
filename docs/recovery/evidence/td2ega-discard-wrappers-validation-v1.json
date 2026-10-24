@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000062",
+    "FN-EGA-000110"
+  ],
+  "vectors": 4592,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "048bf3820693fce02c55c6ce406851ca11950a9999a8514e3adc6aca673edc91",
+  "source_sha256": "5ba3b079349b0456f0fb89ccfd92241c65c8fbc967a99edd727081519da07451",
+  "validator_sha256": "3aef91f3311ea21dbf6a23e99d8262ac88e46c0ea531094bb5214b46f0b18417",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 187508,
+  "instruction_sites_in_fence": 65,
+  "instruction_sites_exercised": 64,
+  "instruction_dispositions": [
+    {
+      "site": "06C9:74B3",
+      "disposition": "OriginalfatalpreCALLprefix/external16A7:0002notexecuted/noexecutionclaim."
+    }
+  ],
+  "fixture_coverage": {
+    "original_fatal_prefix": 296,
+    "actual_farCALLs": 7984,
+    "search_iterations": 6144,
+    "trim_iterations": 1864,
+    "CPU_bus_writes": 72944,
+    "DS_equals_SS_cases": 608,
+    "incomingDF1_cases": 2296,
+    "raw_root_returns": 24,
+    "entry_0_cases": 2296,
+    "alias_profile_0": 0,
+    "normal_final_ADD_carry_cases": 88,
+    "root_far_return": 968,
+    "entry_1_cases": 2296,
+    "prefix_call": 1744,
+    "prefix_scan": 620,
+    "prefix_trim": 552,
+    "unqualified_7864_farframe_prefix": 156,
+    "unqualified_74D3_farframe_prefix": 156,
+    "unqualified_0093_farframe_prefix": 72,
+    "unqualified_38F1_farframe_prefix": 12,
+    "raw_child_return": 16,
+    "alias_profile_1": 8,
+    "alias_profile_2": 8,
+    "alias_profile_3": 8,
+    "alias_profile_4": 8,
+    "alias_profile_5": 8,
+    "alias_profile_6": 8
+  },
+  "limits": "Actual0083-38D4/782C-7490/fullSS/currentDSdescriptorpointers/entry1deferredADDSP8/actualchildfarframes/CSB269wordwrap/cacheignorestatus-toptrim/globalCALL-scanbudgets/full20bitbus/CFIFDF/native1rawchildRETneverfollowed/native5preRETqualification/native6fatalpreCALL. No arena/size/descriptorbounds-storage-lifetime-writers/exclusion/CPU-A20/fatalcleanup/core/resource/CGA/session/gameplay/fidelity closure."
+}

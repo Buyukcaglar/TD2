@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000372",
+    "FN-EGA-000373",
+    "FN-EGA-000376",
+    "FN-EGA-000377",
+    "FN-EGA-000379",
+    "FN-EGA-000382"
+  ],
+  "result": "pass",
+  "vectors": 605384,
+  "native_only_diagnostics": 1,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a69d0b7e4666ca0b6d7e55398c59f1e56cab1d7bf5a1d4c26932297a6749e5e7",
+  "source_sha256": "b787378cb4007d82e7c6e6ee3d9705d8f9066efe9fac9e38410c5f8a5ebcbd98",
+  "validator_sha256": "97d8b1594bebeb3fe5039f290a79db6aae86874afdd42de05bc7e49c4c7c449e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_targets.py",
+      "sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2"
+    }
+  ],
+  "original_instructions_executed": 10782716,
+  "fixture_coverage": {
+    "all_scan_AX_words": 131072,
+    "all_deceleration_words": 131072,
+    "all_interval_words": 131072,
+    "deceleration_boundaries": 2916,
+    "fixed_deceleration_boundaries": 2916,
+    "scaled_index_coefficient_boundaries": 107520,
+    "counter_signed_DEC_and_limits": 55296,
+    "interval_modes_and_thresholds": 41472,
+    "varied_scaled_states": 2048
+  },
+  "limits": "Six complete near controls andactual4612, serialized syntheticsharedgroup anddistinctES scanner views. AllAX/target/intervalword domains, signedDEC overflow, computedindex/coefficient andstateboundaries; rawscanner targettable limitedtothreeobservedhandlers. ActualES/DS callercontext/tablewriters, resourcefield schemas/units, IRQ/fullstate/game/fidelity remainopen; incidentalflags andnativeunknown-target diagnostic separate."
+}

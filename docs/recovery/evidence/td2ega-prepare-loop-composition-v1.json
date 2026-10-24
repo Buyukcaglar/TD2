@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 1440,
+  "script_sha256": "8a99c3d0736e83f5619fc309dce495cdbb9b9008c95287a9d4242e16122e5109",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "native_libraries": [
+    {
+      "path": "analysis/build/state-sequences-repro/td2ega_state_sequences.dll",
+      "sha256": "f5af29b590a6145d709380533ea2e48d881d563548e53b338a8e1f9258f5ef02"
+    },
+    {
+      "path": "analysis/build/wait-latch-repro/td2ega_wait_latch.dll",
+      "sha256": "9b27ec20c8679fc53f53e0ef7aff825babbc2cc068fc5d7c85e79faa3cde8124"
+    },
+    {
+      "path": "analysis/build/wait-control-repro/td2ega_wait_control.dll",
+      "sha256": "eb34769e316cf2f789d7929ca986f3744c1e31d2931728d04085bd50896039f5"
+    },
+    {
+      "path": "analysis/build/input-bridge-repro/td2ega_input_bridge.dll",
+      "sha256": "4be54572a011df0f5a4208533f26d1a44f333732bfe91784e121d84880e52e1b"
+    },
+    {
+      "path": "analysis/build/keyboard-repro/td2ega_keyboard.dll",
+      "sha256": "76fae7ec4b75c483cc88cc147f464267599f39485ff89bea4068846a3c01b87f"
+    },
+    {
+      "path": "analysis/build/bios-block-repro/td2ega_bios_block.dll",
+      "sha256": "5b1cac688211ea183c3ba68ff80983b390be706526b0bd3acb923853c3322463"
+    },
+    {
+      "path": "analysis/build/state-loop-repro/td2ega_state_loop.dll",
+      "sha256": "1a4c7bcd9cee9b3698d760979a07f049a2f14f73f7bcc43f37f5e545accaf0cc"
+    },
+    {
+      "path": "analysis/build/state-messages-repro/td2ega_state_messages.dll",
+      "sha256": "45509894feaadf906bb519040a8b427b623f4befc2d855633b46326351984dd8"
+    },
+    {
+      "path": "analysis/build/prepare-records-repro/td2ega_prepare_records.dll",
+      "sha256": "eb9e8e0a3f3475cd02083dd61adb50b546539693b70c1a329f4caff45bab1f81"
+    },
+    {
+      "path": "analysis/build/loop-prepare-repro/td2ega_loop_prepare.dll",
+      "sha256": "4147192d6706d9b3159fae40c044249550a4c1b4635ead41d5302854f98d6247"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_prepare_records.py",
+      "sha256": "871b2def19017d942879051e818169ea40b6da839b673f8cbbb330925b375474"
+    },
+    {
+      "path": "tools/validate_loop_prepare.py",
+      "sha256": "3a34f64777f5530e2e57c518adbc9b2c02b11d7e5996112a4b83db80ac5d8000"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    },
+    {
+      "path": "tools/validate_state_messages.py",
+      "sha256": "d8e8cca9a85ab0371e19ed936e9dc962eb1f1bf6377f62b533e80f71a781a477"
+    },
+    {
+      "path": "tools/validate_wait_control.py",
+      "sha256": "89b440d8e0ab395505e5b6d6a4a54b83cd85cf7f12a4ec0b4508f458e17e983b"
+    },
+    {
+      "path": "tools/validate_input_bridge.py",
+      "sha256": "d7a431f9ab538c76d3944cb0e08d925a6d82d4f15e4927b80449a35575bcb488"
+    },
+    {
+      "path": "tools/validate_keyboard.py",
+      "sha256": "b0c8613e11e8deeee2b341faaa7e037fe66cc19961f9170b5eed4bb783408144"
+    },
+    {
+      "path": "tools/validate_bios_block.py",
+      "sha256": "7f95d9761c78be7061d178f2088d995b758ad64efddd1c48597c3e4ac7e4bb47"
+    }
+  ],
+  "original_instructions_executed": 3240144,
+  "fixture_coverage": {
+    "byte_source_samples": 36096,
+    "state_2": 480,
+    "returns_state_0": 720,
+    "same_DS_SS_0": 720,
+    "counter_boundaries": 19440,
+    "BIOS16_actual_handler_calls": 8400,
+    "BIOS10_ABI_calls": 3840,
+    "returns_state_1": 720,
+    "same_DS_SS_1": 720,
+    "state_4": 480,
+    "state_9": 480
+  },
+  "limits": "Actual1B2C->1E59+780E and2089 plusreviewedstate/platformbodies:27entryfence/10native libraries. SSpreparer versusDSlooprecords, exactserializedbyte-source consumption/fixturecursor, bothmutabletails andsyntheticcounter/installed69B7 bodies compared. Interveninggraphics/root/BIOS10/formatter leaves ABImocks; actualDS-SSprovenance/reset/interleaving/resourcebounds/units/IRQ/core/fullstate/game/fidelity remainopen. 2089nonconsumption isfixture-scoped, notuniversalindexedalias proof. Separate fromhelper totals."
+}

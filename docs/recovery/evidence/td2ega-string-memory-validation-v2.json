@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000326",
+    "FN-EGA-000327",
+    "FN-EGA-000328",
+    "FN-EGA-000337",
+    "FN-EGA-000338"
+  ],
+  "vectors": 11600,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "962fd011ea4aa791fbdc4fca3cc350f1b789064e01911495259dc8e41e3e1166",
+  "source_sha256": "448034c548fafa78df75074e8d19a44fece3e8d8a30bfe8cbdf05edf20c4a3fa",
+  "validator_sha256": "c931aea62c4ccacaa5d9a1902c9b901486e12ed5ddacc505c1872fc698720d9f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 8986320,
+  "instruction_sites_in_fence": 134,
+  "instruction_sites_exercised": 134,
+  "fixture_coverage": {
+    "prefix": 5692,
+    "raw_far_returns": 88,
+    "operations": 4040328,
+    "bus_write_events": 653752,
+    "reverse_DF_fixtures": 5800,
+    "entry_0": 2320,
+    "far_returns": 5908,
+    "entry_1": 2320,
+    "entry_2": 2320,
+    "entry_3": 2320,
+    "entry_4": 2320
+  },
+  "limits": "Actual near currentDS copy/tail-copy/compare/bytecase-compare/fill algorithms, incomingDF, word EA and sequential byte/word transfers, actual SS savedBP and raw far return operation. Full bus/GPR/BP/CFIFDF. Native before-element prefix separate. Caller capacity/NUL/DF/otherFLAGS/writers/lifetime/core/resource-fedP2/P3/device/session/game/fidelity remain open; no original source C types or host string substitutions inferred."
+}

@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000155",
+    "FN-EGA-000410",
+    "FN-EGA-000411"
+  ],
+  "vectors": 41612,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "34f7f6f98c8eedcf04d31ab59865cc268bfa5bdabe2a2ccf34ebbed113a0a1f4",
+  "source_sha256": "75feb51218b032b693376169fab985e8ec283e000e66eb97593bf91280512563",
+  "validator_sha256": "df8258265d178161ee62ce29734299c0862373f41d906f14c88018f5e0932853",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_key_dispatch_bus.py",
+      "sha256": "1b6151044f9ae21dc38d7392b535bb1dcad3118c9b88eda63601804268e24c66"
+    },
+    {
+      "path": "tools/validate_gameport_bus.py",
+      "sha256": "746801806e2bbcfd6bdecf83d9b70858ad1fea14a6fb08068e55e27c68606492"
+    },
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-keyboard-bios-bus-validation-v1.json",
+      "sha256": "ed0c13bd506a2731e05da66922826e6ca13d45fbbe33bed518f227960f9f92d2"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-key-dispatch-bus-validation-v1.json",
+      "sha256": "78b5b0bd909d9efdb3fe2b6218eedbd05f2117702f6ac11fabd3f8e96877576d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-gameport-bus-validation-v1.json",
+      "sha256": "fd95bdd30b0cd4cfd38a7ba5be731def35bada048059979e6ef229a1f1eab472"
+    },
+    {
+      "path": "analysis/reviews/input-frame-flags-frontier-v1.json",
+      "sha256": "3c502789b2d5d3640adf38b9e06fc1a2d78ce50b4c4b966119327af60e05f665"
+    },
+    {
+      "path": "analysis/history/validate_input_poll_bus_attempt_v1.py",
+      "sha256": "6418ee11892ced71b908f8d84fad79e5522049a0283ceee5a23e7873d95e08d2"
+    },
+    {
+      "path": "analysis/history/input-poll-AF-hook-probe-v1.json",
+      "sha256": "6490c526d80215e9f5d6dae0b81bc6bf7af96d3bbaa8e183948cc7e2ecf82b7b"
+    },
+    {
+      "path": "analysis/reviews/probe_input_poll_af_hook_v1.py",
+      "sha256": "de8f9b0638d79f5e9633643ccb996ea54ac182cceaab1c385af2b33bcda21f19"
+    },
+    {
+      "path": "analysis/history/input-poll-bus-probe-difference-v1.json",
+      "sha256": "0b608ce535994746decf5acaf44abda4ed82f109fb10fcd9cb6d9e7a0f9c2f24"
+    },
+    {
+      "path": "analysis/reviews/probe_input_poll_bus_diff_v1.py",
+      "sha256": "eb05417dffba78537f86184a27ac3bf29a06c9fc0453f9a5cfa4b7f770367a29"
+    },
+    {
+      "path": "analysis/history/input-poll-bus-validation-refinement-v2.json",
+      "sha256": "07a1a71054f9309bb0bad40615dccd847fd373798b485c60f9eb656257e9ca80"
+    },
+    {
+      "path": "analysis/history/validate_input_poll_bus_attempt_v2.py",
+      "sha256": "96a89ea8eae2e2cd99923458b91ae0ff3c0a9c75b44cfcb7a68a01112ab28d2d"
+    },
+    {
+      "path": "analysis/history/input-poll-bus-validation-attempt-v2.json",
+      "sha256": "a421fe2d023c89a9e766d408161ef3d8da1090f0e69f90f5ccfcc9a1f53fa337"
+    }
+  ],
+  "original_instructions_executed": 3005590,
+  "instruction_sites_in_fence": 273,
+  "instruction_sites_exercised": 273,
+  "unreachable_under_INT16_operation_profile": [
+    "06C9:69C8",
+    "06C9:69CB",
+    "06C9:69CD",
+    "06C9:69E9",
+    "06C9:69EC",
+    "06C9:69F0"
+  ],
+  "synthetic_callback_farRET_operations": 5510,
+  "fixture_coverage": {
+    "entry_0": 12070,
+    "AF_choice_0": 20806,
+    "root_RETF": 35616,
+    "actual_far_calls": 15512,
+    "actual_69B7_entries": 31500,
+    "actual_near_callback_CALLs": 5510,
+    "modeled_INT_frame_writes": 94500,
+    "CPU_and_modeled_INT_writes": 303564,
+    "port_reads": 203644,
+    "DS_equals_SS": 24902,
+    "changed_root_coordinates": 176,
+    "normal_AF_undefined": 21640,
+    "normal_AF_defined": 13976,
+    "initial_AF_unknown": 6144,
+    "normal_consumed_ADD_SP2_OF1": 48,
+    "lookup_CMP_boundary_cases": 400,
+    "AF_choice_1": 20806,
+    "entry_1": 9922,
+    "entry_2": 19620,
+    "raw_child_return": 1708,
+    "prefix_3": 3656,
+    "prefix_5": 632
+  },
+  "limits": "ThreeadditionalactualSSinputroots+actual69B7/6528/6686/273admittedsites; modeledINT16FLAGS-CS-IP/IF-TFentryframe, actualhandlerIRET-vsRETF2 andfullflagword-validity withexplicitundefinedAF0-1 analysischoices. UndefinedAF validitytrackedwithoutCODE-hook EFLAGSwrites; explicitAFvaluechosenatmodeledINTFLAGSstorage orsyntheticcallbackboundary, nothistoricalCPU qualification. ExactpriorCODE-hookEFLAGSconditional-executionfailureandfreshuntouched-backend128caseprobe preserved; recoveredC-DLLunchanged. Earlierfullv2all40284casesmatched267sites/missing6counterflushsites; archivepreserved and664casesperloadaddzero-countdowncandidate-flush plusADD-SP2-OFandlookup-CMPfullFLAGboundaries. FullRAM/GPR-BP-CFIFDF/definedfullFLAGS/control/orderedportrequests/CPUplusseparatemodeledINTframewrites. Keycallbackbodies remainABIeffects+privategenericRETF, syntheticreturnsnotoriginalbodyinstructions. No realIVT/INT-IRQ/PIC/DOS-device/session/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity; otherCPU/trap/reservedprofiles andactualcaller-allwriters-lifetime/exclusion/whole420A-403B-core/P1-GATE open. Oldsources-DLL-receiptsfrozen/same3originalentriescountedonce; physical086Cunassigned/CGAbehindEGAclosure."
+}

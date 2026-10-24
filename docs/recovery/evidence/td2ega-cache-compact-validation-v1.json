@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000183",
+  "result": "pass",
+  "vectors": 1833,
+  "native_only_diagnostic_cases": 5,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 56791,
+      "length": 109,
+      "unrelocated_sha256": "285d87ffff47de852511fa36e96692b59d3bd3ac3f9aac6789da66ff127796ca"
+    },
+    {
+      "module_offset": 56512,
+      "length": 83,
+      "unrelocated_sha256": "00e1b6f9fddf61341dfa884a9dfa1ecd0f924ef82b9f0bc3521ac3fa15ff51b5"
+    }
+  ],
+  "library_sha256": "4b6265e7136a3b9b3db1b07ae7770cbe870c5f9a011c9dab3d126aa6d9f6ee34",
+  "source_sha256": "d7553649f01c3afb07c56b1f7d90c01ded7a148afa3ee0ec9ab72fce854b463a",
+  "validator_sha256": "4b19add815c257cd13fd34ea9fdbe1ed57fb167be114653f045c6fece951c274",
+  "validator_dependency": {
+    "path": "tools/validate_cache_allocate.py",
+    "sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da"
+  },
+  "original_instructions_executed": 2125867,
+  "fixture_coverage": {
+    "empty_sentinel": 1,
+    "actual_payload_moves": 9565,
+    "all_tenrow_hole_masks": 1024,
+    "all_boundaries_status_bits": 294,
+    "varied_sizes_statuses": 512,
+    "move_crosses64KiB": 1,
+    "zero_size_retained_move": 1
+  },
+  "coverage": [
+    "Actual original backward-copy instructions, no mocked moves",
+    "All1024 ten-row hole masks",
+    "Every cached boundary withsix status values",
+    "512 varied size/status snapshots, zero retainedsize and64KiB-crossing move",
+    "Whole DS64KiB and synthetic128KiB payload/guards",
+    "Farreturn, preserved registers/segments, conditionalES/DF effects"
+  ],
+  "limits": "Stable exclusively owned nonwrapping synthetic arena/pool only. No real resource, completecaller lifetime/exclusion, DOS, codec, renderer/audio orgameplay acceptance."
+}

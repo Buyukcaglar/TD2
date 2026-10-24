@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000124"
+  ],
+  "vectors": 4164,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1da658bfd7602b3f519f2206d354ffdfe10a1ca4d1edfdbbc7ce57989d24d354",
+  "source_sha256": "277a2e008988136411f4a8dc938b2b1ded12fc5f88f14959ef32c6adc6dc2f47",
+  "validator_sha256": "e6b292caf3d778f8b5e052c0d6f0e6a4b5ce2e75d4136573e750a908abed9326",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validate_timer_control_bus.py",
+      "sha256": "378971d63e2554b02b2cbd3439e0bef5fcdc098aca05d544a51a584ee5fbd60e"
+    },
+    {
+      "path": "tools/validate_timer_callback_bus.py",
+      "sha256": "12c05b9cf2c286a84287ce40c9e18949a1c76108d244fc8e41058af4c83e9025"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/timer-startup-tail-bus-build-setup-v1.json",
+      "sha256": "c6bdaa98b7821d25b0e26ac8b7810eab4e7e1b10f71dcf257f6d8cf0a95cfce6"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-control-bus-validation-v1.json",
+      "sha256": "ed58bbf7434ec4138c1be1d3a651ab690f5c192ac690ac4444649560945dd6e6"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json",
+      "sha256": "8c5a29edf25cd7e486a9d3480694d8f10b9a30a0d03638e0edfb4112beccf10b"
+    }
+  ],
+  "original_instructions_executed": 433092,
+  "instruction_sites_in_fence": 81,
+  "instruction_sites_admitted": 80,
+  "instruction_sites_exercised": 80,
+  "root_instruction_sites_in_fence": 12,
+  "root_instruction_sites_exercised": 12,
+  "preCALL_boundary_sites": [
+    "06C9:6164"
+  ],
+  "fixture_coverage": {
+    "status_0": 1314,
+    "tag_base": 256,
+    "stage_0": 2016,
+    "CPU_writes": 149910,
+    "raw_ports": 19662,
+    "root_calls": 6348,
+    "DS_equals_SS": 1808,
+    "changed_root": 84,
+    "actual_published_6269_403B_sentinel": 1290,
+    "tag_actual_SS": 584,
+    "status_1": 192,
+    "stage_1": 1992,
+    "status_6": 88,
+    "stage_2": 128,
+    "stage_3": 28,
+    "status_3": 2570,
+    "tag_budget": 2560,
+    "tag_all_port_bytes": 512,
+    "tag_port_bus_mutation": 192,
+    "tag_physical_alias": 36,
+    "tag_partial_flags": 24
+  },
+  "limits": "Actualnative/source3FD9..3FF8registrationtail withactual601C/614Ccallee bodies/farCALL-RET/callerADDS P4FLAGS/wholeRAM-GPR-BP-CFIFDF-definedFLAGS/orderedports-independentCPUwrites. Sourceentry3FD9 is apartialtailof3F40, notcompleteinitialization. Budget/rawchild/fatalpreCALL6164 qualifications retainpartialstate; nofatalbody/actualIRQ-delivery-nesting/allwriters-reset-storage-lifetime-exclusion/core/P1-GATE/game-fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+}

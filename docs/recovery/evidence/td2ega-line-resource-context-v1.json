@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "4fdae58b12fe06e9dda68e18d2b8c85deb926e1a488e3189b8efeec2f496cfa5",
+  "spans": [
+    {
+      "id": "RS-DOS-000256",
+      "segment": 1737,
+      "offset": 34170,
+      "length": 8,
+      "sha256": "237ee2ad60c37d29a6b16156101c55987faede67a905daf2e64453b6db2035fb",
+      "consumers": [
+        "FN-EGA-000217"
+      ],
+      "observation": "Eight externalinitializedbytes atCS857A..8581 selectedby BX&7 andwordwrappednegative displacement. UsedasrawmaskedRAMbitinputs orbyteOUTvalues; no originalvaluesembedded/exported. Writers/actualdevice/resourcefedprofile pending."
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:858D",
+      "instruction": "mov ds, ax"
+    },
+    {
+      "site": "06C9:87D7",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:87DA",
+      "instruction": "mov al, byte ptr cs:[bx - 0x7a86]"
+    },
+    {
+      "site": "06C9:8865",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:8868",
+      "instruction": "mov bl, byte ptr cs:[bx - 0x7a86]"
+    },
+    {
+      "site": "06C9:88D0",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:88D3",
+      "instruction": "mov al, byte ptr cs:[bx - 0x7a86]"
+    },
+    {
+      "site": "06C9:8961",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:8964",
+      "instruction": "mov bl, byte ptr cs:[bx - 0x7a86]"
+    }
+  ],
+  "limits": "Staticspan/address/index/instructionreview only, no originalbytepayload. CodeusesCSsegmentoverride forallfourreads; DS=CSassignment doesnotreplaceexplicitSSBPcaller/local addresses. Actualwriters/capacity/device/renderer/resourcefedP2-01/06/09/P3-05/core/session/game/fidelity checks separate."
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "scope": "Static map identity, registry/edge coverage and selected raw-byte/relocation invariants only.",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "verification_script_sha256": "3caba5eb0778ecaf763e6b21634295e9a17ac84d05d470e72bbb3ef82c2d0dce",
+  "function_candidates": 359,
+  "registered_records": 359,
+  "indirect_sites": 36,
+  "sites_with_reviewed_mechanism": 36,
+  "sites_with_open_bounds_or_writers": 23,
+  "bounded_table_sets_checked": [
+    "06C9:6DE9",
+    "0432:206A",
+    "06C9:1432",
+    "06C9:2F90",
+    "13A8:1319",
+    "13A8:1AB3",
+    "13A8:2C5F"
+  ],
+  "main_near_calls_with_cs_frames": 8,
+  "ring_direct_call_sites": [
+    "019E:000A",
+    "0267:0A59",
+    "0267:19D8",
+    "06C9:1E79"
+  ],
+  "callback_segment_relocations_checked": 4,
+  "separate_gates": "Complete portable EGA/CGA recovery, runtime, rendering, audio and fidelity remain pending."
+}

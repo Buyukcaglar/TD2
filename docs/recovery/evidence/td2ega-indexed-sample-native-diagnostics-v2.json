@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 447,
+  "script_sha256": "32a319dcb27442e8907e04a1f054bb229bd9b87410b897e769cdca366a68148c",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ea79fed4125614fa23a0466511f78822d443a0d8c446f74a3477e4810f8dbe72",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_indexed_sample.py",
+      "sha256": "11c7b1154235da6c4d9b4583bc720ac849d1ced12b2ea04149e56bcd3d4014d1"
+    }
+  ],
+  "limits": "Native4C85all256maskedselectors/98BYTE-DIV-AHlookupcaseswithpoisonquotient-onlyslots/signedBYTEIMULcenters/inline-or-ESwidth/zeroESpointerflags/BPtoken-vs-preserved/cachedprechildBPforce-after-postBPchanges/actualSSnear-farRET-and-SIaliases/globalCALLbudgets/conditionalIF1-DF/SPdomains/zero-highDS only. Staticreview-originalcomparisonseparate; no actualobjects-capacities-table-allwriters-fieldunits-sharedsource-reset-IRQ-lifetime-fullcaller-core/DOSsession/renderer/audio/fullstate/gameplay/fidelity acceptance."
+}

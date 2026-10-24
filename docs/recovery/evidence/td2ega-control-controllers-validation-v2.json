@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000374",
+    "FN-EGA-000401"
+  ],
+  "vectors": 40928,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "89931e0de0125c964619c153dde4dae5469a636d70a272930365a5b822de083e",
+  "source_sha256": "85bf8a87e5a83ba6fc203decae1103ab64a3e0cf6b4e1ea71f3e322fcdb9761f",
+  "validator_sha256": "fbf99dd3a189b64c1d53e77c469723863a51d5140ff507c07d67eeb17cb81ca6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 827434,
+  "instruction_sites_in_fence": 163,
+  "instruction_sites_exercised": 162,
+  "static_site_dispositions": [
+    {
+      "site": "06C9:4580",
+      "scope": "From44EA entry/serializedflatRAMonly",
+      "reason": "Early336Fnonzero jumps44DE beforeactionpath; actionpathhasnowritesto336F/nocallsbeforelater336Ftest, so laternonzerobranch cannotexecute. Notglobaldead/IRQproof."
+    }
+  ],
+  "fixture_coverage": {
+    "prefix_outer": 12792,
+    "actual_outer_CALLs": 23912,
+    "actual4612_CALLs": 13176,
+    "bus_write_events": 161060,
+    "minimumSP20_cases": 6176,
+    "DS_equals_SS_cases": 20464,
+    "raw_root_returns": 156,
+    "entry_5A6F_cases": 20432,
+    "root_near_return": 17140,
+    "raw_outer_return": 1104,
+    "entry_44EA_cases": 20496,
+    "prefix_inner": 9376,
+    "raw_inner_return": 516
+  },
+  "limits": "Actual5A6F/44EA plus actualfrozencontrol_bus C, realouter/nestednearCALLframes andtailJMP/rootRET2, fullbus/SS/GPR/BP/CFIFDF/control/counts/noABImockorSSscratch exclusion. Sourceguard/counter/table/word-bytewrap/signed-vsunsigned effects retained, actualsourcecleared2F56 maychangevianearframe.4580boundedentry-specificstaticdisposition under serializedRAM; noIRQexclusion claim. NativeouterCALL/inner460Ebudgets distinct; rawtargets exposedafterRET neverfollowed. Actual403B/othercallers/writers/units/tablebounds/ownership/lifetime/IRQ/fullstate/core/resource/device/session/gameplay/fidelity open."
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000403",
+  "result": "pass",
+  "vectors": 14562,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "6bd1c5541ed109dbfc764f61919d26610ee213ef89c050e8c08a72312946a7e2",
+  "source_sha256": "ebc7cee4039c2bfa88a48bf200191a1fd8106bacb4a15e47fac39358bac1f8ac",
+  "validator_sha256": "7afaee6dbb1b516c97efe36fe3c37b77573097c60b803e56bbc7e54cc6ec0799",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    }
+  ],
+  "original_instructions_executed": 337260,
+  "fixture_coverage": {
+    "entry_counter_profiles": 1440,
+    "all_event_bytes": 2560,
+    "all_shift_bytes": 6144,
+    "loop_signed_boundaries": 264,
+    "effective_offset_wrap": 36,
+    "queued_pointer_transfer": 12,
+    "source_group_alias": 10,
+    "varied_finite_states": 4096
+  },
+  "instruction_sites_exercised": 140,
+  "instruction_sites_in_fence": 140,
+  "limits": "Serialized6269 syntheticfullbus/finiteeventprofiles with11commandtargets, threeJSloopcounters, queuedpointer transfers, source/groupaliases, ordinaryword/effectiveoffsetwrap, maskedshift andtypedports. Fullbus/register/IF/DF/farframe compared. No actualsourcecorpus/PIT/speaker/IRQ/timebase/audio/game/fidelity. Nonreturning profiles/nativebudget/adapterdiagnostics separate."
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_pool_setup.cmd",
+    "sha256": "8b57e651667583b306423f987fb2c7f3b2ef0e6b714cec1b70938341a081efcb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_pool_setup.c",
+      "sha256": "1a15c49ca2df6ad7d864f7f8e0f227d988e56b5b8372f946b67f5feea27c67ed"
+    },
+    {
+      "path": "src/recovered/td2ega_pool_setup.h",
+      "sha256": "ac7ac6994f6c901d5b73b5b6a873acae2f5835590eec9542edd2a0f71a4f6a68"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/pool-setup-repro/td2ega_pool_setup.dll",
+      "sha256": "4e42c5960d8150816b3c2ee5b9682e709284cd137ea40bd232f4dc2719758f8f",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/pool-setup-repro/td2ega_pool_setup.obj",
+      "sha256": "d60a9f5672b266345f3a7951813db5525066696729b394d042d051b9645aab3d",
+      "bytes": 5191
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/pool-setup-build-v1.log",
+    "sha256": "373dd3c1110132509837ab8dab0ae104beae57dc82e02e5fa620af5c7fb89dd4"
+  },
+  "limit": "Complete6F1E/6F86/6FD6, serializedsyntheticDOSAX/BX/CF andordinarygroupwindow, initializedskip/interiorreset andnearwordwrap. ActualDOSallocation/process/callerlifetime/IRQ/resource/core acceptance remainopen.",
+  "function_ids": [
+    "FN-EGA-000176",
+    "FN-EGA-000177",
+    "FN-EGA-000178"
+  ]
+}

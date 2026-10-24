@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "fd20dcfa07f84eb7dd6fbe9b455952d36f7593c7e090256a9fe9963f4c9f4ab3",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "76fae7ec4b75c483cc88cc147f464267599f39485ff89bea4068846a3c01b87f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_keyboard.py",
+      "sha256": "b0c8613e11e8deeee2b341faaa7e037fe66cc19961f9170b5eed4bb783408144"
+    }
+  ],
+  "limits": "Four native-only API/port diagnostics. No original instruction/PIC/keyboard/BIOS/IRQ executes; excluded from original differential totals/error equivalence."
+}

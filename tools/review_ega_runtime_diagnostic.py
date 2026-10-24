@@ -1,0 +1,19 @@
+"""Review raw XOR guard, actual message chain and callback/return ABI."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(image).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());md=Cs(CS_ARCH_X86,CS_MODE_16);targets={'13A8:0620','13A8:066E'};observations=[]
+    for f in g['functions']:
+        if f['entry'] not in targets:continue
+        for ip in sorted(f['instructions']):
+            i=next(md.disasm(image[0x13a80+ip:0x13a80+ip+15],ip,count=1));observations.append({'owner':f['entry'],'site':f'13A8:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str})
+    for ip,raw in {0x623:'b8fc00',0x62c:'833ece6d00',0x633:'ff1ecc6d',0x637:'b8ff00',0x643:'cb',0x671:'b94200',0x676:'fc',0x677:'ac',0x678:'32e0',0x67c:'80f455',0x67f:'7411',0x68f:'b80100',0x693:'cb',0x5b3:'0bc0'}.items():assert image[0x13a80+ip:0x13a80+ip+len(raw)//2].hex()==raw
+    callers=[{'owner':f['entry'],**c} for f in g['functions'] for c in f['calls'] if c['target'] in targets];unique=sorted({(c['site'],c['target']) for c in callers});deps=['docs/recovery/evidence/td2ega-runtime-message-build-v1.json','docs/recovery/evidence/td2ega-runtime-message-validation-v1.json','docs/recovery/evidence/td2ega-runtime-message-context-v1.json']
+    for path in deps:assert json.loads((ROOT/path).read_text())['result']=='pass'
+    record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'validator_dependencies':[{'path':p,'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p in deps],'instruction_observations':observations,'direct_caller_candidates':callers,'unique_direct_sites':[{'site':s,'target':t} for s,t in unique],'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'facts':['0620actual08B7messageFC/RETF2, then currentDS6DCEsegment-onlyguard and optionalfar[6DCC], thenactualmessageFF/RETF2. Callbackoffsetzero remainsvalid ifsegmentnonzero. RootMOVSPreturnedBP/POPBP/plainfarRETF4; noargumentcleanup.','066EPUSHSI/XORSI/CX42/CLD, XOR66currentDSbytesintoAH, thenAH^55. AHzero branchretainslastbyteinAL, soAX00last notBoolean. OnAHnonzero actual0620farcall thenactualmessage1 andMOVAX1. POPSI/plainfarRETF4.','0599/0582sharedcaller05AE immediatelyORAXAXat05B3, testsfullAX, notAHalone. OtherarithmeticFLAGSfrom066Eoverwritten byOR; fullAX/sourceownership/normalreturn domains stillneedcallerreview.','Syntheticcallback fullreturnedDS/positions/GPR/BP/CFIFDF andactualfarframe0637; syntheticDOS40 actualmessagebodies/nestedSS andRETF2. Rawchildreturns exposednotfollowed.','CurrentDS checksum-source bytes/writers/lifetime andcallback6DCC/CEdomains unresolved; no gameintegrity/timebase/IRQ semantics inferred. Existing0633indirectcomplete=false retained.'],'limits':'Static operands/caller-liveness fact and frozenmessage composition dependencies only. Actualsource/writers/callbackbody/domains/catalogend/key/NUL/DF/bounds/lifetime/otherFLAGS/core or realDOS/device/session/game/fidelity acceptance remainsopen.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','sites':len(observations),'caller_records':len(callers),'unique_sites':len(unique)}))
+if __name__=='__main__':main()

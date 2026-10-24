@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "b64f37d5ed17654d589ee1de664002569d018ae5e84a63766185d5ba29a6cbaa",
+  "function_ids": [
+    "FN-EGA-000147",
+    "FN-EGA-000148",
+    "FN-EGA-000149"
+  ],
+  "instruction_sites_in_fence": 91,
+  "direct_callers": [
+    {
+      "owner": "0000:07B3",
+      "site": "0000:081A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6059"
+    },
+    {
+      "owner": "0000:07B3",
+      "site": "0000:0BE4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:610A"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1C3E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6059"
+    },
+    {
+      "owner": "06C9:1B2C",
+      "site": "06C9:1BEB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:601C"
+    },
+    {
+      "owner": "06C9:3F40",
+      "site": "06C9:3FD9",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:601C"
+    },
+    {
+      "owner": "16A7:0002",
+      "site": "16A7:000F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:610A"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:01A6",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:610A"
+    }
+  ],
+  "all_word_IDIV_words": 65536,
+  "faulting_words": [
+    0,
+    1,
+    2,
+    65535
+  ],
+  "published_caller_case_corpus_ast_sha256": "65210299689143462f77814d0e5bac3248cf603fd7792663f2e3099c958ef713",
+  "complete_previous_case_corpus_retained": true,
+  "validator_dependencies": [
+    {
+      "path": "analysis/flow/indirect-v8/direct-flow.json",
+      "sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4"
+    },
+    {
+      "path": "analysis/reviews/timer-startup-bus-frontier-v1.json",
+      "sha256": "b0fe6df8a3c5d8f0060589055b961aa512daa0e34721f0aade6408dd8cfa9204"
+    },
+    {
+      "path": "analysis/history/timer-control-bus-build-setup-v1.json",
+      "sha256": "82fd5212677e5abb2ce1ad13fe9bc34109e48f9fa04859f088e2143fe5a2daf6"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.c",
+      "sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.h",
+      "sha256": "a4095c9e94db41a6be15fc4bee4d1083fdc25aacbb3fb29799745c35c068dba6"
+    },
+    {
+      "path": "tools/validate_timer_control_bus.py",
+      "sha256": "378971d63e2554b02b2cbd3439e0bef5fcdc098aca05d544a51a584ee5fbd60e"
+    },
+    {
+      "path": "tools/validate_state_tick_bus.py",
+      "sha256": "f7c9e21e978bff554b5d917a6c09a25ea08a6fa0b3288493b27c73d56a36f8c8"
+    },
+    {
+      "path": "tools/validate_timer_full_state_tick.py",
+      "sha256": "5c5bd1f8f72e639170973e8832a46beca355a7bdfba216c3811212b5e66ba500"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-full-state-tick-v2.json",
+      "sha256": "f5f4a415cb654d340b02eb3bfcaef51715619e654659cdc30a4808b186d201d5"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-idiv-reference-v1.json",
+      "sha256": "cf501c510ea26d39f05ad250dd3a0220c8d5dd6d4940fcebb16ddae859da6ab5"
+    }
+  ],
+  "facts": [
+    "601C/6059 save actual BP, then POP the actual word and plain farRET; no argument cleanup. 610A has no save and three farRET sites. CurrentDS and inheritedSS are independent; writes can alter later argument/IVT/root reads.",
+    "6059 literal signed DX:AX=0001:0000 division faults for0/1/2/FFFF only. Successful IDIV leaves arithmetic flags unexposed: F72A, including unknownCF. 6064/6067 publish quotient before606A rereads actualSS:[BP+6]. Later port40 uses the reread word, including aliases.",
+    "Offset and segment IVT comparisons are independent. Matching segment can skip installation even for a different offset. Cleanup requires both exact currentCS and61BF. Do not normalize these guards into an interchangeable whole-pointer test.",
+    "Entry and 40 histogram-head budgets and byte-port budgets are analysis boundaries. Port adapter writes are distinct from CPU writes; full RAM is compared, with no stack exclusion. Qualified preIDIV/preRET stops do not claim historical exception/wrap behavior.",
+    "Full published61BF->6269->403B corpus retains the exact nine AST case-generation nodes of accepted whole403B, all25024 cases/all8 stable forms/two loads. Parent SP is clamped68..FFE0 and actual403B SP is parentSP-22, preserving admitted aliases while adjusting endpoint fixtures.",
+    "Caller receipt covers all80 root sites/11rootCALLs/97472calls/448PUSHF/192actual780E/256nonlocal exits. 1309 of3024 union sites exercised; separate callee-unit coverage does not become whole-caller coverage. 2304 keycallback ABI-effects/genericRETF operations remain separate from actual callback bodies.",
+    "Original3FD9 producer16executions/3376instructions/78sites only seeds actual6269-403B publication. Native producer and614C liveSS publication lifetime/IRQ exclusion still need recovery. 614C unmasked6176-before6179 window is retained as a potential static window, not a proved historical failure.",
+    "No clock units/physical086C semantics, actual IRQ/delivery/nesting/allwriters/reset/lifetime/core/P1-GATE or game/fidelity acceptance. CGA remains behind EGA closure."
+  ],
+  "limits": "Static ABI/arithmetic/caller-corpus preservation review. Original/native comparison and native diagnostics retain their independent scopes; no native startup-producer acceptance."
+}

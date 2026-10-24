@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 48,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "0769e3db80040c707839a05e04368481f13e92fddfdf128e4e0b593adf8a699c",
+  "library_sha256": "5a90ce057789bf3daea826288f99d81171d7ee48e0459d7deefcace2dc776ec2",
+  "source_sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_control_bus.py",
+      "sha256": "378971d63e2554b02b2cbd3439e0bef5fcdc098aca05d544a51a584ee5fbd60e"
+    },
+    {
+      "path": "analysis/history/timer-control-bus-build-setup-v1.json",
+      "sha256": "82fd5212677e5abb2ce1ad13fe9bc34109e48f9fa04859f088e2143fe5a2daf6"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+      "sha256": "78117236182bdf110c11e81027cc15acddc83aba3b2fbf06c6356b0869e6c199"
+    }
+  ],
+  "limits": "Native-only invalidargument/budget/portfailure/preIDIV/preRET and partialFLAGS diagnostics; no source errors/historical exceptions/actualIRQ/core/game acceptance."
+}

@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_small_algorithms.cmd",
+    "sha256": "072722f7dd7a71f714ae7233d6e9ff72e901ca8120cc7b7f032e0b6cd1806b06"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_small_algorithms.c",
+      "sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.h",
+      "sha256": "d4bdef46a5afd3f4a7c9051a17765db281741dd6c9f21fd690c630675c661099"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/small-algorithms-repro/td2ega_small_algorithms.dll",
+      "sha256": "af839db0533e4561c5274c28dea305c096a4bb926cb7f29d3f93056acb4bd5e0",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/small-algorithms-repro/td2ega_small_algorithms.obj",
+      "sha256": "676104d376d33324fae0631e17d77c0c869029085ee4909ebf54c7541f7e7349",
+      "bytes": 5926
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/small-algorithms-build-v1.log",
+    "sha256": "a141343cdc6c1be57e54e19d47c477e5fb70db89948c84b4a1044a511fa0645c"
+  },
+  "limit": "Actual08CBsignedfieldclamp/52FDoverflow-awareSUB-JLE/JG/guardedbyteDIV/0432:0061underscoreandminimum18pad withactualSSwordcounter rereadsafterstores. Fullbus/SSsaves/near-farframes/GPR/BP/CFIFDF/control, wordwrap/signedcounternegativepadding andaliases retained. 5303unreachablefrom52FD becauseadjacentJLE/JGcomplementarywithoutflagsetter, notglobaldead. Nativebeforelabelscan/store budget separate. Actualcaller/fieldunits/bounds/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000072",
+    "FN-EGA-000392",
+    "FN-EGA-000032"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-small-algorithms-context-v1.json",
+    "sha256": "b8f6c7402adc07330092645c0e493cc62f9d46b1dfab9800fe2c89b54e6d9fbe"
+  }
+}

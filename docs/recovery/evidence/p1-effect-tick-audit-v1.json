@@ -1,0 +1,487 @@
+{
+  "date": "2026-10-13",
+  "scope": "Recovery evidence/custody/dependency audit; not a game runtime or fidelity test.",
+  "result": "pass",
+  "problems": [],
+  "original_files": 250,
+  "original_hashes_unchanged": true,
+  "original_mtimes_attributes_unchanged": true,
+  "task_counts": {
+    "complete": 9,
+    "in_progress": 1,
+    "pending": 53
+  },
+  "active_requirements": 18,
+  "json_files_parsed": 258,
+  "local_links_checked": 252,
+  "function_records_validated": 439,
+  "resource_records_validated": 250,
+  "helper_checks": [
+    {
+      "function_ids": [
+        "FN-EGA-000003"
+      ],
+      "vectors": 131584,
+      "build": "docs/recovery/evidence/td2ega-byte-ring-build.json",
+      "comparison": "docs/recovery/evidence/td2ega-byte-ring-validation.json",
+      "scope": "Isolated function semantics only. No whole game/DOS/device session, no caller-level meaning, no cycle timing, no core integration; C does not expose CPU flags."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000181"
+      ],
+      "vectors": 1835,
+      "build": "docs/recovery/evidence/td2ega-filename-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-filename-validation-v2.json",
+      "scope": "Nonwrapping terminatedbyte spans only. Native missing-terminator diagnostics have no original-equivalence claim. No DOS/filesystem, resource codec, secondcompiler/host, game integration or fidelity."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000185"
+      ],
+      "vectors": 1258,
+      "build": "docs/recovery/evidence/td2ega-cache-query-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-query-validation-v1.json",
+      "scope": "Readonly stable snapshots andterminatednonwrapping names only. Nativeinvalid-bound diagnostics areoutside original-equivalence domain. No cachemovement/lifetime, DOS, codec, realresource or gameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000182"
+      ],
+      "vectors": 73654,
+      "build": "docs/recovery/evidence/td2ega-cache-allocate-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-allocate-validation-v1.json",
+      "scope": "Stable disjoint synthetic metadata and names. Failure stops before external fatal16A7:0002; no cleanup, termination, payload memory, DOS, codec, real resource, complete allocator lifetime or gameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000188"
+      ],
+      "vectors": 69209,
+      "build": "docs/recovery/evidence/td2ega-cache-discard-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-discard-validation-v1.json",
+      "scope": "Nonzero leftsentinel andbounded disjoint stable50row metadata arena. Externalfatal handler notexecuted. No payloadmove, cachelifetime, DOS, codec, real resource or gameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000179",
+        "FN-EGA-000180"
+      ],
+      "vectors": 220,
+      "build": "docs/recovery/evidence/td2ega-paragraph-copy-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-paragraph-copy-validation-v2.json",
+      "scope": "Nonwrapping disjoint livecode/stack andexternalbytepool only. Segment-word/physical wrap outside admitted domain. No real resource, cachemanager lifetime, codec, DOS, renderer/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000183"
+      ],
+      "vectors": 1833,
+      "build": "docs/recovery/evidence/td2ega-cache-compact-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-compact-validation-v1.json",
+      "scope": "Stable exclusively owned nonwrapping synthetic arena/pool only. No real resource, completecaller lifetime/exclusion, DOS, codec, renderer/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000184"
+      ],
+      "vectors": 3510,
+      "build": "docs/recovery/evidence/td2ega-cache-acquire-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-acquire-validation-v2.json",
+      "scope": "Exclusive nonwrapping bounded synthetic arenas/pools with no matching endsentinel andsufficient realrow/segment space. Allactualcaller lifetime/preconditions remainopen. No realresource, DOS, codec, rendering/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000186",
+        "FN-EGA-000187"
+      ],
+      "vectors": 8184,
+      "build": "docs/recovery/evidence/td2ega-cache-release-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-release-validation-v1.json",
+      "scope": "Bounded exclusive synthetic arena/pool prefixes only. Descriptor-boundary aliases preserved ratherthan presumedvalidintegration. Fullcaller preconditions/lifetime/exclusion andexternalfatal cleanup remainopen. No realresource, DOS, codec, rendering/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000205"
+      ],
+      "vectors": 797,
+      "build": "docs/recovery/evidence/td2ega-prefix-stage-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-prefix-stage-validation-v1.json",
+      "scope": "Bounded synthetic valid-code streams only; nativeinvalid/short diagnostics areoutsideoriginalerror equivalence. No suppliedresource decoded, fullformat/corpus orloader acceptance, sharedscratch reentry, realDOS, renderer/audio orgameplay/fidelity."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000169"
+      ],
+      "vectors": 848,
+      "build": "docs/recovery/evidence/td2ega-run-stage-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-run-stage-validation-v1.json",
+      "scope": "Bounded exclusive ordinary-memory synthetic profile withDS=SS andmarker counts1..11 only. Larger marker lists readpastcopiedheader intooriginalstack; nativeprofile diagnostic doesnotadmitthatbehavior. Nativebounds/work diagnostics outsideoriginalerror equivalence. No suppliedresource, fullformat/corpus, completecaller allocation, realDOS, renderer/audio orgameplay/fidelity."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000150",
+        "FN-EGA-000151"
+      ],
+      "vectors": 7232,
+      "build": "docs/recovery/evidence/td2ega-timer-callbacks-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-timer-callbacks-validation-v1.json",
+      "scope": "Only isolated five-slot callback metadata, opaque synthetic addresses and ordered writes. Add is unmasked; matchedremove masks writes then unconditionallySTI. Actualcallbacks, asynchronousIRQ/nesting, fulltimer/audio/device behavior, caller lifetimes and game/session acceptance remainopen."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000168"
+      ],
+      "vectors": 776,
+      "build": "docs/recovery/evidence/td2ega-raw-load-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-raw-load-validation-v2.json",
+      "scope": "Synthetic service profile preserves nonresponse DOS registers andusesordinarymappedbytepools; caller bounds/realDOS filesystem, fatalcleanup andcompleteplatform behavior remainopen. No suppliedfilebytesdecoded or game session. Nativeworkbudget/servicefault diagnostics areoutside original contract."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000141",
+        "FN-EGA-000142"
+      ],
+      "vectors": 1488,
+      "build": "docs/recovery/evidence/td2ega-file-paragraphs-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-file-paragraphs-validation-v1.json",
+      "scope": "SyntheticDOS serviceprofile/stackseeds only, normalreturn orfatalprefix. Seekcarry/rewind/close results ignored; headerCF1AX4 acceptance usesexplicitseed. ActualDOS ABI, fatalcleanup, everycaller allocation/profile andsuppliedresource/fullcodec/game/fidelity acceptance remainopen."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000189",
+        "FN-EGA-000190",
+        "FN-EGA-000196",
+        "FN-EGA-000197",
+        "FN-EGA-000198"
+      ],
+      "vectors": 15312,
+      "build": "docs/recovery/evidence/td2ega-audio-metadata-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-audio-metadata-validation-v1.json",
+      "scope": "Only disjoint syntheticsource/state/stack metadata contract. OriginalwordaccessatFFFF excluded; source/resultaliasing, actualcaller lifetimes/bounds, sequencer/IRQ/PIT/speaker/audio/device andgame/fidelity acceptance remainopen. Nativeoperationsserialized; IFoutputs preserveoriginalpolicy ratherthanclaimhostconcurrency."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000371",
+        "FN-EGA-000378",
+        "FN-EGA-000386",
+        "FN-EGA-000426",
+        "FN-EGA-000427",
+        "FN-EGA-000428",
+        "FN-EGA-000429",
+        "FN-EGA-000430",
+        "FN-EGA-000431",
+        "FN-EGA-000432",
+        "FN-EGA-000433",
+        "FN-EGA-000434",
+        "FN-EGA-000435",
+        "FN-EGA-000126"
+      ],
+      "vectors": 38198,
+      "build": "docs/recovery/evidence/td2ega-sim-primitives-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-sim-primitives-validation-v1.json",
+      "scope": "Fourteen isolated near entries, twelve nativeexports, synthetic64KiB data. State effects andnamed arithmetic outputs only; otherincidental flags/registers, validcaller/dispatch/record domains, fullsimulation/core/resource/game/fidelity acceptance remainopen. NoCPUinterpreter ororiginaltables inC."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000147",
+        "FN-EGA-000148",
+        "FN-EGA-000149"
+      ],
+      "vectors": 6656,
+      "build": "docs/recovery/evidence/td2ega-timer-control-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-timer-control-validation-v1.json",
+      "scope": "Serialized syntheticport/vector/data snapshots only. Divisors/rawcounterwords have nounitsassigned; external086C reader untouched. No realhardware/IRQ/oldhandler/cadence, fullconcurrency/caller/platform/game/fidelity acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000125",
+        "FN-EGA-000111",
+        "FN-EGA-000082",
+        "FN-EGA-000124"
+      ],
+      "vectors": 2080,
+      "build": "docs/recovery/evidence/td2ega-session-init-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-session-init-validation-v1.json",
+      "scope": "Four isolatedcompleteinitialization entries andnativehelpercomposition, serializedsyntheticgroup/port/vectorprofile. Byte-ring unchangedinallcases; otherindexedresetwriters notexcluded. Originalincidentalregister/flag uses, actualresource/SS/IRQ/caller/fullstate/game/fidelity acceptance remainopen."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000255"
+      ],
+      "vectors": 5792,
+      "build": "docs/recovery/evidence/td2ega-mutable-control-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-mutable-control-validation-v1.json",
+      "scope": "Serialized fixed suppliedstub/AX-onlyINT11 profile, readonlyignoredcomparisons, TF0/nonwrappingstack. Main/embeddedhelper plusseparate reset; noactualfirmware/disk/IRQ/hostselfmodification, supportedruntimeprofile/fullmutablegraph orcore/game/fidelity acceptance.086Csemantics unchanged."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000172"
+      ],
+      "vectors": 1960,
+      "build": "docs/recovery/evidence/td2ega-named-raw-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-named-raw-validation-v1.json",
+      "scope": "Complete6D18 composition, actual listed callees, synthetic serialized valid cache pools/name/DOS profiles. Segment-zero acquisition, partial failures, ignored seek/close carry, file-growth overwrite included. No real file decoded; caller pool/lifetime/IRQ guards and platform integration remain open. Fatal cleanup is fenced."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000173"
+      ],
+      "vectors": 2424,
+      "build": "docs/recovery/evidence/td2ega-packed-load-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-packed-load-validation-v1.json",
+      "scope": "Complete wrapper with actual listed original callees, synthetic serialized valid pool/DS=SS/codec/DOS profiles. Original ADDSP8, shifted SI/DI, count-vs-pointer returns and partial failure state preserved. No supplied resource decoded, actual DOS/IRQ/caller lifetime, full scratch-register/flag contract or game/fidelity acceptance. Native codec bounds/work diagnostics are outside original error equivalence."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000174"
+      ],
+      "vectors": 11784,
+      "build": "docs/recovery/evidence/td2ega-directory-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-directory-validation-v2.json",
+      "scope": "Literal directory code contract with synthetic ordinary-memory source/selector views, two load bases, optional/required policy, signed count/near-wrap and32bit arithmetic. No archive format admission, actual resource decoding, source/pointer lifetime, IRQ, fatal cleanup or game/fidelity acceptance. Host bounds/work diagnostics remain outside original errors."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000355"
+      ],
+      "vectors": 8000,
+      "build": "docs/recovery/evidence/td2ega-directory-batch-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-directory-batch-validation-v1.json",
+      "scope": "Complete16EB:000A/004C callers with actual directory callees and composed native helper. Serialized synthetic principalDS/group and independentSS, mutable selector/output/source aliases and near/word wrapping; each invoked selector nonwrapping4byte. No supplied archive, resource ownership/IRQ, fatal cleanup, rendering/game/fidelity acceptance. Native bounds/work diagnostics outside original."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000154",
+        "FN-EGA-000357"
+      ],
+      "vectors": 131104,
+      "build": "docs/recovery/evidence/td2ega-key-bindings-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-key-bindings-validation-v1.json",
+      "scope": "All65536 literal keywords at two loadbases plus32 completeinstaller cases; synthetic fullgroup, IF/DF, ignoredsegment and orderedwriters. Only six discovered calls have smallconstant keydomain. General negative-key alias writes are literal helper effects, not evidence of their reachability or ring reset. No actual keyboard/callback/IRQ, caller lifetime/platform/game/fidelity acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000156",
+        "FN-EGA-000412",
+        "FN-EGA-000413"
+      ],
+      "vectors": 136074,
+      "build": "docs/recovery/evidence/td2ega-gameport-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-gameport-validation-v1.json",
+      "scope": "Complete6686/680A/6828 bounded synthetic fullgroup andport201 streams, serialized noIRQ adapterprofile. Pollcounts, timeoutdefaults, signed/unsigned calibration andSUBoverflow, orderedIF/ports andscratchoutputs compared; no actual gameport timing/hardware, inputsession, caller/resource/IRQ or game/fidelity acceptance. Native service/budget diagnostics areoutside original."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000366",
+        "FN-EGA-000370",
+        "FN-EGA-000375"
+      ],
+      "vectors": 419868,
+      "build": "docs/recovery/evidence/td2ega-sim-targets-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-sim-targets-validation-v1.json",
+      "scope": "Complete near412C/4441/4588 code effects, serialized syntheticfullgroup including indexedpostwritealiases, signed/unsigned wrappedarithmetic andscratchoutputs. Alltargetworddomains, smoothing/oscillator/delta boundaries. No resource/table schema/physicalunits, completecaller/IRQ/state-machine, renderer/audio/game/fidelity acceptance; incidentalflagconsumers remainopen."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000153"
+      ],
+      "vectors": 262144,
+      "build": "docs/recovery/evidence/td2ega-key-dispatch-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-key-dispatch-validation-v1.json",
+      "scope": "Complete6528 dispatch control with all65536keywords, busy/clear guard, two loadbases andexplicit synthetic farcallback ABImocks. ActualPUSHsegment/nearCALL frame, SI/DI restore, argumentmask, group mutations andIF/DF compared. Callbackbodies/actualkeyinput/IRQ, alltablewriters, DS-changingcallback domains and game/fidelity remainopen; native callbackfault diagnostics outsideoriginal."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000155",
+        "FN-EGA-000410",
+        "FN-EGA-000411"
+      ],
+      "vectors": 16402,
+      "build": "docs/recovery/evidence/td2ega-input-poll-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-input-poll-validation-v1.json",
+      "scope": "Complete65C5/6601/6620 with actual dispatcher/gameport callees, syntheticBIOS/portservices andfarcallback ABImocks. DS=SS andindependentSS profiles, all1024directionmasks, BIOShigh/lowbyte domains, repeatmap andscratch/IF/DF. Fullgroup compared except72-byte live/historicalstackrange whenDS=SS, with farframes/argumentwitnesses checkedseparately. NoactualBIOS/input/device/IRQ, callbackbodies/fullcaller/resource/game/fidelity acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000372",
+        "FN-EGA-000373",
+        "FN-EGA-000376",
+        "FN-EGA-000377",
+        "FN-EGA-000379",
+        "FN-EGA-000382"
+      ],
+      "vectors": 605384,
+      "build": "docs/recovery/evidence/td2ega-control-ops-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-control-ops-validation-v1.json",
+      "scope": "Six complete near controls andactual4612, serialized syntheticsharedgroup anddistinctES scanner views. AllAX/target/intervalword domains, signedDEC overflow, computedindex/coefficient andstateboundaries; rawscanner targettable limitedtothreeobservedhandlers. ActualES/DS callercontext/tablewriters, resourcefield schemas/units, IRQ/fullstate/game/fidelity remainopen; incidentalflags andnativeunknown-target diagnostic separate."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000368",
+        "FN-EGA-000369"
+      ],
+      "vectors": 544544,
+      "build": "docs/recovery/evidence/td2ega-input-control-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-input-control-validation-v2.json",
+      "scope": "Explicit branch-form inputs; Complete4281/43C3 with actual4612/4441, serialized syntheticfullgroup, retainedbytehalves/indexaliases andBPclobber/preserve, signed/unsigned boundary andstatepublication. Actualresourcefield/table schema/units, callerflag/IRQ/fullstate/game/fidelity remainopen. NoBIOS/input/device ororiginalresource executes."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000344",
+        "FN-EGA-000364"
+      ],
+      "vectors": 423670,
+      "build": "docs/recovery/evidence/td2ega-signed-motion-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-signed-motion-validation-v1.json",
+      "scope": "Complete06B3:0008 and13A8:2EE8 withactualcallee-cleanmultiply, serializedsyntheticfullgroup. Arithmeticrightshift/CBW/CWD, wrappedabsolute8000/damping, productextraction/clamps, scratchoutputs/stacklocals andRETF8 checked. No originalphysicalunits/resourcefields/callerflag/IRQ/fullstate, renderer/audio/game/fidelity acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000367"
+      ],
+      "vectors": 190464,
+      "build": "docs/recovery/evidence/td2ega-input-update-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-input-update-validation-v2.json",
+      "scope": "Explicit424A/4275/42AD forms; Complete420A andactualfourteen-entrycalleecomposition with recoverednative input/control/motion helpers; syntheticBIOS/port/farcallback adapters, boundedscanner targets, DS/SS/ES distinct/shared profiles. Fullgroup except72byteSSframearea whenDS=SS; frames,BP/DI/scratch/IF/DF checked. NoactualBIOS/input/device/IRQ, callbackbodies/fullstate/core/resource/game/fidelity acceptance. Byte-ring notcalled orintegrated."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000176",
+        "FN-EGA-000177",
+        "FN-EGA-000178"
+      ],
+      "vectors": 137072,
+      "build": "docs/recovery/evidence/td2ega-pool-setup-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-pool-setup-validation-v1.json",
+      "scope": "Complete6F1E/6F86/6FD6, serialized syntheticordinarygroup/DOSAX-BX-CF profiles. IgnoredCF, retainedBX/AXlowthroughresizes, initializedskip, interiorstatusreset, near/wordwrap andallcapacityactivepointers. No actualDOSallocation/process/payload/lifetime, callerflag/IRQ/core/resource/game/fidelity acceptance; native service/budgetdiagnostics outsideoriginal. ReturnES0/nearoffset0 remain coordinates, nothostNULL."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000143",
+        "FN-EGA-000144"
+      ],
+      "vectors": 262882,
+      "build": "docs/recovery/evidence/td2ega-find-files-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-find-files-validation-v1.json",
+      "scope": "Complete5EF4/5F4E, serializedsyntheticDOS1A/4E/4F andfullgroup. GlobalDTA/path/basename ownership, CHattribute preservation,87byteprefix andliteral13byteforwardcopy/alias/wrap,near5D88/zero returns andconditionalES/DF preserved. NoactualDOSsearch/filesystem/version, callerinterleaving/resource/schema/core/game/fidelity acceptance. Native service diagnostics outsideoriginal."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000351"
+      ],
+      "vectors": 131986,
+      "build": "docs/recovery/evidence/td2ega-find-nth-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-find-nth-validation-v1.json",
+      "scope": "Complete16B8:0000 plusactual5EF4/5F4E, recoverednativecomposition andsyntheticDOSsearch responses. Signedordinaldomain,firstfailure-nextfallthrough, globalDTA/stalebasename andconditionalalias effects preserved. Syntheticnextsuccessafterfirstfailure isnotactualDOSbehavior orreachable ringreset proof; documentedvalidsearch-block/callerlifetime remainsopen. Nofilesystem/resource/IRQ/core/game/fidelity acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000362"
+      ],
+      "vectors": 13346,
+      "build": "docs/recovery/evidence/td2ega-music-tick-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-music-tick-validation-v1.json",
+      "scope": "Serialized75EA with synthetic20bit bus, explicit finite song/voice fixtures, source/group alias copies, effectiveoffset/ordinaryword wrap, register/IF/DF/farframe andtypedport effects. x86maskedshift profile, no actual PIT/speaker/IRQ/timebase, sourceformat/corpus/VOICES2bytebounds, timer exclusion, game/audio/fidelity acceptance. Nativebudget/adapterdiagnostics separate."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000403"
+      ],
+      "vectors": 14562,
+      "build": "docs/recovery/evidence/td2ega-effect-tick-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-effect-tick-validation-v1.json",
+      "scope": "Serialized6269 syntheticfullbus/finiteeventprofiles with11commandtargets, threeJSloopcounters, queuedpointer transfers, source/groupaliases, ordinaryword/effectiveoffsetwrap, maskedshift andtypedports. Fullbus/register/IF/DF/farframe compared. No actualsourcecorpus/PIT/speaker/IRQ/timebase/audio/game/fidelity. Nonreturning profiles/nativebudget/adapterdiagnostics separate."
+    }
+  ],
+  "scoped_static_or_synthetic_evidence": [
+    {
+      "path": "docs/recovery/evidence/td2ega-packed-loader-composition-v1.json",
+      "scope": "Only bounded synthetic literal/run andfixed3bit canonical-code fixtures, successful metadata/DOS service mocks. No supplied resource decoding, corpus/format acceptance, malformed/error/wrap coverage, real DOS session, fullcaller ownership, renderer/audio, gameplay orfidelity."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-main-review-v2.json",
+      "scope": "Static mainregions/branch/write review only. Callee contracts, variable/array domains, fullstartup-to-exit state validation, allownership lifetimes andruntime/fidelity remainpending."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-cache-callers-v1.json",
+      "scope": [
+        "Nearby pushes are syntactic context, not dataflow proof or a complete argument reconstruction.",
+        "Shared tails retain all owners without multiplying call-site counts.",
+        "No caller lifetime, fullstate graph, resourceformat, completecore, DOS orgameplay acceptance."
+      ]
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-session-resource-review-v1.json",
+      "scope": "Selectedstatic ownership/copy/register facts only. No completecaller lifetime, allocationbound, callbackexclusion, semantics ofallcopiedfields, statevalidation, resourceformat, runtime orgameplay/fidelity acceptance."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-main-mutator-validation-v2.json",
+      "scope": "Only isolatedloadedcopies withsyntheticINT11 responses, DF0 andsuccessfulfencedreturns. No actualBIOS/DOS/disk/session, entiremutablestategraph, supportededition/runtimeprofile, timersemantics, gameplay orfidelity acceptance. Initial-image staticdiscovery/tail tests remainhistoricalevidence, not latercaller-state acceptance."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-state-tail-modes-v1.json",
+      "scope": "Isolated18byteepilogue withsyntheticframe/state only; notwhole1B2C, livecaller/BIOS/DOS profile, mutabletransition/interleaving, gameplay orfidelity acceptance."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-retry-mutator-context-v1.json",
+      "scope": "Actual0477 helper/file success, main history and later state-machine execution are not exercised. Synthetic AX/INT11, isolated loaded copies, DF0. Stops before5D83; no timer semantics, DOS session, complete state-machine or fidelity acceptance."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-byte-ring-nested-v1.json",
+      "scope": "Synthetic one-level preserved-register nestedcall model only. No realIRQ delivery, actualcallbackguard feasibility, timing/rate, supportedgame schedule, wholefunctionreentrancy orcore/fidelity acceptance. Existing byte-ring C remainsunchanged andmodelsserialized invocations."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-byte-ring-caller-if-v1.json",
+      "scope": "Isolated slice beginsafter45FC; earlierpathguards, actualIRQdelivery/latency/PICmask, complete403Bcallbackfeasibility, game schedule andfidelity remainunverified. No timerfrequencyassigned."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-fatal-default-v1.json",
+      "scope": "Cleanup/formatter/diagnostic calls areABImocks; onlydefaultnullsignal/hook profile andsyntheticDOSresponses. Actualformattedbytes, drivercleanup, process/handle termination, installedhandlers/hooks andsupportedruntimeprofile remainopen. NoDOSprocess/game/session orfidelity acceptance."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-callback-lifetime-v1.json",
+      "scope": "Fenced caller tails/syntheticdata/ports only; no callbackbody oractualIRQ, earlier3F40/1B2C/sessionguards, completephaseownership/movingresourceexclusion, timerunits orgame/fidelity acceptance. StopsbeforeconditionalCLC/RETFepilogue."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-find-nth-native-diagnostics-v1.json",
+      "scope": "Three native-only API diagnostic cases with allzero syntheticgroup/adapters; no original instructions/DOS/filesystem execute. Not included in original/native differential vector count; no original error equivalence or runtime/game/fidelity acceptance."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-music-tick-native-diagnostics-v1.json",
+      "scope": "Four native-only diagnostics. No original instructions/device/IRQ executes; excluded from differential vectors and original error equivalence."
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-effect-tick-native-diagnostics-v1.json",
+      "scope": "Four native-only diagnostics. No original instructions/device/IRQ executes; excluded from differential vectors and original error equivalence."
+    }
+  ],
+  "git_whitespace_check": true,
+  "mutable_code_states_verified": 4,
+  "saved_near_return_mechanisms": 1,
+  "differential_vectors": 3684136,
+  "private_paths_ignored": [
+    "reference/dos/TD2EGA.EXE",
+    "analysis/derived/td2ega-v1/TD2EGA.unpacked.exe",
+    "analysis/ghidra-projects/TD2EGA.gpr",
+    "analysis/build/byte-ring-repro/td2ega_byte_ring.dll",
+    "analysis/external/msdos-2d04cacc/SYSCALL.txt"
+  ],
+  "native_summary": {
+    "exports": 79,
+    "original_entries": 86,
+    "comparison_suites": 37,
+    "vectors": 3684136
+  },
+  "historical_api_reference_verified": true,
+  "staged_file_count": 0,
+  "audit_tool_sha256": "c65ed6f082ac15b2fec1653efb7f2eb5083fa66db3e8ec77231f5516e3372e07",
+  "separate_gates": {
+    "phase0": "passed",
+    "EGA_unpack": "passed",
+    "C_helper": "compiled and differential-passed only",
+    "complete_EGA_core": "pending",
+    "DOS_game_session": "not exercised",
+    "visual_audio_fidelity": "not established"
+  }
+}

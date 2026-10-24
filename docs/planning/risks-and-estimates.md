@@ -2,6 +2,32 @@
 
 The order and final features are requirements; the implementation choices below are proposed baselines. No unresolved item requires a permission question during this planning task. Resolve each at its stated development gate using evidence, then obtain a product preference only where alternatives change the requested behavior.
 
+## Current remaining effort after P1-R04 (22 October 2026)
+
+[P1-R04 is complete](../recovery/kylofon-r04-reuse-decision.md) as a source-selection and planning decision. Ten bounded groups select six value-implementation groups covering eleven already-recovered entries and four support groups. The exact [reuse register](../recovery/evidence/kylofon-reuse-decisions-v2.json) and [origin manifest](../recovery/evidence/kylofon-reuse-origin-manifest-v2.json) limit branches, caller profiles and dependencies. Extraction/integration, larger families and existing phase gates remain open.
+
+The [effort review](kylofon-effort-review.md) and [work-package model](evidence/kylofon-effort-inputs-v1.json) cover all 54 remaining implementation/acceptance tasks exactly once, from the shared post-R03 state. No already-spent recovery or existing local adapter is counted as new reuse credit. The 11 sampled entries were already recovered here. Recorded machine build/comparison durations and two observed corrected semantic classes support technical feasibility; no human throughput was logged.
+
+| Route from the current checkpoint | Engineer-days before reserve | Five-day engineer-weeks | Admission status |
+| --- | ---: | ---: | --- |
+| Independent implementation using all current reference knowledge | 205–455 | 41–91 | Comparable remaining-work baseline |
+| **Currently qualified subset** | **203–461** | **About 41–93** | Current budget: 2–5 days gross credit less 3–8 days incremental extraction/bridge/provenance cost; net two days saved to six extra, midpoint two extra |
+| Broader EGA/game/format/host adoption | 185–410 matched scenarios | 37–82 | Conditional; 45–95 days gross credit less 25–50 extra adoption days, inclusive of the current subset. Paired saving 4–9 weeks only after admission |
+
+No substantial current total-project saving is booked. Adverse broad-adoption assumptions can erase its conditional benefit. These are engineering judgments, not statistical intervals, recorded human costs or calendar promises. Preserve the independent fallback for rejected families. CGA, Amiga, scenery, live switching and independent acceptance receive no reduction. Phase order remains EGA -> CGA -> all DOS resources -> native DOS -> Amiga -> switching/scenery.
+
+Keep discovery/rework reserve separate at 25–40% for additional findings beyond named base obligations. The current exact 203–461-day envelope becomes 50.75–129.08 weeks, approximately **51–130 engineer-weeks including reserve**. Known caller/ABI/resource/session obligations are already in the base packages. Re-estimate at P1-05 closure, full DOS corpus admission, first accepted native session and Amiga identity/mapping, using actual logged human effort. Earlier percentage sensitivities below are superseded as the current budget, and the initial 43–98-week whole-project table is a different historical starting point.
+
+## Historical pre-R04 assumptions and measurement limits
+
+The [completed P1-R02/R03 spike](../recovery/kylofon-r02-r03-results.md) supplies measured build work (35.585 seconds for direct compilation/linking) and representative validation (2,233 vectors, 116,990 original instructions, 291 corrected baseline disagreements, four excluded aliases), plus 380 separate support checks. These measurements establish selected admission outcomes, not an engineer-day throughput estimate or a verified percentage of total work saved. That pre-R04 constraint is resolved by the qualified selection and remaining-work model above; the observations do not establish human throughput.
+
+The [whole-repository Kylofon assessment](kylofon-reuse-assessment.md) recommends selective adoption of independently validated EGA candidate C, followed by reuse of its native host/game/renderer integration in the authorized phase. Those tasks are now complete within their bounded review/admission/selection scopes; actual source integration and whole-family acceptance remain open. This closes the missing-reference/planning gap; it does not close pending game recovery, CGA, complete resources or gameplay gates.
+
+Potential effort reductions are conditional planning assumptions for remaining covered implementation families:40–65% EGA translation/integration,35–60% DOS format discovery/implementation and40–65% native EGA scaffolding. No reduction is budgeted for missing CGA/Amiga/switching features or independent acceptance. These are not measured results or percentages of the entire project. The assessment provides a weighted example and a proposed5–10engineer-day admission spike. The current model above replaces these percentage assumptions for budgeting. Do not subtract historical whole-phase estimates from a new guess or treat already-spent work as a future saving.
+
+New risks: fixedDS/SS and synthetic stacks can narrow accepted raw contracts; timing/RNG policies can alter behavior; game-directory writes violate custody; copied text/tables/specs can carry original media; malformed-input checks and compiler/dependency pins are incomplete. All18 gap groups have task mappings and acceptance in the [gap register](evidence/kylofon-gap-register-v1.json). Preserve upstream MIT notices and exact origin/change records for imported files, and separately classify original game media.
+
 ## Decisions and open questions
 
 | ID | Current position | Resolution point |
@@ -48,7 +74,7 @@ The order and final features are requirements; the implementation choices below 
 
 These are engineering planning estimates, not measurements from a completed prototype or promises of calendar dates. They assume one experienced full-time reverse engineer/developer, approximately 40 hours per engineer-week, supplied usable media, no large unknown protection system beyond the observed loaders, and meaningful fidelity validation. User review, hardware access and missing input waits are separate elapsed time.
 
-| Phase | Initial effort range in engineer-weeks | Main uncertainty |
+| Phase | Historical initial effort range in engineer-weeks | Main uncertainty |
 | --- | ---: | --- |
 | Custody/tool/evidence bootstrap | 0.5 to 1.5 | Existing tool availability and edition decisions |
 | EGA portable C recovery then CGA comparison | 12 to 28 | Unpacked code complexity, indirect paths, arithmetic/scheduling and behavior evidence |

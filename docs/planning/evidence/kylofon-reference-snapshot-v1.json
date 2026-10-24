@@ -1,0 +1,1577 @@
+{
+  "schema": 1,
+  "inspection_date": "2026-10-22",
+  "repository_path": "reference/repos/kylofon-test-drive-2-sdl3",
+  "url": "https://github.com/kylofon/test-drive-2-sdl3",
+  "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "tree": "e3ce0a076b5aad678a18f60754d193647b2322a3",
+  "branch": "master",
+  "remote_head": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "commit_date": "2026-09-18T09:51:24+02:00",
+  "full_history": true,
+  "push_url": "disabled://read-only-reference",
+  "read_only": "All clone files including .git have Windows ReadOnly set; push URL disabled. Attributes are an accidental-write guard, not an ACL security boundary. No fetch/pull/edit/build/run in this clone.",
+  "tracked_file_count": 85,
+  "tracked_bytes": 2137578,
+  "repository_file_count": 113,
+  "tracked_files": [
+    {
+      "path": ".github/workflows/mirror.yml",
+      "bytes": 289,
+      "sha256": "6779f70acb19906aad535135ca7af66af0c415209b0f9a76ba0e94339ac4fc08",
+      "git_blob": "5e64c1074513da63a0af3848fed95b97b351b329",
+      "git_mode": "100644",
+      "lines": 14,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 408,
+      "sha256": "9364bbc41e8bcd995c9766561d97a1277820a17c6ca09656c633538505dc99cb",
+      "git_blob": "1b7af053fd7b4fa3fb1eee5fd5e16d5539456287",
+      "git_mode": "100644",
+      "lines": 20,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "FORMATS.md",
+      "bytes": 11726,
+      "sha256": "f6f5115f93fc4579efbd56acf8ca5d4275e51c211e81dee29136e42674acb3ce",
+      "git_blob": "9192cdf8ca28ff1b8221939d213858cda6bfa396",
+      "git_mode": "100644",
+      "lines": 185,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1240,
+      "sha256": "2263aab3114518b1bbafc67924f8d29f8548f3a112af54ae6b6e63673fda5ed3",
+      "git_blob": "8cf4d54a4727592017f9bae5766f3e9d066a9e9f",
+      "git_mode": "100644",
+      "lines": 25,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5266,
+      "sha256": "4190ccdd3b5267b3e5170868c3a7d782e3cfe2a172138cc033eba86f066230eb",
+      "git_blob": "82d5e4be180232bedaa19156294f4a4de1976492",
+      "git_mode": "100644",
+      "lines": 115,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "port/RE_GUIDE.md",
+      "bytes": 8624,
+      "sha256": "0f59e92b00916384ccb968a61b4eb7f151856b498a997f40055a6596a1ca46aa",
+      "git_blob": "e5b2e9b0b64cfa2d233026b87fc4a074ce908d71",
+      "git_mode": "100644",
+      "lines": 110,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/spec/game_flow.md",
+      "bytes": 100108,
+      "sha256": "17a15f853339341c8e559441925e1beb21740a13b70406d845fac23434b1f169",
+      "git_blob": "1b58295e834074e83f4bc2586263ce6f6936470f",
+      "git_mode": "100644",
+      "lines": 1794,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "port/spec/game_flow_symbols.csv",
+      "bytes": 10567,
+      "sha256": "458f5efa45b120794cccc92d020bf1d129e342a658cf3803f8286957acddebec",
+      "git_blob": "bb845864b020666d3c8b473aa45a4c0eb4d3213c",
+      "git_mode": "100644",
+      "lines": 174,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "port/spec/platform.md",
+      "bytes": 183600,
+      "sha256": "6cb15bd6aec50c91aef921ddf1412b6dc54177d7768ae49f670c3c16379bffcb",
+      "git_blob": "9c1949a44f65fe34b170db92903ba4d41d117e84",
+      "git_mode": "100644",
+      "lines": 2881,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "port/spec/platform_symbols.csv",
+      "bytes": 31155,
+      "sha256": "1457fb4c56b50f895198d4607826d646072b0847a9e1c4ddd062b87e02b84944",
+      "git_blob": "99e71d2889511231b08c8edeceb5b1256c8e27f4",
+      "git_mode": "100644",
+      "lines": 467,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "port/spec/scene_render.md",
+      "bytes": 89747,
+      "sha256": "912b8f4856d5acfb9a1e290632bd60e1d9b726f3a9a8fdcd92fbc1e37d72993e",
+      "git_blob": "b8e05fb1e1bfa4d8aba4d9902548494c98c3f84a",
+      "git_mode": "100644",
+      "lines": 1585,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "port/spec/scene_render_symbols.csv",
+      "bytes": 14707,
+      "sha256": "4a65f8d9521d17ccd4deadc3bc0f43283ff7c7c76a7d2382f7b9e124f81cb912",
+      "git_blob": "4968c2ce74f2c70fc4c09fd4afc90dea94546d3f",
+      "git_mode": "100644",
+      "lines": 300,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "port/spec/simulation.md",
+      "bytes": 91956,
+      "sha256": "b029e1dd146df1cb42f69ce7d26c1e74ce7421c00a75a109e36da6f9328b45b7",
+      "git_blob": "3b5e853cb8651b32901a9e4e8004c982ba757542",
+      "git_mode": "100644",
+      "lines": 1632,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "port/spec/simulation_symbols.csv",
+      "bytes": 12763,
+      "sha256": "ff2bf0e589ad077a731136a0aa3ac8d3f0a5dd3e2190d2f7c0e2c6a04c17caec",
+      "git_blob": "535a9dae28d233426eda28f09389923b44510b0f",
+      "git_mode": "100644",
+      "lines": 275,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "port/symbol_conflicts.txt",
+      "bytes": 5040,
+      "sha256": "049b0e0fbdabf7dc9d7387e35b78620aa2f4aa2fa6b19f3c3a4b93173778184b",
+      "git_blob": "890ea0824aa8bd48b53b8a782105aeceb88f76d9",
+      "git_mode": "100644",
+      "lines": 76,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/symbols.csv",
+      "bytes": 78299,
+      "sha256": "de22ff7296cb6c487791bc8902b4b58bc760ce8426079ec1e587b8dc7ffc2043",
+      "git_blob": "4d1c517adee052cf6c0171e465ce9290d9c19673",
+      "git_mode": "100644",
+      "lines": 1092,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/symbols_ghidra.txt",
+      "bytes": 30396,
+      "sha256": "51c4b2fe7e93993a2f01f00f84ca256765bb262e817573e898ad9fbd35acf51c",
+      "git_blob": "fec7359837b48f80e7a1eea6d58767860c919b69",
+      "git_mode": "100644",
+      "lines": 1091,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2cga_functions.csv",
+      "bytes": 23376,
+      "sha256": "4e5535713106d6395b178867cb21a15fc0815dfb07b4ddc37ab7096d28e8ba13",
+      "git_blob": "95f347f6b467afbb2d102ab788a8c7513773af59",
+      "git_mode": "100644",
+      "lines": 441,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2cga_functions.json",
+      "bytes": 229959,
+      "sha256": "e38fb290e97abfd7241bdda3754c5111f79ef9b5e04d92abf62bd853d0c47160",
+      "git_blob": "da7e8263e5db2b7e42b657eef5851934db448aec",
+      "git_mode": "100644",
+      "lines": 15621,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2cga_starts.txt",
+      "bytes": 2640,
+      "sha256": "6b1d57e63379ddcb79301bcb5fe17cc45a68ce0bacba6002115079202842c54e",
+      "git_blob": "56ead49c96fbabd1456121ddb7721faf791ec5be",
+      "git_mode": "100644",
+      "lines": 440,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2ega_functions.csv",
+      "bytes": 23650,
+      "sha256": "b9da14360fad424538ebc21b66b3de5ba94547f01c0dc2372dcc9c7e16ae7c08",
+      "git_blob": "23485d6c6e2a48bf36a3053917b2ed29f04c8a15",
+      "git_mode": "100644",
+      "lines": 445,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2ega_functions.json",
+      "bytes": 239466,
+      "sha256": "e70b874356d6675dfa3476714fbb25d475c8f38d9b3117fcef7dbe71d366f66a",
+      "git_blob": "53d24814af01ee49b00f55050b8c4ebbe3b9562a",
+      "git_mode": "100644",
+      "lines": 16273,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2ega_starts.txt",
+      "bytes": 2664,
+      "sha256": "0d91eb32c16811dbe9eff1cf6312f4ab2318448422aed049e54cdea607b8758d",
+      "git_blob": "45175fb8119e56806da0c579eae801863c263b15",
+      "git_mode": "100644",
+      "lines": 444,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2ega_td1_matches.csv",
+      "bytes": 2565,
+      "sha256": "65ecbe2d8a302d4014562dda4e256dd029a37a4055f775b773cce563aceafb90",
+      "git_blob": "14994c6a66ce3b2844de1bbed18f72e3da0d03cc",
+      "git_mode": "100644",
+      "lines": 54,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2tdy_functions.csv",
+      "bytes": 23500,
+      "sha256": "bac3118c842742b65b0f5802f5791f4b5fa35ae9d3aecfc9a529a0a95e0f0f2c",
+      "git_blob": "2c23d588c44b100d1be0cdda95bb40261f2af305",
+      "git_mode": "100644",
+      "lines": 443,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2tdy_functions.json",
+      "bytes": 232401,
+      "sha256": "28b6b5f2e304925edd3414343e24ecb2c0c021b1605b13463099936f8ecda733",
+      "git_blob": "ad533b238573c17cbf266995ab323bc98c50b18e",
+      "git_mode": "100644",
+      "lines": 15790,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "port/td2tdy_starts.txt",
+      "bytes": 2652,
+      "sha256": "8a4cdf1f73b8d1dd34916c524953a7e57e9f1da8569c35314197896ce9461b01",
+      "git_blob": "ea4da561c2b7bf3974a7fbc5d1569ed53bf496e7",
+      "git_mode": "100644",
+      "lines": 442,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "td2port/CMakeLists.txt",
+      "bytes": 1136,
+      "sha256": "5026720bbecf72a388165f2ce2b500684846df58a8764edacaf821cff38671c3",
+      "git_blob": "9fbf1a864f2cb6a32008cd33c28bc21613f77c6d",
+      "git_mode": "100644",
+      "lines": 30,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/PORTING.md",
+      "bytes": 8701,
+      "sha256": "ed95436e733a37d24b6a6e6d924a772f46d69d0287d4c629f1ff8a4abe07e481",
+      "git_blob": "c3749f46d4228b134d0c2eb90c2bf3947d04c7b0",
+      "git_mode": "100644",
+      "lines": 122,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/build.h",
+      "bytes": 806,
+      "sha256": "7a9e1c2e5ccf6c11e80ec737df7035c55e0213bcf9a4acbe08463fd7f16813d2",
+      "git_blob": "59343f5edab1f2c236cac4def374a732f54af0aa",
+      "git_mode": "100644",
+      "lines": 28,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/codeptr.c",
+      "bytes": 888,
+      "sha256": "929b7835d7bf0e5fbe9b1142e76c2fa95b22ace06c0aa1665e510903dd69844e",
+      "git_blob": "288b28e63353c67f99d6bc155836f0050bbe9acc",
+      "git_mode": "100644",
+      "lines": 34,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/codeptr.h",
+      "bytes": 1065,
+      "sha256": "dee073a212d3805fce3dee6b07c9e1adc972620831bb3a5d1b9dd9bb61e3401d",
+      "git_blob": "3b19bb8f1a27333073c6fa2f78e6be98d178772a",
+      "git_mode": "100644",
+      "lines": 21,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/game/flow.c",
+      "bytes": 21352,
+      "sha256": "a19205b0f22e26edb9e27525ea09daed4c2e30b1ec273744603145d279e7c636",
+      "git_blob": "d6c8276679fcda72891242de81aa37f1a9393999",
+      "git_mode": "100644",
+      "lines": 584,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/flow.h",
+      "bytes": 7830,
+      "sha256": "71445bb2de860bab06743b21c635a1f977d31629fd979d3fce1c5ddfd98f1e11",
+      "git_blob": "16d62dce130232c11b94f2e8ea6bf0046061bc71",
+      "git_mode": "100644",
+      "lines": 123,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/flow_scores.c",
+      "bytes": 6214,
+      "sha256": "1be7cb6ee6b1809e3a3f13b1fd6bbfd5c2328707393a4703606c523b82d33c2a",
+      "git_blob": "b59a0a9fbe3a070232b91c9edf97765829ce2930",
+      "git_mode": "100644",
+      "lines": 158,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/flow_screens.c",
+      "bytes": 25526,
+      "sha256": "d0384363077932541c9c970370ec41a4d357f5ffd2f8312b72594c21f52e93e8",
+      "git_blob": "867cfd0cf08ccb4266a8894ed5cb728685e41edd",
+      "git_mode": "100644",
+      "lines": 598,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/flow_stage.c",
+      "bytes": 28415,
+      "sha256": "ec077308fa13b0d2050f1cfbc60bbabd43e492bcf33da573d7b57a19079d2d1e",
+      "git_blob": "c937bf973d82ae614845dff90f472de3732ee2c5",
+      "git_mode": "100644",
+      "lines": 605,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/game.h",
+      "bytes": 1500,
+      "sha256": "54504269b0367de7351cf49cd69bf1276d97ffbc0c3a263ab751190fa336d7b1",
+      "git_blob": "902b8d73ef4e64406d67d85eb0fba016cc485080",
+      "git_mode": "100644",
+      "lines": 23,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/scene.c",
+      "bytes": 23158,
+      "sha256": "d9d533c3a3718fae8e8cfd6d217cbe461039c7330212a0048b8888f962b006fd",
+      "git_blob": "b679eaa75086ed91f27c67e62b44597f52530e20",
+      "git_mode": "100644",
+      "lines": 646,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/scene.h",
+      "bytes": 7603,
+      "sha256": "fa33672a312f5b2f068dffa6ed733fb4ac727c3ddd91ce4ae6cce8153f9ef82d",
+      "git_blob": "41f29199af93537e848cd2dc7239184cfd788d1a",
+      "git_mode": "100644",
+      "lines": 143,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/scene_cockpit.c",
+      "bytes": 11988,
+      "sha256": "aa77e6177f0ca1e5215eb82ac954d5b3b03d9a5a52cb74509dd76c526e848b7b",
+      "git_blob": "d5405609625c593a83e8e6424c3054aba2ef4751",
+      "git_mode": "100644",
+      "lines": 315,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/scene_draw.c",
+      "bytes": 8602,
+      "sha256": "d7293f98720f7f2c6ccaae7fc765973eb3dd17fc8494d3d41edf86e8b195835d",
+      "git_blob": "80fcf9c4fc8bb1a00d0c7159d0bce6e962102867",
+      "git_mode": "100644",
+      "lines": 205,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/scene_objects.c",
+      "bytes": 22673,
+      "sha256": "38ec90f3711e4864522cdf048ced08a9fd0f5aab6791c87997599840d6080075",
+      "git_blob": "976ef5905017ffd6fcc07bd19bc60bd50a484462",
+      "git_mode": "100644",
+      "lines": 547,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/scene_project.c",
+      "bytes": 16172,
+      "sha256": "dd2bba3e0aef654ebc03568fc13bae6e30970b2e27e2ca517375df3351f823ef",
+      "git_blob": "f428f81940a4a947212695b7214935628ad1b825",
+      "git_mode": "100644",
+      "lines": 408,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/sim.c",
+      "bytes": 21118,
+      "sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+      "git_blob": "036b78acb22773d65e68fa4cacfdb138f7ab8e9f",
+      "git_mode": "100644",
+      "lines": 570,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/sim.h",
+      "bytes": 10433,
+      "sha256": "7f3c822b6ca45502771792f60e2d914b3accff5e040388af5ed44536ca557771",
+      "git_blob": "ea0c9958d4033138fa1bb5b561715448906dbf1e",
+      "git_mode": "100644",
+      "lines": 158,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/sim_ai.c",
+      "bytes": 18697,
+      "sha256": "8f259c28a0408495e9651f9d13deb85268e530ad782e0abf1f90e49ebf07a9e8",
+      "git_blob": "5e841257c0c5e3c227e7dabc226d5a38b8ab5085",
+      "git_mode": "100644",
+      "lines": 507,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/sim_motion.c",
+      "bytes": 16696,
+      "sha256": "a0b7bfa6ca150b5ce8c182623150d8258ba01762ed7fb45f302fc775173ddf98",
+      "git_blob": "56e39b9b0e89deb1bdab69fc0e3b7e2d504505aa",
+      "git_mode": "100644",
+      "lines": 450,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/game/sim_traffic.c",
+      "bytes": 14015,
+      "sha256": "d795bd71ead5a075b2209bc7200fd859485a8c7e7ea53123f367914df8469fd3",
+      "git_blob": "9b9b32c8e6ece4e33db025ae89404154806cd054",
+      "git_mode": "100644",
+      "lines": 380,
+      "review": "docs/planning/kylofon-game-core-review.md"
+    },
+    {
+      "path": "td2port/src/host.c",
+      "bytes": 19448,
+      "sha256": "f8e88d7827f83c283899c63773b7c64d905da54ad37c777bf4692ca5501a0ce6",
+      "git_blob": "310b1be8336d3f02b6104135069f117a78366aca",
+      "git_mode": "100644",
+      "lines": 536,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/host.h",
+      "bytes": 4364,
+      "sha256": "a8d296f6def640590bc063eb5366c03c3d2c02cc840fcaf1a0bd5d21716be61e",
+      "git_blob": "29fd4bf2e1b743233b7c705e9834a8e4756ced81",
+      "git_mode": "100644",
+      "lines": 75,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/main.c",
+      "bytes": 2232,
+      "sha256": "6f35c607f91fd4614400a95723d3e042217a0181f3581977a3e306588506aa8e",
+      "git_blob": "a5a017de8f3e65e7536f201fa1bb34fd6890cc92",
+      "git_mode": "100644",
+      "lines": 61,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/mem.c",
+      "bytes": 7158,
+      "sha256": "7ae8673fc481804323987d29e272b74bda21b60bed1f086731cedcdb733056a5",
+      "git_blob": "89197e4723fe2d04ebe5a757620e48535ab95679",
+      "git_mode": "100644",
+      "lines": 180,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/mem.h",
+      "bytes": 6391,
+      "sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+      "git_blob": "8bce3c649146fd779857db512d90aae2629505f8",
+      "git_mode": "100644",
+      "lines": 115,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/gfx.c",
+      "bytes": 39654,
+      "sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+      "git_blob": "1dbb735bdc85f25e63e8c2da99a0032346f9e7a6",
+      "git_mode": "100644",
+      "lines": 1040,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/gfx.h",
+      "bytes": 10210,
+      "sha256": "4026bdee9808fe7f6471f78b2e033beafe26ecc60b20a7b9e1530d165f08e9b3",
+      "git_blob": "b0b8c388bf5303b855a42ab730d99bcc7ec0b6b2",
+      "git_mode": "100644",
+      "lines": 140,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/gfx_blit.c",
+      "bytes": 21458,
+      "sha256": "49007eb0db531df67250ce52862b5a2641df6d6dc356c2e54a49603559ff3047",
+      "git_blob": "0052aaf6a0919453d06af50ab3b39e4c119f4a60",
+      "git_mode": "100644",
+      "lines": 478,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/gfx_ega.h",
+      "bytes": 4410,
+      "sha256": "2e664386207dcb18b1fadfd62fa30e5119a6ae7928c7fd9e8df90b7415c01210",
+      "git_blob": "7be5c47213c4a5ce0f1ec9683a16c7d1933d2705",
+      "git_mode": "100644",
+      "lines": 108,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/input.c",
+      "bytes": 17705,
+      "sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+      "git_blob": "d06d1a2f27b3da56a17d2e1e9b7d4a4fa81d3e3e",
+      "git_mode": "100644",
+      "lines": 558,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/input.h",
+      "bytes": 4326,
+      "sha256": "cfa60582c4695d53853bd8ed49c503a998c5262173e6b68b3c0d8f02d7d58caa",
+      "git_blob": "4b04722a5712d386c8cb58372bf687cbebfb42c5",
+      "git_mode": "100644",
+      "lines": 66,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/prompts.c",
+      "bytes": 6369,
+      "sha256": "47e4a3a025d21c7775e9eb313f44f24b65703517e06876b8444ccdbe0ed92d9c",
+      "git_blob": "94c4cf0a237d70efeed6f33262b11da16d3e7f96",
+      "git_mode": "100644",
+      "lines": 177,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/prompts.h",
+      "bytes": 778,
+      "sha256": "7edfb2ef22a9a60cddc6ee2a9688274e5df44cdc7fd3b8ea8a2933d184e6b443",
+      "git_blob": "7d8c29476260b40d793821a1b77e5085844042fd",
+      "git_mode": "100644",
+      "lines": 11,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/res.c",
+      "bytes": 38031,
+      "sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+      "git_blob": "007e564a875d851c22dece28a61d42f01c7ec494",
+      "git_mode": "100644",
+      "lines": 1135,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/res.h",
+      "bytes": 8384,
+      "sha256": "735ca4840b8e4dfb52cd27103e1f6c0aa619f18b2f499cf75e0aa47b74fbe5e7",
+      "git_blob": "94755581725af82afafee975d6eddd114ecf23aa",
+      "git_mode": "100644",
+      "lines": 110,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/sound.c",
+      "bytes": 14057,
+      "sha256": "ee5f9711f1009e778491662269860d7960927d0b9312e60f0b19f48495669cf8",
+      "git_blob": "441f0f1cf8a7ad5afd57110d65dc15ef5c216249",
+      "git_mode": "100644",
+      "lines": 406,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/sound.h",
+      "bytes": 1893,
+      "sha256": "d25f6056b2d90b88a0c77ca9ff28b586bcef850f922b33776721bb5f4136819c",
+      "git_blob": "8a303d7c32607fed5686bd90c4a55328ee023ca7",
+      "git_mode": "100644",
+      "lines": 32,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/timer.c",
+      "bytes": 8581,
+      "sha256": "83516651e2a1409ad0ab02e314ebb73e00a0ea90a45ef0ba0424644e0ecd3d4a",
+      "git_blob": "12b2fe2bb2552e2b6e3f8ec1dad0028aa24099f5",
+      "git_mode": "100644",
+      "lines": 306,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/platform/timer.h",
+      "bytes": 2771,
+      "sha256": "5b56e750351c82d180854acb8826a0c554ae65a533bb25e80c3c7e62953aef70",
+      "git_blob": "b63baaf47280fffb99f8ff6b3d305c566071e116",
+      "git_mode": "100644",
+      "lines": 43,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/symbols.h",
+      "bytes": 101602,
+      "sha256": "b6677b43be9f04802ed76a28797bc97d3d3db1ac4483e202774269080183b047",
+      "git_blob": "1b2c59b4077a11a5866a0ec17980bee1ebc4a061",
+      "git_mode": "100644",
+      "lines": 1137,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "td2port/src/types.h",
+      "bytes": 225,
+      "sha256": "d02b90a3a375b307779ea1e0bbe437229dee12375e9486cfc7d8547ce6b30173",
+      "git_blob": "45811ac33fddbc9c0c5d249628dad6aec3ca7030",
+      "git_mode": "100644",
+      "lines": 13,
+      "review": "docs/planning/kylofon-platform-review.md"
+    },
+    {
+      "path": "tools/gen_symbols.py",
+      "bytes": 2760,
+      "sha256": "8720b314e58e88845b810d40f6082f23cc348766b1497e26214859f8b6b7e101",
+      "git_blob": "cbca4c3b23e4e92650d97196b84675daee7f1116",
+      "git_mode": "100644",
+      "lines": 60,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/ghidra/ApplySymbols.java",
+      "bytes": 2065,
+      "sha256": "7b61507fffc88587db1b81dc3136433b01a8d50a20826ce4ed188ca9279a6780",
+      "git_blob": "9a91e831379e78ee5e09db9d849405068d6e4da0",
+      "git_mode": "100644",
+      "lines": 44,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/ghidra/DecompileAll.java",
+      "bytes": 4316,
+      "sha256": "4459872ca8cd35e082adc1d5770e10596568464860dba133ceee69a8ddd2520f",
+      "git_blob": "67cf6d5ac1e24f75ee87c86a053721110ce887ce",
+      "git_mode": "100644",
+      "lines": 83,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/ghidra/SetDS.java",
+      "bytes": 956,
+      "sha256": "d0f7f5281e51d9ec991b84045be539b1088891289b24fff1d521ac96a1b11b8f",
+      "git_blob": "4d56d8ff683f4278bc0c210b4ef951455b52dece",
+      "git_mode": "100644",
+      "lines": 21,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/ghidra/postprocess.py",
+      "bytes": 2423,
+      "sha256": "0a2a2f047675ea6db1db2f4549c14d7d01bc9967ea11a7a3a27c424a8c7d9624",
+      "git_blob": "499452576c3b973794d4152c3993401c65622ea2",
+      "git_mode": "100644",
+      "lines": 62,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/merge_symbols.py",
+      "bytes": 4629,
+      "sha256": "f76eca577b2316e02b05a548cecac4b7d1f8a28a6bcdf9c1522d4c6471058b0c",
+      "git_blob": "a3277689238d647ea9530c30d4f3c49ee00ceb26",
+      "git_mode": "100644",
+      "lines": 89,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/sheet.py",
+      "bytes": 2002,
+      "sha256": "ac9053b738108d7d53b993ba6d1cb47c1c9db85e69938c7a73d71af3433fc6eb",
+      "git_blob": "0b501688119a6d9dfca3e6a497b082ff5501eab5",
+      "git_mode": "100644",
+      "lines": 54,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/td1match.py",
+      "bytes": 2958,
+      "sha256": "1677da4af27434f41cffe7599024f685e2ab2f66234c420eb68baec96e1b6c17",
+      "git_blob": "4a2830e33500c28d19cd6f8ac5526f2616534e5e",
+      "git_mode": "100644",
+      "lines": 76,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/td2car.py",
+      "bytes": 6799,
+      "sha256": "fed38c63da1ac114923a73c050622ab733a7abbfe166a864778248aef25f4218",
+      "git_blob": "170f8222f9c660a90bd0b595ad8e906a7375a57e",
+      "git_mode": "100644",
+      "lines": 127,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/td2index.py",
+      "bytes": 12409,
+      "sha256": "ec98cb3e9cd5565d78113e01a8e120f97056893e717d311fc0867f05a1b479ef",
+      "git_blob": "3611af7a470c37ef116f76d6c1abf3a9e9bab2ea",
+      "git_mode": "100644",
+      "lines": 295,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/td2res.py",
+      "bytes": 10280,
+      "sha256": "efa460dfa96fa8bba85f9e4e6b0160b61ac140710611b1a31d945c01012dc8c6",
+      "git_blob": "affbc0d007510db5c3be33f4a06888f27669b9c6",
+      "git_mode": "100644",
+      "lines": 250,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/td2road.py",
+      "bytes": 13503,
+      "sha256": "69a6cac3f34aaf89d6a66fa63726c6aafd897796a1f5ab126595db197353d11e",
+      "git_blob": "3fca814d97a1310ee2c1f0c33b5a55f1e7924fa4",
+      "git_mode": "100644",
+      "lines": 292,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/td2snd.py",
+      "bytes": 14714,
+      "sha256": "69646107d20681a05d51ce3782d0ca9fac0cc4ffb6c2a239cf589eab8b5eed66",
+      "git_blob": "b3f253ef910be08f18ebd0569166a577cb4e9a76",
+      "git_mode": "100644",
+      "lines": 390,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/unexepack.py",
+      "bytes": 2818,
+      "sha256": "0c354497bdd06046907d092073c4ba5664d8e847ad63dbead8c5d964eaf29ee4",
+      "git_blob": "68639c8afe81ace0e236a8468bdbb626cb15475f",
+      "git_mode": "100644",
+      "lines": 68,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    },
+    {
+      "path": "tools/x86dis.py",
+      "bytes": 1547,
+      "sha256": "162567cc4f5972e019fe7184919c76d39e17e2624c191d5617dd0727f2b80926",
+      "git_blob": "4e69ccd7b5bd7e1ce68a6c7d9f81cc9a7ab93d65",
+      "git_mode": "100644",
+      "lines": 41,
+      "review": "docs/planning/kylofon-formats-tools-review.md"
+    }
+  ],
+  "repository_files": [
+    {
+      "path": ".git/config",
+      "bytes": 353,
+      "sha256": "41f7d642d0ca2886673e8ccd358d76e51919d0d09c79c0d3b2ce66dd9dedaac6",
+      "mtime_ns": 1792664728246530000,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/description",
+      "bytes": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+      "mtime_ns": 1792664649618802500,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/HEAD",
+      "bytes": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10",
+      "mtime_ns": 1792664651918717200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/applypatch-msg.sample",
+      "bytes": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7",
+      "mtime_ns": 1792664649618802500,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/commit-msg.sample",
+      "bytes": 896,
+      "sha256": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437",
+      "mtime_ns": 1792664649634708200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/fsmonitor-watchman.sample",
+      "bytes": 4726,
+      "sha256": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0",
+      "mtime_ns": 1792664649634708200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/post-update.sample",
+      "bytes": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5",
+      "mtime_ns": 1792664649651355000,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/pre-applypatch.sample",
+      "bytes": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475",
+      "mtime_ns": 1792664649651355000,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/pre-commit.sample",
+      "bytes": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b",
+      "mtime_ns": 1792664649674103800,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/pre-merge-commit.sample",
+      "bytes": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53",
+      "mtime_ns": 1792664649679642200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/pre-push.sample",
+      "bytes": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a",
+      "mtime_ns": 1792664649684536900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/pre-rebase.sample",
+      "bytes": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3",
+      "mtime_ns": 1792664649701785900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/pre-receive.sample",
+      "bytes": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989",
+      "mtime_ns": 1792664649701785900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/prepare-commit-msg.sample",
+      "bytes": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619",
+      "mtime_ns": 1792664649717885900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/push-to-checkout.sample",
+      "bytes": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f",
+      "mtime_ns": 1792664649717885900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/sendemail-validate.sample",
+      "bytes": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92",
+      "mtime_ns": 1792664649734632800,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/hooks/update.sample",
+      "bytes": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106",
+      "mtime_ns": 1792664649734632800,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/index",
+      "bytes": 8003,
+      "sha256": "de60e6022842f4210d68d74999315803df90c1084c3058bd50754a9cb9846ac9",
+      "mtime_ns": 1792664652024536500,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/info/exclude",
+      "bytes": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+      "mtime_ns": 1792664649751053900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/logs/HEAD",
+      "bytes": 195,
+      "sha256": "0139f05aa89a57fddb0bd96bea7e0a32bb6153a019544b392b2edd2700ec90ba",
+      "mtime_ns": 1792664651934810400,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/logs/refs/heads/master",
+      "bytes": 195,
+      "sha256": "0139f05aa89a57fddb0bd96bea7e0a32bb6153a019544b392b2edd2700ec90ba",
+      "mtime_ns": 1792664651936071500,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/logs/refs/remotes/origin/HEAD",
+      "bytes": 195,
+      "sha256": "0139f05aa89a57fddb0bd96bea7e0a32bb6153a019544b392b2edd2700ec90ba",
+      "mtime_ns": 1792664651918717200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/objects/pack/pack-2eeddfb2e44e2418c8a680121a450472a1baa251.idx",
+      "bytes": 5216,
+      "sha256": "05a0b2d66fa9f99dffb1d57463128923d8e0006a996e885ff6e8762a3d7c4bfe",
+      "mtime_ns": 1792664651871434600,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/objects/pack/pack-2eeddfb2e44e2418c8a680121a450472a1baa251.pack",
+      "bytes": 557959,
+      "sha256": "d21cc4bf643b28da672aab35ec5ef44d251c2a3586d246b7caa3ef8ccc616efe",
+      "mtime_ns": 1792664651871434600,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/objects/pack/pack-2eeddfb2e44e2418c8a680121a450472a1baa251.rev",
+      "bytes": 644,
+      "sha256": "ea650dbd21ff403e26c256c65c12db19f37c695320cb6a0c1e501a5e28fa5261",
+      "mtime_ns": 1792664651873433400,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/packed-refs",
+      "bytes": 172,
+      "sha256": "8e3e7111686002f4f409e1d6a3f72a655c56f29bc283fc073a02aa308f996bd1",
+      "mtime_ns": 1792664651918717200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/refs/heads/master",
+      "bytes": 41,
+      "sha256": "656cb43c0f32b8c0ede9d80e05623d0d1df9434301358677ba2e1bc9a5bc43d3",
+      "mtime_ns": 1792664651934810400,
+      "file_attributes": 33
+    },
+    {
+      "path": ".git/refs/remotes/origin/HEAD",
+      "bytes": 32,
+      "sha256": "cdc65e67690c4c6475174e5ec662b70655246a2f3924354778835ab3be70aa76",
+      "mtime_ns": 1792664651918717200,
+      "file_attributes": 33
+    },
+    {
+      "path": ".github/workflows/mirror.yml",
+      "bytes": 289,
+      "sha256": "6779f70acb19906aad535135ca7af66af0c415209b0f9a76ba0e94339ac4fc08",
+      "mtime_ns": 1792664651946072900,
+      "file_attributes": 33
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 408,
+      "sha256": "9364bbc41e8bcd995c9766561d97a1277820a17c6ca09656c633538505dc99cb",
+      "mtime_ns": 1792664651946072900,
+      "file_attributes": 33
+    },
+    {
+      "path": "FORMATS.md",
+      "bytes": 11726,
+      "sha256": "f6f5115f93fc4579efbd56acf8ca5d4275e51c211e81dee29136e42674acb3ce",
+      "mtime_ns": 1792664651947072700,
+      "file_attributes": 33
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1240,
+      "sha256": "2263aab3114518b1bbafc67924f8d29f8548f3a112af54ae6b6e63673fda5ed3",
+      "mtime_ns": 1792664651948072900,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/RE_GUIDE.md",
+      "bytes": 8624,
+      "sha256": "0f59e92b00916384ccb968a61b4eb7f151856b498a997f40055a6596a1ca46aa",
+      "mtime_ns": 1792664651949072700,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/game_flow.md",
+      "bytes": 100108,
+      "sha256": "17a15f853339341c8e559441925e1beb21740a13b70406d845fac23434b1f169",
+      "mtime_ns": 1792664651951070600,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/game_flow_symbols.csv",
+      "bytes": 10567,
+      "sha256": "458f5efa45b120794cccc92d020bf1d129e342a658cf3803f8286957acddebec",
+      "mtime_ns": 1792664651951414900,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/platform.md",
+      "bytes": 183600,
+      "sha256": "6cb15bd6aec50c91aef921ddf1412b6dc54177d7768ae49f670c3c16379bffcb",
+      "mtime_ns": 1792664651952280800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/platform_symbols.csv",
+      "bytes": 31155,
+      "sha256": "1457fb4c56b50f895198d4607826d646072b0847a9e1c4ddd062b87e02b84944",
+      "mtime_ns": 1792664651952280800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/scene_render.md",
+      "bytes": 89747,
+      "sha256": "912b8f4856d5acfb9a1e290632bd60e1d9b726f3a9a8fdcd92fbc1e37d72993e",
+      "mtime_ns": 1792664651952280800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/scene_render_symbols.csv",
+      "bytes": 14707,
+      "sha256": "4a65f8d9521d17ccd4deadc3bc0f43283ff7c7c76a7d2382f7b9e124f81cb912",
+      "mtime_ns": 1792664651955811100,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/simulation.md",
+      "bytes": 91956,
+      "sha256": "b029e1dd146df1cb42f69ce7d26c1e74ce7421c00a75a109e36da6f9328b45b7",
+      "mtime_ns": 1792664651955811100,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/spec/simulation_symbols.csv",
+      "bytes": 12763,
+      "sha256": "ff2bf0e589ad077a731136a0aa3ac8d3f0a5dd3e2190d2f7c0e2c6a04c17caec",
+      "mtime_ns": 1792664651955811100,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/symbol_conflicts.txt",
+      "bytes": 5040,
+      "sha256": "049b0e0fbdabf7dc9d7387e35b78620aa2f4aa2fa6b19f3c3a4b93173778184b",
+      "mtime_ns": 1792664651957816000,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/symbols.csv",
+      "bytes": 78299,
+      "sha256": "de22ff7296cb6c487791bc8902b4b58bc760ce8426079ec1e587b8dc7ffc2043",
+      "mtime_ns": 1792664651957816000,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/symbols_ghidra.txt",
+      "bytes": 30396,
+      "sha256": "51c4b2fe7e93993a2f01f00f84ca256765bb262e817573e898ad9fbd35acf51c",
+      "mtime_ns": 1792664651959819800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2cga_functions.csv",
+      "bytes": 23376,
+      "sha256": "4e5535713106d6395b178867cb21a15fc0815dfb07b4ddc37ab7096d28e8ba13",
+      "mtime_ns": 1792664651959819800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2cga_functions.json",
+      "bytes": 229959,
+      "sha256": "e38fb290e97abfd7241bdda3754c5111f79ef9b5e04d92abf62bd853d0c47160",
+      "mtime_ns": 1792664651961825800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2cga_starts.txt",
+      "bytes": 2640,
+      "sha256": "6b1d57e63379ddcb79301bcb5fe17cc45a68ce0bacba6002115079202842c54e",
+      "mtime_ns": 1792664651961825800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2ega_functions.csv",
+      "bytes": 23650,
+      "sha256": "b9da14360fad424538ebc21b66b3de5ba94547f01c0dc2372dcc9c7e16ae7c08",
+      "mtime_ns": 1792664651963836400,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2ega_functions.json",
+      "bytes": 239466,
+      "sha256": "e70b874356d6675dfa3476714fbb25d475c8f38d9b3117fcef7dbe71d366f66a",
+      "mtime_ns": 1792664651963836400,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2ega_starts.txt",
+      "bytes": 2664,
+      "sha256": "0d91eb32c16811dbe9eff1cf6312f4ab2318448422aed049e54cdea607b8758d",
+      "mtime_ns": 1792664651965845600,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2ega_td1_matches.csv",
+      "bytes": 2565,
+      "sha256": "65ecbe2d8a302d4014562dda4e256dd029a37a4055f775b773cce563aceafb90",
+      "mtime_ns": 1792664651966853500,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2tdy_functions.csv",
+      "bytes": 23500,
+      "sha256": "bac3118c842742b65b0f5802f5791f4b5fa35ae9d3aecfc9a529a0a95e0f0f2c",
+      "mtime_ns": 1792664651969210800,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2tdy_functions.json",
+      "bytes": 232401,
+      "sha256": "28b6b5f2e304925edd3414343e24ecb2c0c021b1605b13463099936f8ecda733",
+      "mtime_ns": 1792664651971208300,
+      "file_attributes": 33
+    },
+    {
+      "path": "port/td2tdy_starts.txt",
+      "bytes": 2652,
+      "sha256": "8a4cdf1f73b8d1dd34916c524953a7e57e9f1da8569c35314197896ce9461b01",
+      "mtime_ns": 1792664651972209700,
+      "file_attributes": 33
+    },
+    {
+      "path": "README.md",
+      "bytes": 5266,
+      "sha256": "4190ccdd3b5267b3e5170868c3a7d782e3cfe2a172138cc033eba86f066230eb",
+      "mtime_ns": 1792664651948072900,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/CMakeLists.txt",
+      "bytes": 1136,
+      "sha256": "5026720bbecf72a388165f2ce2b500684846df58a8764edacaf821cff38671c3",
+      "mtime_ns": 1792664651973219200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/PORTING.md",
+      "bytes": 8701,
+      "sha256": "ed95436e733a37d24b6a6e6d924a772f46d69d0287d4c629f1ff8a4abe07e481",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/build.h",
+      "bytes": 806,
+      "sha256": "7a9e1c2e5ccf6c11e80ec737df7035c55e0213bcf9a4acbe08463fd7f16813d2",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/codeptr.c",
+      "bytes": 888,
+      "sha256": "929b7835d7bf0e5fbe9b1142e76c2fa95b22ace06c0aa1665e510903dd69844e",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/codeptr.h",
+      "bytes": 1065,
+      "sha256": "dee073a212d3805fce3dee6b07c9e1adc972620831bb3a5d1b9dd9bb61e3401d",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/flow.c",
+      "bytes": 21352,
+      "sha256": "a19205b0f22e26edb9e27525ea09daed4c2e30b1ec273744603145d279e7c636",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/flow.h",
+      "bytes": 7830,
+      "sha256": "71445bb2de860bab06743b21c635a1f977d31629fd979d3fce1c5ddfd98f1e11",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/flow_scores.c",
+      "bytes": 6214,
+      "sha256": "1be7cb6ee6b1809e3a3f13b1fd6bbfd5c2328707393a4703606c523b82d33c2a",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/flow_screens.c",
+      "bytes": 25526,
+      "sha256": "d0384363077932541c9c970370ec41a4d357f5ffd2f8312b72594c21f52e93e8",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/flow_stage.c",
+      "bytes": 28415,
+      "sha256": "ec077308fa13b0d2050f1cfbc60bbabd43e492bcf33da573d7b57a19079d2d1e",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/game.h",
+      "bytes": 1500,
+      "sha256": "54504269b0367de7351cf49cd69bf1276d97ffbc0c3a263ab751190fa336d7b1",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/scene.c",
+      "bytes": 23158,
+      "sha256": "d9d533c3a3718fae8e8cfd6d217cbe461039c7330212a0048b8888f962b006fd",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/scene.h",
+      "bytes": 7603,
+      "sha256": "fa33672a312f5b2f068dffa6ed733fb4ac727c3ddd91ce4ae6cce8153f9ef82d",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/scene_cockpit.c",
+      "bytes": 11988,
+      "sha256": "aa77e6177f0ca1e5215eb82ac954d5b3b03d9a5a52cb74509dd76c526e848b7b",
+      "mtime_ns": 1792664651974219400,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/scene_draw.c",
+      "bytes": 8602,
+      "sha256": "d7293f98720f7f2c6ccaae7fc765973eb3dd17fc8494d3d41edf86e8b195835d",
+      "mtime_ns": 1792664651984845200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/scene_objects.c",
+      "bytes": 22673,
+      "sha256": "38ec90f3711e4864522cdf048ced08a9fd0f5aab6791c87997599840d6080075",
+      "mtime_ns": 1792664651986223200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/scene_project.c",
+      "bytes": 16172,
+      "sha256": "dd2bba3e0aef654ebc03568fc13bae6e30970b2e27e2ca517375df3351f823ef",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/sim.c",
+      "bytes": 21118,
+      "sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/sim.h",
+      "bytes": 10433,
+      "sha256": "7f3c822b6ca45502771792f60e2d914b3accff5e040388af5ed44536ca557771",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/sim_ai.c",
+      "bytes": 18697,
+      "sha256": "8f259c28a0408495e9651f9d13deb85268e530ad782e0abf1f90e49ebf07a9e8",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/sim_motion.c",
+      "bytes": 16696,
+      "sha256": "a0b7bfa6ca150b5ce8c182623150d8258ba01762ed7fb45f302fc775173ddf98",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/game/sim_traffic.c",
+      "bytes": 14015,
+      "sha256": "d795bd71ead5a075b2209bc7200fd859485a8c7e7ea53123f367914df8469fd3",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/host.c",
+      "bytes": 19448,
+      "sha256": "f8e88d7827f83c283899c63773b7c64d905da54ad37c777bf4692ca5501a0ce6",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/host.h",
+      "bytes": 4364,
+      "sha256": "a8d296f6def640590bc063eb5366c03c3d2c02cc840fcaf1a0bd5d21716be61e",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/main.c",
+      "bytes": 2232,
+      "sha256": "6f35c607f91fd4614400a95723d3e042217a0181f3581977a3e306588506aa8e",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/mem.c",
+      "bytes": 7158,
+      "sha256": "7ae8673fc481804323987d29e272b74bda21b60bed1f086731cedcdb733056a5",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/mem.h",
+      "bytes": 6391,
+      "sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/gfx.c",
+      "bytes": 39654,
+      "sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/gfx.h",
+      "bytes": 10210,
+      "sha256": "4026bdee9808fe7f6471f78b2e033beafe26ecc60b20a7b9e1530d165f08e9b3",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/gfx_blit.c",
+      "bytes": 21458,
+      "sha256": "49007eb0db531df67250ce52862b5a2641df6d6dc356c2e54a49603559ff3047",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/gfx_ega.h",
+      "bytes": 4410,
+      "sha256": "2e664386207dcb18b1fadfd62fa30e5119a6ae7928c7fd9e8df90b7415c01210",
+      "mtime_ns": 1792664651987518800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/input.c",
+      "bytes": 17705,
+      "sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+      "mtime_ns": 1792664652000098200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/input.h",
+      "bytes": 4326,
+      "sha256": "cfa60582c4695d53853bd8ed49c503a998c5262173e6b68b3c0d8f02d7d58caa",
+      "mtime_ns": 1792664652000098200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/prompts.c",
+      "bytes": 6369,
+      "sha256": "47e4a3a025d21c7775e9eb313f44f24b65703517e06876b8444ccdbe0ed92d9c",
+      "mtime_ns": 1792664652000098200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/prompts.h",
+      "bytes": 778,
+      "sha256": "7edfb2ef22a9a60cddc6ee2a9688274e5df44cdc7fd3b8ea8a2933d184e6b443",
+      "mtime_ns": 1792664652002535600,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/res.c",
+      "bytes": 38031,
+      "sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+      "mtime_ns": 1792664652003537000,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/res.h",
+      "bytes": 8384,
+      "sha256": "735ca4840b8e4dfb52cd27103e1f6c0aa619f18b2f499cf75e0aa47b74fbe5e7",
+      "mtime_ns": 1792664652005534800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/sound.c",
+      "bytes": 14057,
+      "sha256": "ee5f9711f1009e778491662269860d7960927d0b9312e60f0b19f48495669cf8",
+      "mtime_ns": 1792664652006536800,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/sound.h",
+      "bytes": 1893,
+      "sha256": "d25f6056b2d90b88a0c77ca9ff28b586bcef850f922b33776721bb5f4136819c",
+      "mtime_ns": 1792664652007536100,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/timer.c",
+      "bytes": 8581,
+      "sha256": "83516651e2a1409ad0ab02e314ebb73e00a0ea90a45ef0ba0424644e0ecd3d4a",
+      "mtime_ns": 1792664652008536300,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/platform/timer.h",
+      "bytes": 2771,
+      "sha256": "5b56e750351c82d180854acb8826a0c554ae65a533bb25e80c3c7e62953aef70",
+      "mtime_ns": 1792664652009539300,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/symbols.h",
+      "bytes": 101602,
+      "sha256": "b6677b43be9f04802ed76a28797bc97d3d3db1ac4483e202774269080183b047",
+      "mtime_ns": 1792664652010539200,
+      "file_attributes": 33
+    },
+    {
+      "path": "td2port/src/types.h",
+      "bytes": 225,
+      "sha256": "d02b90a3a375b307779ea1e0bbe437229dee12375e9486cfc7d8547ce6b30173",
+      "mtime_ns": 1792664652010539200,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/gen_symbols.py",
+      "bytes": 2760,
+      "sha256": "8720b314e58e88845b810d40f6082f23cc348766b1497e26214859f8b6b7e101",
+      "mtime_ns": 1792664652011538700,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/ghidra/ApplySymbols.java",
+      "bytes": 2065,
+      "sha256": "7b61507fffc88587db1b81dc3136433b01a8d50a20826ce4ed188ca9279a6780",
+      "mtime_ns": 1792664652012536300,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/ghidra/DecompileAll.java",
+      "bytes": 4316,
+      "sha256": "4459872ca8cd35e082adc1d5770e10596568464860dba133ceee69a8ddd2520f",
+      "mtime_ns": 1792664652013536100,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/ghidra/postprocess.py",
+      "bytes": 2423,
+      "sha256": "0a2a2f047675ea6db1db2f4549c14d7d01bc9967ea11a7a3a27c424a8c7d9624",
+      "mtime_ns": 1792664652014535000,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/ghidra/SetDS.java",
+      "bytes": 956,
+      "sha256": "d0f7f5281e51d9ec991b84045be539b1088891289b24fff1d521ac96a1b11b8f",
+      "mtime_ns": 1792664652013536100,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/merge_symbols.py",
+      "bytes": 4629,
+      "sha256": "f76eca577b2316e02b05a548cecac4b7d1f8a28a6bcdf9c1522d4c6471058b0c",
+      "mtime_ns": 1792664652014535000,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/sheet.py",
+      "bytes": 2002,
+      "sha256": "ac9053b738108d7d53b993ba6d1cb47c1c9db85e69938c7a73d71af3433fc6eb",
+      "mtime_ns": 1792664652015534900,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/td1match.py",
+      "bytes": 2958,
+      "sha256": "1677da4af27434f41cffe7599024f685e2ab2f66234c420eb68baec96e1b6c17",
+      "mtime_ns": 1792664652015534900,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/td2car.py",
+      "bytes": 6799,
+      "sha256": "fed38c63da1ac114923a73c050622ab733a7abbfe166a864778248aef25f4218",
+      "mtime_ns": 1792664652016534600,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/td2index.py",
+      "bytes": 12409,
+      "sha256": "ec98cb3e9cd5565d78113e01a8e120f97056893e717d311fc0867f05a1b479ef",
+      "mtime_ns": 1792664652017535100,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/td2res.py",
+      "bytes": 10280,
+      "sha256": "efa460dfa96fa8bba85f9e4e6b0160b61ac140710611b1a31d945c01012dc8c6",
+      "mtime_ns": 1792664652018539700,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/td2road.py",
+      "bytes": 13503,
+      "sha256": "69a6cac3f34aaf89d6a66fa63726c6aafd897796a1f5ab126595db197353d11e",
+      "mtime_ns": 1792664652020537400,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/td2snd.py",
+      "bytes": 14714,
+      "sha256": "69646107d20681a05d51ce3782d0ca9fac0cc4ffb6c2a239cf589eab8b5eed66",
+      "mtime_ns": 1792664652021536500,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/unexepack.py",
+      "bytes": 2818,
+      "sha256": "0c354497bdd06046907d092073c4ba5664d8e847ad63dbead8c5d964eaf29ee4",
+      "mtime_ns": 1792664652022539600,
+      "file_attributes": 33
+    },
+    {
+      "path": "tools/x86dis.py",
+      "bytes": 1547,
+      "sha256": "162567cc4f5972e019fe7184919c76d39e17e2624c191d5617dd0727f2b80926",
+      "mtime_ns": 1792664652023539200,
+      "file_attributes": 33
+    }
+  ]
+}

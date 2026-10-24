@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 37,
+  "script_sha256": "434287b10f45e0989d00fdd5b2d408da06370bf607e8f92b4be9ba554b0d6676",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ed5de87dd2d8509dba7e8abacec6f587cb86bb55261bcb2de2794d6f2d89a2b2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_pixel_point.py",
+      "sha256": "b844d2f3e9d11c4faa05a2ca946919b9bcab1e32610eae3b6e608c34afb3323f"
+    }
+  ],
+  "limits": "NativeBA3CfullSS/literal5wordOUTs/byteReadlow8-fullCLwrite/softwarefourplanes-zero-skip-liveplane-reread/readANDwrite-atomicOR/maskread-once/CH-CLregistereffects/IFDF/budgets/stack-mask-controlaliases/cachedbranchpreRETqualifications only. Originalcomparison/staticproofs separate; no clippingbounds/allwriters/realdevice-latch-hardware/renderer/CPU-A20/storage-lifetime-exclusion/core/resource/CGA/session/fidelity acceptance."
+}

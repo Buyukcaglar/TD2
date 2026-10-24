@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000164",
+    "FN-EGA-000166",
+    "FN-EGA-000202",
+    "FN-EGA-000248"
+  ],
+  "vectors": 14600,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "83cbc143bcde623facab409dba3a20d5460a846423c068a42b7b91a08ebbe6d3",
+  "source_sha256": "42a7efaa4dbd4c2df4b1c67ee6186a0a84a89e231e0badb8f264f531ab90861b",
+  "validator_sha256": "e409b900e5407b886d85e35e4a4a7942c64c58d440bf53e7128703ae978a7386",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_bridge.py",
+      "sha256": "d7a431f9ab538c76d3944cb0e08d925a6d82d4f15e4927b80449a35575bcb488"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 184936,
+  "instruction_sites_in_fence": 47,
+  "instruction_sites_exercised": 47,
+  "fixture_coverage": {
+    "entry_1": 6912,
+    "prefix": 5936,
+    "outer_calls": 25680,
+    "dynamic_input_calls": 16536,
+    "counter_observations": 9144,
+    "synthetic_input_RET_instructions": 16536,
+    "bus_write_events": 84432,
+    "high_greater_low_less_fixtures": 3504,
+    "root_far_returns": 8656,
+    "entry_3": 6912,
+    "entry_0": 576,
+    "entry_2": 200,
+    "raw_counter_returns": 8
+  },
+  "limits": "Fouractualroot+69FEbridge+79C8/C692counter Cbodies, materializedouter/dynamicSSfarframes/fullbus/GPR/BP/CFIFDF/rootRETF4. Opaquedynamicinputcallee isexplicitfullreturned-state ABI service withsyntheticRETstub countedseparately; noinputtargetbody/runtime admission. Counterobserveronlymutatessyntheticbus beforeactualread, noIRQ/frequency/timebase. AH-only/rawinputAX, returnedDS/BP/pointerrereads andhigh-greater/low-less contrast retained:6A4A/7A3Blex, C63EhighANDlow. Nativebefore-outer-callprefixes and8rawcounter-returnframe aliases distinct; noSSscratch exclusions. Actualinput/counterwriters/lifetime/exclusion/fullstate/core/resource-fedP2/P3/device/session/game/fidelity remainopen; physical086C unrelated. Nativeinvalid/adapter checks separate."
+}

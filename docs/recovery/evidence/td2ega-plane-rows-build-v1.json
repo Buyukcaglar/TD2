@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_plane_rows.cmd",
+    "sha256": "34441d599b76873e6ecb7b2f9f5b7473f97d35013f855e726a75d7e2a331d5eb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_plane_rows.c",
+      "sha256": "de9a0af958b4454abc2f5378e46aade4d6971b21a0a8d01fe27acb794253af45"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_rows.h",
+      "sha256": "5653a37db092953a5da3caeb5e7b06e240e8cd5c555327b6f0767736df5e317a"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_span.c",
+      "sha256": "3ccd939d1bd7f959d2212faa073ee0df943fa77506dd6f1346e68c7fd2b841b4"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_span.h",
+      "sha256": "53ea2da6dd232a2bb5d43b77c2f099c55888b91881fa2c91aa882b39b36233db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/plane-rows-repro/td2ega_plane_rows.dll",
+      "sha256": "45fdbbf9c3b49515237b48cd34dcdf4ebef18a1fe25da551e2793b17ae00b1f1",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/plane-rows-repro/td2ega_plane_rows.obj",
+      "sha256": "aae8a3fbac6d91b11c53268e54ec3d43683d965dfff19fb5e6350fb648311d0b",
+      "bytes": 6818
+    },
+    {
+      "path": "analysis/build/plane-rows-repro/td2ega_plane_span.obj",
+      "sha256": "69c7e5641c9188a7e9f6044bf904e75835001a58b0bd218117c887a2bfb6b9ae",
+      "bytes": 6196
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/plane-rows-build-v1.log",
+    "sha256": "5034875ac0593312b8e8ff03ca747858de28d17026676771c67ef42d1a8cb2f3"
+  },
+  "limit": "Actual284F+C17body, earlydiscardnearreturn/JMP28BD skipsremainingrowcalls, otherrawDS0702targets explicitnonlocaloutcomes, normalRET2/nativecallbudget separate. CurrentDS/SSmask/CSlookup/RAMplanes/wordwrap/sharedaliases andGPR/BP/CFIFDF/fullnonframebus compared. No ABI-value leafmocks. Syntheticplanes/targets notactualwriterdomain/capacity/SS-DS/producer/resourceformat/IRQ/core/renderer/game/fidelity. Native diagnostics separate.",
+  "function_id": "FN-EGA-000094",
+  "covered_original_local_helpers": [
+    "FN-EGA-000076"
+  ]
+}

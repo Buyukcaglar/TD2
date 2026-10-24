@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_mode_controller.cmd",
+    "sha256": "a5fe17d3a02dd1cc73e3a095e57308f642aba50ede6ee3e05c248d6972c98ffc"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_mode_controller.c",
+      "sha256": "0f14abe716d13b9d633286d44fc6e167ad5abf5767351ad9658c4914e96ce397"
+    },
+    {
+      "path": "src/recovered/td2ega_record_dispatch.c",
+      "sha256": "b3c8d5f8bc9e7f114e70a5f0f26099881c9fc85e117b07985e67ebf47715ca0c"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.c",
+      "sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_mode_controller.h",
+      "sha256": "6524ca4330fef1db11464d4e50d9c0286dfdb30b2ac9b49773906e4063277f4a"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_dispatch.h",
+      "sha256": "404b94b54853638be0ae3d4b7ada6732050fa51f52c2e287674a87955599f1df"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.h",
+      "sha256": "d4bdef46a5afd3f4a7c9051a17765db281741dd6c9f21fd690c630675c661099"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_mode_controller.dll",
+      "sha256": "116e666f524bdcf4e66161b8690de3b5f5211d5bf75c4da3ff8d979c00d6e455",
+      "bytes": 129024
+    },
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_mode_controller.obj",
+      "sha256": "45403eff183ed491ccdc2c85f04a09be1e1296193dcf02a072a0177454d1a508",
+      "bytes": 18703
+    },
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_record_dispatch.obj",
+      "sha256": "be4afe7bd979f14dd0c0a9e4c8e85c46f37b3fc58a10c5389cd85277f357bd38",
+      "bytes": 11306
+    },
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_record_math.obj",
+      "sha256": "44343ac61969839951816846ad4a0a02afe55641d58381bd3e073cc52f88ec53",
+      "bytes": 10927
+    },
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_small_algorithms.obj",
+      "sha256": "a47ec9065136b0bafdecb960db4d83bc9a617c168d967f711c0f5760dc00be54",
+      "bytes": 5922
+    },
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_table_scalar.obj",
+      "sha256": "eddca86c9819d332de39e20f085dda05a8c269c24b302ebfdd17b76948872a39",
+      "bytes": 5794
+    },
+    {
+      "path": "analysis/build/mode-controller-repro/td2ega_control_bus.obj",
+      "sha256": "8c4eec6697c6c84ed51adbe1210344510223906d50defa393c35584bec99c559",
+      "bytes": 6547
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/mode-controller-build-v1.log",
+    "sha256": "c59f16c1dfed6cbbb37af56c17dca711e2a4e865b4fa99433cde3c941992ffd6"
+  },
+  "limit": "Actual53A6/56ED/5299/5446/52FD/5334/535B/4612 C andliteralSSframes/fullbus/GPR/BP/CFIFDF/control/counts. Known actualnearwordtargets at5514/55A1 union13 and57A7 three; unknownnative6beforeJMP preservesoperand, notdomainclosure. 56EDPOPAX+nearRET consumesleaf/rootwords andexitsparent, noextraRET. Mode7savedAXactualSSreread after4612/post2F5Bwrite. OR-after-SBBwrapped-sign vs immediateJGEwide signedpredicate retained withOF1 witnesses. Nativebudget/rawreturn/unknownprefixes separate; allwriters/modes/actual403Bcaller/DS-SS/IRQ/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000395"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000397",
+    "FN-EGA-000391",
+    "FN-EGA-000396",
+    "FN-EGA-000392",
+    "FN-EGA-000393",
+    "FN-EGA-000394",
+    "FN-EGA-000378"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-mode-controller-context-v1.json",
+    "sha256": "dda48164801c73052fc0067a66c8cd068328818404757234d3f2ab51e06a433a"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_mode_controller_before_probe_format_v1.py",
+      "sha256": "7f8e943de898c87620793af7f0ccbba57a0b535b84dba5535a4b2fcc47e4f866"
+    },
+    {
+      "path": "analysis/history/validate_mode_controller_before_coverage_v1.py",
+      "sha256": "02d4e4285457eda168a3804964465e7c37645894eba4adf984d2dfc28c220cae"
+    },
+    {
+      "path": "analysis/history/validate_mode_controller_before_equality_v2.py",
+      "sha256": "be8e07de8ad811d85263733ade2d75ab1d2a9389504a8df41afc38de087f3e1f"
+    },
+    {
+      "path": "analysis/logs/mode-controller-probe-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analysis/logs/mode-controller-probe-v2.log",
+      "sha256": "cdb00dd8c0d248d4c84cdae032ac9e52de6d6dc183af57dbb1fca81a95ca134e"
+    },
+    {
+      "path": "analysis/logs/mode-controller-validation-v1.log",
+      "sha256": "f062eea5e2cedfac2d30935ef268ff25b00de05a5ce19d2d95716bf859f5a01e"
+    },
+    {
+      "path": "analysis/logs/mode-controller-validation-v2.log",
+      "sha256": "ff6003a01a747afd292967bb980560f366432405186cab10732ac15b7e7f6a8c"
+    }
+  ],
+  "failure_resolution": "InitialprobeerrorformattercalledRegistervaluesonResult; correctedvalidatoronly. v1matched37536cases butmissed7feasiblesites; v2matched38280 butmissedSI-DXequality2sites because5334actuallyclobbersSI. Finalv3fixtureselectsSI0/DX8 afteractualchildren, covers530feasible/5303disposition. NoC/build/instructioncomparisonfailure, originalC/DLLunchanged."
+}

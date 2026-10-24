@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "5b4277986b8ea40fb97816e97cbb1915e16e127c3bb261c12217fd8c3a214b4e",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "45fdbbf9c3b49515237b48cd34dcdf4ebef18a1fe25da551e2793b17ae00b1f1",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_plane_rows.py",
+      "sha256": "410b82207d59ec65706e44e79f88c5f8edd56e071a9fc6f9f8ed8fbe414c4616"
+    }
+  ],
+  "limits": "Two native-only invalid frame/flag checks. No original error/actualhardware/renderer/state/core/game/fidelity acceptance."
+}

@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_edge_sequence.cmd",
+    "sha256": "16489bc493c4f8003a9aedc4a40dd188dce9229fca40ac9e2a860f0071fa442f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_edge_sequence.c",
+      "sha256": "3be2d8a556d0eab7e6f0f7d0cb075cd1fb670e5005d2439d631c96b40eca19c8"
+    },
+    {
+      "path": "src/recovered/td2ega_edge_sequence.h",
+      "sha256": "4f64fd7fed08b7961200ee02a6f12d3671295566e67c3b9f3be1ddb58e05d8a8"
+    },
+    {
+      "path": "src/recovered/td2ega_draw_sequence.h",
+      "sha256": "87e04b66d82082b8df5f085ef8cf7fb3a0ff498983ab638f7c85262aa5b8ea23"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/edge-sequence-repro/td2ega_edge_sequence.dll",
+      "sha256": "5a659ef4834c26d07ad640bf6cd7692bcb2d1d5728ae3ddf52a56d9fc4dd627d",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/edge-sequence-repro/td2ega_edge_sequence.obj",
+      "sha256": "2a3b6a96a92aab059fc57b9c9dcc64fcfc76b50b40ed02ae126899dd1f092b09",
+      "bytes": 4801
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/edge-sequence-build-v1.log",
+    "sha256": "11fffb8be384b8637d3c846886b8affef914580c32b06e2dc55b64a77cb05802"
+  },
+  "limit": "Complete34DCnearRET body withordinaryfar8582ABImocks, all256flagbytes/currentDSwrappedselectors/unsignedhalfwidthwordmath andtwo-or-threepreprepared5wordpools.15/10/5livewords, source/flagmutationafterfirstcall leavespreparedargs, returnedDS/GPR/BP/CFIFDF andnear-vs-farframes compared. Nativebudgetprefix separate. Actual8582/2958caller/framecapacity/SS-DS/IRQ/resource/renderer/core/game/fidelity remainopen; native diagnostics separate.",
+  "function_id": "FN-EGA-000097"
+}

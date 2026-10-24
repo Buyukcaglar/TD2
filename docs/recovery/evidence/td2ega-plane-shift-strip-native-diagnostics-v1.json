@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 48,
+  "script_sha256": "fdd4250d8518d6af967407e34cc79535512d642c47d771c3b0faac8fdc8f679b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ca488869aef7af9de4de65016f3b8dba5941830f28833b362d6f57e28cc2002b",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_plane_shift_strip.py",
+      "sha256": "8c7b11a2ad588ceada25e83d64b3f94f1339cdbbb88023894a280a0335cb3121"
+    }
+  ],
+  "limits": "NativeAE62/fullSS/firstREPshift-vs-secondunconditionalLOOP65536/twobyteMULs-fullrequestedCX/zero-nibblewholeexit/liveSSwidth-dest-counter-saves-farframe/sourceorderedbyteReadAH-WriteAL/globalwork/prefixCF/preRETqualification only. Originalcomparison/staticproofseparate; rawRAMprofile/noEGAwrite-mode-latches-renderer/allwriters-format-capacities-storage-lifetime-exclusion/CPU-A20/core/resource/CGA/session/fidelity admission."
+}

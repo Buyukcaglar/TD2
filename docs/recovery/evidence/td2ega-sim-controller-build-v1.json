@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sim_controller.cmd",
+    "sha256": "f0d9ec6762db04318e6a32dffffdbc5ebf2b96496f7399093ffbec6db5e19099"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sim_controller.c",
+      "sha256": "6839f0b666c8314479bc4acc82a95c5e259d961b1c8be0c610db552c4ae43ff9"
+    },
+    {
+      "path": "src/recovered/td2ega_window_controllers.c",
+      "sha256": "6a3c5a0b45c83d42ae93d71305848bb4fb4b20ccd533c2fd18d6f625cc7eca88"
+    },
+    {
+      "path": "src/recovered/td2ega_threshold_transition.c",
+      "sha256": "1e716661f708daa96e5128d0b391330e689cf3ad18943dac081779bd23165296"
+    },
+    {
+      "path": "src/recovered/td2ega_indexed_sample.c",
+      "sha256": "907645faebf7455ddb09c59fcb4a0d8a79d4c8fa2198baf8b8a3bda722570fd5"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_guards.c",
+      "sha256": "60f672b8de84a680db60b6e4f75f6a1195e48ad912a26cae1c2ad8711d586c3b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_dispatch_bus.c",
+      "sha256": "f81d9e2361ad54c5cad79ff0626812b9a88fe7103fc6b6a39f079bb2d49dc072"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.c",
+      "sha256": "d8e9e7a14bb38872c2e0ec5eb1636555114022f88569d6ef3ff23048a4c706e9"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_indexed_sample.h",
+      "sha256": "8c64fc39e603497e6c28ac33ddd1e73239b7a5d71416001ca6d70da8d861c3e0"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.h",
+      "sha256": "0c913a5b7eff7f98859d0f9117520a6704ae538f9c44105dfaf5656125bfced9"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_guards.h",
+      "sha256": "8112c9c5a8638fe1733860f1a5211d3b6b19ca511d9c988c5eb876ba4f36df52"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_controller.h",
+      "sha256": "35c1a1eee260b1df073be9ff3a0e78976f804889d294e92ed0023e3e90158517"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_dispatch_bus.h",
+      "sha256": "11753b58cc2629d3cd3bad53b50ef83dca4796ddcf39a89bd44b246af18220dd"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    },
+    {
+      "path": "src/recovered/td2ega_threshold_transition.h",
+      "sha256": "787e9a89b9189e28823c1d76057d5dc858cf288e78264896164047d7d7e15a77"
+    },
+    {
+      "path": "src/recovered/td2ega_window_controllers.h",
+      "sha256": "d1bbaf540a1d06fd120188bac25c88b8eca21dbf650013cace5f91b2d0388aad"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_sim_controller.dll",
+      "sha256": "7a546081c4a8032744c9af71a3d0740ff1dbc4a2f3a2b8beaa35b36f8bd99508",
+      "bytes": 134656
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_sim_controller.obj",
+      "sha256": "f083c4edf8cd601bfe9af7376c7a4a4d78a6147b270b2d1633837127a2ad88b7",
+      "bytes": 23055
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_window_controllers.obj",
+      "sha256": "c61c0857ac4e98a71358f398bd3120c2d3d3c0b9ac66a6ee9e7645e4f1e96e76",
+      "bytes": 9117
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_threshold_transition.obj",
+      "sha256": "897605125224fc43b63e4bb26d296dd3bb8a43c3f1ef76ead3b432179f113d05",
+      "bytes": 6920
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_indexed_sample.obj",
+      "sha256": "423b337195afbe5d0bc4b8f1681aaa794b2db40cb77cc6023bcda29829971fbc",
+      "bytes": 8875
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_sample_guards.obj",
+      "sha256": "3a006c52bf3160ed7900d3e10a6d44d53f31918279e47be6e8dd0998c20bde34",
+      "bytes": 6012
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_table_scalar.obj",
+      "sha256": "a0f42176265427ac0c58f4778231ac252734a9fc341e0c6b1a65e476e57aac54",
+      "bytes": 5794
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_sim_dispatch_bus.obj",
+      "sha256": "00388966c2e67f2840e1393db5d2d2e34b30bcf8f9dc927d4ccd3f860ed4973b",
+      "bytes": 5126
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_sample_adjust.obj",
+      "sha256": "fc0e2c6708ad3c384a78e092839e8d20f4d051cdc48a592330df1629c3cbf7ce",
+      "bytes": 11101
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_control_bus.obj",
+      "sha256": "326ccd45c7e163c433c116fcf26e5b03fe9324b83102d237591a018b56d9d7a0",
+      "bytes": 6547
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_byte_ring.obj",
+      "sha256": "fd42624b1a7c2e79720c0c845534128e8ea40c60f91a7399b70e41115e889880",
+      "bytes": 696
+    },
+    {
+      "path": "analysis/build/sim-controller-repro/td2ega_sim_primitives.obj",
+      "sha256": "98ba0ab9f0696705cca49c4a99074591e29f5927392e44522ac2d71d53cc24c0",
+      "bytes": 4591
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sim-controller-build-v1.log",
+    "sha256": "c7ebd74f5b5a49a336306747ac40cf815f30cc4a4692f47d21c4424ce0ef2738"
+  },
+  "limit": "Whole241-site4674/25actualbodies/687sites/actualSSnear-farframes/frozenCcalleecomposition/13recognized491Dtargets/currentDS-independentSS/operand-before-frame/read-after-write/CFIFDF-rootZF/GPR-BP/fullbus/control/counts/globalprefixcaps/unknown-targetprefix/rawchildRETneverfollowed. Validtargetdomain-allwriters/sharedsource-reset-IRQ-exclusion-storage-lifetime/whole403B-core open. No realDOSsession/devices/rendering/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000380"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-sim-controller-context-v2.json",
+    "sha256": "7c05fb34cddb5d4193a7b1868df2c2045e65fbe6f3d40052acc33abd96f54db9"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/sim-controller-validation-attempt-v1.json",
+      "sha256": "18c0fee91b3dad5896aa3739a6441cacea76598f68dfc05e721638c7b502a9fe"
+    },
+    {
+      "path": "analysis/history/sim-controller-validation-attempt-v2.json",
+      "sha256": "f74171a65750917e96b3b485d79acd9aa19837688eb215bab162ed1d0bcf93fc"
+    }
+  ]
+}

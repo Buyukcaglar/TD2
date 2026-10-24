@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000404",
+    "FN-EGA-000405",
+    "FN-EGA-000406",
+    "FN-EGA-000407",
+    "FN-EGA-000408",
+    "FN-EGA-000409"
+  ],
+  "result": "pass",
+  "vectors": 12288,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1f630d43df348a7ca44fa9e7504ab24b1b0be60ade2fe18d82532d81957e25d4",
+  "source_sha256": "71fe59bbcd753630d7c28fcea74e184f149e7de59fba20670477ba36b36cb828",
+  "validator_sha256": "1ff4e1c43e38a7407f9272e1e3a9bc26e7d9e812c6e4acedea40432f211de406",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    }
+  ],
+  "original_instructions_executed": 100352,
+  "fixture_coverage": {
+    "645A": 2048,
+    "646F": 2048,
+    "6488": 2048,
+    "64C7": 2048,
+    "6508": 2048,
+    "6518": 2048
+  },
+  "instruction_sites_exercised": 71,
+  "instruction_sites_in_fence": 71,
+  "limits": "Six serializedkeycallbacks onsyntheticfullbus; allmodebytes/guardprofiles, UI3wordcaller-clean/noargumentfarframes, callbackDS/ES/SI/DI/IF/DF changes andguardclearthroughreturnedDS retained. ExternalUI bodies areABImocks; no actualdisplay/input/BIOS/IRQ/guard-exclusion/game/fidelity acceptance. Nativeinvalid/adapterdiagnostics separate; incidental arithmeticflags/SS/BP-changingadapters outsideprofile."
+}

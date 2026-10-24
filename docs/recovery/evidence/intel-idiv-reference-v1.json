@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "date": "2026-10-14",
+  "result": "reviewed",
+  "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf",
+  "title": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2A, Instruction Set Reference A-L",
+  "section": "IDIV, printed pages 3-440 through 3-442; PDF pages 542 through 544",
+  "retrieval": "Primary official PDF read successfully through web tool; 652-page document. Direct PowerShell download returned HTTP access denial; no local full-document identity or hash is claimed.",
+  "observations": [
+    "Sixteen-bit signed division uses DX:AX and produces AX quotient and DX remainder, truncating toward zero.",
+    "Zero divisor and an out-of-range signed quotient raise divide error.",
+    "Arithmetic condition flags are unspecified after IDIV; projection fault comparisons therefore use captured pre-IDIV carry and do not claim post-IDIV arithmetic-flag behavior."
+  ],
+  "limit": "Architecture reference supporting the flag/fault comparison policy. Does not establish actual historical CPU, BIOS, exception handling, timing or DOS gameplay behavior. No manual implementation copied into recovered source."
+}

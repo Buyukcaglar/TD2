@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "ff4ca3974a102eb594267223af65aa86ad139ef2bd22f8a04d33aefd5af9b1d4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5b1cac688211ea183c3ba68ff80983b390be706526b0bd3acb923853c3322463",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_bios_block.py",
+      "sha256": "7f95d9761c78be7061d178f2088d995b758ad64efddd1c48597c3e4ac7e4bb47"
+    }
+  ],
+  "limits": "Four native-only diagnostics, excluded from original differential/error equivalence. No original instructions or BIOS/device/rendering/IRQ/core/game/fidelity acceptance."
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "9a8ce93f9b1d6a6be8ac4e9592c2b0d6443be6a7abe177fd412fb85a265a9af8",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "83cbc143bcde623facab409dba3a20d5460a846423c068a42b7b91a08ebbe6d3",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_wait_roots.py",
+      "sha256": "e409b900e5407b886d85e35e4a4a7942c64c58d440bf53e7128703ae978a7386"
+    }
+  ],
+  "limits": "Nineinvalidprofile checks, inputfailure, observerfailure anddynamic-returnframe-preservation rejection. Nativeonly/outsideoriginalerror equivalence; noactualinputtarget/IRQ/device/core/game/fidelity."
+}

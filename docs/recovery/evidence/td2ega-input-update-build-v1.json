@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_update.cmd",
+    "sha256": "10b1894c888e370272be6dc85ff36be1aa5e6ee40558d51726c57444accd4b1b"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_control_ops.c",
+      "sha256": "b787378cb4007d82e7c6e6ee3d9705d8f9066efe9fac9e38410c5f8a5ebcbd98"
+    },
+    {
+      "path": "src/recovered/td2ega_control_ops.h",
+      "sha256": "b0dca900b2d4497a6996e98397117b0c91382a9c0400f57d7366baa2d645f726"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.c",
+      "sha256": "ce85a66e28b75db3a1f002bbaa4832477116211dec3c73e917c207e4e51bf313"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.h",
+      "sha256": "db90386ecb2dd22f8efde0a40433a535d9c3b74c5c4dee8ce9021e7912115ed6"
+    },
+    {
+      "path": "src/recovered/td2ega_input_control.c",
+      "sha256": "00814079c3ab0b64867a741d92dfcad027147c2d4126d58e47a7fc4c7d499450"
+    },
+    {
+      "path": "src/recovered/td2ega_input_control.h",
+      "sha256": "7842863717012546b0f9c6042e9a941fc28f4c37a2cddbbcf2f21b85d0b9a499"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll.c",
+      "sha256": "344258fbf46e0ba22584e320458b11831998746405e74e54a96a76713189905b"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll.h",
+      "sha256": "cbd49e98cd723977eef2e8f14f4b4bb28cdb1563d095220fb30ba61878506118"
+    },
+    {
+      "path": "src/recovered/td2ega_input_update.c",
+      "sha256": "14f06f97a2c1700c37dbdd97e6485eea6e7858188382dc62b532dcb2f5260f09"
+    },
+    {
+      "path": "src/recovered/td2ega_input_update.h",
+      "sha256": "d9c449ff30c31101258a1db1773b5cface6e0a5664d7ab81a996ae4bb3965c31"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.c",
+      "sha256": "5ba1a5663d3ab534b05362b734637fe5abcd4c4f45d5c3b7d2fbf52310a1dbc7"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.h",
+      "sha256": "17bbb527c847a3beb63b35ce097540a5cb5a6b1bb950695747792addab490c56"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.c",
+      "sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.h",
+      "sha256": "1ca9473ab53fa3b545dcb697df135ddcea989691dc877628b76c90bd4bc4663f"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.c",
+      "sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-update-repro/td2ega_control_ops.obj",
+      "sha256": "3772a79e32ba74238ecb32aa3d46ec99799768ee91d72a55805b125d87d68018",
+      "bytes": 5252
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_gameport.obj",
+      "sha256": "a3c5a0af2ac3aeb48209562ffc48d6a966d699f4da40bab5b92efcbb8a82c4df",
+      "bytes": 7558
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_input_control.obj",
+      "sha256": "5f3e124928e70791ef3623126c4274cd32f4909c95aaab39fc97df1f87028d4b",
+      "bytes": 4827
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_input_poll.obj",
+      "sha256": "0449b3d9bd0291462a779e4f426cd06f3bd4fc290b6ebb73826b11f3eaa63368",
+      "bytes": 8903
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_input_update.dll",
+      "sha256": "b75aec0b9d6a11dbc42a29db21f77022e045bd0fc9a9d497d123d59b4b105c1e",
+      "bytes": 112640
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_input_update.obj",
+      "sha256": "957ec20ec01cbcc891ba9da1c80dca730873c78e7c96aa27e7d3bd488acf2d42",
+      "bytes": 4624
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_key_dispatch.obj",
+      "sha256": "3103c139800b1db31df4c9daf0aef328ac1656c4e563b307ee3f09077418ce95",
+      "bytes": 2279
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_signed_motion.obj",
+      "sha256": "5b57da7be9164f4c16837e180552cd852709248bbaa768cc8de7f1eea32c3299",
+      "bytes": 3110
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_sim_primitives.obj",
+      "sha256": "824745dc33a900939f9dfd59d5cf5074429fef47a28c4b3710fc600b4adc8ab2",
+      "bytes": 4587
+    },
+    {
+      "path": "analysis/build/input-update-repro/td2ega_sim_targets.obj",
+      "sha256": "7ba4017f8f82775d84eda371538d8145a61af508eb1f30ed2e6627bf470cf3cf",
+      "bytes": 4391
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-update-build-v1.log",
+    "sha256": "414273c5569bd04d5a90b798c8c22bbb65181b5159dffc2c309ac5bdc0bbe9ec"
+  },
+  "limit": "Complete420A recoverednative composition, actualrootplus13calleeentries under serializedsyntheticBIOS/port/farcallback andscanner targetdomains. DS/SS/EScontrast, scratch/BP/DI/state effects; no byte-ring/core/IRQ/fullstate/resource/game acceptance.",
+  "function_id": "FN-EGA-000367"
+}

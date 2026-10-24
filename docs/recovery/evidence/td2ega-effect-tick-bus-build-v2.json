@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_effect_tick_bus.cmd",
+    "sha256": "5396c500727688d94978157e70fc229278d5839a046ec35b85971eba440fe2ff"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_effect_tick_bus.c",
+      "sha256": "8e4ce1ec960ca6864ca817d1ee98b99b7396491533609e53a2046145eafe4818"
+    },
+    {
+      "path": "src/recovered/td2ega_effect_tick_bus.h",
+      "sha256": "5f1882d6779022f6e51c18233b6cd2601680fe392e8723bc991351ada5cf283a"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/effect-tick-bus-repro-v2/td2ega_effect_tick_bus.dll",
+      "sha256": "880c55e0a3bbaef772097929ad5bb9064f8f522abd59e8d1f71feb2298413cc6",
+      "bytes": 109568
+    },
+    {
+      "path": "analysis/build/effect-tick-bus-repro-v2/td2ega_effect_tick_bus.obj",
+      "sha256": "6d7c954d0e08036f30c3bfac8ef7cc16ff7c61035a258028cefb203856125b38",
+      "bytes": 18055
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/effect-tick-bus-build-v2.log",
+    "sha256": "3b6d6b311d67bacf9cc88c8788335ee6ba8a618cfec94b4d1737311f4188ec50"
+  },
+  "limit": "Additional6269fullSS/currentDS/actualfarRET-aftereffects/whole1MiBRAM-GPR-BP-CFIFDF/definedFLAGS/independentCPUwrites/orderedbyteports. LiteralcurrentCS6334words/11recognizedtargets/unknownprefix6/CS-table-SSaliases/256event-andshiftbytes/JS-afterDEC/queuedcycles/SS-state-source-framealiases/currentDScontrast/20bitwrap/portbusmutations/nativebudgets-preRETqualification. Portadapterbuswrites separatefromCPUcounts. No historicalCPU-IRQdelivery/timeunits/audio/fullresources/sourceallwriters-lifetime-exclusion/actual6269-first403B-core/P1-GATE acceptance. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000403"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-effect-tick-bus-context-v1.json",
+    "sha256": "9cb758efaeba26bf5a48099237bfb2f12e1be506bba7d041fb6ffc405385cc47"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/effect-tick-bus-build-setup-v2.json",
+      "sha256": "0d29b64fb2818738fcb2bd764be79c1222266c3e3dce6376e5610813fdbb750e"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-refinement-v2.json",
+      "sha256": "e6b1c1c2b2416b0154fb9c684fe8e3bcbaebe66547b51be8c49eb4d6322529e0"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-validation-preparation-v2.json",
+      "sha256": "25ef6d276096a512fc6d34253dae2e2171d8af9bc640f87ca70c93bad2d211ac"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-attempt-v1/src/recovered/td2ega_effect_tick_bus.c",
+      "sha256": "36dea3f2fdd132921437baab8233723d7fe14936f15b6024567e6fed3d8221ed"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-attempt-v1/src/recovered/td2ega_effect_tick_bus.h",
+      "sha256": "28bef7bfe2044d99e9f255f53665312e834791107b8efcd4f45f264512bfed13"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-attempt-v1/tools/validate_effect_tick_bus.py",
+      "sha256": "5a4dc8ead1c8d74bdc459164e51d8681cb7cab07f1c0f2c4c0f0114223f1ec57"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-attempt-v1/analysis/build/effect-tick-bus-repro/td2ega_effect_tick_bus.dll",
+      "sha256": "1b9f1228ea4efdffca05bf84139978ad5f963a40b3834b62c9e0b8408c13b53d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-effect-tick-bus-validation-v1.json",
+      "sha256": "d5460f3b104523c0f63a441a10e9cfd788a8c87d1a740580bbd9cad7f88c165c"
+    }
+  ]
+}

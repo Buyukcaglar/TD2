@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000191"
+  ],
+  "vectors": 2696,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "740501509c545babe29f398a798b3f6e5f208e78b2ed774695caaedc10ae0f06",
+  "source_sha256": "8f0f049686afda04fc13ee9a65c1b847a8fcdbab3aff1ce12527661fa8337ce4",
+  "validator_sha256": "dc51fb0bc2c4f790e37f4a823e437af9ce88091ae4e0acd5382534a0ffb3c00e",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 134320,
+  "instruction_sites_in_fence": 52,
+  "instruction_sites_exercised": 51,
+  "instruction_dispositions": [
+    {
+      "site": "06C9:74B3",
+      "disposition": "OriginalfatalpreCALLprefix/external16A7:0002notexecuted/noexecutionclaim."
+    }
+  ],
+  "fixture_coverage": {
+    "original_fatal_prefix": 344,
+    "actual_7490_farCALLs": 2376,
+    "search_iterations": 7628,
+    "trim_iterations": 1136,
+    "CPU_bus_writes": 33776,
+    "DS_equals_SS_cases": 1360,
+    "incomingDF1_cases": 1348,
+    "raw_root_returns": 12,
+    "alias_profile_0": 0,
+    "root_far_return": 1740,
+    "prefix_call": 320,
+    "prefix_scan": 160,
+    "unqualified_child_farframe_prefix": 48,
+    "unqualified_root_farframe_prefix": 48,
+    "prefix_trim": 32,
+    "root_ADDSP4_carry_cases": 16,
+    "raw_child_return": 4,
+    "alias_profile_1": 4,
+    "alias_profile_2": 4,
+    "alias_profile_3": 4,
+    "alias_profile_4": 4,
+    "alias_profile_5": 4,
+    "alias_profile_6": 4
+  },
+  "limits": "Actual782C/7490fullCPU-SS/fardescriptor/CSB269wrappedwordupdate/rowsearch-ignorestatus/toptrim/all16bitSPbody/actualsaves-farframes/full20bitbus/CFIFDF/CALL-scanprefix/native1rawchildafterRETneverfollowed/native5preRETqualification/native6originalfatalpreCALL. No arena/size/descriptorbounds-storage-lifetime-writers/exclusion/CPU-A20/fatalcleanup/core/resource/CGA/session/gameplay/fidelity closure."
+}

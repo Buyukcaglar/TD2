@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "cb30d83c9d612c60aab7c76ff2cf36df9f583cffe71be05b44e4045901d17bb4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "687adffdd2e11194de1a8705030920403a3ea8b80b9bdc6e4a72a54481cf89c6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_shift_assign.py",
+      "sha256": "12208493f650f0f13ae2c2bd5a52ad1a18de559a0de2bbc5ff9e57910c2bd7b2"
+    }
+  ],
+  "limits": "Eightnativeinvalidbus/count/SP/null/carry/IF/DF profiles beforeeffects. SeparatefromoriginalRETFimm4/near-pointer/wrap/rawreturn behavior andactualcaller/FLAGS/bounds/core/game/fidelity."
+}

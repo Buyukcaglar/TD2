@@ -1,0 +1,1754 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "644e5fe80d2f91a98ddc05478a6de5c80299846463c7978068bbe7a9b48282b4",
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "instruction_observations": [
+    {
+      "site": "06C9:4929",
+      "bytes": "c606713301",
+      "text": "mov byte ptr [0x3371], 1"
+    },
+    {
+      "site": "06C9:492E",
+      "bytes": "833e109400",
+      "text": "cmp word ptr [0x9410], 0"
+    },
+    {
+      "site": "06C9:4933",
+      "bytes": "7411",
+      "text": "je 0x4946"
+    },
+    {
+      "site": "06C9:4935",
+      "bytes": "a11e33",
+      "text": "mov ax, word ptr [0x331e]"
+    },
+    {
+      "site": "06C9:4938",
+      "bytes": "a35633",
+      "text": "mov word ptr [0x3356], ax"
+    },
+    {
+      "site": "06C9:493B",
+      "bytes": "a12e94",
+      "text": "mov ax, word ptr [0x942e]"
+    },
+    {
+      "site": "06C9:493E",
+      "bytes": "a35833",
+      "text": "mov word ptr [0x3358], ax"
+    },
+    {
+      "site": "06C9:4941",
+      "bytes": "c606d53301",
+      "text": "mov byte ptr [0x33d5], 1"
+    },
+    {
+      "site": "06C9:4946",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:4947",
+      "bytes": "c606713302",
+      "text": "mov byte ptr [0x3371], 2"
+    },
+    {
+      "site": "06C9:494C",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:494D",
+      "bytes": "833eda5200",
+      "text": "cmp word ptr [0x52da], 0"
+    },
+    {
+      "site": "06C9:4952",
+      "bytes": "7508",
+      "text": "jne 0x495c"
+    },
+    {
+      "site": "06C9:4954",
+      "bytes": "8bc5",
+      "text": "mov ax, bp"
+    },
+    {
+      "site": "06C9:4956",
+      "bytes": "055000",
+      "text": "add ax, 0x50"
+    },
+    {
+      "site": "06C9:4959",
+      "bytes": "a3da52",
+      "text": "mov word ptr [0x52da], ax"
+    },
+    {
+      "site": "06C9:495C",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:495D",
+      "bytes": "833eda5200",
+      "text": "cmp word ptr [0x52da], 0"
+    },
+    {
+      "site": "06C9:4962",
+      "bytes": "75f8",
+      "text": "jne 0x495c"
+    },
+    {
+      "site": "06C9:4964",
+      "bytes": "8b1ece52",
+      "text": "mov bx, word ptr [0x52ce]"
+    },
+    {
+      "site": "06C9:4968",
+      "bytes": "81fb0032",
+      "text": "cmp bx, 0x3200"
+    },
+    {
+      "site": "06C9:496C",
+      "bytes": "76ee",
+      "text": "jbe 0x495c"
+    },
+    {
+      "site": "06C9:496E",
+      "bytes": "891e5433",
+      "text": "mov word ptr [0x3354], bx"
+    },
+    {
+      "site": "06C9:4972",
+      "bytes": "8bc5",
+      "text": "mov ax, bp"
+    },
+    {
+      "site": "06C9:4974",
+      "bytes": "053c00",
+      "text": "add ax, 0x3c"
+    },
+    {
+      "site": "06C9:4977",
+      "bytes": "a3da52",
+      "text": "mov word ptr [0x52da], ax"
+    },
+    {
+      "site": "06C9:497A",
+      "bytes": "c706de520000",
+      "text": "mov word ptr [0x52de], 0"
+    },
+    {
+      "site": "06C9:4980",
+      "bytes": "c606b73308",
+      "text": "mov byte ptr [0x33b7], 8"
+    },
+    {
+      "site": "06C9:4985",
+      "bytes": "8bd8",
+      "text": "mov bx, ax"
+    },
+    {
+      "site": "06C9:4987",
+      "bytes": "f60780",
+      "text": "test byte ptr [bx], 0x80"
+    },
+    {
+      "site": "06C9:498A",
+      "bytes": "7407",
+      "text": "je 0x4993"
+    },
+    {
+      "site": "06C9:498C",
+      "bytes": "c706dc522003",
+      "text": "mov word ptr [0x52dc], 0x320"
+    },
+    {
+      "site": "06C9:4992",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:4993",
+      "bytes": "c706dc529001",
+      "text": "mov word ptr [0x52dc], 0x190"
+    },
+    {
+      "site": "06C9:4999",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:499A",
+      "bytes": "8bcb",
+      "text": "mov cx, bx"
+    },
+    {
+      "site": "06C9:499C",
+      "bytes": "8a1e3e53",
+      "text": "mov bl, byte ptr [0x533e]"
+    },
+    {
+      "site": "06C9:49A0",
+      "bytes": "80c345",
+      "text": "add bl, 0x45"
+    },
+    {
+      "site": "06C9:49A3",
+      "bytes": "80e37f",
+      "text": "and bl, 0x7f"
+    },
+    {
+      "site": "06C9:49A6",
+      "bytes": "32ff",
+      "text": "xor bh, bh"
+    },
+    {
+      "site": "06C9:49A8",
+      "bytes": "8beb",
+      "text": "mov bp, bx"
+    },
+    {
+      "site": "06C9:49AA",
+      "bytes": "83e57f",
+      "text": "and bp, 0x7f"
+    },
+    {
+      "site": "06C9:49AD",
+      "bytes": "d1e9",
+      "text": "shr cx, 1"
+    },
+    {
+      "site": "06C9:49AF",
+      "bytes": "8bd9",
+      "text": "mov bx, cx"
+    },
+    {
+      "site": "06C9:49B1",
+      "bytes": "83e916",
+      "text": "sub cx, 0x16"
+    },
+    {
+      "site": "06C9:49B4",
+      "bytes": "8bc1",
+      "text": "mov ax, cx"
+    },
+    {
+      "site": "06C9:49B6",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "06C9:49B8",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "06C9:49BA",
+      "bytes": "03c1",
+      "text": "add ax, cx"
+    },
+    {
+      "site": "06C9:49BC",
+      "bytes": "88868a36",
+      "text": "mov byte ptr [bp + 0x368a], al"
+    },
+    {
+      "site": "06C9:49C0",
+      "bytes": "8a87dd37",
+      "text": "mov al, byte ptr [bx + 0x37dd]"
+    },
+    {
+      "site": "06C9:49C4",
+      "bytes": "88860a37",
+      "text": "mov byte ptr [bp + 0x370a], al"
+    },
+    {
+      "site": "06C9:49C8",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:49C9",
+      "bytes": "8036f73701",
+      "text": "xor byte ptr [0x37f7], 1"
+    },
+    {
+      "site": "06C9:49CE",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:49CF",
+      "bytes": "8036f63701",
+      "text": "xor byte ptr [0x37f6], 1"
+    },
+    {
+      "site": "06C9:49D4",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:49D5",
+      "bytes": "8036f83701",
+      "text": "xor byte ptr [0x37f8], 1"
+    },
+    {
+      "site": "06C9:49DA",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:49DB",
+      "bytes": "80067a3310",
+      "text": "add byte ptr [0x337a], 0x10"
+    },
+    {
+      "site": "06C9:49E0",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:49E1",
+      "bytes": "802e7a3310",
+      "text": "sub byte ptr [0x337a], 0x10"
+    },
+    {
+      "site": "06C9:49E6",
+      "bytes": "c3",
+      "text": "ret "
+    },
+    {
+      "site": "06C9:4A18",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "caller_and_rejection_window": [
+    {
+      "site": "06C9:46CA",
+      "bytes": "803e905402",
+      "text": "cmp byte ptr [0x5490], 2"
+    },
+    {
+      "site": "06C9:475B",
+      "bytes": "9a0e78c906",
+      "text": "lcall 0x6c9, 0x780e"
+    },
+    {
+      "site": "06C9:4760",
+      "bytes": "2407",
+      "text": "and al, 7"
+    },
+    {
+      "site": "06C9:4762",
+      "bytes": "3c06",
+      "text": "cmp al, 6"
+    },
+    {
+      "site": "06C9:4764",
+      "bytes": "73f5",
+      "text": "jae 0x475b"
+    },
+    {
+      "site": "06C9:4904",
+      "bytes": "8a4e01",
+      "text": "mov cl, byte ptr [bp + 1]"
+    },
+    {
+      "site": "06C9:4909",
+      "bytes": "80e17f",
+      "text": "and cl, 0x7f"
+    },
+    {
+      "site": "06C9:4916",
+      "bytes": "8a5c03",
+      "text": "mov bl, byte ptr [si + 3]"
+    },
+    {
+      "site": "06C9:491B",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "06C9:491D",
+      "bytes": "ff97e633",
+      "text": "call word ptr [bx + 0x33e6]"
+    },
+    {
+      "site": "06C9:4921",
+      "bytes": "a1c852",
+      "text": "mov ax, word ptr [0x52c8]"
+    },
+    {
+      "site": "06C9:4924",
+      "bytes": "fecc",
+      "text": "dec ah"
+    },
+    {
+      "site": "06C9:4926",
+      "bytes": "e9a1fd",
+      "text": "jmp 0x46ca"
+    }
+  ],
+  "instruction_sites_in_fence": 64,
+  "indirect_caller_candidate": {
+    "owner": "06C9:4674",
+    "site": "06C9:491D",
+    "kind": "call",
+    "size": 4,
+    "operand": "word ptr [bx + 0x33e6]",
+    "review": {
+      "disposition": "resource_record_near_callback",
+      "targets": [
+        "06C9:4929",
+        "06C9:4947",
+        "06C9:494D",
+        "06C9:495D",
+        "06C9:499A",
+        "06C9:49C9",
+        "06C9:49CF",
+        "06C9:49D5",
+        "06C9:49DB",
+        "06C9:49E1",
+        "06C9:49E7",
+        "06C9:4A18",
+        "06C9:4A19"
+      ],
+      "complete": false,
+      "evidence": "4904..491B selectorfromfourbyteDS347E record,byte3;48observedtablewords;recordwriter/bounds proofpending"
+    }
+  },
+  "external_span_candidates": [],
+  "curve_static_inputs": 65536,
+  "ring_lemma": {
+    "individual_initial_bytes": 256,
+    "individual_maximum_consecutive_rejections": 7,
+    "maximum_seed_bytes": [
+      3
+    ],
+    "stable_256_slot_maximum_calls": 1793,
+    "sharp_bound_witness_initial_byte": 3,
+    "witness_calls": 1793,
+    "proof": "Every slot can reject at most7 consecutive transformed outputs; each is visited once per256 calls. Thus the first accepted output occurs by7*256+1. Uniformbyte3attainsbound.",
+    "preconditions": [
+      "SerializedcurrentDS/ringbase66E8andcursor66E6stableexceptliteral780Ewrites; nointerveningwriters/reset/IRQ/reentry.",
+      "ActualcalleeSSframes/savedSI/returnwords disjointfromringbytes/cursor; nosegmentaliaseschangingcode orcontrol.",
+      "This provesonly475B..4764 rejectionloop underthoseconditions, notthewhole4674controller oractualcallerexclusion."
+    ],
+    "per_byte_results": [
+      {
+        "initial": 0,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 1
+      },
+      {
+        "initial": 1,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 3
+      },
+      {
+        "initial": 2,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 5
+      },
+      {
+        "initial": 3,
+        "consecutive_rejected_outputs": 7,
+        "first_accepted": 252
+      },
+      {
+        "initial": 4,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 9
+      },
+      {
+        "initial": 5,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 11
+      },
+      {
+        "initial": 6,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 13
+      },
+      {
+        "initial": 7,
+        "consecutive_rejected_outputs": 6,
+        "first_accepted": 252
+      },
+      {
+        "initial": 8,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 17
+      },
+      {
+        "initial": 9,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 19
+      },
+      {
+        "initial": 10,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 21
+      },
+      {
+        "initial": 11,
+        "consecutive_rejected_outputs": 5,
+        "first_accepted": 253
+      },
+      {
+        "initial": 12,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 25
+      },
+      {
+        "initial": 13,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 27
+      },
+      {
+        "initial": 14,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 29
+      },
+      {
+        "initial": 15,
+        "consecutive_rejected_outputs": 5,
+        "first_accepted": 252
+      },
+      {
+        "initial": 16,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 33
+      },
+      {
+        "initial": 17,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 35
+      },
+      {
+        "initial": 18,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 37
+      },
+      {
+        "initial": 19,
+        "consecutive_rejected_outputs": 4,
+        "first_accepted": 125
+      },
+      {
+        "initial": 20,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 41
+      },
+      {
+        "initial": 21,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 43
+      },
+      {
+        "initial": 22,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 45
+      },
+      {
+        "initial": 23,
+        "consecutive_rejected_outputs": 4,
+        "first_accepted": 253
+      },
+      {
+        "initial": 24,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 49
+      },
+      {
+        "initial": 25,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 51
+      },
+      {
+        "initial": 26,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 53
+      },
+      {
+        "initial": 27,
+        "consecutive_rejected_outputs": 4,
+        "first_accepted": 124
+      },
+      {
+        "initial": 28,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 57
+      },
+      {
+        "initial": 29,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 59
+      },
+      {
+        "initial": 30,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 61
+      },
+      {
+        "initial": 31,
+        "consecutive_rejected_outputs": 4,
+        "first_accepted": 252
+      },
+      {
+        "initial": 32,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 65
+      },
+      {
+        "initial": 33,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 67
+      },
+      {
+        "initial": 34,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 69
+      },
+      {
+        "initial": 35,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 61
+      },
+      {
+        "initial": 36,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 73
+      },
+      {
+        "initial": 37,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 75
+      },
+      {
+        "initial": 38,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 77
+      },
+      {
+        "initial": 39,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 125
+      },
+      {
+        "initial": 40,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 81
+      },
+      {
+        "initial": 41,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 83
+      },
+      {
+        "initial": 42,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 85
+      },
+      {
+        "initial": 43,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 189
+      },
+      {
+        "initial": 44,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 89
+      },
+      {
+        "initial": 45,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 91
+      },
+      {
+        "initial": 46,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 93
+      },
+      {
+        "initial": 47,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 253
+      },
+      {
+        "initial": 48,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 97
+      },
+      {
+        "initial": 49,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 99
+      },
+      {
+        "initial": 50,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 101
+      },
+      {
+        "initial": 51,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 60
+      },
+      {
+        "initial": 52,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 105
+      },
+      {
+        "initial": 53,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 107
+      },
+      {
+        "initial": 54,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 109
+      },
+      {
+        "initial": 55,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 124
+      },
+      {
+        "initial": 56,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 113
+      },
+      {
+        "initial": 57,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 115
+      },
+      {
+        "initial": 58,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 117
+      },
+      {
+        "initial": 59,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 188
+      },
+      {
+        "initial": 60,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 121
+      },
+      {
+        "initial": 61,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 123
+      },
+      {
+        "initial": 62,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 125
+      },
+      {
+        "initial": 63,
+        "consecutive_rejected_outputs": 3,
+        "first_accepted": 252
+      },
+      {
+        "initial": 64,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 129
+      },
+      {
+        "initial": 65,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 131
+      },
+      {
+        "initial": 66,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 133
+      },
+      {
+        "initial": 67,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 29
+      },
+      {
+        "initial": 68,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 137
+      },
+      {
+        "initial": 69,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 139
+      },
+      {
+        "initial": 70,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 141
+      },
+      {
+        "initial": 71,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 61
+      },
+      {
+        "initial": 72,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 145
+      },
+      {
+        "initial": 73,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 147
+      },
+      {
+        "initial": 74,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 149
+      },
+      {
+        "initial": 75,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 93
+      },
+      {
+        "initial": 76,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 153
+      },
+      {
+        "initial": 77,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 155
+      },
+      {
+        "initial": 78,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 157
+      },
+      {
+        "initial": 79,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 125
+      },
+      {
+        "initial": 80,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 161
+      },
+      {
+        "initial": 81,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 163
+      },
+      {
+        "initial": 82,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 165
+      },
+      {
+        "initial": 83,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 157
+      },
+      {
+        "initial": 84,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 169
+      },
+      {
+        "initial": 85,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 171
+      },
+      {
+        "initial": 86,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 173
+      },
+      {
+        "initial": 87,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 189
+      },
+      {
+        "initial": 88,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 177
+      },
+      {
+        "initial": 89,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 179
+      },
+      {
+        "initial": 90,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 181
+      },
+      {
+        "initial": 91,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 221
+      },
+      {
+        "initial": 92,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 185
+      },
+      {
+        "initial": 93,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 187
+      },
+      {
+        "initial": 94,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 189
+      },
+      {
+        "initial": 95,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 253
+      },
+      {
+        "initial": 96,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 193
+      },
+      {
+        "initial": 97,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 195
+      },
+      {
+        "initial": 98,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 197
+      },
+      {
+        "initial": 99,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 28
+      },
+      {
+        "initial": 100,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 201
+      },
+      {
+        "initial": 101,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 203
+      },
+      {
+        "initial": 102,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 205
+      },
+      {
+        "initial": 103,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 60
+      },
+      {
+        "initial": 104,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 209
+      },
+      {
+        "initial": 105,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 211
+      },
+      {
+        "initial": 106,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 213
+      },
+      {
+        "initial": 107,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 92
+      },
+      {
+        "initial": 108,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 217
+      },
+      {
+        "initial": 109,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 219
+      },
+      {
+        "initial": 110,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 221
+      },
+      {
+        "initial": 111,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 124
+      },
+      {
+        "initial": 112,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 225
+      },
+      {
+        "initial": 113,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 227
+      },
+      {
+        "initial": 114,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 229
+      },
+      {
+        "initial": 115,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 156
+      },
+      {
+        "initial": 116,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 233
+      },
+      {
+        "initial": 117,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 235
+      },
+      {
+        "initial": 118,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 237
+      },
+      {
+        "initial": 119,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 188
+      },
+      {
+        "initial": 120,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 241
+      },
+      {
+        "initial": 121,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 243
+      },
+      {
+        "initial": 122,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 245
+      },
+      {
+        "initial": 123,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 220
+      },
+      {
+        "initial": 124,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 249
+      },
+      {
+        "initial": 125,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 251
+      },
+      {
+        "initial": 126,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 253
+      },
+      {
+        "initial": 127,
+        "consecutive_rejected_outputs": 2,
+        "first_accepted": 252
+      },
+      {
+        "initial": 128,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 0
+      },
+      {
+        "initial": 129,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 2
+      },
+      {
+        "initial": 130,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 4
+      },
+      {
+        "initial": 131,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 13
+      },
+      {
+        "initial": 132,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 8
+      },
+      {
+        "initial": 133,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 10
+      },
+      {
+        "initial": 134,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 12
+      },
+      {
+        "initial": 135,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 29
+      },
+      {
+        "initial": 136,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 16
+      },
+      {
+        "initial": 137,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 18
+      },
+      {
+        "initial": 138,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 20
+      },
+      {
+        "initial": 139,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 45
+      },
+      {
+        "initial": 140,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 24
+      },
+      {
+        "initial": 141,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 26
+      },
+      {
+        "initial": 142,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 28
+      },
+      {
+        "initial": 143,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 61
+      },
+      {
+        "initial": 144,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 32
+      },
+      {
+        "initial": 145,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 34
+      },
+      {
+        "initial": 146,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 36
+      },
+      {
+        "initial": 147,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 77
+      },
+      {
+        "initial": 148,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 40
+      },
+      {
+        "initial": 149,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 42
+      },
+      {
+        "initial": 150,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 44
+      },
+      {
+        "initial": 151,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 93
+      },
+      {
+        "initial": 152,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 48
+      },
+      {
+        "initial": 153,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 50
+      },
+      {
+        "initial": 154,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 52
+      },
+      {
+        "initial": 155,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 109
+      },
+      {
+        "initial": 156,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 56
+      },
+      {
+        "initial": 157,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 58
+      },
+      {
+        "initial": 158,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 60
+      },
+      {
+        "initial": 159,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 125
+      },
+      {
+        "initial": 160,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 64
+      },
+      {
+        "initial": 161,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 66
+      },
+      {
+        "initial": 162,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 68
+      },
+      {
+        "initial": 163,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 141
+      },
+      {
+        "initial": 164,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 72
+      },
+      {
+        "initial": 165,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 74
+      },
+      {
+        "initial": 166,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 76
+      },
+      {
+        "initial": 167,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 157
+      },
+      {
+        "initial": 168,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 80
+      },
+      {
+        "initial": 169,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 82
+      },
+      {
+        "initial": 170,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 84
+      },
+      {
+        "initial": 171,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 173
+      },
+      {
+        "initial": 172,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 88
+      },
+      {
+        "initial": 173,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 90
+      },
+      {
+        "initial": 174,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 92
+      },
+      {
+        "initial": 175,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 189
+      },
+      {
+        "initial": 176,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 96
+      },
+      {
+        "initial": 177,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 98
+      },
+      {
+        "initial": 178,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 100
+      },
+      {
+        "initial": 179,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 205
+      },
+      {
+        "initial": 180,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 104
+      },
+      {
+        "initial": 181,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 106
+      },
+      {
+        "initial": 182,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 108
+      },
+      {
+        "initial": 183,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 221
+      },
+      {
+        "initial": 184,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 112
+      },
+      {
+        "initial": 185,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 114
+      },
+      {
+        "initial": 186,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 116
+      },
+      {
+        "initial": 187,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 237
+      },
+      {
+        "initial": 188,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 120
+      },
+      {
+        "initial": 189,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 122
+      },
+      {
+        "initial": 190,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 124
+      },
+      {
+        "initial": 191,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 253
+      },
+      {
+        "initial": 192,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 128
+      },
+      {
+        "initial": 193,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 130
+      },
+      {
+        "initial": 194,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 132
+      },
+      {
+        "initial": 195,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 12
+      },
+      {
+        "initial": 196,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 136
+      },
+      {
+        "initial": 197,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 138
+      },
+      {
+        "initial": 198,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 140
+      },
+      {
+        "initial": 199,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 28
+      },
+      {
+        "initial": 200,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 144
+      },
+      {
+        "initial": 201,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 146
+      },
+      {
+        "initial": 202,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 148
+      },
+      {
+        "initial": 203,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 44
+      },
+      {
+        "initial": 204,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 152
+      },
+      {
+        "initial": 205,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 154
+      },
+      {
+        "initial": 206,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 156
+      },
+      {
+        "initial": 207,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 60
+      },
+      {
+        "initial": 208,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 160
+      },
+      {
+        "initial": 209,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 162
+      },
+      {
+        "initial": 210,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 164
+      },
+      {
+        "initial": 211,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 76
+      },
+      {
+        "initial": 212,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 168
+      },
+      {
+        "initial": 213,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 170
+      },
+      {
+        "initial": 214,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 172
+      },
+      {
+        "initial": 215,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 92
+      },
+      {
+        "initial": 216,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 176
+      },
+      {
+        "initial": 217,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 178
+      },
+      {
+        "initial": 218,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 180
+      },
+      {
+        "initial": 219,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 108
+      },
+      {
+        "initial": 220,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 184
+      },
+      {
+        "initial": 221,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 186
+      },
+      {
+        "initial": 222,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 188
+      },
+      {
+        "initial": 223,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 124
+      },
+      {
+        "initial": 224,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 192
+      },
+      {
+        "initial": 225,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 194
+      },
+      {
+        "initial": 226,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 196
+      },
+      {
+        "initial": 227,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 140
+      },
+      {
+        "initial": 228,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 200
+      },
+      {
+        "initial": 229,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 202
+      },
+      {
+        "initial": 230,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 204
+      },
+      {
+        "initial": 231,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 156
+      },
+      {
+        "initial": 232,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 208
+      },
+      {
+        "initial": 233,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 210
+      },
+      {
+        "initial": 234,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 212
+      },
+      {
+        "initial": 235,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 172
+      },
+      {
+        "initial": 236,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 216
+      },
+      {
+        "initial": 237,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 218
+      },
+      {
+        "initial": 238,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 220
+      },
+      {
+        "initial": 239,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 188
+      },
+      {
+        "initial": 240,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 224
+      },
+      {
+        "initial": 241,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 226
+      },
+      {
+        "initial": 242,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 228
+      },
+      {
+        "initial": 243,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 204
+      },
+      {
+        "initial": 244,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 232
+      },
+      {
+        "initial": 245,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 234
+      },
+      {
+        "initial": 246,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 236
+      },
+      {
+        "initial": 247,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 220
+      },
+      {
+        "initial": 248,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 240
+      },
+      {
+        "initial": 249,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 242
+      },
+      {
+        "initial": 250,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 244
+      },
+      {
+        "initial": 251,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 236
+      },
+      {
+        "initial": 252,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 248
+      },
+      {
+        "initial": 253,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 250
+      },
+      {
+        "initial": 254,
+        "consecutive_rejected_outputs": 0,
+        "first_accepted": 252
+      },
+      {
+        "initial": 255,
+        "consecutive_rejected_outputs": 1,
+        "first_accepted": 252
+      }
+    ]
+  },
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-sim-primitives-validation-v1.json",
+      "sha256": "2abb0bb4d8a2b94b22fb3f4f84e7f581db8e1cbb7f3a64653622e28d8f3e8990"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-small-state-validation-v3.json",
+      "sha256": "6506c0d6da20d20c9e718f4b7895f940ee161939486115a0304c7d4637ea7fc7"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-byte-ring-validation.json",
+      "sha256": "eb1d93f4f32e2f9d7023a5ac69fecc31b499aab7d99a1857161697744b68c216"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-sample-guards-context-v2.json",
+      "sha256": "3d7fb2f89750afb5ff5107aa0c249f330035b89b1e805daa835ea67e48d5f89a"
+    }
+  ],
+  "facts": [
+    "Eleven initialized491Dtargets alreadyhaveboundedportableviews; thispacketaddsfullSSbus+CFZF interfaceswithoutnewuniqueoriginalentries. Plain4A18RET2 already belongs tosmall-state. Existingpuregroup APIsandreceipts remainfrozen.",
+    "499A capturesincomingBXintoCX; BL=(DS533E+45)&7F/BH0/BPindex; unsignedCX>>1/BXhalf/CXhalf-22/AX=5*CXmod16. Actual8886at49BCand49C4defaulttoSS becauseBPbase; intervening49C0defaultDS becauseBXbase. FirstSSbytewrite precedes liveDSread37DD+half, then secondSSbytewrite. DS=SSonlyoneadmittedprofile; inputsegmentsmaydifferandstillphysicalalias.",
+    "CurveCFZFcome fromfinalwordADDAXCX beforeMOVs, notfromfinalAXwithALreplacedbybyte. Both493xMOVsnapshot paths and4947/4A18 preservetheirpriorflagsasliteral; nativeinputZFexplicit.495D finalTESTbit80afterordered52DA-52DE-33B7stores rereadsaliasedtarget.",
+    "AllrootsplainnearRET/noownpush/noargs; actualSSwordcanbechangedbytheirbyte-wordstatewrites. Native0meansactualREToperationandrawreturnedcoordinate, notproofitmatchesparentIP4921. Parentmustcaptureindirectwordbeforepushingframe/checkreturnedcoordinate.",
+    "491Dselectorremainsrawbyte0..255 scaled2/currentDS33E6..35E4wordlookup. Initialized48wordtable and13recognizedtargetbodies donotboundactualrecordbyte3/allwriters. 4904recordselectorisSS:[BP+1], masked7F/fourbytes; 4916callbackselectorisDS:[SI+3]. KeepDS-SSviewsdistinct.",
+    "After491Dnormalreturn4921MOVAX/4924DECAH/4926JMP46CA, CMPDS5490,2 killsreturnedCFZFbeforebranch. Full4674/rootcallframes/returnedGPR-currentDS-state/sourcewriters/IRQexclusion remainopen.",
+    "475B..4764rejectionlemmaexhaustivelyreviews256bytes/transform16orbit andsharp1793callstable256slotbound. ThiscannotreplaceactualSSalias/sharedwriter/reset/IRQclosure anddoesnotnameRNGpurpose/timeunit.",
+    "No newembeddedspan, resourceformatdecode, DOSsession, realdevices, renderer/audio/fullstate/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+  ],
+  "limits": "ElevenadditionalcurrentDS-independentSS nearinterfaces/literalCFZF/inputZF/actualRET/curvepostwritealias plusconditionalstable-ringmathlemma. Complete491Dtarget-writerdomain, whole4674-403B/sourceownership-reset-lifetime-exclusion/core/P1-GATE remainopen."
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 18,
+  "script_sha256": "9f6999082c5efe74d77d29559116672e78e862a5012e01eed7d9799496561539",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f3875aa4e19874dc54124a99cc200f1f025c140c158c78bd6fdec2177e8a44fd",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_gameport_bus.py",
+      "sha256": "746801806e2bbcfd6bdecf83d9b70858ad1fea14a6fb08068e55e27c68606492"
+    }
+  ],
+  "limits": "Native-only invalidbeforeeffects/nulloutput/disabled-noadapter/beforefirstINbudget/missingadapter/OUTfailureafterCLI/MOV-onlyinitializerCFZFandchangedactualSSfarwords/PUSHsavedBP-beforeDSlookup/sharp4003INbound-and4002prefix. Separatefromoriginalcomparison/realdevice-timebase-IRQ/whole420A-403B-core/game-fidelity."
+}

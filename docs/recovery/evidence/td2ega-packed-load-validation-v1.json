@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000173",
+  "result": "pass",
+  "vectors": 2424,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f09b5e1e644f773f424589b2471053024e8050aab9543a9d250020dc6866e43f",
+  "source_sha256": "2be60c3f180c4303822e745e0d6874229e44213d32348aed3706a0bd2eecf10b",
+  "validator_sha256": "8dc1cb7665f23ff7b7e5f26bf85f739c89186446503cd398284b176c0eb23c76",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_cache_allocate.py",
+      "sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da"
+    },
+    {
+      "path": "tools/validate_file_paragraphs.py",
+      "sha256": "d8e90eb308cd1b7177a30db58c43f650511c01814f9994915dda035a80feee70"
+    },
+    {
+      "path": "tools/validate_raw_load.py",
+      "sha256": "e1fc658080c35801a4ab01b5fd01ffe0ebaaade18c95afb74c2e67284ce22780"
+    },
+    {
+      "path": "tools/validate_packed_loader_composition.py",
+      "sha256": "e54a4084fb2a8d8af5cccca84a7264268277ae80fcb11cee71191aefb5174937"
+    }
+  ],
+  "flow_sha256": "0a9bd3eea97513b9381f0436c4c366d6951fdba8d041c5851c4838ef5d6e183b",
+  "executed_entries": [
+    "06C9:5E1C",
+    "06C9:5E8A",
+    "06C9:6AA2",
+    "06C9:6B02",
+    "06C9:6B97",
+    "06C9:6C6E",
+    "06C9:6D50",
+    "06C9:6FE8",
+    "06C9:7030",
+    "06C9:7083",
+    "06C9:70A3",
+    "06C9:7147",
+    "06C9:71B4",
+    "06C9:7C16"
+  ],
+  "original_instructions_executed": 1051486,
+  "fixture_coverage": {
+    "empty": 504,
+    "stage_5_status_0": 164,
+    "codec_passes_1": 94,
+    "stage_1_status_1": 480,
+    "codec_passes_0": 2250,
+    "stage_3_status_1": 160,
+    "stage_4_status_1": 320,
+    "hit_first": 480,
+    "stage_0_status_0": 960,
+    "hit_second": 480,
+    "hole": 480,
+    "descriptor_full": 480,
+    "stage_2_status_1": 320,
+    "codec_passes_2": 80,
+    "stage_5_status_1": 20
+  },
+  "limits": "Complete wrapper with actual listed original callees, synthetic serialized valid pool/DS=SS/codec/DOS profiles. Original ADDSP8, shifted SI/DI, count-vs-pointer returns and partial failure state preserved. No supplied resource decoded, actual DOS/IRQ/caller lifetime, full scratch-register/flag contract or game/fidelity acceptance. Native codec bounds/work diagnostics are outside original error equivalence."
+}

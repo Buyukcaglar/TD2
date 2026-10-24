@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 23,
+  "script_sha256": "5cd02b1e95a712a5ae16017c6b418a04b077c81ac998611d6958fb2b92e39859",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "28e4960e35e75a7e42d9936fbf699e18b6b3e338a341f3d9b3fca9da7c94eb45",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_stream_push_byte.py",
+      "sha256": "692179902d609c72d1952ab5a2accceac421bf1050da8b2bd12a667c4d83b662"
+    }
+  ],
+  "limits": "Nativeinterfaces/rawreadflag-fullwordFFFF-boundarycountguards/wordwrap/backwardbyte-beforeflags-channel/actualsignedindex/near-farSSFNs/fullbuffer-heapcomposition/metadataaliasesrootfarreturn only. Originalcomparison separate; syntheticDOSnoINTframes/historicalCPU-A20unqualified, wholecallers/writers/capacity/ownership/lifetime/exclusion/core/session/fidelity open."
+}

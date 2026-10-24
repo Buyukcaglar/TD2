@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 13,
+  "script_sha256": "8b78b07540c1d8feedaf1db400681afc6831d908bd00e9a70a4af9534f2db6f3",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "94bdcf20119a773f7f61dbe7d15f7b2f04cdd12073614df684bb9392bbf5097a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_flags.py",
+      "sha256": "276a6f6bb6e4336de70beef4cbf49fbb832cddfd3bb98ed51ab87e15bf01b61c"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects, nullout, prefixmask andthree returnpath/mask/AX-ZF discriminators. Nativeonly; definedFlags/mask notrawPUSHF, CPUreserved/undefinedimage/stackwordownership/POPF/wholeparent/core/IRQ/runtime/gameplay/fidelity remainseparate."
+}

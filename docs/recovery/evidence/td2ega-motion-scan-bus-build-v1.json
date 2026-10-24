@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_motion_scan_bus.cmd",
+    "sha256": "6b3a2254cf0fe55f125959d03efbb0dd6dfae867b9811baad8c1b9a7084db08e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_motion_scan_bus.c",
+      "sha256": "a8a3d6e2511017734f5e768589577383cd5cf6833bdc633fad83b0f62af18988"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.c",
+      "sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc"
+    },
+    {
+      "path": "src/recovered/td2ega_motion_scan_bus.h",
+      "sha256": "d5e0803cbb83a94c0025345d88e0bfea84018e3d70073680c9da06e16309da82"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.h",
+      "sha256": "1ca9473ab53fa3b545dcb697df135ddcea989691dc877628b76c90bd4bc4663f"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/motion-scan-bus-repro/td2ega_motion_scan_bus.dll",
+      "sha256": "b6e75621a8a08f0a65aefd1b0e836f4ace1cf34db0a124801ca49daeb61cd110",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/motion-scan-bus-repro/td2ega_motion_scan_bus.obj",
+      "sha256": "7bdf7ded0b528fe5d1907770ee8fcb7cccda79f1dd5d945db5aa0fa40ce0ed46",
+      "bytes": 10511
+    },
+    {
+      "path": "analysis/build/motion-scan-bus-repro/td2ega_signed_motion.obj",
+      "sha256": "cdf181004554b99cbcfa132b0d6a1250fbb743fd8f53db0bb76d1686de312b18",
+      "bytes": 3114
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/motion-scan-bus-build-v1.log",
+    "sha256": "8eab6487aaa09a5210fa2ea7f66ffda2df73e8196386bbb82f085e5a6fdf9a07"
+  },
+  "limit": "Three additional actualSS interfaces/motion plainRETF/multiply four-word RETF8/scanner nearRET; frozen pure multiply C and actual SS writes/frames/locals plus ordered currentDS reads. Full1MiB20bitRAM/GPR-BP-CFIFDF/defined-normalZF/control/writecounts; fastMUL ZF undefined and excluded. Scanner recognizes three actions plus44BE RETtail; unknown rawtarget prefix4 beforeJMP. FarSP>FFFC stops5 beforeRETF per bounded backend profile, not historicalISA qualification. Whole420A-403B/caller-writer-domain/storage-capacity-lifetime-exclusion/IRQ/core remainopen; no DOSsession/realdevices/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000364",
+    "FN-EGA-000344",
+    "FN-EGA-000372"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-motion-scan-bus-context-v1.json",
+    "sha256": "5121abab28c6ec7ac768951b64e43e4ce0fa444c58bd247d349689291d08ff74"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_projection.cmd",
+    "sha256": "5b0db9a0374f79b19cd3ec48d808bf49f6211b1543265a344a0988c91cf6b23f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_projection.c",
+      "sha256": "d092db813319736cd4a1c76485f605030c97ec314578d5c277e5c161ad40257d"
+    },
+    {
+      "path": "src/recovered/td2ega_projection.h",
+      "sha256": "e3443e6cd149598c45f7de2cd118c35a1634af20c26f0f56af9af5ccbb415637"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/projection-repro/td2ega_projection.dll",
+      "sha256": "d48a5f0ab87794cea905f53ed7a7c5ac7711fdce7c7a247570e73f132f816c34",
+      "bytes": 108544
+    },
+    {
+      "path": "analysis/build/projection-repro/td2ega_projection.obj",
+      "sha256": "2f43fa6e33e2d3873fe460f519b1f4f31203a0ee90fac62898277981b5f92647",
+      "bytes": 9047
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/projection-build-v1.log",
+    "sha256": "c899fa6e568b7cf00631ed0c2328f6c78beb42289aee43a063252e6eceffa967"
+  },
+  "limit": "Complete21C3+actual13A30038 serializedDS/table/list/indexeddata/25iteration body andsignedALlookup, arithmeticflags/unsignedMUL/signedIDIVfaultprefixes/workprefixes/CFIFDF andnear-vs-farreturns compared. FreshCPUafteractualdividefault; faultCF comparedwithpre-IDIVflags, no post-IDIVarithmeticflagclaim. Original tablecontents/geometry/units/callerbounds/listlifetimes/DS-SSintegration/renderer/IRQ/core/game/fidelity remainopen; no resource decode. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000089",
+    "FN-EGA-000254"
+  ]
+}

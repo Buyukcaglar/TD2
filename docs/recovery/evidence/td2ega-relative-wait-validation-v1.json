@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000417"
+  ],
+  "vectors": 52992,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cf325d8e4b3902ad395b0ca3ccc610d1335e4c30514db91edee4184d92963daf",
+  "source_sha256": "b61bcf3944406e1d47d8798df01c0c81e1842cf4cef24b9cb2aac988482290dd",
+  "validator_sha256": "2b07a1671a13ae178bc51048b3c29477fc9adec46a334812e0d2173c97bed3aa",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1083164,
+  "instruction_sites_in_fence": 21,
+  "instruction_sites_exercised": 21,
+  "fixture_coverage": {
+    "before_read_prefix": 28124,
+    "actual_C692_calls": 90272,
+    "critical_IF0_word_reads": 180544,
+    "observer_callbacks": 77824,
+    "observer_write_events": 172928,
+    "bus_write_events": 318016,
+    "high_greater_low_below_discriminator_cases": 2796,
+    "raw_root_returns": 2336,
+    "minimumSP32_cases": 1152,
+    "no_observer_stable_bus_cases": 5760,
+    "root_far_return": 21412,
+    "raw_child_far_return": 3456
+  },
+  "limits": "ActualC6C5+actualC692CLI/read/STI/RETF, rawADD/ADCtwoSSarguments/orderedSSlocals, unsignedhighANDlow guards notlex. Fullbus/nestedSS/GPR/BP/CFIFDF/observerABI/control, criticalwordreadsIF0 andreturnedIF1. Optionalobserver memory-onlysyntheticcounter/SSmutations beforeC692CLI; NULLstablebus, no actualIRQ/timerdelivery orfrequency. Nativebefore-readbudget/observerfailure/rawchildreturns separate. Actualcaller/DSview/sourcewriters/lifetime/bounds/IRQexclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen; physical086C separateunassignedsource."
+}

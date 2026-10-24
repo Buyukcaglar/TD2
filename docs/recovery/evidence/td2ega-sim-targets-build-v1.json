@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sim_targets.cmd",
+    "sha256": "db17b064eb4cc6b8a2da5c01c6fe67122819a0d4b0ee5d40627222968e3ba5f7"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sim_targets.c",
+      "sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sim-targets-repro/td2ega_sim_targets.dll",
+      "sha256": "333f5c9fd130b2c1889a99d9c68097fbb66ed3c6d487bcf4949525be4e370486",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/sim-targets-repro/td2ega_sim_targets.obj",
+      "sha256": "1e5c79e8395b71156fbd753570ec9e274832f08f220da31f01d14c071eeccbe6",
+      "bytes": 4391
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sim-targets-build-v1.log",
+    "sha256": "5d62ea4fcf23663d92000a839e1099dddd05541b7c5bbdbde9db78d2576cfe25"
+  },
+  "limit": "Complete near412C/4441/4588 serialized synthetic sharedgroup arithmetic/target effects; indexedpostwritealiases preserved. No externaltable schema/units/caller/IRQ/fullstate/game/fidelity acceptance.",
+  "function_ids": [
+    "FN-EGA-000366",
+    "FN-EGA-000370",
+    "FN-EGA-000375"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000172",
+  "result": "pass",
+  "vectors": 1960,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 55720,
+      "length": 56,
+      "unrelocated_sha256": "4919d2df8cb1e1203dd43af12ae8fe34676831d985f5e7e491de4ce9306ce2ea"
+    },
+    {
+      "module_offset": 56900,
+      "length": 191,
+      "unrelocated_sha256": "939a3f5cf63cffadb1108bbab4411e4b81d8d41a2feab8db5a7555641c530b03"
+    },
+    {
+      "module_offset": 56595,
+      "length": 32,
+      "unrelocated_sha256": "f926e5ccb0c3d7dd7bee434dfcfb09e5568a48049e1b46d2bfec48be06de6f31"
+    },
+    {
+      "module_offset": 56440,
+      "length": 72,
+      "unrelocated_sha256": "fd89188541b8f5e7b5b4c49930b436c762fb41875db0281e25841e4bd555fc50"
+    },
+    {
+      "module_offset": 56791,
+      "length": 109,
+      "unrelocated_sha256": "285d87ffff47de852511fa36e96692b59d3bd3ac3f9aac6789da66ff127796ca"
+    },
+    {
+      "module_offset": 56512,
+      "length": 83,
+      "unrelocated_sha256": "00e1b6f9fddf61341dfa884a9dfa1ecd0f924ef82b9f0bc3521ac3fa15ff51b5"
+    },
+    {
+      "module_offset": 51884,
+      "length": 110,
+      "unrelocated_sha256": "1ef150cd26df49d717ac4acea4b047c6787c7b61d44f0791f6996287f2237268"
+    },
+    {
+      "module_offset": 56627,
+      "length": 164,
+      "unrelocated_sha256": "3ab1bdf6745e4f002a20d21cd9a6d990aca77441fb92b07269aa87dcc871595b"
+    },
+    {
+      "module_offset": 55090,
+      "length": 96,
+      "unrelocated_sha256": "39c39897500f29f6a92e673fb8ac3a7e6f9e66f39fd1a2b966bc8ce8ce4c66c0"
+    }
+  ],
+  "library_sha256": "8ee7daad90811c4fe887a1da1b1135106eabf7152712aada078287f9782fbda7",
+  "source_sha256": "60603ec55b88ef5fffe9aaa7d38793666beb2b843b9e0d2b1b03fecd9223f006",
+  "validator_sha256": "48b1c317e73804b45cfbc690076bf6c643237732d2a241646e9aff06236ee12f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_cache_allocate.py",
+      "sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da"
+    },
+    {
+      "path": "tools/validate_file_paragraphs.py",
+      "sha256": "d8e90eb308cd1b7177a30db58c43f650511c01814f9994915dda035a80feee70"
+    },
+    {
+      "path": "tools/validate_raw_load.py",
+      "sha256": "e1fc658080c35801a4ab01b5fd01ffe0ebaaade18c95afb74c2e67284ce22780"
+    }
+  ],
+  "original_instructions_executed": 637238,
+  "fixture_coverage": {
+    "normal_stage_3": 420,
+    "empty": 310,
+    "fatal_stage_1": 310,
+    "fatal_stage_3": 588,
+    "miss": 300,
+    "normal_stage_0": 400,
+    "hit_first": 300,
+    "hit_second": 300,
+    "hole": 300,
+    "fatal_stage_2": 242,
+    "descriptor_full": 300,
+    "segment_zero": 150
+  },
+  "limits": "Complete6D18 composition, actual listed callees, synthetic serialized valid cache pools/name/DOS profiles. Segment-zero acquisition, partial failures, ignored seek/close carry, file-growth overwrite included. No real file decoded; caller pool/lifetime/IRQ guards and platform integration remain open. Fatal cleanup is fenced."
+}

@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 1792,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "8043c0e457b56825dd6c2a114722cfd9aa57b00c0215eb4bde86fb0da9c305d7",
+  "native_libraries": [
+    {
+      "path": "analysis/build/line-draw-repro-v2/td2ega_line_draw.dll",
+      "sha256": "d696d94016b507231da70f8d9f585a603aba0e843fbc18bd98621a65346b6b31"
+    },
+    {
+      "path": "analysis/build/rectangle-draw-repro/td2ega_rectangle_draw.dll",
+      "sha256": "c9025b6bea3a524e9796373fc25b8f12b329bda1f4e18a9dd3a3fa76eadfcb34"
+    },
+    {
+      "path": "analysis/build/edge-sequence-repro/td2ega_edge_sequence.dll",
+      "sha256": "5a659ef4834c26d07ad640bf6cd7692bcb2d1d5728ae3ddf52a56d9fc4dd627d"
+    },
+    {
+      "path": "analysis/build/draw-sequence-repro/td2ega_draw_sequence.dll",
+      "sha256": "3e176792cf1c4796ed28f2a34e448ef2b22d45d5b034dbec9251c6f3ceaada21"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_rectangle_draw.py",
+      "sha256": "2665fc5fe5113e7ab1fafb241a0ba63cbef7a495f87ef7b686907e869230ee28"
+    },
+    {
+      "path": "tools/validate_draw_sequence.py",
+      "sha256": "36564079d9c47b3c281523b676776f1b5b04fbf9b6e5fac84fb964eb59428f61"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "entry_fence": [
+    "06C9:8582",
+    "06C9:8A0C",
+    "06C9:89A2",
+    "06C9:34DC",
+    "06C9:26D8"
+  ],
+  "instruction_sites_in_fence": 915,
+  "instruction_sites_exercised": 626,
+  "original_instructions_executed": 920976,
+  "fixture_coverage": {
+    "rectangles": 2496,
+    "lines": 1344,
+    "line_root": 384,
+    "far_boundaries": 3456,
+    "OUT_bytes": 9184,
+    "device_reads": 18256,
+    "device_writes": 18256,
+    "edge_root": 384,
+    "fill_root": 1024
+  },
+  "limits": "Actual8582+8A0C,34DC+8582+8A0C,26D8+89A2 bodies withexplicitfarboundary/poolmaterialization andorderedOUT/MMIOtrace, fullnonframebus/GPR/BP/CFIFDF/near-vs-farrootreturns matched. NoABI-value leafmocks withinadmittedchains.26D8optional916Cbranchesgatedout byfixture37F8=1/flagprofiles; normalchildoutcomesonly, fault/budgetprefixes remainindividualhelperreceipts.128privateSSscratchbytes excluded, actualproducer/caller/alias/exclusion/capacity/resourcefed/realdevice/renderer/fullstate/core/game/fidelity remainopen. Fence notall-pathcoverage; scopedvectors separatefromhelper totals."
+}

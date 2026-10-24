@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "f9abdf951282c8d27ac2f643f98eacf311fd0c3e767b6dfa5710b4b0340f8e3d",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5099bfc822d4b49211b79b5a366f3eb7cefea386ed4c3c5c73dec9713f6bb240",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_field_controller.py",
+      "sha256": "32755c33086adcbaa84b3ae6e6ed24d54f5e57cd1698ad24685e7b54df334b18"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects/nullresult/rootbeforeCALL/actual5299prefix/minimumSP34 sixactualCALL checks. Nativeonly, notcaller/writer/bounds/lifetime/IRQ/core/resource/device/session/gameplay/fidelity acceptance."
+}

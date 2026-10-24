@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_loop_controls.cmd",
+    "sha256": "19e4fb4bcd667026398b6bb45f48ebccc6e764e72166a47f2f11f7cb66941140"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_loop_controls.c",
+      "sha256": "6ba7c5247eeaed209c1f6ae9ebc520100277afcb93c91df4cceba8a70133c422"
+    },
+    {
+      "path": "src/recovered/td2ega_loop_controls.h",
+      "sha256": "abbdce86f63b1e73c69be2aa7efab4d1ace6642a1041a1c83cc4f404abf36fd6"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/loop-controls-repro/td2ega_loop_controls.dll",
+      "sha256": "56dfe60a66b3772a54756d765dc3c787e2247a5c8d2aa22512b1cd456daf0bb2",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/loop-controls-repro/td2ega_loop_controls.obj",
+      "sha256": "044a8138c28e5a89a5edf2b21a760b6f29a66c295251932e79236b8e2008b0f1",
+      "bytes": 6783
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/loop-controls-build-v1.log",
+    "sha256": "1a70c54486bee06b0ec907085c8fcf29b82eb01818cb9fae9e092be14bf3c2b7"
+  },
+  "limit": "Complete1F60/1F71/1F99 orchestration, nearRET2/farRETF4 leaf ABI frames, CSfieldreads/currentDS/returnedDS andsavedSI-DS-BP, mutablegateprofiles, shiftedrawextent, paired5+5livewords andCFIFDF compared. Allleafbodies ABImocks; no actualgraphics/resources/statewriters/device/IRQ/core/game/fidelity. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000085",
+    "FN-EGA-000086",
+    "FN-EGA-000087"
+  ]
+}

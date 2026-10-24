@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "b3e084f8b200b63b72c1f5c7604b28e346b47571b1dfc7c32776ad1ca84e63f8",
+  "instruction_observations": [
+    {
+      "site": "06C9:45C9",
+      "bytes": "a1ce52",
+      "text": "mov ax, word ptr [0x52ce]"
+    },
+    {
+      "site": "06C9:45CC",
+      "bytes": "32ff",
+      "text": "xor bh, bh"
+    },
+    {
+      "site": "06C9:45CE",
+      "bytes": "8adc",
+      "text": "mov bl, ah"
+    },
+    {
+      "site": "06C9:45D0",
+      "bytes": "d1eb",
+      "text": "shr bx, 1"
+    },
+    {
+      "site": "06C9:45D2",
+      "bytes": "d1eb",
+      "text": "shr bx, 1"
+    },
+    {
+      "site": "06C9:45D4",
+      "bytes": "8a8f4a32",
+      "text": "mov cl, byte ptr [bx + 0x324a]"
+    },
+    {
+      "site": "06C9:45D8",
+      "bytes": "8aef",
+      "text": "mov ch, bh"
+    },
+    {
+      "site": "06C9:45DE",
+      "bytes": "d1e1",
+      "text": "shl cx, 1"
+    }
+  ],
+  "external_span_candidate": {
+    "segment": 6031,
+    "segment_offset": 12874,
+    "offset": 109370,
+    "length": 64,
+    "sha256": "5edffb0798d4c87bab4b17da692377574ce0ce7f2ceb6d73203d70ce49b16f63",
+    "role": "Rawbyte lookup indexedbyoriginalAXhighbyte>>2, domain0..63; CXzeroextendedbyte, optionaldoubleword<=510. Units/values/writers/lifetime unassigned."
+  },
+  "index_bound_proof": {
+    "input_highbytes": 256,
+    "distinct_indices": 64,
+    "minimum": 0,
+    "maximum": 63,
+    "operation": "XORBH;MOVBL,AH;SHRBXtwice;defaultDSbyteMOVCL[BX+324A];MOVCH,BH(0)."
+  },
+  "facts": [
+    "ActualAX=DS52CE; XORBH thenMOVBL,AH andtwoSHR implyBX=AH>>2 independentofincomingBX, bounded0..63. ByteoperanddefaultDS/noBPoverride.",
+    "InitializedprincipalDS324A..3289 externalspanidentity pinnedwithoutpayload/decodedunits. OtherDSviews/runtimemutablevalues remaincaller/writer obligations; bytesarenotnecessarilyimmutabletablevalues.",
+    "MOVCH,BH makesCXzeroextended0..255; conditionalSHLCXwhenDX0 yields0..510. No resourceformat, physicsunit or gameacceptance assigned."
+  ],
+  "limits": "Staticoperand/indexbound/initializedspanidentity only; allwriters/actualDS/caller/lifetime/exclusion/resourceformat/perfile/core/device/session/gameplay/fidelity remainopen."
+}

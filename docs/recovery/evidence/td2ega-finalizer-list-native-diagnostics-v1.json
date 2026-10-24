@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 14,
+  "script_sha256": "1b91dbc54ff24a1a7a7ab9540d9dbc59ab45e4f99b244b3db02746b03770fd42",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c9037f828a2d8db16997bda4a4767418cbd8da68a48ab863c41505c0277bbd80",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_finalizer_list.py",
+      "sha256": "8e94c103da8b9b4c447e54c0befd95da859f109b7648ccbdf5ef8058820ab553"
+    }
+  ],
+  "limits": "Eight invalid bus/count/SP/null/boolean profiles, empty/zero spans, missing/badadapter, minimumSP16 normalcallbackframe and before-recordbudget. Nativeonly; callbackbody/alltargets/writers/lifetime/core/device/session/game/fidelity separate."
+}

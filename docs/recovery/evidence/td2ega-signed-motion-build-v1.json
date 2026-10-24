@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_signed_motion.cmd",
+    "sha256": "73ac9596e926b3163b55784dcb4f6140fbb199afb6ea3634b06c21b59ae21c01"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_signed_motion.c",
+      "sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.h",
+      "sha256": "1ca9473ab53fa3b545dcb697df135ddcea989691dc877628b76c90bd4bc4663f"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/signed-motion-repro/td2ega_signed_motion.dll",
+      "sha256": "4fee2a816864c0f51a5ede2c60c4cbbaf08038ec5047cac0e4374058d5f68fdb",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/signed-motion-repro/td2ega_signed_motion.obj",
+      "sha256": "ea1b953518b1f8f8e5844315a24c643456748b110a691e1434310aca9872859e",
+      "bytes": 3110
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/signed-motion-build-v1.log",
+    "sha256": "31193873fd028a9e5dfc3d5f82ee183038844a1a11f0bdd2fde9fb24c9c1ff36"
+  },
+  "limit": "Complete06B3:0008 and13A8:2EE8, serializedsynthetic fullgroup andcallee-cleanmultiply contract. Wrappedabs8000, shift/sign/product/clamp andscratch/stack effects retained; actualcaller/units/IRQ/fullstate remainopen.",
+  "function_ids": [
+    "FN-EGA-000344",
+    "FN-EGA-000364"
+  ]
+}

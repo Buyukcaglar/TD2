@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000189",
+    "FN-EGA-000190",
+    "FN-EGA-000196",
+    "FN-EGA-000197",
+    "FN-EGA-000198"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "source_sha256": "6ecfd488f8a131327a86c4445bfce40921df57089864b5d9f1ffd63b38540746",
+  "validator_sha256": "7f4706739bf338be3d833ec9304b1f1e819951a45f960469c9a1003cab1cb7b7",
+  "library_sha256": "91ec28f3a22c99e16c5ed68680624478b3a2eabbb2fd9c0d35592c4cb924ed68",
+  "vectors": 15312,
+  "vectors_by_operation": {
+    "song": 6864,
+    "voice": 2112,
+    "queue": 2112,
+    "cancel": 2112,
+    "set": 2112
+  },
+  "native_only_diagnostics": 9,
+  "original_instructions_executed": 134576,
+  "limits": "Only disjoint syntheticsource/state/stack metadata contract. OriginalwordaccessatFFFF excluded; source/resultaliasing, actualcaller lifetimes/bounds, sequencer/IRQ/PIT/speaker/audio/device andgame/fidelity acceptance remainopen. Nativeoperationsserialized; IFoutputs preserveoriginalpolicy ratherthanclaimhostconcurrency."
+}

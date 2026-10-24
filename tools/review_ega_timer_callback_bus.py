@@ -1,0 +1,24 @@
+"""Review actual callback ABI, metadata publication and fatal boundary."""
+import argparse,hashlib,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();out=a.output.resolve();assert out.is_relative_to(ROOT/'docs/recovery/evidence') and not out.exists()
+    image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();g=json.loads((ROOT/'analysis/flow/indirect-v8/direct-flow.json').read_text());entries=['06C9:614C','06C9:6180'];md=Cs(CS_ARCH_X86,CS_MODE_16);functions=[f for f in g['functions'] if f['entry'] in entries];rows={ip:next(md.disasm(image[0x6c90+ip:0x6c90+ip+15],ip,count=1)) for f in functions for ip in f['instructions']};assert len(rows)==47
+    for ip,raw in {0x6163:'50',0x6164:'9a0200a716',0x6169:'8b4606',0x616c:'8907',0x616e:'c747020000',0x6173:'8b4608',0x6176:'894702',0x6179:'c747060000',0x617f:'cb',0x6189:'8b4606',0x618c:'8b5608',0x619f:'fa',0x61bc:'fb',0x619e:'cb',0x61be:'cb'}.items():assert rows[ip].bytes.hex()==raw
+    add=[rows[ip].mnemonic for ip in next(f for f in functions if f['entry']==entries[0])['instructions']];assert 'cli' not in add and 'sti' not in add
+    callers=[dict(owner=f['entry'],**c) for f in g['functions'] for c in f['calls'] if c['target'] in entries];assert len(callers)==6 and all(c['kind']=='lcall' for c in callers)
+    c=json.loads((ROOT/'docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json').read_text());assert c['result']=='pass' and c['instruction_sites_exercised']==46 and c['preCALL_boundary_sites']==['06C9:6164'] and c['fixture_coverage']['published_segment_before_stale_sentinel_clear_IF1']>0
+    deps=['analysis/flow/indirect-v8/direct-flow.json','src/recovered/td2ega_timer_callback_bus.c','src/recovered/td2ega_timer_callback_bus.h','tools/validate_timer_callback_bus.py','analysis/history/timer-callback-bus-build-setup-v1.json','analysis/reviews/timer-startup-bus-frontier-v1.json','docs/recovery/evidence/td2ega-timer-callback-bus-validation-v1.json']
+    record={'schema':1,'result':'pass','image_sha256':hashlib.sha256(image).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'function_ids':['FN-EGA-000150','FN-EGA-000151'],'instruction_sites_in_fence':47,'instruction_sites_admitted':46,'preCALL_boundary_sites':['06C9:6164'],'direct_callers':callers,'validator_dependencies':[{'path':p,'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p in deps],'facts':[
+        'Both roots PUSH actualBP/read source arguments viaSS and plainfarRET without argument cleanup. ActualSS save/argument/root aliases are retained; original source has no artificial DS=SS or savedword preservation invariant.',
+        '614C scans five currentsegmentwords. At first zero: read offsetSSBP6/storeoffset/clearsegment/rereadsegmentSSBP8/publishsegment/clearfollowingsegment. Actual argument can change between reads. No CLI/STI, atomicity, inserted guard or normalized sentinel order.',
+        'A budget at6179 preserves the state after6176. IncomingIF1 and a stale following segment remain visible in both original/native prefixes. This is a serialized instruction-boundary witness, not actualIRQfeasibility or proof of a historical failure.',
+        'Five occupied slots cause AX5FE8/PUSHAX before6164 farCALL16A7:0002. New interface stops beforeCALL, reports relocatedtarget, and retains actualfatalargument/savedBP. 46sites execute;47th is the preCALLboundary, not executedfatalbody ornormalerrorreturn.',
+        '6180 captures both arguments before scanning, compares offsets then segments, and does not stop at a zero segment. A matched slot CLI/DECCX preservesCF, then forwardcopy reads/writes each word beforefinalpairzero/STI. Lastslot takeszero-copy path. An unmatched search retains incomingIF; a match setsIF1 even if inputIF0.',
+        'Actual rootfarwords are read afterPOPBP and metadataeffects. Budgetstops precede entry/searchheads/eachmetadatastore. PreRETSP>FFFC is an explicit backend qualification. All47 source sites retain a disposition; fatalbody integration remainsopen.',
+        'Native3FD9producer/startup-to-exit/actualhandlerdelivery-nesting/allwriters-reset-storage-lifetime-exclusion/core/P1-GATE remainopen. Physical086Cunassigned/CGAbehindEGAclosure/noDOSsession-renderer-audio-game-fidelity acceptance.'
+    ],'limits':'SourceABI/publication/fatal-prefix review; serialized source/native comparison, not real IRQ scheduling or fullfatalcallee admission.'}
+    out.write_bytes((json.dumps(record,indent=2)+'\n').encode());print(json.dumps({'result':'pass','admitted_sites':46,'preCALL_sites':1,'direct_callers':6}))
+if __name__=='__main__':main()

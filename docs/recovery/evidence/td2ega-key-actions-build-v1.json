@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_key_actions.cmd",
+    "sha256": "97dacf3883bbbc4436e9a040973df942df6fa1705a83392fbac806aae8a3126a"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_key_actions.c",
+      "sha256": "71fe59bbcd753630d7c28fcea74e184f149e7de59fba20670477ba36b36cb828"
+    },
+    {
+      "path": "src/recovered/td2ega_key_actions.h",
+      "sha256": "814c86dda10f9015e2f910d8aa16951da0204456750c0c1adac92471edbedc26"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/key-actions-repro/td2ega_key_actions.dll",
+      "sha256": "1f630d43df348a7ca44fa9e7504ab24b1b0be60ade2fe18d82532d81957e25d4",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/key-actions-repro/td2ega_key_actions.obj",
+      "sha256": "902c01dec5521fbc11f84ac0e2e1c32cbb80e2e47d4441ab78384df70c4da31d",
+      "bytes": 2970
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/key-actions-build-v1.log",
+    "sha256": "5879a87c1bd668d513093b9a89498ae5e30ca3fc36e40cd14bf8d786e34e9212"
+  },
+  "limit": "Six serializedkeyactions C17, oneexport withtypedactionselector/fullbus/UI ABI service. Originalguard/mode/partialwrites/returnedsegments/IFDF retained; no actualUI/IRQ/guard-exclusion/game/fidelity.",
+  "function_ids": [
+    "FN-EGA-000404",
+    "FN-EGA-000405",
+    "FN-EGA-000406",
+    "FN-EGA-000407",
+    "FN-EGA-000408",
+    "FN-EGA-000409"
+  ]
+}

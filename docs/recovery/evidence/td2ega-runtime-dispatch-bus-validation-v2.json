@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000340",
+    "FN-EGA-000339",
+    "FN-EGA-000332"
+  ],
+  "vectors": 4990,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3831138be4d5647399fd6defebb6648acf78fa988828328f4759581c0aa38ecb",
+  "source_sha256": "59cc61da9058cfca6fb0b9293868c8d4da7045b5e178e34b5745102928971c70",
+  "validator_sha256": "75f3fed1b274b409e88e343821ea8b571edc5b46c50b2845c24b27b30018d2c3",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_exit.py",
+      "sha256": "c2429c19528712e65f106747a82d7d963d2534cd8101bf220b200ed9a29ba863"
+    },
+    {
+      "path": "tools/validate_runtime_message.py",
+      "sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210"
+    },
+    {
+      "path": "tools/validate_finalizer_list.py",
+      "sha256": "8e94c103da8b9b4c447e54c0befd95da859f109b7648ccbdf5ef8058820ab553"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/runtime-dispatch-bus-build-setup-v1.json",
+      "sha256": "0b6672462db19d1bd9035a19c7892649a559127186a82a819f988bc49e165057"
+    },
+    {
+      "path": "analysis/history/runtime-dispatch-bus-validation-refinement-v2.json",
+      "sha256": "95b03bce4ea24f27d6beb0fa0b69bd47191c59e0a74d106882e50a7013235b2e"
+    },
+    {
+      "path": "analysis/reviews/session-caller-bus-frontier-v1.json",
+      "sha256": "515d8062f344e600b6749ca0c693b8bb95f667483d4e0cb0f8c2cc5b5b4741d7"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-exit-validation-v1.json",
+      "sha256": "42ac1b87bed6a914c88584634b69e3093be998d9396a05bb5b2e41cc3b05b439"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-message-validation-v1.json",
+      "sha256": "ea796b0b800a65f47fc3de190d27b2d700750147f5c037e887c3fd70cb68e739"
+    }
+  ],
+  "original_instructions_executed": 445916,
+  "instruction_sites_in_fence": 228,
+  "instruction_sites_exercised": 208,
+  "family_instruction_sites_in_fence": 97,
+  "family_instruction_sites_admitted": 93,
+  "family_instruction_sites_exercised": 93,
+  "prepared_exit_boundary_sites": [
+    "13A8:2C31",
+    "13A8:05DE"
+  ],
+  "postterminal_wrapper_sites_not_followed": [
+    "13A8:2A14",
+    "13A8:2A16",
+    "13A8:2A17"
+  ],
+  "synthetic_callback_RETF_instructions": 1458,
+  "fixture_coverage": {
+    "entry_0": 2498,
+    "status_0": 3444,
+    "tag_base": 2048,
+    "stage_0": 3906,
+    "CPU_writes": 40356,
+    "DOSservices": 1582,
+    "handler_callbacks": 694,
+    "finalizer_callbacks": 764,
+    "root_returns_changed": 8,
+    "DS_equals_SS": 2476,
+    "entry_1": 1850,
+    "tag_dispatch": 1440,
+    "status_5": 708,
+    "stage_4": 496,
+    "status_1": 188,
+    "stage_2": 144,
+    "stage_3": 32,
+    "entry_2": 642,
+    "tag_wrapper": 288,
+    "status_3": 640,
+    "stage_7": 204,
+    "tag_family_budget": 840,
+    "stage_1": 86,
+    "stage_6": 122,
+    "tag_SS_state_alias": 168,
+    "tag_CS_key_frame_alias": 96,
+    "tag_literal_CS_dispatch": 50,
+    "status_6": 10,
+    "tag_guard_before_lookup": 6,
+    "tag_partial_flags": 54
+  },
+  "limits": "Actual2D57-2C1C-29F6/fullSS-GPR-BP-CFIFDF-definedFLAGS/literalcurrentCSkeys-andnearworddispatch/SS707Efallback/actualcallee message-exit bodies/callerargumentcleanup/typedretiredhandlers-wholeRAM-independentwrites. DOSserviceABI omitsrealINTframes/device; actualcallbackbodies-universaltargetdomains-allwriters/callerSS-SP/terminal-historicalDOS/B0FEarenaexclusion/core/P1-GATE unproved. PreparedAH4Crequests notactualprocess exit; postterminalepilogue notinvented. Physical086Cunassigned/CGAbehindEGAclosure."
+}

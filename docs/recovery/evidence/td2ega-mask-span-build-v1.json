@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_mask_span.cmd",
+    "sha256": "619013270ee62c854fb81af61c4812bdc3355a65e406e68dad157fbff845dcc7"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_mask_span.c",
+      "sha256": "7ccc35f4e6ca67cc695d97d84fc9721f7b6dfd7945155f7606af3119c02381b1"
+    },
+    {
+      "path": "src/recovered/td2ega_mask_span.h",
+      "sha256": "a8e867a5fad71c8f2dc74bdc190383810efac829785ebe5258dc42e982c20581"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/mask-span-repro/td2ega_mask_span.dll",
+      "sha256": "7f24d74e3841710c721d1e00bc81ca9bac6002b5707352f7d7776e5683e65ed3",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/mask-span-repro/td2ega_mask_span.obj",
+      "sha256": "f5519c111afdacb6ce193b12ce78a76c6076e2188302d34f093b6feba819c46e",
+      "bytes": 10918
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/mask-span-build-v1.log",
+    "sha256": "5655e2c180419fd6c8fbbca42face050864e755336c6706dc3e9985fb57751cf"
+  },
+  "limit": "SixcompleteRAM/device maskhelpers nearRET2, implicitGPR/BP/CFIFDF/fullbus, rawBXexternalCSmask/index/byteDL-DECoverflowJL/wordstride/DIwrap, REP0versusLOOP0/DECSIrow distinction andDFSTOSBversusexplicitINC retained. DeviceAH-lastreadclobber andXORAHbutSTOSBAL preserved, explicitbyteRead/Write traces syntheticflatbus only. Nativeworkprefix separate, noactualspritecaller/bounds/writers/device/renderer/resourcefed/IRQ/core/game/fidelity; native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000212",
+    "FN-EGA-000213",
+    "FN-EGA-000214",
+    "FN-EGA-000238",
+    "FN-EGA-000239",
+    "FN-EGA-000240"
+  ]
+}

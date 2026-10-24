@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "2d8460e1e9b67e7a55d3893805a6f6aeb7be27158680cdc50bceb648282e3728",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2216092c6bad9f346a9fd63528b51f44f0705d52c165659daab21d170eef5e0c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_controller.py",
+      "sha256": "f9edeae995307561833d78d8acea6c6cd2890a29beb2fa3f95b952adaf2743d5"
+    }
+  ],
+  "limits": "Nineinvalid/noeffects/nullresult, rootloop/CALL andactualchildprefix/minimumSP20/realSSflagword checks. Nativeonly, notCPUAFpolicy/allcaller/writer/lifetime/IRQ/fullstate/core/runtime/gameplay/fidelity acceptance."
+}

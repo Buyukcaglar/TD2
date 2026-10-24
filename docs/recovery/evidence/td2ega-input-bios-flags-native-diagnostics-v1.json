@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 3,
+  "script_sha256": "71e633be992bd68282d25963d492d12a0c37a079b1f1f1600b8e1a53dc07f095",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "61dd3de984f45114a3f8a87525ba982b047cce88da097447ffe1a4d8a4d0cfe0",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_poll.py",
+      "sha256": "5fab0947cf24a00feee4774eea270bda7b236aac05c03a72545bf9ec5afdbcb9"
+    }
+  ],
+  "limits": "Three native-only BIOSresponse domain checks. No original instructions/BIOS/IRQ executes; excluded from original differential totals/error equivalence."
+}

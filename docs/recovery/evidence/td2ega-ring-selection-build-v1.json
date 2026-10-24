@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_ring_selection.cmd",
+    "sha256": "26cb9d9d16da38d95448f1ce1f7e9d0a7eaffdfd0406a921178b58102a1e6f77"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_ring_selection.c",
+      "sha256": "2e252b62cfd6698a0add7071a024b60c4c98c247d01a09219a2a59498f3b55a8"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_ring_selection.h",
+      "sha256": "8e3eae0619ac3d32bb2416c448abe19ef65b870a79b4d12d7e6b46a2fa04bc9f"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/ring-selection-repro/td2ega_ring_selection.dll",
+      "sha256": "a34fd5e3b1487a2fe1f7f24dd39f06a0886a658afe4aa6e883dc274642a8edb2",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/ring-selection-repro/td2ega_ring_selection.obj",
+      "sha256": "b8d753a91311fb534b5bbed38d70cfccd37903879c60173bbf721a1e633f27ad",
+      "bytes": 5627
+    },
+    {
+      "path": "analysis/build/ring-selection-repro/td2ega_byte_ring.obj",
+      "sha256": "11b7a30e2164df8508343de635777d3a7442b18e4ad4b4b904ec33929bc28dba",
+      "bytes": 696
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/ring-selection-build-v1.log",
+    "sha256": "26fbb383843d3e070dfbae849df0d6b2359ab96fcc0ffa424f17a7f231a74a00"
+  },
+  "limit": "Actual019E0004+actual780E original instructions compared with actual frozenbyte_ring C transformation plus source-proven SS ABI adapter: real parent/child frames, leafPUSHSI before snapshot, cursorcommit beforebytecommit/POPSI/actualfarreturn and complete mask7/wordCWD/raw8word chain. SerializedflatRAM, fullbus/SS/ring/GPR/BP/CFIFDF/control, noABImock/SSscratch exclusion. Native beforeCALL/rawchild/rawroot targets separate, no targetfollowed. This closes one caller body only; shared ring writer/reset/seed/reentry/IRQ exclusion/consumption acrossfullstate/callerlifetime/core/sourceCtype/otherFLAGS/runtime/gameplay/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000019"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000003"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-ring-selection-context-v1.json",
+    "sha256": "57b27f1ad51519a4f1e4b2f300218f12e0861346771e595934d8a4f8770efeeb"
+  },
+  "saved_SI_alias_discriminator": {
+    "path": "docs/recovery/evidence/td2ega-ring-selection-save-alias-v1.json",
+    "sha256": "6261bc13d9ce0f388d8edb6d1c2f3bb3bab398c057745ef18dd4f66a7e938ddf"
+  }
+}

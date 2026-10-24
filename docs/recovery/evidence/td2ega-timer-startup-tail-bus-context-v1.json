@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000124"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "9a06d32b72187ea4ade93250c45b571e2c34a94bde8ebdac187e02a6c4f14cf6",
+  "instruction_sites_in_fence": 81,
+  "instruction_sites_admitted": 80,
+  "root_instruction_sites_in_fence": 12,
+  "preCALL_boundary_sites": [
+    "06C9:6164"
+  ],
+  "validator_dependencies": [
+    {
+      "path": "analysis/derived/td2ega-v1/TD2EGA.unpacked.exe",
+      "sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_startup_tail_bus.c",
+      "sha256": "277a2e008988136411f4a8dc938b2b1ded12fc5f88f14959ef32c6adc6dc2f47"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_startup_tail_bus.h",
+      "sha256": "67cadc0998d7d313cebe57b4c8993952d0f4617d07356be7b0d123aa83bd2231"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.c",
+      "sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callback_bus.c",
+      "sha256": "46d93d3c8d0e8d139d3c84e7a2e9b075f12c8ebcab34fddeeb3ecf4be5d4ffa7"
+    },
+    {
+      "path": "tools/validate_timer_startup_tail_bus.py",
+      "sha256": "e6b292caf3d778f8b5e052c0d6f0e6a4b5ce2e75d4136573e750a908abed9326"
+    },
+    {
+      "path": "analysis/history/timer-startup-tail-bus-build-setup-v1.json",
+      "sha256": "c6bdaa98b7821d25b0e26ac8b7810eab4e7e1b10f71dcf257f6d8cf0a95cfce6"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json",
+      "sha256": "990d67e5dcfeaf2a3cecf6ce42f563f329f9250bdddf5316494caf87c6f11a1b"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+      "sha256": "78117236182bdf110c11e81027cc15acddc83aba3b2fbf06c6356b0869e6c199"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+      "sha256": "bf3cfb67a2d3be7fe2d1ad26e601d3a5cb9616e11674ba363096f78446357806"
+    }
+  ],
+  "facts": [
+    "Additional3FD9..3FF8 tail belongs to3F40. Earlier initialization andits sourcecallee/resource/reset/lifetime contracts are not covered by this tail. This is not a new original entry or whole-function admission.",
+    "Three root calls execute actual farframes:601C to3FDE;614C to3FE8;614C to3FF5. PUSHCS thenPUSHAX forms each two-word callbackargument; plain614C farRET leavesarguments, actualADDSP4 performs callercleanup and definesFLAGS.",
+    "Each actual child retiredCS/IP/SP is checked before callercontinuation. Rawchild returns stop withoutfollowing; childbudgets/portfailures/fatalpreCALL preserve stage/actualstate/control/target. RootfarRET readsactualinheritedSSwords afterallpublication/cleanup effects.",
+    "MinimumSP10 reserves4callbackargumentbytes+4farCALLbytes+2calleeBPbytes; maximumFFE0 follows admitted composedprofile. CurrentDS/inheritedSS and20bitaliases remainexplicit. Nativeargumentsdisjoint, noasyncwriters/executing-code mutations.",
+    "Fixedinstaller clearsfirstpair beforelaterpublishing6269 then403B/sentinel. Interface retains unmaskedadd and intermediateprefixes; rawstate/portadapterbusmutations are syntheticprofiles, not actualIRQ/exclusion proof. No extra masking or whole-pointer guard normalization.",
+    "80sites execute includingall12tail sites;6164 ispreCALLboundary notfatalcalleeexecution. Whole1MiBRAM/GPR-BP-CFIFDF-definedFLAGS/orderedports/independentCPUwrites compare. No arbitrarymock replaces601C/614C bodies.",
+    "Actual3F40root/1C8F-1B2C/main/startup-to-exit, realIRQ-delivery-nesting/allwriters-reset-storage-lifetime-exclusion/core/P1-GATE remainopen. Physical086Cunassigned/CGAbehindEGAclosure/noDOSsession-renderer-audio-game-fidelity acceptance."
+  ],
+  "limits": "Static partial-tail/call-frame/cleanup review with independent comparison and native diagnostics; not complete3F40 initialization or full session validation."
+}

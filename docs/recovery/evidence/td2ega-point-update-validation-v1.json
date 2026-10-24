@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000115"
+  ],
+  "vectors": 9216,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5e81c5698fc6c8335e26983bd4da1a5eb943b2a7c23eebeb22f6775ed863cefa",
+  "source_sha256": "a8ab786b548fcb8b5b8552476df545b63c91f97a795a76880c745e69f22e0c4c",
+  "validator_sha256": "e65ef73c30ed93dbf86a0fc72ab253e7bdc7186a4cf3bca7d4607ee17b86801b",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_pixel_point.py",
+      "sha256": "b844d2f3e9d11c4faa05a2ca946919b9bcab1e32610eae3b6e608c34afb3323f"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+      "sha256": "11c33c8f625662e84ba997d5ab981bd7fdd85936aa66ba4d5888634b32494ffc"
+    },
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 567096,
+  "instruction_sites_in_fence": 90,
+  "instruction_sites_exercised": 90,
+  "fixture_coverage": {
+    "prefix_event": 5248,
+    "actual_pixel_CALLs": 7336,
+    "word_OUTs": 14336,
+    "byte_reads": 10392,
+    "byte_stores": 12648,
+    "byte_OR_transactions": 2896,
+    "CPU_bus_writes": 106304,
+    "DS_equals_SS_cases": 4608,
+    "incomingDF1_cases": 4608,
+    "adapter_bus_mutations": 1968,
+    "raw_root_returns": 120,
+    "software_fixture_cases": 4608,
+    "root_equal_returns": 480,
+    "root_changed_returns": 3104,
+    "root_finalADDcarry_cases": 96,
+    "root_ZF1_cases": 496,
+    "root_near_return": 3584,
+    "hardware_fixture_cases": 4608,
+    "preRET_qualification": 288,
+    "raw_child_return": 96
+  },
+  "limits": "Actual3AB8near/registerSI-BX-DX/signedSUB-JGE-SAR5/currentDS2F50+BX/cachewritebeforeactualBA3C/old-newframes-fullSS/globalCALL-eventbudgets/nearRET/childqualification/rawRETafterinstructionneverfollowed. Fullbus-GPR-BP-CFIFDF/rootZF/deviceABI/control/counts. RAWRAMadapterownsbyteeffects/originalMOV-ORidempotentstore/actualwordOUTwidth2. No hardwarelatches-renderer/allwriters-coordinatebounds-storage-lifetime-exclusion/CPU-A20/core/resource/CGA/session/fidelity closure."
+}

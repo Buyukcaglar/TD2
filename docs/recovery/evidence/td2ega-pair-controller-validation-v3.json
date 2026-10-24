@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000399"
+  ],
+  "vectors": 20464,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d8baf5d30ae77e6cebef36cc4f6fabb9cf8eeeb2ec0caa5e885298bf1936359d",
+  "source_sha256": "08045fc91d0ff298ec86e815de46425963efa80ac361b017fd29a7b88218189b",
+  "validator_sha256": "7f3f85c3de01e2ceec03ef98f2f73fd3c2fe2fee1b21b40b22218decb62ffc17",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 614140,
+  "instruction_sites_in_fence": 96,
+  "instruction_sites_exercised": 96,
+  "fixture_coverage": {
+    "before_CALL_prefix": 5088,
+    "actual_near_CALLs": 16874,
+    "bus_write_events": 50700,
+    "minimumSP18_cases": 4096,
+    "DS_equals_SS_cases": 10272,
+    "raw_root_returns": 120,
+    "seeded_random_cases": 4000,
+    "root_return_5A16": 678,
+    "root_return_59C3": 894,
+    "root_return_59DE": 566,
+    "root_return_5A24": 320,
+    "root_return_59B3": 11754,
+    "root_return_59FC": 188,
+    "root_return_5A0F": 952,
+    "raw_child_return": 24
+  },
+  "limits": "Actual595F with actualfrozen5A25 pairupdate C, noABI-valuemock/SSscratch exclusion. Fullbus/actualSSnearframes/rootRET/GPR/BP/CFIFDF/control/counts. NativebeforeCALL/rawchildRET prefixes distinct; rawroottargetexposedafteractualRET neverfollowed. SignedCX/BX branches and orderedpair/global/flag/counterwrites retained, no physicalunits/collisionmeaning inferred. Actual403Bcaller/FLAGS-liveness/allwriters/ownership/capacity/lifetime/IRQexclusion/fullstate/core/resource/device/session/gameplay/fidelity open."
+}

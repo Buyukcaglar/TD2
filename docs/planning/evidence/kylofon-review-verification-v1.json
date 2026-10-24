@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Static whole-reference review, plan/custody tightening and persistence; no upstream compile/runtime or source import",
+  "result": "pass",
+  "problems": [],
+  "upstream_tracked_files_reviewed": 85,
+  "upstream_snapshot_files_verified": 113,
+  "original_files_verified": 250,
+  "function_registry_unchanged": true,
+  "existing_recovered_source_headers_unchanged": 331,
+  "gap_records": 18,
+  "gap_task_references_valid": true,
+  "tests": {
+    "command": "python -m unittest discover -s tests -p test_verify_external_reference.py -v",
+    "exit_code": 0,
+    "passed": 11,
+    "log_path": "analysis/kylofon-verifier-regression-v1.log",
+    "log_sha256": "8830f8fb8ff5a0089751a8fc9ed7a4ceb2901891eb6f27dd801f496fcfa5026b"
+  },
+  "full_recovery_audit": "docs/recovery/evidence/p1-kylofon-reference-review-audit-v2.json",
+  "native_summary": {
+    "exports": 215,
+    "original_entries": 292,
+    "comparison_suites": 164,
+    "vectors": 7132350
+  },
+  "staged_file_count": 0,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 3247,
+      "sha256": "1b4dfd3c53d3cbd40c9eb3a13831c591c97e8bc5e7eb5dc2b883759abc54a4b2"
+    },
+    {
+      "path": "docs/planning/roadmap.md",
+      "bytes": 25366,
+      "sha256": "e833cb0b90716d60c5c4442adf959c83f7fe7417e1e861109f92b83628aeab24"
+    },
+    {
+      "path": "docs/planning/backlog.json",
+      "bytes": 102297,
+      "sha256": "d9c3b4493d544a938e3213cdb471d33660b52e765a3188af6f47a3f4a3a1002d"
+    },
+    {
+      "path": "docs/planning/architecture.md",
+      "bytes": 12538,
+      "sha256": "44a47170f70fce1a7f42498b128b030146f640cc49233901f506839e7c798289"
+    },
+    {
+      "path": "docs/planning/validation.md",
+      "bytes": 12828,
+      "sha256": "8b5cfb32e403d9d991d59c269897a446bdc97081732344f4fe2c6faf07c31a99"
+    },
+    {
+      "path": "docs/planning/resources.md",
+      "bytes": 10383,
+      "sha256": "8b039b8eaf3420d2dcf3ae93c97f2e1d3a38ff97fd28b5fd0bf892c131ee7ec4"
+    },
+    {
+      "path": "docs/planning/risks-and-estimates.md",
+      "bytes": 10140,
+      "sha256": "e0c2cd8718c599d2c899c5a42ffb8fa21a86452eaa4a051f7f3f1b3486efb4dc"
+    },
+    {
+      "path": "docs/planning/dos-executables.md",
+      "bytes": 25628,
+      "sha256": "012ee6131f9875cb98d23da2e5ebc597626952c3381a899eb917fd1085173dca"
+    },
+    {
+      "path": "docs/planning/tooling-and-sources.md",
+      "bytes": 20845,
+      "sha256": "0668fe41c54a312f385c5af1faf7dd22fde450a14de1ba7757bccc418336afce"
+    },
+    {
+      "path": "docs/planning/continuation.md",
+      "bytes": 18664,
+      "sha256": "a7e028341aae2874a9f765347ad33de3331d2da01f65f218d5c56e30f8c64371"
+    },
+    {
+      "path": "docs/recovery/progress.json",
+      "bytes": 65958,
+      "sha256": "36ffcfa6c4371472cf622260fb31256debec371cf1da8ccd683b3929f60eccb1"
+    },
+    {
+      "path": "docs/recovery/README.md",
+      "bytes": 28505,
+      "sha256": "856fc57c4266a72feaaa89613796ab906e5214757472efe00ac5407697796730"
+    },
+    {
+      "path": "tools/verify_reference.py",
+      "bytes": 8116,
+      "sha256": "5b98b61d6742c54b1c77f4ddafd173661c2b6c32f74e0177f58386733cb1ea3f"
+    },
+    {
+      "path": "tools/inspect_kylofon_reference.py",
+      "bytes": 9460,
+      "sha256": "a77e216ddbf9beb3640cfd8fdddaa33a38fb94f77c376a36179df1bab2720571"
+    },
+    {
+      "path": "tests/test_verify_external_reference.py",
+      "bytes": 4709,
+      "sha256": "3b2fe9d0ef6b75f70ad0a792978402dbebf817c5a4137e9266717bcaa016b731"
+    },
+    {
+      "path": "docs/planning/kylofon-formats-tools-review.md",
+      "bytes": 17718,
+      "sha256": "71903fd0efb4469b743bb556f5eb38e402ad6eff87cf1ede78372087338a24b5"
+    },
+    {
+      "path": "docs/planning/kylofon-game-core-review.md",
+      "bytes": 23894,
+      "sha256": "0aa5760638056abf2a36c4a08ac8ebad6719800558373ed3dbd4bde55c92a506"
+    },
+    {
+      "path": "docs/planning/kylofon-platform-review.md",
+      "bytes": 23389,
+      "sha256": "ea546d310e6aae246fe6c7050167120212d38f174c941d80b26600c366cc8dee"
+    },
+    {
+      "path": "docs/planning/kylofon-reuse-assessment.md",
+      "bytes": 18017,
+      "sha256": "e1baa5768b9a25322192cb45ff72e495ac48e824ac97795a04547c383475dd24"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-gap-register-v1.json",
+      "bytes": 9981,
+      "sha256": "6a0c0b50e5523cb330a564888d9dce437a94ee1a932780099b5d53e649623fda"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-index-metadata-repair-v1.json",
+      "bytes": 838,
+      "sha256": "d4bae4b4c7166a47c255cd57afd16e6965076c53b2f19ebc37ac4a1d6ae529dd"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-reference-custody-v1.json",
+      "bytes": 58860,
+      "sha256": "735a716d1ba735670a61fca2537f7de2df876954fef6c5665e2b28d05324ee63"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-reference-snapshot-v1.json",
+      "bytes": 54742,
+      "sha256": "f681ce5650c38af2499fdf245939cedfbed6c8f1db278da49ce01b659a75a5c0"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-static-crosscheck-v1.json",
+      "bytes": 109276,
+      "sha256": "45a71892f3c390f61d6c804801ad9fa1667e847373b048db5a63c2230d988d09"
+    },
+    {
+      "path": "docs/planning/evidence/external-repositories.json",
+      "bytes": 626,
+      "sha256": "d02e23eb27743599015309ed8fbbeeeacc7db77a7046efb4a4a975e239dc7aeb"
+    },
+    {
+      "path": "docs/recovery/evidence/p1-kylofon-reference-review-audit-v2.json",
+      "bytes": 245725,
+      "sha256": "82aba30e1e0e2a219ed0776cae28944c841dec8867e67cdbcbb517ac74c202b1"
+    }
+  ]
+}

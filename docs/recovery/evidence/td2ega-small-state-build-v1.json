@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_small_state.cmd",
+    "sha256": "944c8980b669dcf2175800d7b78cae3fe228aba7526730694e28ea17bbf65b06"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_small_state.c",
+      "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.h",
+      "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/small-state-repro/td2ega_small_state.dll",
+      "sha256": "330671df7661038b3dd6af0a3f967ec9064683ed27bd9739e8d23f1f2e8d4881",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/small-state-repro/td2ega_small_state.obj",
+      "sha256": "02ae8ed587076d289c50df4fb2abe36ca519a3a502f41cabdd1426fd6c2a3915",
+      "bytes": 9588
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/small-state-build-v1.log",
+    "sha256": "8b14c6f88463a58309916e72050930a320a6f8b01bedfd3c1db2c2dbc928eea4"
+  },
+  "limit": "Fourteen finite bodies, actualnestedC692 inC69C, fullbusincludingSSframe/GPR/BP/CFIFDF andnear/farreturns. Literal0040:046C physical086C distinguishedfromcanonical0040:006C; no timer/frequency/sourcewriter semantics assigned. RawDSownedcounter/arithmetic, nearoffsetselector, CLbytecount, orderedpairedstatewords/byteflag and22byteforwardcopy retained. Noallcaller/bounds/aliases/IRQexclusion/lifetime, realBIOS/DOS/session/render/audio/core/gameplay/fidelity acceptance. Nativeinvalidchecks separate.",
+  "function_ids": [
+    "FN-EGA-000132",
+    "FN-EGA-000437",
+    "FN-EGA-000138",
+    "FN-EGA-000139",
+    "FN-EGA-000249",
+    "FN-EGA-000250",
+    "FN-EGA-000346",
+    "FN-EGA-000204",
+    "FN-EGA-000313",
+    "FN-EGA-000318",
+    "FN-EGA-000024",
+    "FN-EGA-000317",
+    "FN-EGA-000415",
+    "FN-EGA-000416"
+  ],
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate-small-state-attempt-v1.py",
+      "sha256": "caa29134dd477531c67b79e0fc5693cc3c5a91f4071eaa0265c1ce86f51e6aae"
+    },
+    {
+      "path": "analysis/history/validate-small-state-attempt-v2.py",
+      "sha256": "d75c917e00eb46270e769967c4ff54c177471e568aad8e07027d22eecbb35d47"
+    },
+    {
+      "path": "analysis/logs/small-state-validation-v1.log",
+      "sha256": "907da61edb7b039a354620f790dcded87f36dde7debd94200a611d558b7f9cc2"
+    },
+    {
+      "path": "analysis/logs/small-state-validation-v2.log",
+      "sha256": "ff3b2401e4b5207216fd259ac2e324a38c8462d689aef04f9ea3aa01b5dac204"
+    }
+  ]
+}

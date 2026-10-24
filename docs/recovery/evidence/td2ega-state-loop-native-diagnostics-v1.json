@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "91678f35a85b0e9f4dd43b80340ce33d37e987460511906436d058b688a64606",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1a4c7bcd9cee9b3698d760979a07f049a2f14f73f7bcc43f37f5e545accaf0cc",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "limits": "Four native-only state-loop diagnostics. No original instruction/IRQ/resource/game executes; excluded from original differential totals/error equivalence. Unknown targets remain open domains."
+}

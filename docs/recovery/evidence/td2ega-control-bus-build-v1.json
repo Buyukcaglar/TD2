@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_control_bus.cmd",
+    "sha256": "da6b152e63c76c65a7445b713d47551ab5e8eebcd809ef3d3b5fd91763e97371"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/control-bus-repro/td2ega_control_bus.dll",
+      "sha256": "ae8f2a2420396c2816923b2c53765c71e778c664902ec8739cfc79aa3ea54dbd",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/control-bus-repro/td2ega_control_bus.obj",
+      "sha256": "d060558173ff02fd97c5cf7a8c502bdb7c16c7376d713f29c0a8d84042340ed3",
+      "bytes": 6543
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/control-bus-build-v1.log",
+    "sha256": "63dabfaea2361a4390d3f65af6bdddddc3dae7b7a1f66a9698777488d6958444"
+  },
+  "limit": "Additionalfullbus/SS/CFIFDF view foractual4588/44D8/45BF/4612/45FC, actual460EnearCALL4612frame/productbody/RET2, allsourceorderedreads/writes/word-bytewrap/signedguards/rawCF, noABImock orSSscratch exclusions. Priorhigher-levelgroup sources/receipts remainfrozen/separatelybounded; newliteralbus bodies retainactualnestedSS effects excludedbyoldgroupinterface. NativebeforeCALL/rawchildRET exposedafteractualRET targetneverfollowed. Actualcaller/DS-SS/tablebounds/writers/units/lifetime/IRQ/core/resource/device/session/gameplay/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000373",
+    "FN-EGA-000375",
+    "FN-EGA-000376",
+    "FN-EGA-000377",
+    "FN-EGA-000378"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-control-bus-context-v1.json",
+    "sha256": "269f0a21c5b58e8327bd1fe31b7cd5edd82ba7fe3e3e861bbd30c8ff3d8ff00e"
+  },
+  "resource_context": {
+    "path": "docs/recovery/evidence/td2ega-control-table-context-v1.json",
+    "sha256": "a75a6296f30e2be3d383277aed7ce03e01faeea381a11edad73364982c8bf89e"
+  }
+}

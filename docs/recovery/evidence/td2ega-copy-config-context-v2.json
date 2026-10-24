@@ -1,0 +1,610 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "242250c7fd3428511cf17f2785e1e7952982c9b3fc7f2e2e90d46fea6ffb0aa4",
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "instruction_observations": [
+    {
+      "site": "06C9:5D08",
+      "instruction": "mov ds, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:5D0B",
+      "instruction": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:5D0E",
+      "instruction": "mov es, word ptr [bp + 0xc]"
+    },
+    {
+      "site": "06C9:5D11",
+      "instruction": "mov di, word ptr [bp + 0xa]"
+    },
+    {
+      "site": "06C9:5D14",
+      "instruction": "mov cx, word ptr [bp + 0xe]"
+    },
+    {
+      "site": "06C9:5D17",
+      "instruction": "rep movsb byte ptr es:[di], byte ptr [si]"
+    },
+    {
+      "site": "06C9:7D65",
+      "instruction": "mov ds, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:7D68",
+      "instruction": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:7D6B",
+      "instruction": "mov cx, 0xd"
+    },
+    {
+      "site": "06C9:7D6E",
+      "instruction": "mov ax, cs"
+    },
+    {
+      "site": "06C9:7D70",
+      "instruction": "mov es, ax"
+    },
+    {
+      "site": "06C9:7D72",
+      "instruction": "mov di, 0xaf3a"
+    },
+    {
+      "site": "06C9:7D75",
+      "instruction": "rep movsw word ptr es:[di], word ptr [si]"
+    },
+    {
+      "site": "06C9:791E",
+      "instruction": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:7921",
+      "instruction": "mov ax, cs"
+    },
+    {
+      "site": "06C9:7923",
+      "instruction": "mov es, ax"
+    },
+    {
+      "site": "06C9:7925",
+      "instruction": "lea di, [0xaf3a]"
+    },
+    {
+      "site": "06C9:792A",
+      "instruction": "mov cx, 0x1a"
+    },
+    {
+      "site": "06C9:792D",
+      "instruction": "rep movsw word ptr es:[di], word ptr [si]"
+    }
+  ],
+  "raw_writer_spans": [
+    {
+      "entry": "06C9:7D5E",
+      "segment": "currentCS",
+      "offset": 44858,
+      "length": 26,
+      "source": "TwoSSwords[sourceOffset,sourceSegment], thirteenforwardwords."
+    },
+    {
+      "entry": "06C9:7918",
+      "segment": "currentCS",
+      "offset": 44858,
+      "length": 52,
+      "source": "OneSSnearoffset/currentDS, twenty-sixforwardwords."
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0000:0000",
+      "site": "0000:0014",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0000:0090",
+      "site": "0000:00AA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0000:0090",
+      "site": "0000:0191",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7918"
+    },
+    {
+      "owner": "0000:01B0",
+      "site": "0000:01CA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0000:01B0",
+      "site": "0000:028B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7918"
+    },
+    {
+      "owner": "00C0:0004",
+      "site": "00C0:006E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "00C0:0004",
+      "site": "00C0:018F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "00C0:0004",
+      "site": "00C0:01E8",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "00C0:0004",
+      "site": "00C0:0137",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "00C0:027A",
+      "site": "00C0:0288",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "00C0:027A",
+      "site": "00C0:02A3",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "010C:000E",
+      "site": "010C:0022",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "010C:000E",
+      "site": "010C:017E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "010C:000E",
+      "site": "010C:01D9",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "010C:000E",
+      "site": "010C:00EB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0143:000A",
+      "site": "0143:0019",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0232",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:5D01"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0338",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:03A7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:048A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0546",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:009B",
+      "site": "019E:0123",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:009B",
+      "site": "019E:01DC",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:027D",
+      "site": "019E:028B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:027D",
+      "site": "019E:03D3",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:027D",
+      "site": "019E:0425",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:027D",
+      "site": "019E:047A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:0527",
+      "site": "019E:0535",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:06DA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:00EB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:01EB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:065B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0330",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0D53",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0E6E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0E91",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0F5D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0FB7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:1057",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:1224",
+      "site": "0267:1232",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:139B",
+      "site": "0267:13AE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:161C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:18F5",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:5D01"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1A5B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:5D01"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:19B5",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:5D01"
+    },
+    {
+      "owner": "0432:14DB",
+      "site": "0432:15B7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0432:14DB",
+      "site": "0432:1804",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0432:1EA4",
+      "site": "0432:1EDA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0645:0271",
+      "site": "0645:027F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "0645:0470",
+      "site": "0645:047F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "06C9:00E7",
+      "site": "06C9:00F8",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "06C9:1F99",
+      "site": "06C9:1FAA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "06C9:3B95",
+      "site": "06C9:3BE6",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "06C9:3CEF",
+      "site": "06C9:3D01",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "06C9:3EFC",
+      "site": "06C9:3F04",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "06C9:5C98",
+      "site": "06C9:5C9D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:00D4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:00FE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:0151",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:01F8",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7918"
+    },
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:0278",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:02A1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:02DA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:0332",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7918"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:03B0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:03D9",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:042C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:04A8",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7918"
+    },
+    {
+      "owner": "1769:000E",
+      "site": "1769:005B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "1769:000E",
+      "site": "1769:008C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7D5E"
+    },
+    {
+      "owner": "1769:000E",
+      "site": "1769:01AF",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7918"
+    }
+  ],
+  "selected_initial_graph_destination_bytes_not_syntactic_code": true,
+  "shared_consumed_fields": {
+    "AF3C..AF43": "Fourplane segmentwords",
+    "AF44": "Lineoffset-table nearbase",
+    "AF46/AF48": "Rawhorizontal boundwords",
+    "AF4A/AF4C": "Rawvertical bounds",
+    "AF4E": "Destinationrowstrideword"
+  },
+  "limits": "Instruction-provenwriter spans/ABIs anddirectcallerinventory only; noall-writer/dispatchedcallerclosure, sourceownership/capacity/lifetime/IRQexclusion or resourceformat/frequency/units inference. Initialsyntacticnoncode check isnotallmutable-state/data acceptance. Destinationcontrolbytes/media remainexternal; noactualdevice/render/session/core/game/fidelity admission."
+}

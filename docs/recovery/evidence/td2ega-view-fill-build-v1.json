@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_view_fill.cmd",
+    "sha256": "1e26ba518265fc9dff262f3e552759d70856a68de297adca63e4f37067a2c78d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_view_fill.c",
+      "sha256": "91613a05fc7952e100c09e2c8e7ebca03cae52daac8b93b09f8301b92adaf4a2"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_view_fill.h",
+      "sha256": "25681819b8868afd7fda1bb98685c6259265885918c204f72ec3b3b8f49f0f85"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/view-fill-repro/td2ega_view_fill.dll",
+      "sha256": "383cac953767f2b907df1406d6d75cee49097c72d930886ff81edf54cd4db3d7",
+      "bytes": 108032
+    },
+    {
+      "path": "analysis/build/view-fill-repro/td2ega_view_fill.obj",
+      "sha256": "8f939e01dd790a60d6d90aa3a9df9e31694f2e137b4cd72fcc918b09c560a652",
+      "bytes": 9630
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/view-fill-build-v1.log",
+    "sha256": "78f03050a170e58b3aff341ca4b02d9dc003c100d4a13eb426d20707337f8d2c"
+  },
+  "limit": "Actual843Efar/oneSScolorword/fullSS/liveCSgeometry/DFretained/softwarepackedIMULlowword-wordSTOS+oddbyte/DL-onlycolorshift/softwaredo-oncerows-BXwidthsnapshot-mutatingSScolor-word/hardwareports-liveES/width40BYTE-MUL-heightlow8 orliveSSrowwidth/actualSSrestores-farRET/globalsoftwareplane-row-port-byte-wordwork/native5cachedbranchpreRETqualification. Wholebus-GPR-BP-CFIFDF/deviceABI/control/counts. RawRAMadapterownsbyte-wordeffects/originalSTOSidempotentstores. No geometrybounds-allwriters-capacities-storage-lifetime-exclusion/EGAwrite-mode-latches-renderer/CPU-A20/core/resource/CGA/session/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000216"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-view-fill-context-v1.json",
+    "sha256": "3347f8ea3994dbebd7dc0a5bbdea7d93bd80d8f50533eceb868a566393927af1"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  }
+}

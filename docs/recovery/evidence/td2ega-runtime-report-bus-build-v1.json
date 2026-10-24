@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_runtime_report_bus.cmd",
+    "sha256": "756180621a2607fa164e87535ebec43e274c9e0d565f20b69fc037dd715944a8"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_runtime_report_bus.c",
+      "sha256": "05895c7895015fa54483bc3e4b1c231039d09f8046ccd3caf5731ce224a89672"
+    },
+    {
+      "path": "src/recovered/td2ega_video_reset.c",
+      "sha256": "74877562acc37652fb89a6ac4e0d61434f741ea929b9b3b8a3ed4f7f73e988de"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.c",
+      "sha256": "06180015c596dea0c596f877ff38c1f686089f3a385bd21b2591542786eeef1a"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.c",
+      "sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_dispatch_bus.c",
+      "sha256": "59cc61da9058cfca6fb0b9293868c8d4da7045b5e178e34b5745102928971c70"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_exit.c",
+      "sha256": "9c50be81f5d9e57aeae9eb5c1e772831cf59b4749e36b0e1416ebfae16396da5"
+    },
+    {
+      "path": "src/recovered/td2ega_finalizer_list.c",
+      "sha256": "393fa5a352acb6403cb2fc84e776abcc0569bf55e1a8e8d07ff8d920ac1498a1"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_diagnostic.c",
+      "sha256": "fb3013b9884ca8d0dd6fd1bfd65f4e8d867570b63e1c860d44b24114655944bd"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_message.c",
+      "sha256": "257a111ed894575e4339675a4e4363d673236384966e0c98ada04029b608ba8a"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_vectors.c",
+      "sha256": "56b94e2cacbb841971315d2cf8f66eeaf31e797703427e39c47dc8188e14be94"
+    },
+    {
+      "path": "src/recovered/td2ega_finalizer_list.h",
+      "sha256": "f80c7b1956c4de100efc4490512ba639f2ee07c0e6d3de646bb4c6f8350c183e"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.h",
+      "sha256": "adb78ac1f3babe7472f8018f5373a3f8412435f94054d3e195a01d36d4237155"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_diagnostic.h",
+      "sha256": "4cb6b8212b2271e3a8ba665fe81994588039284075a4a79e7af37be6aafb5f2e"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_dispatch_bus.h",
+      "sha256": "3f565d39dccefc4459401c4aa8c16a27eef376daf6861fa9ff4051b8c0baeda7"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_exit.h",
+      "sha256": "f479c2df85bf59e35207405f67b7e4f0cfe71e655ad6ff288399345cbdd830f5"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_message.h",
+      "sha256": "204e7a9ed73c68887ba10cf34907895dc900609c31820caacf98ee822f1cf780"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_report_bus.h",
+      "sha256": "106de4df41aee25a0d0d401f29e09ab300083fac830aaef200d3902475d53d47"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_vectors.h",
+      "sha256": "f412c2cc5397d0d183c5e83e515f8092b1770fbdf434a927a660e019617f0b92"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.h",
+      "sha256": "a4095c9e94db41a6be15fc4bee4d1083fdc25aacbb3fb29799745c35c068dba6"
+    },
+    {
+      "path": "src/recovered/td2ega_video_reset.h",
+      "sha256": "3fe98ed44e8679a0045d008203c0e2ed3494b446b3a63150bd80647127686b7b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_report_bus.dll",
+      "sha256": "2fb96b0fcc698da29b16438fbb575cbd3635b50db54a93c327bedb51def8b884",
+      "bytes": 139264
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_report_bus.obj",
+      "sha256": "1913c435181bddb65a5eec23ab1e49a9acfafaced19daf8e4113392ace65c8eb",
+      "bytes": 19269
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_video_reset.obj",
+      "sha256": "dd0a8d1b42abde13ea4c37ecef44321d32990e36b87faec4c407e1f227ea08cc",
+      "bytes": 6152
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_plane_fill.obj",
+      "sha256": "1a37e9e291adb654a98094bd225dbd2a2c1d9c2dbde24dea6128c5e280a6cb29",
+      "bytes": 4690
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_timer_control_bus.obj",
+      "sha256": "7dbe09018b932e1efca0644ca4a234e5407662cb4b3b99a85db7923bb4322556",
+      "bytes": 16900
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_dispatch_bus.obj",
+      "sha256": "61329bb9a1896846f002aaab06c2e33439bfb537fbd684d9e5088c862e5415b8",
+      "bytes": 24696
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_exit.obj",
+      "sha256": "dcf928773b9bf25ce1ffea09dc17e3f95eb24300985e3c17d324fea74fc47d48",
+      "bytes": 6609
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_finalizer_list.obj",
+      "sha256": "6df3614bae242a2ea1c2f0c13083338e979d6e59225dfdb5446e567c5c7a308c",
+      "bytes": 4024
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_diagnostic.obj",
+      "sha256": "9f3595a1c66c7bb4ad0550ce3c72ea9e131180115c7ebb3555c2d98feabb19f2",
+      "bytes": 6619
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_message.obj",
+      "sha256": "b8c3d8b7172babbd964343890aae656d122998e584c32e61cb40793c6e9ba78f",
+      "bytes": 6516
+    },
+    {
+      "path": "analysis/build/runtime-report-bus-repro/td2ega_runtime_vectors.obj",
+      "sha256": "0e3703639f44280689f082e064beec49a058987e70be0d3db3c8ff1403090842",
+      "bytes": 5609
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/runtime-report-bus-build-v1.log",
+    "sha256": "73301743522dc47d02acb44f20f28678f36118503da500fb6e5607b2c6fa9460"
+  },
+  "limit": "Actual16A7reportparent/68C4cleanup/actual642E-840A-610A-29F6-runtimecallee bodies/fullSS-latefivewordreads/returnedBPaliases/callerADDSP0A/wholeRAM-GPR-BP-CFIFDF-definedFLAGS/orderedBIOS-device-music-DOS/independentCPUwrites. Formatter0B00andotherindirectbodies remainexplicitretiredABIeffects+genericRETF/notbodyproof. PreparedDOSexitnotexecuted; parentpostterminalPOPBP-RETFnotinvented. No fullformatter/actual16A7historicalterminal/B0FEdatafallthroughpruning/allwriters-lifetime-IRQcore-P1-GATE/DOSsession-renderer-audio-game-fidelity. CGAbehindEGAclosure/physical086Cunassigned.",
+  "function_ids": [
+    "FN-EGA-000348",
+    "FN-EGA-000158"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-runtime-report-bus-context-v1.json",
+    "sha256": "4fe65e0a09dccd97a3448e8b0e63e102dbd07eaa41e4118bb3703900bd3e42be"
+  },
+  "build_setup": {
+    "path": "analysis/history/runtime-report-bus-build-setup-v1.json",
+    "sha256": "e5bf029f086c88bd65537077aba57389b35d23172e4e54bef1ddf552d288e962"
+  }
+}

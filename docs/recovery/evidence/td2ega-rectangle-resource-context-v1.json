@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "b8b991755332c54902cd57b535169702078cee4e29a23f3bfd5425f8fadb70af",
+  "spans": [
+    {
+      "id": "RS-DOS-000257",
+      "segment": 6031,
+      "offset": 26680,
+      "length": 16,
+      "sha256": "af6de23a580004bff6edb4cfef331c9f0fa5771f0fee578a26e1deef38512edc",
+      "consumers": [
+        "FN-EGA-000218",
+        "FN-EGA-000219"
+      ],
+      "observation": "Two externalcurrentDS8byteedge-mask candidates6838/6840, eachindexBX&7. Principalinitializedspan isconditionalonactualDSview; SSargumentmutations areseparate. Nooriginalbytevaluesexported."
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:8A36",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:8A39",
+      "instruction": "mov dh, byte ptr [bx + 0x6838]"
+    },
+    {
+      "site": "06C9:8A43",
+      "instruction": "and bx, 7"
+    },
+    {
+      "site": "06C9:8A46",
+      "instruction": "mov dl, byte ptr [bx + 0x6840]"
+    },
+    {
+      "site": "06C9:89BC",
+      "instruction": "mov word ptr [bp + 6], dx"
+    },
+    {
+      "site": "06C9:89EC",
+      "instruction": "mov word ptr [bp + 8], bx"
+    },
+    {
+      "site": "06C9:8B38",
+      "instruction": "shr byte ptr [bp + 0xe], 1"
+    }
+  ],
+  "limits": "Staticinitialized16bytecandidate/operand/indexreview only; DSedge-maskreads versusSSBPcallerargumentwrites distinguished. Allwriters/DSview/sourceownership/device/renderer/resourcefedP2-01/06/09/P3-05/core/session/game/fidelity remainseparate. No fullresourcedecode/originalpayloadexport."
+}

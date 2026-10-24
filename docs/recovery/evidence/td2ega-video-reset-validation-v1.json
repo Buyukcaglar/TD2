@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000152"
+  ],
+  "vectors": 422,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "872dbb38ab35a3d879250462c339ba95b77ae452f85bf0aba2738d544befa996",
+  "source_sha256": "74877562acc37652fb89a6ac4e0d61434f741ea929b9b3b8a3ed4f7f73e988de",
+  "validator_sha256": "683293ea484ba06b073f74d8bb326b7d29c1c38c4b63f3aa618708f390796cdf",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 1788098,
+  "instruction_sites_in_fence": 47,
+  "instruction_sites_exercised": 47,
+  "fixture_coverage": {
+    "root_far_return": 86,
+    "actual_840A_farCALLs": 390,
+    "BIOS10_services": 200,
+    "byte_OUTs": 1740,
+    "device_byte_writes": 1776144,
+    "bus_write_events": 1778250,
+    "adapter_bus_mutations": 312,
+    "incomingDF1_cases": 202,
+    "SS_A000_cases": 44,
+    "DS_equals_SS_cases": 8,
+    "raw_root_returns": 32,
+    "AH0B_requests": 92,
+    "raw_child_return": 44,
+    "unqualified_child_farframe_prefix": 6,
+    "unqualified_root_farframe_prefix": 6,
+    "prefix_event": 248,
+    "prefix_call": 32,
+    "BDAword_rootfarframe_alias_cases": 4
+  },
+  "limits": "Actual06C9:642E far/noargs/XORAX-PUSHzero/actual840Afarframe-fullSS-currentDF/shareddevice-BIOSeventbudget/CALLbudget/childrawRETafterinstruction-neverfollowed/ADDSP2/BDA0410mask/BIOS10AX0003fullreturnedstate thenAH0B-retainreturnedAL-BX0/fullreturnedstate/rootRETaftereffects. Native5child-rootpreRETqualification/fullbody/nohistoricalfaultclaim. No realBIOS-INTframes/devicehardware/renderer/historicalCPU-A20/caller-domain/writers/storage/exclusion/core/resource/CGA/session/gameplay/fidelity acceptance."
+}

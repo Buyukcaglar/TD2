@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000122"
+  ],
+  "vectors": 1288,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3cad72b9422edd5469f3488aa6c9aacd6844791d146662dd6f625bc843552c68",
+  "source_sha256": "92f73b6de2bcdb3511cf8fd45d1db7414548944af7f99edc8bb90ffbfd6b80f2",
+  "validator_sha256": "a0ba375cecda9c2604ce9bba7a53d28b62d0f01f608facd4971993e5e9b02395",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 33552,
+  "instruction_sites_in_fence": 23,
+  "instruction_sites_exercised": 23,
+  "fixture_coverage": {
+    "prefix": 768,
+    "copy_words": 10088,
+    "bus_write_events": 20392,
+    "far_boundaries": 1288,
+    "DS_SS_argument_alias_profiles": 480,
+    "root_far_returns": 512,
+    "raw_child_returns": 8
+  },
+  "limits": "Actual3EFC+7D5E Cbodies, twoSSwordpool/nestedfarframes/savedregisters/fullbus/GPR/BP/CFIFDF/ADDSP4/rootfarRETF4 matched, noABIleafmocks orSSscratch exclusions. DS=SS argument-global/stack aliases tested, nativewordprefixes distinct. EightintentionalCS-output/childreturnCS aliases stopafteractualchildRETF andreturnrawtarget; no normalrootreturn/errorinvented. Actualsourceproducer/capacity/allwriters/lifetimes/IRQexclusion/fullstate/core/resource-fedP2/P3/device/game/fidelity remainopen; nativeinvalidchecks separate."
+}

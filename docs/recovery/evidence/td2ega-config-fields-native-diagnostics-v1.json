@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "1cebbcdd7f5122d0e18d922f1e5f61eb51a2316c3d58783e79e493b13ed10260",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "0190c6806015a08d52496572c9313bbfb0397dc35cb3f9d39c95783188f3ee96",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_config_fields.py",
+      "sha256": "6a6e0da83c688aaf8ae2120c190b582c6411ebfd649ef71239e8b1b25c151855"
+    }
+  ],
+  "limits": "Eightnativeinvalidbus/count/entry/SP/null/carry/DF profiles beforeeffects. Separatefromoriginalfarreturns/rawreturnaliases/workprefixes andactualcaller/writer/core/device/game/fidelity."
+}

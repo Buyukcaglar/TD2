@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000182",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_cache_allocate.cmd",
+    "sha256": "6ce1b66d0f040dd0a55869a364aa5c8ad36a321462091efa7faf0aa6bca91545"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_filename.c",
+      "sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.h",
+      "sha256": "7f0342e6882eafdf84c8960c98584a0c315f16e1c33c0ed578342439a5bac79f"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.c",
+      "sha256": "99f0decfe4eefc0edae2bd484973b855144391ebea9aa397463419eed8211984"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.h",
+      "sha256": "6891219bb4bab9bdbc41928da1f1cf2790c7de26fad9a3067d46feb975d8cf37"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/cache-allocate-repro/td2ega_filename.obj",
+      "sha256": "7344cc0cbfc750784f3feb05eccdc5da45d3f6baba674558adffe52e14e25e95",
+      "bytes": 739
+    },
+    {
+      "path": "analysis/build/cache-allocate-repro/td2ega_cache_allocate.obj",
+      "sha256": "4de4e59db9534c23989cc88be044447ee6f56721c5b7853c4d0375bcfca571aa",
+      "bytes": 1442
+    },
+    {
+      "path": "analysis/build/cache-allocate-repro/td2ega_cache_allocate.dll",
+      "sha256": "e8559d9b6063f314d253f14516c4b4efa995dcdda2e5df7f1e3863b86df53009",
+      "bytes": 102912
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/cache-allocate-build-v1.log",
+    "sha256": "6987a9d64e3775ead619368739878dcc5ff1a84afa0478aeeb20839c51050e4e"
+  },
+  "limit": "Metadata allocation prefix including failure events before external fatal handler. No payload manager, DOS cleanup, core or second host accepted."
+}

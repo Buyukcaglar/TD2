@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000011"
+  ],
+  "vectors": 8144,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c2392b603f23ff37d3b021585f8ca2870141ffa2ecfe1c561cba3513fba623c3",
+  "source_sha256": "0f9fb6c11e581d6b8cb00f3238440370216738f7e0f88b66510da9c3d8cf1c7a",
+  "validator_sha256": "4f05b6e6c0d5c4c7ab2a3303a51130611387c9b67fa060b9b4dc2dc19fbc1e2d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 971800,
+  "instruction_sites_in_fence": 108,
+  "instruction_sites_exercised": 106,
+  "fixture_coverage": {
+    "prefix_call": 1536,
+    "actual_far_CALLs": 20002,
+    "child_operations": 27898,
+    "parent_iterations": 18738,
+    "bus_write_events": 152456,
+    "DS_equals_SS_cases": 4072,
+    "minimumSP28_cases": 1024,
+    "reverse_DF_cases": 4072,
+    "raw_root_returns": 104,
+    "prefix_child": 1536,
+    "prefix_parent": 2022,
+    "far_root_return": 3050
+  },
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2978",
+        "13A8:2979"
+      ],
+      "scope": "0730fixedcopydestination9212/even",
+      "reason": "LastPUSHAXbeforeactualfarCALLwrites9212destinationargument; distinctnonwrappingSSfarframe-ownBPsave/nointerveningdatawrites beforeTESTAL1. Standalone2956full26passed; notglobaldead."
+    }
+  ],
+  "limits": "Actual0000:0730 far/noargs/SSlocalcounter-currentDS90AAsignedrereads/stride32casecompare2B40/query9212/fallbackrecord0/actual2956incomingDF/fullSS/allactualfarframes/final079BargumentsleftuntilMOVSPactualBP/POPBP/farRET. TailcurrentDS8CFAindexword/CL5SHLBXwordwrap-CFbit11/readDS8676+wrappedindex/storeDS8A80. Wholebus/GPR-BP-CFIFDF/control/counts. NativeCALL-perchildoperation-rootiterationbudgets/rawchildfarreturnsafterRETneverfollowed. Serialized20bitRAM/historicalCPU-A20unqualified. No validrecordcount-nameNUL-indexschema/capacity/allwriters/storage/DF-caller/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

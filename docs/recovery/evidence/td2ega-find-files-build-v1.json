@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_find_files.cmd",
+    "sha256": "9a33fd35920024f6b4e9cb79ef78b4bb702ef7289b3ff6df9e3fcdc49040ba4d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_find_files.c",
+      "sha256": "95f7b0d0e049d0d670b546ef4d877c162537eb9750008285aa262056ceb39291"
+    },
+    {
+      "path": "src/recovered/td2ega_find_files.h",
+      "sha256": "64de5a9d22d085cba10cb95c99f9b100f81b300adc6629e842601b0660b13183"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/find-files-repro/td2ega_find_files.dll",
+      "sha256": "9c74b7e033f3b775aade46b7456afb77dfb042f8530d3698a897a3bc5b8fc0e5",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/find-files-repro/td2ega_find_files.obj",
+      "sha256": "8b28648c929b64b6511aab1cf83afd1d1ba8e472aa00c37538dc3807a12426ac",
+      "bytes": 6009
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/find-files-build-v1.log",
+    "sha256": "98597f5e8ae0ff94541b5d8503309dfecdf25c95ed314e8e6c4c0213ce08e705"
+  },
+  "limit": "Complete5EF4/5F4E, serializedsyntheticDOS1A/4E/4F/fullgroup, nearpath/DTA/globalbasename/87prefix/13bytecopy andaliases preserved. No actualfilesystem/DOSversion/callerinterleaving/resource/core acceptance.",
+  "function_ids": [
+    "FN-EGA-000143",
+    "FN-EGA-000144"
+  ]
+}

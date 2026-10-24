@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-10-16",
+  "result": "reviewed",
+  "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf#page=388",
+  "title": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2A: Instruction Set Reference, A-L",
+  "revision": "253666-060US, September 2016",
+  "section": "DIV Operation, printed page 3-286, zero-based PDF page387; description on printed3-285/PDF386",
+  "retrieval": "Official Intel652-page PDF opened successfully through web tool. Operation pseudocode and Flags Affected text inspected; no local full-document hash or bytes claimed.",
+  "observations": [
+    "The byte-divisor form divides unsigned AX and returns the quotient in AL and the remainder in AH.",
+    "Zero divisor and a quotient above255 cause divide error; arithmetic condition flags after DIV are undefined.",
+    "For literal4C85 path, preceding byte guards/wordCBW ensure AX0..97 and CL5. Division cannot fault in this bounded path; subsequent wordSHL retains AH's remainder contribution. Later OR/CMP/TEST establish required flags."
+  ],
+  "limit": "Architecture reference plus separately identified instruction-derived range inference. Does not qualify an actual historical CPU, exception delivery, timing, A20, DOS session or fidelity. No manual implementation or long quotation copied."
+}

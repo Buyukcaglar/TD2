@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000360",
+    "FN-EGA-000361"
+  ],
+  "vectors": 4474,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "02a37ddf99af0c514b6ff21681f1f963f5b20a92a402018c6fe0c46ade5e63e2",
+  "source_sha256": "2e650f035abeda032477dd4cfc5f3558993c146c9a44098780b1947d999cd2fa",
+  "validator_sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_poll_bus.py",
+      "sha256": "df8258265d178161ee62ce29734299c0862373f41d906f14c88018f5e0932853"
+    },
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-build-setup-v3.json",
+      "sha256": "16f88c70323b40f3bbb33b78c8c2fdbcf4ebf816e12b3843e2a12e1a6dadd730"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-int-real-mode-reference-v1.json",
+      "sha256": "d7ef3c7389ca3d34bf42ed81fc1b653813069446aee65330d014f49ceb0edb68"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-validation-refinement-v2.json",
+      "sha256": "1e6abebc5fee09a1150490241d5187edd998338f68652f4a4bb75b2f9a8a1be0"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-validation-refinement-v3.json",
+      "sha256": "ab10fe1333db3922eaa080fdd9ae95129e014403c853bcc64e97bebf944c89a4"
+    },
+    {
+      "path": "analysis/history/validate_timer_handler_bus_attempt_v2.py",
+      "sha256": "54b60e4dc2218b68c6e7521bf422bb7362f3a329bd85461dd1381ae112edade8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+      "sha256": "23c4a5e0a90e4e8745d7cc667417784daba17d4b3aeba6606add9a82624dd762"
+    }
+  ],
+  "original_instructions_executed": 238766,
+  "instruction_sites_in_fence": 71,
+  "instruction_sites_exercised": 71,
+  "synthetic_return_operations": 7890,
+  "fixture_coverage": {
+    "root_0": 4234,
+    "status_0": 3934,
+    "tag_counters": 3240,
+    "modeled_INT_frame_writes": 6456,
+    "CPU_and_service_writes": 91308,
+    "far_callbacks": 5738,
+    "old_INT08": 2152,
+    "SS_equals_DS": 96,
+    "root_1": 240,
+    "tag_bridge": 216,
+    "tag_indexed": 198,
+    "tag_service": 384,
+    "status_1": 256,
+    "status_3": 232,
+    "tag_SS_alias": 128,
+    "tag_IVT_frame_alias": 24,
+    "tag_budget": 200,
+    "status_5": 52,
+    "tag_IRET_qualification": 20,
+    "tag_root_saved_frame_mutation": 64
+  },
+  "limits": "FullSS61BF/6230 original71sites/fullRAM-GPR-BP-CFIFDF/definedFLAGS/actualsavedwords/farframes/modeledINT08-IRET-explicitAFstorage/IVTalias-order/rawreturns. External oldIRQ/farcallbacks remain ABI profiles with generic RETF/IRET, not actual body proof. Named real-address ISA profile/historicalCPU-IRQdelivery/callback403Bcomposition/allwriters-lifetime-core/P1-GATE remain open. Physical086Cunassigned/CGAbehindEGAclosure/noDOSgame-session-renderer-audio-complete-state-machine-gameplay-fidelity."
+}

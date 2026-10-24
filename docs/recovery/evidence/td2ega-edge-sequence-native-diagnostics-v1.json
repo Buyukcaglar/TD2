@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "96c3e69e183dc544a90bb1dc625ecbd5efd96ea46d6c7f3081f29442eba27a68",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5a659ef4834c26d07ad640bf6cd7692bcb2d1d5728ae3ddf52a56d9fc4dd627d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_edge_sequence.py",
+      "sha256": "fde27880700a9286edeb92fb9973becb8c9efb0d0b2eb8eef0744dd2523d3e5e"
+    }
+  ],
+  "limits": "Two native-only invalid frame/flagchecks, separatefromoriginalcomparison/error semantics. No actualrenderer/device/IRQ/core/game/fidelity."
+}

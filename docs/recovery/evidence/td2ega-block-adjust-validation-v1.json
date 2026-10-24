@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000325"
+  ],
+  "vectors": 15824,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1eb701d66ef8b681e968d1dd7cd48604f1ca9e29cf7d3b4378494cbcc93cca1d",
+  "source_sha256": "7479905e9074c4de5b9fd6c48f7902a3dec03127728ae9f777a1c1eda5698186",
+  "validator_sha256": "d7e5d7a1fcfded2c77dbcc0ba6c687f610d7168a9a9cc0053d402bd17aeed78d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 528076,
+  "instruction_sites_in_fence": 39,
+  "instruction_sites_exercised": 39,
+  "fixture_coverage": {
+    "prefix_record": 9100,
+    "records": 86196,
+    "syntheticDOS4Aservices": 1888,
+    "bus_write_events": 2604,
+    "service_write_events": 2028,
+    "DS_equals_SS_cases": 7912,
+    "minimumSP0_cases": 4608,
+    "raw_near_returns": 1014,
+    "near_return": 5664,
+    "prefix_service": 1060
+  },
+  "limits": "Actual13A8:28C0/near/inheritedBP/rawSS[BP+0E]/DIrecordstart/DXincrement, scan4byte/liveDSwords/wrappedtermination, ADD15/RCR/SHRparagraphrounding/fullreturnedDOS4AGPR-BP-DS-IFDF/orderedmetadataXCHG/fullSSnearRET. SyntheticservicepreservesSS-SP-CS/omitsrealINTframes, callbackbusmutationsincluded/excludedfrominstructionwritecounts. Nativebefore-record-INTbudgets/rawnearreturn exposedafterRETneverfollowed. No tabledomain/capacity/caller/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

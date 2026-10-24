@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 18,
+  "script_sha256": "50308a9296a03b7a95cdbe41b77eb44e61b0c9a8f270a937197348b22863fef4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b6e75621a8a08f0a65aefd1b0e836f4ace1cf34db0a124801ca49daeb61cd110",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_motion_scan_bus.py",
+      "sha256": "8958efcede8105df5a049420c9142208382cbd25556cc7f01b073f1461ef7fe8"
+    }
+  ],
+  "limits": "Native-only rejection-before-effects/nulloutput/actualargs-beforeCALLbudget/plainRETF-versusRETF8/general-finalADD-CFZF-versusundefinedfastMULZF/AX0DFshortcut-nearSPwrap/ESscan-beforeunknownJMP/knownbareRETtail. Separatefromoriginalcomparison/whole420A-403B/IRQ/core/game/fidelity."
+}

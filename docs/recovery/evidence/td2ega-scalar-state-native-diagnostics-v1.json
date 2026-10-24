@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "c989d2fede5c8ced286658116663f2d15facacbb15bab3ad2a58e0675466a47e",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "e74fb4a05a401bb87ce6cf1a00ba595d9bd16c08a6fc58261716f7f0be10ce9d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_scalar_state.py",
+      "sha256": "c0ad469769fea1b857799e562ffb8110a00931558ae94f3cef4e602725ece48d"
+    }
+  ],
+  "limits": "Eightnativeinvalidbus/count/entry/SP/null/carry/DF profiles beforeeffects. Separatefromoriginalbyte/signextension/globalword/flag/rawreturn semantics andactualcaller/core/device/game/fidelity."
+}

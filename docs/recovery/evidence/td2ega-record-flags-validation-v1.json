@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000388"
+  ],
+  "vectors": 278432,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "94bdcf20119a773f7f61dbe7d15f7b2f04cdd12073614df684bb9392bbf5097a",
+  "source_sha256": "de43feceb89c165cd5320d03fdf10cd2a07e06ab9164336d507da1ab9e35c783",
+  "validator_sha256": "276a6f6bb6e4336de70beef4cbf49fbb832cddfd3bb98ed51ab87e15bf01b61c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_math.py",
+      "sha256": "822a352bd0fc94ea1e30c37c5b0e201442496d47519d560b794243556e527bba"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 4773396,
+  "instruction_sites_in_fence": 54,
+  "instruction_sites_exercised": 54,
+  "fixture_coverage": {
+    "exhaustive_INC_DX_cases": 262144,
+    "AX0_ZF0_discriminators": 262140,
+    "defined_AF_cases": 262144,
+    "wholebus_profile_end_checks": 4,
+    "general_cases": 16288,
+    "return_4FA9": 3596,
+    "undefined_AF_excluded_cases": 5908,
+    "AX_nonzero_ZF1_discriminators": 770,
+    "raw_near_returns": 0,
+    "minimumSP16_cases": 4096,
+    "bus_write_events": 30258,
+    "budget_prefix": 2734,
+    "return_5016": 5908,
+    "return_5021": 4050
+  },
+  "limits": "Actual4F92 instructions against frozenrecord_math C plus read-onlyserialized pathclassifier/definedreturnFLAGS view. ThreeactualRETsites distinguished; rejectCMP/skipINCDX/fullstatusFLAGS, updateXORZF1/PF1/CF0/OF0/SF0 withundefinedAF excludedmask. Prefixmask onlyCF/IF/DF/bit1. ExhaustiveINC65536words/twoCFsetups/twoload-IFDFprofiles, zero source/native writeevents percase andwholebus atprofileend; generalcases fullbus/SS/GPR/BP/CFIFDF/definedFLAGS/control. Definedflags/mask isnot rawPUSHF image; CPUreserved/undefinedflags/stackwordownership andactual4D3F PUS H F/POPF/wholeparent stillopen beforecore. No actualIRQ/reset/writer/lifetime/device/session/gameplay/fidelity acceptance."
+}

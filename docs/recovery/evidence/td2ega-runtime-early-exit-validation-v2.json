@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000260"
+  ],
+  "vectors": 6912,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3c86a03417985bd5bcf9a1c6ac2ca21483a837361f831bf401abc99d16411adc",
+  "source_sha256": "8fcc4f600c032a1a24ba226aab5214e7d719c4724ecbc4f7e043d282ef63e1c6",
+  "validator_sha256": "b9f50025ed6aec1102be383f669ef80f6f3af2b7c0ac981e96babb28962ff448",
+  "validator_dependencies": [
+    {
+      "path": "analysis/history/runtime-early-exit-validation-refinement-v2.json",
+      "sha256": "ba045a9fe8c2b649dbf8ab30c093196febc262266440b288987b37d8a33dbecc"
+    },
+    {
+      "path": "tools/validate_runtime_exit.py",
+      "sha256": "c2429c19528712e65f106747a82d7d963d2534cd8101bf220b200ed9a29ba863"
+    },
+    {
+      "path": "tools/validate_runtime_message.py",
+      "sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210"
+    },
+    {
+      "path": "tools/validate_finalizer_list.py",
+      "sha256": "8e94c103da8b9b4c447e54c0befd95da859f109b7648ccbdf5ef8058820ab553"
+    },
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/runtime-early-exit-build-setup-v1.json",
+      "sha256": "958f318ff3355d6c974cbe6ec09a792141e2e0d8f193569896a3e173513be00b"
+    },
+    {
+      "path": "analysis/reviews/runtime-formatter-frontier-v1.json",
+      "sha256": "1bc6eb705cbad2247e6af06b061558ceec0bdecfd8fbd848779f2e027019290d"
+    }
+  ],
+  "original_instructions_executed": 1279308,
+  "instruction_sites_in_fence": 138,
+  "instruction_sites_exercised": 137,
+  "root_sites_in_fence": 51,
+  "root_sites_admitted": 50,
+  "root_sites_exercised": 50,
+  "prepared_exit_boundary_sites": [
+    "13A8:05DE"
+  ],
+  "synthetic_callback_RETF_instructions": 48516,
+  "fixture_coverage": {
+    "status_3": 5244,
+    "prefix_records": 48960,
+    "callbacks": 48516,
+    "CPU_writes": 156636,
+    "minimumSP80_cases": 2304,
+    "status_5": 840,
+    "status_1": 828
+  },
+  "limits": "Actual0582two060Dprefix/inherited059Ctail/actualmessage-diagnostic-vectorchildren/fullSS-GPR-BP-CFIFDF-wholeRAM-services-CPUwrites. Prefix060Diterationsshareoperationbudget; callbacks applyoutsideCODEhook andgenericRETFs countseparately. PreparedAH4Cnotexecuted/no fakeextraPUSHBP orrootreturn. OtherarithmeticFLAGSunexposed; initial0599->post04A30582hook/actualDS-SSbinding-allwriters-lifetimes/core/fatalformatter-B0FEarena/P1-GATE/DOSsession-game-fidelity open."
+}

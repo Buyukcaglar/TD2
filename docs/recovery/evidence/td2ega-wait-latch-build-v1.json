@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_wait_latch.cmd",
+    "sha256": "18d56ecec14b229c771d765a89ed3943073d5ebe42279c1bd2c7fb75161124c5"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_wait_latch.c",
+      "sha256": "c28ff8e294dc8be53af1cc00da4ddf6eabfb6a0059c832532549ac7478b62226"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_latch.h",
+      "sha256": "caf76cebc09a2719e8f6d308d3b0bfad2b1dc52864cfbd7b64c9a776d5278d5d"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_control.c",
+      "sha256": "84555b4cdf268de6fe5ed8889dca02ac4fafdd0d2c6505908c1cbe684a61ce2d"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_control.h",
+      "sha256": "dcc7aab925ae2dc11dc41bc7b2688f7ee1db0056629a8e3f2f2f732dba57148e"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/wait-latch-repro/td2ega_wait_latch.dll",
+      "sha256": "9b27ec20c8679fc53f53e0ef7aff825babbc2cc068fc5d7c85e79faa3cde8124",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/wait-latch-repro/td2ega_wait_latch.obj",
+      "sha256": "20ed414056f97d18ae7af92e822c488646c3b2fdf772df491db9a8a9e9062ae3",
+      "bytes": 3693
+    },
+    {
+      "path": "analysis/build/wait-latch-repro/td2ega_wait_control.obj",
+      "sha256": "2d38d5915e9730d817f0abe4718a3b16b09a9a282262e9568aed02166911b246",
+      "bytes": 7035
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/wait-latch-build-v1.log",
+    "sha256": "80db40a872d24952f57a9512d326c47c32258ce85967733e9dc2e6dd3716e18a"
+  },
+  "limit": "Complete7A10/7A27+actual79C8 instructions/nativecounter composition, SSargument reads aftersnapshot, ADDADC32/CF, orderedDS6818/A publication, mutableglobaldeadline unsignedcompare andIF1/DF/BP retained. Counterboundarybusupdates only, noIRQ/clockrate/history/physical086Cmeaning/device/core/game/fidelity. Argument-dataaliases checked; native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000200",
+    "FN-EGA-000201"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000199"
+  ]
+}

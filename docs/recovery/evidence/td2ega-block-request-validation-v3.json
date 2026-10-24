@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000324"
+  ],
+  "vectors": 21440,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "03b0ea8bec18f58ca9252e6a109153c6495f4251b6f6b45989844c4e9a3c06b5",
+  "source_sha256": "f1b581c93578503f35e7f17bb0f734931df5700b1dd8371f4cf9d93d0d43787c",
+  "validator_sha256": "d4e8e341699bf81c77b2234baee349bcf3bc5c2014cc2f12824f0e9e4ef7b940",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 962680,
+  "instruction_sites_in_fence": 92,
+  "instruction_sites_exercised": 92,
+  "fixture_coverage": {
+    "root_far_return": 9698,
+    "actual_near_CALLs": 8666,
+    "records": 75612,
+    "bus_write_events": 124816,
+    "service_write_events": 6624,
+    "DS_equals_SS_cases": 10720,
+    "minimumSP12_cases": 6480,
+    "raw_root_returns": 1914,
+    "prefix_call": 6336,
+    "prefix_record": 3168,
+    "prefix_service": 1700,
+    "syntheticDOS4A": 1538,
+    "syntheticDOS48": 3602,
+    "raw_child_near_return": 538
+  },
+  "limits": "Actual13A8:2852/28C0/fullSS/inheritedBP/nearCALL/secondPUSHSI-actualPOPSI/CFbranches/rawmode-cursor/wordrounding/sharedsyntheticDOS48-4Aservicebudget/fullreturnedGPR-BP-DS-IFDF/orderedmetadata/farRET. Callbackbusmutations included/excludedfrominstructionwritecounts; SS-SP-CSpreserved/realINTframesomitted. Nativebudgets/rawchildnearRET/rawrootfarRET exposedafterinstructionneverfollowed. No allwriters/validdomains/caller/capacity/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

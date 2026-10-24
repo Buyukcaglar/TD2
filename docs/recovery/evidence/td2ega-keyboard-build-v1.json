@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_keyboard.cmd",
+    "sha256": "307495e11877b3d8cff7266efdf847226ed6a99e9e240c5dda4d9d2fb47f0c42"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_keyboard.c",
+      "sha256": "4fb8e7e0db25cf61c5e4573b5c0cbd4fceb1019d88cc2b9f687fe0eb0b250ec4"
+    },
+    {
+      "path": "src/recovered/td2ega_keyboard.h",
+      "sha256": "e6b7a40a588a12260b89386b939f3c135129b4a4704bc8650b5aa0886808862b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/keyboard-repro/td2ega_keyboard.dll",
+      "sha256": "76fae7ec4b75c483cc88cc147f464267599f39485ff89bea4068846a3c01b87f",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/keyboard-repro/td2ega_keyboard.obj",
+      "sha256": "ab45c6d94775e03888ed1fcff1843baf8361bc7999350e4545e7643e884116de",
+      "bytes": 12374
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/keyboard-build-v1.log",
+    "sha256": "06a033e201c058d66b450abcefe3ee4e86f5c9d7fab369c83de69cb0d9cf11e8"
+  },
+  "limit": "Four serializedkeyboard C17 exports, syntheticfullbus/ports/IVT/interruptframe; offsetonlyinstall guard, key/modifiertables andAH1RETF2 vsIRET retained. No actualkeyboard/PIC/BIOS/IRQ/input/game/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000157",
+    "FN-EGA-000158",
+    "FN-EGA-000159",
+    "FN-EGA-000160"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "e4ed443c1f8813e05b3e12217720f0ad6cedad52d27cad24f2b49daa7e356833",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "e8e04fb008068831096754fe8850768df63886c96b20179b2445232351e54990",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler.py",
+      "sha256": "2b327231f40c8fb56bf78c607c18a9cba3500c4be973e06ba8f430292f975cf6"
+    }
+  ],
+  "limits": "Five native-only API/budget/adapter diagnostics. No original instruction/IRQ/PIC/BIOS executes; excluded from differential totals/original error equivalence."
+}

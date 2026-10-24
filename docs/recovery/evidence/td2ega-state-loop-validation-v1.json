@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000080",
+  "result": "pass",
+  "vectors": 3012,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1a4c7bcd9cee9b3698d760979a07f049a2f14f73f7bcc43f37f5e545accaf0cc",
+  "source_sha256": "416712be754f09c738078e31af3e7ff579846b10fbe95e0a1229146a402f2135",
+  "validator_sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_prepare_records.py",
+      "sha256": "871b2def19017d942879051e818169ea40b6da839b673f8cbbb330925b375474"
+    },
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    }
+  ],
+  "native_libraries": [
+    {
+      "path": "analysis/build/prepare-records-repro/td2ega_prepare_records.dll",
+      "sha256": "eb9e8e0a3f3475cd02083dd61adb50b546539693b70c1a329f4caff45bab1f81"
+    }
+  ],
+  "original_instructions_executed": 234292,
+  "fixture_coverage": {
+    "state_counter_loop_paths": 1320,
+    "returns_state_0": 1506,
+    "returns_state_1": 1506,
+    "late_state_and_segment_changes": 160,
+    "unsigned_wrapped_exit_limits": 1372,
+    "known_target_permutation": 40,
+    "actual_record_caller_composition": 120
+  },
+  "instruction_sites_exercised": 155,
+  "instruction_sites_in_fence": 168,
+  "limits": "Complete1B2C orchestration inknown-target/nonwrappingfarABI profile, mutableCLC/RETFtail/physical0086, wait/state/counter/reset/unsignedlimits andCF/IF/DF/register restores. Mostcallees areABImocks;120cases executeactual1E59+780E andnativeprepare C with2samples each. No fullcallee/statewriter/domain/resource/IRQ/core/game/fidelity acceptance. Late-state/segment/tablepermutation areconditional syntheticprofiles. Nativeunknown-target/budget/adapterdiagnostics separate."
+}

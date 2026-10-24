@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000093",
+    "FN-EGA-000094",
+    "FN-EGA-000095"
+  ],
+  "vectors": 8352,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3e176792cf1c4796ed28f2a34e448ef2b22d45d5b034dbec9251c6f3ceaada21",
+  "source_sha256": "8e6770dfbb73cfd709302cce5260e3bf424152f423bfc7f5ff7f6e794f71d4dc",
+  "validator_sha256": "36564079d9c47b3c281523b676776f1b5b04fbf9b6e5fac84fb964eb59428f61",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 559146,
+  "instruction_sites_exercised": 238,
+  "instruction_sites_in_fence": 238,
+  "fixture_coverage": {
+    "26D8": 6144,
+    "normal": 8160,
+    "far_calls": 14080,
+    "near_calls": 52180,
+    "sixteen_live_words": 1728,
+    "284F": 672,
+    "prefix": 192,
+    "28F9": 1536
+  },
+  "limits": "Complete26D8/284F/28F9 orchestration with nearC17/D01 andfar89A2/916C ABI mocks, caller-clean retained5+5 and4x4wordpools, currentDS/CSlookup/ES andreturnedstate, rawSI!=34 wraploop andsignedtemporaryboundshift/aliases, normalRET2 versusnativecallbudgetprefix. No actualdrawingleaf/producer/tablecapacity/resourceformat/SS-DS/IRQ/renderer/core/game/fidelity. Native diagnostics separate."
+}

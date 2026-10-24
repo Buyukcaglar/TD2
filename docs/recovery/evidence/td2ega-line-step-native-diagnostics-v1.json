@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "7dd786c8a82437304875ff2f3339a99067b436eb284be99628d465dcbd943e9d",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "6d0e7ffde75eb135fbd905aa6949e22398dd0048009fc4f44f350961accae329",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_step.py",
+      "sha256": "612021b7f8be772474709d7e5c7bd5b93b16396257f4c65a297cc0d79bcd0ed6"
+    }
+  ],
+  "limits": "Two native-only frame/DF-domain checks; excluded from original differential/error equivalence. Work/patch/innerloop prefixes compared separately inhelperreceipt. No originalinstructions/actualIRQ/reentrancy/renderer/resource/core/game/fidelity."
+}

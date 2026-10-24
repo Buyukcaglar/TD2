@@ -1,0 +1,2780 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Native admission support checks; counts are not original-instruction differential vectors",
+  "result": "pass",
+  "problems": [],
+  "maker": {
+    "path": "tools/validate_kylofon_admission_support_v1.py",
+    "sha256": "37b0dda7622bf004707bc6c5c8bd07fa9afbcc4735a6e7cda87cc2c9437f0d04"
+  },
+  "attempt_directory": "analysis/candidates/kylofon-r03-v1/support-attempt-v2",
+  "candidate_library": {
+    "path": "analysis/candidates/kylofon-r03-v1/native-build-v1/candidate/td2r03_probe.dll",
+    "sha256": "9920550632c937c9fbd1be06e3385b1105b4fc09e33ab8ebea0f4362b39bf031"
+  },
+  "baseline_library": {
+    "path": "analysis/candidates/kylofon-r03-v1/native-build-v1/baseline/td2r03_probe.dll",
+    "sha256": "a198154fc2375c98271672998de3bce1881181a1b61f7165d0e80eadd7cad806"
+  },
+  "cases": [
+    {
+      "family": "loader_canonical",
+      "implementation": "baseline",
+      "result": "pass"
+    },
+    {
+      "family": "loader_canonical",
+      "implementation": "candidate",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "empty",
+      "bytes": 0,
+      "fixture_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "one_byte",
+      "bytes": 1,
+      "fixture_sha256": "08f271887ce94707da822d5263bae19d5519cb3614e0daedc4c7ce5dab7473f1",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "short_mz",
+      "bytes": 27,
+      "fixture_sha256": "8472f9898d5af730a1828783e6e870f21401b90cfa659cd16e7a8a061dd603be",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "header_only",
+      "bytes": 512,
+      "fixture_sha256": "f306a8ca8fd0b6b6658a973256842bcc01c7a5fbe4bb1dd4fbd7e1bf00468405",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "half",
+      "bytes": 57210,
+      "fixture_sha256": "692d3c6c1024a5092a0ca7579104f3741463c8280a89bf1850dd1db065837878",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "missing_last_byte",
+      "bytes": 114420,
+      "fixture_sha256": "e14c120f4e27b16915640d2615257cd8f2f363fd9f8bde9e01b1905ae381b094",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "oversized",
+      "bytes": 179957,
+      "fixture_sha256": "66a6bce5904c1c59c01886e8f50e6fe2d4d2a956611a101f4a795784a6ec8a0b",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "changed_header",
+      "bytes": 114421,
+      "fixture_sha256": "ae6762b76920a44aa25dd374ca480e2fba01762dfca3960ca2c5a21397a4145c",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "changed_packed_body",
+      "bytes": 114421,
+      "fixture_sha256": "47171a96ebc4608d67141d1d6bdee71f143b9f2467afea2525d65554b276e176",
+      "result": "pass"
+    },
+    {
+      "family": "loader_identity_rejection",
+      "fixture": "changed_tail",
+      "bytes": 114421,
+      "fixture_sha256": "f9d7a9f290be0877e67709597d2fcd392114b53827e69c96a071ac01d9689dd6",
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 0,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 1,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 15,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 16,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 17,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65520,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65534,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65535,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 0,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 0,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 0,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 1,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 15,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 16,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 17,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65520,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65534,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65535,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 64,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 64,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 0,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 1,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 15,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 16,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 17,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65520,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65534,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65535,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 4096,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 4096,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 0,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 1,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 15,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 16,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 17,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65520,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65534,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65535,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61439,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61439,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 0,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 1,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 15,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 16,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 17,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65520,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65534,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65535,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 61440,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 61440,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 0,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 0,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 0,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 1,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 1,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 1,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 15,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 15,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 15,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 16,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 16,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 16,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 17,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 17,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 17,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65520,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 65520,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 65520,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65534,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 65534,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 65534,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65535,
+      "width": 1,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_read",
+      "segment": 65535,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 65535,
+      "width": 2,
+      "result": "pass"
+    },
+    {
+      "family": "memory_scalar_write",
+      "segment": 65535,
+      "offset": 65535,
+      "width": 4,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": -32768,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": -2,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": -1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": true,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": 1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": 2,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -2147483648,
+      "divisor": 32767,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": -2,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": -1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": 1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -65536,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": -1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": 1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32769,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": -1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": 1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -32768,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": -1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": 1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": -1,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": -1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": 1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 0,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": -1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": 1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 1,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": -1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": 1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32767,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": -1,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": 1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 32768,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": -32768,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": -2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": -1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": 1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": 2,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 65535,
+      "divisor": 32767,
+      "expected_fault": false,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": -32768,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": -2,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": -1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": 0,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": 1,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": 2,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "division_guard",
+      "dividend": 2147483647,
+      "divisor": 32767,
+      "expected_fault": true,
+      "baseline_skipped_undefined_case": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_init",
+      "fixture": "disjoint_existing_roots",
+      "result": "pass"
+    },
+    {
+      "family": "profile_lookup",
+      "fixture": "case_insensitive_original_fallback",
+      "result": "pass"
+    },
+    {
+      "family": "profile_lookup",
+      "fixture": "missing_read",
+      "result": "pass"
+    },
+    {
+      "family": "profile_lookup",
+      "fixture": "create_uses_profile",
+      "result": "pass"
+    },
+    {
+      "family": "profile_lookup",
+      "fixture": "existing_profile_override",
+      "result": "pass"
+    },
+    {
+      "family": "profile_lookup",
+      "fixture": "existing_profile_create_case",
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "5ec1f7e700f37c3d0b2981d04855fc34b94aaa15457b05ca571817442d228f81",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "5ec1f7e700f37c3d0b2981d04855fc34b94aaa15457b05ca571817442d228f81",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "e29bbc631f57b6801b7d005ec4d00b784447f682ade3e4d2a1eea5f760ce4eb6",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "e29bbc631f57b6801b7d005ec4d00b784447f682ade3e4d2a1eea5f760ce4eb6",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "bdc8355b599d248d7d831b7fd01727bc2c5a049d4204995ef318ffe2773a5262",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "bdc8355b599d248d7d831b7fd01727bc2c5a049d4204995ef318ffe2773a5262",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "fa99abe36d7c3363c4d667979074f3c865592274a383e67a5799dc4f7d185297",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "fa99abe36d7c3363c4d667979074f3c865592274a383e67a5799dc4f7d185297",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "ce46da2b584fa5ec7ae5970e87d8bdaadcd3929aa36c33c6667c1db6b1755586",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "ce46da2b584fa5ec7ae5970e87d8bdaadcd3929aa36c33c6667c1db6b1755586",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "140ec25b522e30370fb091276534831022a9a68884c4cee4f3e3287387526c12",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "140ec25b522e30370fb091276534831022a9a68884c4cee4f3e3287387526c12",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "ece2e662ed4399737c276f4ff5ad58af04408f82775fe4d42252d1e64c481764",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "ece2e662ed4399737c276f4ff5ad58af04408f82775fe4d42252d1e64c481764",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "bafb5fcb7d289be78adb9d3775b80c122b4608e6e09e37a65ded8273d8f1ef23",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "bafb5fcb7d289be78adb9d3775b80c122b4608e6e09e37a65ded8273d8f1ef23",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "ae6de1827cfc8111a6e049e80d19a5ca25f0d8e018e879286eab9919ab642f01",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "ae6de1827cfc8111a6e049e80d19a5ca25f0d8e018e879286eab9919ab642f01",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "a3dbc4b644a9a2c51e74509ded5c46ccf31d84c65ca417fe0126af1555c66ceb",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "a3dbc4b644a9a2c51e74509ded5c46ccf31d84c65ca417fe0126af1555c66ceb",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "6eac394becc8817cb1d02ffb4bc5251ca1c7f90107fc86a92a2e76bdeb825c70",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "6eac394becc8817cb1d02ffb4bc5251ca1c7f90107fc86a92a2e76bdeb825c70",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "9c611080f8a98bf5e5673e2500173e9bb3ba6003a2ea9073422139b09fb1aa48",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "9c611080f8a98bf5e5673e2500173e9bb3ba6003a2ea9073422139b09fb1aa48",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "fdb52e9fc1915628d1e5e89ecd4fe7c31a54a1e63d0ab20e48807f2f5f6add6b",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "fdb52e9fc1915628d1e5e89ecd4fe7c31a54a1e63d0ab20e48807f2f5f6add6b",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "f8f47e4731f66a0ad5fd6131d9d12e18d0bf776731abd058b3463a0fc7dcff59",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "f8f47e4731f66a0ad5fd6131d9d12e18d0bf776731abd058b3463a0fc7dcff59",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "36d99a78f236dcb7ccc339d721514e3e7ba8b5230d076785228f5ec1b89adb8b",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "36d99a78f236dcb7ccc339d721514e3e7ba8b5230d076785228f5ec1b89adb8b",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "a9c6390a8437a656f06c9f71df3474e578890adcacc6760ca4ed00eefcb18d4a",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture_name_sha256": "a9c6390a8437a656f06c9f71df3474e578890adcacc6760ca4ed00eefcb18d4a",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture": "directory_as_file",
+      "create": false,
+      "result": "pass"
+    },
+    {
+      "family": "profile_name_rejection",
+      "fixture": "directory_as_file",
+      "create": true,
+      "result": "pass"
+    },
+    {
+      "family": "profile_hardlink_rejection",
+      "fixture": "write_hardlink_to_original",
+      "result": "pass"
+    },
+    {
+      "family": "profile_actual_write",
+      "fixture": "new_profile_file",
+      "bytes": 35,
+      "result": "pass"
+    },
+    {
+      "family": "profile_actual_write",
+      "fixture": "hardlink_write_has_no_effect",
+      "quiet_api_return": 0,
+      "return_qualification": "Quiet original-style API returns0 on both success and error; denial established by path rejection and unchanged bytes/metadata",
+      "result": "pass"
+    },
+    {
+      "family": "profile_root_rejection",
+      "original": "paths/original",
+      "profile": "paths/original",
+      "result": "pass"
+    },
+    {
+      "family": "profile_root_rejection",
+      "original": "paths/original",
+      "profile": "paths/original/nested",
+      "result": "pass"
+    },
+    {
+      "family": "profile_root_rejection",
+      "original": "paths/original",
+      "profile": "paths",
+      "result": "pass"
+    },
+    {
+      "family": "profile_root_rejection",
+      "original": "paths/original/missing",
+      "profile": "paths/profile",
+      "result": "pass"
+    }
+  ],
+  "build_receipt": {
+    "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+    "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+  },
+  "prior_attempt": {
+    "path": "docs/recovery/evidence/kylofon-admission-support-v1.json",
+    "qualification": "Preserved initial support pass used a64Kperiodicpattern; fullRAMwritecases discriminated wrapping but boundaryreads did not. This refinement requires independent highaddress pattern and baseline discriminators for allfive scalar accessor families."
+  },
+  "loader": {
+    "canonical_copy": "analysis/candidates/kylofon-r03-v1/support-attempt-v2/loader/canonical.exe",
+    "copy_metadata_unchanged": true,
+    "input_sha256": "eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+    "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+    "image_bytes": 130240,
+    "relocation_count": 1652,
+    "relocations_sha256": "5c8e10220a349212fc0b5e1ef4ee989716c6195e9d85cb46864ec2c0a62e6d21",
+    "relocated_unpatched_image_sha256": "e36b827719c4692f9f89c5ba5d647111a82e61e8843f4d8b32ee653b7280ba99",
+    "passed_state_image_sha256": "72775cd06ab200e6d7e004e00475ba03707e1dd408db8144bc399d8b53c0d90b",
+    "intentional_patch_image_offsets": [
+      34951,
+      44762,
+      44805,
+      44861,
+      118598
+    ],
+    "results": [
+      {
+        "implementation": "baseline",
+        "loaded_memory_sha256": "c57e20d8750a9fab3e76315e2fcecd824830b9ffee8ee537ac09356795e0a331",
+        "all_memory_bytes_compared": 1114112
+      },
+      {
+        "implementation": "candidate",
+        "loaded_memory_sha256": "c57e20d8750a9fab3e76315e2fcecd824830b9ffee8ee537ac09356795e0a331",
+        "all_memory_bytes_compared": 1114112
+      }
+    ],
+    "scope": "Exact input identity and resulting native memory are compared. Rejected malformed inputs stop at the exact-fingerprint gate; this does not exercise each deeper parser branch."
+  },
+  "memory": {
+    "candidate_cases": 240,
+    "baseline_expected_model_disagreements": {
+      "read4": 8,
+      "write4": 8,
+      "read2": 7,
+      "write2": 7,
+      "read1": 5
+    },
+    "pattern": "Address mixed with bits8+ and16+; does not repeat across20bit wrap. Every scalar accessor family must have a baseline discriminator.",
+    "model": "Independent Python byte-address model: every byte masks(segment*16+offset+byte_index,20bits). Full native memory compared after reads/writes.",
+    "scope": "Infrastructure accessors, not original instruction bodies; direct typed DS lvalues remain outside this test."
+  },
+  "division": {
+    "candidate_cases": 77,
+    "fault_cases": 32,
+    "normal_cases": 45,
+    "baseline_undefined_cases_deliberately_not_executed": 1,
+    "scope": "Native division guard against an independent integer quotient/fault model; not an original x86-body comparison."
+  },
+  "paths": {
+    "fixture_root": "analysis/candidates/kylofon-r03-v1/support-attempt-v2/paths",
+    "original_file_count": 2,
+    "originals_content_mtime_attributes_unchanged": true,
+    "source_inputs": "Synthetic file fixtures only; actual reference originals are never passed to candidate write/path APIs.",
+    "scope": "Read/create resolution, explicit disjoint roots, basic Win32 filename rules and existing hardlink rejection. No adversarial concurrent filesystem race or complete final-host acceptance."
+  },
+  "inputs_unchanged": true,
+  "elapsed_seconds": 5.44209,
+  "case_counts": {
+    "loader_canonical": 2,
+    "loader_identity_rejection": 10,
+    "memory_scalar_read": 144,
+    "memory_scalar_write": 96,
+    "division_guard": 77,
+    "profile_init": 1,
+    "profile_lookup": 5,
+    "profile_name_rejection": 38,
+    "profile_hardlink_rejection": 1,
+    "profile_actual_write": 2,
+    "profile_root_rejection": 4
+  },
+  "support_cases": 380
+}

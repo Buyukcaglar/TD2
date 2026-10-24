@@ -1,0 +1,1346 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "task": "P1-R04",
+  "upstream_commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "decision_scope": "Approve defined symbols/branches for bounded reuse in their existing phase tasks. This is a source-selection decision, not source integration, new recovery contracts, runtime/game/fidelity or distribution admission.",
+  "maker": {
+    "path": "tools/record_kylofon_reuse_decision_v1.py",
+    "bytes": 19795,
+    "sha256": "d0315c8eb0dc56ebb0344ebe88094be7a036ad0792f78933617fb78f7db7071b"
+  },
+  "evidence": [
+    {
+      "path": "docs/recovery/evidence/kylofon-address-admission-v1.json",
+      "bytes": 2530877,
+      "sha256": "8a65805699c9b2b9c41479711e32834bd476f1c25f93758abfc44f2b7a234177"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-source-admission-v1.json",
+      "bytes": 251567,
+      "sha256": "df3fa2889e7e3ccfa3dbf2f4a49b78958976601b1ca924f8b6972a76b710baf6"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+      "bytes": 242343,
+      "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+      "bytes": 28504,
+      "sha256": "b4d92c11381dae416e490418768f849da12fb0c4b37022b21c76f5fd89a34954"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+      "bytes": 64076,
+      "sha256": "219cbb195ce223df13d31084df7222e6e96a9f67ddeecd8d36416c9e3b81ebc3"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+      "bytes": 3474,
+      "sha256": "5e5149d46f03180c242d7b4abd007ebf0ec5f73b785183e0a535942433497aa8"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-r04-baseline-verification-v1.json",
+      "bytes": 5992,
+      "sha256": "259c913aa4382686f3129249ee382ccad7386bb3412ff7f0dde9f9153c44d7b2"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-selection-review-v1.json",
+      "bytes": 14412,
+      "sha256": "928a3b6597a29570dddd24fa42e5a382ea1223c85c85ce5f134a2e14626581fe"
+    }
+  ],
+  "selected": [
+    {
+      "id": "KRU-01",
+      "title": "Byte-ring value implementation",
+      "decision": "qualified_value_implementation",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+        "bytes": 38031,
+        "sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c"
+      },
+      "symbols_or_branches": [
+        "rand8"
+      ],
+      "original_entries": [
+        {
+          "address": "06C9:780E",
+          "existing_function_id": "FN-EGA-000003",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_byte_ring.c",
+              "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_byte_ring.h",
+              "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        }
+      ],
+      "fixture_families": [
+        "byte_ring"
+      ],
+      "admitted_observations": [
+        "Native scalar return and nonframe RAM after 1/17 serialized calls"
+      ],
+      "native_domain": [
+        "Fixed relocated DGROUP and admitted image; exact 278 deterministic cases from the pinned fixture stream",
+        "Owned disjoint code/state/scratch; caller history and initial seed purpose are not inferred"
+      ],
+      "excluded": [
+        "Actual SS stores, GPR/FLAGS, IRQ/nesting, all writers/reset/lifetime and historical consumption history"
+      ],
+      "implementation_tasks": [
+        "P1-06",
+        "P3-03"
+      ],
+      "dependencies": [
+        "KRU-07",
+        "types/address declarations only"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/platform/res.c",
+        "upstream_git_blob": "007e564a875d851c22dece28a61d42f01c7ec494",
+        "upstream_file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+          "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+          "selected_ranges": [
+            {
+              "start_line": 1103,
+              "end_line": 1111,
+              "span_sha256": "83779a6f52accc37eff7476766dd5e12134685e598c45b78fc5a50d83263fec8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KRU-02",
+      "title": "Literal external-word read and subtraction",
+      "decision": "qualified_value_implementation",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/timer.c",
+        "bytes": 8585,
+        "sha256": "e65548ac984788df8e7f8aeb51fac751efb345778fa15906a0b472253bcb17bb"
+      },
+      "symbols_or_branches": [
+        "bios_ticks",
+        "bios_ticks_since"
+      ],
+      "original_entries": [
+        {
+          "address": "06C9:5D83",
+          "existing_function_id": "FN-EGA-000138",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_small_state.c",
+              "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_small_state.h",
+              "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        },
+        {
+          "address": "06C9:5D8D",
+          "existing_function_id": "FN-EGA-000139",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_small_state.c",
+              "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_small_state.h",
+              "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        }
+      ],
+      "fixture_families": [
+        "literal_reader",
+        "literal_subtract"
+      ],
+      "admitted_observations": [
+        "Native scalar and nonframe RAM; literal physical086C, modulo16 subtraction"
+      ],
+      "native_domain": [
+        "270 deterministic cases; physical086C and physical046C varied independently",
+        "Function names do not assign BIOS-clock or time-unit semantics"
+      ],
+      "excluded": [
+        "Host clock substitution, real time, interrupt scheduling and arbitrary live SS argument aliases"
+      ],
+      "implementation_tasks": [
+        "P1-07",
+        "P3-03"
+      ],
+      "dependencies": [
+        "KRU-07"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/platform/timer.c",
+        "upstream_git_blob": "12b2fe2bb2552e2b6e3f8ec1dad0028aa24099f5",
+        "upstream_file_sha256": "83516651e2a1409ad0ab02e314ebb73e00a0ea90a45ef0ba0424644e0ecd3d4a",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/timer.c",
+          "file_sha256": "e65548ac984788df8e7f8aeb51fac751efb345778fa15906a0b472253bcb17bb",
+          "selected_ranges": [
+            {
+              "start_line": 208,
+              "end_line": 216,
+              "span_sha256": "31ded3b388465c455db60ee4a11388c01300b179ec6730e97f3180e6cc43a2a9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KRU-03",
+      "title": "Input callback-vector value access",
+      "decision": "qualified_value_implementation",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/input.c",
+        "bytes": 17705,
+        "sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5"
+      },
+      "symbols_or_branches": [
+        "kbd_set_getkey_fn",
+        "kbd_get_getkey_fn"
+      ],
+      "original_entries": [
+        {
+          "address": "06C9:6A17",
+          "existing_function_id": "FN-EGA-000163",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_input_bridge.c",
+              "sha256": "e3185da9b14de526481bd7de70f9ea3a34276968ba842e182cf6c87e0e82ce30",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_input_bridge.h",
+              "sha256": "7ae28c50bb851033b38267c6161de8abc033db6cff8531cdb7f79c180bad0d43",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        },
+        {
+          "address": "06C9:6A28",
+          "existing_function_id": "FN-EGA-000414",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_input_bridge.c",
+              "sha256": "e3185da9b14de526481bd7de70f9ea3a34276968ba842e182cf6c87e0e82ce30",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_input_bridge.h",
+              "sha256": "7ae28c50bb851033b38267c6161de8abc033db6cff8531cdb7f79c180bad0d43",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        }
+      ],
+      "fixture_families": [
+        "input_vector_set",
+        "input_vector_get"
+      ],
+      "admitted_observations": [
+        "Stored far words, getter scalar DX:AX projection and nonframe RAM"
+      ],
+      "native_domain": [
+        "256 deterministic cases; fixed DS data and stable C value arguments; disjoint original frame aperture"
+      ],
+      "excluded": [
+        "Four observed live-SS argument aliases remain mismatches",
+        "Keyboard event processing, BIOS/IRQ delivery, vector ownership and lifetime"
+      ],
+      "implementation_tasks": [
+        "P1-05",
+        "P1-07",
+        "P3-03"
+      ],
+      "dependencies": [
+        "KRU-07"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/platform/input.c",
+        "upstream_git_blob": "d06d1a2f27b3da56a17d2e1e9b7d4a4fa81d3e3e",
+        "upstream_file_sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/input.c",
+          "file_sha256": "1ece3b38cfa27c280f948e6004dc1517cc12ec84a2e993dd9d5b95e4b2943ba5",
+          "selected_ranges": [
+            {
+              "start_line": 301,
+              "end_line": 309,
+              "span_sha256": "6db69c29107b4ad0301dc106d4462ddeb7d8decf5ac7423188f534426d14f6c8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KRU-04",
+      "title": "Selected simulation memory updates",
+      "decision": "qualified_value_implementation",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+        "bytes": 21118,
+        "sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c"
+      },
+      "symbols_or_branches": [
+        "curve_sum",
+        "drag_apply",
+        "update_rpm(NULL,NULL)",
+        "brake: transitive gear-zero path only"
+      ],
+      "original_entries": [
+        {
+          "address": "06C9:448A",
+          "existing_function_id": "FN-EGA-000371",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_primitives.c",
+              "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_primitives.h",
+              "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_input_fields_bus.c",
+              "sha256": "5781034b41a2ab3aa45397357e3e195a982f2453f9b403f20387d023ee1293d9"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_control_bus.c",
+              "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_control_bus.h",
+              "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_input_fields_bus.h",
+              "sha256": "7432462f992e290569c88ab41c894cb69ba61a77878ff6a1a458ece6dba7e2cc"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        },
+        {
+          "address": "06C9:45BF",
+          "existing_function_id": "FN-EGA-000376",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_control_ops.c",
+              "sha256": "b787378cb4007d82e7c6e6ee3d9705d8f9066efe9fac9e38410c5f8a5ebcbd98"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_control_ops.h",
+              "sha256": "b0dca900b2d4497a6996e98397117b0c91382a9c0400f57d7366baa2d645f726"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_targets.h",
+              "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_primitives.c",
+              "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_primitives.h",
+              "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_control_bus.c",
+              "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_control_bus.h",
+              "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        },
+        {
+          "address": "06C9:4612",
+          "existing_function_id": "FN-EGA-000378",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_primitives.c",
+              "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+            },
+            {
+              "coordinate": "source",
+              "line": 1,
+              "path": "src/recovered/td2ega_sim_primitives.h",
+              "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_control_bus.c",
+              "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_control_bus.h",
+              "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        }
+      ],
+      "fixture_families": [
+        "simulation_curve",
+        "simulation_drag",
+        "simulation_rpm"
+      ],
+      "admitted_observations": [
+        "Memory updates only; update_rpm boolean and host pointer outputs were not compared"
+      ],
+      "native_domain": [
+        "725 deterministic cases with the exact original state/table inputs from the fixture stream",
+        "brake is a dependency reached by drag_apply in neutral gear-zero fixtures; it has no standalone general admission"
+      ],
+      "excluded": [
+        "RPM boolean result, non-NULL/aliasing output pointers, neutral-clutch consumers and inherited CX/DX",
+        "General brake entry, full vehicle simulation, valid historical caller domain, collision/traffic and timing"
+      ],
+      "implementation_tasks": [
+        "P1-06",
+        "P1-08",
+        "P3-04"
+      ],
+      "dependencies": [
+        "KRU-07"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/game/sim.c",
+        "upstream_git_blob": "036b78acb22773d65e68fa4cacfdb138f7ab8e9f",
+        "upstream_file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+          "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+          "selected_ranges": [
+            {
+              "start_line": 360,
+              "end_line": 366,
+              "span_sha256": "901c0892b138090096e2f048932a9ee7afdd70b15823c74c57fc71f30af73196"
+            }
+          ]
+        },
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+          "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+          "selected_ranges": [
+            {
+              "start_line": 442,
+              "end_line": 469,
+              "span_sha256": "d8379b44d2b2807875ac06a2571ef4b307be7449784101555fc54486a288fe53"
+            }
+          ]
+        },
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/game/sim.c",
+          "file_sha256": "e6eb7043f6acda42f399d08285ddb854138fc09953b4a6f8dcff0699d09ba81c",
+          "selected_ranges": [
+            {
+              "start_line": 472,
+              "end_line": 482,
+              "span_sha256": "b7e9aba888c8a6bf97b9330c1087ef065fff5af73e839c1fc6d55835e7fe46d8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KRU-05",
+      "title": "Graphics clip and RAM planar point",
+      "decision": "qualified_value_implementation",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/gfx.c",
+        "bytes": 39654,
+        "sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e"
+      },
+      "symbols_or_branches": [
+        "gfx_set_clip_current",
+        "gfx_plot: RAM branch only"
+      ],
+      "original_entries": [
+        {
+          "address": "06C9:5DFB",
+          "existing_function_id": "FN-EGA-000140",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_config_fields.c",
+              "sha256": "fa9f0b0aebcfee913fb888787cc7fb831d97da6ed9b930e2a7d1971cfb4043cc",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_config_fields.h",
+              "sha256": "007883087391826b1da53b15fb049bdfb61d3f90cf40f71dc8e12bc5ca4390d9",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_copy_config.h",
+              "sha256": "74d956c7d636511626048fa4984d2b1170f460edd4f252c4e1bfa8b098308fc3",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        },
+        {
+          "address": "06C9:BA3C",
+          "existing_function_id": "FN-EGA-000243",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_pixel_point.c",
+              "sha256": "60a445b30c736c001afe7b74131f6b52176ca28130aa22c13c9572869a55a450",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_line_draw.h",
+              "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_music_tick.h",
+              "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_mutable_control.h",
+              "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_pixel_point.h",
+              "sha256": "c8b3e3fce5f9dcae10e346e0e29ae925e74f179ac91faeaed683d81d04b084d2",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_state_loop.h",
+              "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        }
+      ],
+      "fixture_families": [
+        "graphics_clip",
+        "graphics_ram_plot"
+      ],
+      "admitted_observations": [
+        "Nonframe CS target state and RAM writes"
+      ],
+      "native_domain": [
+        "128 clip and384 RAM-plot fixtures; declared plane descriptors, bitmask/row table and physical-wrap inputs",
+        "Select only actual RAM branch; original return/frame control checked separately from native data API"
+      ],
+      "excluded": [
+        "EGA VRAM branch, latch/register/hardware effects, display pixels and visual fidelity",
+        "Constructor/full blitters, generic video-segment aliases, rendering schedule and provider switching"
+      ],
+      "implementation_tasks": [
+        "P1-09",
+        "P3-05"
+      ],
+      "dependencies": [
+        "KRU-07"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/platform/gfx.c",
+        "upstream_git_blob": "1dbb735bdc85f25e63e8c2da99a0032346f9e7a6",
+        "upstream_file_sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/gfx.c",
+          "file_sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+          "selected_ranges": [
+            {
+              "start_line": 173,
+              "end_line": 179,
+              "span_sha256": "fe88b7dfb4fdd2b11b225f232984677ac096eb3651ee1319e0e1833b79ad864c"
+            }
+          ]
+        },
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/gfx.c",
+          "file_sha256": "2c305c369ab3510f731861ab10319b028ea9016145fdd5750a6869926c4ce90e",
+          "selected_ranges": [
+            {
+              "start_line": 496,
+              "end_line": 500,
+              "span_sha256": "cb29c7bf9056045c770fb09ee6dbb1ecd6ed6bc036f228107b4fb20fccd98099"
+            },
+            {
+              "start_line": 511,
+              "end_line": 518,
+              "span_sha256": "4e6af03912beb99568d62c5f9589916a45258c0203fa784715028e08863be521"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KRU-06",
+      "title": "Run-only codec branch",
+      "decision": "qualified_value_implementation",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+        "bytes": 38031,
+        "sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c"
+      },
+      "symbols_or_branches": [
+        "rle_decode: header/table and ec>0x80 branch",
+        "rle_run_pass: tested dependency only"
+      ],
+      "original_entries": [
+        {
+          "address": "06C9:6B02",
+          "existing_function_id": "FN-EGA-000169",
+          "existing_portable_source": [
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_run_stage.c",
+              "sha256": "78183ce381e5629b801c620a69ba8156079f992e3695472b00c1da7c01fcdcac",
+              "line": 1
+            },
+            {
+              "coordinate": "source",
+              "path": "src/recovered/td2ega_run_stage.h",
+              "sha256": "b5ced7500d749c1ec3b18f0f25ee97c6ca608fc3cba4194137ed1922720e880c",
+              "line": 1
+            }
+          ],
+          "newly_recovered_by_this_decision": false
+        }
+      ],
+      "fixture_families": [
+        "codec_run_stage"
+      ],
+      "admitted_observations": [
+        "Native returned far destination and nonframe RAM"
+      ],
+      "native_domain": [
+        "192 synthetic cases; ec exactly0x81/0x83/0x8B; escape counts exactly1/3/11",
+        "Input8000:0120, destination argument6000:1234, total_paras0400; DS=SS278F/SP E000; fixed byte streams/counts and disjoint source/output from pinned fixtures"
+      ],
+      "excluded": [
+        "rle_seq_pass, far_move_up and paras_of are skipped in the tested branch, not admitted dependencies",
+        "Sequence-first path, zero/full LOOP, general escape counts, overlapping/malformed streams, full codec/corpus/parser safety"
+      ],
+      "implementation_tasks": [
+        "P1-05",
+        "P2-02"
+      ],
+      "dependencies": [
+        "KRU-07"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/platform/res.c",
+        "upstream_git_blob": "007e564a875d851c22dece28a61d42f01c7ec494",
+        "upstream_file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/platform/res.c",
+          "file_sha256": "3953d1b2f1611d5f8926b8c5df5b440bc75113de8bf3b19dbe76837f34305b7c",
+          "selected_ranges": [
+            {
+              "start_line": 373,
+              "end_line": 421,
+              "span_sha256": "6d431c9ce8f9c5ab2f90ff9b0c5e8e9736cf43da5b84b612513b47b56dae18a5"
+            },
+            {
+              "start_line": 430,
+              "end_line": 439,
+              "span_sha256": "d36955d468b344349829fff4e71599fc44552565a5a43fa5ae82102f3afbcb1b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KRU-07",
+      "title": "Scalar memory access and fixed-data view dependencies",
+      "decision": "qualified_support_adapter",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.h",
+        "bytes": 6889,
+        "sha256": "0ae0c362bec4ef5c2907813adb27b32da1c8e4a96085c98ae7ccab92ceb75fed"
+      },
+      "symbols_or_branches": [
+        "lin",
+        "rd8",
+        "rd16",
+        "rd32",
+        "wr16",
+        "wr32",
+        "fixed DGROUP/CS lvalues: dependency only"
+      ],
+      "original_entries": [],
+      "fixture_families": [
+        "support:memory_scalar_read",
+        "support:memory_scalar_write",
+        "graphics_ram_plot"
+      ],
+      "admitted_observations": [
+        "20bit scalar address/read/write state;240 independent support cases; actual plot supplies additional dependency observations"
+      ],
+      "native_domain": [
+        "Windows little-endian x64; bytewise scalar helpers wrap each physical byte",
+        "Direct typed lvalues only in the tested fixed DS/CS native view; they are not a general portable memory API"
+      ],
+      "excluded": [
+        "Generic bulk/mp spans across wrap, arbitrary typed alignment/alias portability, second-host proof and CPU ABI"
+      ],
+      "implementation_tasks": [
+        "P1-07",
+        "P3-01"
+      ],
+      "dependencies": [],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/mem.h",
+        "upstream_git_blob": "8bce3c649146fd779857db512d90aae2629505f8",
+        "upstream_file_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.h",
+          "start_line": 32,
+          "end_line": 40,
+          "span_sha256": "3c3f9f9eaa86d1b9959209803d6d5add5a52d069f5529cfa7b1a9aae721ae1e0",
+          "qualification": "Line locators are tied to full file hash; only named branches/functions and observations qualify."
+        }
+      ]
+    },
+    {
+      "id": "KRU-08",
+      "title": "Guarded signed-division quotient/fault helper",
+      "decision": "qualified_support_adapter",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.h",
+        "bytes": 6889,
+        "sha256": "0ae0c362bec4ef5c2907813adb27b32da1c8e4a96085c98ae7ccab92ceb75fed"
+      },
+      "symbols_or_branches": [
+        "idiv32_16: rem=NULL"
+      ],
+      "original_entries": [],
+      "fixture_families": [
+        "support:division_guard"
+      ],
+      "admitted_observations": [
+        "Quotient or explicit trapped fault in77 support cases"
+      ],
+      "native_domain": [
+        "Remainder pointer is NULL; INT32_MIN/-1 checked before C division",
+        "Safe explicit host terminal action; default original runtime message remains distribution blocked"
+      ],
+      "excluded": [
+        "Remainder pointer writes/aliases, original x86 fault ABI and runtime message distribution"
+      ],
+      "implementation_tasks": [
+        "P1-06",
+        "P3-01"
+      ],
+      "dependencies": [
+        "Nonreturning host error adapter must be externally sourced or media-free before distribution"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/mem.h",
+        "upstream_git_blob": "8bce3c649146fd779857db512d90aae2629505f8",
+        "upstream_file_sha256": "e82d5a254220b2e57a156af03263cf5b9b31d0f9d02ed09058fec8f97fc45f63",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.h",
+          "start_line": 85,
+          "end_line": 92,
+          "span_sha256": "3854fecd1197e461abda81e18c22bf0bae45af4ce04d009f3720016144b793cd",
+          "qualification": "Line locators are tied to full file hash; only named branches/functions and observations qualify."
+        }
+      ]
+    },
+    {
+      "id": "KRU-09",
+      "title": "Canonical external EXE admission loader",
+      "decision": "qualified_windows_integration_candidate",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.c",
+        "bytes": 8618,
+        "sha256": "9c2835756d613198629f5496f06ce92e68c91074ceaf5a24196429defc3aeebc"
+      },
+      "symbols_or_branches": [
+        "admitted_exe",
+        "mem_load_exe: exact canonical packed EXE",
+        "exepack_unpack: dependency for admitted canonical image only"
+      ],
+      "original_entries": [],
+      "fixture_families": [
+        "support:loader_canonical",
+        "support:loader_identity_rejection"
+      ],
+      "admitted_observations": [
+        "Two native loaded-memory comparisons including1652 relocations/five explicit passed-state assignments;10 identity rejections"
+      ],
+      "native_domain": [
+        "Exact114421-byte packed EXE SHA256 eb4f8e882fd79e884260b2285f38cc22673d45ddc5f601a5815bcce42d5a7182",
+        "Private Windows BCrypt admission path; external file treated as data, not executed"
+      ],
+      "excluded": [
+        "Other EXE editions, already-unpacked MZ acceptance, deep malformed-EXEPACK fuzzing and game execution",
+        "Removed protection/disk paths are explicit native policy, not original-equivalence claims"
+      ],
+      "implementation_tasks": [
+        "P3-02"
+      ],
+      "dependencies": [
+        "Pinned Windows BCrypt/SDL3; external originals policy"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/mem.c",
+        "upstream_git_blob": "89197e4723fe2d04ebe5a757620e48535ab95679",
+        "upstream_file_sha256": "7ae8673fc481804323987d29e272b74bda21b60bed1f086731cedcdb733056a5",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.c",
+          "start_line": 13,
+          "end_line": 23,
+          "span_sha256": "7999be9ffd4dabe058665deae7c34d0db1e54587cdb9a3f3817efb347e7e6bd5",
+          "qualification": "Line locators are tied to full file hash; only named branches/functions and observations qualify."
+        },
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/mem.c",
+          "start_line": 43,
+          "end_line": 195,
+          "span_sha256": "1144981becdc0bed814de03b16a96f4db5221b7efe40f38f431669440c77c6ab",
+          "qualification": "Line locators are tied to full file hash; only named branches/functions and observations qualify."
+        }
+      ]
+    },
+    {
+      "id": "KRU-10",
+      "title": "Separate original/user-profile path adapter",
+      "decision": "qualified_windows_integration_candidate",
+      "candidate_source": {
+        "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/host_paths.c",
+        "bytes": 4870,
+        "sha256": "3902436ae28b98f415df62e22498d43b7b4c9863c7c6178390d632bfb046cd09"
+      },
+      "symbols_or_branches": [
+        "host_paths_init: explicit profile root",
+        "host_game_path",
+        "lookup/simple_name/absolute_root/nested: tested dependencies",
+        "host_paths_shutdown"
+      ],
+      "original_entries": [],
+      "fixture_families": [
+        "support:profile_init",
+        "support:profile_lookup",
+        "support:profile_name_rejection",
+        "support:profile_hardlink_rejection",
+        "support:profile_actual_write",
+        "support:profile_root_rejection"
+      ],
+      "admitted_observations": [
+        "51 support cases including actual synthetic profile writes and unchanged synthetic originals"
+      ],
+      "native_domain": [
+        "Windows serialized explicit disjoint original/profile paths and tested names; local adapter derives in part from upstream case-insensitive lookup",
+        "Explicit profile parameter only; default preference-directory/CLI/UI integration has not been exercised"
+      ],
+      "excluded": [
+        "Adversarial filesystem races, all Win32 path forms/second host, default preference-dir branch and full host event lifecycle",
+        "Quiet write return0 is not success evidence; use path/effect/readback"
+      ],
+      "implementation_tasks": [
+        "P3-02",
+        "P3-08"
+      ],
+      "dependencies": [
+        "Retain upstream MIT notice for derived lookup",
+        "SDL3/Windows path APIs"
+      ],
+      "whole_file_copy_authorized": false,
+      "primary_source_import_performed": false,
+      "distribution_admitted": false,
+      "independent_fallback": "Existing recovered source and original-byte raw/bus oracle remain canonical; rejected domains use independent recovery.",
+      "origin": {
+        "repository": "https://github.com/kylofon/test-drive-2-sdl3",
+        "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+        "upstream_path": "td2port/src/host.c",
+        "upstream_git_blob": "310b1be8336d3f02b6104135069f117a78366aca",
+        "upstream_file_sha256": "f8e88d7827f83c283899c63773b7c64d905da54ad37c777bf4692ca5501a0ce6",
+        "local_changes": "docs/recovery/evidence/kylofon-candidate-changes-v1.json"
+      },
+      "selected_source_ranges": [
+        {
+          "path": "analysis/candidates/kylofon-r03-v1/candidate/td2port/src/host_paths.c",
+          "start_line": 9,
+          "end_line": 112,
+          "span_sha256": "9d47105a4867ed8ff5923fb298d77600f929611b96927ab1b5a3125a150dec21",
+          "qualification": "Line locators are tied to full file hash; only named branches/functions and observations qualify."
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "id": "KRD-01",
+      "area": "Integrated game/scene/score flow",
+      "source_globs": [
+        "td2port/src/game/*.c"
+      ],
+      "decision": "deferred_candidate",
+      "tasks": [
+        "P1-05",
+        "P1-08",
+        "P1-09",
+        "P3-03",
+        "P3-04"
+      ],
+      "reason": "Most called bodies/state/lifetimes/timing/shortDAT/stale-register domains unadmitted;27 media/runtime string blockers across candidate; only KRU-04 selected spans qualify."
+    },
+    {
+      "id": "KRD-02",
+      "area": "Full EGA renderer and effects",
+      "source_globs": [
+        "td2port/src/platform/gfx*",
+        "td2port/src/game/scene*"
+      ],
+      "decision": "deferred_candidate",
+      "tasks": [
+        "P1-09",
+        "P3-05"
+      ],
+      "reason": "Only KRU-05 RAM/clip slices selected; hardware/latches/constructor/full blits/display/complete content require proof."
+    },
+    {
+      "id": "KRD-03",
+      "area": "Full formats/archive/cache/loaders",
+      "source_globs": [
+        "td2port/src/platform/res.c",
+        "tools/td2*.py",
+        "FORMATS.md"
+      ],
+      "decision": "reference_and_deferred_candidate",
+      "tasks": [
+        "P1-05",
+        "P2-01",
+        "P2-02",
+        "P2-03",
+        "P2-04",
+        "P2-05",
+        "P2-06",
+        "P2-07",
+        "P2-08"
+      ],
+      "reason": "Run-only KRU-06 is not full codec/corpus/ownership acceptance; use schema leads and independent fallback without unconditional estimate credit."
+    },
+    {
+      "id": "KRD-04",
+      "area": "SDL host/device/input/audio scheduling",
+      "source_globs": [
+        "td2port/src/host.c",
+        "td2port/src/platform/input.c",
+        "td2port/src/platform/timer.c",
+        "td2port/src/platform/sound.c"
+      ],
+      "decision": "deferred_candidate",
+      "tasks": [
+        "P1-07",
+        "P1-10",
+        "P3-01",
+        "P3-06",
+        "P3-09"
+      ],
+      "reason": "Compilation and selected data access do not prove device lifecycle, clock/IRQ/RNG ordering, sequencer/PCM or whole host behavior."
+    },
+    {
+      "id": "KRD-05",
+      "area": "CGA/Amiga/Northern Germany/live switching",
+      "source_globs": [
+        "port/td2cga*",
+        "port/td2tdy*"
+      ],
+      "decision": "no_implementation_credit",
+      "tasks": [
+        "P1-12",
+        "P1-13",
+        "P1-14",
+        "P4-04",
+        "P4-10",
+        "P5-05",
+        "P5-06"
+      ],
+      "reason": "CGA indexes are reference only; requested native CGA/Amiga/content/switching implementations are absent."
+    }
+  ],
+  "effort": {
+    "model": {
+      "path": "docs/planning/evidence/kylofon-effort-inputs-v1.json",
+      "bytes": 13452,
+      "sha256": "96ec6e77b794339925b8753737932238fcff29525f81839ec12fb84b49341fed"
+    },
+    "report": {
+      "path": "docs/planning/kylofon-effort-review.md",
+      "bytes": 15693,
+      "sha256": "c01beadefed69dc211b6a7e90c67dcd979085b9104fba27b843e01f910ea692d"
+    },
+    "comparison_basis": "Remaining work after R02/R03, all current knowledge/local fixes shared by both routes; no sunk recovery is charged or credited again.",
+    "current_qualified_route_days": [
+      203,
+      461
+    ],
+    "current_qualified_route_weeks": [
+      40.6,
+      92.2
+    ],
+    "independent_reference_aided_route_days": [
+      205,
+      455
+    ],
+    "current_reuse_gross_credit_days": [
+      2,
+      5
+    ],
+    "current_extra_adoption_cost_days": [
+      3,
+      8
+    ],
+    "current_net_effort_change_days": [
+      -2,
+      6
+    ],
+    "midpoint_current_net_effort_change_days": 2,
+    "conditional_expansion_weeks": [
+      37,
+      82
+    ],
+    "conditional_matched_savings_weeks": [
+      4,
+      9
+    ],
+    "engineering_judgment_not_machine_measured_throughput": true,
+    "substantial_current_saving_booked": false
+  },
+  "bridge": {
+    "state": "Fixed LOAD1000/DGROUP278F/CS16C9 admitted relocated image and synthetic profiles; stable owned/disjoint code/state/scratch.",
+    "observations": "Scalar only for780E/5D83/5D8D/6A28/6B02; all other sampled entries memory effects only. No native RPM bool/output-pointer promise.",
+    "stack": "Original SP-0300 through call-frame aperture excluded from native comparison; four actual live argument aliases remain observed disagreements. Native values never replace raw SS/bus APIs by name alone.",
+    "universal_exclusions": [
+      "raw GPR/FLAGS/SS-frame/return-alias equivalence",
+      "historical caller reachability",
+      "all writers/reset/lifetimes",
+      "IRQ/device/time history",
+      "full corpus/game/pixels/audio/fidelity",
+      "second-host portability"
+    ]
+  },
+  "import_rules": [
+    "No whole-file copying or blind replacement of src/recovered; symbol and tested-branch selection only.",
+    "Target integration must prove its caller/data/lifetime preconditions, add explicit observable projection, retain the raw fallback and create fresh source/build/comparison versions.",
+    "Reusing a header or helper as a dependency grants no admission to its unexecuted functions/branches.",
+    "Preserve upstream MIT notice plus exact origin and local modification record; local-derived host_paths is not upstream-free.",
+    "All game/runtime text and unreviewed media stay external; private source build is not package approval.",
+    "Existing phase order, incomplete tasks, raw helper totals and unregistered early-exit packet remain unchanged."
+  ],
+  "results": {
+    "original_entries_selected": 11,
+    "decision_groups": 10,
+    "original_body_vectors": 2233,
+    "support_cases": 380,
+    "excluded_ss_alias_disagreements": 4,
+    "baseline_admitted_disagreements": 291,
+    "observed_corrected_semantic_classes": 2,
+    "newly_recovered_functions": 0,
+    "primary_source_imports": 0,
+    "new_build_or_test_runs_this_task": 0
+  },
+  "next_frontier": "P1-05 state/resource ownership and actual caller proofs; selected value candidates may be adapted only within named existing tasks. No move to CGA/resources/native/Amiga before phase gates."
+}

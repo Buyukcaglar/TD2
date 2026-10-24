@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000367",
+  "result": "pass",
+  "vectors": 190464,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "be3a39ed0061b4e0d93ca73ce86bb992838016a46f34eb7c8a8920576b450f86",
+  "source_sha256": "147b869baf042b9c503f97961f1b2c88934d8d4d9aade70af41fd4ed4ae28bc5",
+  "validator_sha256": "f19d6147b40b199759f14b75c7971ae19eaa90763f3a162713b9432fdb4886d6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_key_dispatch.py",
+      "sha256": "ae5d53bafdc2785cb44eda3be32df12853ff211ae1f9cb7d7d0d5a97f7afe5b7"
+    },
+    {
+      "path": "tools/validate_gameport.py",
+      "sha256": "a3a509fa66ee7b97bd5f5ac4a899d761b88f4c5d4567725123edffa6936d40a6"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    }
+  ],
+  "original_instructions_executed": 32921632,
+  "fixture_coverage": {
+    "complete_branches": 92160,
+    "paused_0": 111280,
+    "same_DS_SS_False": 78864,
+    "same_DS_ES_False": 79904,
+    "callbacks": 42864,
+    "gameport_calls": 7712,
+    "same_DS_ES_True": 110560,
+    "same_DS_SS_True": 111600,
+    "paused_1": 79184,
+    "all_direction_masks": 32768,
+    "varied_composed_states": 65536
+  },
+  "executed_entries": [
+    "06B3:0008",
+    "06C9:420A",
+    "06C9:4281",
+    "06C9:43C3",
+    "06C9:4441",
+    "06C9:448A",
+    "06C9:44A6",
+    "06C9:4612",
+    "06C9:6528",
+    "06C9:6601",
+    "06C9:6620",
+    "06C9:6686",
+    "06C9:6828",
+    "13A8:2EE8"
+  ],
+  "code_states": {
+    "branch_combinations": 8,
+    "observed_stable_forms": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        2,
+        2,
+        2
+      ]
+    ],
+    "other_combinations": "Synthetic states, no transition reachability admitted"
+  },
+  "limits": "Explicit424A/4275/42AD forms; Complete420A andactualfourteen-entrycalleecomposition with recoverednative input/control/motion helpers; syntheticBIOS/port/farcallback adapters, boundedscanner targets, DS/SS/ES distinct/shared profiles. Fullgroup except72byteSSframearea whenDS=SS; frames,BP/DI/scratch/IF/DF checked. NoactualBIOS/input/device/IRQ, callbackbodies/fullstate/core/resource/game/fidelity acceptance. Byte-ring notcalled orintegrated."
+}

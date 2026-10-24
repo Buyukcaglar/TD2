@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 23,
+  "script_sha256": "e0708ad58323cff8bd9bdbcc183187916843e5a1eed7db7f3e7dd664b0ccfcf2",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c2392b603f23ff37d3b021585f8ca2870141ffa2ecfe1c561cba3513fba623c3",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_name_select.py",
+      "sha256": "078cd345ca189be1b6e73aa7b383a8d122ec4b1f75315850b969d449fdd19b94"
+    }
+  ],
+  "limits": "Nativeinterfaces/actualfarargs-frames/signedcount/lastcasefoldmatch-sourcecase/fallbackzero-negative/no-match/parent-childbudgets/finalargsMOVSPBP/SSlocal-countalias/selectedword-rootfarCSalias/childsavedBP-index-wrap-CF1/query-childfarCSalias/incomingDF only. Originalcomparison separate; validcounts/NUL/record-indexschema/capacity/allwriters/storage/lifetime/exclusion/core/session/fidelity open."
+}

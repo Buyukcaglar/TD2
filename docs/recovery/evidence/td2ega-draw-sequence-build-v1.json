@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_draw_sequence.cmd",
+    "sha256": "7e94dc780f12b95ed13e47aa5dfe1e80d6ae9072a68a2d238ff2da1d158159d1"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_draw_sequence.c",
+      "sha256": "8e6770dfbb73cfd709302cce5260e3bf424152f423bfc7f5ff7f6e794f71d4dc"
+    },
+    {
+      "path": "src/recovered/td2ega_draw_sequence.h",
+      "sha256": "87e04b66d82082b8df5f085ef8cf7fb3a0ff498983ab638f7c85262aa5b8ea23"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/draw-sequence-repro/td2ega_draw_sequence.dll",
+      "sha256": "3e176792cf1c4796ed28f2a34e448ef2b22d45d5b034dbec9251c6f3ceaada21",
+      "bytes": 111104
+    },
+    {
+      "path": "analysis/build/draw-sequence-repro/td2ega_draw_sequence.obj",
+      "sha256": "2e9f59e06960caf5804230935ad25928cc08680a4430ad7a936216cff4b4126a",
+      "bytes": 13823
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/draw-sequence-build-v1.log",
+    "sha256": "7657a333e4fd9318310af5b6d6f9e9083bf66bc0977f00a2eb4defcc3b7867da"
+  },
+  "limit": "Complete26D8/284F/28F9 orchestration with nearC17/D01 andfar89A2/916C ABI mocks, caller-clean retained5+5 and4x4wordpools, currentDS/CSlookup/ES andreturnedstate, rawSI!=34 wraploop andsignedtemporaryboundshift/aliases, normalRET2 versusnativecallbudgetprefix. No actualdrawingleaf/producer/tablecapacity/resourceformat/SS-DS/IRQ/renderer/core/game/fidelity. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000093",
+    "FN-EGA-000094",
+    "FN-EGA-000095"
+  ]
+}

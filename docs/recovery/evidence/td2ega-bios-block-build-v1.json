@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_bios_block.cmd",
+    "sha256": "7c47fb65cafceab76585b83845f43b51bbdb75436bb58d29eb8ae36f61c09d0a"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_bios_block.c",
+      "sha256": "0e5d0173f9c2897c241829820d98566ccd089240979d17f718b7c86a6410cc08"
+    },
+    {
+      "path": "src/recovered/td2ega_bios_block.h",
+      "sha256": "9ad1a0d3295401b3392afbdbb6ccf592a3d6696d23ec78c8e1a1bd17b352c50a"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/bios-block-repro/td2ega_bios_block.dll",
+      "sha256": "5b1cac688211ea183c3ba68ff80983b390be706526b0bd3acb923853c3322463",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/bios-block-repro/td2ega_bios_block.obj",
+      "sha256": "86fb77680fa0d1c316d7b7d0d830e917ae3507e516947f4aa35977f54106c357",
+      "bytes": 2736
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/bios-block-build-v1.log",
+    "sha256": "405e78d923c4b928df6232e6a0b8f4270a033f75fd6b195f37fd0f8f37e8be2a"
+  },
+  "limit": "CompleteABFA raw BIOS10AX1002/ESincomingDS/DXnearSSargument, sixbyteinterrupt/farreturn frames, BP restoration and explicit returnedCFIFDF/registers compared. BIOSbody ABI mock; no assignedblock extent/decodedpalette/text semantics, actualBIOS/device/rendering/IRQ/core/game/fidelity. Native diagnostics separate.",
+  "function_id": "FN-EGA-000236"
+}

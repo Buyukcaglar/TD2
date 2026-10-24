@@ -1,0 +1,182 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "958959534e5ef3054f480b77be5126a1f7075b5eeead86d2504131327f1a0d09",
+  "span": {
+    "segment": 6031,
+    "offset": 11818,
+    "length": 283,
+    "sha256": "b1991e5d09addfb7426b95fbb332e6de1a5dbeb4eb15ac285ed8a557decf04ea"
+  },
+  "initial_nul_spans": [
+    {
+      "offset": 11818,
+      "length_including_nul": 27
+    },
+    {
+      "offset": 11845,
+      "length_including_nul": 23
+    },
+    {
+      "offset": 11868,
+      "length_including_nul": 25
+    },
+    {
+      "offset": 11893,
+      "length_including_nul": 28
+    },
+    {
+      "offset": 11921,
+      "length_including_nul": 29
+    },
+    {
+      "offset": 11950,
+      "length_including_nul": 30
+    },
+    {
+      "offset": 11980,
+      "length_including_nul": 28
+    },
+    {
+      "offset": 12008,
+      "length_including_nul": 28
+    },
+    {
+      "offset": 12036,
+      "length_including_nul": 15
+    },
+    {
+      "offset": 12051,
+      "length_including_nul": 17
+    },
+    {
+      "offset": 12068,
+      "length_including_nul": 3
+    },
+    {
+      "offset": 12071,
+      "length_including_nul": 30
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:36E6",
+      "instruction": "mov ax, 0x2e2a"
+    },
+    {
+      "site": "06C9:3700",
+      "instruction": "mov ax, 0x2e45"
+    },
+    {
+      "site": "06C9:36F3",
+      "instruction": "mov ax, 0x2e5c"
+    },
+    {
+      "site": "06C9:3716",
+      "instruction": "mov ax, 0x2e75"
+    },
+    {
+      "site": "06C9:3722",
+      "instruction": "mov ax, 0x2e91"
+    },
+    {
+      "site": "06C9:372E",
+      "instruction": "mov ax, 0x2eae"
+    },
+    {
+      "site": "06C9:373A",
+      "instruction": "mov ax, 0x2ecc"
+    },
+    {
+      "site": "06C9:3746",
+      "instruction": "mov ax, 0x2ee8"
+    },
+    {
+      "site": "06C9:3759",
+      "instruction": "mov ax, 0x2f04"
+    },
+    {
+      "site": "06C9:377D",
+      "instruction": "mov ax, 0x2f13"
+    },
+    {
+      "site": "06C9:3782",
+      "instruction": "mov ax, 0x2f27"
+    },
+    {
+      "site": "06C9:3769",
+      "instruction": "mov bx, 0x2f24"
+    },
+    {
+      "site": "06C9:376C",
+      "instruction": "mov cx, 0x2f20"
+    },
+    {
+      "site": "16AB:0012",
+      "instruction": "push word ptr [bp + 6]"
+    },
+    {
+      "site": "16AB:0015",
+      "instruction": "lcall 0x13a8, 0x29b4"
+    },
+    {
+      "site": "13A8:2A44",
+      "instruction": "lea ax, [bp - 0xc]"
+    },
+    {
+      "site": "13A8:2A49",
+      "instruction": "lea ax, [bp + 0xa]"
+    },
+    {
+      "site": "13A8:2A4C",
+      "instruction": "mov word ptr [bp - 2], ax"
+    },
+    {
+      "site": "13A8:2A4F",
+      "instruction": "mov byte ptr [di + 6], 0x42"
+    },
+    {
+      "site": "13A8:2A53",
+      "instruction": "mov ax, word ptr [bp + 6]"
+    },
+    {
+      "site": "13A8:2A56",
+      "instruction": "mov word ptr [di + 4], ax"
+    },
+    {
+      "site": "13A8:2A60",
+      "instruction": "lea ax, [bp + 0xa]"
+    },
+    {
+      "site": "13A8:2A64",
+      "instruction": "push word ptr [bp + 8]"
+    },
+    {
+      "site": "13A8:2A68",
+      "instruction": "lcall 0x13a8, 0x192c"
+    }
+  ],
+  "consumer_ids": [
+    "FN-EGA-000100",
+    "FN-EGA-000101",
+    "FN-EGA-000102",
+    "FN-EGA-000103",
+    "FN-EGA-000104",
+    "FN-EGA-000105",
+    "FN-EGA-000106",
+    "FN-EGA-000107"
+  ],
+  "callee_ids": {
+    "text_wrapper": "FN-EGA-000349",
+    "format_wrapper": "FN-EGA-000334",
+    "near_length_candidate": "FN-EGA-000329"
+  },
+  "open_obligations": [
+    "Near captions use currentDS; actual caller segment/lifetime domains not closed.",
+    "2A3C constructs near BP frame/variadic offsets; BP defaultsSS but DI defaultsDS. Actual body needs DS=SS or proved corresponding views, not universal Ghidra context.",
+    "2F20 destination overlaps initialized caption span; 7FFF descriptor literal is not a safe four-byte output bound. Actual formatter semantics/counter range/output extent are P1-11.",
+    "Caption encoding/glyph rendering and resource corpus remain P2-01/P2-06/P2-09/P3-05."
+  ],
+  "limits": "Static byte-span/NUL positions and instruction context only. No original text bytes exported, no full resource decoding, output bounds, actual formatter/body integration, rendering, IRQ, game or fidelity acceptance."
+}

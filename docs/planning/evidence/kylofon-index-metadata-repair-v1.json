@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "path": "reference/repos/kylofon-test-drive-2-sdl3/.git/index",
+  "reason": "Git status optional index refresh changed mtime and removed ReadOnly; content SHA256 remained exactly equal. Restore original snapshot metadata only; no content writes. Use git --no-optional-locks for frozen clone inspection.",
+  "before": {
+    "bytes": 8003,
+    "sha256": "de60e6022842f4210d68d74999315803df90c1084c3058bd50754a9cb9846ac9",
+    "mtime_ns": 1792664926152597600,
+    "file_attributes": 32
+  },
+  "restored": {
+    "path": ".git/index",
+    "bytes": 8003,
+    "sha256": "de60e6022842f4210d68d74999315803df90c1084c3058bd50754a9cb9846ac9",
+    "mtime_ns": 1792664652024536500,
+    "file_attributes": 33
+  },
+  "failed_audit_retained": "docs/recovery/evidence/p1-kylofon-reference-review-audit-v1.json"
+}

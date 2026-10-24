@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 35,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "f86f19bdc893f4193048238d343b28435173a91e998b5ac522e571ca55baa1f5",
+  "library_sha256": "3831138be4d5647399fd6defebb6648acf78fa988828328f4759581c0aa38ecb",
+  "source_sha256": "59cc61da9058cfca6fb0b9293868c8d4da7045b5e178e34b5745102928971c70",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_dispatch_bus.py",
+      "sha256": "75f3fed1b274b409e88e343821ea8b571edc5b46c50b2845c24b27b30018d2c3"
+    },
+    {
+      "path": "analysis/history/runtime-dispatch-bus-build-setup-v1.json",
+      "sha256": "0b6672462db19d1bd9035a19c7892649a559127186a82a819f988bc49e165057"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-dispatch-bus-context-v1.json",
+      "sha256": "ce4865666d4a6bed8f1f8ad82dc737cded7bfb4f22816c54d8cd338a82462d9f"
+    }
+  ],
+  "limits": "Nativeonlyinvalid/budget/currentCSlookup/highwords/SSfaroperandliveness-beforeCALL/retiredhandlerprefix-rawresponse/unknownCSJMP/RETF2-vsplainfarcleanup/preparedexit diagnostics. Typedhandlers/DOS arenotactualbodies/devices/process exit; no B0FEfallthrough-pruning/core/P1-GATE/gameacceptance."
+}

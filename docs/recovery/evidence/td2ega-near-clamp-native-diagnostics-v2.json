@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "fc875c87a75392f2ccaccf49b4006c29ac81db70d9a7444cc47e064890146023",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cf20eb4dda7d1cd01bc7b1c3cc655b2a72852c98c986265db532de695a1351d6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_near_clamp.py",
+      "sha256": "8d4ae2b079b69e86fdfb37b762e2ae5c27b961dfe6976951bb6535048c1c85be"
+    }
+  ],
+  "limits": "Two native-only argument-domain checks, excluded from original comparisons/error equivalence. Budget-prefix and full zero-LOOP-count instruction comparisons are separately counted inhelper receipt. No actualresources/graphics/device/IRQ/core/game/fidelity."
+}

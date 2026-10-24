@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000321"
+  ],
+  "vectors": 18128,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b147c0b38014f6a21e9d5d02f7e29be5a9c7510d9441c6ac7cbcf21ff8f2f07f",
+  "source_sha256": "c9891748f744d820941b950e6d1b75a7c24da3c39bb992c0bf72b73d451201b6",
+  "validator_sha256": "b8614ce73022ed7c06b8682ec938a6097ea275155a94496023788cb538ed32ee",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-block-tail-context-v2.json",
+      "sha256": "0438d1419d083356ff03b2fb59c06a468fc3ba04ded16307b7e2dae96a7d73d5"
+    }
+  ],
+  "original_instructions_executed": 1107852,
+  "instruction_sites_in_fence": 159,
+  "instruction_sites_exercised": 130,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2871",
+        "13A8:2875",
+        "13A8:2876",
+        "13A8:2878",
+        "13A8:287A",
+        "13A8:287C",
+        "13A8:287F",
+        "13A8:2882",
+        "13A8:2883",
+        "13A8:2886",
+        "13A8:2887",
+        "13A8:2889",
+        "13A8:288C",
+        "13A8:2890",
+        "13A8:2892",
+        "13A8:2894",
+        "13A8:289C",
+        "13A8:289E",
+        "13A8:28A1",
+        "13A8:28A3",
+        "13A8:28A5",
+        "13A8:28A7",
+        "13A8:28A9",
+        "13A8:28AB",
+        "13A8:28AD",
+        "13A8:28AE",
+        "13A8:28B0",
+        "13A8:28B3",
+        "13A8:28B7"
+      ],
+      "scope": "2852 entered onlythroughliteral2830 farCALL withfixedmode1/highguard0 andnosourcewrites tothoseSSargumentwords beforeguard/modebranch",
+      "reason": "Parentmode1 takes286A only; secondchild/fallbackDOS48/cursorpaths cannotexecute inthiscomposition. Notglobaldead; standalone2852coversall53sites."
+    }
+  ],
+  "fixture_coverage": {
+    "prefix_iteration": 9216,
+    "root_near_CALLs": 5470,
+    "child_near_CALLs": 5150,
+    "actual_far_CALLs": 4830,
+    "nested_near_CALLs": 4510,
+    "root_iterations": 107456,
+    "records": 45238,
+    "bus_write_events": 116878,
+    "service_write_events": 2120,
+    "metadata_DS_equals_SS_cases": 9064,
+    "minimumSP40_cases": 5760,
+    "raw_root_returns": 300,
+    "initial_DS_equals_SS_cases": 2112,
+    "prefix_root_call": 1798,
+    "prefix_service": 654,
+    "root_near_return": 4576,
+    "returned_ZF0": 368,
+    "root_AX0_ZF1": 4208,
+    "root_final_CF1": 116,
+    "syntheticDOS4A": 1696,
+    "returned_ZF1": 4208,
+    "raw_child_return": 604,
+    "prefix_tail_call": 320,
+    "prefix_far_call": 320,
+    "prefix_child_call": 320,
+    "prefix_record": 320
+  },
+  "limits": "Actual13A8:27D4+280E/2830/2852mode1/28C0 fullSS/requiredZF/explicitES6F36threshold/currentDSheaderbit/wordmask-overflow/retryusingactualreturnedDX/sharedservicebudget. RootPUSHCX/actualnearCALLframes/POPactualCX/nearRET. NormalZFfromactualchildsuccess0orXORAXfailure1, CFactualchildorXOR0. IndependentrootCALL-loop/sharedservice/perchildCALL-scanbudgets/rawRETtargetsexposedafterinstructionneverfollowed. Serialized20bitRAMaliasprofile/noMEM_READhook, historicalCPU-A20-segmentlimitsunqualified. 29parentmode-specificdispositionsonlyliteral2830frame, standalone2852fullbodypassed. Actual26F1caller/metadatawriters/domain/capacity/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

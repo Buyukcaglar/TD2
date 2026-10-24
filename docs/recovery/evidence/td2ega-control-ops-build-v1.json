@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_control_ops.cmd",
+    "sha256": "01a8948150880f24b3b5ff52b05ffa90567aa94ae7696ff61ad730b1dfcc4db9"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_control_ops.c",
+      "sha256": "b787378cb4007d82e7c6e6ee3d9705d8f9066efe9fac9e38410c5f8a5ebcbd98"
+    },
+    {
+      "path": "src/recovered/td2ega_control_ops.h",
+      "sha256": "b0dca900b2d4497a6996e98397117b0c91382a9c0400f57d7366baa2d645f726"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/control-ops-repro/td2ega_control_ops.dll",
+      "sha256": "a69d0b7e4666ca0b6d7e55398c59f1e56cab1d7bf5a1d4c26932297a6749e5e7",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/control-ops-repro/td2ega_control_ops.obj",
+      "sha256": "361f60361454648c2a89575e5f7981c0cea35bea044f82682403206c8f6be41d",
+      "bytes": 5252
+    },
+    {
+      "path": "analysis/build/control-ops-repro/td2ega_sim_primitives.obj",
+      "sha256": "73e1b9803c73fc846b818e60c322006f1e712dbc62599c76cfe93ff2f67c8002",
+      "bytes": 4587
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/control-ops-build-v1.log",
+    "sha256": "7a03dd97fd8eae17dcc13e38da1a341673a7872e5707ea2f2e5df63db33c2b63"
+  },
+  "limit": "Six nearcontrols plus compiled4612 statehelper, serializedsynthetic DS/ESsharedviews; scanner tabletargets restrictedto44BF/44C5/44D2. Caller/tablewriters/IRQ/resourceunits/fullstate remainopen.",
+  "function_ids": [
+    "FN-EGA-000372",
+    "FN-EGA-000373",
+    "FN-EGA-000376",
+    "FN-EGA-000377",
+    "FN-EGA-000379",
+    "FN-EGA-000382"
+  ]
+}

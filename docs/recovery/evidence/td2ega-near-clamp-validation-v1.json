@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000071",
+  "vectors": 786,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cf20eb4dda7d1cd01bc7b1c3cc655b2a72852c98c986265db532de695a1351d6",
+  "source_sha256": "4da4898c6e0b758da0e96d893d597417f5816831bf5facbbe81174cba5a50c4a",
+  "validator_sha256": "8d4ae2b079b69e86fdfb37b762e2ae5c27b961dfe6976951bb6535048c1c85be",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 5347778,
+  "instruction_sites_exercised": 30,
+  "instruction_sites_in_fence": 30,
+  "fixture_coverage": {
+    "bounded_five_passes": 544,
+    "original_normal_near_return": 770,
+    "words": 882104,
+    "same_DS_SS_0": 402,
+    "same_DS_SS_1": 384,
+    "word_pointer_and_signed_boundaries": 224,
+    "zero_LOOP_count_normal": 2,
+    "bounded_instruction_prefix": 16,
+    "original_prefix": 16
+  },
+  "limits": "Complete088E orderedfivemutableDSpasses/signedlowerthenupper/negativeupperbounds/capturedBX/LOOPzero65536/wordwrap/CFIFDF/nearRET compared. Widecases useSSseparatefromDS/controlframes; nozero-countnormalization. PrefixesstopbeforeoriginalnextLODSW, not originalerror/normalreturn. Actual1F71 AX2C2A/BP17 writer/callerbounds/graphics/layout/resource/IRQ/core/game/fidelity pending. Native diagnostics separate."
+}

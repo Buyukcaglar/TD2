@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_find_nth.cmd",
+    "sha256": "79a5980019dcd413b0b95ed78a56645018274e3ee18dd806bd508221afa97a4f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_find_nth.c",
+      "sha256": "23bfef114229dc367b14fe1d11bd4990aa31d91b0ea4b8a7d8731d6a3609e668"
+    },
+    {
+      "path": "src/recovered/td2ega_find_nth.h",
+      "sha256": "4e31cff7449c790edc6552dfbe680b100e39a74ac5785901a1eac4a9e812ce92"
+    },
+    {
+      "path": "src/recovered/td2ega_find_files.c",
+      "sha256": "95f7b0d0e049d0d670b546ef4d877c162537eb9750008285aa262056ceb39291"
+    },
+    {
+      "path": "src/recovered/td2ega_find_files.h",
+      "sha256": "64de5a9d22d085cba10cb95c99f9b100f81b300adc6629e842601b0660b13183"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/find-nth-repro/td2ega_find_files.obj",
+      "sha256": "8fed8ae8b4ccc10c8ca962bfe000c9179b2d06e726a527543cabbdfe62faf485",
+      "bytes": 6005
+    },
+    {
+      "path": "analysis/build/find-nth-repro/td2ega_find_nth.dll",
+      "sha256": "cdbf0e251cdb04b96e19bb52f5fcff0f47b75eb7bfad5592cbbc453d90300fa6",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/find-nth-repro/td2ega_find_nth.obj",
+      "sha256": "a6f544c1e541fa39a0239fcc6e66680138c67ece29749c1cb08102ed35ec20c8",
+      "bytes": 3281
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/find-nth-build-v1.log",
+    "sha256": "793a3cd6c6f690cc9d6e2f9a91b8faf37a68a296d60ed49a779096137a56c82f"
+  },
+  "limit": "Complete16B8:0000 pluscompiledsearchhelpers, serializedsyntheticDOS/DTA/ordinal/stale-state profile. Firstfailure-nextfallthrough preserved; syntheticconditionalringwrites notactualDOSreachability/reset proof.",
+  "function_id": "FN-EGA-000351"
+}

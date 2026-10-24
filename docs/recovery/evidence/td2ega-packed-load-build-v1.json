@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_packed_load.cmd",
+    "sha256": "448fe4ca63b0c964ac2a88e02b6afb08b23d55dc4caab4f2d736f322e8ddbf29"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_cache_acquire.c",
+      "sha256": "0196b41bde33c0ad0822d2d6e89bcce4f1b0a23e4a7cad8bac8bb8e6ad609380"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_acquire.h",
+      "sha256": "386a8199550a40cc90a4a4fdcbdd6951fdb5c12b82a803c408a5df1ce4b269ed"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.c",
+      "sha256": "99f0decfe4eefc0edae2bd484973b855144391ebea9aa397463419eed8211984"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.h",
+      "sha256": "6891219bb4bab9bdbc41928da1f1cf2790c7de26fad9a3067d46feb975d8cf37"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.c",
+      "sha256": "d7553649f01c3afb07c56b1f7d90c01ded7a148afa3ee0ec9ab72fce854b463a"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.h",
+      "sha256": "16f860c11a9b24a94ba11e55504ccb8ae079936ebda7aebf488f88c0ed3c4fde"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    },
+    {
+      "path": "src/recovered/td2ega_file_paragraphs.c",
+      "sha256": "cce97b73953fe6635bfc15ac44725b2e2b28a72584d3491020dccfb684273679"
+    },
+    {
+      "path": "src/recovered/td2ega_file_paragraphs.h",
+      "sha256": "76607bb2c204ac54327f2fe2fb124838f09b7e460392da25e1f5f24cbe7e442c"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.c",
+      "sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.h",
+      "sha256": "7f0342e6882eafdf84c8960c98584a0c315f16e1c33c0ed578342439a5bac79f"
+    },
+    {
+      "path": "src/recovered/td2ega_named_raw.h",
+      "sha256": "306834dc03938ef12e96bfd43ed32423a016051cacd4d0bab1e42db09210c879"
+    },
+    {
+      "path": "src/recovered/td2ega_packed_load.c",
+      "sha256": "2be60c3f180c4303822e745e0d6874229e44213d32348aed3706a0bd2eecf10b"
+    },
+    {
+      "path": "src/recovered/td2ega_packed_load.h",
+      "sha256": "2d31711fa7a7e2aabd10c63de9db1ef8390bbebe30468c01fc65b02bfc520f6a"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.c",
+      "sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.h",
+      "sha256": "59e4700d541e3e08c417e742b835e0ac1699d6feeff43617f07a899fa40a6014"
+    },
+    {
+      "path": "src/recovered/td2ega_prefix_stage.c",
+      "sha256": "827cdf564d6256e4ea86eef32909db58873b9e24c75a728b6b89c6b4927f5806"
+    },
+    {
+      "path": "src/recovered/td2ega_prefix_stage.h",
+      "sha256": "853a770be8cf3c097f7bb35e9e5a0a96edd34a3f9675ac5d4a123629d87b3cc4"
+    },
+    {
+      "path": "src/recovered/td2ega_raw_load.c",
+      "sha256": "cccd7f8f965488c2401389c2891e89c71076a203032b1667e31616e52c940ad4"
+    },
+    {
+      "path": "src/recovered/td2ega_raw_load.h",
+      "sha256": "b450213bad70d48d6b4cadfc353bac48945c9b18d76050aba7c0a39e69690c06"
+    },
+    {
+      "path": "src/recovered/td2ega_run_stage.c",
+      "sha256": "78183ce381e5629b801c620a69ba8156079f992e3695472b00c1da7c01fcdcac"
+    },
+    {
+      "path": "src/recovered/td2ega_run_stage.h",
+      "sha256": "b5ced7500d749c1ec3b18f0f25ee97c6ca608fc3cba4194137ed1922720e880c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_cache_acquire.obj",
+      "sha256": "186902680ee5bf873fe35a5adedefd9df3307241c7b6760d017fb760664f4f90",
+      "bytes": 1986
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_cache_allocate.obj",
+      "sha256": "a091cabbc0627994da68afeea597208c7472bd27580dc3ad9709345f0f5823be",
+      "bytes": 1438
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_cache_compact.obj",
+      "sha256": "66fca5298933d4db18c324503f22e70abbdee8426b8d274bf67b96186d8c6584",
+      "bytes": 1412
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_file_paragraphs.obj",
+      "sha256": "3d0fb26ed15920e65b47d039ff1cb5cf8a189b78d60248bab9bfdee3cbf22f5b",
+      "bytes": 6847
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_filename.obj",
+      "sha256": "37a67e5d19a1e9a5a6044f55e74465dd4a943bf1d3ec0f4fe8423bc4aeff7713",
+      "bytes": 735
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_packed_load.dll",
+      "sha256": "f09b5e1e644f773f424589b2471053024e8050aab9543a9d250020dc6866e43f",
+      "bytes": 112128
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_packed_load.obj",
+      "sha256": "7ed54777be7504a01090b12e730e453986508972fa815a136eed720ac266302a",
+      "bytes": 2845
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_paragraph_copy.obj",
+      "sha256": "f6e115af52a3ae45d766d72ca5bf824e67e2617588221d31eaf053ddaef17654",
+      "bytes": 2514
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_prefix_stage.obj",
+      "sha256": "a0a85c92d97ab1336052cec3fbcfdcb0dce7b89f019d3f901f08c0eb711b2522",
+      "bytes": 3223
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_raw_load.obj",
+      "sha256": "8030ea09dd53e1e789e4d3087ff3456f816d8a8e979f3e70a25925d904742d36",
+      "bytes": 4309
+    },
+    {
+      "path": "analysis/build/packed-load-repro/td2ega_run_stage.obj",
+      "sha256": "908207362bed0543d8a84ea69ac7704fc5121137d03e7cb9866ffc0a970705d0",
+      "bytes": 7601
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/packed-load-build-v1.log",
+    "sha256": "4cd6bfbd55baa3100c801fdc2476bda8664a936a150ae0a551d138a3880c77aa"
+  },
+  "limit": "Complete6D50 and reviewed compiled helpers under bounded serialized cache/pool/name/codec/DS=SS/syntheticDOS profile. ADDSP8 and shifted SI/DI retained; real resources/caller/IRQ and fatal cleanup remain open.",
+  "function_id": "FN-EGA-000173"
+}

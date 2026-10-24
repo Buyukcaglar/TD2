@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_field_text.cmd",
+    "sha256": "2288a973e25847e407c084556aed9bec75f462328306c5cec82b03770ba94abb"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_field_text.c",
+      "sha256": "99928d1246c5e2fb2d4acd2db86e6a909289e822b8aa43f7f37579b13ab57882"
+    },
+    {
+      "path": "src/recovered/td2ega_string_memory.c",
+      "sha256": "448034c548fafa78df75074e8d19a44fece3e8d8a30bfe8cbdf05edf20c4a3fa"
+    },
+    {
+      "path": "src/recovered/td2ega_field_text.h",
+      "sha256": "2af97c8b4954b43dc64967171e2b79f78bf00199bd63d9b59895eb7d09495366"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_string_memory.h",
+      "sha256": "39a9d28936fc0ec39b791a506a6e3b97039d7ece76dc018efb292935a1aef962"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/field-text-repro/td2ega_field_text.dll",
+      "sha256": "692abae49f3d0e52b98a2b34c3c058a2dd81dc87f77602d395cb02bac6e0283f",
+      "bytes": 108544
+    },
+    {
+      "path": "analysis/build/field-text-repro/td2ega_field_text.obj",
+      "sha256": "6118bbb81587fdaec878647c6e10e034601affb7b9f0c05e032c45e1a3737957",
+      "bytes": 5164
+    },
+    {
+      "path": "analysis/build/field-text-repro/td2ega_string_memory.obj",
+      "sha256": "8d176968b6849af27d58aaa631a595d5a590aa0196a32a553e791a14a0b1206f",
+      "bytes": 7911
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/field-text-build-v1.log",
+    "sha256": "4a79883243e1c8d4cb3a7eae27bdebb4baa2167dfdbe704f49e6446b7434b62f"
+  },
+  "limit": "Actual0432:0006/far/twoSSnearoffsetarguments, actual2956copy/farframe/fullSSlocals-saves/returnedGPR-BP/orderedtrim17downward andspace-to-underscoreforward loops. IncomingDF childcopy retained; parentscalarforward independent. Fullbus/GPR/BP/CFIFDF/control/counts. NativeCALL-childoperation-parentloopbudgets/rawchildfarreturn exposedafterRETneverfollowed. No stringcapacity/NUL/format/allwriters/caller/DS-SS/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000031"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000327"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-field-text-context-v1.json",
+    "sha256": "b19022f2a9d5891e2b200bc06e8be25542e57f2e17c0a8d927f47dd3ebd2ecf1"
+  }
+}

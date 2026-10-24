@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 3,
+  "script_sha256": "462f76c352f10115c0729a5226a8ffcb4db5b73ce1e393a5d408b09d890d7ef8",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "eb9e8e0a3f3475cd02083dd61adb50b546539693b70c1a329f4caff45bab1f81",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_prepare_records.py",
+      "sha256": "871b2def19017d942879051e818169ea40b6da839b673f8cbbb330925b375474"
+    }
+  ],
+  "limits": "Three native-only argument/budget/nontermination checks. No original instructions/IRQ/resources execute; excluded from original differential totals/error equivalence. No core/RNGmeaning/reset/game/fidelity claim."
+}

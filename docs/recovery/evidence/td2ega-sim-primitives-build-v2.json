@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sim_primitives.cmd",
+    "sha256": "126ee91f57465d2068c6c1867ded512c2fb298f920c1ff57490a3489b5c0a59d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sim-primitives-repro-v2/td2ega_sim_primitives.dll",
+      "sha256": "65105f021ac282b92bc46094fc7276119575fa0ec1cc77a4ad3cdc0df4d2a3a2",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/sim-primitives-repro-v2/td2ega_sim_primitives.obj",
+      "sha256": "fcde15034b424747381b075949cbb7635ba44b16414b9ccca46e7524f91f2682",
+      "bytes": 4591
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sim-primitives-build-v2.log",
+    "sha256": "b10fa6d65b72eb37acdf6df5b3cf3ad3cb6119bbc6489a3fc4fd4b26ebd17b24"
+  },
+  "limit": "Fourteen near arithmetic/state entries, twelveexports; curveDS=SS profile, dataonlycompatibilityview. Nofullcaller/dispatch/simulation/game acceptance.",
+  "function_ids": [
+    "FN-EGA-000371",
+    "FN-EGA-000378",
+    "FN-EGA-000386",
+    "FN-EGA-000426",
+    "FN-EGA-000427",
+    "FN-EGA-000428",
+    "FN-EGA-000429",
+    "FN-EGA-000430",
+    "FN-EGA-000431",
+    "FN-EGA-000432",
+    "FN-EGA-000433",
+    "FN-EGA-000434",
+    "FN-EGA-000435",
+    "FN-EGA-000126"
+  ]
+}

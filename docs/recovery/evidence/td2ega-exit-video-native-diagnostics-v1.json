@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 42,
+  "script_sha256": "c8cdf1be14bc0d77dcfd3f4f02fe883ea2aff6d56852ea6567ae3611a5d12287",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5117c005300af5126ad6fb982328e9de3fcb63c6bb1e068d561feea1d63e38c8",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_exit_video.py",
+      "sha256": "3f5c2f14ed8cfac4fdc8352d9bfa6d6a977041e9364ed26d6fb5865c0dc6d202"
+    }
+  ],
+  "limits": "Nativeinterfaces/twoalternativepaths/actual642E-840A/fullSS/globalCALL-device-BIOSeventbudgets/27literalOUTs/read-after-indexOUT/CLD-wordfill/BIOSfullstate/livePOPDI/branchbyte-BDA-word-returnframealiases/rawchildRET/child-rootqualification/adapterfailures only. Originalcomparison/staticproofsseparate; no actualROM-controller-hardware/renderer/CPU-A20/caller-storage-writers-lifetime-exclusion/core/CGA/session/fidelity acceptance."
+}

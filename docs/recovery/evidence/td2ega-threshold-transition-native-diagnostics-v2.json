@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 59,
+  "script_sha256": "ad534a5d405a739ab42deaab26ebe5288b191fd559620bfad661274df5b4a2a5",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "fb054fadf4302d363ccf51e4d724ae8442a632f9aa8401ca1ec91bb827b6e4b5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_threshold_transition.py",
+      "sha256": "a1adaaeffe26d76bbd284ca19c3e093ce0103d1c645aa6fc3ec963631640fa53"
+    }
+  ],
+  "limits": "Native4B9A/fullSS/signedthresholds/signextendedimmediates/orderedtransitionwrites/signedIMUL-IDIVtruncation-negativeproduct-negativeBP/preIDIVzero-overflowprefix/BP-SIclobbers/actual45FC-ZF/globalrow-controlbudgets/fullindexwrap/root-childRETaliases/IFDF/SPdomain/zero-highDS only. Staticreview-originalcomparison separate. No tablecapacity-allwriters-validresource-fields/fullcaller-storage-lifetime-IRQ-core/DOSsession/renderer/audio/fullstate/gameplay/fidelity acceptance."
+}

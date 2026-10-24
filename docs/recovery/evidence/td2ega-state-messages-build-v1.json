@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_state_messages.cmd",
+    "sha256": "6cb9e1e465135bcb035a10bf28a9b90419ed8b1f656fbb5c88fbc664b9c99bcd"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_state_messages.c",
+      "sha256": "6db1ebff11a8d881623c6ca1af4cfc27449965e74f164088f1d90c3ad0570cbb"
+    },
+    {
+      "path": "src/recovered/td2ega_state_messages.h",
+      "sha256": "9b93e66ba14450e018b65bdd399dd4abae5d37efeb5938c3a0f3a969515e8a91"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/state-messages-repro/td2ega_state_messages.dll",
+      "sha256": "45509894feaadf906bb519040a8b427b623f4befc2d855633b46326351984dd8",
+      "bytes": 105984
+    },
+    {
+      "path": "analysis/build/state-messages-repro/td2ega_state_messages.obj",
+      "sha256": "61a64c1b41ff736517fad306dd04f1e26862800b4784baf55e16445c47fcece1",
+      "bytes": 7689
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/state-messages-build-v1.log",
+    "sha256": "068ca16f43d5c3e6d627ae7d8bae672693a84bd41050d7dc13bd294b7d2b83c6"
+  },
+  "limit": "Eleven message/control bodies with typed far ABI leaves; nearRET versus farRETF, exact argument lifetimes, currentDS and CF/IF/DF retained. No rendering, text decoding, actual clock/input/IRQ, resource, core, game or fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000100",
+    "FN-EGA-000101",
+    "FN-EGA-000102",
+    "FN-EGA-000103",
+    "FN-EGA-000104",
+    "FN-EGA-000105",
+    "FN-EGA-000106",
+    "FN-EGA-000107",
+    "FN-EGA-000108",
+    "FN-EGA-000123",
+    "FN-EGA-000130"
+  ]
+}

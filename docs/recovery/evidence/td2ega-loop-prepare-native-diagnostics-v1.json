@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2,
+  "script_sha256": "4f74e8b99307c13d95b210fb4ae332d934963a00e09938589565ea74403dff4e",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4147192d6706d9b3159fae40c044249550a4c1b4635ead41d5302854f98d6247",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_loop_prepare.py",
+      "sha256": "3a34f64777f5530e2e57c518adbc9b2c02b11d7e5996112a4b83db80ac5d8000"
+    }
+  ],
+  "limits": "Two native-only argument-domain checks, excluded from original comparisons/error equivalence. Budget-prefix instruction comparisons are separately counted inhelper receipt. No actualresources/graphics/device/IRQ/core/game/fidelity."
+}

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "primary_source": {
+    "publisher": "IBM",
+    "title": "Personal System/2 and Personal Computer BIOS Interface Technical Reference",
+    "edition": "First Edition, April 1987",
+    "url": "https://bitsavers.org/pdf/ibm/pc/ps2/PS2_and_PC_BIOS_Interface_Technical_Reference_Apr87.pdf",
+    "printed_page": "2-20",
+    "locator": "INT10H Video/AH10H Set Palette Registers/AL02H"
+  },
+  "interface": {
+    "vector": 16,
+    "AX": 4098,
+    "pointer": "ES:DX",
+    "bytes": 17,
+    "fields": [
+      "Bytes0..15: palette values",
+      "Byte16: overscan value"
+    ]
+  },
+  "corroborating_primary_source": {
+    "publisher": "ATI Technologies",
+    "title": "mach64 VGA Register Guide Technical Reference, VGA-S00700-05, 1994",
+    "url": "https://www.bitsavers.org/components/ati/VGA-S00700-05_mach64_VGA_Register_Guide_1994.pdf",
+    "printed_page": "A-4",
+    "locator": "BIOS Function Calls/AH10h/AL2"
+  },
+  "read_provenance": "Indexed excerpts of both primary manufacturer manuals read through web search on2026-10-15. Full IBM PDF fetch returned403 through web reader; no fullPDFdownload/hash/page-render claim.",
+  "limits": "BIOS interface identity and17byte consumer bound only. No actualBIOS-ROM/register-preservation/device-palette-hardware/rendering/CPU/caller-DSbinding/resource-fed/session/fidelity qualification. Sourcefunction still adopts fullreturned state."
+}

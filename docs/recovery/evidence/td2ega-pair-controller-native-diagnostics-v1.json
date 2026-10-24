@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "ff04c1795d2cba3a1bb7366fe5bf7eebe9f7363f277cb9ea19a4e5d3b9c8da3b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d8baf5d30ae77e6cebef36cc4f6fabb9cf8eeeb2ec0caa5e885298bf1936359d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_pair_controller.py",
+      "sha256": "389affd675f1ba0dc4ee567c32b312119206144ed2383ef15d2c5623e66b6d42"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects, nullresult/minimumSP18 skiproot/beforeCALL/actualchildminimumSP16 andparentstore. Nativeonly, notwhole403B/caller/writer/lifetime/IRQ/fullstate/core/runtime/gameplay/fidelity acceptance."
+}

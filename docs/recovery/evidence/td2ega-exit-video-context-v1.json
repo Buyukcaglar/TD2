@@ -1,0 +1,362 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "e7c4678e7ae6309ddffb973f97b74d7a945e6b6f7d5cc36eb43fbae50df30e82",
+  "instruction_observations": [
+    {
+      "site": "06C9:5FBC",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "06C9:5FBD",
+      "bytes": "803e6e5e00",
+      "text": "cmp byte ptr [0x5e6e], 0"
+    },
+    {
+      "site": "06C9:5FC2",
+      "bytes": "7507",
+      "text": "jne 0x5fcb"
+    },
+    {
+      "site": "06C9:5FC4",
+      "bytes": "9a2e64c906",
+      "text": "lcall 0x6c9, 0x642e"
+    },
+    {
+      "site": "06C9:5FC9",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:5FCA",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:5FCB",
+      "bytes": "b84000",
+      "text": "mov ax, 0x40"
+    },
+    {
+      "site": "06C9:5FCE",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "site": "06C9:5FD0",
+      "bytes": "26a11000",
+      "text": "mov ax, word ptr es:[0x10]"
+    },
+    {
+      "site": "06C9:5FD4",
+      "bytes": "25cfff",
+      "text": "and ax, 0xffcf"
+    },
+    {
+      "site": "06C9:5FD7",
+      "bytes": "0d3000",
+      "text": "or ax, 0x30"
+    },
+    {
+      "site": "06C9:5FDA",
+      "bytes": "26a31000",
+      "text": "mov word ptr es:[0x10], ax"
+    },
+    {
+      "site": "06C9:5FDE",
+      "bytes": "b003",
+      "text": "mov al, 3"
+    },
+    {
+      "site": "06C9:5FE0",
+      "bytes": "babf03",
+      "text": "mov dx, 0x3bf"
+    },
+    {
+      "site": "06C9:5FE3",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:5FE4",
+      "bytes": "b020",
+      "text": "mov al, 0x20"
+    },
+    {
+      "site": "06C9:5FE6",
+      "bytes": "bab803",
+      "text": "mov dx, 0x3b8"
+    },
+    {
+      "site": "06C9:5FE9",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:5FEA",
+      "bytes": "b90c00",
+      "text": "mov cx, 0xc"
+    },
+    {
+      "site": "06C9:5FED",
+      "bytes": "bab403",
+      "text": "mov dx, 0x3b4"
+    },
+    {
+      "site": "06C9:5FF0",
+      "bytes": "33db",
+      "text": "xor bx, bx"
+    },
+    {
+      "site": "06C9:5FF2",
+      "bytes": "8ac3",
+      "text": "mov al, bl"
+    },
+    {
+      "site": "06C9:5FF4",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:5FF5",
+      "bytes": "42",
+      "text": "inc dx"
+    },
+    {
+      "site": "06C9:5FF6",
+      "bytes": "8a877c5e",
+      "text": "mov al, byte ptr [bx + 0x5e7c]"
+    },
+    {
+      "site": "06C9:5FFA",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:5FFB",
+      "bytes": "4a",
+      "text": "dec dx"
+    },
+    {
+      "site": "06C9:5FFC",
+      "bytes": "43",
+      "text": "inc bx"
+    },
+    {
+      "site": "06C9:5FFD",
+      "bytes": "e2f3",
+      "text": "loop 0x5ff2"
+    },
+    {
+      "site": "06C9:5FFF",
+      "bytes": "fc",
+      "text": "cld "
+    },
+    {
+      "site": "06C9:6000",
+      "bytes": "b800b8",
+      "text": "mov ax, 0xb800"
+    },
+    {
+      "site": "06C9:6003",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "site": "06C9:6005",
+      "bytes": "33ff",
+      "text": "xor di, di"
+    },
+    {
+      "site": "06C9:6007",
+      "bytes": "b90040",
+      "text": "mov cx, 0x4000"
+    },
+    {
+      "site": "06C9:600A",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:600C",
+      "bytes": "f3ab",
+      "text": "rep stosw word ptr es:[di], ax"
+    },
+    {
+      "site": "06C9:600E",
+      "bytes": "b028",
+      "text": "mov al, 0x28"
+    },
+    {
+      "site": "06C9:6010",
+      "bytes": "bab803",
+      "text": "mov dx, 0x3b8"
+    },
+    {
+      "site": "06C9:6013",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:6014",
+      "bytes": "b400",
+      "text": "mov ah, 0"
+    },
+    {
+      "site": "06C9:6016",
+      "bytes": "b007",
+      "text": "mov al, 7"
+    },
+    {
+      "site": "06C9:6018",
+      "bytes": "cd10",
+      "text": "int 0x10"
+    },
+    {
+      "site": "06C9:601A",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:601B",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "06C9:5FC4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:642E"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0000:07B3",
+      "site": "0000:0BF4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:5FBC"
+    }
+  ],
+  "caller_liveness_observations": [
+    {
+      "site": "0000:0BF9",
+      "bytes": "eb05",
+      "text": "jmp 0xc00"
+    },
+    {
+      "site": "0000:0C00",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "0000:0C02",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "0000:0C03",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "13A8:0495",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:0496",
+      "bytes": "9a8205a813",
+      "text": "lcall 0x13a8, 0x582"
+    },
+    {
+      "site": "13A8:060D",
+      "bytes": "3bf7",
+      "text": "cmp si, di"
+    }
+  ],
+  "external_span_candidates": [
+    {
+      "segment": 6031,
+      "segment_offset": 24188,
+      "offset": 120684,
+      "length": 12,
+      "sha256": "c0da926726b7e140d9f9f0d899e0d969e3e47b07932c04d8589aca62b2dcba07",
+      "role": "Initialized12rawport-valuecandidate5E7C..5E87, currentDSbinding onnonzero5E6Epath; indexedreadoccursafterOUT3B4beforeOUT3B5. Allwriters/controllerunits-hardwareinterpretation/storage-lifetime open."
+    }
+  ],
+  "full_effect_counts": {
+    "zero_flag": {
+      "farCALLs": 2,
+      "events": 8008,
+      "BIOS10_calls": 2,
+      "byte_OUTs": 6,
+      "device_bytes": 8000,
+      "device_words": 0,
+      "CPU_bus_writes": 8009
+    },
+    "nonzero_flag": {
+      "farCALLs": 0,
+      "events": 16412,
+      "BIOS10_calls": 1,
+      "byte_OUTs": 27,
+      "device_bytes": 0,
+      "device_words": 16384,
+      "CPU_bus_writes": 16386
+    }
+  },
+  "preRET_qualification_policy": {
+    "static_SP_cases": 65536,
+    "zero_branch_plane_entry_formula": "(rootSP-12)&FFFF",
+    "zero_branch_plane_qualification_rootSPs": [
+      9,
+      10,
+      11
+    ],
+    "zero_branch_642E_entry_formula": "(rootSP-6)&FFFF",
+    "zero_branch_642E_qualification_rootSPs": [
+      3,
+      4,
+      5
+    ],
+    "root_qualification_SP_values": [
+      65533,
+      65534,
+      65535
+    ],
+    "limits": "Explicitnative5beforeRET/fullbodyretained; nothistoricalCPUfaultdelivery."
+  },
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-video-reset-context-v1.json",
+      "sha256": "16403cfb248c240b372ebf33efa5ca1197c5e01de9bd5a3fdd3402e78d91d841"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-video-reset-validation-v1.json",
+      "sha256": "3ace17d312f6b486ff64de06cfc84ddff817915ef5af3d3d48a67345755bfa5d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-fallback-mode-context-v1.json",
+      "sha256": "f2e306b9b89cbed5019b0f503ec6b34b1a167517d6066d1218a7a370ec8b7841"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "facts": [
+    "Far/noargs/PUSHDIbeforeCMPcurrentDS5E6Ebyte0. ThatPUSHcanaliasflag; zeroactual642E/840Afarframes-currentDF/BIOSAX3thenAH0BretainedAL. ChildactualRETcheckedafterinstruction/native1rawtargetneverfollowed; qualification/budgets propagated. RootPOPDIafterBIOS overridesreturnedDIwithactualsavedword; BPnotown-saved/fullBIOSBPretained.",
+    "Nonzeropathphysical0040:0010ANDFFCF/OR30/store; OUT3BF3/3B820; 12indexOUT3B4thenCURRENTDS[5E7C+BX]read/valueOUT3B5; CLD/ESB800/DI0/CX4000/XORAX/REP16384STOSW; OUT3B828 thenAX0007INT10/fullreturnedstate; actualPOPDI/RETF. No BIOSbeforetable/wordfill onthisbranch.",
+    "TypedbyteOUT/byteWrite/wordWritepreserveCPUstate/ignoredevice-responseGPR/value/rawRAMadapter ownswrite. SyntheticBIOSfullGPR-BP-DS-ES-CFIFDFreturn/preservesSS-SP-CS/noINTframes. OneglobalCALLbudgetacross642E-840A andoneglobaldevice-BIOSeventbudget.",
+    "Initialized12bytecandidate5E7C..5E87norelocations; literalBX0..11/currentDSstableunderdeviceCPUstatepreservation, readaftereachindexOUTsupportsbusmutationaliases. Allwriters/controllerunits/hardwareprofile/storage/lifetime remainopen; noresourcecodec/CGAeditioninference.",
+    "Caller0BF4JMP-C00MOVSPactualBP/POPBP/farRET thenstartup0495PUSHAX/0582/060DCMPSIDIoverwritesarithflags. ActualBIOSBPvalidity/callerstack-segments-IFDF/exclusiondomainsremainopen; no normalizeBPtoentry assumption.",
+    "Physical0410distinctunassigned086Creader. Full20bitRAM/privatecomparisononly; no ROM-devicecontroller/renderer/CPU-A20-stacklimits/IRQ/core/resources/CGA/session/gameplay/fidelity acceptance."
+  ],
+  "limits": "Actual44-site5FBCplusactual642E-840A/91sitefence/fullSS/twoalternativeeffectpaths/globalbudgets/currentDSflagand12tablebytes/liveSSFNs-farframes/BIOSfullstate/callerFLAGSliveness/qualificationpolicy. No allwriters/ROM-devicehardware/actualcaller-BP-DS-stack-IFDF/storage-lifetime-exclusion/CPU-A20/fatalcleanup/core/resource/CGA/session/fidelity closure."
+}

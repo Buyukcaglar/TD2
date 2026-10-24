@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000072",
+    "FN-EGA-000392",
+    "FN-EGA-000032"
+  ],
+  "vectors": 94528,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "af839db0533e4561c5274c28dea305c096a4bb926cb7f29d3f93056acb4bd5e0",
+  "source_sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486",
+  "validator_sha256": "26ffe80333feca700251962e3cbcd4883c8252ae79d0ac234dcbd168c3ca0220",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 59830272,
+  "instruction_sites_in_fence": 90,
+  "instruction_sites_exercised": 89,
+  "unreachable_under_entry_guards": [
+    "06C9:5303"
+  ],
+  "fixture_coverage": {
+    "entry_0": 24192,
+    "return_operations": 89040,
+    "byte_DIV_instructions": 9472,
+    "iterations": 8115600,
+    "bus_write_events": 10900584,
+    "raw_label_returns": 0,
+    "signed_counter_wrap_label_returns": 16,
+    "entry_1": 62368,
+    "entry_2": 7968,
+    "budget_prefix": 5488
+  },
+  "limits": "Actual08CBsignedfieldclamp/52FDoverflow-awareSUB-JLE/JG/guardedbyteDIV/0432:0061underscoreandminimum18pad withactualSSwordcounter rereadsafterstores. Fullbus/SSsaves/near-farframes/GPR/BP/CFIFDF/control, wordwrap/signedcounternegativepadding andaliases retained. 5303unreachablefrom52FD becauseadjacentJLE/JGcomplementarywithoutflagsetter, notglobaldead. Nativebeforelabelscan/store budget separate. Actualcaller/fieldunits/bounds/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen."
+}

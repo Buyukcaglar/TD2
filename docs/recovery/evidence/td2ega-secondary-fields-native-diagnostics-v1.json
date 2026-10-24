@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 16,
+  "script_sha256": "646c897a7c03d184eaf881e21a6ff5e669bf2957243379ae4c7d8463f7edb01f",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7b519d35ff801183d7c799a93e3050f064da210608e58254043d3a0d5cd3a1c3",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_secondary_fields.py",
+      "sha256": "ab2b7196f913a248e7baf0db6e5b191a36526e3a80ac8e1a3a54627f35655b2d"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects/nullresult/disabled-DECearlypaths/rootCALL-childloopbudgets/actualzeroDIVbeforefaultdelivery/minSP34 normalreturn. Nativeonly, notcaller/tablewriters/lifetime/IRQ/core/resource/device/session/gameplay/fidelity acceptance."
+}

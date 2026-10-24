@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 28,
+  "script_sha256": "f92aeb7acdb11784672dad1bb6071b9ba0ffabf7b359808f3601266ae545e5a7",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c6d5ee4d3d575744bd47d161208318f8b28864c2a12f5e9e16145542df76895c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_heap_walk.py",
+      "sha256": "33222d893ff1c13487a52dfbe4f368e4527eab9df370752569f550a21c7a38bf"
+    }
+  ],
+  "limits": "Nativeinterfaces/root-childbudgets/guards-beforeCLD/word-byteheaders/coalescing-splitting/DS-ESsegmenttraversal/successAX-DXpointervsZF/actualreturnedDFLODSW/SSFNs/rawRET diagnostics only. Originalcomparison separate; syntheticDOSnoINTframes/historicalCPU-A20unqualified, wholecaller/writers/capacity/core/session/fidelity open."
+}

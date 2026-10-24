@@ -1,0 +1,13 @@
+# Recovered read-only cache-name query
+
+`FN-EGA-000185`, original `06C9:[7273,72C6)`, is an 83-byte metadata query. Its bounded stable-snapshot contract is translated to C17, compiled and compared with **1,258 synthetic vectors** executing the original query and its original basename helper. It accepts no file format, cache movement or game-state lifetime.
+
+Source: [query C](../../src/recovered/td2ega_cache_query.c) and [metadata header](../../src/recovered/td2ega_cache_query.h). [Build evidence](evidence/td2ega-cache-query-build-v1.json) pins both the query and basename dependency, compiler/options and private artifacts. [Comparison evidence](evidence/td2ega-cache-query-validation-v1.json) records 104,253 original instructions and checks original AX, conditional DX, preserved registers/segments, far frame and unchanged input/metadata bytes.
+
+The original obtains the basename through `7083`, then compares up to twelve bytes against each nonzero-status descriptor. It is byte-sensitive. If the requested basename ends, a dot or null in the stored name at that position completes a match; explicit requested extensions must otherwise compare exactly. Matching twelve bytes is sufficient even when the requested string continues.
+
+**Status0 aborts the entire search immediately** rather than skipping a hole. The normal range excludes the end descriptor, but when start equals end the routine checks that sentinel once. Success returns AX=1 with incoming DX unchanged. Failure clears AX and DX. SI, DI, BP, DS, ES and SS are preserved; the caller removes its near-word argument after RETF. This is distinct from `71B4`, which moves/acquires a cached block.
+
+The native API uses explicit typed descriptors and indexes rather than near addresses. These fields are internal metadata, not a struct overlay on original files. Inputs must remain stable, descriptor indexes must be within the supplied array, and the terminated filename must be nonwrapping and disjoint from the original active stack frame. The admitted original arena has at most50 descriptors with18-byte stride and no near-address wrap; larger native arrays are outside that profile. The C API exposes the AX boolean; original register/stack effects remain documented rather than exposed as host CPU state.
+
+Tests cover case/extension and twelve-byte matching, first-free early exit, end exclusion and sentinel inclusion, every byte value in two contexts, and 512 varied descriptor/name snapshots. Three native-only invalid-bound cases verify explicit diagnostics outside the original-equivalence domain. No real resource, DOS service, cache relocation, Windows host, full core, second compiler/host or gameplay/fidelity gate is accepted.

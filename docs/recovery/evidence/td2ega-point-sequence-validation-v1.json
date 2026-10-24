@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000114"
+  ],
+  "vectors": 13568,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "8af3fa7f7b40cf0e2445c037517c1746c42ca2ce4514605838fefb8d674acdef",
+  "source_sha256": "4acc897de99b128606f26b252a09e5680c891ddabc7a330e78aae3df0baa48cd",
+  "validator_sha256": "5be175b6bfed1af7b1bbe93756d43d7b200f77d145daee484a08b232503c2156",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_pixel_point.py",
+      "sha256": "b844d2f3e9d11c4faa05a2ca946919b9bcab1e32610eae3b6e608c34afb3323f"
+    },
+    {
+      "path": "tools/validate_point_update.py",
+      "sha256": "e65ef73c30ed93dbf86a0fc72ab253e7bdc7186a4cf3bca7d4607ee17b86801b"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-point-update-context-v1.json",
+      "sha256": "8bbfa0e96c564601a80d420265a32a8d5f3d2d6cfcfe37ebe5353cd44fb79534"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+      "sha256": "11c33c8f625662e84ba997d5ab981bd7fdd85936aa66ba4d5888634b32494ffc"
+    },
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 1442204,
+  "instruction_sites_in_fence": 103,
+  "instruction_sites_exercised": 103,
+  "fixture_coverage": {
+    "prefix_event": 10208,
+    "actual_update_CALLs": 22064,
+    "actual_pixel_CALLs": 16556,
+    "word_OUTs": 34592,
+    "byte_reads": 28624,
+    "byte_stores": 32968,
+    "byte_OR_transactions": 5304,
+    "CPU_bus_writes": 261228,
+    "DS_equals_SS_cases": 6784,
+    "incomingDF1_cases": 6784,
+    "adapter_bus_mutations": 1516,
+    "raw_root_returns": 4,
+    "software_fixture_cases": 6784,
+    "child_equal_returns": 2232,
+    "child_changed_returns": 9808,
+    "root_finalADDcarry_cases": 96,
+    "root_ZF1_cases": 704,
+    "root_near_return": 2748,
+    "hardware_fixture_cases": 6784,
+    "preRET_qualification": 360,
+    "raw_child_return": 252
+  },
+  "limits": "Actual3A91near/currentDS52CA-52D2-52DA/BX0-2-4/DX0C-09-0E/threeactual3AB8-nearframes-BA3C-farframes/fullSS/liveinput-cache-devicealiases/globalouterCALL-pixelCALL-devicebudgets/nearRET/lastactualchildZF-CF. Fullbus-GPR-BP-CFIFDF/rootZF/deviceABI/control/counts. RawRAMadapter/historicalCPU-A20-stacklimitsunqualified. No actualcallers-allwriters-coordinatebounds-storage-capacity-ownership-lifetime-exclusion/devicehardware-renderer/core/resource/CGA/session/fidelity closure."
+}

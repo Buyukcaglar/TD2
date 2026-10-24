@@ -1,0 +1,23 @@
+"""Pin0201 raw record loops, live bounds, signed borrow and caller context."""
+import argparse,hashlib,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');d=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(d).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());md=Cs(CS_ARCH_X86,CS_MODE_16)
+ def view(ip):
+  i=next(md.disasm(d[0x6c90+ip:0x6c90+ip+15],ip,count=1));return {'site':f'06C9:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str}
+ f=next(f for f in g['functions'] if f['entry']=='06C9:0201');obs=[view(ip) for ip in sorted(f['instructions'])];assert len(obs)==106;expected={0x020a:'b91100',0x020d:'fc',0x020e:'f3ab',0x0243:'40',0x0279:'8bac1338',0x0287:'1bd1',0x0289:'7d04',0x0292:'7715',0x02ac:'3b365453',0x02b0:'72c7',0x02c2:'1bd1',0x02c4:'7d04',0x02e7:'3b365653',0x02eb:'72c7',0x02fa:'1bd1',0x02fc:'7d04',0x0317:'1bd1',0x0319:'7d04',0x031f:'d1e2',0x0337:'cb'}
+ for ip,raw in expected.items():assert d[0x6c90+ip:0x6c90+ip+len(raw)//2].hex()==raw,hex(ip)
+ def signed(v):return v-65536 if v&0x8000 else v
+ checks=0
+ for a in range(65536):
+  for b in [0,1,0x7fff,0x8000,0xffff]:
+   for borrow in [0,1]:
+    diff=signed(a)-signed(b)-borrow;raw=diff&65535;sf=bool(raw&0x8000);of=not(-32768<=diff<=32767);assert (sf==of)==(diff>=0);checks+=1
+ callers=[{'owner':v['entry'],**c} for v in g['functions'] for c in v['calls'] if c['target']=='06C9:0201'];assert [c['site'] for c in callers]==['06C9:1B56','06C9:353F'];windows=[]
+ for c in callers:
+  owner=next(f for f in g['functions'] if f['entry']==c['owner']);site=int(c['site'][5:],16);windows.append({'call_site':c['site'],'instructions':[view(ip) for ip in sorted(owner['instructions']) if site-8<=ip<=site+15]})
+ next_entry=[{'site':f'06C9:{i.address:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str} for i in md.disasm(d[0x6c90+0x2089:0x6c90+0x20a0],0x2089)]
+ record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'instruction_observations':obs,'direct_caller_candidates':callers,'caller_windows':windows,'next_callee_entry':next_entry,'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'arithmetic_proof':{'checks':checks,'scope':'All65536leftwords/fiveboundaryrightwords/twoborrows; mathematicalwordSBB SF==OF iff full signed difference nonnegative. Staticproof, excludedfromnativevectorcounts.'},'facts':['Far/noargs0201 hasnoSSsaveprologue, BPactuallyclobberedbylastrecord. ES=currentDS/CLD/17actualREPSTOSWwords1308..1329; constantsandfieldcopiesordered, lowbytewritesretainAH.','CachedBX=DS12CC/CX=DS12CA definebasepair; twoSI0 do-once recordloops at279/2B4 increment8 andunsignedCMPcurrentDS5354/5356 eachiteration. Count0stillprocessesone; highunalignedbounds maycycleafterSIwrap. No fixedrecordcapacity inferred.','RecordhighSBB immediatelyJGE usesSF/OF/fullsignedborrow, optionaloneperiodADD; unsignedDX<=60filter. Selectedwrites threewordsatDI+73C/73E/740 thenDI+=8; fourthword untouched. SecondloopcontinuescurrentDI, noreset. Orderedinput/output/countaliasrereads retained.','FinalDS0804storesrawDIbytecount, twofurthercachedbaseSUB-SBB/optionalperiod/SHLDX1 projections thenrawpairedfields/modebytes. FinalCFislastSHLoldDXbit15; actualfarRETwordsrereadafterallstores, no cachedframe.','Actual1B56and353F farcallers immediatelycall2089; wholecallerstate/statusliveness/DS-SS/exclusion/core remainseparate. ReturnedESDS/DF0/BPclobberareexplicit andmustsurvivecomposition.','Nativebudgetbeforeeachrecord isdiagnosticboundary, notsourcecapacity/error; rawfarRETcontrol exposedafteractualinstructionneverfollowed. No resourceformat/units/physics inferred.'],'limits':'Whole106-site literal0201/rawloop/callerwindows/staticarithmeticproof only. Fullbuscomparison separate; allcapacity/writers/actualcaller/DS-SS/lifetime/IRQ/core/resource/device/session/gameplay/fidelity gates open.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','root_sites':106,'callers':2,'static_SBB_checks':checks,'next_callee_entry':next_entry}))
+if __name__=='__main__':main()

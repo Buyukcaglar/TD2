@@ -1,0 +1,553 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "method": "Fenced isolated Unicorn16 instruction execution with distinct physical046C/086C sentinels",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "4b1c4c66d06c8512bac60211a974e48c3fe28ad0a11b7cbe26f4c4f3744e6fd2",
+  "vectors": 60,
+  "cases": [
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D83",
+      "external_word": 0,
+      "argument": 0,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D83",
+      "external_word": 1,
+      "argument": 0,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D83",
+      "external_word": 32767,
+      "argument": 0,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D83",
+      "external_word": 32768,
+      "argument": 0,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D83",
+      "external_word": 65535,
+      "argument": 0,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 0,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 1,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 32767,
+      "ax": 32769,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 32768,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 65535,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 0,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 1,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 32767,
+      "ax": 32770,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 32768,
+      "ax": 32769,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 65535,
+      "ax": 2,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 0,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 1,
+      "ax": 32766,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 32767,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 32768,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 65535,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 0,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 1,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 32767,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 32768,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 65535,
+      "ax": 32769,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 0,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 1,
+      "ax": 65534,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 32767,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 32768,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 4096,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 65535,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D83",
+      "external_word": 0,
+      "argument": 0,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D83",
+      "external_word": 1,
+      "argument": 0,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D83",
+      "external_word": 32767,
+      "argument": 0,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D83",
+      "external_word": 32768,
+      "argument": 0,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D83",
+      "external_word": 65535,
+      "argument": 0,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 4
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 0,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 1,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 32767,
+      "ax": 32769,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 32768,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 0,
+      "argument": 65535,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 0,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 1,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 32767,
+      "ax": 32770,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 32768,
+      "ax": 32769,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 1,
+      "argument": 65535,
+      "ax": 2,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 0,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 1,
+      "ax": 32766,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 32767,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 32768,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32767,
+      "argument": 65535,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 0,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 1,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 32767,
+      "ax": 1,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 32768,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 32768,
+      "argument": 65535,
+      "ax": 32769,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 0,
+      "ax": 65535,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 1,
+      "ax": 65534,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 32767,
+      "ax": 32768,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 32768,
+      "ax": 32767,
+      "external_read_physical": 2156,
+      "instructions": 8
+    },
+    {
+      "load_segment": 9029,
+      "entry": "06C9:5D8D",
+      "external_word": 65535,
+      "argument": 65535,
+      "ax": 0,
+      "external_read_physical": 2156,
+      "instructions": 8
+    }
+  ],
+  "conclusion": "Both supplied readers access0040:046C, physical086C, independently of application load segment. Difference reader subtracts caller word modulo65536.",
+  "return_fixture": "Distinct8000:0100 sentinel; execution stops before sentinel instructions. Read hooks restricted to low64KiB; finalCS/IP/SP verify return. Unrestricted Unicorn2.1.4 read callbacks on RETF stack reads disturbed observedIP in the initial fixture.",
+  "limits": "No DOS/BIOS session, firmware contents, timebase, timer cadence or original historical defect cause established. No offset correction admitted."
+}

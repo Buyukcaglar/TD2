@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "225b52c5d1f43be63787d90fd6442edf6971ae65c8992dac590664cdd1c35a25",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "04fe565687b579bf36fdcd3697e4ec1bc397c8b9eff34503df61654e7b2cda34",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_radix_text.py",
+      "sha256": "5b4b190b9aea002e0051f140289f8e9913d56a6f88e90a0a44bf23789e3a54b2"
+    }
+  ],
+  "limits": "Nine invalid profiles before bus effects, zeroDIV prefix, radix1 nonprogress prefix and minimumSP32 signed-decimal/CLD. Native only; no actual exception delivery/buffercapacity/caller/core/runtime/gameplay/fidelity admission."
+}

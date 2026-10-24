@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "73fca1d2f81640de3392b838d0d0873b006f9dc915741d0c5dc45b109cfaba23",
+  "function_id": "FN-EGA-000069",
+  "family": "06C3_INC_DEC_PAIR",
+  "instruction_observations": [
+    {
+      "site": "06C9:06F9",
+      "instruction": "mov byte ptr cs:[0x71f], 0x40"
+    },
+    {
+      "site": "06C9:06FF",
+      "instruction": "mov byte ptr cs:[0x735], 0x40"
+    },
+    {
+      "site": "06C9:0709",
+      "instruction": "mov byte ptr cs:[0x71f], 0x48"
+    },
+    {
+      "site": "06C9:070F",
+      "instruction": "mov byte ptr cs:[0x735], 0x48"
+    },
+    {
+      "site": "06C9:06C9",
+      "instruction": "mov ax, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:06CC",
+      "instruction": "mov bx, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:06CF",
+      "instruction": "mov di, word ptr [bp + 4]"
+    },
+    {
+      "site": "06C9:0743",
+      "instruction": "ret 6"
+    }
+  ],
+  "local_forms": [
+    {
+      "name": "positive_or_initial",
+      "opcode_071F": 64,
+      "opcode_0735": 64,
+      "changed_instruction_sites": [],
+      "same_instruction_boundaries": true
+    },
+    {
+      "name": "negative",
+      "opcode_071F": 72,
+      "opcode_0735": 72,
+      "changed_instruction_sites": [
+        "06C9:071F",
+        "06C9:0735"
+      ],
+      "same_instruction_boundaries": true
+    },
+    {
+      "name": "positive_first_write_prefix",
+      "opcode_071F": 64,
+      "opcode_0735": 72,
+      "changed_instruction_sites": [
+        "06C9:0735"
+      ],
+      "same_instruction_boundaries": true
+    },
+    {
+      "name": "negative_first_write_prefix",
+      "opcode_071F": 72,
+      "opcode_0735": 64,
+      "changed_instruction_sites": [
+        "06C9:071F"
+      ],
+      "same_instruction_boundaries": true
+    }
+  ],
+  "function_instruction_locations": 59,
+  "ordered_writes": {
+    "positive": [
+      "06C9:06F9 ->071F=40",
+      "06C9:06FF ->0735=40"
+    ],
+    "negative": [
+      "06C9:0709 ->071F=48",
+      "06C9:070F ->0735=48"
+    ]
+  },
+  "calling_convention": "Plainnearcall frame2 plus3wordarguments: BP+4destination, BP+6second endpoint, BP+8first endpoint. RET6 popsreturnIP and6argumentbytes; total8bytes fromentrySP. Five2477calls consume15words withoutADDSP30.",
+  "limits": "Staticcode-state/interface review only, not completefunction/native/dynamic acceptance. Bothpatches precede patched arithmetic onnormaldirect-entry interpolation; uniform/delta-zero exits canretainpriorforms. Mixedforms areorderedwrite-prefix states, not deliveredIRQ/reentrancy proof. Four localforms do notreplaceorcomplete fourplatform-mutator ledgers orwholeprogramtransitiongraph. Actual06C3body/2477SS-DS/callerbounds/lifetimes/core/game/fidelity stillpending."
+}

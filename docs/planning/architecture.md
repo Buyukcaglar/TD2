@@ -1,6 +1,16 @@
 # Native game architecture and media switching
 
-This is a proposed design for later development. No modules, API implementations or build system have been created. The canonical gameplay behavior comes from the admitted DOS EGA edition; CGA and Amiga presentation must share that state. The Amiga code is also recovered and compared, but its physics or later patch enhancements do not silently replace DOS behavior.
+This is the target design for later integration. Bounded C17 recovery modules exist, but the integrated native game core, host and media providers have not been implemented in our tree. The canonical gameplay behavior comes from the admitted DOS EGA edition; CGA and Amiga presentation must share that state. Amiga code will also be recovered and compared; its physics or later patch enhancements must not silently replace DOS behavior.
+
+## Upstream implementation candidate, 22 October 2026
+
+The [completed P1-R04 decision](../recovery/kylofon-r04-reuse-decision.md) selects 10 bounded groups: six value groups covering 11 already-recovered entries and four support groups. The [normative allowlist](../recovery/evidence/kylofon-reuse-decisions-v2.json) fixes each qualified caller, fixture and transitive dependency boundary; the [origin manifest](../recovery/evidence/kylofon-reuse-origin-manifest-v2.json) retains provenance and license obligations. This is selection for later extraction/adaptation, with no source imported into the recovered core. The larger game, renderer, resource and host architecture remains deferred to its existing tasks; P1-05 and all integration/phase gates are unchanged.
+
+The subsequent [P1-R02/R03 spike](../recovery/kylofon-r02-r03-results.md) now proves private Windows C17 build compatibility and bounded native-data/original-instruction agreement. Its scalar wrapping, division/input gate and separate profile adapter are tested within that candidate. The DLL's deterministic host stubs are a test boundary; they do not establish the final host-independent core, second-host portability, actual SS/frame contracts or provider architecture.
+
+The [Kylofon assessment](kylofon-reuse-assessment.md) recommends qualified reuse of its integrated EGA game/scene/resource/host code. Its fixed DGROUP memory array, synthetic near stack, SDL-required C11 executable and EGA-only interfaces are a compatibility starting point, not acceptance of this target architecture. Preserve original-offset locators and our independent raw bus/ABI contracts while admitting the narrower native caller profile. Do not force every raw historical ABI into the final host API, and do not discard unproved original aliases or lifetimes to simplify that API.
+
+Before native integration, add a host-independent C17 build and explicit state/scheduling/resource/provider boundaries. Separate game-folder reads from user-profile selection/score writes, externalize original text/data, and retain defined arithmetic and memory access. Isolate EGA rendering and speaker sequencing behind interfaces that later support CGA/Amiga providers without changing simulation/RNG. A temporary offset-based state representation is acceptable if ownership, snapshots and switching invariants are explicit and verified. Full rewrite into typed structs is not a prerequisite for the admission spike.
 
 ## Module boundaries
 

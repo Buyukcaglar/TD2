@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_controller.cmd",
+    "sha256": "a2ddcb776c24636849bc47fa2a95a9d7671cfd2fa55318aedac7b94a1440bcaf"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_controller.c",
+      "sha256": "049ad9bb352f09fdffb5e813425f9237ddd2bb08d40a368b739c180741fcd50a"
+    },
+    {
+      "path": "src/recovered/td2ega_record_flags.c",
+      "sha256": "de43feceb89c165cd5320d03fdf10cd2a07e06ab9164336d507da1ab9e35c783"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_controller.h",
+      "sha256": "e04f86f9bdf8c629665c380b1027984d0e6997e1e66d31bdfb102b4e4edbb33a"
+    },
+    {
+      "path": "src/recovered/td2ega_record_flags.h",
+      "sha256": "b5603b606ef4bc69a9b296c8bbd7bfabdcfb0ffa2261a53cb099b1650a54aec4"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-controller-repro/td2ega_record_controller.dll",
+      "sha256": "2216092c6bad9f346a9fd63528b51f44f0705d52c165659daab21d170eef5e0c",
+      "bytes": 118272
+    },
+    {
+      "path": "analysis/build/record-controller-repro/td2ega_record_controller.obj",
+      "sha256": "3615d5e7250d8218e7a6dde9ca25fdff05b8f2d66df165bfd99976f6eab189ee",
+      "bytes": 12722
+    },
+    {
+      "path": "analysis/build/record-controller-repro/td2ega_record_flags.obj",
+      "sha256": "00f2401d0c1f98ab9c06674a2500c024878c55ffcca61a6b6651ac7f63391a27",
+      "bytes": 5880
+    },
+    {
+      "path": "analysis/build/record-controller-repro/td2ega_record_math.obj",
+      "sha256": "0c4a3d769547107de56bd7993e2fd05a01bb54a6c082c6b4ae17f23196f55c06",
+      "bytes": 10931
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-controller-build-v1.log",
+    "sha256": "65f33e7305fae410eee14043e604d7a8cf405fa81defae86622133ef9c4627da"
+  },
+  "limit": "Actual4D3F plus actual frozen4F92/5022/5446 C bodies, literalnearCALL/RET frames and actualSSPUSHF/POPFword aliases. NoSSscratch exclusions/ABI-valuemock. CPUanalysisprofile bit1set TF/IOPL/NT/reservedhigh0; explicitcallerundefinedAF input, AF1syntheticoriginalstimulus onlyafterXORAFundefined, nothistoricalCPUpolicy. UnsupportedTF/IOPL/NT overwrittenflagword stopsbeforePOPF/native5, noexception/modeeffect delivery. Fullbus/GPR/BP/CFIFDF/normaldefinedFLAGS/control/counts/prefixes. Allcallers/writers/lifetime/capacity/CPUprofile binding/exclusion/IRQs/fullstate/core/device/DOSsession/gameplay/fidelity remainseparate.",
+  "function_ids": [
+    "FN-EGA-000387"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000388",
+    "FN-EGA-000389",
+    "FN-EGA-000396"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-record-controller-context-v1.json",
+    "sha256": "43e4994532fc3b274b8bc2df467638de0f571a5907c4cfc3159524377c3b8786"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/logs/record-controller-validation-probe-v1.log",
+      "sha256": "43cd4ba3173624604568335b778488aac9dfa779244183da6fa9776301120f4a"
+    },
+    {
+      "path": "analysis/logs/record-controller-validation-v1.log",
+      "sha256": "828db647b532826f3a94f7631004a3de63046129ca260e2217b1e4871759e0be"
+    },
+    {
+      "path": "analysis/logs/record-controller-validation-v2.log",
+      "sha256": "84810586c9ee5bfb77ed67014760eaaac799ac8700c6733018fbbeed82dbe1df"
+    },
+    {
+      "path": "analysis/logs/record-controller-alias-probe-v1.log",
+      "sha256": "13d6cac70b05f146b3e1bf2a865daf5ad8338549b3cf6b65a1fabe452bdb42de"
+    },
+    {
+      "path": "analysis/logs/record-controller-alias-probe-v2.log",
+      "sha256": "6a9f63c47dc34d575790152c82f3161dcdeb7386a94ae6c3d32f87dfb2f89c49"
+    },
+    {
+      "path": "analysis/logs/record-controller-context-v1.log",
+      "sha256": "4064d838cdd74fd5d4697fd5a4ec02f63da8d16958057dd31aa128c26431fea0"
+    },
+    {
+      "path": "analysis/logs/record-controller-native-v1.log",
+      "sha256": "82481ba69f5813421bb2ea3a7991ec1ff807d8316bb954da9f3350131228b20e"
+    },
+    {
+      "path": "analysis/history/validate_record_controller_before_adjacent_frame_alias_v1.py",
+      "sha256": "35be7775eab2c8370fdebc2e8efff675442028ae7601e713432484ffd3171cba"
+    },
+    {
+      "path": "analysis/history/validate_record_controller_before_alias_probe_v1.py",
+      "sha256": "0f4b5e1ff0b02b7ed04dede0c2981c30dd2f72e71ddb04d652652a50c07b05eb"
+    },
+    {
+      "path": "analysis/history/validate_record_controller_before_optional_branches_v1.py",
+      "sha256": "309bd8cbe6d5c632d0ebeed8d0c9a6dde7bf52cd405781d44565315bdc7c7bfb"
+    },
+    {
+      "path": "analysis/history/validate_record_controller_before_supported_alias_v1.py",
+      "sha256": "d0e011498d7d12721570722f474c2e6f9c669cb0ef04440d38ef816103c4d661"
+    }
+  ],
+  "failure_resolution": "No C/build or instruction-comparison failure. Prior suites matched but lacked optionalbranch or supportedflagalias coverage. Actual adjacentnearframes causedrawreturns beforePOPF, andSP33BA changedearlier33B9guard. Selectedv3 addsactualsupported52D8flagword0040 andseparateunsupportedPOPFaliases. Reviewinitialassertion correctedgraphcallordering; nativeinitialassertion correctedthreeunconditionalCALLs/fivesteps. C/DLLunchanged; priornativev1/v2 dependencyhashes supersededbyv3."
+}

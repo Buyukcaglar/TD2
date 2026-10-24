@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_bridge.cmd",
+    "sha256": "79267cba7646bda8fc4ab3ba9a21209792ad86354d05e95adbbd939032ba85a3"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_input_bridge.c",
+      "sha256": "e3185da9b14de526481bd7de70f9ea3a34276968ba842e182cf6c87e0e82ce30"
+    },
+    {
+      "path": "src/recovered/td2ega_input_bridge.h",
+      "sha256": "7ae28c50bb851033b38267c6161de8abc033db6cff8531cdb7f79c180bad0d43"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-bridge-repro/td2ega_input_bridge.dll",
+      "sha256": "4be54572a011df0f5a4208533f26d1a44f333732bfe91784e121d84880e52e1b",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/input-bridge-repro/td2ega_input_bridge.obj",
+      "sha256": "cb9755a6d7dbe99edbf00b6bc2dd4816799fbe5e1b9ca7c36231180c826777d2",
+      "bytes": 4552
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-bridge-build-v1.log",
+    "sha256": "d2caaec8366154ec63d197865dd3cff1ada7f844b304eb2148132b51cdd2194a"
+  },
+  "limit": "Five complete input bridge bodies, ordered farpointer publication/argument alias, dynamic far target, BIOS16ZF/CFIFDF/segments/register responses, ASCII/extended lowbyte behavior and finite drain compared. BIOS/far leaves are ABI mocks with synthetic interrupt frames, not actual installed handler or device. Dynamic target domain/lifetimes, IRQ/nesting, inputsession/core/game/fidelity pending. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000161",
+    "FN-EGA-000162",
+    "FN-EGA-000163",
+    "FN-EGA-000414",
+    "FN-EGA-000165"
+  ]
+}

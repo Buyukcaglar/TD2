@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000167",
+    "FN-EGA-000199",
+    "FN-EGA-000203"
+  ],
+  "result": "pass",
+  "vectors": 2912,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "eb34769e316cf2f789d7929ca986f3744c1e31d2931728d04085bd50896039f5",
+  "source_sha256": "84555b4cdf268de6fe5ed8889dca02ac4fafdd0d2c6505908c1cbe684a61ce2d",
+  "validator_sha256": "89b440d8e0ab395505e5b6d6a4a54b83cd85cf7f12a4ec0b4508f458e17e983b",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 86112,
+  "fixture_coverage": {
+    "paired_counter_IF_CF": 128,
+    "counter_reads": 5564,
+    "input_calls": 4120,
+    "deadline_wrap": 858,
+    "absolute_unsigned_deadlines": 384,
+    "input_before_or_after_deadline": 2400
+  },
+  "instruction_sites_exercised": 43,
+  "instruction_sites_in_fence": 43,
+  "limits": "Complete79C8/7A55/6A6A serializedsyntheticbus/counterstream/69FEABI profile. Actual79C8bodyexecutes, CLI/STI IF1 and32bitmoddeadline/absoluteunsignedcompare/wrap retained, inputexit/timeout/DSchange/CFIFDF/frameBP/args compared. Counterevents are data-boundary fixtures, notIRQ delivery orclockrate. No physical086C meaning, actualcallback/IRQ/BIOS/inputsession/resource/core/game/fidelity acceptance. Nativebudget/adapter diagnostics separate."
+}

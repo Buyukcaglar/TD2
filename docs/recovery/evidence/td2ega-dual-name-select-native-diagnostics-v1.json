@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 29,
+  "script_sha256": "f7eb9fa51f499b0af8dcbc61e317e1780c9c804fd161e1eb4583009df0a0041b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "62f194e5ab8eb825a65d426189d67989a37858d9ca00f29ca815cc85a53582bd",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_dual_name_select.py",
+      "sha256": "ed062178aec42b6a026c18db6b46295409a9f88f0d7cde5ce91a318022f82843"
+    }
+  ],
+  "limits": "Nativeinterfaces/twoqueries-lastmatches/primary0-secondarycount>1fallback/signedcount/actualSSFNs-budgetgates/BSSlocal-countalias/output-rootfarCSalias/savedBP-negativeindex-signedIMUL-DX-CF/bothcopydest-childfarCSaliases/whole1092-1093IMULboundary/incomingDF only. Originalcomparison separate; schemas/NUL-capacity/writers/storage/ownership/lifetime/exclusion/core/session/fidelity open."
+}

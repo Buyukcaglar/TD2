@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 23,
+  "script_sha256": "4630e351eb62b162c12552c55eb36e09136c4c3664750ceb18167fa85823355a",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b147c0b38014f6a21e9d5d02f7e29be5a9c7510d9441c6ac7cbcf21ff8f2f07f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_block_align.py",
+      "sha256": "b8614ce73022ed7c06b8682ec938a6097ea275155a94496023788cb538ed32ee"
+    }
+  ],
+  "limits": "Nativeinterfaces/ESoverride-SSalias/rawoddheader/overflowbranches/actualreturnedDXretry/sharedbudgets/requiredZF-vsAX/realSSCXrestore diagnostics only. Originalcomparison separate; syntheticDOSnoINTframes/historicalCPU-A20unqualified, wholecaller/writers/capacity/core/session/fidelity open."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "purpose": "Separate frozen external-source snapshots from the unchanged 250-original media manifest. No directory-wide custody exclusions.",
+  "repositories": [
+    {
+      "path": "reference/repos/kylofon-test-drive-2-sdl3",
+      "url": "https://github.com/kylofon/test-drive-2-sdl3",
+      "commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+      "snapshot_manifest": "docs/planning/evidence/kylofon-reference-snapshot-v1.json",
+      "use": "Read-only source and documentation reference; no automatic gate credit or runtime authority. Build/edit only in a separate future working copy."
+    }
+  ]
+}

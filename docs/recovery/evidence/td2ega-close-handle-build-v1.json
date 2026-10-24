@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_close_handle.cmd",
+    "sha256": "42de44fe3ea49eff3bedbc3d0f5faa6a308b8e79f48364bd6d43f12cc1d4786d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_close_handle.c",
+      "sha256": "45a8378717ea55980438fc1ea1bd98bee510e90a869d56723640bcf68f7d469a"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_close_handle.h",
+      "sha256": "3e371db95bdce7d14121882f4a78680f1ba917c17f406f56fb0f9334552547c0"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/close-handle-repro/td2ega_close_handle.dll",
+      "sha256": "cd15796db88dfd239aced37f995192a81fa85e2ae646ea53f4026a24a409a753",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/close-handle-repro/td2ega_close_handle.obj",
+      "sha256": "baa3213efb3bfccf43bb01f58915bfe72f4dbf05f2103fa9aab746e6bb27f1e4",
+      "bytes": 4413
+    },
+    {
+      "path": "analysis/build/close-handle-repro/td2ega_table_scalar.obj",
+      "sha256": "3069dd9d205a041347037b895e8f7c90022bbf8b400dc41b19e35576237feb65",
+      "bytes": 5794
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/close-handle-build-v1.log",
+    "sha256": "74ddf99fcadd38740abbcf3dd255a2f59274edfbf21d4d4b7c58fa9138591335"
+  },
+  "limit": "Actual13A8:223E/shared0924-0939tails plus actual094Anearerror mapper, fullnestedSS/wholebus/GPR/BP/CFIFDF/actualrootfarreturn orrawchildnearreturn. Unsignedhandlelimit/rawinvalid0900error, successclearbyte6DA4+actualreturnedBX/DS. SyntheticDOS3Eservice fullreturnedregister/BP/DS/IFDF andbus mutations, SS/SP/CSpreserved, no realINTentry/return frames oractualDOS/fileoperations. NativebeforeINT/adapterdiagnostics separate. Caller/otherFLAGS/bounds/writers/lifetime/core/resourcefedP2/P3/device/session/game/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000310"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000272"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-close-handle-context-v1.json",
+    "sha256": "f972f176941e616d6fa9b0b02b8fab6cacbdd420c0e67d8cf1a7a7871b4b5e3f"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_close_handle_before_mapper_errors_v1.py",
+      "sha256": "978dc2135817c55a895c55ad6460e86e22cce4dc47b8a758d92033e4185225f6"
+    },
+    {
+      "path": "analysis/logs/close-handle-validation-v1.log",
+      "sha256": "b0d4fb53941fa84157dc23581d54da0381e12e8051d40eaede3a7964025c59a7"
+    },
+    {
+      "path": "analysis/refine_close_handle_mapper_coverage_v1.py",
+      "sha256": "0b570df0981a87c9d9a4ca80e07af2117b91a5fcccdd2a18cc03b170acc31daf"
+    }
+  ],
+  "failure_resolution": "No C/build/instruction-comparison failure. v1matched16384cases butlackedthree error-mapper sites. Selectedv2 adds13/20/21/22rawerror responses andcoversall45sites. C/DLLunchanged; nativev1dependencyhashsupersededbyv2."
+}

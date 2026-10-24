@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_sequence.cmd",
+    "sha256": "4053bbfacc1f674586e0b001a82149246040e70f6f4c2b926983584d779ca2d2"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_sequence.c",
+      "sha256": "b440a7c612ddccf3a956b822db66dddc4e07931416399e79e392271c2ceb0bd4"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.c",
+      "sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_record_sequence.h",
+      "sha256": "1cec889529dac4413ebed899f3c7e4a022460830e2714687e70bc12509cb6d5b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.h",
+      "sha256": "46be463e0d8382fac77f4114180df0d0feed44e045785183427a38d9b63d25b8"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-sequence-repro/td2ega_record_sequence.dll",
+      "sha256": "cbe580fa4524c0a1dc96fb979332620409e503149c14500e8c4936817355ff17",
+      "bytes": 115200
+    },
+    {
+      "path": "analysis/build/record-sequence-repro/td2ega_record_sequence.obj",
+      "sha256": "43559f4705c4a6175b6fed0336407394c96a11e63abe0b5ee5f9d6bd754ec03b",
+      "bytes": 7296
+    },
+    {
+      "path": "analysis/build/record-sequence-repro/td2ega_record_math.obj",
+      "sha256": "c04e32b22cb619e53e2f8eb499ac779b33f8a437d19bf002d34fcb44feecd993",
+      "bytes": 10927
+    },
+    {
+      "path": "analysis/build/record-sequence-repro/td2ega_small_arithmetic.obj",
+      "sha256": "ebb0d16b044dc6e15289a4170da5d88ebf2505bae64eff34a7d4d23f9bd2a140",
+      "bytes": 6178
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-sequence-build-v1.log",
+    "sha256": "a2e1bcbdba4d45dfcc58e1490619ad46134ca37775bbdd58c8affa08a93826d8"
+  },
+  "limit": "Actual5ADA far root with two actual5B5A and two or four actual5C30 near C bodies; no ABI-value leafmock/SSscratch exclusion. Fullbus/nestedSSsaves/near-farframes/GPR/BP/CFIFDF/control/actualCALLcount and child-loop budgets. Raw source count/origins and ordered rereads/updates; count0 selector LOOP65536 retained. Child normal RET checked for CS/IP/SP, changed raw coordinates exposed after actualRET never followed. Actual1B2Ccaller/fieldproducer/writers/capacity/alignment/sortedness/aliaslifetime/exclusion/otherFLAGS/core/resourcefedP2/P3/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000127"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000128",
+    "FN-EGA-000129"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-record-sequence-context-v1.json",
+    "sha256": "51855bf25d2b6fb666fc7df13acca680290a0d0fcfb04b9e0a6dfc87bf3c7b4a"
+  }
+}

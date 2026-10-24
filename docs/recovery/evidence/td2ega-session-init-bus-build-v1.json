@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_session_init_bus.cmd",
+    "sha256": "0adf182fde248856c1ef70fb3c7e7a6a2e440e35ea8b71ffb817870f46eb770a"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_session_init_bus.c",
+      "sha256": "8a2c75d9839d62c804a79356347bd7b8a64f775a3e0a2c95ec674321072b1c3a"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_startup_tail_bus.c",
+      "sha256": "277a2e008988136411f4a8dc938b2b1ded12fc5f88f14959ef32c6adc6dc2f47"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.c",
+      "sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callback_bus.c",
+      "sha256": "46d93d3c8d0e8d139d3c84e7a2e9b075f12c8ebcab34fddeeb3ecf4be5d4ffa7"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_session_init_bus.h",
+      "sha256": "f616f030c23d75f0fc79bf6eeed719d6f6b2b886ef693fbbc839ac2cc88cd97a"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callback_bus.h",
+      "sha256": "9f4315debfacd2acc2c528e96a37c8f55a6f7ec4fbec7788a73bc43c3c655c25"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.h",
+      "sha256": "a4095c9e94db41a6be15fc4bee4d1083fdc25aacbb3fb29799745c35c068dba6"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_startup_tail_bus.h",
+      "sha256": "67cadc0998d7d313cebe57b4c8993952d0f4617d07356be7b0d123aa83bd2231"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/session-init-bus-repro/td2ega_session_init_bus.dll",
+      "sha256": "50db84cef4e786a1774771f06493c8c28d4a90686281b93af40cee196568fbc2",
+      "bytes": 123392
+    },
+    {
+      "path": "analysis/build/session-init-bus-repro/td2ega_session_init_bus.obj",
+      "sha256": "eb88ac607d50df1e20885621af4343623375703c5a925651fab0a423d03c6052",
+      "bytes": 19353
+    },
+    {
+      "path": "analysis/build/session-init-bus-repro/td2ega_timer_startup_tail_bus.obj",
+      "sha256": "5e7b3b8719c3aaef8a0eeee52cfc59de0735bb00aa9b32d520b7eb7078e9fa8b",
+      "bytes": 8030
+    },
+    {
+      "path": "analysis/build/session-init-bus-repro/td2ega_timer_control_bus.obj",
+      "sha256": "dbf624c16af29586b22b08a1331e9d0777004fc6b07d05a57345600c03a696bb",
+      "bytes": 16900
+    },
+    {
+      "path": "analysis/build/session-init-bus-repro/td2ega_timer_callback_bus.obj",
+      "sha256": "233453545f756cbfdaaedcc149d35336d19def1688ad9c02c755f3022f3d916f",
+      "bytes": 10984
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/session-init-bus-build-v1.log",
+    "sha256": "4a2b908b101bd8616095445c8f62e7ebd3b34e27f068680dcd4c0aaa6d5bb943"
+  },
+  "limit": "Whole3F40-3FF9-38F2-1E31/actualnear5427/frozennative601C-614Ctail/fullSSfar-nearCALL-RET/orderedDSwrites-liveSSframes/fullGPR-BP-CFIFDF-definedFLAGS/wholeRAM-orderedports-independentCPUwrites. ConditionalSS66E6..67E7stackwrites arewitnessed, notintentionalringreset/seeding/RNGpurpose oractualcallerstackdomain proof. Budgets/rawchild/fatalpreCALL/preRET remainqualifications; no actualIRQ-allwriters-storage-lifetime-exclusion/startup-to-exit-complete-core/P1-GATE/DOSsession-renderer-audio-game-fidelity. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000124",
+    "FN-EGA-000125",
+    "FN-EGA-000111",
+    "FN-EGA-000082",
+    "FN-EGA-000126"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json",
+    "sha256": "9934d675de181faf84c247f60e2210af5a48cbc27ad7447599a6e4061bf4c1a5"
+  },
+  "build_setup": {
+    "path": "analysis/history/session-init-bus-build-setup-v1.json",
+    "sha256": "8825788ef2350f336f6c63bbc56a365c93abb1e9784412d86e62aad015dcf29e"
+  }
+}

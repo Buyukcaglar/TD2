@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_music_tick.cmd",
+    "sha256": "b5d30136399eb9a279b8ae2440a3329ce3930ab12f2704faf897dbb4c8ce694f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_music_tick.c",
+      "sha256": "ab776b90165e996f9a5cdb22d701632e73d56c44fdd8666da5213817ba804804"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/music-tick-repro/td2ega_music_tick.dll",
+      "sha256": "eedc02ee01f57847e2a874bb4d8d56078c4c3310ce7c2c0762b6855422cfd4ae",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/music-tick-repro/td2ega_music_tick.obj",
+      "sha256": "36d239e8a0c93b4767d07cc02fa8fc4e1411e431687121db65757baf12bba4cb",
+      "bytes": 9371
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/music-tick-build-v1.log",
+    "sha256": "f9493726a96881037fe42d7e6f8c5071afc18d679203e5a20ef2e3a1afa5f994"
+  },
+  "limit": "Serialized music75EA C17, synthetic fullbus and typedport requests. Explicit command-budget diagnostics; no sourcecorpus/PIT/speaker/IRQ/timebase or audio/game/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000362"
+  ]
+}

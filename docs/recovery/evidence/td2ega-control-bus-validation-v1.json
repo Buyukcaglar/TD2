@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000373",
+    "FN-EGA-000375",
+    "FN-EGA-000376",
+    "FN-EGA-000377",
+    "FN-EGA-000378"
+  ],
+  "vectors": 34720,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ae8f2a2420396c2816923b2c53765c71e778c664902ec8739cfc79aa3ea54dbd",
+  "source_sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505",
+  "validator_sha256": "30e578ccc0753d4848180646c642285a64d52a3051c1508c71eba28e1d890c1c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 489376,
+  "instruction_sites_in_fence": 68,
+  "instruction_sites_exercised": 68,
+  "fixture_coverage": {
+    "root_near_return": 28396,
+    "actual4612_near_CALLs": 7504,
+    "bus_write_events": 65316,
+    "minimumSP18_cases": 5120,
+    "DS_equals_SS_cases": 17360,
+    "raw_root_returns": 1316,
+    "entry_4588_cases": 6944,
+    "seeded_random_cases": 4000,
+    "entry_44D8_cases": 6944,
+    "entry_45BF_cases": 6944,
+    "entry_4612_cases": 6944,
+    "entry_45FC_cases": 6944,
+    "before460E_CALL_prefix": 5904,
+    "raw_child_near_return": 420
+  },
+  "limits": "Additionalfullbus/SS/CFIFDF view foractual4588/44D8/45BF/4612/45FC, actual460EnearCALL4612frame/productbody/RET2, allsourceorderedreads/writes/word-bytewrap/signedguards/rawCF, noABImock orSSscratch exclusions. Priorhigher-levelgroup sources/receipts remainfrozen/separatelybounded; newliteralbus bodies retainactualnestedSS effects excludedbyoldgroupinterface. NativebeforeCALL/rawchildRET exposedafteractualRET targetneverfollowed. Actualcaller/DS-SS/tablebounds/writers/units/lifetime/IRQ/core/resource/device/session/gameplay/fidelity remainopen."
+}

@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000418"
+  ],
+  "vectors": 3184,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7c113c8979ae7c880850f67629f8b9a6a296f6475f2c019bcdd0bfc0c9a14e80",
+  "source_sha256": "90ba2e5d543f928a52a9b4a331f246100645b77511a8fde99ca751f47b6e0199",
+  "validator_sha256": "1929b912745c8f0735a578a70630a965d6f7c32a4092dcb9d76cbdfcd7d1a639",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 449552,
+  "instruction_sites_in_fence": 74,
+  "instruction_sites_exercised": 74,
+  "fixture_coverage": {
+    "root_far_return": 2092,
+    "byte_OUTs": 19236,
+    "byte_COPY_transactions": 107500,
+    "row_heads": 6716,
+    "CPU_bus_writes": 142524,
+    "DS_equals_SS_cases": 1200,
+    "incomingDF1_cases": 1592,
+    "adapter_bus_mutations": 156,
+    "raw_root_returns": 4,
+    "normal_final_ADDSP_carry": 32,
+    "height8000_cases": 480,
+    "prefix_work": 1044,
+    "preRET_qualification": 48
+  },
+  "limits": "ActualC784/fullSS-sixargs/SSlocal-rereads/in-placeSAR3source-destX/SAR3width/CSsource-destrow-plane-strides/DSA000-CLD/fourplanes-zero-skip/byteOUT/atomicbyteCOPYrawRAMprofile/do-oncerows-wideDECJG/globalworkrowhead-port-copybudgets/wholebus/GPR-BP-CFIFDF/actualSSFNs-farwords/native5preRET. SourceoriginalMOVSBstill executesidempotentbytewrite/actualCPUwrites. No realEGAreadselector-latch-controller/renderer/clipping-coordinatebounds/allwriters-storage-lifetime-exclusion/historicalCPU-A20/core/resource/CGA/session/gameplay/fidelity closure."
+}

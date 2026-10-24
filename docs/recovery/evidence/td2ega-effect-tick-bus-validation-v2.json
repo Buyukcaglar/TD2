@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000403"
+  ],
+  "vectors": 16710,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "880c55e0a3bbaef772097929ad5bb9064f8f522abd59e8d1f71feb2298413cc6",
+  "source_sha256": "8e4ce1ec960ca6864ca817d1ee98b99b7396491533609e53a2046145eafe4818",
+  "validator_sha256": "32e98120dd5eabb187abfaf4bf7a41091d7bfe914c49ef01a80ba231e12cdb31",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-build-setup-v2.json",
+      "sha256": "0d29b64fb2818738fcb2bd764be79c1222266c3e3dce6376e5610813fdbb750e"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-refinement-v2.json",
+      "sha256": "e6b1c1c2b2416b0154fb9c684fe8e3bcbaebe66547b51be8c49eb4d6322529e0"
+    },
+    {
+      "path": "analysis/history/effect-tick-bus-validation-preparation-v2.json",
+      "sha256": "25ef6d276096a512fc6d34253dae2e2171d8af9bc640f87ca70c93bad2d211ac"
+    },
+    {
+      "path": "analysis/reviews/effect-tick-bus-frontier-v1.json",
+      "sha256": "720a709e9e7bf39fbd309772de69fed493300084e84ba989be02bc4a698072fb"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-effect-tick-validation-v1.json",
+      "sha256": "f69f319688ea804535b25c5bb0a5b687e6f2686d81fd21eaa7bdfdbd03634f54"
+    }
+  ],
+  "original_instructions_executed": 389648,
+  "instruction_sites_in_fence": 140,
+  "instruction_sites_exercised": 140,
+  "fixture_coverage": {
+    "tag_entry_counter_profiles": 1440,
+    "status_0": 15808,
+    "actual_CPU_writes": 43940,
+    "ordered_ports": 43598,
+    "DS_equals_SS": 428,
+    "retired_root_CF_0": 14492,
+    "changed_root_coordinates": 150,
+    "retired_root_CF_1": 1316,
+    "tag_all_event_bytes": 2560,
+    "tag_all_shift_bytes": 6144,
+    "tag_loop_signed_boundaries": 264,
+    "tag_effective_offset_wrap": 36,
+    "tag_queued_pointer_transfer": 12,
+    "tag_source_group_alias": 10,
+    "tag_varied_finite_states": 4096,
+    "tag_actual_SS_alias": 784,
+    "status_5": 168,
+    "tag_partial_budget": 800,
+    "status_3": 634,
+    "tag_port_memory_mutation": 72,
+    "tag_currentDS_physical_wrap": 96,
+    "tag_literal_command_table": 330,
+    "status_6": 100,
+    "tag_CS_table_SS_alias": 66
+  },
+  "limits": "Additional6269fullSS/currentDS/actualfarRET-aftereffects/whole1MiBRAM-GPR-BP-CFIFDF/definedFLAGS/independentCPUwrites/orderedbyteports. LiteralcurrentCS6334words/11recognizedtargets/unknownprefix6/CS-table-SSaliases/256event-andshiftbytes/JS-afterDEC/queuedcycles/SS-state-source-framealiases/currentDScontrast/20bitwrap/portbusmutations/nativebudgets-preRETqualification. Portadapterbuswrites separatefromCPUcounts. No historicalCPU-IRQdelivery/timeunits/audio/fullresources/sourceallwriters-lifetime-exclusion/actual6269-first403B-core/P1-GATE acceptance. Physical086Cunassigned/CGAbehindEGAclosure."
+}

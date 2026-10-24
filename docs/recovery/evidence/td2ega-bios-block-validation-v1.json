@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000236",
+  "vectors": 1024,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "5b1cac688211ea183c3ba68ff80983b390be706526b0bd3acb923853c3322463",
+  "source_sha256": "0e5d0173f9c2897c241829820d98566ccd089240979d17f718b7c86a6410cc08",
+  "validator_sha256": "7f95d9761c78be7061d178f2088d995b758ad64efddd1c48597c3e4ac7e4bb47",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 10240,
+  "instruction_sites_exercised": 10,
+  "instruction_sites_in_fence": 10,
+  "limits": "CompleteABFA raw BIOS10AX1002/ESincomingDS/DXnearSSargument, sixbyteinterrupt/farreturn frames, BP restoration and explicit returnedCFIFDF/registers compared. BIOSbody ABI mock; no assignedblock extent/decodedpalette/text semantics, actualBIOS/device/rendering/IRQ/core/game/fidelity. Native diagnostics separate."
+}

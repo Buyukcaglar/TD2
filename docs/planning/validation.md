@@ -1,6 +1,16 @@
 # Acceptance and validation requirements
 
-This document defines future tests. Only static inspection, metadata generation and documentation consistency checks were performed during planning. No game was launched, source built, original resources rendered or audio played.
+This document defines integration and acceptance tests. Existing recovery milestones include bounded C17 builds and original-instruction comparisons; those do not establish complete-game acceptance. The 22 October 2026 upstream review performed static inspection, metadata/custody checks and verifier regressions. It did not build or run the upstream game, decode the complete corpus, render resources or play audio.
+
+## Admission of reused implementation
+
+P1-R02/R03 have completed the bounded [admission spike](../recovery/kylofon-r02-r03-results.md): 2,233 admitted original-body comparisons pass at 11 entries; 291 upstream baseline disagreements are corrected; four SS-alias cases remain explicit excluded mismatches. Separate support v2 passes 380 checks. C17/W3 build compatibility, native data API agreement, raw ABI/FLAGS equivalence, complete sessions and fidelity remain separate. [P1-R04 is complete as a source-selection decision](../recovery/kylofon-r04-reuse-decision.md); every broader gate below remains pending. Its [normative allowlist](../recovery/evidence/kylofon-reuse-decisions-v2.json) selects six value groups covering those 11 already-recovered entries plus four support groups, retaining the exact tested domains and exclusions. The [origin manifest](../recovery/evidence/kylofon-reuse-origin-manifest-v2.json) records provenance and license conditions. P1-R04 adds no test execution, source integration, recovered entry or runtime/phase acceptance; any later extraction/adaptation requires fresh checks of the resulting source and dependencies.
+
+P1-R02/R03 must compare the pinned candidate source with our admitted image and independently retained fixtures. The [review](kylofon-reuse-assessment.md) and [gap register](evidence/kylofon-gap-register-v1.json) define the initial conflict matrix. Validate representative arithmetic/RNG consumption, raw codec inputs, timer/input/actualSS, simulation and EGA primitive paths before larger import decisions. Preserve source/build/dependency/fixture pins and both failed and passing attempts. Candidate sample success is not whole-core acceptance.
+
+Explicitly distinguish a native supported-caller profile from our broader raw-contract bus models. Test or prove exclusions for DS!=SS, live stack aliases, 20-bit wrap, full LOOP domains, short DAT reads, stale registers, device/FLAGS state and changed return cleanup. Preserve literal0040:046C physical086C and treat any host clock mapping as a separate adaptation. Verify source-directory writes are absent before native use; user-profile overlays must work with read-only originals. The upstream --check path loads only TD2EGA.EXE and proves no corpus/session/pixel/audio gate.
+
+Imported tables/text and reference documentation require an explicit original-media classification before package acceptance. Retain all existing content, visual/audio, original edition and switching gates below. Upstream confidence labels, source quantities, function indexes and author-reported playability supply no automatic gate credit.
 
 ## Evidence gates
 

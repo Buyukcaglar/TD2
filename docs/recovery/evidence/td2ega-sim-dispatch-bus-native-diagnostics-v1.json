@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 10,
+  "script_sha256": "e2c4e0925101b9fe1e19479e5a0578bd5f3e1b7f391ef13b79e8450ee43df4f0",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b5fd86bb437bd80835ed68b36adb87ecb5a06dd8b777da9f99e08e8c55b4f9f5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_dispatch_bus.py",
+      "sha256": "9184006e2cc09438228c5ef9095673c8ff159e1293588b30ef4b0cf882c716c2"
+    }
+  ],
+  "limits": "Ten native-only null/count/SP/entry/inputZF/booleanflag checks before effects. Notoriginalbehavior/caller-IRQ-core/game-fidelity evidence."
+}

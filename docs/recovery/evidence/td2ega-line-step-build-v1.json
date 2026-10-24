@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_line_step.cmd",
+    "sha256": "bf9e9fb65c17814c39062fc0e1871caefc4974a79ee786c6dba477dd53aaf895"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_line_step.c",
+      "sha256": "0d36ced359488773b1261ee9a5d7022e5a1d1a93ce791929e08d24a665727ef4"
+    },
+    {
+      "path": "src/recovered/td2ega_line_step.h",
+      "sha256": "299d3dd30131b77d3658540066f4f4d9499f499d78ac340af80133b25c145252"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/line-step-repro/td2ega_line_step.dll",
+      "sha256": "6d0e7ffde75eb135fbd905aa6949e22398dd0048009fc4f44f350961accae329",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/line-step-repro/td2ega_line_step.obj",
+      "sha256": "7560b6bbcb2c4ca7c1b99bf0a50cdb79992ef2dc1bbcc7c1c2b6c46b050d44e5",
+      "bytes": 5763
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/line-step-build-v1.log",
+    "sha256": "616d27c068b78134ec18b23e1537f06d70bfce07628e2f8dc0aef0cda84daeb2"
+  },
+  "limit": "Complete06C3 serializeddirect-entry/nearRET6/implicitCX-DX/DFSTOSW/signedclipping/suboverflow/unsignedbranch-signedloop/orderedCS071F0735INC-DECpatch effects compared. FreshCPUperfixture, includesmixed/unknowninitialunusedbytes andworkprefixesbetweenpatches/innernonprogress. Count0/1 interpolation quirks retained. Explicitnativeargs representoriginal3SSwords; controlframes/data/code separateexceptauthoredpatches. No actualIRQ/reentrancy/fullmutabletransitiongraph/callerbounds/2477integration/resource/renderer/core/game/fidelity; native diagnostics separate.",
+  "function_id": "FN-EGA-000069"
+}

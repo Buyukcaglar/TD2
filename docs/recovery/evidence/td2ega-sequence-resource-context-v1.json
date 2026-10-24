@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "ef2d56341eef6082eb66175b981e7730d085974805357373108d30d16e7a6038",
+  "span": {
+    "segment": 6031,
+    "offset": 11422,
+    "length": 396,
+    "sha256": "018bb42db9ace24816a5c039bca88fb886caff1db8d3d1e09d2011d55f902d21"
+  },
+  "initial_indexed_extents": [
+    {
+      "index": 0,
+      "near_offset": 11436,
+      "initial_count": 11,
+      "four_byte_record_extent": 44
+    },
+    {
+      "index": 1,
+      "near_offset": 11480,
+      "initial_count": 12,
+      "four_byte_record_extent": 48
+    },
+    {
+      "index": 2,
+      "near_offset": 11528,
+      "initial_count": 11,
+      "four_byte_record_extent": 44
+    },
+    {
+      "index": 3,
+      "near_offset": 11572,
+      "initial_count": 15,
+      "four_byte_record_extent": 60
+    },
+    {
+      "index": 4,
+      "near_offset": 11632,
+      "initial_count": 14,
+      "four_byte_record_extent": 56
+    },
+    {
+      "index": 5,
+      "near_offset": 11688,
+      "initial_count": 11,
+      "four_byte_record_extent": 44
+    },
+    {
+      "index": 6,
+      "near_offset": 11732,
+      "initial_count": 13,
+      "four_byte_record_extent": 52
+    }
+  ],
+  "instruction_observations": [
+    {
+      "site": "06C9:3596",
+      "instruction": "mov dl, byte ptr [bp + 0x2e22]"
+    },
+    {
+      "site": "06C9:35A0",
+      "instruction": "mov bp, word ptr [bp + 0x2c9e]"
+    },
+    {
+      "site": "06C9:35A9",
+      "instruction": "mov bx, word ptr [bp + si + 2]"
+    },
+    {
+      "site": "06C9:35B0",
+      "instruction": "cwde"
+    },
+    {
+      "site": "06C9:35B8",
+      "instruction": "mov bx, word ptr [bp + si]"
+    },
+    {
+      "site": "06C9:35BC",
+      "instruction": "sub al, 0x13"
+    },
+    {
+      "site": "06C9:35BE",
+      "instruction": "mov bh, ah"
+    },
+    {
+      "site": "06C9:35DB",
+      "instruction": "mov ax, 0x2e08"
+    },
+    {
+      "site": "06C9:35E0",
+      "instruction": "mov ax, 0x2e10"
+    },
+    {
+      "site": "06C9:ABFD",
+      "instruction": "mov ax, ds"
+    },
+    {
+      "site": "06C9:ABFF",
+      "instruction": "mov es, ax"
+    },
+    {
+      "site": "06C9:AC01",
+      "instruction": "mov ah, 0x10"
+    },
+    {
+      "site": "06C9:AC03",
+      "instruction": "mov al, 2"
+    },
+    {
+      "site": "06C9:AC05",
+      "instruction": "mov dx, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:AC08",
+      "instruction": "int 0x10"
+    }
+  ],
+  "consumer_ids": [
+    "FN-EGA-000098",
+    "FN-EGA-000236"
+  ],
+  "bios10_entry": "FN-EGA-000236",
+  "correction": "3532 near2E08/2E10 arguments are raw BIOS10 AX1002 blocks throughABFA, not established text strings. Original source/control comparison unaffected.",
+  "open_obligations": [
+    "Initialprincipalgroup indexedextents are conditional on actualSS/caller/lifetime provenance; not allruntime pointervalues/bounds.",
+    "2E08/2E10 are near blocks passed asES:DX withESincomingDS toBIOS10 AX1002. BIOSreadextent/meaning/platformresponse require separate platform evidence; no encoding/text interpretation.",
+    "2E22 sevenbytecounts and2E29 scratch shareinitializedspan; zero-count256/pointAH asymmetry andwrites mustretain originalorder.",
+    "Pointword meanings/graphics effects, resource fed rendering andcompleteownership remainP1-05/09/11 plusP2-01/03/09 andP3-05."
+  ],
+  "limits": "Static pointer/count extents and BIOS instruction context only. No original point/block payload exported; no full resource decode, renderer/device/session/state-machine/game/fidelity acceptance."
+}

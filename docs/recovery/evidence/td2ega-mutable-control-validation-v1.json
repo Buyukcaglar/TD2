@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000255",
+  "covered_original_local_helpers": [
+    "FN-EGA-000256",
+    "FN-EGA-000257"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "source_sha256": "ef93d4b67d00491c6e58d2286a8233f6d78568443b54bd37e5630c948e3ba705",
+  "validator_sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891",
+  "library_sha256": "c3fa05235c8be258e5600c09209614994dfd7ded7f81f4456d0e26e66c4ffc2b",
+  "vectors": 5792,
+  "vectors_by_operation": {
+    "main": 5760,
+    "reset": 32
+  },
+  "native_only_diagnostics": 3,
+  "main_original_instructions_executed": 528520,
+  "limits": "Serialized fixed suppliedstub/AX-onlyINT11 profile, readonlyignoredcomparisons, TF0/nonwrappingstack. Main/embeddedhelper plusseparate reset; noactualfirmware/disk/IRQ/hostselfmodification, supportedruntimeprofile/fullmutablegraph orcore/game/fidelity acceptance.086Csemantics unchanged."
+}

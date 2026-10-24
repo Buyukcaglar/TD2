@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000336"
+  ],
+  "vectors": 29904,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7ce7d7ad5ce2bbbf1eacd3b7bc8e8c04541e54cafe31c185332f6bdb57d3998e",
+  "source_sha256": "7aa2dac03c48fd738e6e5cd2b8d56123ef265ea17ba45b8187c59734081df0ac",
+  "validator_sha256": "c6843f9c9413ec842f73ded50e3a47b2d1161a6f8cacef8de3c91b7d6423d6e2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_close_handle.py",
+      "sha256": "4670edbe58587ec7f01995d05ebc7160c959f6742b896617c365817b0f335efc"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1101706,
+  "instruction_sites_in_fence": 122,
+  "instruction_sites_exercised": 99,
+  "static_excluded_sites": [
+    "13A8:227F",
+    "13A8:2281",
+    "13A8:2283",
+    "13A8:2286",
+    "13A8:2288",
+    "13A8:228A",
+    "13A8:228F",
+    "13A8:2291",
+    "13A8:2294",
+    "13A8:2297",
+    "13A8:229F",
+    "13A8:22A2",
+    "13A8:22A5",
+    "13A8:22A7",
+    "13A8:22AA",
+    "13A8:22AC",
+    "13A8:22AF",
+    "13A8:22B2",
+    "13A8:22B4",
+    "13A8:22B7",
+    "13A8:22BA",
+    "13A8:22BD",
+    "13A8:22BF"
+  ],
+  "fixture_coverage": {
+    "prefix_outer": 10048,
+    "raw_root_returns": 96,
+    "syntheticDOSservices": 7880,
+    "actual_error_calls": 15668,
+    "bus_write_events": 341248,
+    "service_write_events": 3880,
+    "minimumSP48_cases": 9216,
+    "actual_far_CALLs": 22984,
+    "DS_equals_SS_cases": 14952,
+    "prefix_inner": 3328,
+    "DOS_site_22CC": 7880,
+    "root_far_return": 12704,
+    "raw_nested_return": 3824,
+    "raw_seek_return": 3824
+  },
+  "limits": "Actual2AD8 oneSSword plus actual225E/094A, threefarCALLpools/twolayersactualSSlocals/saves/near-farframes/fullbus/GPR/BP/CFIFDF/control/writecount. SyntheticDOS42fullreturnedstate/busmutations/SS-SP-CS preserved, actualINTentryframes omitted. Rawmode/negativeoffset/query/end/restore/finalseek andignoredCF sourcepaths, unsignedhandlelimit/returnedDS-BXbyteflagclear retained. NativebeforeINT/adapterfailure/rawreturns distinct fromoriginalerrors/normalreturns, targetsexposedafterRET neverfollowed. Parentfirst-current(1)/second-end(2) pools havezerooffset; thirdrestore(0) rawsavedposition resultignored. Thuschildnegativequery/end/restorepreflight23sites unreachablefromtheseparentpools, notglobaldead. Actualcaller/record-handlewriters/capacity/lifetime/IRQ/core/actualDOS/resource/device/session/gameplay/fidelity open."
+}

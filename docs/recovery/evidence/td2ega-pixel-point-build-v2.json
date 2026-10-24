@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_pixel_point_v2.cmd",
+    "sha256": "f12e9f62cc8e94cd4cd848dc93b88c1420addbf396a6bea5c5e804f8a141ac45"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_pixel_point.c",
+      "sha256": "60a445b30c736c001afe7b74131f6b52176ca28130aa22c13c9572869a55a450"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_pixel_point.h",
+      "sha256": "c8b3e3fce5f9dcae10e346e0e29ae925e74f179ac91faeaed683d81d04b084d2"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/pixel-point-v2-repro/td2ega_pixel_point.dll",
+      "sha256": "ed5de87dd2d8509dba7e8abacec6f587cb86bb55261bcb2de2794d6f2d89a2b2",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/pixel-point-v2-repro/td2ega_pixel_point.obj",
+      "sha256": "609b7d81717672c188c4f9cf968580c872f8974a061dfa141bc48f77435f20af",
+      "bytes": 5514
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/pixel-point-build-v2.log",
+    "sha256": "46eacee0c70c99963429dafe6474370cca341887ccd2df7fa870d49657c735b7"
+  },
+  "limit": "ActualBA3C/fullSS/SSx-y-colorlowbyte/unsignedxSHR3/wrappedCSrowlookup/currentDS8maskbytes/CSfirstA000hardware5wordOUTs-byteReadWrite orfourplanezero-skip/readANDwrite/atomicbyteORprofile/currentDS-CS-SSaliases/wholebus/GPR-BP-CFIFDF/devicebudgets/native5preRET. RAWRAMadapterownsbyteeffects; originalMOV/ORexecutesidempotentstore/actualwordOUTwidth2. No realEGAports-latches-controller/renderer/coordinateclippingbounds/allwriters-storage-lifetime-exclusion/historicalCPU-A20/core/resource/CGA/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000243"
+  ],
+  "covered_original_local_helpers": [],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-pixel-point-context-v2.json",
+    "sha256": "11c33c8f625662e84ba997d5ab981bd7fdd85936aa66ba4d5888634b32494ffc"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/pixel-point-build-attempt-v1.json",
+      "sha256": "997394959490b5f44865c915b85f81d5393b3ca6ad128f0ca77872076bd58a07"
+    },
+    {
+      "path": "analysis/history/pixel-point-review-attempt-v1.json",
+      "sha256": "344a34d729f43d78a26852324b99f2b05adee6d1b87c55f5972956f6da3078cf"
+    }
+  ],
+  "failure_resolution": "Buildv1compiledbutstaticreviewcaughtpreRETsitechoicerereadingmutableCSAF3C; exactoldC-recipe-DLL-logretained/cacheinitialbranch/freshbuildv2beforeoriginalcomparison. DraftreviewexpectedModRM3Dinsteadof3CatBA59; correctedassertonly/contextv2/C-DLLunchanged. Comparisonv1/nativev1passed."
+}

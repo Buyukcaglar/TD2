@@ -1,0 +1,345 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "a6221812f688fc41a73e57380499d6299886366c6c49934fcbc662477f7da9d2",
+  "instruction_observations": [
+    {
+      "site": "06C9:C701",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:C702",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "06C9:C704",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:C705",
+      "bytes": "8e4608",
+      "text": "mov es, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:C708",
+      "bytes": "8b7606",
+      "text": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:C70B",
+      "bytes": "268b4404",
+      "text": "mov ax, word ptr es:[si + 4]"
+    },
+    {
+      "site": "06C9:C70F",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "06C9:C711",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "06C9:C713",
+      "bytes": "8b5e0a",
+      "text": "mov bx, word ptr [bp + 0xa]"
+    },
+    {
+      "site": "06C9:C716",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "06C9:C718",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "06C9:C71A",
+      "bytes": "03d8",
+      "text": "add bx, ax"
+    },
+    {
+      "site": "06C9:C71C",
+      "bytes": "83c306",
+      "text": "add bx, 6"
+    },
+    {
+      "site": "06C9:C71F",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "06C9:C721",
+      "bytes": "050600",
+      "text": "add ax, 6"
+    },
+    {
+      "site": "06C9:C724",
+      "bytes": "8cc1",
+      "text": "mov cx, es"
+    },
+    {
+      "site": "06C9:C726",
+      "bytes": "33d2",
+      "text": "xor dx, dx"
+    },
+    {
+      "site": "06C9:C728",
+      "bytes": "d1e1",
+      "text": "shl cx, 1"
+    },
+    {
+      "site": "06C9:C72A",
+      "bytes": "d1d2",
+      "text": "rcl dx, 1"
+    },
+    {
+      "site": "06C9:C72C",
+      "bytes": "d1e1",
+      "text": "shl cx, 1"
+    },
+    {
+      "site": "06C9:C72E",
+      "bytes": "d1d2",
+      "text": "rcl dx, 1"
+    },
+    {
+      "site": "06C9:C730",
+      "bytes": "d1e1",
+      "text": "shl cx, 1"
+    },
+    {
+      "site": "06C9:C732",
+      "bytes": "d1d2",
+      "text": "rcl dx, 1"
+    },
+    {
+      "site": "06C9:C734",
+      "bytes": "d1e1",
+      "text": "shl cx, 1"
+    },
+    {
+      "site": "06C9:C736",
+      "bytes": "d1d2",
+      "text": "rcl dx, 1"
+    },
+    {
+      "site": "06C9:C738",
+      "bytes": "03c1",
+      "text": "add ax, cx"
+    },
+    {
+      "site": "06C9:C73A",
+      "bytes": "83d200",
+      "text": "adc dx, 0"
+    },
+    {
+      "site": "06C9:C73D",
+      "bytes": "260307",
+      "text": "add ax, word ptr es:[bx]"
+    },
+    {
+      "site": "06C9:C740",
+      "bytes": "26135702",
+      "text": "adc dx, word ptr es:[bx + 2]"
+    },
+    {
+      "site": "06C9:C744",
+      "bytes": "8bd8",
+      "text": "mov bx, ax"
+    },
+    {
+      "site": "06C9:C746",
+      "bytes": "83e30f",
+      "text": "and bx, 0xf"
+    },
+    {
+      "site": "06C9:C749",
+      "bytes": "d1ea",
+      "text": "shr dx, 1"
+    },
+    {
+      "site": "06C9:C74B",
+      "bytes": "d1d8",
+      "text": "rcr ax, 1"
+    },
+    {
+      "site": "06C9:C74D",
+      "bytes": "d1ea",
+      "text": "shr dx, 1"
+    },
+    {
+      "site": "06C9:C74F",
+      "bytes": "d1d8",
+      "text": "rcr ax, 1"
+    },
+    {
+      "site": "06C9:C751",
+      "bytes": "d1ea",
+      "text": "shr dx, 1"
+    },
+    {
+      "site": "06C9:C753",
+      "bytes": "d1d8",
+      "text": "rcr ax, 1"
+    },
+    {
+      "site": "06C9:C755",
+      "bytes": "d1ea",
+      "text": "shr dx, 1"
+    },
+    {
+      "site": "06C9:C757",
+      "bytes": "d1d8",
+      "text": "rcr ax, 1"
+    },
+    {
+      "site": "06C9:C759",
+      "bytes": "8bd0",
+      "text": "mov dx, ax"
+    },
+    {
+      "site": "06C9:C75B",
+      "bytes": "8bc3",
+      "text": "mov ax, bx"
+    },
+    {
+      "site": "06C9:C75D",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:C75E",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:C75F",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "06C9:C838",
+      "site": "06C9:C864",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:C701"
+    }
+  ],
+  "caller_instruction_view": [
+    {
+      "site": "06C9:C841",
+      "text": "mov ax, word ptr [bp + 8]",
+      "bytes": "8b4608"
+    },
+    {
+      "site": "06C9:C844",
+      "text": "mov ds, ax",
+      "bytes": "8ed8"
+    },
+    {
+      "site": "06C9:C846",
+      "text": "mov ax, word ptr [bp + 6]",
+      "bytes": "8b4606"
+    },
+    {
+      "site": "06C9:C849",
+      "text": "mov si, ax",
+      "bytes": "8bf0"
+    },
+    {
+      "site": "06C9:C84B",
+      "text": "mov bx, word ptr [si + 4]",
+      "bytes": "8b5c04"
+    },
+    {
+      "site": "06C9:C851",
+      "text": "mov word ptr [bp - 4], 0",
+      "bytes": "c746fc0000"
+    },
+    {
+      "site": "06C9:C856",
+      "text": "push word ptr [bp - 4]",
+      "bytes": "ff76fc"
+    },
+    {
+      "site": "06C9:C859",
+      "text": "push word ptr [bp + 8]",
+      "bytes": "ff7608"
+    },
+    {
+      "site": "06C9:C85C",
+      "text": "push word ptr [bp + 6]",
+      "bytes": "ff7606"
+    },
+    {
+      "site": "06C9:C85F",
+      "text": "mov ax, 0x178f",
+      "bytes": "b88f17"
+    },
+    {
+      "site": "06C9:C862",
+      "text": "mov ds, ax",
+      "bytes": "8ed8"
+    },
+    {
+      "site": "06C9:C864",
+      "text": "lcall 0x6c9, 0xc701",
+      "bytes": "9a01c7c906"
+    },
+    {
+      "site": "06C9:C869",
+      "text": "add sp, 6",
+      "bytes": "83c406"
+    },
+    {
+      "site": "06C9:C86C",
+      "text": "mov word ptr [bp - 6], ax",
+      "bytes": "8946fa"
+    },
+    {
+      "site": "06C9:C86F",
+      "text": "mov word ptr [bp - 8], dx",
+      "bytes": "8956f8"
+    },
+    {
+      "site": "06C9:C872",
+      "text": "mov si, ax",
+      "bytes": "8bf0"
+    },
+    {
+      "site": "06C9:C874",
+      "text": "mov ds, dx",
+      "bytes": "8eda"
+    },
+    {
+      "site": "06C9:C876",
+      "text": "mov al, byte ptr [si + 0xf]",
+      "bytes": "8a440f"
+    },
+    {
+      "site": "06C9:C879",
+      "text": "and al, 0xf0",
+      "bytes": "24f0"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "normalization_identity_cases": 9,
+  "facts": [
+    "ThreeSSwords headeroffset/headersegment/index; actualSSBP/SIsaves, ESargumentsegment/SIoffset. HeaderwordES:SI+4, tableBXword4*headerword+4*index+6, baseword8*headerword+6. TableaddressesnotSI-relative andbasehighcarrytruncatedbeforesegmentadd.",
+    "ADDAXES[BX]/ADCDXES[BX+2] aretwo separatelywrapped16bitEAs; raw32bitaddition thenfourSHRDX/RCRAX givesAXnibble/DXsegmentword. BXnibble/CXlowES<<4/ESsource/DSincoming/actualSI-BPrestore, CFlinearbit3; plainfarRETF4/caller6bytescleanup.",
+    "OnlydirectcallerC838atC864 pushesindex/segment/offset, restoresDSprincipalatC862, ADDSP6aftercall, storesAX/DX thenMOVSIAX/MOVDSDX andreadsresourcebytes. Thisprovestheactualfar-addressconsumer anddirectarithmeticFLAGS redefinition; producer/header-alignment/tableextent/lifetime notclosed.",
+    "Nonzeroheaderoffset isnotnormalizedintothetablebase. Offsetzero/nonzerosegment output isvalidmachineaddress, nohostNULL conversion. Ninearithmeticnormalizationidentity checks separatefromnativevectors.",
+    "SourceESfixture ranges0..9000/flatbus andrawnormalizedoutputs do notqualifyA20/device/actualDOS behavior ororiginalresourceformat. Nooriginaltablepayloadembedded."
+  ],
+  "limits": "Static operands/singlecaller/normalized-pair identity only. Actualproducer/headeroffset/index/table/buffer/outputcapacity/writers/lifetime/exclusion/newcallerFLAGS/core andresourcefedP2/P3/device/session/game/fidelity open; nofullresource decoding."
+}

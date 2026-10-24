@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000322"
+  ],
+  "vectors": 27408,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "195f4d948da0af51e380c756a6369d61bbe301094e2967fab2497d142790578b",
+  "source_sha256": "ff44c14c9a9216e6c2f1351a270ea965144976c5c004700c20c56f504355b405",
+  "validator_sha256": "addd5d2f937875556140f7f8e392601411b36571e1535039aea623473fef22d2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 676102,
+  "instruction_sites_in_fence": 130,
+  "instruction_sites_exercised": 101,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2871",
+        "13A8:2875",
+        "13A8:2876",
+        "13A8:2878",
+        "13A8:287A",
+        "13A8:287C",
+        "13A8:287F",
+        "13A8:2882",
+        "13A8:2883",
+        "13A8:2886",
+        "13A8:2887",
+        "13A8:2889",
+        "13A8:288C",
+        "13A8:2890",
+        "13A8:2892",
+        "13A8:2894",
+        "13A8:289C",
+        "13A8:289E",
+        "13A8:28A1",
+        "13A8:28A3",
+        "13A8:28A5",
+        "13A8:28A7",
+        "13A8:28A9",
+        "13A8:28AB",
+        "13A8:28AD",
+        "13A8:28AE",
+        "13A8:28B0",
+        "13A8:28B3",
+        "13A8:28B7"
+      ],
+      "scope": "2852 entered onlythroughliteral2830 farCALL withfixedmode1/highguard0 andnosourcewrites tothoseSSargumentwords beforeguard/modebranch",
+      "reason": "Parentmode1 takes286A only; secondchild/fallbackDOS48/cursorpaths cannotexecute inthiscomposition. Notglobaldead; standalone2852coversall53sites."
+    }
+  ],
+  "fixture_coverage": {
+    "prefix_root_call": 12288,
+    "root_near_CALLs": 15120,
+    "actual_far_CALLs": 8976,
+    "actual_near_CALLs": 5904,
+    "records": 35780,
+    "bus_write_events": 253970,
+    "service_write_events": 2728,
+    "metadata_DS_equals_SS_cases": 13704,
+    "minimumSP36_cases": 8608,
+    "raw_root_returns": 470,
+    "initial_DS_equals_SS_cases": 3248,
+    "prefix_far_call": 6144,
+    "prefix_child_call": 3072,
+    "prefix_record": 1536,
+    "root_near_return": 3162,
+    "returned_ZF1": 2726,
+    "root_success_ZF1_nonzeroAX": 240,
+    "root_final_CF1": 138,
+    "prefix_service": 452,
+    "syntheticDOS4A": 2266,
+    "returned_ZF0": 436,
+    "raw_child_return": 754
+  },
+  "limits": "Actual13A8:280E/2830/2852mode1/28C0 fullSS/currentDS/orderedmetadata/requiredZF. RootPUSHDX-CX/nearCALL2830 consumesexplicitZF; optionalPUSHDI/DI=SI/SI=childAX+actualchildDX/threewordstores/SUBDXDI-DECDX/actualPOPAX-CX-DX/nearRET. CFfromSUBpreservedDEC, ZFfromDEC onbodyorwrapperZF1onskip, explicitnormalflagsvalid. 29parentmode-specificsitesinfeasibleonlyfromliteral2830frame, standalone2852fullbodypassed. SyntheticDOS4Afullreturnedstate/bus/SS-SP-CSfixed/realINTframesomitted. Budgets/rawRETtargetsexposedafterinstructionneverfollowed. Actualhigher26F1/27D4/metadatawriters/domain/capacity/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

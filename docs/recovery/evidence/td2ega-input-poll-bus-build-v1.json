@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_poll_bus.cmd",
+    "sha256": "d6c9b9d6459668ea90a9b4767bb13a1cf0d30cdf53d010a5dd075636e6b7773d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_input_poll_bus.c",
+      "sha256": "75feb51218b032b693376169fab985e8ec283e000e66eb97593bf91280512563"
+    },
+    {
+      "path": "src/recovered/td2ega_keyboard_bios_bus.c",
+      "sha256": "7c8848efd22617512725db9e645de13c7ad412cd6570c1ad404cae58ec747faf"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch_bus.c",
+      "sha256": "6f5dab553ec307cfe859bf6e83e41ca23899d16ddc8223466f5836b7b3177f89"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport_bus.c",
+      "sha256": "d538ab0b3d17bfe7441ad91374d0aedc403ce76885c7360df739ab5241dd1676"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport_bus.h",
+      "sha256": "ff6025c8866127c5c5f7885a7922cd756ab09266e3cc111535166c7f8656dae7"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll_bus.h",
+      "sha256": "f934a69f810fc04b7ace5a0389276a7606f80fcf60a6c67bd60954e1b1f0e62a"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch_bus.h",
+      "sha256": "1bb5e26f9347ba4840acfe3149017ecf37b3fd95278a11bfc5846800aca9086d"
+    },
+    {
+      "path": "src/recovered/td2ega_keyboard_bios_bus.h",
+      "sha256": "4d03e3c0abaa75ecfb0d3ac28a80aab73ddf3ba083b0e44e770fa0ab59528d50"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-poll-bus-repro/td2ega_input_poll_bus.dll",
+      "sha256": "34f7f6f98c8eedcf04d31ab59865cc268bfa5bdabe2a2ccf34ebbed113a0a1f4",
+      "bytes": 116736
+    },
+    {
+      "path": "analysis/build/input-poll-bus-repro/td2ega_input_poll_bus.obj",
+      "sha256": "c62b98da2565ba8fb89cae129d3a6e0141ee198e421c1813234fd2928a1f415a",
+      "bytes": 16659
+    },
+    {
+      "path": "analysis/build/input-poll-bus-repro/td2ega_keyboard_bios_bus.obj",
+      "sha256": "79d7ce1740e7f010e0d28ccb7cdc31bafa70c6b4a9c9f5e633e7b18e6e4e2990",
+      "bytes": 4478
+    },
+    {
+      "path": "analysis/build/input-poll-bus-repro/td2ega_key_dispatch_bus.obj",
+      "sha256": "636c91178fe660189acb764d839b9e47b821f5b8f8a685431d11694f7bb075df",
+      "bytes": 4997
+    },
+    {
+      "path": "analysis/build/input-poll-bus-repro/td2ega_gameport_bus.obj",
+      "sha256": "f127a55d27e520e93b4c1998ed3e24d9f0e678959cbb9dd960e3d904557048d7",
+      "bytes": 9137
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-poll-bus-build-v1.log",
+    "sha256": "070ae196c4fd32086747c62c47eaedd92668ca9c1537d2238873159cf6d658d5"
+  },
+  "limit": "ThreeadditionalactualSSinputroots+actual69B7/6528/6686/273admittedsites; modeledINT16FLAGS-CS-IP/IF-TFentryframe, actualhandlerIRET-vsRETF2 andfullflagword-validity withexplicitundefinedAF0-1 analysischoices. UndefinedAF validitytrackedwithoutCODE-hook EFLAGSwrites; explicitAFvaluechosenatmodeledINTFLAGSstorage orsyntheticcallbackboundary, nothistoricalCPU qualification. ExactpriorCODE-hookEFLAGSconditional-executionfailureandfreshuntouched-backend128caseprobe preserved; recoveredC-DLLunchanged. Earlierfullv2all40284casesmatched267sites/missing6counterflushsites; archivepreserved and664casesperloadaddzero-countdowncandidate-flush plusADD-SP2-OFandlookup-CMPfullFLAGboundaries. FullRAM/GPR-BP-CFIFDF/definedfullFLAGS/control/orderedportrequests/CPUplusseparatemodeledINTframewrites. Keycallbackbodies remainABIeffects+privategenericRETF, syntheticreturnsnotoriginalbodyinstructions. No realIVT/INT-IRQ/PIC/DOS-device/session/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity; otherCPU/trap/reservedprofiles andactualcaller-allwriters-lifetime/exclusion/whole420A-403B-core/P1-GATE open. Oldsources-DLL-receiptsfrozen/same3originalentriescountedonce; physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000155",
+    "FN-EGA-000410",
+    "FN-EGA-000411"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-input-poll-bus-context-v1.json",
+    "sha256": "66455120789463b54d04a234b0fce869acb0dc3be6391a3d203d2496ff6fd1b2"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/input-poll-bus-probe-difference-v1.json",
+      "sha256": "0b608ce535994746decf5acaf44abda4ed82f109fb10fcd9cb6d9e7a0f9c2f24"
+    },
+    {
+      "path": "analysis/history/input-poll-AF-hook-probe-v1.json",
+      "sha256": "6490c526d80215e9f5d6dae0b81bc6bf7af96d3bbaa8e183948cc7e2ecf82b7b"
+    },
+    {
+      "path": "analysis/history/input-poll-bus-validation-refinement-v2.json",
+      "sha256": "07a1a71054f9309bb0bad40615dccd847fd373798b485c60f9eb656257e9ca80"
+    },
+    {
+      "path": "analysis/history/input-poll-bus-validation-attempt-v2.json",
+      "sha256": "a421fe2d023c89a9e766d408161ef3d8da1090f0e69f90f5ccfcc9a1f53fa337"
+    },
+    {
+      "path": "analysis/history/input-poll-native-refinement-v2.json",
+      "sha256": "e6dd0de14de34a8bd7177837800568099b9a50b83d6551207a180080aa6ce041"
+    }
+  ]
+}

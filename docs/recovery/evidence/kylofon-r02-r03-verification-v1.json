@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "result": "pass",
+  "problems": [],
+  "scope": "Evidence/hash/custody/dependency verification only; no rerun of accepted makers, compiler or differential fixtures",
+  "original_files_unchanged": 250,
+  "frozen_clone_files_unchanged": 113,
+  "baseline_tracked_files_exact": 85,
+  "existing_recovered_source_headers_unchanged": 331,
+  "function_registry_unchanged": true,
+  "current_pinned_files_verified": 547,
+  "candidate_files_changed_or_added": 8,
+  "representative_vectors": 2233,
+  "baseline_admitted_mismatches": 291,
+  "excluded_ss_alias_witnesses": 4,
+  "support_cases": 380,
+  "task_counts": {
+    "complete": 12,
+    "pending": 54,
+    "in_progress": 1
+  },
+  "native_summary_unchanged": {
+    "exports": 215,
+    "original_entries": 292,
+    "comparison_suites": 164,
+    "vectors": 7132350
+  },
+  "staged_files": 0,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 3307,
+      "sha256": "40b9e301e6acadd84f0da620f0cc6a8a349d8aacdcc6954d6a2f43f6c4270740"
+    },
+    {
+      "path": "docs/planning/backlog.json",
+      "bytes": 104069,
+      "sha256": "7935be4b6cbebfd72fc524f647e2cdacce2f3a473b3ffcb6003e911a92f97480"
+    },
+    {
+      "path": "docs/planning/continuation.md",
+      "bytes": 22306,
+      "sha256": "1baab8d22ad6ec6a9b86be75c318572d875f6d32ac5c797867635b21df86dff3"
+    },
+    {
+      "path": "docs/planning/roadmap.md",
+      "bytes": 25865,
+      "sha256": "aa97cd41d92f117700b77bf066f4d6f09fd5c71df3541aff64533ef3845d2300"
+    },
+    {
+      "path": "docs/planning/architecture.md",
+      "bytes": 13012,
+      "sha256": "70190a7ea97b0802b8f35b7d80e84afb74ae0c35b8d9c19cd89f6e04e5d67dd4"
+    },
+    {
+      "path": "docs/planning/validation.md",
+      "bytes": 13323,
+      "sha256": "bcaa532218431c4ca71097f835d3a4f90495b3945d94b3c9d4810eac93c1bb4f"
+    },
+    {
+      "path": "docs/planning/risks-and-estimates.md",
+      "bytes": 10713,
+      "sha256": "aaf8b38089c5f9fdf55861211bdb0d2139024d2a5dd24bc5c4d0afbbecff743b"
+    },
+    {
+      "path": "docs/planning/tooling-and-sources.md",
+      "bytes": 21380,
+      "sha256": "20939abc0261445794520095a6affab100e6aa1a24ac2a4cea1dc9396113d25c"
+    },
+    {
+      "path": "docs/planning/kylofon-reuse-assessment.md",
+      "bytes": 18466,
+      "sha256": "1ab5e26fd965da590de7a1bb38a8cbf94b604f81f32687033e505bf99b40b762"
+    },
+    {
+      "path": "docs/recovery/README.md",
+      "bytes": 28516,
+      "sha256": "178a56560153f904148242990e6b8394f5655155d33edbf5710505d612c74da9"
+    },
+    {
+      "path": "docs/recovery/progress.json",
+      "bytes": 66176,
+      "sha256": "c7e0a7d574e1829ba8c105aea9493987a20f850678a5e17dd2720b1db26ba52a"
+    },
+    {
+      "path": "docs/recovery/kylofon-r02-r03-results.md",
+      "bytes": 11683,
+      "sha256": "d13f687fffda48489de470282b8eefba98cf55335c4adb33e3b361db40754d75"
+    },
+    {
+      "path": "docs/recovery/kylofon-address-admission.md",
+      "bytes": 27363,
+      "sha256": "04286db7de1dc3d6d24e79c40ea3a8e74a35cc6442f3593f851db16c28438111"
+    },
+    {
+      "path": "docs/recovery/kylofon-source-admission.md",
+      "bytes": 16413,
+      "sha256": "4a502c477c120cc2716a6a8c8a8f0d74b6680c5ddd59b5b81839794a7439b3ae"
+    },
+    {
+      "path": "docs/recovery/kylofon-differential-design.md",
+      "bytes": 8869,
+      "sha256": "29027d14f3fa4f59bfaa39cae76b10ea792a379a20c9e7362414ec4a07b8e756"
+    },
+    {
+      "path": "tools/verify_kylofon_r02_r03_v1.py",
+      "bytes": 7689,
+      "sha256": "407f4906c80a5b4d9df014bb3f9e628f6c4f903a259e852eb94f562744b1188b"
+    },
+    {
+      "path": "tools/admit_kylofon_addresses_v1.py",
+      "bytes": 32320,
+      "sha256": "ab92fd9cc2e8e0ab1f01737b4f4eb6bb5341209744bfd37f483adf93e0f6e362"
+    },
+    {
+      "path": "tools/review_kylofon_admission_v1.py",
+      "bytes": 32543,
+      "sha256": "36a74d69096c056e5126c536ed54e2977d783ed823e67be8a1f3c8029dfe50dc"
+    },
+    {
+      "path": "tools/build_kylofon_candidate_v1.py",
+      "bytes": 9366,
+      "sha256": "3027c88c9535ea0136ea006e518ea028821132dab3ec781b670f4592ea5d0153"
+    },
+    {
+      "path": "tools/validate_kylofon_representative_v1.py",
+      "bytes": 21551,
+      "sha256": "e3b8eac08ded3064ec4bee8669f1b5a13e03a7cb61bde6cc0812951846f474ca"
+    },
+    {
+      "path": "tools/validate_kylofon_admission_support_v1.py",
+      "bytes": 21576,
+      "sha256": "37b0dda7622bf004707bc6c5c8bd07fa9afbcc4735a6e7cda87cc2c9437f0d04"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-address-admission-v1.json",
+      "bytes": 2530877,
+      "sha256": "8a65805699c9b2b9c41479711e32834bd476f1c25f93758abfc44f2b7a234177"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-source-admission-v1.json",
+      "bytes": 251567,
+      "sha256": "df3fa2889e7e3ccfa3dbf2f4a49b78958976601b1ca924f8b6972a76b710baf6"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+      "bytes": 242343,
+      "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+      "bytes": 28504,
+      "sha256": "b4d92c11381dae416e490418768f849da12fb0c4b37022b21c76f5fd89a34954"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+      "bytes": 64076,
+      "sha256": "219cbb195ce223df13d31084df7222e6e96a9f67ddeecd8d36416c9e3b81ebc3"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+      "bytes": 3474,
+      "sha256": "5e5149d46f03180c242d7b4abd007ebf0ec5f73b785183e0a535942433497aa8"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-gap-dispositions-v2.json",
+      "bytes": 31967,
+      "sha256": "ed2c23533fe8440c609f5299f832b64b2c61d613398f0d8d6c4c78d0d1faedf2"
+    },
+    {
+      "path": "docs/recovery/evidence/p1-kylofon-r02-r03-audit-v1.json",
+      "bytes": 245725,
+      "sha256": "b77c6c58d3090f1bf7d4586997765672431ddeea3e1025b730b3bb9878426592"
+    }
+  ]
+}

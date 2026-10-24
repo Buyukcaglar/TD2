@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_state_sequences.cmd",
+    "sha256": "b15094bee2f2c123a2f7b6be76fcdcbe86b5f10968901445e74eb49799a296a7"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_state_sequences.c",
+      "sha256": "46aab52201874083f58a12d0b781b8428d14ac96a2da375a06b1a30d59fc9017"
+    },
+    {
+      "path": "src/recovered/td2ega_state_sequences.h",
+      "sha256": "dd3d0f28b9e7124f1d87d4ad390519f15bd5d7694c6310809c67479a3c79e554"
+    },
+    {
+      "path": "src/recovered/td2ega_state_messages.c",
+      "sha256": "6db1ebff11a8d881623c6ca1af4cfc27449965e74f164088f1d90c3ad0570cbb"
+    },
+    {
+      "path": "src/recovered/td2ega_state_messages.h",
+      "sha256": "9b93e66ba14450e018b65bdd399dd4abae5d37efeb5938c3a0f3a969515e8a91"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/state-sequences-repro/td2ega_state_sequences.dll",
+      "sha256": "f5af29b590a6145d709380533ea2e48d881d563548e53b338a8e1f9258f5ef02",
+      "bytes": 109568
+    },
+    {
+      "path": "analysis/build/state-sequences-repro/td2ega_state_sequences.obj",
+      "sha256": "fa80479b6b2763a8cf4eb68ecd6619918907286b3864aa6d233209eeacbdb57f",
+      "bytes": 7207
+    },
+    {
+      "path": "analysis/build/state-sequences-repro/td2ega_state_messages.obj",
+      "sha256": "008eeaa5064ded9da0639665d5c1be6993b631832fbee57edf4df2cb9691e743",
+      "bytes": 7689
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/state-sequences-build-v1.log",
+    "sha256": "64dad7c385a0ba964a3f077b4ded2ed7494c5317709bcdaa4bc8bbd58b188cf4"
+  },
+  "limit": "Complete3532/3643 plusactual5C98 instruction/nativecomposition; SS count/point tables versusDSglobals, CBW onlyfirstcoordinate andretainedAHsecond, bytezero256iterations, offsetwrap, seven/ten control loops, pairedargumentlifetimes, savedDI/SI andreturnedDS/CFIFDF retained. Mostfarcallees ABI mocks; actualgraphics/text/resources/timing/input/IRQ/statewriter/core/game/fidelity pending. Native diagnostics separate.",
+  "function_ids": [
+    "FN-EGA-000098",
+    "FN-EGA-000099"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000130"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000264",
+    "FN-EGA-000266"
+  ],
+  "vectors": 27136,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7b9d819d4049311c0bc02fe1ffae01681689f19f904ff1a2f0273a88a577acc8",
+  "source_sha256": "fb3013b9884ca8d0dd6fd1bfd65f4e8d867570b63e1c860d44b24114655944bd",
+  "validator_sha256": "4fab426ded78c25b13338c43a127bcb46690fdc96e749c53c4c3a4b5f48e7438",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_runtime_message.py",
+      "sha256": "07494bb759ba87b390435ca950460964b78277946af28afec2086ccd329b7210"
+    },
+    {
+      "path": "tools/validate_finalizer_list.py",
+      "sha256": "8e94c103da8b9b4c447e54c0befd95da859f109b7648ccbdf5ef8058820ab553"
+    }
+  ],
+  "original_instructions_executed": 3589412,
+  "instruction_sites_in_fence": 78,
+  "instruction_sites_exercised": 78,
+  "fixture_coverage": {
+    "budget_prefix": 16968,
+    "checksum_bytes": 751296,
+    "DOSservices": 6800,
+    "callbacks": 2880,
+    "synthetic_callback_RETF_instructions": 2880,
+    "bus_write_events": 258496,
+    "allbyte_validchecksum_cases": 4096,
+    "minimumSP48_cases": 11520,
+    "root_far_return": 7864,
+    "raw_child_return": 2304
+  },
+  "limits": "Actual0620/066E+088C/08B7message bodies, 66byteXOR/CLD/rawvalidAXlastbyte/all256values, actualnestedSS/farframes/RETF2children/plainfarroots, optionalDS6DCC:6DCE callback. Fullbus/GPR/BP/CFIFDF/serviceABI/control. SyntheticDOS40andcallback bodies/RETF separated, returnedDS/BP/flags/SSmutations explicit. Nativeprefix/adapter/rawchildreturns separate. Actualcallbacktargets/writers/checksum-sourceownership/key/NUL/bounds/lifetime/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen."
+}

@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_wait_roots.cmd",
+    "sha256": "8fc42377fc7bb486037a3bccb6760415a07b368f4aba834c00570834dcd7b321"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_wait_roots.c",
+      "sha256": "42a7efaa4dbd4c2df4b1c67ee6186a0a84a89e231e0badb8f264f531ab90861b"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_roots.h",
+      "sha256": "0aa9959eb53d841c1537e839aa02b14291cb45ba59979f3cb1c8ac432cbcc9d0"
+    },
+    {
+      "path": "src/recovered/td2ega_input_bridge.c",
+      "sha256": "e3185da9b14de526481bd7de70f9ea3a34276968ba842e182cf6c87e0e82ce30"
+    },
+    {
+      "path": "src/recovered/td2ega_input_bridge.h",
+      "sha256": "7ae28c50bb851033b38267c6161de8abc033db6cff8531cdb7f79c180bad0d43"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_control.c",
+      "sha256": "84555b4cdf268de6fe5ed8889dca02ac4fafdd0d2c6505908c1cbe684a61ce2d"
+    },
+    {
+      "path": "src/recovered/td2ega_wait_control.h",
+      "sha256": "dcc7aab925ae2dc11dc41bc7b2688f7ee1db0056629a8e3f2f2f732dba57148e"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.c",
+      "sha256": "940ba180ca7422e726dbde6a8d14a91106baa83ab5db4c6184c32bb478e85577"
+    },
+    {
+      "path": "src/recovered/td2ega_small_state.h",
+      "sha256": "f0290084633f569b412c8bca5cd7d228f1bb6160e2b5f90516654df0e72ab5d5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/wait-roots-repro/td2ega_wait_roots.dll",
+      "sha256": "83cbc143bcde623facab409dba3a20d5460a846423c068a42b7b91a08ebbe6d3",
+      "bytes": 111616
+    },
+    {
+      "path": "analysis/build/wait-roots-repro/td2ega_wait_roots.obj",
+      "sha256": "0a70aa0fe1f463e16f93d48da2e25a3c02208a55128482489336cde67f3b0a78",
+      "bytes": 7397
+    },
+    {
+      "path": "analysis/build/wait-roots-repro/td2ega_input_bridge.obj",
+      "sha256": "10fecf59228ef771557636574808ceb06147e7a6fac2ac113904c4033be3262e",
+      "bytes": 4548
+    },
+    {
+      "path": "analysis/build/wait-roots-repro/td2ega_wait_control.obj",
+      "sha256": "4b88a8ef4825da5071e175ed131262bec764544454dcf732b7ef38483dbec791",
+      "bytes": 7035
+    },
+    {
+      "path": "analysis/build/wait-roots-repro/td2ega_small_state.obj",
+      "sha256": "fd5a054e243e307c5fa6825d9f311dd5a2eeb89641bdf8725afcee9299d39e90",
+      "bytes": 9588
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/wait-roots-build-v1.log",
+    "sha256": "44d0c82ac77afa16a01d6c8f2e4adeba288bddb7b6ea4f1707c4dcded3c5aa97"
+  },
+  "limit": "Fouractualroot+69FEbridge+79C8/C692counter Cbodies, materializedouter/dynamicSSfarframes/fullbus/GPR/BP/CFIFDF/rootRETF4. Opaquedynamicinputcallee isexplicitfullreturned-state ABI service withsyntheticRETstub countedseparately; noinputtargetbody/runtime admission. Counterobserveronlymutatessyntheticbus beforeactualread, noIRQ/frequency/timebase. AH-only/rawinputAX, returnedDS/BP/pointerrereads andhigh-greater/low-less contrast retained:6A4A/7A3Blex, C63EhighANDlow. Nativebefore-outer-callprefixes and8rawcounter-returnframe aliases distinct; noSSscratch exclusions. Actualinput/counterwriters/lifetime/exclusion/fullstate/core/resource-fedP2/P3/device/session/game/fidelity remainopen; physical086C unrelated. Nativeinvalid/adapter checks separate.",
+  "function_ids": [
+    "FN-EGA-000164",
+    "FN-EGA-000166",
+    "FN-EGA-000202",
+    "FN-EGA-000248"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000161",
+    "FN-EGA-000199",
+    "FN-EGA-000249"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-wait-roots-context-v1.json",
+    "sha256": "375969ef37d625233b104a72238dcf830de2d475a317f7b7c4d4d2b7dde42eff"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_cache_compact.cmd",
+    "sha256": "006d6a2e046e7411571a16c0ea6453d794eb5cbef1da9aa4ca0201cea3eb5db2"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.c",
+      "sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.h",
+      "sha256": "59e4700d541e3e08c417e742b835e0ac1699d6feeff43617f07a899fa40a6014"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.c",
+      "sha256": "d7553649f01c3afb07c56b1f7d90c01ded7a148afa3ee0ec9ab72fce854b463a"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.h",
+      "sha256": "16f860c11a9b24a94ba11e55504ccb8ae079936ebda7aebf488f88c0ed3c4fde"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.h",
+      "sha256": "6891219bb4bab9bdbc41928da1f1cf2790c7de26fad9a3067d46feb975d8cf37"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/cache-compact-repro/td2ega_paragraph_copy.obj",
+      "sha256": "6c7bbb92b592e475f1e6ce1eb45b4d00b86086470d8939de310bc283eb144960",
+      "bytes": 2514
+    },
+    {
+      "path": "analysis/build/cache-compact-repro/td2ega_cache_compact.obj",
+      "sha256": "db686f5bb3b13e566c8388fbcc7c3199ad654aa5aed4328de57a3569e66b11dd",
+      "bytes": 1412
+    },
+    {
+      "path": "analysis/build/cache-compact-repro/td2ega_cache_compact.dll",
+      "sha256": "4b6265e7136a3b9b3db1b07ae7770cbe870c5f9a011c9dab3d126aa6d9f6ee34",
+      "bytes": 103424
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/cache-compact-build-v1.log",
+    "sha256": "0f159f933da0bb58dfe335634b1bf8c4009be1d88e431b0677a9e4ace6f68a28"
+  },
+  "limit": "Bounded nonwrapping external byte-pool contract only; no real media, complete caller lifetime, OS, core or second host accepted.",
+  "function_id": "FN-EGA-000183"
+}

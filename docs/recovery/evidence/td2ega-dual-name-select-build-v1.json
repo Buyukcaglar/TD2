@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_dual_name_select.cmd",
+    "sha256": "0fb09f351bc54639a7a10a19895c52f325cb10586c65af7e4f7449410a52f9ae"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_dual_name_select.c",
+      "sha256": "9cf2dd164eaf8c11ed86812fdf8077949621acb46e0d69854090e2e8abaecbc1"
+    },
+    {
+      "path": "src/recovered/td2ega_string_memory.c",
+      "sha256": "448034c548fafa78df75074e8d19a44fece3e8d8a30bfe8cbdf05edf20c4a3fa"
+    },
+    {
+      "path": "src/recovered/td2ega_dual_name_select.h",
+      "sha256": "b01bc412c27acc8586268147298dba4480efb36ba17405a7cf9e859ad95e231e"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_string_memory.h",
+      "sha256": "39a9d28936fc0ec39b791a506a6e3b97039d7ece76dc018efb292935a1aef962"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/dual-name-select-repro/td2ega_dual_name_select.dll",
+      "sha256": "62f194e5ab8eb825a65d426189d67989a37858d9ca00f29ca815cc85a53582bd",
+      "bytes": 110080
+    },
+    {
+      "path": "analysis/build/dual-name-select-repro/td2ega_dual_name_select.obj",
+      "sha256": "6fc6eaa547febecc8c0536681858c3dff83099a16686fc3a858dfbffa8ac90b1",
+      "bytes": 9437
+    },
+    {
+      "path": "analysis/build/dual-name-select-repro/td2ega_string_memory.obj",
+      "sha256": "f1a2cf434a3eb1d6bd02eebc93acf970120c437ccc7f8773e94da701039872be",
+      "bytes": 7919
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/dual-name-select-build-v1.log",
+    "sha256": "02751f42533d4a5d92f9716bdd7b0ffa0064a9c62112480432cafcc77b71106c"
+  },
+  "limit": "Actual0000:0651 far/noargs/SSlocalcounter-currentDS8A7Asignedrereads/stride30two-casequeries8428-90B0/lastmatches9266-8CFE/primaryfallback0-secondary0or1fromactualcount/actual2B40-2956incomingDF/fullSS/allactualfarframes. SignedwordIMUL30*actualindices-DXAX-CF/lowwordpointerwrap/wordrecord+26/outputs8A82-9264/allfourADDSP4/MOVSPactualBP-POPBP-farRET. Wholebus/GPR-BP-CFIFDF/control/counts. NativeCALL-perchildoperation-rootiterationbudgets/rawchildfarreturnsafterRETneverfollowed. Serialized20bitRAM/historicalCPU-A20unqualified. No name-count-indexschema/NUL-capacity/allwriters/storage/DF-caller/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000010"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000327",
+    "FN-EGA-000337"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-dual-name-select-context-v1.json",
+    "sha256": "8d5702c5ccc07e1a841d3ae6617c5b6ca7d8e52e8a54c2e890a2f4bcb96af7d1"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_dual_name_select_before_imul_boundary_v1.py",
+      "sha256": "c492ec2af807fab11fc62d3c792292925257813308b6da2a95835faeb2eed59d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-dual-name-select-validation-v1.json",
+      "sha256": "4ca81b74a1f480550172eb4d95b2dbc3da29b462cda97cb65ce3981a858251ca"
+    },
+    {
+      "path": "analysis/logs/dual-name-select-probe-v1.log",
+      "sha256": "0f7d3540ad054162010da71969ce85d20258a18b7b088ed410f27f28185d69cf"
+    },
+    {
+      "path": "analysis/logs/dual-name-select-validation-v1.log",
+      "sha256": "6741673c8183d840375040c06b484bbf99f71931818c5cd341b8111810fb5fb7"
+    }
+  ],
+  "failure_resolution": "NoC/build/instructioncomparisonmismatch. v1passed8176cases/all132feasible; selectedv2adds16wholefunctionrecordcounts1092..1095/indices1091..1094/signedIMUL30boundary-DX-CF cases. C/DLLunchanged. Two2956oddalignmentdispositionsonlyfixed8428-90B0/evenparentdestinations; standaloneall26passed."
+}

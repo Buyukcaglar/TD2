@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000019"
+  ],
+  "vectors": 67584,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a34fd5e3b1487a2fe1f7f24dd39f06a0886a658afe4aa6e883dc274642a8edb2",
+  "source_sha256": "2e252b62cfd6698a0add7071a024b60c4c98c247d01a09219a2a59498f3b55a8",
+  "validator_sha256": "d78dc9229c67f3244058495a921389417d3c82c6bd56bf83c161991c5b249764",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1422336,
+  "instruction_sites_in_fence": 60,
+  "instruction_sites_exercised": 60,
+  "fixture_coverage": {
+    "before_CALL_prefix": 33792,
+    "actual_ring_CALLs": 33792,
+    "bus_write_events": 328704,
+    "raw_root_returns": 4096,
+    "minimumSP30_cases": 2048,
+    "DS_equals_SS_cases": 33792,
+    "root_far_return": 30720,
+    "raw_child_far_return": 3072
+  },
+  "categories": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "limits": "Actual019E0004+actual780E original instructions compared with actual frozenbyte_ring C transformation plus source-proven SS ABI adapter: real parent/child frames, leafPUSHSI before snapshot, cursorcommit beforebytecommit/POPSI/actualfarreturn and complete mask7/wordCWD/raw8word chain. SerializedflatRAM, fullbus/SS/ring/GPR/BP/CFIFDF/control, noABImock/SSscratch exclusion. Native beforeCALL/rawchild/rawroot targets separate, no targetfollowed. This closes one caller body only; shared ring writer/reset/seed/reentry/IRQ exclusion/consumption acrossfullstate/callerlifetime/core/sourceCtype/otherFLAGS/runtime/gameplay/fidelity remainopen."
+}

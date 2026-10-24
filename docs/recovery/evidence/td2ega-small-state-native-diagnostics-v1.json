@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "ae2aa74ae2b663ad1e1130210112c9fb12a82ef614e744ca104570f25cd38fe2",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "330671df7661038b3dd6af0a3f967ec9064683ed27bd9739e8d23f1f2e8d4881",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_small_state.py",
+      "sha256": "d75c917e00eb46270e769967c4ff54c177471e568aad8e07027d22eecbb35d47"
+    }
+  ],
+  "limits": "Eight native-only invalid bus/count/entry/SP/null state/carry/DF profiles, no effects. Separate from original near/far returns, no IRQ/device/session/core/gameplay/fidelity acceptance."
+}

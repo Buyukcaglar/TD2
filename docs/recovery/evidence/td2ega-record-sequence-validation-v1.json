@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000127"
+  ],
+  "vectors": 23556,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cbe580fa4524c0a1dc96fb979332620409e503149c14500e8c4936817355ff17",
+  "source_sha256": "b440a7c612ddccf3a956b822db66dddc4e07931416399e79e392271c2ceb0bd4",
+  "validator_sha256": "d23cee6a47e6a8a0380a821589cb5bacc5894ca2ddf171fe93402c0aae8e26e5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 8099480,
+  "instruction_sites_in_fence": 134,
+  "instruction_sites_exercised": 134,
+  "fixture_coverage": {
+    "outer_CALL_prefix": 10788,
+    "actual_near_CALLs": 33356,
+    "child_iterations": 560160,
+    "bus_write_events": 490100,
+    "raw_root_returns": 48,
+    "minimumSP24_cases": 512,
+    "DS_equals_SS_cases": 11778,
+    "full65536_selector_runs": 4,
+    "child_loop_prefix": 11512,
+    "root_far_return": 1032,
+    "raw_child_near_return": 224
+  },
+  "limits": "Actual5ADA far root with two actual5B5A and two or four actual5C30 near C bodies; no ABI-value leafmock/SSscratch exclusion. Fullbus/nestedSSsaves/near-farframes/GPR/BP/CFIFDF/control/actualCALLcount and child-loop budgets. Raw source count/origins and ordered rereads/updates; count0 selector LOOP65536 retained. Child normal RET checked for CS/IP/SP, changed raw coordinates exposed after actualRET never followed. Actual1B2Ccaller/fieldproducer/writers/capacity/alignment/sortedness/aliaslifetime/exclusion/otherFLAGS/core/resourcefedP2/P3/session/gameplay/fidelity open."
+}

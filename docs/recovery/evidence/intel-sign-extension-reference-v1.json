@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "source": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2A",
+  "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf",
+  "reviewed_on": "2026-10-14",
+  "method": "Official Intel PDF opened and relevant text read through web tool; no complete download or PDF hash claimed.",
+  "pdf_pages_one_based": [36, 237, 380],
+  "sections": ["2.1.1 Instruction Prefixes", "CBW/CWDE/CDQE printed3-135", "CWD/CDQ/CQO printed3-278"],
+  "facts": [
+    "Operand-size prefix66 selects the non-default16/32bit size.",
+    "Opcode98 at16bit operand size signextendsAL intoAX; at32bit size signextendsAX intoEAX.",
+    "Opcode99 at16bit size signextendsAX intoDX:AX; at32bit size signextendsEAX intoEDX:EAX.",
+    "These sign-extension operations do not modify flags; mnemonic synonyms alone do not establish operand width."
+  ],
+  "limits": "Primary ISA corroboration only, no physical CPU/historical timing or DOS/game session acceptance. Raw original bytes and separate full-register synthetic instruction checks establish the selected recovery interpretation."
+}

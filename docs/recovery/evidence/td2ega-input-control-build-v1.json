@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_control.cmd",
+    "sha256": "6ce90f58188d0c2b59d2bcf1a5c43332900be82a6e5692668cc42102e3d1c521"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_input_control.c",
+      "sha256": "00814079c3ab0b64867a741d92dfcad027147c2d4126d58e47a7fc4c7d499450"
+    },
+    {
+      "path": "src/recovered/td2ega_input_control.h",
+      "sha256": "7842863717012546b0f9c6042e9a941fc28f4c37a2cddbbcf2f21b85d0b9a499"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.c",
+      "sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-control-repro/td2ega_input_control.dll",
+      "sha256": "6264085089e62bcdd1e39886c49d2578e061fa290d83f888162096b632c1636a",
+      "bytes": 105984
+    },
+    {
+      "path": "analysis/build/input-control-repro/td2ega_input_control.obj",
+      "sha256": "a53a9fc82a1cdfa240aa13496eab3348b3ed10c3c34820630f760a43ea1656f2",
+      "bytes": 4827
+    },
+    {
+      "path": "analysis/build/input-control-repro/td2ega_sim_primitives.obj",
+      "sha256": "30f0f06e66b0404188bba3b64a834ade10cf6db7ff55f336b253deb7796fb8e8",
+      "bytes": 4587
+    },
+    {
+      "path": "analysis/build/input-control-repro/td2ega_sim_targets.obj",
+      "sha256": "0246ede8e9e2846a55417c8aa674ed65a4424745ffec19ba5997f9906923a14c",
+      "bytes": 4395
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-control-build-v1.log",
+    "sha256": "a40d992c4551ca5e1d09e04b30d0f590bc0524ff94cbae929042300a8cb7e0a4"
+  },
+  "limit": "Complete4281/43C3 andcompiled4612/4441 serializedsyntheticgroup effects, bytehalves/BP/indexaliases preserved. Actualcaller/flags/resourcefield/table units andIRQ/fullstate remainopen.",
+  "function_ids": [
+    "FN-EGA-000368",
+    "FN-EGA-000369"
+  ]
+}

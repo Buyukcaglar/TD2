@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 21,
+  "script_sha256": "42bac3e745f8de6197d51841aaa960fbd634a0c73daa50062cef055214bdd376",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "03b0ea8bec18f58ca9252e6a109153c6495f4251b6f6b45989844c4e9a3c06b5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_block_request.py",
+      "sha256": "d4e8e341699bf81c77b2234baee349bcf3bc5c2014cc2f12824f0e9e4ef7b940"
+    }
+  ],
+  "limits": "Nativeinterface/root-childbudgets/realSSnearfarframes/CFguard/failure/returnedDOS48metadata/sharedservicebudget/actualPOPSI/rawnearreturn diagnostics only. Syntheticservice omitsrealDOS-INTframes, originalcomparison separate; caller/writers/capacity/core/session/gameplay/fidelity open."
+}

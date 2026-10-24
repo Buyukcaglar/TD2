@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "6d2afe79c8c86085806a15118b29d22d2efdcb6b401fc91cd90988b16e415ce7",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "adf897b5aada36c6b7d57516764d27683aed7059da86ad91f206392c9aa0577f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_copy_config.py",
+      "sha256": "7273f1b63c632c782c928bfbf2866fa480fd25b91094d3a714ab783cab65c8ac"
+    }
+  ],
+  "limits": "Eightnativeinvalid bus/count/entry/SP/null/carry/DF profiles, beforeeffects. Separatefromoriginalfarreturn/REPcount behavior andactualcaller/writer/device/core/resource-fed/game/fidelity."
+}

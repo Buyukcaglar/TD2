@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_run_stage.cmd",
+    "sha256": "79e73864e92f82dbe3f028ed6b29a8cb2bcbbc733bca4b1934679f6189734502"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_run_stage.c",
+      "sha256": "78183ce381e5629b801c620a69ba8156079f992e3695472b00c1da7c01fcdcac"
+    },
+    {
+      "path": "src/recovered/td2ega_run_stage.h",
+      "sha256": "b5ced7500d749c1ec3b18f0f25ee97c6ca608fc3cba4194137ed1922720e880c"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.c",
+      "sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.h",
+      "sha256": "59e4700d541e3e08c417e742b835e0ac1699d6feeff43617f07a899fa40a6014"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/run-stage-repro/td2ega_paragraph_copy.obj",
+      "sha256": "b10b0d1375de00d97b3068c053ff99d027a27c4e5a5fc3f9b19a90e40fc43720",
+      "bytes": 2510
+    },
+    {
+      "path": "analysis/build/run-stage-repro/td2ega_run_stage.obj",
+      "sha256": "300fceec93903056fbcfc66e809557a418ebf3200345a6f867eae616c2acacb9",
+      "bytes": 7597
+    },
+    {
+      "path": "analysis/build/run-stage-repro/td2ega_run_stage.dll",
+      "sha256": "6652ee96332bce3fb1a05a24a4eb1ac7396b789cca10e155522e9009fbddc54c",
+      "bytes": 105984
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/run-stage-build-v1.log",
+    "sha256": "fa7970fab964dd94b1ac606e5d2c5ce5a1451d7afbc670b86eca4bbcb75a9603"
+  },
+  "limit": "One nativeexport covers originalfar6B02 plus itsnear6B97/6C6E framehelpers, boundedDS=SS/1..11markers/ordinarypool contract. No suppliedresource/corpus, completecaller orcore acceptance.",
+  "function_id": "FN-EGA-000169",
+  "covered_original_local_helpers": [
+    "FN-EGA-000170",
+    "FN-EGA-000171"
+  ]
+}

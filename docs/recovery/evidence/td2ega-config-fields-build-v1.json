@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_config_fields.cmd",
+    "sha256": "e42b62492272da9bb0696844d038eb0b57a6fbb16f739d12f2858a4b5f1a9e2c"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_config_fields.c",
+      "sha256": "fa9f0b0aebcfee913fb888787cc7fb831d97da6ed9b930e2a7d1971cfb4043cc"
+    },
+    {
+      "path": "src/recovered/td2ega_config_fields.h",
+      "sha256": "007883087391826b1da53b15fb049bdfb61d3f90cf40f71dc8e12bc5ca4390d9"
+    },
+    {
+      "path": "src/recovered/td2ega_copy_config.h",
+      "sha256": "74d956c7d636511626048fa4984d2b1170f460edd4f252c4e1bfa8b098308fc3"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/config-fields-repro/td2ega_config_fields.dll",
+      "sha256": "0190c6806015a08d52496572c9313bbfb0397dc35cb3f9d39c95783188f3ee96",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/config-fields-repro/td2ega_config_fields.obj",
+      "sha256": "4b9820f350a8fd2b6e81b028362417c261ff1afeeb3ff834231544a6a5eaa34a",
+      "bytes": 4677
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/config-fields-build-v1.log",
+    "sha256": "452c65fcd887f1b72cf9c743ef8d132974894a341658147f53b8e46e6e6d6004"
+  },
+  "limit": "FourorderedSSwordreread->CSboundstores withDFpreserved, and26wordCSsnapshot->currentDSnearoffset withCLD; fullbusincludingSSsaved/controlframes/GPR/BP/CFIFDF/farRETF4. SetterSS=CS argument/outputaliases, oddCSsource-destinationoverlaps/wrap andsnapshotoutputoverSSsaved/returnframes tested. Nativeprefixseparate; intentionalrootreturnaliases stopafteractualRETF andexposeactualCS:IP/SP, notfollowed. Native0meansoriginalfarreturnoperation, notsupportedcaller/gamecompletion. Actualbounds/producers/allwriters/lifetime/IRQexclusion/fullstate/core/device/resource-fedP2/P3/game/fidelity remainopen; nooriginalconfiguration/media payloadembedded; nativeinvalidchecks separate.",
+  "function_ids": [
+    "FN-EGA-000140",
+    "FN-EGA-000194"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-config-fields-context-v1.json",
+    "sha256": "077dae7de71048c39c9ce5db6a5f05432b42be849864c489b543b3d675ae2dec"
+  }
+}

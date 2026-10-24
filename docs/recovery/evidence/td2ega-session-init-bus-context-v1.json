@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000124",
+    "FN-EGA-000125",
+    "FN-EGA-000111",
+    "FN-EGA-000082",
+    "FN-EGA-000126"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "f0e8d684ac4a90b8dddbcde11181a52f4e268436b4655b73dbbcd6f4ae393898",
+  "instruction_sites_in_fence": 188,
+  "instruction_sites_admitted": 187,
+  "initialization_sites": 119,
+  "ordered_field_tables_verified": [
+    16,
+    27
+  ],
+  "all_BH_byte_token_index_cases": 65536,
+  "all_word_wrapped3811_add_cases": 65536,
+  "raw_stream_candidate": {
+    "segment": 6031,
+    "offset": 15185,
+    "length": 71,
+    "sha256": "0805dcdc42ca47abdc3d8fe11f8e0c7a108602022f71ab349648cfdd30a75aa6",
+    "nonzero_bytes": 0,
+    "inside_known_DAT_copy": true,
+    "intersecting_relocations": 0
+  },
+  "validator_dependencies": [
+    {
+      "path": "analysis/flow/indirect-v8/direct-flow.json",
+      "sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4"
+    },
+    {
+      "path": "analysis/derived/td2ega-v1/TD2EGA.unpacked.exe",
+      "sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2"
+    },
+    {
+      "path": "src/recovered/td2ega_session_init_bus.c",
+      "sha256": "8a2c75d9839d62c804a79356347bd7b8a64f775a3e0a2c95ec674321072b1c3a"
+    },
+    {
+      "path": "src/recovered/td2ega_session_init_bus.h",
+      "sha256": "f616f030c23d75f0fc79bf6eeed719d6f6b2b886ef693fbbc839ac2cc88cd97a"
+    },
+    {
+      "path": "tools/validate_session_init_bus.py",
+      "sha256": "deef1850c251dd97d056520b45995320d22ce4823eac2623e1effc509cbb1e98"
+    },
+    {
+      "path": "analysis/history/session-init-bus-build-setup-v1.json",
+      "sha256": "8825788ef2350f336f6c63bbc56a365c93abb1e9784412d86e62aad015dcf29e"
+    },
+    {
+      "path": "analysis/history/session-init-bus-validation-refinement-v2.json",
+      "sha256": "50800ed7aba76703422c6d03805e18329829206e44414d64c96844fc8371b231"
+    },
+    {
+      "path": "analysis/reviews/session-init-bus-frontier-v1.json",
+      "sha256": "cfe5fed49e40d48ac2ce014aac7c13c74827257f0877a08ca982f524773a81b3"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-session-init-bus-validation-v2.json",
+      "sha256": "a9165e6af0400cc486a8ba8e298e96025ad9ae23964cbf99e4b3398cc45ba881"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+      "sha256": "ff42a9a5f4989c570707d555111823e34394816f6f00a92e7bc4b95fb1f92cc4"
+    }
+  ],
+  "facts": [
+    "Full3F40/3FF9/38F2/1E31 plusnear5427 retain119 ownsites; actual601C/614Ctail brings188union sites.187execute,6164remainspreCALLfatalboundary. Newwhole3F40prefix entersfrozen3FD9tailwithoutanextraCALL/frame; oldtypedgroup APIs/sources/DLLs remainfrozen.",
+    "3F40 MOVESDS/XORAX/CLD/REPSTOSB8 writes335D..3364; ordered27 subsequentzero-fields verified againstCtables andoriginaldirectmemoryoperands. Conditional90A8/33AF andcurrent843E->3379/337A20hex remainliteral; BSS942Ewrite remainsaddressable.",
+    "71sourcebytes3B51..3B97 mapviaMOVBL/SHLBX1/XORBH/SHLBX1 to4*(token&127), independentofincomingBH afterexplicitclear. Static65536BH-tokenpairs verify128first-byte lookupslots347E..367A withinRS289512-byteenvelope. Rawfold/XOR byte33BD has noassignedsemanticpurpose.",
+    "3FD3 adds3B33 modulo65536 tolive3811; it doesnotreset3811. Staticall65536words verifywrap. FinalADDflags feedfrozennativetail; earlierREP/foldbudgetprefixes preserveactualGPR/CX/DI/SI/ES/DF/FLAGS.",
+    "3FF9 calls5427 withanactualnearword andplainnearRET;1E31 calls3FF9/38F2 withactualfarframes. EachretiredchildCS-IP-SP ischeckedbeforecontinuation. RootfarRET/nearRET rereadactualSSwords aftermemoryeffects; rawcontrolnotfollowed.",
+    "38F2 reads23C6/C8 live afterpriorcallerframewrites, writes2F4C/E, andINCAX preservesCF. No captured-typedargument shortcut is introduced. AllsourceDSstores remainordered withSSaliases.",
+    "Original/native fullSScorpus witnessesconditionalstackwrites to66E6..67E7 under3F40/3FF9/1E31;38F2/5427do notwriteSSinstandalonerootprofile. This qualifies olderdata-only unchangedring scope, notintentionalreset/seeding/RNGpurpose oractualhistoricalstackdomain. Caller/exclusion/allwriterclosure remainsrequired.",
+    "New71-byte initializedzero rawstreamview liesinsideknown7774-byteDATcopy346A..52C7 andcontainsnorelocations. FN030isconditionalwriterunderprincipalDS; actualcurrentDS/runtimepayload-validity/format-capacity-lifetime remainopen. No newresourceformat decoded.",
+    "Budget/portfailure/fatalpreCALL/preRET/nativeinvalid statuses areanalysisqualifications. No actualIRQ-nesting/allwriters-reset-storage-lifetime-exclusion/startup-to-exit-completecore/P1-GATE/DOSsession-renderer-audio-game-fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+  ],
+  "limits": "StaticcompleteinitializationABI/order/arithmetic/rawview review. Actualcaller-domain/lifetime/core and P1-GATE remainseparate."
+}

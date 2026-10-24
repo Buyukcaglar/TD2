@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "ba9e5a477795d731829106f039f03431fdbeac197e88bbed76a6f010f544c1dc",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a34fd5e3b1487a2fe1f7f24dd39f06a0886a658afe4aa6e883dc274642a8edb2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_ring_selection.py",
+      "sha256": "d78dc9229c67f3244058495a921389417d3c82c6bd56bf83c161991c5b249764"
+    }
+  ],
+  "limits": "Eightinvalid/noeffects, nullresult, beforeCALL, minimumSP30normalcategory andrawchildRETafterselectedbyteoverwritesreturnhighbyte. Native only; sourceCtype/wholecaller/reset/writer/lifetime/IRQexclusion/core/runtime/gameplay/fidelity separate."
+}

@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_record_flags.cmd",
+    "sha256": "ed8bd145d37ced589c91259d02f692c0b505ac48332235bca9523d82e2c34975"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_record_flags.c",
+      "sha256": "de43feceb89c165cd5320d03fdf10cd2a07e06ab9164336d507da1ab9e35c783"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_flags.h",
+      "sha256": "b5603b606ef4bc69a9b296c8bbd7bfabdcfb0ffa2261a53cb099b1650a54aec4"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/record-flags-repro/td2ega_record_flags.dll",
+      "sha256": "94bdcf20119a773f7f61dbe7d15f7b2f04cdd12073614df684bb9392bbf5097a",
+      "bytes": 111104
+    },
+    {
+      "path": "analysis/build/record-flags-repro/td2ega_record_flags.obj",
+      "sha256": "534616251e54a7668e39c204e48fc03a490e339fd7899906891b613ab30e0ad1",
+      "bytes": 5876
+    },
+    {
+      "path": "analysis/build/record-flags-repro/td2ega_record_math.obj",
+      "sha256": "3e246337d0bd783a5ae0fc8c2fa405677588ce5fa5ad0da1d2d316793b14cd39",
+      "bytes": 10923
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/record-flags-build-v1.log",
+    "sha256": "6dd017bdb58ddd6d852c19fb3c879b3b2dc27da19f58f020b4c7aa40c893517d"
+  },
+  "limit": "Actual4F92 instructions against frozenrecord_math C plus read-onlyserialized pathclassifier/definedreturnFLAGS view. ThreeactualRETsites distinguished; rejectCMP/skipINCDX/fullstatusFLAGS, updateXORZF1/PF1/CF0/OF0/SF0 withundefinedAF excludedmask. Prefixmask onlyCF/IF/DF/bit1. ExhaustiveINC65536words/twoCFsetups/twoload-IFDFprofiles, zero source/native writeevents percase andwholebus atprofileend; generalcases fullbus/SS/GPR/BP/CFIFDF/definedFLAGS/control. Definedflags/mask isnot rawPUSHF image; CPUreserved/undefinedflags/stackwordownership andactual4D3F PUS H F/POPF/wholeparent stillopen beforecore. No actualIRQ/reset/writer/lifetime/device/session/gameplay/fidelity acceptance.",
+  "function_ids": [
+    "FN-EGA-000388"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-record-flags-context-v1.json",
+    "sha256": "b5239afe343c692033466636343e395cc013c4e2959ca4188f5d10b3d27a61fd"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-record-flags-reference-v1.json",
+    "sha256": "ccf9b7a97490a5ad70c29fc3f3246b21d9ab0cfba6cb427642430de8683d375d"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000340",
+    "FN-EGA-000339",
+    "FN-EGA-000332"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "7e0f8da4356a030f6aa2a1f87a3b511c7b8a5d396623fb4a871d3ecdde2c0ac3",
+  "family_instruction_sites_in_fence": 97,
+  "family_instruction_sites_admitted": 93,
+  "all_word_fullargument_lowbyte_lookup_cases": 65536,
+  "raw_view_candidates": [
+    {
+      "segment": 5032,
+      "offset": 11438,
+      "length": 6,
+      "role": "currentCSsixcodebytes",
+      "sha256": "fcbfa1e733b68920dbb374f229c1fd1fa7e6d2ca3a5509350abc943188a8a4c7",
+      "nonzero_bytes": 6,
+      "intersecting_relocations": 0
+    },
+    {
+      "segment": 5032,
+      "offset": 11280,
+      "length": 12,
+      "role": "currentCSsixnearwords",
+      "sha256": "d55007b5f6fcd33a892eceb4cacb08bfa128269c5148e0d027b9f85abaad6ebd",
+      "nonzero_bytes": 12,
+      "intersecting_relocations": 0
+    },
+    {
+      "segment": 6031,
+      "offset": 28760,
+      "length": 24,
+      "role": "currentDSsixfarhandlerpairs",
+      "sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+      "nonzero_bytes": 0,
+      "intersecting_relocations": 0
+    },
+    {
+      "segment": 6031,
+      "offset": 28798,
+      "length": 4,
+      "role": "SSfarfallbackpair_conditionalprincipalbinding",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "nonzero_bytes": 0,
+      "intersecting_relocations": 0
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "analysis/flow/indirect-v8/direct-flow.json",
+      "sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4"
+    },
+    {
+      "path": "analysis/derived/td2ega-v1/TD2EGA.unpacked.exe",
+      "sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_dispatch_bus.c",
+      "sha256": "59cc61da9058cfca6fb0b9293868c8d4da7045b5e178e34b5745102928971c70"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_dispatch_bus.h",
+      "sha256": "3f565d39dccefc4459401c4aa8c16a27eef376daf6861fa9ff4051b8c0baeda7"
+    },
+    {
+      "path": "tools/validate_runtime_dispatch_bus.py",
+      "sha256": "75f3fed1b274b409e88e343821ea8b571edc5b46c50b2845c24b27b30018d2c3"
+    },
+    {
+      "path": "analysis/history/runtime-dispatch-bus-build-setup-v1.json",
+      "sha256": "0b6672462db19d1bd9035a19c7892649a559127186a82a819f988bc49e165057"
+    },
+    {
+      "path": "analysis/history/runtime-dispatch-bus-validation-refinement-v2.json",
+      "sha256": "95b03bce4ea24f27d6beb0fa0b69bd47191c59e0a74d106882e50a7013235b2e"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-dispatch-bus-validation-v2.json",
+      "sha256": "21a5a36e1ce8204d49e82765b5a79fa9bc5e9b9394c4f2be4f5f5055c84e29fd"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-exit-context-v1.json",
+      "sha256": "433b43c7ea508a3610626d83fd6ca925b5195eee9c21e6135e4c87a7a87c8890"
+    },
+    {
+      "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+      "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684"
+    }
+  ],
+  "facts": [
+    "2D57 scans six actualcurrentCS bytes backward, comparesAL, returnsCX0..5/AX4*index/BX7058+4*index/CF0 orCX0/BX2CAD/CF1. ActualPUSHBP andfarRET words retainSSaliases, including mutation ofthekeybytes beforetheyare read. Older table_scalar API/source/DLL frozen.",
+    "2C1C specialcases comparefullAX to2 and8; successfullookup usesAL only. Thecallbackargument isreread asfullSSword intoCX; onlyexactCX8 skipsresettingDSvectorwords. Highbyte variants108/116 remain distinct from8/16 forspecialcases/arguments.",
+    "DefaultnearJMP readsactualwordCS:[2C10+2*CX] beforefollowingrecognized2C90/2C98/2CA7, with2CA1 additionallyrecognized asanexistingerrorblock. Unknownliteralwords stopbefore2C5F andretainrawtarget; initialsixtargetvalues arenotallwriter/mutable-domain proof.",
+    "Customoffset/segment arestoredtoSSBP-4/-2 beforePUSHES-BP-DI-SI, callbackargumentreread andoptionalDSvectorreset. Thosewrites canerase/alter the SSfaroperand before2C83 rereads it. Operand captured beforeCALLframewrites; retiredCS-IP-SP checkedbeforeADDSP4 andactualPOP saves.",
+    "FallbackreadsSS707E/7080, notDS7076/7078. The latterpair onlyguardsfullexactargument8. ActualfarCALLoperand iscapturedbeforeitsCS-IP framewrites; unknowncallbackbodies remain explicitretiredABI profiles.",
+    "29F6callsactual08B7(argument0A,RETF2), thenactual2C1C(argument16hex,plainfarRET). Itsargument remains beforePUSH3/CALL0599; noextraADDSP2 inserted. Existing actualmessage-exit bodies execute, ratherthangenericRET/C-valuedmocks for thosefunctions.",
+    "PreparedINT21/AH4Cboundaries at2C31/05DE areobserved, notexecuted. Wrapper2A14/2A16/2A17 arepostterminalunderthisdocumentedserviceprofile, notinventedreturnepilogue. 208of228union sites execute; separatechildunitcoverage isnotpromotedintothiscallercoverage.",
+    "1458genericcallbackRETFoperations arecounted separately, notoriginalinstructions. DOSserviceABI explicitlyomitsrealINTframes/devices. ReturnedpartialFLAGSF72B arepreserved atchildprefixes; actualADD/XOR/CMP regain definedbits. FullRAM/GPR-BP-CFIFDF/definedFLAGS/requestABI/CPUwritecounts match.",
+    "Newrawviewsareexternalkey/nearword/farpairmetadata, notbundledmedia ordecodedresourceformats. SS707Eview atprincipal178Fisconditionalbinding only. Allwriters/handlerbodies/actualcallerSS-SP/IRQ-lifetime/exclusion remainopen.",
+    "Thisqualifies29F6terminalrequestcontrol, but16A7cleanup/printf/retiredpriorcalls remainunprovedbeforeclassifyingB264fallthroughintodescriptorarena. Do notpruneB0FErawcontexts or9CC2shared-drawingfamily. Physical086Cunassigned/CGAbehindEGAclosure/P1-GATE-game-fidelity open."
+  ],
+  "limits": "Completefamilyinstruction/ABI/dispatchreview underexplicittypedDOS-handler-finalizer profiles andpreparedterminalcontract. No actualDOSprocess/session/IRQ delivery/fullfatalcaller-orcore/fidelity acceptance."
+}

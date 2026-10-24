@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 39,
+  "script_sha256": "5d7e5545432565066968a4b70b7d81c5845d67b67729049c9342c8e9c3647ecf",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "bb173e1726a2368604b4b244f017b88c388d91a66b816b7caf82549b97fa083f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_read_span.py",
+      "sha256": "a570a528b85ef41f9dfae1ea2f70426cd2535752a0288a9769b0692c546d789a"
+    }
+  ],
+  "limits": "Native247C/fullSS/syntheticDOSfullreturns/firstLFflag-CTRLZ-binary-text/primaryAH9-vs-secondaryAH0mapper/DSnearbuffer-vs-SSlookaheadlocal/retainedAH-DF-CX/fullBP-DSframeeffects/ignoredIOCTL-seekCF/countborrow/mapper-near-rootaliases/CALL-service-LODSbudgets/preRETqualification/adapterdiagnostics only. Originalcomparison/staticproofs separate; no realDOS-INTframes/fileIO/fullresourcecodec/allwriters-bufferbounds-storage-lifetime-exclusion/historicalCPU-A20/core/CGA/session/fidelity acceptance."
+}

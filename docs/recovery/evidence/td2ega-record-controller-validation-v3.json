@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000387"
+  ],
+  "vectors": 18752,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2216092c6bad9f346a9fd63528b51f44f0705d52c165659daab21d170eef5e0c",
+  "source_sha256": "049ad9bb352f09fdffb5e813425f9237ddd2bb08d40a368b739c180741fcd50a",
+  "validator_sha256": "f9edeae995307561833d78d8acea6c6cd2890a29beb2fa3f95b952adaf2743d5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 5604720,
+  "instruction_sites_in_fence": 335,
+  "instruction_sites_exercised": 335,
+  "fixture_coverage": {
+    "prefix_root": 12160,
+    "actual_near_CALLs": 26624,
+    "bus_write_events": 713104,
+    "minimumSP20_cases": 9312,
+    "DS_equals_SS_cases": 9440,
+    "synthetic_undefined_AF1_cases": 520,
+    "literal_PUSHF_words": 6720,
+    "raw_root_returns": 16,
+    "optional5446_CALLs": 496,
+    "supported_flag_slot_alias_cases": 16,
+    "unsupported_flag_slot_alias_cases": 32,
+    "prefix_child": 3584,
+    "root_near_return": 2928,
+    "raw_child_return": 48,
+    "prefix_cpu": 32
+  },
+  "limits": "Actual4D3F plus actual frozen4F92/5022/5446 C bodies, literalnearCALL/RET frames and actualSSPUSHF/POPFword aliases. NoSSscratch exclusions/ABI-valuemock. CPUanalysisprofile bit1set TF/IOPL/NT/reservedhigh0; explicitcallerundefinedAF input, AF1syntheticoriginalstimulus onlyafterXORAFundefined, nothistoricalCPUpolicy. UnsupportedTF/IOPL/NT overwrittenflagword stopsbeforePOPF/native5, noexception/modeeffect delivery. Fullbus/GPR/BP/CFIFDF/normaldefinedFLAGS/control/counts/prefixes. Allcallers/writers/lifetime/capacity/CPUprofile binding/exclusion/IRQs/fullstate/core/device/DOSsession/gameplay/fidelity remainseparate."
+}

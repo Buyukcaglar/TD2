@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000179",
+    "FN-EGA-000180"
+  ],
+  "result": "pass",
+  "vectors": 220,
+  "vectors_by_direction": {
+    "forward": 110,
+    "backward": 110
+  },
+  "native_only_diagnostic_cases": 8,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_ranges": [
+    {
+      "module_offset": 56440,
+      "length": 72,
+      "unrelocated_sha256": "fd89188541b8f5e7b5b4c49930b436c762fb41875db0281e25841e4bd555fc50"
+    },
+    {
+      "module_offset": 56512,
+      "length": 83,
+      "unrelocated_sha256": "00e1b6f9fddf61341dfa884a9dfa1ecd0f924ef82b9f0bc3521ac3fa15ff51b5"
+    }
+  ],
+  "library_sha256": "4a5c472db0dad8768d1f9504851dc0f187c315118e9dbad7e67b72b144bd78a9",
+  "source_sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15",
+  "validator_sha256": "8bfce8e93ef68ed9859c06b39649639ca0b85b1cf272ca50224c173ae29ab33e",
+  "original_instructions_executed": 11242733,
+  "coverage": [
+    "Both original copy functions with whole synthetic576KiB pool/guards",
+    "Zero,64KiB chunk boundaries, multiple chunks andlarge span",
+    "Identical spans andboth overlap directions, including originalunsafe order",
+    "48 varied spanlengths/positions per direction; lastphysical paragraph boundary",
+    "Farreturn/argument/register effects, chunk AX/ES andDF0",
+    "Native overflow/out-of-pool diagnostics without writes"
+  ],
+  "limits": "Nonwrapping disjoint livecode/stack andexternalbytepool only. Segment-word/physical wrap outside admitted domain. No real resource, cachemanager lifetime, codec, DOS, renderer/audio orgameplay acceptance."
+}

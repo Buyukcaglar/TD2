@@ -1,0 +1,22 @@
+"""Review actual registration-tail frames, cleanup and the partial root scope."""
+import argparse,hashlib,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert out.is_relative_to(ROOT/'docs/recovery/evidence') and not out.exists()
+    image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();md=Cs(CS_ARCH_X86,CS_MODE_16);rows=list(md.disasm(image[0x6c90+0x3fd9:0x6c90+0x3ff9],0x3fd9));assert len(rows)==12
+    expected={0x3fd9:'9a1c60c906',0x3fde:'b86962',0x3fe1:'0e',0x3fe2:'50',0x3fe3:'9a4c61c906',0x3fe8:'83c404',0x3feb:'b83b40',0x3fee:'0e',0x3fef:'50',0x3ff0:'9a4c61c906',0x3ff5:'83c404',0x3ff8:'cb'};assert {r.address:r.bytes.hex() for r in rows}==expected
+    c=json.loads((ROOT/'docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json').read_text());assert c['result']=='pass' and c['root_instruction_sites_exercised']==12 and c['instruction_sites_exercised']==80 and c['fixture_coverage']['actual_published_6269_403B_sentinel']>0 and c['fixture_coverage']['status_1'] and c['fixture_coverage']['status_6']
+    deps=['analysis/derived/td2ega-v1/TD2EGA.unpacked.exe','src/recovered/td2ega_timer_startup_tail_bus.c','src/recovered/td2ega_timer_startup_tail_bus.h','src/recovered/td2ega_timer_control_bus.c','src/recovered/td2ega_timer_callback_bus.c','tools/validate_timer_startup_tail_bus.py','analysis/history/timer-startup-tail-bus-build-setup-v1.json','docs/recovery/evidence/td2ega-timer-startup-tail-bus-validation-v1.json','docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json','docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json']
+    record={'schema':1,'result':'pass','function_ids':['FN-EGA-000124'],'image_sha256':hashlib.sha256(image).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'instruction_sites_in_fence':81,'instruction_sites_admitted':80,'root_instruction_sites_in_fence':12,'preCALL_boundary_sites':['06C9:6164'],'validator_dependencies':[{'path':p,'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest()} for p in deps],'facts':[
+        'Additional3FD9..3FF8 tail belongs to3F40. Earlier initialization andits sourcecallee/resource/reset/lifetime contracts are not covered by this tail. This is not a new original entry or whole-function admission.',
+        'Three root calls execute actual farframes:601C to3FDE;614C to3FE8;614C to3FF5. PUSHCS thenPUSHAX forms each two-word callbackargument; plain614C farRET leavesarguments, actualADDSP4 performs callercleanup and definesFLAGS.',
+        'Each actual child retiredCS/IP/SP is checked before callercontinuation. Rawchild returns stop withoutfollowing; childbudgets/portfailures/fatalpreCALL preserve stage/actualstate/control/target. RootfarRET readsactualinheritedSSwords afterallpublication/cleanup effects.',
+        'MinimumSP10 reserves4callbackargumentbytes+4farCALLbytes+2calleeBPbytes; maximumFFE0 follows admitted composedprofile. CurrentDS/inheritedSS and20bitaliases remainexplicit. Nativeargumentsdisjoint, noasyncwriters/executing-code mutations.',
+        'Fixedinstaller clearsfirstpair beforelaterpublishing6269 then403B/sentinel. Interface retains unmaskedadd and intermediateprefixes; rawstate/portadapterbusmutations are syntheticprofiles, not actualIRQ/exclusion proof. No extra masking or whole-pointer guard normalization.',
+        '80sites execute includingall12tail sites;6164 ispreCALLboundary notfatalcalleeexecution. Whole1MiBRAM/GPR-BP-CFIFDF-definedFLAGS/orderedports/independentCPUwrites compare. No arbitrarymock replaces601C/614C bodies.',
+        'Actual3F40root/1C8F-1B2C/main/startup-to-exit, realIRQ-delivery-nesting/allwriters-reset-storage-lifetime-exclusion/core/P1-GATE remainopen. Physical086Cunassigned/CGAbehindEGAclosure/noDOSsession-renderer-audio-game-fidelity acceptance.'
+    ],'limits':'Static partial-tail/call-frame/cleanup review with independent comparison and native diagnostics; not complete3F40 initialization or full session validation.'}
+    out.write_bytes((json.dumps(record,indent=2)+'\n').encode());print(json.dumps({'result':'pass','root_sites':12,'admitted_sites':80}))
+if __name__=='__main__':main()

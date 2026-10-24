@@ -1,0 +1,355 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "42b958e958c56276f01eee1616bacec4baecc3426e90781c1d030ef32fb28b08",
+  "instruction_observations": [
+    {
+      "site": "13A8:0BE8",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "13A8:0BE9",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "13A8:0BEB",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "13A8:0BEC",
+      "bytes": "b80002",
+      "text": "mov ax, 0x200"
+    },
+    {
+      "site": "13A8:0BEF",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "13A8:0BF0",
+      "bytes": "9aa826a813",
+      "text": "lcall 0x13a8, 0x26a8"
+    },
+    {
+      "site": "13A8:0BF5",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "13A8:0BF8",
+      "bytes": "8b5e04",
+      "text": "mov bx, word ptr [bp + 4]"
+    },
+    {
+      "site": "13A8:0BFB",
+      "bytes": "894704",
+      "text": "mov word ptr [bx + 4], ax"
+    },
+    {
+      "site": "13A8:0BFE",
+      "bytes": "0bc0",
+      "text": "or ax, ax"
+    },
+    {
+      "site": "13A8:0C00",
+      "bytes": "7418",
+      "text": "je 0xc1a"
+    },
+    {
+      "site": "13A8:0C02",
+      "bytes": "804f0608",
+      "text": "or byte ptr [bx + 6], 8"
+    },
+    {
+      "site": "13A8:0C06",
+      "bytes": "8a4707",
+      "text": "mov al, byte ptr [bx + 7]"
+    },
+    {
+      "site": "13A8:0C09",
+      "bytes": "98",
+      "text": "cwde "
+    },
+    {
+      "site": "13A8:0C0A",
+      "bytes": "8bd8",
+      "text": "mov bx, ax"
+    },
+    {
+      "site": "13A8:0C0C",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "13A8:0C0E",
+      "bytes": "03d8",
+      "text": "add bx, ax"
+    },
+    {
+      "site": "13A8:0C10",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "13A8:0C12",
+      "bytes": "c787966e0002",
+      "text": "mov word ptr [bx + 0x6e96], 0x200"
+    },
+    {
+      "site": "13A8:0C18",
+      "bytes": "eb21",
+      "text": "jmp 0xc3b"
+    },
+    {
+      "site": "13A8:0C1A",
+      "bytes": "8b5e04",
+      "text": "mov bx, word ptr [bp + 4]"
+    },
+    {
+      "site": "13A8:0C1D",
+      "bytes": "804f0604",
+      "text": "or byte ptr [bx + 6], 4"
+    },
+    {
+      "site": "13A8:0C21",
+      "bytes": "8a4707",
+      "text": "mov al, byte ptr [bx + 7]"
+    },
+    {
+      "site": "13A8:0C24",
+      "bytes": "98",
+      "text": "cwde "
+    },
+    {
+      "site": "13A8:0C25",
+      "bytes": "8bc8",
+      "text": "mov cx, ax"
+    },
+    {
+      "site": "13A8:0C27",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "13A8:0C29",
+      "bytes": "03c1",
+      "text": "add ax, cx"
+    },
+    {
+      "site": "13A8:0C2B",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "13A8:0C2D",
+      "bytes": "8bf0",
+      "text": "mov si, ax"
+    },
+    {
+      "site": "13A8:0C2F",
+      "bytes": "05956e",
+      "text": "add ax, 0x6e95"
+    },
+    {
+      "site": "13A8:0C32",
+      "bytes": "894704",
+      "text": "mov word ptr [bx + 4], ax"
+    },
+    {
+      "site": "13A8:0C35",
+      "bytes": "c784966e0100",
+      "text": "mov word ptr [si + 0x6e96], 1"
+    },
+    {
+      "site": "13A8:0C3B",
+      "bytes": "8b5e04",
+      "text": "mov bx, word ptr [bp + 4]"
+    },
+    {
+      "site": "13A8:0C3E",
+      "bytes": "8bf3",
+      "text": "mov si, bx"
+    },
+    {
+      "site": "13A8:0C40",
+      "bytes": "8b4404",
+      "text": "mov ax, word ptr [si + 4]"
+    },
+    {
+      "site": "13A8:0C43",
+      "bytes": "8907",
+      "text": "mov word ptr [bx], ax"
+    },
+    {
+      "site": "13A8:0C45",
+      "bytes": "c747020000",
+      "text": "mov word ptr [bx + 2], 0"
+    },
+    {
+      "site": "13A8:0C4A",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "13A8:0C4B",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "13A8:0C4C",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "13A8:0BF0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:26A8"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:0B42",
+      "site": "13A8:0B8F",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:0BE8"
+    },
+    {
+      "owner": "13A8:21D6",
+      "site": "13A8:21FB",
+      "kind": "call",
+      "size": 3,
+      "target": "13A8:0BE8"
+    }
+  ],
+  "public_cleanup_observations": [
+    {
+      "site": "13A8:0B92",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "13A8:21FE",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    }
+  ],
+  "parent_mode_proof": {
+    "argument_word_offsets_from_rootSP": {
+      "mode1": -14,
+      "increment_savedAX": -12,
+      "highguard0": -10,
+      "unused0": -8,
+      "key_savedDS": -6
+    },
+    "subsequent_prebranch_write_offsets": [
+      -16,
+      -18,
+      -20,
+      -22,
+      -24,
+      -26
+    ],
+    "parent_feasible_sites": [
+      "13A8:2852",
+      "13A8:2853",
+      "13A8:2855",
+      "13A8:2856",
+      "13A8:2857",
+      "13A8:2858",
+      "13A8:285C",
+      "13A8:285E",
+      "13A8:2861",
+      "13A8:2864",
+      "13A8:2867",
+      "13A8:2868",
+      "13A8:286A",
+      "13A8:286D",
+      "13A8:286F",
+      "13A8:2896",
+      "13A8:2899",
+      "13A8:289A",
+      "13A8:28B9",
+      "13A8:28BA",
+      "13A8:28BB",
+      "13A8:28BC",
+      "13A8:28BE",
+      "13A8:28BF"
+    ],
+    "parent_excluded_sites": [
+      "13A8:2871",
+      "13A8:2875",
+      "13A8:2876",
+      "13A8:2878",
+      "13A8:287A",
+      "13A8:287C",
+      "13A8:287F",
+      "13A8:2882",
+      "13A8:2883",
+      "13A8:2886",
+      "13A8:2887",
+      "13A8:2889",
+      "13A8:288C",
+      "13A8:2890",
+      "13A8:2892",
+      "13A8:2894",
+      "13A8:289C",
+      "13A8:289E",
+      "13A8:28A1",
+      "13A8:28A3",
+      "13A8:28A5",
+      "13A8:28A7",
+      "13A8:28A9",
+      "13A8:28AB",
+      "13A8:28AD",
+      "13A8:28AE",
+      "13A8:28B0",
+      "13A8:28B3",
+      "13A8:28B7"
+    ],
+    "scope": "SerializedRAM/noexecutingcodewrites/noasyncdelivery, SP30..FFE0 givesdistinctnonwrappingSSwords. Mode1/highguard0 fixedbyliteralpushes, no callback beforeguard/modebranch, no prologuewrite tothoseargumentwords. Mode1 takes286A; fallbackDOS48/secondnearcall unreachableonlyhere, notglobaldead. Standalone2852coversall53sites."
+  },
+  "static_signed_byte_index_cases": 256,
+  "initialized_metadata_relation": {
+    "resource_id": "RS-DOS-000266",
+    "known_nominal_side_rows": 20,
+    "side_base": 28308,
+    "stride": 6,
+    "row_count_bound_in_this_body": false,
+    "source_index_signed_range": [
+      -128,
+      127
+    ],
+    "metadata_word_offset": 28310,
+    "fallback_byte_offset": 28309,
+    "all_possible_word_starts": [
+      27542,
+      29072
+    ]
+  },
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-heap-public-context-v1.json",
+      "sha256": "3e53c9df3304789785d54ca029d9dfc11839699b80e172eb9bd2024ef293d261"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "Near/oneavailableSSnearoffsetstreamargument BP+4, PUSHBP/MOVBP-SP/PUSHSI/fixedAX200/PUSHAX/farCALL26A8. ActualrootSP60preservespublicchild50. ChildplainfarRETconsumesfourframebytes; parentADDSP2consumescount. CurrentBP/DS/GPR/IFDFadoptedafteractualchildreturn.",
+    "AfterchildADDSP2, streamargumentrereadfromactualSS[returnedBP+4]. StorechildAXonlyatcurrentDS[stream+4], ORAXAXbranchesonAXzero, ignoringchildDX andZF. This isliteralnearoffsetconsumer; no silentfar-pointer reinterpretation orhostallocation policy.",
+    "AXnonzero: ORbyteflags+6with8; ALfromcurrentDS[stream+7], unprefixed98wordCBW, signedbyteindex*6 bySHL-ADD-SHL wrapping16bits. Storeword200atcurrentDS[6E96+index]. FailureORflagswith4, same signedindex*6, fallbacknearoffset6E95+index storedstream+4, word1at6E96+index. All256rawbyteindicesyield-768..762step6; noactual20rowbound inbody.",
+    "FinalstreamargumentrereadfromactualSS[BP+4], thenSI=BX/readactualcurrentDS[SI+4]/writecurrentDS[BX]/word0atBX+2. Metadata/header/SSaliasesmayoverwritepointerorargumentbeforethisreread. ActualPOPSI-POPBP/nearRET consumesactualwords; noMOVSPBP inthisepilogue.",
+    "NormalCF-ZFfromsuccesslastSHLBX orfailureADDAX6E95 survivefinalMOVs/POPs/RET. Bothactualcallers0B8F/21FBnextADDSP2killarithmeticstatus; IFDF/segments/storagevalidity/fullcaller/exclusion open.",
+    "RS266nominal20sixbyte-sidecandidate6E94..6F0B isonlyoverlappinginitializedcandidateidentity, notrawsignedindexbound. ThisbodywritescurrentDS6E96+signedindex*6andfallbackstreamfields; allwriters/actualbindings/ownership/capacity/lifetime open.",
+    "Actual26A8/fullnestedSS/fixedParent2852mode1proof/29entry-specificexclusions retained. TypedDOS4A/serialized20bitRAM/noMEM_READhook; nativeprefixes/rawchildRETafterinstructionneverfollowed. No realDOS-INTframes/historicalCPU-A20/IRQ/core/resource/session/fidelity acceptance."
+  ],
+  "limits": "Whole40-site0BE8/fullSS/AX-onlystream/currentDS/signedbyte-times-six/sourceorderedrereads/actualnearRET/callercleanup andstatic256indexproof. Fullbusoriginalcomparison separate; no whole0B42-21D6/allwriters/validdomains/storage/capacity/ownership/lifetime/CPU-A20/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

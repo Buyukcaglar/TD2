@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000161",
+    "FN-EGA-000162",
+    "FN-EGA-000163",
+    "FN-EGA-000414",
+    "FN-EGA-000165"
+  ],
+  "vectors": 1928,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4be54572a011df0f5a4208533f26d1a44f333732bfe91784e121d84880e52e1b",
+  "source_sha256": "e3185da9b14de526481bd7de70f9ea3a34276968ba842e182cf6c87e0e82ce30",
+  "validator_sha256": "d7a431f9ab538c76d3944cb0e08d925a6d82d4f15e4927b80449a35575bcb488",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 12832,
+  "instruction_sites_exercised": 32,
+  "instruction_sites_in_fence": 32,
+  "fixture_coverage": {
+    "69FE": 384,
+    "service_calls": 2432,
+    "setter_argument_alias": 8,
+    "6A03": 384,
+    "6A17": 392,
+    "6A28": 384,
+    "6A3B": 384
+  },
+  "limits": "Five complete input bridge bodies, ordered farpointer publication/argument alias, dynamic far target, BIOS16ZF/CFIFDF/segments/register responses, ASCII/extended lowbyte behavior and finite drain compared. BIOS/far leaves are ABI mocks with synthetic interrupt frames, not actual installed handler or device. Dynamic target domain/lifetimes, IRQ/nesting, inputsession/core/game/fidelity pending. Native diagnostics separate."
+}

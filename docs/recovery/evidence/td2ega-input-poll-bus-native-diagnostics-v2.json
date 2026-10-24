@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 21,
+  "script_sha256": "788cde2a1a749ba76f225f68f9d05affab7f072fd116b8570f296aa7df3ef553",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "34f7f6f98c8eedcf04d31ab59865cc268bfa5bdabe2a2ccf34ebbed113a0a1f4",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_poll_bus.py",
+      "sha256": "96a89ea8eae2e2cd99923458b91ae0ff3c0a9c75b44cfcb7a68a01112ab28d2d"
+    },
+    {
+      "path": "analysis/history/validate_input_poll_bus_diagnostics_attempt_v1.py",
+      "sha256": "28ca671cf59b7ba7c6eecf0dd2d98512033749b0bf555d5c330288365a3a5dce"
+    },
+    {
+      "path": "analysis/history/input-poll-native-AF-probe-v1.json",
+      "sha256": "e789fce3c0dc9229ed1d0cfbd2b0042e4cfd21f58f0fd5916e7c04cd1341dfc9"
+    },
+    {
+      "path": "analysis/reviews/probe_input_poll_native_AF_v1.py",
+      "sha256": "d48071bb797e9276fae07c4fe79f49a63dfa5231f0084a9f5c8acd5d07c01a8f"
+    },
+    {
+      "path": "analysis/history/input-poll-native-refinement-v2.json",
+      "sha256": "e6dd0de14de34a8bd7177837800568099b9a50b83d6551207a180080aa6ce041"
+    }
+  ],
+  "limits": "Native-only invalid-flagprofile-pointer-count-state guards/nulloutput/completeincomingFLAGS-CS-IP words/AH1AFchoice validity/ADDSP2fullarithFLAGS/AFchoice0-1 changesactualaliasedpending-keyword/partialflagbyteclear-validity/beforeINTframebudget. Separatefromoriginalcomparison/realINT-IRQ-CPUqualification/whole420A-403B-caller-core/game-fidelity."
+}

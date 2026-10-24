@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-13",
+  "scope": "Recovery evidence/custody/dependency audit; not a game runtime or fidelity test.",
+  "result": "pass",
+  "problems": [],
+  "original_files": 250,
+  "original_hashes_unchanged": true,
+  "original_mtimes_attributes_unchanged": true,
+  "task_counts": {
+    "complete": 9,
+    "in_progress": 1,
+    "pending": 53
+  },
+  "active_requirements": 18,
+  "json_files_parsed": 87,
+  "local_links_checked": 114,
+  "function_records_validated": 439,
+  "resource_records_validated": 250,
+  "helper_checks": [
+    {
+      "function_ids": [
+        "FN-EGA-000003"
+      ],
+      "vectors": 131584,
+      "build": "docs/recovery/evidence/td2ega-byte-ring-build.json",
+      "comparison": "docs/recovery/evidence/td2ega-byte-ring-validation.json",
+      "scope": "Isolated function semantics only. No whole game/DOS/device session, no caller-level meaning, no cycle timing, no core integration; C does not expose CPU flags."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000181"
+      ],
+      "vectors": 1835,
+      "build": "docs/recovery/evidence/td2ega-filename-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-filename-validation-v2.json",
+      "scope": "Nonwrapping terminatedbyte spans only. Native missing-terminator diagnostics have no original-equivalence claim. No DOS/filesystem, resource codec, secondcompiler/host, game integration or fidelity."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000185"
+      ],
+      "vectors": 1258,
+      "build": "docs/recovery/evidence/td2ega-cache-query-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-query-validation-v1.json",
+      "scope": "Readonly stable snapshots andterminatednonwrapping names only. Nativeinvalid-bound diagnostics areoutside original-equivalence domain. No cachemovement/lifetime, DOS, codec, realresource or gameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000182"
+      ],
+      "vectors": 73654,
+      "build": "docs/recovery/evidence/td2ega-cache-allocate-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-allocate-validation-v1.json",
+      "scope": "Stable disjoint synthetic metadata and names. Failure stops before external fatal16A7:0002; no cleanup, termination, payload memory, DOS, codec, real resource, complete allocator lifetime or gameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000188"
+      ],
+      "vectors": 69209,
+      "build": "docs/recovery/evidence/td2ega-cache-discard-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-discard-validation-v1.json",
+      "scope": "Nonzero leftsentinel andbounded disjoint stable50row metadata arena. Externalfatal handler notexecuted. No payloadmove, cachelifetime, DOS, codec, real resource or gameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000179",
+        "FN-EGA-000180"
+      ],
+      "vectors": 220,
+      "build": "docs/recovery/evidence/td2ega-paragraph-copy-build-v2.json",
+      "comparison": "docs/recovery/evidence/td2ega-paragraph-copy-validation-v2.json",
+      "scope": "Nonwrapping disjoint livecode/stack andexternalbytepool only. Segment-word/physical wrap outside admitted domain. No real resource, cachemanager lifetime, codec, DOS, renderer/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000183"
+      ],
+      "vectors": 1833,
+      "build": "docs/recovery/evidence/td2ega-cache-compact-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-compact-validation-v1.json",
+      "scope": "Stable exclusively owned nonwrapping synthetic arena/pool only. No real resource, completecaller lifetime/exclusion, DOS, codec, renderer/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000184"
+      ],
+      "vectors": 3510,
+      "build": "docs/recovery/evidence/td2ega-cache-acquire-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-acquire-validation-v2.json",
+      "scope": "Exclusive nonwrapping bounded synthetic arenas/pools with no matching endsentinel andsufficient realrow/segment space. Allactualcaller lifetime/preconditions remainopen. No realresource, DOS, codec, rendering/audio orgameplay acceptance."
+    },
+    {
+      "function_ids": [
+        "FN-EGA-000186",
+        "FN-EGA-000187"
+      ],
+      "vectors": 8184,
+      "build": "docs/recovery/evidence/td2ega-cache-release-build-v1.json",
+      "comparison": "docs/recovery/evidence/td2ega-cache-release-validation-v1.json",
+      "scope": "Bounded exclusive synthetic arena/pool prefixes only. Descriptor-boundary aliases preserved ratherthan presumedvalidintegration. Fullcaller preconditions/lifetime/exclusion andexternalfatal cleanup remainopen. No realresource, DOS, codec, rendering/audio orgameplay acceptance."
+    }
+  ],
+  "differential_vectors": 291287,
+  "private_paths_ignored": [
+    "reference/dos/TD2EGA.EXE",
+    "analysis/derived/td2ega-v1/TD2EGA.unpacked.exe",
+    "analysis/ghidra-projects/TD2EGA.gpr",
+    "analysis/build/byte-ring-repro/td2ega_byte_ring.dll"
+  ],
+  "staged_file_count": 0,
+  "audit_tool_sha256": "b0f555922faa7d26acba8769bb5f0094599d9f1b4951b487e42a1e65eea2883e",
+  "separate_gates": {
+    "phase0": "passed",
+    "EGA_unpack": "passed",
+    "C_helper": "compiled and differential-passed only",
+    "complete_EGA_core": "pending",
+    "DOS_game_session": "not exercised",
+    "visual_audio_fidelity": "not established"
+  }
+}

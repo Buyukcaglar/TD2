@@ -1,0 +1,5271 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "c83e48bc872c94de99f83719cd8c678baa95b2855bd07d0ae804be8d86c6a637",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-sign-extension-context-v1.json",
+      "sha256": "d3f14fc69d6e087683da6e0e25a57d8976b84b71a8a8d97437110236ae1cd6d6"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-mutable-control-map-v3.json",
+      "sha256": "defea2862ec13c9fec00f7313b0d6933f27572a8484b4874f4bcd224d0da9fa8"
+    }
+  ],
+  "states": [
+    {
+      "name": "initial_image",
+      "ledger": "analysis/flow/mutable-v3/initial_image/direct-flow.json",
+      "ledger_sha256": "238a538bf779840940acf3d3a53b2dd1a47ae5d5ca5d5b4516378dbfd5979b58",
+      "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+      "instruction_locations": 35547,
+      "operand_or_address_override_prefixes": [],
+      "explicit_32bit_GPR_operands": [],
+      "unprefixed_word_sign_extension_sites": [
+        {
+          "site": "0000:0151",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0000:0B1F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:01D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:026A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:035F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:0464",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:04B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:01AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:036A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01B7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03C8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03F5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0472",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0478",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0012",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:00F3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:03F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0661",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:01D0",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:039D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:03FC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0402",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0411",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0421",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0427",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:042D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:044D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0453",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0459",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:046F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04B8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04D7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04DD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0542",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05C2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0726",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:072C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0732",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0738",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0747",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0765",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:076B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0771",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0791",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0797",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:079D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07B3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07E1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07EF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08FB",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0905",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:090D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0917",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:091F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0929",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09CE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0A88",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0AA2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0ABC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B23",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B33",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B49",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BE6",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BEC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C0C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C26",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0F4A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1078",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1126",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11AD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11B5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11BF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11C7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12EE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12F8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1302",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:130A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1314",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:131C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1326",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:154A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:155D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1570",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:19F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:04D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06C9",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:16DF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:195F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1BBC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1FF1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:2006",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:00AF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:01C5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0258",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0368",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:06DA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0030",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0111",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0360",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0391",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:03DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0A30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0AA6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1425",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1632",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1659",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1724",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BA3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BF3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:21DF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2210",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2259",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:27EF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2F83",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3121",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3148",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3213",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3584",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:35B0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3623",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3667",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3632",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:396D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3979",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:397E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3985",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39DC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39E8",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3A15",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3C99",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3E1A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3F19",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4492",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:489B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:48DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4C8A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:52C6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:0014",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:003A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0546",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:06B4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:096F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09A6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09C2",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0B71",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BA0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BB0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C09",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C24",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C93",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CB1",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CCD",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CDF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D1A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D37",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D7F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D9E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0DCF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E87",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0EF7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F31",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F9F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FDB",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FF5",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1040",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:107B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:109E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1105",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1116",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1153",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1163",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1178",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1196",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:11CE",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1226",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1241",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1449",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:14E7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:156C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:163E",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:19D4",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A2D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A84",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1C54",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1F92",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:201B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:213E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2228",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:093F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:26C1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27AC",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27D2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2899",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:29E4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AA:0018",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AB:002B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:009F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:00B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "1769:01BA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        }
+      ]
+    },
+    {
+      "name": "prepared_high_drive",
+      "ledger": "analysis/flow/mutable-v3/prepared_high_drive/direct-flow.json",
+      "ledger_sha256": "9bcfe9344e262cba7f8f5d3de3c70a3b7d10bbf969ea93f4f4e238e891e5d45f",
+      "image_sha256": "e0b08302409b8a2ad03e4a60989e794cd7063335df48c50a93fef173cce9d067",
+      "instruction_locations": 35547,
+      "operand_or_address_override_prefixes": [],
+      "explicit_32bit_GPR_operands": [],
+      "unprefixed_word_sign_extension_sites": [
+        {
+          "site": "0000:0151",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0000:0B1F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:01D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:026A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:035F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:0464",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:04B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:01AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:036A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01B7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03C8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03F5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0472",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0478",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0012",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:00F3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:03F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0661",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:01D0",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:039D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:03FC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0402",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0411",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0421",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0427",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:042D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:044D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0453",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0459",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:046F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04B8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04D7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04DD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0542",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05C2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0726",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:072C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0732",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0738",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0747",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0765",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:076B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0771",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0791",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0797",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:079D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07B3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07E1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07EF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08FB",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0905",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:090D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0917",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:091F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0929",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09CE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0A88",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0AA2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0ABC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B23",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B33",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B49",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BE6",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BEC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C0C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C26",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0F4A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1078",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1126",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11AD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11B5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11BF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11C7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12EE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12F8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1302",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:130A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1314",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:131C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1326",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:154A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:155D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1570",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:19F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:04D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06C9",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:16DF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:195F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1BBC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1FF1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:2006",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:00AF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:01C5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0258",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0368",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:06DA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0030",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0111",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0360",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0391",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:03DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0A30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0AA6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1425",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1632",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1659",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1724",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BA3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BF3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:21DF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2210",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2259",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:27EF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2F83",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3121",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3148",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3213",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3584",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:35B0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3623",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3667",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3632",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:396D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3979",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:397E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3985",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39DC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39E8",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3A15",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3C99",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3E1A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3F19",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4492",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:489B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:48DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4C8A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:52C6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:0014",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:003A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0546",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:06B4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:096F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09A6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09C2",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0B71",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BA0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BB0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C09",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C24",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C93",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CB1",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CCD",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CDF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D1A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D37",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D7F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D9E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0DCF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E87",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0EF7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F31",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F9F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FDB",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FF5",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1040",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:107B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:109E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1105",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1116",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1153",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1163",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1178",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1196",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:11CE",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1226",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1241",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1449",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:14E7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:156C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:163E",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:19D4",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A2D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A84",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1C54",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1F92",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:201B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:213E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2228",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:093F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:26C1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27AC",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27D2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2899",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:29E4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AA:0018",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AB:002B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:009F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:00B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "1769:01BA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        }
+      ]
+    },
+    {
+      "name": "prepared_low_drive",
+      "ledger": "analysis/flow/mutable-v3/prepared_low_drive/direct-flow.json",
+      "ledger_sha256": "46bcf8b543b56a1825972cccc1836b125cf072837eb9f2d8960e89b4e97c81d0",
+      "image_sha256": "fa10bfcfc75f186b1a2638593599fa583ce4b8629cd325a29d6cab459cc766fe",
+      "instruction_locations": 35543,
+      "operand_or_address_override_prefixes": [],
+      "explicit_32bit_GPR_operands": [],
+      "unprefixed_word_sign_extension_sites": [
+        {
+          "site": "0000:0151",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0000:0B1F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:01D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:026A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:035F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:0464",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:04B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:01AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:036A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01B7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03C8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03F5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0472",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0478",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0012",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:00F3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:03F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0661",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:01D0",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:039D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:03FC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0402",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0411",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0421",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0427",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:042D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:044D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0453",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0459",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:046F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04B8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04D7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04DD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0542",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05C2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0726",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:072C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0732",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0738",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0747",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0765",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:076B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0771",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0791",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0797",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:079D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07B3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07E1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07EF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08FB",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0905",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:090D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0917",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:091F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0929",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09CE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0A88",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0AA2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0ABC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B23",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B33",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B49",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BE6",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BEC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C0C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C26",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0F4A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1078",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1126",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11AD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11B5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11BF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11C7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12EE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12F8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1302",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:130A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1314",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:131C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1326",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:154A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:155D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1570",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:19F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:04D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06C9",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:16DF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:195F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1BBC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1FF1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:2006",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:00AF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:01C5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0258",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0368",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:06DA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0030",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0111",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0360",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0391",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:03DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0A30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0AA6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1425",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1632",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1659",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1724",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BA3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BF3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:21DF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2210",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2259",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:27EF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2F83",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3121",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3148",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3213",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3584",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:35B0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3623",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3667",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3632",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:396D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3979",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:397E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3985",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39DC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39E8",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3A15",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3C99",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3E1A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3F19",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4492",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:489B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:48DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4C8A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:52C6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:0014",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:003A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0546",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:06B4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:096F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09A6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09C2",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0B71",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BA0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BB0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C09",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C24",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C93",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CB1",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CCD",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CDF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D1A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D37",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D7F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D9E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0DCF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E87",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0EF7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F31",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F9F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FDB",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FF5",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1040",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:107B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:109E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1105",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1116",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1153",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1163",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1178",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1196",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:11CE",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1226",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1241",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1449",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:14E7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:156C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:163E",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:19D4",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A2D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A84",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1C54",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1F92",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:201B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:213E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2228",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:093F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:26C1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27AC",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27D2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2899",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:29E4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AA:0018",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AB:002B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:009F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:00B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "1769:01BA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        }
+      ]
+    },
+    {
+      "name": "prepared_mixed_query",
+      "ledger": "analysis/flow/mutable-v3/prepared_mixed_query/direct-flow.json",
+      "ledger_sha256": "1268077ad574a0a41aa31eedf5cc9675c6091d29bcb6906ea762bfbc22fb96cd",
+      "image_sha256": "3a0c4fa29349b5f7907d5361c23e7ccd82e8de746b8d9da07d47f31c671b4fba",
+      "instruction_locations": 35547,
+      "operand_or_address_override_prefixes": [],
+      "explicit_32bit_GPR_operands": [],
+      "unprefixed_word_sign_extension_sites": [
+        {
+          "site": "0000:0151",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0000:0B1F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:01D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:026A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:035F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:0464",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "00C0:04B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:01AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "010C:036A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01B7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:01C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03C8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:03F5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0472",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0143:0478",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0012",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:00F3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:03F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "019E:0661",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:01D0",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:039D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:03FC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0402",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0411",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0421",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0427",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:042D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:044D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0453",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0459",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:046F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04B8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04D7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:04DD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0542",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05C2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:05D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0726",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:072C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0732",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0738",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0747",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0765",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:076B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0771",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0791",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0797",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:079D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07B3",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07E1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:07EF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08F1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:08FB",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0905",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:090D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0917",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:091F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0929",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09AA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09C4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:09CE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0A88",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0AA2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0ABC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B23",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B33",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0B49",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BE6",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0BEC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C0C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0C26",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:0F4A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1078",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1126",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11AD",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11B5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11BF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11C7",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:11D1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12AC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12B2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12BC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12EE",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:12F8",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1302",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:130A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1314",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:131C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1326",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:154A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:155D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:1570",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0267:19F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:04D5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06C9",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:06F2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:16DF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:195F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1BBC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:1FF1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0432:2006",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:00AF",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:01C5",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0258",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:0368",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "0645:06DA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0030",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06B3:0111",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0360",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0391",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:03DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0A30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:0AA6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1425",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1632",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1659",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1724",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BA3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:1BF3",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:21DF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2210",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2259",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:27EF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:2F83",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3121",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3148",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3213",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3584",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:35B0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3623",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3667",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3632",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:396D",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3979",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:397E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3985",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39DC",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:39E8",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3A15",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3C99",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3E1A",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:3F19",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4492",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:489B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:48DA",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:4C8A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "06C9:52C6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:0014",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A3:003A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0546",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:06B4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:096F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09A6",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:09C2",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0B71",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BA0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0BB0",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C09",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C24",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0C93",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CB1",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CCD",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0CDF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D1A",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D37",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D7F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0D9E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0DCF",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E30",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0E87",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0EF7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F31",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0F9F",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FDB",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:0FF5",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1040",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:107B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:109E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1105",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1116",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1153",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1163",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1178",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1196",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:11CE",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1226",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1241",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1449",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:14E7",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:156C",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:163E",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:19D4",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A2D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1A84",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1C54",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:1F92",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:201B",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:213E",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2228",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:093F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:26C1",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27AC",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:27D2",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2899",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:29E4",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B06",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "13A8:2B7D",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AA:0018",
+          "opcode": "98",
+          "mnemonic_text": "cwde",
+          "operand_size": 16
+        },
+        {
+          "site": "16AB:002B",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:009F",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "16BB:00B9",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        },
+        {
+          "site": "1769:01BA",
+          "opcode": "99",
+          "mnemonic_text": "cdq",
+          "operand_size": 16
+        }
+      ]
+    }
+  ],
+  "limits": "Fourselectedsyntacticinitial/preparedsnapshot ledgers only. No66/67prefix or explicit32bitGPRoperand observed; unprefixed98/99 decodedunder16bitcontext despiteCapstonesynonymtext. Rawprefixdetector checkedonsyntheticoverrideexamples andsignextensionmicrofixtures separatelypinned. Notallunclassified/unresolvedindirect/mutabletransition code, noGhidraglobalcontext/wholeFLAGS/core/runtime/device/game/fidelity closure. Upperregistereffects outsideadmittedcode stillrequireownreview."
+}

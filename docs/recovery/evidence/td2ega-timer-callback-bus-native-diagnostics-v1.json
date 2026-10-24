@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 22,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "10f2520ad016b88839cb1e53fc0b4098f4a39a5be5457c3e743f5b667c35d7e3",
+  "library_sha256": "2ae704414d9010064629d5154a7e87147841270082f5cff40e31a618542390e9",
+  "source_sha256": "46d93d3c8d0e8d139d3c84e7a2e9b075f12c8ebcab34fddeeb3ecf4be5d4ffa7",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_callback_bus.py",
+      "sha256": "12c05b9cf2c286a84287ce40c9e18949a1c76108d244fc8e41058af4c83e9025"
+    },
+    {
+      "path": "analysis/history/timer-callback-bus-build-setup-v1.json",
+      "sha256": "82281dbead80b4eb04a4c09674901899a6223b9bd0546c61fdc193a220f19c9f"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-callback-bus-context-v1.json",
+      "sha256": "bf3cfb67a2d3be7fe2d1ad26e601d3a5cb9616e11674ba363096f78446357806"
+    }
+  ],
+  "limits": "Nativeonly invalid/budget/unmaskedpublication/liveSSargument/fatalpreCALL/matchedremoveSTI/preRET diagnostics. No actualIRQfeasibility orhistoricalfailure/fatalcallee/core/game acceptance."
+}

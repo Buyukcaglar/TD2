@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 65,
+  "script_sha256": "ff8b76de62c319f27486dafbab57e63f3aac800fd609545f81502a006a8b3bd1",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "83410b92fdeb141e8ae0acdd27976ccd48169b2d25015d34e96499a5b0022240",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_plane_gather.py",
+      "sha256": "ca069bf79e59ae572bb66cb82b6daf2a5271a95402a2cac4dabf2e463c084519"
+    }
+  ],
+  "limits": "NativeAC40/fullSS/rawheaderwrites/localSAR/liveheadernibbles/packedCOPY-gap/15nonzeroselectors/rowandbyte-counterDECJGwide/liveSSwidth/savedDS-farframealiases/globalplane-row-port-copybudget/ADDSPcarry/preRETqualification only. Originalcomparison/staticproofseparate; no alternateAC64entry/allwriters-format-capacities-lifetime-exclusion/realreadmap-latches-renderer/CPU-A20/core/resourcecodec/CGA/session/fidelity admission."
+}

@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000323"
+  ],
+  "vectors": 21104,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "60bffcdb254c47090eb0b562082f252070b19c5a31bc3d4a80f0efe518c031ab",
+  "source_sha256": "9ee2e00e3c16608a4c641d826e84de98a539dc1597c78e0f78e9193500b1a0dd",
+  "validator_sha256": "afde42444f2c65f8b16a25ab3f235407289546444240b6d12ccf1ae4dbd45b07",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 755270,
+  "instruction_sites_in_fence": 112,
+  "instruction_sites_exercised": 83,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2871",
+        "13A8:2875",
+        "13A8:2876",
+        "13A8:2878",
+        "13A8:287A",
+        "13A8:287C",
+        "13A8:287F",
+        "13A8:2882",
+        "13A8:2883",
+        "13A8:2886",
+        "13A8:2887",
+        "13A8:2889",
+        "13A8:288C",
+        "13A8:2890",
+        "13A8:2892",
+        "13A8:2894",
+        "13A8:289C",
+        "13A8:289E",
+        "13A8:28A1",
+        "13A8:28A3",
+        "13A8:28A5",
+        "13A8:28A7",
+        "13A8:28A9",
+        "13A8:28AB",
+        "13A8:28AD",
+        "13A8:28AE",
+        "13A8:28B0",
+        "13A8:28B3",
+        "13A8:28B7"
+      ],
+      "scope": "2852 entered onlythroughliteral2830 farCALL withfixedmode1/highguard0 andnosourcewrites tothoseSSargumentwords beforeguard/modebranch",
+      "reason": "Parentmode1 takes286A only; secondchild/fallbackDOS48/cursorpaths cannotexecute inthiscomposition. Notglobaldead; standalone2852coversall53sites."
+    }
+  ],
+  "fixture_coverage": {
+    "prefix_outer_call": 9216,
+    "actual_far_CALLs": 11888,
+    "actual_near_CALLs": 7280,
+    "records": 45556,
+    "bus_write_events": 248686,
+    "service_write_events": 3016,
+    "metadata_DS_equals_SS_cases": 10552,
+    "minimumSP30_cases": 6480,
+    "raw_root_returns": 530,
+    "initial_DS_equals_SS_cases": 2400,
+    "prefix_child_call": 4608,
+    "prefix_record": 2304,
+    "root_near_return": 3546,
+    "returned_ZF1": 3210,
+    "failure_DXFFFF_restoredDX_nonzero": 2608,
+    "success_childDX_restoredDX_zero": 226,
+    "prefix_service": 608,
+    "syntheticDOS4A": 2422,
+    "returned_ZF0": 336,
+    "raw_child_return": 822
+  },
+  "limits": "Actual13A8:2830+2852mode1+28C0/fullSS/DS-to-ESswitch/fiveSSargs/actualfar-nearframes/savedAXpoppedDX/DS-BXrestores/requiredreturnedZF. FlagsvalidonlynormalrootRET; childDXFFFFCMPbeforepops skipsORDX, elseZFofactualrestoredDX. Caller26BDJNE/2813JE requiresZF, CF0bothnormalpaths. 29parentmode-specificsitesstaticinfeasibleonlyfromliteralwrapperargumentframe; standalone2852coversfullbody. SyntheticDOS4Afullreturnedstate/bus, SS-SP-CSpreserved/realINTframesomitted. Budgets/rawRETtargetsexposedafterinstructionneverfollowed. No wholecaller/allwriters/domain/capacity/storage/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

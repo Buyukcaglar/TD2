@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_id": "FN-EGA-000090",
+  "vectors": 864,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2452a323003ce2f474ba8dfac9953f05658cc5a58ee1627db0f22b0968fe44a2",
+  "source_sha256": "5441ce416510399e08c31b49ac2ef0671951f27f24e4dc87ad26008aff4a5b8b",
+  "validator_sha256": "a660c67288152201eb047c3e1ad0cbb148938b2df6cead6a2ebed19722a345a7",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 2490872,
+  "instruction_sites_exercised": 130,
+  "instruction_sites_in_fence": 130,
+  "fixture_coverage": {
+    "pattern_0": 64,
+    "original_normal_nearRET": 480,
+    "same_DS_SS_0": 432,
+    "helper_RET6_calls": 8568,
+    "attribute_words": 312936,
+    "line_words": 202744,
+    "same_DS_SS_1": 432,
+    "pattern_1": 64,
+    "pattern_2": 160,
+    "original_work_prefix": 384,
+    "pattern_3": 64,
+    "pattern_4": 64,
+    "pattern_5": 160,
+    "pattern_6": 64,
+    "pattern_7": 64,
+    "pattern_8": 160
+  },
+  "limits": "Complete2477+actual06C3 serializedcallercomposition: DS-current/SS-previous, ESDS/DF0, signedSUB-JGE/CL1notCX1, prepared15words/fiveRET6reverse-ordercalls, attribute-before-linewrites/snapshot/source/outputaliases andpersistentINC-DECpair compared. Prefixesstopbeforeoriginalwork, notnormalreturn/error. Actualcaller/SS-DS/record/outputbounds/IRQreentry/fullmutablegraph/resource/renderer/core/game/fidelity pending; native diagnostics separate."
+}

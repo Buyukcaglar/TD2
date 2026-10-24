@@ -1,0 +1,423 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "66d79732d4f6b2f621ba551dce713045879b6948ebf21c9900b519931dcda554",
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "instruction_sites_in_fence": 71,
+  "instruction_observations": [
+    {
+      "site": "06C9:61BF",
+      "bytes": "fa",
+      "text": "cli "
+    },
+    {
+      "site": "06C9:61C0",
+      "bytes": "1e",
+      "text": "push ds"
+    },
+    {
+      "site": "06C9:61C1",
+      "bytes": "06",
+      "text": "push es"
+    },
+    {
+      "site": "06C9:61C2",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:61C3",
+      "bytes": "53",
+      "text": "push bx"
+    },
+    {
+      "site": "06C9:61C4",
+      "bytes": "51",
+      "text": "push cx"
+    },
+    {
+      "site": "06C9:61C5",
+      "bytes": "52",
+      "text": "push dx"
+    },
+    {
+      "site": "06C9:61C6",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:61C7",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "06C9:61C8",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:61C9",
+      "bytes": "b020",
+      "text": "mov al, 0x20"
+    },
+    {
+      "site": "06C9:61CB",
+      "bytes": "e620",
+      "text": "out 0x20, al"
+    },
+    {
+      "site": "06C9:61CD",
+      "bytes": "b88f17",
+      "text": "mov ax, 0x178f"
+    },
+    {
+      "site": "06C9:61D0",
+      "bytes": "8ed8",
+      "text": "mov ds, ax"
+    },
+    {
+      "site": "06C9:61D2",
+      "bytes": "fb",
+      "text": "sti "
+    },
+    {
+      "site": "06C9:61D3",
+      "bytes": "ff0e9a5e",
+      "text": "dec word ptr [0x5e9a]"
+    },
+    {
+      "site": "06C9:61D7",
+      "bytes": "7f1a",
+      "text": "jg 0x61f3"
+    },
+    {
+      "site": "06C9:61D9",
+      "bytes": "ff06905e",
+      "text": "inc word ptr [0x5e90]"
+    },
+    {
+      "site": "06C9:61DD",
+      "bytes": "7504",
+      "text": "jne 0x61e3"
+    },
+    {
+      "site": "06C9:61DF",
+      "bytes": "ff06925e",
+      "text": "inc word ptr [0x5e92]"
+    },
+    {
+      "site": "06C9:61E3",
+      "bytes": "a1985e",
+      "text": "mov ax, word ptr [0x5e98]"
+    },
+    {
+      "site": "06C9:61E6",
+      "bytes": "a39a5e",
+      "text": "mov word ptr [0x5e9a], ax"
+    },
+    {
+      "site": "06C9:61E9",
+      "bytes": "803e955e00",
+      "text": "cmp byte ptr [0x5e95], 0"
+    },
+    {
+      "site": "06C9:61EE",
+      "bytes": "7403",
+      "text": "je 0x61f3"
+    },
+    {
+      "site": "06C9:61F0",
+      "bytes": "e83d00",
+      "text": "call 0x6230"
+    },
+    {
+      "site": "06C9:61F3",
+      "bytes": "803efe5e00",
+      "text": "cmp byte ptr [0x5efe], 0"
+    },
+    {
+      "site": "06C9:61F8",
+      "bytes": "7526",
+      "text": "jne 0x6220"
+    },
+    {
+      "site": "06C9:61FA",
+      "bytes": "8b1e9c5e",
+      "text": "mov bx, word ptr [0x5e9c]"
+    },
+    {
+      "site": "06C9:61FE",
+      "bytes": "ff879e5e",
+      "text": "inc word ptr [bx + 0x5e9e]"
+    },
+    {
+      "site": "06C9:6202",
+      "bytes": "ff068c5e",
+      "text": "inc word ptr [0x5e8c]"
+    },
+    {
+      "site": "06C9:6206",
+      "bytes": "7504",
+      "text": "jne 0x620c"
+    },
+    {
+      "site": "06C9:6208",
+      "bytes": "ff068e5e",
+      "text": "inc word ptr [0x5e8e]"
+    },
+    {
+      "site": "06C9:620C",
+      "bytes": "33ff",
+      "text": "xor di, di"
+    },
+    {
+      "site": "06C9:620E",
+      "bytes": "8b85145f",
+      "text": "mov ax, word ptr [di + 0x5f14]"
+    },
+    {
+      "site": "06C9:6212",
+      "bytes": "0bc0",
+      "text": "or ax, ax"
+    },
+    {
+      "site": "06C9:6214",
+      "bytes": "7410",
+      "text": "je 0x6226"
+    },
+    {
+      "site": "06C9:6216",
+      "bytes": "fa",
+      "text": "cli "
+    },
+    {
+      "site": "06C9:6217",
+      "bytes": "ff9d125f",
+      "text": "lcall [di + 0x5f12]"
+    },
+    {
+      "site": "06C9:621B",
+      "bytes": "83c704",
+      "text": "add di, 4"
+    },
+    {
+      "site": "06C9:621E",
+      "bytes": "ebee",
+      "text": "jmp 0x620e"
+    },
+    {
+      "site": "06C9:6220",
+      "bytes": "e461",
+      "text": "in al, 0x61"
+    },
+    {
+      "site": "06C9:6222",
+      "bytes": "24fc",
+      "text": "and al, 0xfc"
+    },
+    {
+      "site": "06C9:6224",
+      "bytes": "e661",
+      "text": "out 0x61, al"
+    },
+    {
+      "site": "06C9:6226",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:6227",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:6228",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:6229",
+      "bytes": "5a",
+      "text": "pop dx"
+    },
+    {
+      "site": "06C9:622A",
+      "bytes": "59",
+      "text": "pop cx"
+    },
+    {
+      "site": "06C9:622B",
+      "bytes": "5b",
+      "text": "pop bx"
+    },
+    {
+      "site": "06C9:622C",
+      "bytes": "58",
+      "text": "pop ax"
+    },
+    {
+      "site": "06C9:622D",
+      "bytes": "07",
+      "text": "pop es"
+    },
+    {
+      "site": "06C9:622E",
+      "bytes": "1f",
+      "text": "pop ds"
+    },
+    {
+      "site": "06C9:622F",
+      "bytes": "cf",
+      "text": "iret "
+    },
+    {
+      "site": "06C9:6230",
+      "bytes": "803e945e00",
+      "text": "cmp byte ptr [0x5e94], 0"
+    },
+    {
+      "site": "06C9:6235",
+      "bytes": "7410",
+      "text": "je 0x6247"
+    },
+    {
+      "site": "06C9:6237",
+      "bytes": "ff0e965e",
+      "text": "dec word ptr [0x5e96]"
+    },
+    {
+      "site": "06C9:623B",
+      "bytes": "7f0a",
+      "text": "jg 0x6247"
+    },
+    {
+      "site": "06C9:623D",
+      "bytes": "c606945e00",
+      "text": "mov byte ptr [0x5e94], 0"
+    },
+    {
+      "site": "06C9:6242",
+      "bytes": "c606955e00",
+      "text": "mov byte ptr [0x5e95], 0"
+    },
+    {
+      "site": "06C9:6247",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:6249",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "site": "06C9:624B",
+      "bytes": "a1885e",
+      "text": "mov ax, word ptr [0x5e88]"
+    },
+    {
+      "site": "06C9:624E",
+      "bytes": "26a32000",
+      "text": "mov word ptr es:[0x20], ax"
+    },
+    {
+      "site": "06C9:6252",
+      "bytes": "a18a5e",
+      "text": "mov ax, word ptr [0x5e8a]"
+    },
+    {
+      "site": "06C9:6255",
+      "bytes": "26a32200",
+      "text": "mov word ptr es:[0x22], ax"
+    },
+    {
+      "site": "06C9:6259",
+      "bytes": "cd08",
+      "text": "int 8"
+    },
+    {
+      "site": "06C9:625B",
+      "bytes": "b8bf61",
+      "text": "mov ax, 0x61bf"
+    },
+    {
+      "site": "06C9:625E",
+      "bytes": "26a32000",
+      "text": "mov word ptr es:[0x20], ax"
+    },
+    {
+      "site": "06C9:6262",
+      "bytes": "8cc8",
+      "text": "mov ax, cs"
+    },
+    {
+      "site": "06C9:6264",
+      "bytes": "26a32200",
+      "text": "mov word ptr es:[0x22], ax"
+    },
+    {
+      "site": "06C9:6268",
+      "bytes": "c3",
+      "text": "ret "
+    }
+  ],
+  "root_site_counts": {
+    "61BF": 53,
+    "6230": 18
+  },
+  "source_stack": {
+    "handler_saved_words": 9,
+    "handler_saved_bytes": 18,
+    "far_callback_frame_bytes": 4,
+    "403B_minimum_SP": 46,
+    "proposed_handler_minimum_SP": 68,
+    "bridge_INT_frame_bytes": 6,
+    "handler_entry_return": "existing IP-CS-FLAGS six-byte IRET frame",
+    "bridge_entry_return": "existing near IP word"
+  },
+  "facts": [
+    "CLI precedes PUSH DS/ES/AX/BX/CX/DX/SI/DI/BP; EOI occurs with IF0, then relocated DS becomes load+178F and STI opens an interrupt window. SS is inherited.",
+    "JG after DEC5E9A/5E96 uses SF/OF/ZF. Old values2..7FFF alone are positive;8000 wraps7FFF with OF1 and still takes rollover. Counter pairs5E90/92 and5E8C/E have no assigned units.",
+    "61F0 near CALL pushes61F3. 6230 edits IVT20/22 through ES0, executes INT08, then writes61BF/currentCS through returned ES and nearRET. DS/ES/BP are not implicitly restored by the foreign adapter.",
+    "Named real-address INT profile pushes FLAGS-CS-IP before reading vector. WholeSS/IVT aliases must use post-frame bytes. Explicit AF0/1 storage profile follows6247XOR; flags remain arithmetically unmodified before6259INT.",
+    "6217 far target comes from currentDS:[DI+5F12] and is captured before the far frame. Segment0 sentinel is tested by MOVAX/ORAX beforeCLI. Each retired child CS-IP-SP is checked before continuation.",
+    "No five-row clamp or local reentry guard. Returned DI andDS select the next callback pair after actual ADDDI4. Unbounded cycles require a diagnostic budget, not invented source termination.",
+    "621BADDDI4 defines arithmetic flags before the next callback ORAXAX. A403B adapter need not invent unexposed child arithmetic flags; CF/IF/DF and actual SS remain explicit.",
+    "6226..622E restore actual SS words;622F IRET restores actual IP/CS/FLAGS and reports raw root coordinates without following. Saved-word/root-frame corruption is not discarded by a live-stack exclusion.",
+    "Callback/oldIRQ generic RETF/IRET ABI profiles are separate from actual403B/6269 body composition, real IRQ delivery, nested scheduling, allwriters/reset/source-storage lifetime/exclusion and complete-core acceptance.",
+    "SP68 derives18+4+46 to permit later403B composition; current handler-only body evidence does not itself execute403B. Standalone6230 minimum6 covers explicit INT frame. Incoming/systemFLAGS and backend return boundaries remain qualified."
+  ],
+  "validator_dependencies": [
+    {
+      "path": "analysis/history/timer-handler-bus-build-setup-v3.json",
+      "sha256": "16f88c70323b40f3bbb33b78c8c2fdbcf4ebf816e12b3843e2a12e1a6dadd730"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-build-repair-v2.json",
+      "sha256": "844abf3f3d9f2a631f6460abb8d7711e3e0f73955d44d882e5c6498e9dc35330"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-refinement-v3.json",
+      "sha256": "1d2c5dd80f3e78f8293459b5e3f3acb5cb03a5506cbdb198229d078c3a2b7a72"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-int-real-mode-reference-v1.json",
+      "sha256": "d7ef3c7389ca3d34bf42ed81fc1b653813069446aee65330d014f49ceb0edb68"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+      "sha256": "99ad5245ec3268e3412b65baf4fe5e8ac8b5ccb36de3ca39009298de4ba83be2"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-state-tick-bus-validation-v5.json",
+      "sha256": "134d06fa3184ab9146b68f063711073431d99429278c803fcc8f117523b4a229"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-callback-lifetime-v1.json",
+      "sha256": "d7412f8cf18e0551a147a8420f81f908a03ed047941a2407ad4233795809d365"
+    }
+  ],
+  "limits": "Static71-site actualSS/near-far-INT-IRET/FLAGS-liveness/context review only; pending original comparison and actualcallback composition. No realIRQ/device/historicalCPU/core/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure."
+}

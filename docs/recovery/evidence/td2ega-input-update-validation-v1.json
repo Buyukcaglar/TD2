@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000367",
+  "result": "pass",
+  "vectors": 23808,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b75aec0b9d6a11dbc42a29db21f77022e045bd0fc9a9d497d123d59b4b105c1e",
+  "source_sha256": "14f06f97a2c1700c37dbdd97e6485eea6e7858188382dc62b532dcb2f5260f09",
+  "validator_sha256": "9b10e77384184480a88464223dd7e669a3715ee1e769693c4cb81919de3587b6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_key_dispatch.py",
+      "sha256": "ae5d53bafdc2785cb44eda3be32df12853ff211ae1f9cb7d7d0d5a97f7afe5b7"
+    },
+    {
+      "path": "tools/validate_gameport.py",
+      "sha256": "a3a509fa66ee7b97bd5f5ac4a899d761b88f4c5d4567725123edffa6936d40a6"
+    }
+  ],
+  "original_instructions_executed": 4117774,
+  "fixture_coverage": {
+    "complete_branches": 11520,
+    "paused_0": 13910,
+    "same_DS_SS_False": 9858,
+    "same_DS_ES_False": 9988,
+    "callbacks": 5358,
+    "gameport_calls": 964,
+    "same_DS_ES_True": 13820,
+    "same_DS_SS_True": 13950,
+    "paused_1": 9898,
+    "all_direction_masks": 4096,
+    "varied_composed_states": 8192
+  },
+  "executed_entries": [
+    "06B3:0008",
+    "06C9:420A",
+    "06C9:4281",
+    "06C9:43C3",
+    "06C9:4441",
+    "06C9:448A",
+    "06C9:44A6",
+    "06C9:4612",
+    "06C9:6528",
+    "06C9:6601",
+    "06C9:6620",
+    "06C9:6686",
+    "06C9:6828",
+    "13A8:2EE8"
+  ],
+  "limits": "Complete420A andactualfourteen-entrycalleecomposition with recoverednative input/control/motion helpers; syntheticBIOS/port/farcallback adapters, boundedscanner targets, DS/SS/ES distinct/shared profiles. Fullgroup except72byteSSframearea whenDS=SS; frames,BP/DI/scratch/IF/DF checked. NoactualBIOS/input/device/IRQ, callbackbodies/fullstate/core/resource/game/fidelity acceptance. Byte-ring notcalled orintegrated."
+}

@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "module_offset": 34951,
+  "length": 11,
+  "tail_sha256": "337cd9fc9688733946e58d9b70b6388fcd069beee5cd1fb5845e7930d511b642",
+  "script_sha256": "d6d607b862ee2097189770958bcb90df26d1b7e97ddc8f00ab68faaad48eda32",
+  "relocations_within_tail": 0,
+  "vectors": 12,
+  "cases": [
+    {
+      "load_segment": 4096,
+      "incoming_cf": 0,
+      "previous_physical0086_word": 0,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 4096,
+      "incoming_cf": 0,
+      "previous_physical0086_word": 4660,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 4096,
+      "incoming_cf": 0,
+      "previous_physical0086_word": 65535,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 4096,
+      "incoming_cf": 1,
+      "previous_physical0086_word": 0,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 4096,
+      "incoming_cf": 1,
+      "previous_physical0086_word": 4660,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 4096,
+      "incoming_cf": 1,
+      "previous_physical0086_word": 65535,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 9029,
+      "incoming_cf": 0,
+      "previous_physical0086_word": 0,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 9029,
+      "incoming_cf": 0,
+      "previous_physical0086_word": 4660,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 9029,
+      "incoming_cf": 0,
+      "previous_physical0086_word": 65535,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 9029,
+      "incoming_cf": 1,
+      "previous_physical0086_word": 0,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 9029,
+      "incoming_cf": 1,
+      "previous_physical0086_word": 4660,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    },
+    {
+      "load_segment": 9029,
+      "incoming_cf": 1,
+      "previous_physical0086_word": 65535,
+      "ax": 2,
+      "es": 2,
+      "physical_write": 134,
+      "write_value": 2,
+      "instructions": 5
+    }
+  ],
+  "conclusion": "Tail literallywrites2 tophysical0086,returnsAX2/ES2,clearsCF andfarreturns. These constants are not loader-relocated.",
+  "limits": "Only11byte tail executed inisolated memory. Cause, historical patch status, OS-level effect and complete state-loop behavior remain unestablished. No correction admitted."
+}

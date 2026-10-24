@@ -1,0 +1,606 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "cc47e17ee301f202ae5399fe8281ab1e681724533cb058d15feb02b525fad639",
+  "instruction_observations": [
+    {
+      "site": "06C9:782C",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:782D",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "06C9:782F",
+      "bytes": "1e",
+      "text": "push ds"
+    },
+    {
+      "site": "06C9:7830",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:7831",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "06C9:7832",
+      "bytes": "8e4608",
+      "text": "mov es, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:7835",
+      "bytes": "8b7e06",
+      "text": "mov di, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:7838",
+      "bytes": "268e5d02",
+      "text": "mov ds, word ptr es:[di + 2]"
+    },
+    {
+      "site": "06C9:783C",
+      "bytes": "268b35",
+      "text": "mov si, word ptr es:[di]"
+    },
+    {
+      "site": "06C9:783F",
+      "bytes": "8b4402",
+      "text": "mov ax, word ptr [si + 2]"
+    },
+    {
+      "site": "06C9:7842",
+      "bytes": "050d00",
+      "text": "add ax, 0xd"
+    },
+    {
+      "site": "06C9:7845",
+      "bytes": "d1e0",
+      "text": "shl ax, 1"
+    },
+    {
+      "site": "06C9:7847",
+      "bytes": "2e8b1e69b2",
+      "text": "mov bx, word ptr cs:[0xb269]"
+    },
+    {
+      "site": "06C9:784C",
+      "bytes": "2bd8",
+      "text": "sub bx, ax"
+    },
+    {
+      "site": "06C9:784E",
+      "bytes": "2e891e69b2",
+      "text": "mov word ptr cs:[0xb269], bx"
+    },
+    {
+      "site": "06C9:7853",
+      "bytes": "1e",
+      "text": "push ds"
+    },
+    {
+      "site": "06C9:7854",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:7855",
+      "bytes": "8e5efe",
+      "text": "mov ds, word ptr [bp - 2]"
+    },
+    {
+      "site": "06C9:7858",
+      "bytes": "9a9074c906",
+      "text": "lcall 0x6c9, 0x7490"
+    },
+    {
+      "site": "06C9:785D",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "06C9:7860",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:7861",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:7862",
+      "bytes": "1f",
+      "text": "pop ds"
+    },
+    {
+      "site": "06C9:7863",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:7864",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:7490",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:7491",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "06C9:7493",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:7494",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "06C9:7495",
+      "bytes": "8b4608",
+      "text": "mov ax, word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:7498",
+      "bytes": "8b36686c",
+      "text": "mov si, word ptr [0x6c68]"
+    },
+    {
+      "site": "06C9:749C",
+      "bytes": "3b36666c",
+      "text": "cmp si, word ptr [0x6c66]"
+    },
+    {
+      "site": "06C9:74A0",
+      "bytes": "740a",
+      "text": "je 0x74ac"
+    },
+    {
+      "site": "06C9:74A2",
+      "bytes": "3b440e",
+      "text": "cmp ax, word ptr [si + 0xe]"
+    },
+    {
+      "site": "06C9:74A5",
+      "bytes": "7411",
+      "text": "je 0x74b8"
+    },
+    {
+      "site": "06C9:74A7",
+      "bytes": "83ee12",
+      "text": "sub si, 0x12"
+    },
+    {
+      "site": "06C9:74AA",
+      "bytes": "ebf0",
+      "text": "jmp 0x749c"
+    },
+    {
+      "site": "06C9:74AC",
+      "bytes": "ff7608",
+      "text": "push word ptr [bp + 8]"
+    },
+    {
+      "site": "06C9:74AF",
+      "bytes": "b8a565",
+      "text": "mov ax, 0x65a5"
+    },
+    {
+      "site": "06C9:74B2",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:74B3",
+      "bytes": "9a0200a716",
+      "text": "lcall 0x16a7, 2"
+    },
+    {
+      "site": "06C9:74B8",
+      "bytes": "c744100000",
+      "text": "mov word ptr [si + 0x10], 0"
+    },
+    {
+      "site": "06C9:74BD",
+      "bytes": "3b36686c",
+      "text": "cmp si, word ptr [0x6c68]"
+    },
+    {
+      "site": "06C9:74C1",
+      "bytes": "750d",
+      "text": "jne 0x74d0"
+    },
+    {
+      "site": "06C9:74C3",
+      "bytes": "83ee12",
+      "text": "sub si, 0x12"
+    },
+    {
+      "site": "06C9:74C6",
+      "bytes": "837c1000",
+      "text": "cmp word ptr [si + 0x10], 0"
+    },
+    {
+      "site": "06C9:74CA",
+      "bytes": "74f7",
+      "text": "je 0x74c3"
+    },
+    {
+      "site": "06C9:74CC",
+      "bytes": "8936686c",
+      "text": "mov word ptr [0x6c68], si"
+    },
+    {
+      "site": "06C9:74D0",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:74D1",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:74D2",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:74D3",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "actual_callees": [
+    {
+      "site": "06C9:7858",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7490"
+    }
+  ],
+  "child_external_fatal_call": [
+    {
+      "site": "06C9:74B3",
+      "kind": "lcall",
+      "size": 5,
+      "target": "16A7:0002"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0000:0090",
+      "site": "0000:0185",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "0000:01B0",
+      "site": "0000:027F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:03F1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:1152",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:1162",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:169D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "06C9:0083",
+      "site": "06C9:008B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "06C9:1F60",
+      "site": "06C9:1F68",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "06C9:38D4",
+      "site": "06C9:38DC",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "06C9:38D4",
+      "site": "06C9:38E9",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:0206",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:0214",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:0340",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "16FC:0220",
+      "site": "16FC:034E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:04B6",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:04C4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    },
+    {
+      "owner": "1769:000E",
+      "site": "1769:0197",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:782C"
+    }
+  ],
+  "immediate_arithmetic_flag_kills": [
+    {
+      "site": "0000:018A",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "0000:0284",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "0267:03F6",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "0267:1157",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "0267:1167",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "0267:16A2",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "06C9:0090",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "06C9:1F6D",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "06C9:38EE",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "16FC:020B",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "16FC:0219",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "16FC:0345",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "16FC:04BB",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    },
+    {
+      "site": "1769:019C",
+      "bytes": "83c404",
+      "text": "add sp, 4"
+    }
+  ],
+  "caller_epilogue_observations": [
+    {
+      "site": "06C9:38E1",
+      "bytes": "ff366a2f",
+      "text": "push word ptr [0x2f6a]"
+    },
+    {
+      "site": "16FC:0353",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    },
+    {
+      "site": "16FC:04C9",
+      "bytes": "8be5",
+      "text": "mov sp, bp"
+    }
+  ],
+  "extended_liveness_observations": [
+    {
+      "site": "06C9:38E1",
+      "bytes": "ff366a2f",
+      "text": "push word ptr [0x2f6a]"
+    },
+    {
+      "site": "06C9:38E9",
+      "bytes": "9a2c78c906",
+      "text": "lcall 0x6c9, 0x782c"
+    },
+    {
+      "site": "06C9:38EE",
+      "bytes": "83c408",
+      "text": "add sp, 8"
+    },
+    {
+      "site": "06C9:6484",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:64A4",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:64C3",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:64E3",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:6504",
+      "bytes": "83c406",
+      "text": "add sp, 6"
+    },
+    {
+      "site": "06C9:6512",
+      "bytes": "c606fe5e00",
+      "text": "mov byte ptr [0x5efe], 0"
+    },
+    {
+      "site": "06C9:655B",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:655C",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:655D",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    }
+  ],
+  "external_span_candidates": [],
+  "static_arithmetic_proofs": {
+    "word_inputs": 65536,
+    "wrapped_adjustment": "low16(2*low16(objectword+13))",
+    "distinct_even_adjustments": 32768,
+    "final_ADDSP4_carry_rootSPs": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "child_preRET_qualification_rootSPs": [
+      13,
+      14,
+      15
+    ],
+    "root_preRET_qualification_rootSPs": [
+      65533,
+      65534,
+      65535
+    ]
+  },
+  "instruction_dispositions": [
+    {
+      "site": "06C9:74B3",
+      "disposition": "Native6originalfatalpreCALLprefix; actual16A7:0002calleeunexecuted/pending, nocleanupclaim."
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-cache-discard-validation-v1.json",
+      "sha256": "3c819afdb33e9ee7496dd23d57af7f54be4ae12ccd9d389eda341b0362971317"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "facts": [
+    "782Cfar/twoSSwordspointtoES:DI descriptor containingSIoffset/DSsegment. ActualSSBP-DS-SI-DIsaves beforeargumentloads/descriptorreads; literalDS[SI+2]word+13/lowworddouble thenwrappedCSB269subtract/store beforePUSHDS-SI/actual7490farCALL. No offset/count/units/storage validation inferred.",
+    "RootrestoresDSfromactualSS[BP-2]afterCSwordstore, soCSB269aliascanchangecacheDS. ChildactualSSargs/saves/farframe/fullCPUview preservecachewrite/controlaliases missedbydisjointmetadataAPI. Existingcache_discardAPI/receipts remainfrozenandbounded.",
+    "7490readsSS[BP+8]segment/ignoresoffset; downward18byteDSrowsearch/curr6C68end/excludes6C66sentinel/doesnotteststatusbeforesegmentmatch. Clearselectedstatus+10thenrereadtop; onlytoptrimsfreepredecessors andupdates6C68. Allrows/aliases/rawoffsets retained; scanbudget notoriginalbound.",
+    "UnknownsegmentpushesactualSSsegment/MOVAX65A5/PUSHAX thennative6at74B3beforefatalCALL. No followingfatal16A7:0002/cleanup. NormalchildRETactualwordscheckedafterRET/native1rawtargetneverfollowed; child/rootSP>FFFCnative5preRET/fullbodyeffects/notCPUfaultclaim.",
+    "Known17callers:14immediateADDSP4/8killarithflags. 38DCpushessecondfarargs/second782Coverwritearithflagsbeforebranch, then38EEADDSP8. 16FC034Eepiloguereturnsto646F/6488/64C7ADDSP6; 16FC04C4epiloguereturnsvia6508literalDSbytewrite/RETFtoregistered6559call, then655DXORAXkillsflags. Indirecttargetwriters/domains/exclusionremainopen.",
+    "FinalrootADDSP4CF1exactrootSP8..11/static65536proof; objectword+13/doublewrapall65536proof. Counterunit/CSB269allwriters/objectbounds/descriptor-ownership-lifetime/cacheexclusion remainopen. No newmedia/embeddedresourcebound inferred.",
+    "Full20bitRAM/privateoriginalcomparison only; historicalCPU-A20/stacklimits/fatalIRQ/core/resource/CGA/session/gameplay/fidelity unqualified."
+  ],
+  "limits": "Actual25-site782C+27-site7490/fullCPU-SS/fardescriptor/CSB269wordwrap/rawcacheloops/normal-raw-return/fatalpreCALL/budget/qualification prefixes/callerarithFLAGSliveness/staticword-SPproofs. ExistingboundedmetadataAPIunchanged. No allwriters/objectstorage-capacity-lifetime-exclusion/indirectdomain/CPU-A20/fatalcleanup/core/resource/CGA/session/fidelity closure."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000155",
+    "FN-EGA-000410",
+    "FN-EGA-000411"
+  ],
+  "result": "pass",
+  "vectors": 24630,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "61dd3de984f45114a3f8a87525ba982b047cce88da097447ffe1a4d8a4d0cfe0",
+  "source_sha256": "db346611e51e4e7e45df78efedc3013b393d664fc7f5b0f35ee42f317310c2a3",
+  "validator_sha256": "5fab0947cf24a00feee4774eea270bda7b236aac05c03a72545bf9ec5afdbcb9",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_key_dispatch.py",
+      "sha256": "ae5d53bafdc2785cb44eda3be32df12853ff211ae1f9cb7d7d0d5a97f7afe5b7"
+    },
+    {
+      "path": "tools/validate_gameport.py",
+      "sha256": "a3a509fa66ee7b97bd5f5ac4a899d761b88f4c5d4567725123edffa6936d40a6"
+    }
+  ],
+  "original_instructions_executed": 759639,
+  "fixture_coverage": {
+    "BIOS_flag_profile_0": 16402,
+    "poll": 6396,
+    "wrapper_guards": 5760,
+    "same_DS_SS_False": 9024,
+    "callbacks": 5988,
+    "gameport_calls": 1902,
+    "BIOS_flag_profile_1": 4114,
+    "BIOS_flag_profile_2": 4114,
+    "same_DS_SS_True": 15606,
+    "all_bios_byte_domains": 6132,
+    "consume": 5946,
+    "bits": 12288,
+    "all_direction_boolean_masks": 12288,
+    "gameport_repeat_map": 450
+  },
+  "bios_flag_profiles": [
+    "historical_preserve",
+    "AH1_IF1",
+    "synthetic_DF_toggle"
+  ],
+  "limits": "ExplicitresponseIFDF; actual69B7bodycomposition separate. Complete65C5/6601/6620 with actual dispatcher/gameport callees, syntheticBIOS/portservices andfarcallback ABImocks. DS=SS andindependentSS profiles, all1024directionmasks, BIOShigh/lowbyte domains, repeatmap andscratch/IF/DF. Fullgroup compared except72-byte live/historicalstackrange whenDS=SS, with farframes/argumentwitnesses checkedseparately. NoactualBIOS/input/device/IRQ, callbackbodies/fullcaller/resource/game/fidelity acceptance."
+}

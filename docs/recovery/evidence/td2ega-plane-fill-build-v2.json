@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_plane_fill_v2.cmd",
+    "sha256": "bfd95f6a5db8703c1ce3d8744d80e5a3618b24cbdab51e1ea792e951bbcc33a4"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_plane_fill.c",
+      "sha256": "06180015c596dea0c596f877ff38c1f686089f3a385bd21b2591542786eeef1a"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_fill.h",
+      "sha256": "adb78ac1f3babe7472f8018f5373a3f8412435f94054d3e195a01d36d4237155"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/plane-fill-v2-repro/td2ega_plane_fill.dll",
+      "sha256": "d992db5bf986911c6b36d92228f012959837ebce3a271c0981bd4254166bcfd0",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/plane-fill-v2-repro/td2ega_plane_fill.obj",
+      "sha256": "daa64ad06b8b3c6aed381e26f6eb986ad3f4e2e321fa1706856b1baf3f318012",
+      "bytes": 4682
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/plane-fill-build-v2.log",
+    "sha256": "3188e9be272dee9dcbfac9d0192bf952d366b0bb9ebadd1841e0b535080b2175"
+  },
+  "limit": "Actual06C9:840A far/oneSSwordfill/6actualbyteOUTs/REP8000STOSB/incomingDF/fullSS/all16bitSPthroughpreRETqualification(SP>FFFC native5/noRET/faultclaim)/typedport-deviceevents preserveGPR-FLAGS (responseGPRignored)/rawRAMadapterownsdevicewrite/orderedSSargumentread-saves-farreturnafteradaptermutations-fill. Wholebus/GPR-BP-CFIFDF/control/eventcounts. Syntheticserialized20bitRAM/A000literaladdresses do notadmitEGAplanar-register-latchhardwareeffects/renderer. Nativeeventbudgets/failureprefixesnotoriginalerrors; rawrootfarwordsafterRETneverfollowed. HistoricalCPU-A20/actualcallers/writers/storage/domain/IRQ/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000215"
+  ],
+  "covered_original_local_helpers": [],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-plane-fill-context-v2.json",
+    "sha256": "28aa037dd7afd0609daaa62df03e22bd0023f25c4c28a6c6ccdd73aa84b641f2"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/plane-fill-attempt-v1.json",
+      "sha256": "fc7d2025ad4396759436eb263e1870b9279592d17f105501f7ebca24b5e9f6ca"
+    },
+    {
+      "path": "analysis/history/td2ega_plane_fill_before_ret_boundary_v1.c",
+      "sha256": "7018f854f9c0cc0d6d3e2d9e96378b0833dcfc12674ac83fdbd31fab18134ce7"
+    },
+    {
+      "path": "analysis/history/td2ega_plane_fill_before_ret_boundary_v1.h",
+      "sha256": "ce712c31921a6ee9289116a6e7afc74f2b424b9bd59bd9fde1328745f48c76bd"
+    },
+    {
+      "path": "analysis/history/validate_plane_fill_before_ret_boundary_v1.py",
+      "sha256": "6a5e0518f01b21a7b09c4c4ce6e32e82b2a36666327d4f83ed2f67318afb9b96"
+    },
+    {
+      "path": "analysis/history/review_ega_plane_fill_before_ret_boundary_v1.py",
+      "sha256": "2cbaadff5bfd4525cd30da2a921b1a82f829f927d1ae804e2f1ccf1b305c9aab"
+    },
+    {
+      "path": "analysis/history/validate_plane_fill_diagnostics_before_ret_boundary_v1.py",
+      "sha256": "96334f1be754892ed36cec9a3899ed1bef37899872b4beef7f06267e181337fd"
+    },
+    {
+      "path": "tools/compile_plane_fill.cmd",
+      "sha256": "c4779928393acc8124bee0c50b1eef9f8c1fa09065e877e958e0637f03ef923e"
+    },
+    {
+      "path": "analysis/build/plane-fill-repro/td2ega_plane_fill.dll",
+      "sha256": "8c3abf37ad376501a674fdb74787fc06ee8849d86ff6bce612d21f871360d019"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-plane-fill-context-v1.json",
+      "sha256": "8875936e29f81104825f2f3d28a4b38082c16998db8e45478f73986fbafb5344"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-plane-fill-native-diagnostics-v1.json",
+      "sha256": "e51d56079c6a6094e1c4a6f1aead45efb7bea6d713ea1712caebf3dde0bef521"
+    },
+    {
+      "path": "analysis/logs/plane-fill-probe-v1.log",
+      "sha256": "4d9ac7ea0d9ebd170deec74138ff5ff971f4f2169192171a9aef339f548cd552"
+    }
+  ],
+  "failure_resolution": "Draftv1compiled/probe8all30/native26passed butfullcomparisonControlmismatchSSFFFF/SPFFFFfarCS only; exactoldsource-validator-reviewer-native-recipe-DLL preserved. 24freshCPUprobe observesUnicorn2.1.4linearfarCSloadvsseparatewrappedPOPs atSPFFFE-FFFF; modernIntel2016requiresfullfourbytefarframewithinlimits. NohistoricalCPUtruth/faultdeliverychosen. Selectedv2keepsallinputSP/bodyeffects, explicitlyexposesnative5preRETSP>FFFCafterallports-fill-restoredSSFNs (16cases); boundedRETframesexecuted/changedtargetsneverfollowed."
+}

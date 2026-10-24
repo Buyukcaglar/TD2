@@ -1,0 +1,307 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "upstream_commit": "352b56824d8c91e938b8f0794a71afca9a276193",
+  "scope": "Static review and planning. Entries marked confirmed are source/evidence observations, not reproduced gameplay defects.",
+  "records": [
+    {
+      "id": "KR-01",
+      "title": "Literal low-memory reader differs",
+      "status": "confirmed_conflict",
+      "tasks": [
+        "P1-R02",
+        "P1-07"
+      ],
+      "requirements": [
+        "R02",
+        "R10"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md#kp-01-literal-external-memory-read-conflicts-with-admitted-bytes",
+      "acceptance": "Keep original physical086C read and modulo subtraction. Prove any native replacement and reachability separately; retain original receipt."
+    },
+    {
+      "id": "KR-02",
+      "title": "Fixed DS/SS, synthetic stack and raw alias semantics",
+      "status": "confirmed_contract_reduction",
+      "tasks": [
+        "P1-R02",
+        "P1-R03",
+        "P1-05"
+      ],
+      "requirements": [
+        "R02",
+        "R07"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Define actual native caller domains, all writers/lifetimes and explicit adapters to independent DS/SS bus contracts; do not inherit old test passes onto narrower APIs."
+    },
+    {
+      "id": "KR-03",
+      "title": "20-bit addressing and multi-byte memory access",
+      "status": "confirmed_representation_difference",
+      "tasks": [
+        "P1-R03",
+        "P1-07"
+      ],
+      "requirements": [
+        "R02",
+        "R07"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Compare high-segment and word/dword boundary cases; implement wrapping or prove bounded valid-state exclusions."
+    },
+    {
+      "id": "KR-04",
+      "title": "Arithmetic portability and inherited register assumptions",
+      "status": "source_risk_and_upstream_todos",
+      "tasks": [
+        "P1-R03",
+        "P1-06",
+        "P1-08",
+        "P1-09"
+      ],
+      "requirements": [
+        "R02",
+        "R07"
+      ],
+      "review": "docs/planning/kylofon-game-core-review.md",
+      "acceptance": "Resolve signed overflow/shifts, INT32_MIN/-1, inherited CH/SI/BP/DI and all affected caller contracts with meaningful original-byte cases."
+    },
+    {
+      "id": "KR-05",
+      "title": "Timing, simulation divisor, RNG and speaker synthesis",
+      "status": "adaptation_not_yet_validated",
+      "tasks": [
+        "P1-06",
+        "P1-07",
+        "P1-10",
+        "P3-03",
+        "P3-06"
+      ],
+      "requirements": [
+        "R02",
+        "R06",
+        "R10"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Compare sequencer/timer/simulation/event/RNG ordering under original fixtures; validate PCM separately. Do not label100Hz callbacks as100Hz simulation."
+    },
+    {
+      "id": "KR-06",
+      "title": "Writes to selected original-data directory",
+      "status": "confirmed_requirement_conflict",
+      "tasks": [
+        "P3-02",
+        "P3-08"
+      ],
+      "requirements": [
+        "R01",
+        "R06"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Introduce user-profile selection/high-score overlay; prove absent/read-only data-directory operation and original hash/mtime/attribute preservation."
+    },
+    {
+      "id": "KR-07",
+      "title": "Heuristic edition admission and incomplete loader bounds",
+      "status": "confirmed_source_gap",
+      "tasks": [
+        "P1-R02",
+        "P2-02",
+        "P3-02"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R06"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Pin admitted EGA image and ordered relocation identity; reject malformed/truncated structures, allocation overflow and out-of-range relocations explicitly."
+    },
+    {
+      "id": "KR-08",
+      "title": "Protection, disk/install and robustness changes",
+      "status": "declared_upstream_deviations",
+      "tasks": [
+        "P1-R02",
+        "P1-R04",
+        "P1-05",
+        "P3-03"
+      ],
+      "requirements": [
+        "R02",
+        "R06"
+      ],
+      "review": "docs/planning/kylofon-game-core-review.md",
+      "acceptance": "Record each removed/changed path, original contract, valid caller profile and selected native behavior; no silent parity credit."
+    },
+    {
+      "id": "KR-09",
+      "title": "Short stage DAT zero-fill and original heap-tail reads",
+      "status": "confirmed_policy_difference",
+      "tasks": [
+        "P1-05",
+        "P2-05"
+      ],
+      "requirements": [
+        "R02",
+        "R04"
+      ],
+      "review": "docs/planning/kylofon-game-core-review.md",
+      "acceptance": "Compare7774-byte copy and subsequent consumers/lifetimes for short stages; do not infer absent bytes are unused or authentic zeros."
+    },
+    {
+      "id": "KR-10",
+      "title": "Zero/full LOOP behavior and AI/cockpit edge policies",
+      "status": "confirmed_difference_or_unresolved_register_state",
+      "tasks": [
+        "P1-R03",
+        "P1-08",
+        "P1-09"
+      ],
+      "requirements": [
+        "R02",
+        "R06"
+      ],
+      "review": "docs/planning/kylofon-game-core-review.md",
+      "acceptance": "Reconcile full raw LOOP contracts, neutral-grind omission, clipping, stale AI/cockpit registers and police fallbacks; establish reachable-domain evidence before excluding cases."
+    },
+    {
+      "id": "KR-11",
+      "title": "Compiled game text, font bytes and resource-derived tables",
+      "status": "confirmed_custody_risk",
+      "tasks": [
+        "P1-R02",
+        "P2-09",
+        "P3-11"
+      ],
+      "requirements": [
+        "R05",
+        "R08"
+      ],
+      "review": "docs/planning/kylofon-game-core-review.md",
+      "acceptance": "Classify every imported string/table; externalize original media from user EXE/data; exclude payload-bearing reference documentation and generated arrays from packages."
+    },
+    {
+      "id": "KR-12",
+      "title": "All-file schemas and corpus evidence absent",
+      "status": "candidate_knowledge_not_admitted",
+      "tasks": [
+        "P2-01",
+        "P2-02",
+        "P2-03",
+        "P2-04",
+        "P2-05",
+        "P2-06",
+        "P2-07",
+        "P2-08"
+      ],
+      "requirements": [
+        "R04"
+      ],
+      "review": "docs/planning/kylofon-formats-tools-review.md",
+      "acceptance": "Admit schemas by consumer and full supplied corpus: both PCS prefixes, sprite count discrepancy, CAMA49-byte tail, ordered SS, SGN/FNT gaps and VOICES adjacency. Retain malformed and trailing-byte checks."
+    },
+    {
+      "id": "KR-13",
+      "title": "Index starts, symbol conflicts and global Ghidra DS pin",
+      "status": "confirmed_discovery_limit",
+      "tasks": [
+        "P1-R02",
+        "P1-12",
+        "P1-13"
+      ],
+      "requirements": [
+        "R02",
+        "R03"
+      ],
+      "review": "docs/planning/kylofon-formats-tools-review.md",
+      "acceptance": "Reconcile27 upstream-only and23 local-only starts and76 symbol naming conflicts; retain range-specific DS/SS contexts. Never run global SetDS on accepted projects."
+    },
+    {
+      "id": "KR-14",
+      "title": "SDL-dependent C11 global-state architecture",
+      "status": "confirmed_architecture_gap",
+      "tasks": [
+        "P1-R04",
+        "P3-01",
+        "P5-01"
+      ],
+      "requirements": [
+        "R07",
+        "R15"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Provide C17 headless build, deterministic host-independent state, explicit provider interfaces and second-compiler/host evidence without a second simulation."
+    },
+    {
+      "id": "KR-15",
+      "title": "CGA, Amiga, Northern Germany and switching absent",
+      "status": "confirmed_feature_gap",
+      "tasks": [
+        "P1-12",
+        "P1-13",
+        "P1-14",
+        "P4-04",
+        "P4-10",
+        "P5-05",
+        "P5-06"
+      ],
+      "requirements": [
+        "R03",
+        "R09",
+        "R12",
+        "R15",
+        "R16"
+      ],
+      "review": "docs/planning/kylofon-reuse-assessment.md",
+      "acceptance": "Preserve all existing phase gates and conditional scenery obligations; indexes/names do not count as implemented native features."
+    },
+    {
+      "id": "KR-16",
+      "title": "No retained independent candidate acceptance suite",
+      "status": "confirmed_evidence_gap",
+      "tasks": [
+        "P1-R03",
+        "P3-10",
+        "P3-11"
+      ],
+      "requirements": [
+        "R02",
+        "R06",
+        "R18"
+      ],
+      "review": "docs/planning/kylofon-platform-review.md",
+      "acceptance": "Pin source/build/dependencies and transfer original-byte representative checks, then complete corpus/session/visual/audio/package acceptance separately. --check only loads the EXE."
+    },
+    {
+      "id": "KR-17",
+      "title": "Reference clone rejected by original-only verifier",
+      "status": "closed_by_this_review",
+      "tasks": [
+        "P1-R01"
+      ],
+      "requirements": [
+        "R01",
+        "R18"
+      ],
+      "review": "docs/planning/kylofon-reuse-assessment.md",
+      "acceptance": "Separate exact clone manifest; unchanged250-original manifest; readonly113clonefiles,85Gitblobmatches; regression cases reject altered/missing/unlisted/escaping paths."
+    },
+    {
+      "id": "KR-18",
+      "title": "Reuse provenance and unmeasured effort reduction",
+      "status": "planning_condition",
+      "tasks": [
+        "P1-R04",
+        "P3-11"
+      ],
+      "requirements": [
+        "R08",
+        "R18"
+      ],
+      "review": "docs/planning/kylofon-reuse-assessment.md",
+      "acceptance": "Preserve MIT notices and commit/change provenance per imported file. Measure5-10engineerday spike before replacing historical effort ranges; no full-project percentage claim."
+    }
+  ]
+}

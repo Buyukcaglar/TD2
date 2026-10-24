@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "ca92618116c7299a403127c77dedd445d966b3af6f54e07173286b4c04de4e6b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7a546081c4a8032744c9af71a3d0740ff1dbc4a2f3a2b8beaa35b36f8bd99508",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_controller.py",
+      "sha256": "455517159049add9390240fcf5432ca2156bb16bb417cdd72d83659c0af2de41"
+    }
+  ],
+  "limits": "Twelve native-only null/count/SP/booleanflags rejection andinitial46CA-budgetintentchecks; firstactual4AFAframe/windoweffectsretained beforebudget. Separatefromoriginalequivalence andallcaller-IRQ-core-game-fidelity acceptance."
+}

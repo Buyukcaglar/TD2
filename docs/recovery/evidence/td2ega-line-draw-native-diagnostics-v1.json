@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 3,
+  "script_sha256": "f1680bde713d19e4048fafb5527483a4bf01a846687dec0c154de35d0ffe6cb4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d696d94016b507231da70f8d9f585a603aba0e843fbc18bd98621a65346b6b31",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    }
+  ],
+  "limits": "Three native-only invalidbus/frame/flagchecks; no originalerror equivalence oractualdevice/renderer/IRQ/core/game/fidelity admission."
+}

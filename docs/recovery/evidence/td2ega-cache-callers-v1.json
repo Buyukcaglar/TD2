@@ -1,0 +1,1888 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "ledger_sha256": "0a9bd3eea97513b9381f0436c4c366d6951fdba8d041c5851c4838ef5d6e183b",
+  "function_registry_sha256": "faafe9ef0bde9df4fe5c22d289f6b6580777b1dc557a92ecb61aa6e8bb36d83f",
+  "script_sha256": "46c42ad1bca1fc03beeef5d300e45bff2f9c29862d28ff5314212d56fddef218",
+  "unique_call_sites": 60,
+  "counts_by_target": {
+    "06C9:72C6": 9,
+    "06C9:736B": 38,
+    "06C9:7490": 5,
+    "06C9:71B4": 4,
+    "06C9:70A3": 4
+  },
+  "sites": [
+    {
+      "site": "00C0:0249",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000012"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "00C0:024E",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "00C0:0239",
+          "operand": "dx"
+        },
+        {
+          "site": "00C0:023A",
+          "operand": "ax"
+        },
+        {
+          "site": "00C0:0243",
+          "operand": "word ptr [bp - 8]"
+        },
+        {
+          "site": "00C0:0246",
+          "operand": "word ptr [bp - 0xa]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "00C0:0390",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000013"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "caller_epilogue_or_other_path_requires_review",
+      "following_instruction": {
+        "site": "00C0:0395",
+        "mnemonic": "mov",
+        "operands": "ax, word ptr [bp - 2]"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "00C0:038A",
+          "operand": "word ptr [bp - 4]"
+        },
+        {
+          "site": "00C0:038D",
+          "operand": "word ptr [bp - 6]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "00C0:03E5",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000014"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "00C0:03EA",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "00C0:03D4",
+          "operand": "ax"
+        },
+        {
+          "site": "00C0:03E3",
+          "operand": "dx"
+        },
+        {
+          "site": "00C0:03E4",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "00C0:0418",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000014"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "00C0:041D",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "00C0:0407",
+          "operand": "ax"
+        },
+        {
+          "site": "00C0:0416",
+          "operand": "dx"
+        },
+        {
+          "site": "00C0:0417",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "00C0:044B",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000014"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "00C0:0450",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "00C0:043A",
+          "operand": "ax"
+        },
+        {
+          "site": "00C0:0449",
+          "operand": "dx"
+        },
+        {
+          "site": "00C0:044A",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "010C:0275",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000015"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "010C:027A",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "010C:0265",
+          "operand": "dx"
+        },
+        {
+          "site": "010C:0266",
+          "operand": "ax"
+        },
+        {
+          "site": "010C:026F",
+          "operand": "word ptr [bp - 0xa]"
+        },
+        {
+          "site": "010C:0272",
+          "operand": "word ptr [bp - 0xc]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0143:00BA",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000017"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0143:00BF",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0143:00A9",
+          "operand": "ax"
+        },
+        {
+          "site": "0143:00B8",
+          "operand": "dx"
+        },
+        {
+          "site": "0143:00B9",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0143:0114",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000017"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0143:0119",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0143:0103",
+          "operand": "ax"
+        },
+        {
+          "site": "0143:0112",
+          "operand": "dx"
+        },
+        {
+          "site": "0143:0113",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0143:0240",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000018"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0143:0245",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0143:022C",
+          "operand": "ss"
+        },
+        {
+          "site": "0143:022D",
+          "operand": "ax"
+        },
+        {
+          "site": "0143:022E",
+          "operand": "dx"
+        },
+        {
+          "site": "0143:022F",
+          "operand": "word ptr [bp - 0x6c]"
+        },
+        {
+          "site": "0143:023A",
+          "operand": "word ptr [bp - 0x6a]"
+        },
+        {
+          "site": "0143:023D",
+          "operand": "word ptr [bp - 0x6c]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0143:0593",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000018"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0143:0598",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0143:058D",
+          "operand": "word ptr [bp - 0x6a]"
+        },
+        {
+          "site": "0143:0590",
+          "operand": "word ptr [bp - 0x6c]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:00A7",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000020"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:00AC",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:009B",
+          "operand": "bp"
+        },
+        {
+          "site": "019E:00A1",
+          "operand": "word ptr [bp + 0xe]"
+        },
+        {
+          "site": "019E:00A4",
+          "operand": "word ptr [bp + 0xc]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:026B",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000020"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:0270",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:025B",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:025C",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:0265",
+          "operand": "word ptr [bp - 0x1c]"
+        },
+        {
+          "site": "019E:0268",
+          "operand": "word ptr [bp - 0x1e]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:02EE",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000021"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:02F3",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:02DE",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:02DF",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:02E8",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:02EB",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:046A",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000021"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:046F",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:045A",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:045B",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:0464",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:0467",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:0634",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000022"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:0639",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:0624",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:0625",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:062E",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:0631",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:076A",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:076F",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:075A",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:075B",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:0764",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:0767",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:07F6",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:07FB",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:07E6",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:07E7",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:07F0",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:07F3",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:087A",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:087F",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:086A",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:086B",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:0874",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:0877",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:08C9",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:08CE",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:08B8",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:08C7",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:08C8",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:0955",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:095A",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:094F",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:0952",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:0974",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:0979",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:096E",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "019E:0971",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "019E:0BF0",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000023"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "019E:0BF5",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "019E:0BDF",
+          "operand": "ax"
+        },
+        {
+          "site": "019E:0BEE",
+          "operand": "dx"
+        },
+        {
+          "site": "019E:0BEF",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:00C7",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000026"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:00CC",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:00B4",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:00C1",
+          "operand": "word ptr [bp - 0x3e]"
+        },
+        {
+          "site": "0267:00C4",
+          "operand": "word ptr [bp - 0x40]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:018A",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000026"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:018F",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:017A",
+          "operand": "dx"
+        },
+        {
+          "site": "0267:017B",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:0184",
+          "operand": "word ptr [bp - 0x64]"
+        },
+        {
+          "site": "0267:0187",
+          "operand": "word ptr [bp - 0x66]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:0198",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000026"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:019D",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:0184",
+          "operand": "word ptr [bp - 0x64]"
+        },
+        {
+          "site": "0267:0187",
+          "operand": "word ptr [bp - 0x66]"
+        },
+        {
+          "site": "0267:0192",
+          "operand": "word ptr [bp - 0x3e]"
+        },
+        {
+          "site": "0267:0195",
+          "operand": "word ptr [bp - 0x40]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:0DF2",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000026"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:0DF7",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:0DE2",
+          "operand": "dx"
+        },
+        {
+          "site": "0267:0DE3",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:0DEC",
+          "operand": "word ptr [bp - 0x64]"
+        },
+        {
+          "site": "0267:0DEF",
+          "operand": "word ptr [bp - 0x66]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:0E00",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000026"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:0E05",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:0DEC",
+          "operand": "word ptr [bp - 0x64]"
+        },
+        {
+          "site": "0267:0DEF",
+          "operand": "word ptr [bp - 0x66]"
+        },
+        {
+          "site": "0267:0DFA",
+          "operand": "word ptr [bp - 0x3e]"
+        },
+        {
+          "site": "0267:0DFD",
+          "operand": "word ptr [bp - 0x40]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1170",
+      "target_id": "FN-EGA-000186",
+      "target": "06C9:72C6",
+      "owners": [
+        "FN-EGA-000026"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:1175",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:115A",
+          "operand": "word ptr [bp - 0xc6]"
+        },
+        {
+          "site": "0267:115E",
+          "operand": "word ptr [bp - 0xc8]"
+        },
+        {
+          "site": "0267:116A",
+          "operand": "word ptr [bp - 0x64]"
+        },
+        {
+          "site": "0267:116D",
+          "operand": "word ptr [bp - 0x66]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1529",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000029"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:152E",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:1523",
+          "operand": "word ptr [bp - 0xa]"
+        },
+        {
+          "site": "0267:1526",
+          "operand": "word ptr [bp - 0xc]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:15D6",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000029"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:15DB",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:15D0",
+          "operand": "word ptr [bp - 0xa]"
+        },
+        {
+          "site": "0267:15D3",
+          "operand": "word ptr [bp - 0xc]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:16F1",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:16F6",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:16E9",
+          "operand": "word ptr [0x8430]"
+        },
+        {
+          "site": "0267:16ED",
+          "operand": "word ptr [0x842e]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:170A",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:170F",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:1702",
+          "operand": "word ptr [0x940e]"
+        },
+        {
+          "site": "0267:1706",
+          "operand": "word ptr [0x940c]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1723",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:1728",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:171B",
+          "operand": "word ptr [0x9262]"
+        },
+        {
+          "site": "0267:171F",
+          "operand": "word ptr [0x9260]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:173C",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:1741",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:1734",
+          "operand": "word ptr [0x8a86]"
+        },
+        {
+          "site": "0267:1738",
+          "operand": "word ptr [0x8a84]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1755",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:175A",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:174D",
+          "operand": "word ptr [0x8a7e]"
+        },
+        {
+          "site": "0267:1751",
+          "operand": "word ptr [0x8a7c]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:176E",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:1773",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:1766",
+          "operand": "word ptr [0x8a78]"
+        },
+        {
+          "site": "0267:176A",
+          "operand": "word ptr [0x8a76]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1787",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:178C",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:177F",
+          "operand": "word ptr [0x922a]"
+        },
+        {
+          "site": "0267:1783",
+          "operand": "word ptr [0x9228]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:17A0",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:17A5",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:1798",
+          "operand": "word ptr [0x8a94]"
+        },
+        {
+          "site": "0267:179C",
+          "operand": "word ptr [0x8a92]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:17B9",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:17BE",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:17B1",
+          "operand": "word ptr [0x8a98]"
+        },
+        {
+          "site": "0267:17B5",
+          "operand": "word ptr [0x8a96]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:17D2",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:17D7",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:17CA",
+          "operand": "word ptr [0x8a90]"
+        },
+        {
+          "site": "0267:17CE",
+          "operand": "word ptr [0x8a8e]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1903",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:1908",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:18EB",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:18EF",
+          "operand": "ds"
+        },
+        {
+          "site": "0267:18F0",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:18F1",
+          "operand": "dx"
+        },
+        {
+          "site": "0267:18F2",
+          "operand": "word ptr [bp - 0x1e]"
+        },
+        {
+          "site": "0267:18FD",
+          "operand": "word ptr [bp - 0x1c]"
+        },
+        {
+          "site": "0267:1900",
+          "operand": "word ptr [bp - 0x1e]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:19C3",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:19C8",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:19AB",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:19AF",
+          "operand": "ds"
+        },
+        {
+          "site": "0267:19B0",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:19B1",
+          "operand": "dx"
+        },
+        {
+          "site": "0267:19B2",
+          "operand": "word ptr [bp - 0x1e]"
+        },
+        {
+          "site": "0267:19BD",
+          "operand": "word ptr [bp - 0x1c]"
+        },
+        {
+          "site": "0267:19C0",
+          "operand": "word ptr [bp - 0x1e]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0267:1A69",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000030"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0267:1A6E",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0267:1A51",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:1A55",
+          "operand": "ds"
+        },
+        {
+          "site": "0267:1A56",
+          "operand": "ax"
+        },
+        {
+          "site": "0267:1A57",
+          "operand": "dx"
+        },
+        {
+          "site": "0267:1A58",
+          "operand": "word ptr [bp - 0x1e]"
+        },
+        {
+          "site": "0267:1A63",
+          "operand": "word ptr [bp - 0x1c]"
+        },
+        {
+          "site": "0267:1A66",
+          "operand": "word ptr [bp - 0x1e]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0432:0578",
+      "target_id": "FN-EGA-000188",
+      "target": "06C9:7490",
+      "owners": [
+        "FN-EGA-000039"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0432:057D",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0432:056D",
+          "operand": "ax"
+        },
+        {
+          "site": "0432:0576",
+          "operand": "dx"
+        },
+        {
+          "site": "0432:0577",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0432:064E",
+      "target_id": "FN-EGA-000188",
+      "target": "06C9:7490",
+      "owners": [
+        "FN-EGA-000039"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0432:0653",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0432:0646",
+          "operand": "word ptr [bx - 0x7358]"
+        },
+        {
+          "site": "0432:064A",
+          "operand": "word ptr [bx - 0x735a]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0432:07F3",
+      "target_id": "FN-EGA-000188",
+      "target": "06C9:7490",
+      "owners": [
+        "FN-EGA-000039"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0432:07F8",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0432:07DB",
+          "operand": "ax"
+        },
+        {
+          "site": "0432:07EB",
+          "operand": "word ptr [bx - 0x7358]"
+        },
+        {
+          "site": "0432:07EF",
+          "operand": "word ptr [bx - 0x735a]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0432:1860",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000050"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0432:1865",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0432:1850",
+          "operand": "dx"
+        },
+        {
+          "site": "0432:1851",
+          "operand": "ax"
+        },
+        {
+          "site": "0432:185A",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "0432:185D",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0432:1943",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000050"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0432:1948",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0432:1933",
+          "operand": "dx"
+        },
+        {
+          "site": "0432:1934",
+          "operand": "ax"
+        },
+        {
+          "site": "0432:193D",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "0432:1940",
+          "operand": "word ptr [bp - 4]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0645:02FE",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000057"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0645:0303",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0645:02EE",
+          "operand": "dx"
+        },
+        {
+          "site": "0645:02EF",
+          "operand": "ax"
+        },
+        {
+          "site": "0645:02F8",
+          "operand": "word ptr [bp - 0x18]"
+        },
+        {
+          "site": "0645:02FB",
+          "operand": "word ptr [bp - 0x1a]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "0645:05C6",
+      "target_id": "FN-EGA-000187",
+      "target": "06C9:736B",
+      "owners": [
+        "FN-EGA-000059"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "0645:05CB",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "0645:05B6",
+          "operand": "dx"
+        },
+        {
+          "site": "0645:05B7",
+          "operand": "ax"
+        },
+        {
+          "site": "0645:05C0",
+          "operand": "word ptr [bp - 0x1a]"
+        },
+        {
+          "site": "0645:05C3",
+          "operand": "word ptr [bp - 0x1c]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "06C9:6D1E",
+      "target_id": "FN-EGA-000184",
+      "target": "06C9:71B4",
+      "owners": [
+        "FN-EGA-000172"
+      ],
+      "argument_bytes": 2,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "06C9:6D23",
+        "mnemonic": "add",
+        "operands": "sp, 2"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "06C9:6D18",
+          "operand": "bp"
+        },
+        {
+          "site": "06C9:6D1B",
+          "operand": "word ptr [bp + 6]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "06C9:6D39",
+      "target_id": "FN-EGA-000182",
+      "target": "06C9:70A3",
+      "owners": [
+        "FN-EGA-000172"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "06C9:6D3E",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "06C9:6D2A",
+          "operand": "word ptr [bp + 6]"
+        },
+        {
+          "site": "06C9:6D35",
+          "operand": "ax"
+        },
+        {
+          "site": "06C9:6D36",
+          "operand": "word ptr [bp + 6]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "06C9:6D5B",
+      "target_id": "FN-EGA-000184",
+      "target": "06C9:71B4",
+      "owners": [
+        "FN-EGA-000173"
+      ],
+      "argument_bytes": 2,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "06C9:6D60",
+        "mnemonic": "add",
+        "operands": "sp, 2"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "06C9:6D50",
+          "operand": "bp"
+        },
+        {
+          "site": "06C9:6D56",
+          "operand": "si"
+        },
+        {
+          "site": "06C9:6D57",
+          "operand": "di"
+        },
+        {
+          "site": "06C9:6D58",
+          "operand": "word ptr [bp + 6]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "06C9:6D80",
+      "target_id": "FN-EGA-000182",
+      "target": "06C9:70A3",
+      "owners": [
+        "FN-EGA-000173"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "06C9:6D85",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "06C9:6D6D",
+          "operand": "word ptr [bp + 6]"
+        },
+        {
+          "site": "06C9:6D7C",
+          "operand": "ax"
+        },
+        {
+          "site": "06C9:6D7D",
+          "operand": "word ptr [bp + 6]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "06C9:7858",
+      "target_id": "FN-EGA-000188",
+      "target": "06C9:7490",
+      "owners": [
+        "FN-EGA-000191"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "06C9:785D",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "06C9:7853",
+          "operand": "ds"
+        },
+        {
+          "site": "06C9:7854",
+          "operand": "si"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "06C9:B15E",
+      "target_id": "FN-EGA-000182",
+      "target": "06C9:70A3",
+      "owners": [
+        "FN-EGA-000242"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "06C9:B163",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "06C9:B159",
+          "operand": "dx"
+        },
+        {
+          "site": "06C9:B15D",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "1748:0079",
+      "target_id": "FN-EGA-000184",
+      "target": "06C9:71B4",
+      "owners": [
+        "FN-EGA-000358"
+      ],
+      "argument_bytes": 2,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "1748:007E",
+        "mnemonic": "add",
+        "operands": "sp, 2"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "1748:006B",
+          "operand": "si"
+        },
+        {
+          "site": "1748:006C",
+          "operand": "ax"
+        },
+        {
+          "site": "1748:0078",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "1748:00D6",
+      "target_id": "FN-EGA-000184",
+      "target": "06C9:71B4",
+      "owners": [
+        "FN-EGA-000358"
+      ],
+      "argument_bytes": 2,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "1748:00DB",
+        "mnemonic": "add",
+        "operands": "sp, 2"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "1748:00C2",
+          "operand": "ax"
+        },
+        {
+          "site": "1748:00D5",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "1748:0125",
+      "target_id": "FN-EGA-000182",
+      "target": "06C9:70A3",
+      "owners": [
+        "FN-EGA-000358"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "1748:012A",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "1748:010E",
+          "operand": "ax"
+        },
+        {
+          "site": "1748:0120",
+          "operand": "ax"
+        },
+        {
+          "site": "1748:0124",
+          "operand": "ax"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    },
+    {
+      "site": "1748:0149",
+      "target_id": "FN-EGA-000188",
+      "target": "06C9:7490",
+      "owners": [
+        "FN-EGA-000358"
+      ],
+      "argument_bytes": 4,
+      "cleanup_disposition": "immediate_ADD_SP",
+      "following_instruction": {
+        "site": "1748:014E",
+        "mnemonic": "add",
+        "operands": "sp, 4"
+      },
+      "nearby_syntactic_pushes": [
+        {
+          "site": "1748:0133",
+          "operand": "dx"
+        },
+        {
+          "site": "1748:0134",
+          "operand": "ax"
+        },
+        {
+          "site": "1748:0135",
+          "operand": "word ptr [bp - 2]"
+        },
+        {
+          "site": "1748:0138",
+          "operand": "word ptr [bp - 4]"
+        },
+        {
+          "site": "1748:0143",
+          "operand": "word ptr [bp - 0xe]"
+        },
+        {
+          "site": "1748:0146",
+          "operand": "word ptr [bp - 0x10]"
+        }
+      ],
+      "caller_contract": "pending: allocation identity, actual buffer bounds, lifetimes and exclusion require perpath review"
+    }
+  ],
+  "verified_scope": "Raw direct call encodings, stable IDs, argument byte contracts and nextinstruction cleanup disposition only.",
+  "limits": [
+    "Nearby pushes are syntactic context, not dataflow proof or a complete argument reconstruction.",
+    "Shared tails retain all owners without multiplying call-site counts.",
+    "No caller lifetime, fullstate graph, resourceformat, completecore, DOS orgameplay acceptance."
+  ]
+}

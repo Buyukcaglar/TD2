@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000368",
+    "FN-EGA-000369",
+    "FN-EGA-000370",
+    "FN-EGA-000371"
+  ],
+  "vectors": 37972,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a0e80b196620c157105d4247e45fbbebf770c2025ac2d879350d62c9d3c70c7a",
+  "source_sha256": "5781034b41a2ab3aa45397357e3e195a982f2453f9b403f20387d023ee1293d9",
+  "validator_sha256": "1936a9af63e519e91faaa7bf25cd243d6ed2aad570235b41a029899064c09d5a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "analysis/history/input-fields-bus-code-cache-probe-v1.json",
+      "sha256": "df65a0c137eafd2b08e6fa0a5e47e8cc945c6792c9e9e0f127adc2b3ee3e7efd"
+    },
+    {
+      "path": "analysis/reviews/probe_input_fields_code_cache_v1.py",
+      "sha256": "aa11953af76b4d28e9b07b99626d13fab65d824a55db97194f51b1a791694fdd"
+    },
+    {
+      "path": "analysis/history/input-fields-bus-validation-attempt-v2.json",
+      "sha256": "7087a23b49e155096fa8ceaae03f5ca0f9eab2794187eb796c13bc41dde5e2d6"
+    },
+    {
+      "path": "analysis/history/validate_input_fields_bus_attempt_v2.py",
+      "sha256": "794a5ca422c3cb7f1109977c02d52b12bd879745512d467cf661110094565f01"
+    },
+    {
+      "path": "analysis/history/input-fields-bus-preparation-refinement-v2.json",
+      "sha256": "82c64c6f0cfa38ec26de57d9019711fcefcb8b6ed3e1fb72eb538dfc13a1a32f"
+    },
+    {
+      "path": "analysis/history/validate_input_fields_bus_probe_v1.py",
+      "sha256": "638ad3c13fa34cc48f1a8bc89e17b3b08d607c6572d0881c5f8928131926660d"
+    }
+  ],
+  "original_instructions_executed": 1439764,
+  "instruction_sites_in_fence": 203,
+  "instruction_sites_exercised": 203,
+  "fixture_coverage": {
+    "entry_0": 21922,
+    "prepared_0": 25726,
+    "root_RET": 36396,
+    "CPU_bus_writes": 212532,
+    "actual_near_calls": 9612,
+    "DS_equals_SS": 21742,
+    "changed_root_returns": 568,
+    "near_SP_wraps": 16,
+    "prepared_1": 12246,
+    "entry_1": 4142,
+    "entry_2": 8120,
+    "entry_3": 3788,
+    "before_CALL_budget": 1448,
+    "raw_child_RET": 128
+  },
+  "limits": "Fouradditionalnear4281-43C3-4441-448A/fullSS plusactualfrozen4612/203sites/currentDS/JA-JNE42ADsnapshots/GPR-BP-CFIFDF-normalZF/fullbus/control/writecounts/globaltwo-nearCALLcap/rawchildRETneverfollowed. OldgroupAPIsfrozen/no newuniqueoriginalentries. Whole420A-403B/actualmutabletransitions/validdata-allwriters-capacity-lifetime-IRQ/core open. No DOSsession/realdevices/renderer/audio/fullsuppliedresourceformats/complete-state-machine/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure. FreshindependentUCperimmutablebranchform; earlierResultmismatchfromreusedUCcachedJAwhilememory75, exactfailure/fresh4caseprobe preserved. No recoveredC-DLL change orISA/historicalselfmodtiming claim.",
+  "immutable_emulator_code_forms": [
+    {
+      "prepared42AD": 0,
+      "opcode": 119
+    },
+    {
+      "prepared42AD": 1,
+      "opcode": 117
+    }
+  ]
+}

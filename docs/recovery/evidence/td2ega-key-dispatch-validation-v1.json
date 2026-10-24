@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000153",
+  "result": "pass",
+  "vectors": 262144,
+  "native_only_diagnostics": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "56d8a6f3fe6fd2d5cd067444b409fa8a41347461bc72c5b34aaea072adedc85f",
+  "source_sha256": "5ba1a5663d3ab534b05362b734637fe5abcd4c4f45d5c3b7d2fbf52310a1dbc7",
+  "validator_sha256": "ae5d53bafdc2785cb44eda3be32df12853ff211ae1f9cb7d7d0d5a97f7afe5b7",
+  "original_instructions_executed": 4363050,
+  "fixture_coverage": {
+    "callback": 98750,
+    "extended": 1024,
+    "busy": 131072,
+    "ascii": 261120,
+    "missing": 32322
+  },
+  "limits": "Complete6528 dispatch control with all65536keywords, busy/clear guard, two loadbases andexplicit synthetic farcallback ABImocks. ActualPUSHsegment/nearCALL frame, SI/DI restore, argumentmask, group mutations andIF/DF compared. Callbackbodies/actualkeyinput/IRQ, alltablewriters, DS-changingcallback domains and game/fidelity remainopen; native callbackfault diagnostics outsideoriginal."
+}

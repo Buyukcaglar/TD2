@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "d54f8b0f009887de850f9b3368f94b2dc2a27bc2778cf88eb6d579d079c3f8d8",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "af839db0533e4561c5274c28dea305c096a4bb926cb7f29d3f93056acb4bd5e0",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_small_algorithms.py",
+      "sha256": "26ffe80333feca700251962e3cbcd4883c8252ae79d0ac234dcbd168c3ca0220"
+    }
+  ],
+  "limits": "Teninvalidbus/count/SP/null/selector/boolean profiles, minimumSP32finiteclamp/ratio/guardedDIV, labelbudget/nearoffsetzero/minimum18pad. Nativeonly; actualcaller/fields/bounds/writers/lifetime/core/device/session/game/fidelity separate."
+}

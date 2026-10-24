@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "ba5a180009ecf52f030bcd99d3b284900c42774ee809b60193bfb9655027734c",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cf508c7e05c6221344a63b05f64ed4d1fdb0d8d8eeb8072df9c061913e187abd",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_far_member.py",
+      "sha256": "305b9d4bc58693362092950ddf6432dc65c73e3b6f197d558a1fa3939d68eb66"
+    }
+  ],
+  "limits": "Eightinvalidbus/count/SP/null/boolean profiles, minimumSP16zerooffset/nonzerosegment, wordbasecarrytruncation, separatelywrappedhighword andfinalRCRcarry. Nativeonly; actualcaller/resourcebounds/writers/lifetime/A20/device/session/game/core/fidelity separate."
+}

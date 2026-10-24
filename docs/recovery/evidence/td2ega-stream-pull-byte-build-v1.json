@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_stream_pull_byte.cmd",
+    "sha256": "968ed42239eb751cbdb1d2fc56262889532d33865f5fb742f6d96199328f7c68"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_stream_pull_byte.c",
+      "sha256": "6b069628e40f8bf8be5a6433427d537a93376900e288ab9d1dbbc61de1b4dd05"
+    },
+    {
+      "path": "src/recovered/td2ega_read_span.c",
+      "sha256": "8fd845013fd65a8d5974de5ad5de9d4ec8a71e1c717acb823b311e4e89b75dca"
+    },
+    {
+      "path": "src/recovered/td2ega_stream_buffer.c",
+      "sha256": "fec3a0d3225ed1b966ae199734bc6bd660501b114573344b4c478b9287b6a50b"
+    },
+    {
+      "path": "src/recovered/td2ega_heap_public.c",
+      "sha256": "da2a653821e0b462b66e5d3836adacc5d77686b4c9990f97eeb19292c6dd9f57"
+    },
+    {
+      "path": "src/recovered/td2ega_heap_walk.c",
+      "sha256": "56203918b05936b160114e66f3613672fe30feac50974a734f46005b272ca73b"
+    },
+    {
+      "path": "src/recovered/td2ega_block_align.c",
+      "sha256": "c9891748f744d820941b950e6d1b75a7c24da3c39bb992c0bf72b73d451201b6"
+    },
+    {
+      "path": "src/recovered/td2ega_block_tail.c",
+      "sha256": "ff44c14c9a9216e6c2f1351a270ea965144976c5c004700c20c56f504355b405"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.c",
+      "sha256": "9ee2e00e3c16608a4c641d826e84de98a539dc1597c78e0f78e9193500b1a0dd"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.c",
+      "sha256": "f1b581c93578503f35e7f17bb0f734931df5700b1dd8371f4cf9d93d0d43787c"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.c",
+      "sha256": "7479905e9074c4de5b9fd6c48f7902a3dec03127728ae9f777a1c1eda5698186"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.h",
+      "sha256": "d56d77af874656170dedc475b46af63d5470473684fc4d324e6d0f583dbb30a5"
+    },
+    {
+      "path": "src/recovered/td2ega_block_align.h",
+      "sha256": "d7ed05ec5f93233074c480337c93ee7ac61116fbc10b5dc22d1558907813a936"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.h",
+      "sha256": "b6ee29221e4c33dfc140b6d21c061efc64da4633a3c3b46527aa0f5bea6a4099"
+    },
+    {
+      "path": "src/recovered/td2ega_block_tail.h",
+      "sha256": "3c263df5597b90a84b8527b686782f3a7806f10b1eedfb15a8cd34883508bbfc"
+    },
+    {
+      "path": "src/recovered/td2ega_block_wrapper.h",
+      "sha256": "8696944455f3ab7cabf0e637bcd42d1717e7b00805396e1396e69b24af798981"
+    },
+    {
+      "path": "src/recovered/td2ega_heap_public.h",
+      "sha256": "2eb1a543d64800be257668f10ab7244bda728356ec14cb5dcbe42b9cbb02f348"
+    },
+    {
+      "path": "src/recovered/td2ega_heap_walk.h",
+      "sha256": "5faac122f0cc6d854bfa52a9fc4c307976207191d00f5aac68e76591f6fd556b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_read_span.h",
+      "sha256": "55feb4ff0bd8eb1a8aeb159e1e28a1b7d0e2a20a3e87f1c95e30d43351a6eda3"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_stream_buffer.h",
+      "sha256": "d5f51a93a0378ee53a3365b065e6f144700e59e6d4e7ffae9d5e456150d22382"
+    },
+    {
+      "path": "src/recovered/td2ega_stream_pull_byte.h",
+      "sha256": "56e3aea06448032bb096d8bd47568ebcbe282a4a348928b538e160f4ac32d37a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_stream_pull_byte.dll",
+      "sha256": "e1e0310107066d3f9a9ae7080e740e88ab89c50fa38d54d31579e849c1cc0231",
+      "bytes": 129024
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_stream_pull_byte.obj",
+      "sha256": "1c2ccb4714ec2f4964e1cce3fccc9d48f6e7d230d422d0fd6b24c37154c1b102",
+      "bytes": 10732
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_read_span.obj",
+      "sha256": "83c4d3f789a80cf4e6b409d25b2d342fdb37df41f4bf26e2e5c0445307325549",
+      "bytes": 7965
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_stream_buffer.obj",
+      "sha256": "b878c6086485b7f5d69911ea77f9de28cffda414024cfe624d6d367ede94f05a",
+      "bytes": 6953
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_heap_public.obj",
+      "sha256": "ba755593c6591fa77fa41022320cd45568f3cd2bf788a0cc325382ee85573a6c",
+      "bytes": 6616
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_heap_walk.obj",
+      "sha256": "090c19b3263ce6477328eb59bdecc185d35f769553fba959599158e4974a14a4",
+      "bytes": 9675
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_block_align.obj",
+      "sha256": "6ac5dec9c36a8a848e2548d0eabf02221afd35dc0e15cb2d055cdf00938827ea",
+      "bytes": 4666
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_block_tail.obj",
+      "sha256": "5178ddac45e8c4e3f188ea70a5012263e0ba5797b0bb1cb8c554b5965d357c4b",
+      "bytes": 4225
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_block_wrapper.obj",
+      "sha256": "ef43a8302cef6758f9eafca206804809b93e3f1ab9fed0a10ce4869906d13b29",
+      "bytes": 4333
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_block_request.obj",
+      "sha256": "0832e27e38b2354ee5659dd4554f95a3db2040c194380b38c7bdd9ef13d762e5",
+      "bytes": 7638
+    },
+    {
+      "path": "analysis/build/stream-pull-byte-repro/td2ega_block_adjust.obj",
+      "sha256": "d5267a0b67c3b7f10843b865df4c147892b527d8cea3605b7b8f6ccaaa883956",
+      "bytes": 4915
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/stream-pull-byte-build-v1.log",
+    "sha256": "1b7455dcac3503ece1b5698fa094d832b1ea3ace8f520e52a27e8b1bc5485db5"
+  },
+  "limit": "Actual0B42 far/oneSSnearstreamword/rawreadguards/actual0BE8-fullheap-family and247C-094A/fullSS/currentDS/sharedDOSservicebudget/cursorpostincrement-before-bytefetch/signedchannel/plainfarRET. Wholebus/GPR-BP-CFIFDF/requiredrootZF/typedDOSrequests/control/counts. Serialized20bitRAM/noMEM_READhook/syntheticDOSnoINTframes/historicalCPU-A20unqualified. Budgets/rawRETtargets exposed afterinstruction never followed; reader preRETqualification propagated. Actualcallers/allwriters/indexdomains/bufferbounds-storage-capacity-ownership-lifetime/exclusion/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000279"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000272",
+    "FN-EGA-000280",
+    "FN-EGA-000314",
+    "FN-EGA-000319",
+    "FN-EGA-000320",
+    "FN-EGA-000321",
+    "FN-EGA-000322",
+    "FN-EGA-000323",
+    "FN-EGA-000324",
+    "FN-EGA-000325"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-stream-pull-byte-context-v1.json",
+    "sha256": "4ddfed77ee8a7ec8b3a30d444b78fd7aa29b3a4448134449a753a7608c7e6e39"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/stream-pull-byte-validation-attempt-v1.json",
+      "sha256": "b5059f932e1b3c810abc88a48704175ec16bf384ec4139d1b6d4d99b7614bfbe"
+    }
+  ],
+  "failure_resolution": "First26952per-casecomparisons matched; coveragegatecorrectlyfailedtenreadersites. Exactvalidator/log archived; focusedLF-CtrlZ-lookahead cases added/selectedcompv2. C-DLL-children unchanged. Buffered1536preflight remainsunrecorded/separate."
+}

@@ -1,0 +1,163 @@
+{
+  "result": "pass",
+  "program": "TD2EGA.unpacked.exe",
+  "load_segment": 4096,
+  "relocated_image_sha256": "e36b827719c4692f9f89c5ba5d647111a82e61e8843f4d8b32ee653b7280ba99",
+  "image_bytes_unchanged": true,
+  "fixed_context_ranges": [
+    {
+      "start": "23a8:0417",
+      "end_inclusive": "23a8:088b",
+      "register": "SS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0420",
+      "end_inclusive": "23a8:0431",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0471",
+      "end_inclusive": "23a8:0494",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:04a0",
+      "end_inclusive": "23a8:04d3",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:04d4",
+      "end_inclusive": "23a8:04dd",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "23a8",
+      "after_end": "23a8"
+    },
+    {
+      "start": "23a8:04de",
+      "end_inclusive": "23a8:04f0",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:04fe",
+      "end_inclusive": "23a8:0505",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0512",
+      "end_inclusive": "23a8:053f",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0553",
+      "end_inclusive": "23a8:05ee",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:05f8",
+      "end_inclusive": "23a8:0602",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:060d",
+      "end_inclusive": "23a8:06d7",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0756",
+      "end_inclusive": "23a8:0779",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:081e",
+      "end_inclusive": "23a8:082d",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0854",
+      "end_inclusive": "23a8:0869",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "23a8:0887",
+      "end_inclusive": "23a8:088b",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "1000:07b3",
+      "end_inclusive": "1000:07c7",
+      "register": "DS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    },
+    {
+      "start": "1000:07b3",
+      "end_inclusive": "1000:0c03",
+      "register": "SS",
+      "before_start": "unknown",
+      "before_end": "unknown",
+      "after_start": "278f",
+      "after_end": "278f"
+    }
+  ],
+  "limits": "PSP/environment/LDS-selected DS stays symbolic; main DS after first call is not globally forced. Fixed ranges are reviewed startup-path assumptions, not runtime observations. No prototypes inferred."
+}

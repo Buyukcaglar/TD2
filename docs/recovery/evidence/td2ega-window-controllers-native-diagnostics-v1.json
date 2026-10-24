@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 337,
+  "script_sha256": "61c1cefd520c993b7fe6313188b4bf28343154a8897df95808a229c2fff4b5df",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "62a239b071ba93ed54984505573d8dcaf43e8dfc3ca405c905bc799df120b84b",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_window_controllers.py",
+      "sha256": "c324866dc1944a0d69852dabd8d705cfa999978c7cbf3910087650f3659f9363"
+    }
+  ],
+  "limits": "Native4AFAwindow-orderedwrites/signedCL/CHretained/clamp-originalAX/state-flags/rootaliases and4B5Dall256triggerbytes/actualguard-near-sample/globalCALLbudgets/changed4A2EnearRET-beforeparentcontinue/childfar-nearRETandSIaliases/conditionalIF1-DF/SPdomains/zero-highDS only. Originalcomparison/staticreviewseparate/no fullcaller-allwriters-validselectors-resourcecapacities-sharedsource-reset-IRQ-lifetime-core/DOSsession/renderer/audio/fullstate/gameplay/fidelity admission."
+}

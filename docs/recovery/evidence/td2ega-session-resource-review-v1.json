@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "ledger_sha256": "0a9bd3eea97513b9381f0436c4c366d6951fdba8d041c5851c4838ef5d6e183b",
+  "script_sha256": "49ce8c9f8acdb29324107c763ca6d289297a0e7bad691b267efeef8f13551f07",
+  "session_entry": "0267:15E4",
+  "cleared_pointer_words": [
+    {
+      "group_offset": 35448,
+      "site": "0267:1659"
+    },
+    {
+      "group_offset": 35446,
+      "site": "0267:165C"
+    },
+    {
+      "group_offset": 35454,
+      "site": "0267:165F"
+    },
+    {
+      "group_offset": 35452,
+      "site": "0267:1662"
+    },
+    {
+      "group_offset": 35462,
+      "site": "0267:1665"
+    },
+    {
+      "group_offset": 35460,
+      "site": "0267:1668"
+    },
+    {
+      "group_offset": 35472,
+      "site": "0267:166B"
+    },
+    {
+      "group_offset": 35470,
+      "site": "0267:166E"
+    },
+    {
+      "group_offset": 35480,
+      "site": "0267:1671"
+    },
+    {
+      "group_offset": 35478,
+      "site": "0267:1674"
+    },
+    {
+      "group_offset": 37418,
+      "site": "0267:1677"
+    },
+    {
+      "group_offset": 37416,
+      "site": "0267:167A"
+    },
+    {
+      "group_offset": 35476,
+      "site": "0267:167D"
+    },
+    {
+      "group_offset": 35474,
+      "site": "0267:1680"
+    },
+    {
+      "group_offset": 37474,
+      "site": "0267:1683"
+    },
+    {
+      "group_offset": 37472,
+      "site": "0267:1686"
+    },
+    {
+      "group_offset": 33840,
+      "site": "0267:1689"
+    },
+    {
+      "group_offset": 33838,
+      "site": "0267:168C"
+    },
+    {
+      "group_offset": 37902,
+      "site": "0267:168F"
+    },
+    {
+      "group_offset": 37900,
+      "site": "0267:1692"
+    }
+  ],
+  "cleanup_release_order": [
+    {
+      "site": "0267:16F1",
+      "offset_word": 33838,
+      "segment_word": 33840
+    },
+    {
+      "site": "0267:170A",
+      "offset_word": 37900,
+      "segment_word": 37902
+    },
+    {
+      "site": "0267:1723",
+      "offset_word": 37472,
+      "segment_word": 37474
+    },
+    {
+      "site": "0267:173C",
+      "offset_word": 35460,
+      "segment_word": 35462
+    },
+    {
+      "site": "0267:1755",
+      "offset_word": 35452,
+      "segment_word": 35454
+    },
+    {
+      "site": "0267:176E",
+      "offset_word": 35446,
+      "segment_word": 35448
+    },
+    {
+      "site": "0267:1787",
+      "offset_word": 37416,
+      "segment_word": 37418
+    },
+    {
+      "site": "0267:17A0",
+      "offset_word": 35474,
+      "segment_word": 35476
+    },
+    {
+      "site": "0267:17B9",
+      "offset_word": 35478,
+      "segment_word": 35480
+    },
+    {
+      "site": "0267:17D2",
+      "offset_word": 35470,
+      "segment_word": 35472
+    }
+  ],
+  "packed_direct_call_sites": [
+    "0267:1A40",
+    "1748:010F"
+  ],
+  "register_observations": [
+    {
+      "entry": "0000:07B3",
+      "explicit_si_di_accesses": [],
+      "limit": "Doesnotinfer registerinputs/liveness insidecallees or completeinterproceduralpreservation."
+    },
+    {
+      "entry": "019E:06C5",
+      "explicit_si_di_accesses": [],
+      "limit": "Doesnotinfer registerinputs/liveness insidecallees or completeinterproceduralpreservation."
+    },
+    {
+      "entry": "0267:15E4",
+      "explicit_si_di_accesses": [],
+      "limit": "Doesnotinfer registerinputs/liveness insidecallees or completeinterproceduralpreservation."
+    },
+    {
+      "entry": "1748:000E",
+      "explicit_si_di_accesses": [
+        {
+          "site": "1748:0014",
+          "mnemonic": "push",
+          "operands": "si",
+          "reads": [
+            "si"
+          ],
+          "writes": []
+        },
+        {
+          "site": "1748:005C",
+          "mnemonic": "mov",
+          "operands": "si, word ptr [bx + 0x68a4]",
+          "reads": [],
+          "writes": [
+            "si"
+          ]
+        },
+        {
+          "site": "1748:0060",
+          "mnemonic": "cmp",
+          "operands": "byte ptr [si], 0",
+          "reads": [
+            "si"
+          ],
+          "writes": []
+        },
+        {
+          "site": "1748:006B",
+          "mnemonic": "push",
+          "operands": "si",
+          "reads": [
+            "si"
+          ],
+          "writes": []
+        },
+        {
+          "site": "1748:0091",
+          "mnemonic": "pop",
+          "operands": "si",
+          "reads": [],
+          "writes": [
+            "si"
+          ]
+        },
+        {
+          "site": "1748:00A6",
+          "mnemonic": "mov",
+          "operands": "si, word ptr [bx + 0x68a4]",
+          "reads": [],
+          "writes": [
+            "si"
+          ]
+        },
+        {
+          "site": "1748:00AA",
+          "mnemonic": "cmp",
+          "operands": "byte ptr [si], 0",
+          "reads": [
+            "si"
+          ],
+          "writes": []
+        },
+        {
+          "site": "1748:00B5",
+          "mnemonic": "push",
+          "operands": "si",
+          "reads": [
+            "si"
+          ],
+          "writes": []
+        }
+      ],
+      "limit": "Doesnotinfer registerinputs/liveness insidecallees or completeinterproceduralpreservation."
+    }
+  ],
+  "section_copy": {
+    "site": "0267:1A5B",
+    "destination_group_offset": 13418,
+    "length": 7774,
+    "end_exclusive": 21192,
+    "overlaps_query_written_words": [
+      21186,
+      21188
+    ],
+    "query_writer_sites": [
+      {
+        "site": "06C9:5D42",
+        "operands": "word ptr [0x52c2], cx"
+      },
+      {
+        "site": "06C9:5D46",
+        "operands": "word ptr [0x52c4], dx"
+      }
+    ]
+  },
+  "observations": [
+    "Ten farpointer pairs zeroedat1657..1692 beforeloads, soinitial missingSGN skipsFNT withzero fontpair. Normalnextiteration alsojumps1657.",
+    "Cleanup16E0 tests/releasesten pairs inlistedorder; sourceglobalpairs arenotrewritten with736B DX0. Theyremainstaleuntilnextzero pass orfunctionexit.",
+    "Normal1B2C returnvalue storedlocally, timer/music reinstalled, thenjump16E0 withoutsetting-1; errorsenter16DB set-1. Cleanuprecreatesworkingsurface andrestarts song1 beforebranching.",
+    "7774byteDAT copyinto346A..52C7 overlaps52C2/52C4 wordswrittenby5D2E. Directabsolute-writer scansalone cannotdeclarethosewordsindependent.",
+    "1748 restoresown savedSI butnotDI;0267/019E/main havenoexplicitSI/DIuses. Packedloaderclobberpropagation/intendedcalleeABI stillrequiresinterproceduralreview."
+  ],
+  "limits": "Selectedstatic ownership/copy/register facts only. No completecaller lifetime, allocationbound, callbackexclusion, semantics ofallcopiedfields, statevalidation, resourceformat, runtime orgameplay/fidelity acceptance."
+}

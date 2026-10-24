@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_cache_acquire.cmd",
+    "sha256": "072db2877597e3a237543f77ae210d5e29689f9b5a5b292d02aacc1d845f67f5"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_filename.c",
+      "sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.h",
+      "sha256": "7f0342e6882eafdf84c8960c98584a0c315f16e1c33c0ed578342439a5bac79f"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.c",
+      "sha256": "9cba8155ff6383d1eb9c0b169ea1f7981ae426069edc593e6c3e1dcb26e5da15"
+    },
+    {
+      "path": "src/recovered/td2ega_paragraph_copy.h",
+      "sha256": "59e4700d541e3e08c417e742b835e0ac1699d6feeff43617f07a899fa40a6014"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.c",
+      "sha256": "d7553649f01c3afb07c56b1f7d90c01ded7a148afa3ee0ec9ab72fce854b463a"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_compact.h",
+      "sha256": "16f860c11a9b24a94ba11e55504ccb8ae079936ebda7aebf488f88c0ed3c4fde"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_acquire.c",
+      "sha256": "0196b41bde33c0ad0822d2d6e89bcce4f1b0a23e4a7cad8bac8bb8e6ad609380"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_acquire.h",
+      "sha256": "386a8199550a40cc90a4a4fdcbdd6951fdb5c12b82a803c408a5df1ce4b269ed"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_allocate.h",
+      "sha256": "6891219bb4bab9bdbc41928da1f1cf2790c7de26fad9a3067d46feb975d8cf37"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/cache-acquire-repro/td2ega_filename.obj",
+      "sha256": "3433140d31e3fcee2f45a8e36b9ea3d8055f6d258c5b85a2ed958126a5d525b2",
+      "bytes": 739
+    },
+    {
+      "path": "analysis/build/cache-acquire-repro/td2ega_paragraph_copy.obj",
+      "sha256": "ef6085e416c29cfd4f258018fef36c82fbc893f8fffbdb38ae4d17d8be13f64b",
+      "bytes": 2514
+    },
+    {
+      "path": "analysis/build/cache-acquire-repro/td2ega_cache_compact.obj",
+      "sha256": "8d4e8683e3adaf498e6418f5c48de2378299856b5e47b7f3f363ab2bb52b2843",
+      "bytes": 1412
+    },
+    {
+      "path": "analysis/build/cache-acquire-repro/td2ega_cache_acquire.obj",
+      "sha256": "64d73f826a630052edf56e9dff496aeed20ae03b77f36bd110cc34bfad19a306",
+      "bytes": 1986
+    },
+    {
+      "path": "analysis/build/cache-acquire-repro/td2ega_cache_acquire.dll",
+      "sha256": "afc348520d2058dcdd8c1033a9b51831ff45d309b610950181825b321c5e5bd1",
+      "bytes": 104960
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/cache-acquire-build-v1.log",
+    "sha256": "b82de38a9be4220a814159b510ff567fed50ae5f771f1700d31fa7ee7f042434"
+  },
+  "limit": "Bounded synthetic arena/external-pool contract only; no actual caller lifetime, realmedia, OS, core orsecondhost accepted.",
+  "function_id": "FN-EGA-000184"
+}

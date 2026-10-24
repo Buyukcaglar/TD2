@@ -2,6 +2,12 @@
 
 Inspection date: 13 October 2026. The raw reference manifest records path, size, SHA256 and first 32 bytes for every source file. The resource observations record every graphics pair, catalog text, duplicate group and small-file observation. File names and byte prefixes below are observations; consumer behavior and schema meanings remain future recovery work.
 
+## 22 October 2026: candidate schemas and decoder reuse
+
+The [complete upstream formats/tools review](kylofon-formats-tools-review.md) provides specific schema/decoder candidates for packed wrappers, both codecs, archives/sprites, car records, ordered `.SS` labels, routes/traffic/signs/fonts, selection/scores and PC Speaker events. Use these candidates to replace open-ended rediscovery with consumer-based admission and corpus checks in P2-01..P2-09. Earlier observations below remain the historical supplied-file snapshot; upstream names and prose do not establish accepted local format meanings.
+
+Prioritize both PCS prefix families, sprite count/mode discrepancies, CAMA's extra 49 bytes, short DAT copies and heap-tail lifetime, missing SGN companions, ordered repeated `.SS` labels, VOICES adjacency and every executable-embedded media span. Our existing raw loader/codec comparisons and upstream Python tools are not receipts for decoding every supplied resource. Preserve the249-DOS-file closure gate, bounded parsing, original-read-only policy and external resource packaging rules. The [gap register](evidence/kylofon-gap-register-v1.json) gives acceptance conditions.
+
 ## DOS inventory
 
 | Family | Files | Bytes | Investigation |

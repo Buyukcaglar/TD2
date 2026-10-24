@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_small_arithmetic_v2.cmd",
+    "sha256": "a67628854e2aa02cfc79770f034617ce729c6a3aa4e4d612dfb3ade97ec6050c"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.c",
+      "sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.h",
+      "sha256": "46be463e0d8382fac77f4114180df0d0feed44e045785183427a38d9b63d25b8"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/small-arithmetic-repro-v2/td2ega_small_arithmetic.dll",
+      "sha256": "bc6e232501683e0d135739c5d527312708390795c0cf72da52b70db290f84934",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/small-arithmetic-repro-v2/td2ega_small_arithmetic.obj",
+      "sha256": "1e7381dea9480ea0d30566f750007bbdfb298b375328632d6fb06d5bc0a9adc6",
+      "bytes": 6182
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/small-arithmetic-build-v2.log",
+    "sha256": "519f222f49cb93262b499005cd32ca21eed5848a1487684cf515fcf6d44b5083"
+  },
+  "limit": "Actual record selector/raw counter IDIV/conditional pair update/square DIV helpers, currentDS/actualSS, word arithmetic/signed guards/SBB/LOOPzero/read-after-write aliases and near/farreturns. Fullbus/GPR/BP/CFIFDF/actualcontrol. Divide fault prefix separate, undefined DIVflags unadmitted; following defined operations determine returnedCF. Before-selector-iteration budget diagnostic separate. Actualcaller/otherFLAGS/bounds/tableunits/writers/lifetime/core/resource-fedP2/P3/device/session/game/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000129",
+    "FN-EGA-000363",
+    "FN-EGA-000400",
+    "FN-EGA-000402"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-small-arithmetic-context-v1.json",
+    "sha256": "33e23f3c5c318569f950561c7bdc7f3e318f3e76db9fa637a0c563ca32179359"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/td2ega-small-arithmetic-attempt-v1.c",
+      "sha256": "c4aed3df21785689e8dad5a40a48c02c5b7f32fbabf737a26b1dfec0fc49307f"
+    },
+    {
+      "path": "tools/compile_small_arithmetic.cmd",
+      "sha256": "9f53d32553034b447efa62cd4376850a865580e2a3cd8f8a5bcda935f041fd47"
+    },
+    {
+      "path": "analysis/logs/small-arithmetic-build-v1.log",
+      "sha256": "54b37fe6d7fd77916a240cda68a905d7083e9fda13edbc32942a7b19ba6c1132"
+    },
+    {
+      "path": "analysis/history/validate-small-arithmetic-attempt-v1.py",
+      "sha256": "be8233ae7b7d6801c03bd06e37e830425b48303b1aacfaa786649a50b6c4e015"
+    },
+    {
+      "path": "analysis/logs/small-arithmetic-validation-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-small-arithmetic-native-diagnostics-v1.json",
+      "sha256": "b68e5ca04bc80d43e399fdb19f87859e53e843ee0960c3a004142676da3d8d79"
+    }
+  ],
+  "failure_resolution": "First compile /WX rejected two unused locals, removed for fresh v2. Comparisonv1 fault delivery CF differed from native pre-DIV prefix; v2 captures original pre-instruction flags, verifies fault operand/register preservation, excludes exception-delivery FLAGS. Native algorithm unchanged after clean build."
+}

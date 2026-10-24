@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 10,
+  "script_sha256": "9e567ff2ac0348a07acdb3e24053f8af6c1848982cec5e767ba1e4766877e9c1",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d862713e527e064ab48a239445d398e37df36f7689fe6f7c2d2393172cbfbca2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_small_platform.py",
+      "sha256": "46eea3dc57a971aa9a3c45a68e1f18d0fed4e9ab86b33e73b6e727f841b4b25e"
+    }
+  ],
+  "limits": "Eight nativeinvalidprofile checks plusadapterfailure andinvalidreturnedflag prefixes. SeparatefromoriginalDOS/BIOSreturn/error behavior andactualplatform/IRQ/session/core/game/fidelity."
+}

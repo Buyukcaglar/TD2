@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_field_controller.cmd",
+    "sha256": "9fd9fde0647a9b7a78f66385bdb3734aa48ae3379c4bffc81169d5c33fd0c12e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_field_controller.c",
+      "sha256": "11d186bf49bda8ff5b4f3b9de86f5a3d460640548bd1b05ca2a5a676c8911aa4"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.c",
+      "sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.c",
+      "sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_field_controller.h",
+      "sha256": "2c7d5a21f9c7613eab7afb0e9bdad80c15b6dc3c534666e181c8a46b102fc292"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.h",
+      "sha256": "d4bdef46a5afd3f4a7c9051a17765db281741dd6c9f21fd690c630675c661099"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.h",
+      "sha256": "46be463e0d8382fac77f4114180df0d0feed44e045785183427a38d9b63d25b8"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/field-controller-repro/td2ega_field_controller.dll",
+      "sha256": "5099bfc822d4b49211b79b5a366f3eb7cefea386ed4c3c5c73dec9713f6bb240",
+      "bytes": 120320
+    },
+    {
+      "path": "analysis/build/field-controller-repro/td2ega_field_controller.obj",
+      "sha256": "dc9a37b4a3979a7983443ad950dade71023640a1e0135eb5f6ebb97c6ba32f48",
+      "bytes": 9162
+    },
+    {
+      "path": "analysis/build/field-controller-repro/td2ega_record_math.obj",
+      "sha256": "183ecb9cd6200de441fc4c9da54d800b3ba1cc05983b90d55ebb42265ed3d990",
+      "bytes": 10927
+    },
+    {
+      "path": "analysis/build/field-controller-repro/td2ega_small_arithmetic.obj",
+      "sha256": "a086e73031bd3b8a6db2eed8fbb2f62ec1b820788843438351f9f4fa2dc6740f",
+      "bytes": 6182
+    },
+    {
+      "path": "analysis/build/field-controller-repro/td2ega_small_algorithms.obj",
+      "sha256": "b2bc0bd5fb9bbbaba0a2f8efa9219b8560b37b6da9e1878a5f9ced126cf36ad8",
+      "bytes": 5926
+    },
+    {
+      "path": "analysis/build/field-controller-repro/td2ega_table_scalar.obj",
+      "sha256": "c64e8dbae466caebbb35f9e3ddd9e852655370b75d40cd220be453fb5c11cefc",
+      "bytes": 5798
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/field-controller-build-v1.log",
+    "sha256": "406c332f25a7743a86bee0aa7acbe2d91edae73b9a5165a67727b5538fe418f2"
+  },
+  "limit": "Actual5880 plus fiveactualfrozenchildC bodies5299/5C5A/52FD/5334/535B, sixnearCALLsites/actualSSframes/RET2. NoABI-valuemock orSSscratch exclusion. Fullbus/GPR/BP/CFIFDF/control/writecount/childbudget. Rawtablebyte/wordlookups/lowbyteMUL/guardedDIV/signedfieldclamps andparentorderedrereads/branch/store effects retained; rawreturntargetsexposedafteractualRET neverfollowed. Source5299JL infeasiblefromselectedentry and52FD5303excluded byadjacentcomplementarysignedbranches requirestaticdisposition ifunexercised. Actual403B/fullcaller/writer/bounds/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000398"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000391",
+    "FN-EGA-000392",
+    "FN-EGA-000393",
+    "FN-EGA-000394",
+    "FN-EGA-000402"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-field-controller-context-v1.json",
+    "sha256": "c73793345082355763ea923c716b62d066fa1504ef1b4f611bccea8d1189c439"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_field_controller_before_field_restore_v1.py",
+      "sha256": "5af85628a61c54e4ff54941b681f0191760e7588d0d5a75c64c221c35916bf96"
+    },
+    {
+      "path": "analysis/logs/field-controller-validation-v1.log",
+      "sha256": "2f6bf062aae077c9a3b7e6928686768bde79be55019a0d66bfc4828ad3402a5e"
+    },
+    {
+      "path": "analysis/refine_field_controller_fixtures_v1.py",
+      "sha256": "7761631507ab85e8d901941ec568f3a97ce51380affdc9449de5bf5979b393d9"
+    }
+  ],
+  "failure_resolution": "No C/build/instruction-comparison failure. v1matched22432cases butlackedsevenfeasiblebranches andknownunreachable5303 disposition. Rawtablefixtureinitializationoverwrote330C/330E; selectedv2 explicitlyselectsfinalorigins aftertablebytes andaddsnearclampfield120/200. All207feasiblesitesexercised/5303staticdisposition. C/DLLunchanged."
+}

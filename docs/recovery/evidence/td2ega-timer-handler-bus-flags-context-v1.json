@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "2e0358bc83b98606a3a55c6d5ef53fba6dfad697a2923470f1f87c0bb0e8224a",
+  "instruction_sites_in_fence": 71,
+  "partial_mask": 63275,
+  "same_body_as_reviewed_handler": true,
+  "facts": [
+    "New entry has the same71-site source/body/SS/near-far-INT-IRET contract as the frozen handler. Only incoming/retired-service mask validation broadens toF72B; old interface/source/DLL remain unchanged.",
+    "F72B retains arithmeticCF andIF/DF plus the explicitly admitted system/reserved-bit profile; PF/AF/ZF/SF/OF may be unexposed. Flagword0ED7/bit1 and StateCFIFDF consistency are still required.",
+    "A child prefix retains its actual retired/current coordinates/state/RAM and partial flag mask without following raw control or manufacturing missing arithmetic bits.",
+    "On normal far-callback continuation actual621BADDDI4 defines all arithmetic bits before the next ORAXAX. MaskF72B OR08D5 becomesFFFF; subsequent logic masks only AF toFFEF. Unknown child arithmetic bits cannot influence these source operations.",
+    "After oldIRQ return, bridge625B..6268 contains no flag consumer. Actualcaller61F3CMP5EFE0 defines arithmetic bits before branch/callback. Standalone6230 may legitimately return a conservative partial mask from its service.",
+    "Source rootIRET loads actual SS FLAGS and returns a fully defined named word profile; it does not borrow the unexposed child arithmetic bits. Existing SS-word/corruption/raw-return/backend qualifications remain.",
+    "This is a representation/continuation extension for composing actual state-register-only children and diagnostic exits. Actualfull403B simulation/mode/record/FN3 consumer, oldIRQ/nested delivery/writers-reset-lifetime-exclusion/core/P1-GATE remain open. Physical086Cunassigned/CGAbehindEGAclosure."
+  ],
+  "validator_dependencies": [
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus.c",
+      "sha256": "2e650f035abeda032477dd4cfc5f3558993c146c9a44098780b1947d999cd2fa"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus.h",
+      "sha256": "ed1d5aea1ee1087fd27225cefb0956f8d9847dbb6bfa95c1fb52d683723b107a"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus_flags.c",
+      "sha256": "dd47e0d6adbd40f248ae89a490cf5feb2aa26239cee0d70830b92b9d2d376e4f"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_handler_bus_flags.h",
+      "sha256": "a8170f4dc370be30e6a7f09c5b01054f5ca2680360eae93dfa313792de44b71e"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-flags-preparation-v1.json",
+      "sha256": "0cd161cad9747c2b6e55af2475ed9b86556b35586c549bc075b9088b228b2812"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-flags-build-setup-v1.json",
+      "sha256": "28e9638265bbf1add13bd83f87a54d7c33a5301e5528da1c05a1a4bba7f87e70"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+      "sha256": "23c4a5e0a90e4e8745d7cc667417784daba17d4b3aeba6606add9a82624dd762"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+      "sha256": "99ad5245ec3268e3412b65baf4fe5e8ac8b5ccb36de3ca39009298de4ba83be2"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-callback-order-v2.json",
+      "sha256": "36aeb5f64523436ff4df705c3487e4059ce145dd2466a254d835d23823ba629d"
+    }
+  ],
+  "limits": "Static partial-flags mask/liveness/body-identity review only. New comparison/native diagnostics/registration needed; no new actualIRQ/core/gameplay/fidelity acceptance."
+}

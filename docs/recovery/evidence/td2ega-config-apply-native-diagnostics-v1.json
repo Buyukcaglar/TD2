@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 8,
+  "script_sha256": "32c1bcc24564146a1042b804dac19f16666171467812af5214f387bf4db46cd0",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "3cad72b9422edd5469f3488aa6c9aacd6844791d146662dd6f625bc843552c68",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_config_apply.py",
+      "sha256": "a0ba375cecda9c2604ce9bba7a53d28b62d0f01f608facd4971993e5e9b02395"
+    }
+  ],
+  "limits": "Eightnativeinvalidbus/count/SP/null/carry/IF/DF profiles beforeeffects. Separatefromoriginalroot/childfarreturns, rawchildreturnaliases andnativecopyworkprefixes; noactualcore/device/resourcefed/game/fidelity."
+}

@@ -1,0 +1,2572 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "af895b42b3d4ff09169996af3ce96b9660ae42058b8b0abe4caca7de5cd5afc2",
+  "vectors": 160,
+  "original_instructions_executed": 4480,
+  "cases": [
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 4096,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 0,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 0,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 0,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 1,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 255,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 0,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 1,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 254,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 255,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 110,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 109,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 111,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 256,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 108,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 0,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 221,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 127,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 218,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 128,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 220,
+      "instructions": 28
+    },
+    {
+      "load_segment": 9029,
+      "initial_if": 1,
+      "initial_df": 1,
+      "cursor": 65535,
+      "phase": 255,
+      "sample_if": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ax": 219,
+      "instructions": 28
+    }
+  ],
+  "conclusion": "Actual4A39 call7977 executesSTI;4A41 byte-ring call anditscursor/load/store instructions executeIF1 regardlessincomingIF. NoCLI existsbetweenSTIandthatcall. A callback-entryCLI alone doesnotestablishexclusion for thissamplerpath.",
+  "limits": "Isolated slice beginsafter45FC; earlierpathguards, actualIRQdelivery/latency/PICmask, complete403Bcallbackfeasibility, game schedule andfidelity remainunverified. No timerfrequencyassigned."
+}

@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000216"
+  ],
+  "vectors": 8264,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "383cac953767f2b907df1406d6d75cee49097c72d930886ff81edf54cd4db3d7",
+  "source_sha256": "91613a05fc7952e100c09e2c8e7ebca03cae52daac8b93b09f8301b92adaf4a2",
+  "validator_sha256": "c4a7474d41063ccc5da43b4d0d1712d6d18d3cc121a2670042b5fd8d7cabd9db",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validate_plane_gather.py",
+      "sha256": "ca069bf79e59ae572bb66cb82b6daf2a5271a95402a2cac4dabf2e463c084519"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-plane-gather-context-v2.json",
+      "sha256": "0b804d0d5a868587393eb084bdf89dae25eaea334e7f59c6e0fb9583074084af"
+    },
+    {
+      "path": "tools/validate_fallback_mode.py",
+      "sha256": "219fa11b93ba0b66fb8c02a0ce09ce4a81160563c76ab59353ebb4635e5f6704"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    }
+  ],
+  "original_instructions_executed": 913912,
+  "instruction_sites_in_fence": 129,
+  "instruction_sites_exercised": 129,
+  "fixture_coverage": {
+    "root_far_return": 4416,
+    "plane_heads": 16632,
+    "byte_OUTs": 10560,
+    "byte_STOS_transactions": 202136,
+    "word_STOS_transactions": 108592,
+    "row_heads": 12536,
+    "CPU_bus_writes": 415448,
+    "DS_equals_SS_cases": 2616,
+    "incomingDF1_cases": 4132,
+    "adapter_bus_mutations": 1744,
+    "raw_root_returns": 52,
+    "normal_final_ADDSP_carry": 152,
+    "height8000_cases": 960,
+    "prefix_work": 3404,
+    "preRET_qualification": 444
+  },
+  "limits": "Actual843Efar/oneSScolorword/fullSS/liveCSgeometry/DFretained/softwarepackedIMULlowword-wordSTOS+oddbyte/DL-onlycolorshift/softwaredo-oncerows-BXwidthsnapshot-mutatingSScolor-word/hardwareports-liveES/width40BYTE-MUL-heightlow8 orliveSSrowwidth/actualSSrestores-farRET/globalsoftwareplane-row-port-byte-wordwork/native5cachedbranchpreRETqualification. Wholebus-GPR-BP-CFIFDF/deviceABI/control/counts. RawRAMadapterownsbyte-wordeffects/originalSTOSidempotentstores. No geometrybounds-allwriters-capacities-storage-lifetime-exclusion/EGAwrite-mode-latches-renderer/CPU-A20/core/resource/CGA/session/fidelity closure."
+}

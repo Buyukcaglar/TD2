@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "d9dec46153cfefda1d2ca2089d8dd5ba498a442846661e39d0f6282777485ef5",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "692abae49f3d0e52b98a2b34c3c058a2dd81dc87f77602d395cb02bac6e0283f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_field_text.py",
+      "sha256": "ca6b9745bd202017aa26f2263b0675dbfcbcbfc134e5075659ee720ef7d7fbb8"
+    }
+  ],
+  "limits": "Nativeinterfaces/threebudgetclasses/actualfarframe/minSP30/trim17..1/spaceconversion/actualSSrawrootreturn diagnostics only; originalfullbuscomparison separate. No capacity/NUL/DFvalidity/caller/writers/core/session/gameplay/fidelity closure."
+}

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000188",
+  "result": "pass",
+  "vectors": 69209,
+  "native_only_diagnostic_cases": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "executed_range": {
+    "module_offset": 57632,
+    "length": 68,
+    "unrelocated_sha256": "a351236fb184014e888a8e2f3abc289e39e00e5c58874518e68cfa19fe5bc84d"
+  },
+  "library_sha256": "cd94c41f597b1e353016df516164d120293627c5e9a7c9235b37bdac36e27916",
+  "source_sha256": "25ea43c9182d259c8ff48dc054037ee8a236087982b1a2cb75b620cb26876c83",
+  "validator_sha256": "f59341a570a4a310e0d074307ccf852e59dbd1103d953b512891b8b86f550698",
+  "validator_dependency": {
+    "path": "tools/validate_cache_allocate.py",
+    "sha256": "552bed86016da0fea37fa1be55d44ba5f2072f117306f5e7d31593c7a7de17da"
+  },
+  "original_instructions_executed": 2318638,
+  "event_counts": {
+    "1": 66807,
+    "0": 2402
+  },
+  "coverage": [
+    "All active-boundary and target-row pairs",
+    "Trim over every run of free predecessors",
+    "Highest duplicate segment selected, free row still searchable",
+    "Every uint16 segment request on fixed three-row arena",
+    "Whole synthetic DS64KiB, ignoredoffset, arguments, AX, preserved registers and unchanged DF"
+  ],
+  "limits": "Nonzero leftsentinel andbounded disjoint stable50row metadata arena. Externalfatal handler notexecuted. No payloadmove, cachelifetime, DOS, codec, real resource or gameplay acceptance."
+}

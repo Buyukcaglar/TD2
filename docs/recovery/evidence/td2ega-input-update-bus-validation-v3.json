@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000367"
+  ],
+  "vectors": 91808,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c033f24e1fc2a0c808815ba5821e1c33c13484983230ce79966957a69951cea7",
+  "source_sha256": "102e75f7cc383043e84b99c5c899d80727698ab53a466b13b96ad8200e3b459a",
+  "validator_sha256": "f4f2a6ef4296794aa9c83ed92633f9e3c139498038bec1cd6c7de06290d646f0",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_poll_bus.py",
+      "sha256": "df8258265d178161ee62ce29734299c0862373f41d906f14c88018f5e0932853"
+    },
+    {
+      "path": "tools/validate_key_dispatch_bus.py",
+      "sha256": "1b6151044f9ae21dc38d7392b535bb1dcad3118c9b88eda63601804268e24c66"
+    },
+    {
+      "path": "tools/validate_gameport_bus.py",
+      "sha256": "746801806e2bbcfd6bdecf83d9b70858ad1fea14a6fb08068e55e27c68606492"
+    },
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    },
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-poll-bus-validation-v3.json",
+      "sha256": "e9c6df559636c6707250c2b9b767805e9f7a5ff1b3fff7bcf3d81bd4232b1794"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-motion-flags-bus-validation-v2.json",
+      "sha256": "f8ea4d317df73235883061d517fef9fe33817be74caa1605cbf84608d693ecdb"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-fields-bus-validation-v4.json",
+      "sha256": "78022d58f967aaa3c074b350879809f1e7678b2758b6cebbf8685ca6674ed329"
+    },
+    {
+      "path": "analysis/reviews/input-update-bus-frontier-v2.json",
+      "sha256": "fd445bf2b6bbb47342dcad6cd8b3108e32f354efed415592fa4a585e01ea672a"
+    },
+    {
+      "path": "analysis/history/input-update-bus-repair-v2.json",
+      "sha256": "3a0a25396bc484af43464650c5154bbce6feb4b6a26f589e86f7f713a184e26e"
+    },
+    {
+      "path": "analysis/history/input-update-bus-validation-refinement-v2.json",
+      "sha256": "464b2d3ce4eae7681160e5a7ba8e911e3e49ea49c9de1cfcce28bd542cb1b3e7"
+    },
+    {
+      "path": "analysis/history/input-update-bus-validation-attempt-v2.json",
+      "sha256": "a74bbfca42cadffd6e565fa992611a9b7ccb0b7fdfd4642e56eb489a24925aa2"
+    },
+    {
+      "path": "analysis/history/input-update-coverage-probe-v1.json",
+      "sha256": "335ed2067a3461238af6b976e089d44aee40dff7182b5a6f2bd7eb2dc580716a"
+    },
+    {
+      "path": "analysis/reviews/probe_input_update_coverage_v1.py",
+      "sha256": "875f0371a4db1bd556ad907a2c72f1a700d3eddd63cbc1259f7c830b08ca1afb"
+    }
+  ],
+  "original_instructions_executed": 20696482,
+  "instruction_sites_in_fence": 663,
+  "instruction_sites_exercised": 663,
+  "synthetic_callback_farRET_operations": 3808,
+  "fixture_coverage": {
+    "entry_0": 91808,
+    "AF_choice_0": 82856,
+    "root_RETF": 82528,
+    "actual_far_calls": 574424,
+    "actual_69B7_entries": 110636,
+    "actual_near_callback_CALLs": 3808,
+    "modeled_INT_frame_writes": 331908,
+    "CPU_and_modeled_INT_writes": 3501854,
+    "port_reads": 295520,
+    "DS_equals_SS": 41228,
+    "changed_root_coordinates": 448,
+    "normal_AF_undefined": 82528,
+    "normal_AF_defined": 0,
+    "initial_AF_unknown": 16384,
+    "normal_consumed_ADD_SP2_OF1": 0,
+    "lookup_CMP_boundary_cases": 0,
+    "form_(0, 0, 1)": 25566,
+    "tag_base": 2304,
+    "AF_choice_1": 8952,
+    "tag_all_flags": 32768,
+    "tag_all_directions": 4096,
+    "tag_callbacks": 2304,
+    "raw_child_return": 2112,
+    "tag_control_branches": 7680,
+    "tag_ports": 2048,
+    "tag_stack_alias": 8064,
+    "prefix_3": 7072,
+    "tag_budget": 3264,
+    "tag_scanner": 576,
+    "prefix_6": 96,
+    "tag_segments": 192,
+    "tag_motion_edges": 9216,
+    "tag_targeted_fields": 9216,
+    "tag_port_coverage": 5488,
+    "tag_random_fields": 4096,
+    "tag_42D3": 48,
+    "tag_4372": 64,
+    "tag_4485": 16,
+    "tag_counter_flush": 336,
+    "tag_timeout": 32,
+    "form_(0, 0, 2)": 7462,
+    "form_(0, 2, 1)": 7462,
+    "form_(0, 2, 2)": 7462,
+    "form_(2, 0, 1)": 7462,
+    "form_(2, 0, 2)": 7462,
+    "form_(2, 2, 1)": 7462,
+    "form_(2, 2, 2)": 21470
+  },
+  "limits": "Whole420A additionalactualSS view/15actualbodies/663admittedsites/eightimmutablebranchforms/twoloads/whole1MiBRAM/GPR-BP-CFIFDF/normalZF/conservativefullFLAGSmask/control/directCALLbudgets/orderedports/modeledINTFLAGS-CS-IP/actual69B7/actualmotionfullFLAGS before6601. Keycallbacks remainABIeffects-plusprivategenericRETF/notbodyproof. No CODE-hookEFLAGSmutations. No realIVT-INT-IRQ/DOSdevices/session/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity; actualcaller-allwriters-domain-capacity-lifetime-exclusion/whole403B-core/P1-GATE open. Physical086Cunassigned/CGAbehindEGAclosure."
+}

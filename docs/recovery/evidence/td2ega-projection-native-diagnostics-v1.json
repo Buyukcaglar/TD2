@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "e10c1194e7f5a56b404fdceca5518c6496213f132e600276b68e3aacf485ea25",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d48a5f0ab87794cea905f53ed7a7c5ac7711fdce7c7a247570e73f132f816c34",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_projection.py",
+      "sha256": "394c411d1cfd1ba9ef88c080692480500fef4e18b52a978b644fd38b08c501ce"
+    }
+  ],
+  "limits": "Four native-only projection/lookup argument-domain checks; excluded from original differential/error equivalence. ActualIDIV/workprefixes separatelycounted inhelperreceipt, no post-IDIV arithmeticflagclaim. No originalinstructions/actualresource/renderer/device/IRQ/core/game/fidelity."
+}

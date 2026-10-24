@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "6afc9c36ff01b6344aaeffe512383ec0527eb9a6ff4c2cff09c5aa1e9eb8346f",
+  "instruction_observations": [
+    {
+      "site": "13A8:29B4",
+      "instruction_text": "push bp",
+      "bytes": "55"
+    },
+    {
+      "site": "13A8:29B5",
+      "instruction_text": "mov bp, sp",
+      "bytes": "8bec"
+    },
+    {
+      "site": "13A8:29B7",
+      "instruction_text": "mov dx, di",
+      "bytes": "8bd7"
+    },
+    {
+      "site": "13A8:29B9",
+      "instruction_text": "mov ax, ds",
+      "bytes": "8cd8"
+    },
+    {
+      "site": "13A8:29BB",
+      "instruction_text": "mov es, ax",
+      "bytes": "8ec0"
+    },
+    {
+      "site": "13A8:29BD",
+      "instruction_text": "mov di, word ptr [bp + 6]",
+      "bytes": "8b7e06"
+    },
+    {
+      "site": "13A8:29C0",
+      "instruction_text": "xor ax, ax",
+      "bytes": "33c0"
+    },
+    {
+      "site": "13A8:29C2",
+      "instruction_text": "mov cx, 0xffff",
+      "bytes": "b9ffff"
+    },
+    {
+      "site": "13A8:29C5",
+      "instruction_text": "repne scasb al, byte ptr es:[di]",
+      "bytes": "f2ae"
+    },
+    {
+      "site": "13A8:29C7",
+      "instruction_text": "not cx",
+      "bytes": "f7d1"
+    },
+    {
+      "site": "13A8:29C9",
+      "instruction_text": "dec cx",
+      "bytes": "49"
+    },
+    {
+      "site": "13A8:29CA",
+      "instruction_text": "xchg cx, ax",
+      "bytes": "91"
+    },
+    {
+      "site": "13A8:29CB",
+      "instruction_text": "mov di, dx",
+      "bytes": "8bfa"
+    },
+    {
+      "site": "13A8:29CD",
+      "instruction_text": "pop bp",
+      "bytes": "5d"
+    },
+    {
+      "site": "13A8:29CE",
+      "instruction_text": "retf ",
+      "bytes": "cb"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "13A8:1C00",
+      "site": "13A8:1CD2",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:29B4"
+    },
+    {
+      "owner": "13A8:1FDE",
+      "site": "13A8:1FF7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:29B4"
+    },
+    {
+      "owner": "13A8:2A96",
+      "site": "13A8:2AB6",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:29B4"
+    },
+    {
+      "owner": "16AB:000C",
+      "site": "16AB:0015",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:29B4"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "One SS near offset uses current DS through ES=DS. No CLD; incoming DF controls byte scan and word DI wrap.",
+    "REPNE SCASB starts CXFFFF/AL0; NOT CX then DEC CX/XCHG yields AX, CX0. Last comparison CF survives NOT/DEC/XCHG.",
+    "DX receives incoming DI and restores DI. BP saved in SS; plain far RET consumes four bytes and caller retains argument.",
+    "Missing terminator within FFFF scans and last eligible NUL both return AXFFFE, distinguished by CF1/CF0. No host strlen or invented error."
+  ],
+  "limits": "Static byte/operand and direct caller candidate inventory only. Actual caller NUL/bounds/DF/other FLAGS/DS-SS correspondence/writers/lifetime/core and device/session/game/fidelity remain open."
+}

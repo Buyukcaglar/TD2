@@ -1,0 +1,1594 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "239a55a345dd1c672647b2b3859539cf898d10c76abc8a978462b36f0790baea",
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-sign-extension-context-v1.json",
+      "sha256": "d3f14fc69d6e087683da6e0e25a57d8976b84b71a8a8d97437110236ae1cd6d6"
+    }
+  ],
+  "instruction_observations": [
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2916",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2917",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2919",
+      "bytes": "8bd7",
+      "text": "mov dx, di"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:291B",
+      "bytes": "8bde",
+      "text": "mov bx, si"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:291D",
+      "bytes": "8cd8",
+      "text": "mov ax, ds"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:291F",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2921",
+      "bytes": "8b7e06",
+      "text": "mov di, word ptr [bp + 6]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2924",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2926",
+      "bytes": "b9ffff",
+      "text": "mov cx, 0xffff"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2929",
+      "bytes": "f2ae",
+      "text": "repne scasb al, byte ptr es:[di]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:292B",
+      "bytes": "8d75ff",
+      "text": "lea si, [di - 1]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:292E",
+      "bytes": "8b7e08",
+      "text": "mov di, word ptr [bp + 8]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2931",
+      "bytes": "b9ffff",
+      "text": "mov cx, 0xffff"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2934",
+      "bytes": "f2ae",
+      "text": "repne scasb al, byte ptr es:[di]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2936",
+      "bytes": "f7d1",
+      "text": "not cx"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2938",
+      "bytes": "2bf9",
+      "text": "sub di, cx"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:293A",
+      "bytes": "87fe",
+      "text": "xchg si, di"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:293C",
+      "bytes": "8b4606",
+      "text": "mov ax, word ptr [bp + 6]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:293F",
+      "bytes": "f7c60100",
+      "text": "test si, 1"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2943",
+      "bytes": "7402",
+      "text": "je 0x2947"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2945",
+      "bytes": "a4",
+      "text": "movsb byte ptr es:[di], byte ptr [si]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2946",
+      "bytes": "49",
+      "text": "dec cx"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2947",
+      "bytes": "d1e9",
+      "text": "shr cx, 1"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2949",
+      "bytes": "f3a5",
+      "text": "rep movsw word ptr es:[di], word ptr [si]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:294B",
+      "bytes": "13c9",
+      "text": "adc cx, cx"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:294D",
+      "bytes": "f3a4",
+      "text": "rep movsb byte ptr es:[di], byte ptr [si]"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:294F",
+      "bytes": "8bf3",
+      "text": "mov si, bx"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2951",
+      "bytes": "8bfa",
+      "text": "mov di, dx"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2953",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "owner": "13A8:2916",
+      "site": "13A8:2954",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2956",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2957",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2959",
+      "bytes": "8bd7",
+      "text": "mov dx, di"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:295B",
+      "bytes": "8bde",
+      "text": "mov bx, si"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:295D",
+      "bytes": "8b7608",
+      "text": "mov si, word ptr [bp + 8]"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2960",
+      "bytes": "8bfe",
+      "text": "mov di, si"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2962",
+      "bytes": "8cd8",
+      "text": "mov ax, ds"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2964",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2966",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2968",
+      "bytes": "b9ffff",
+      "text": "mov cx, 0xffff"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:296B",
+      "bytes": "f2ae",
+      "text": "repne scasb al, byte ptr es:[di]"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:296D",
+      "bytes": "f7d1",
+      "text": "not cx"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:296F",
+      "bytes": "8b7e06",
+      "text": "mov di, word ptr [bp + 6]"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2972",
+      "bytes": "8bc7",
+      "text": "mov ax, di"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2974",
+      "bytes": "a801",
+      "text": "test al, 1"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2976",
+      "bytes": "7402",
+      "text": "je 0x297a"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2978",
+      "bytes": "a4",
+      "text": "movsb byte ptr es:[di], byte ptr [si]"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2979",
+      "bytes": "49",
+      "text": "dec cx"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:297A",
+      "bytes": "d1e9",
+      "text": "shr cx, 1"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:297C",
+      "bytes": "f3a5",
+      "text": "rep movsw word ptr es:[di], word ptr [si]"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:297E",
+      "bytes": "13c9",
+      "text": "adc cx, cx"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2980",
+      "bytes": "f3a4",
+      "text": "rep movsb byte ptr es:[di], byte ptr [si]"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2982",
+      "bytes": "8bf3",
+      "text": "mov si, bx"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2984",
+      "bytes": "8bfa",
+      "text": "mov di, dx"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2986",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "owner": "13A8:2956",
+      "site": "13A8:2987",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:2988",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:2989",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:298B",
+      "bytes": "8bd7",
+      "text": "mov dx, di"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:298D",
+      "bytes": "8bde",
+      "text": "mov bx, si"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:298F",
+      "bytes": "8cd8",
+      "text": "mov ax, ds"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:2991",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:2993",
+      "bytes": "8b7606",
+      "text": "mov si, word ptr [bp + 6]"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:2996",
+      "bytes": "8b7e08",
+      "text": "mov di, word ptr [bp + 8]"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:2999",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:299B",
+      "bytes": "b9ffff",
+      "text": "mov cx, 0xffff"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:299E",
+      "bytes": "f2ae",
+      "text": "repne scasb al, byte ptr es:[di]"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29A0",
+      "bytes": "f7d1",
+      "text": "not cx"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29A2",
+      "bytes": "2bf9",
+      "text": "sub di, cx"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29A4",
+      "bytes": "f3a6",
+      "text": "repe cmpsb byte ptr [si], byte ptr es:[di]"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29A6",
+      "bytes": "7405",
+      "text": "je 0x29ad"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29A8",
+      "bytes": "1bc0",
+      "text": "sbb ax, ax"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29AA",
+      "bytes": "1dffff",
+      "text": "sbb ax, 0xffff"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29AD",
+      "bytes": "8bf3",
+      "text": "mov si, bx"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29AF",
+      "bytes": "8bfa",
+      "text": "mov di, dx"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29B1",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "owner": "13A8:2988",
+      "site": "13A8:29B2",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B40",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B41",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B43",
+      "bytes": "8bd6",
+      "text": "mov dx, si"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B45",
+      "bytes": "8b7608",
+      "text": "mov si, word ptr [bp + 8]"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B48",
+      "bytes": "8b5e06",
+      "text": "mov bx, word ptr [bp + 6]"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B4B",
+      "bytes": "b0ff",
+      "text": "mov al, 0xff"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B4D",
+      "bytes": "0ac0",
+      "text": "or al, al"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B4F",
+      "bytes": "742c",
+      "text": "je 0x2b7d"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B51",
+      "bytes": "ac",
+      "text": "lodsb al, byte ptr [si]"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B52",
+      "bytes": "8a27",
+      "text": "mov ah, byte ptr [bx]"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B54",
+      "bytes": "43",
+      "text": "inc bx"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B55",
+      "bytes": "3ae0",
+      "text": "cmp ah, al"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B57",
+      "bytes": "74f4",
+      "text": "je 0x2b4d"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B59",
+      "bytes": "2c41",
+      "text": "sub al, 0x41"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B5B",
+      "bytes": "3c1a",
+      "text": "cmp al, 0x1a"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B5D",
+      "bytes": "1ac9",
+      "text": "sbb cl, cl"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B5F",
+      "bytes": "80e120",
+      "text": "and cl, 0x20"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B62",
+      "bytes": "02c1",
+      "text": "add al, cl"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B64",
+      "bytes": "0441",
+      "text": "add al, 0x41"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B66",
+      "bytes": "86e0",
+      "text": "xchg al, ah"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B68",
+      "bytes": "2c41",
+      "text": "sub al, 0x41"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B6A",
+      "bytes": "3c1a",
+      "text": "cmp al, 0x1a"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B6C",
+      "bytes": "1ac9",
+      "text": "sbb cl, cl"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B6E",
+      "bytes": "80e120",
+      "text": "and cl, 0x20"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B71",
+      "bytes": "02c1",
+      "text": "add al, cl"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B73",
+      "bytes": "0441",
+      "text": "add al, 0x41"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B75",
+      "bytes": "3ac4",
+      "text": "cmp al, ah"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B77",
+      "bytes": "74d4",
+      "text": "je 0x2b4d"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B79",
+      "bytes": "1ac0",
+      "text": "sbb al, al"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B7B",
+      "bytes": "1cff",
+      "text": "sbb al, 0xff"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B7D",
+      "bytes": "98",
+      "text": "cwde "
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B7E",
+      "bytes": "8bf2",
+      "text": "mov si, dx"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B80",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "owner": "13A8:2B40",
+      "site": "13A8:2B81",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B82",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B83",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B85",
+      "bytes": "8bd7",
+      "text": "mov dx, di"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B87",
+      "bytes": "8cd8",
+      "text": "mov ax, ds"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B89",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B8B",
+      "bytes": "8b7e06",
+      "text": "mov di, word ptr [bp + 6]"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B8E",
+      "bytes": "8bdf",
+      "text": "mov bx, di"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B90",
+      "bytes": "8b4e0a",
+      "text": "mov cx, word ptr [bp + 0xa]"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B93",
+      "bytes": "e315",
+      "text": "jcxz 0x2baa"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B95",
+      "bytes": "8a4608",
+      "text": "mov al, byte ptr [bp + 8]"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B98",
+      "bytes": "8ae0",
+      "text": "mov ah, al"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B9A",
+      "bytes": "f7c70100",
+      "text": "test di, 1"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2B9E",
+      "bytes": "7402",
+      "text": "je 0x2ba2"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BA0",
+      "bytes": "aa",
+      "text": "stosb byte ptr es:[di], al"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BA1",
+      "bytes": "49",
+      "text": "dec cx"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BA2",
+      "bytes": "d1e9",
+      "text": "shr cx, 1"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BA4",
+      "bytes": "f3ab",
+      "text": "rep stosw word ptr es:[di], ax"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BA6",
+      "bytes": "13c9",
+      "text": "adc cx, cx"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BA8",
+      "bytes": "f3aa",
+      "text": "rep stosb byte ptr es:[di], al"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BAA",
+      "bytes": "8bfa",
+      "text": "mov di, dx"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BAC",
+      "bytes": "93",
+      "text": "xchg bx, ax"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BAD",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "owner": "13A8:2B82",
+      "site": "13A8:2BAE",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0000:0297",
+      "site": "0000:0451",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:0297",
+      "site": "0000:045A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0000:0297",
+      "site": "0000:0363",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0297",
+      "site": "0000:03E2",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0477",
+      "site": "0000:049F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0000:0477",
+      "site": "0000:04F4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0477",
+      "site": "0000:053D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0477",
+      "site": "0000:0526",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:0477",
+      "site": "0000:056C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:05C0",
+      "site": "0000:05DE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0000:05C0",
+      "site": "0000:063E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0651",
+      "site": "0000:0678",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0651",
+      "site": "0000:06D1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:0651",
+      "site": "0000:0698",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0651",
+      "site": "0000:0714",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:0730",
+      "site": "0000:077E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:0730",
+      "site": "0000:0752",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0000:0730",
+      "site": "0000:079B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0000:07B3",
+      "site": "0000:07DF",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2988"
+    },
+    {
+      "owner": "0143:000A",
+      "site": "0143:007A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0143:000A",
+      "site": "0143:0083",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0143:000A",
+      "site": "0143:00D4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0143:000A",
+      "site": "0143:00DD",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0277",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0200",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0280",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:0209",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:009B",
+      "site": "019E:00C1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:009B",
+      "site": "019E:00CA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:027D",
+      "site": "019E:0308",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:027D",
+      "site": "019E:0311",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:0527",
+      "site": "019E:0575",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:0527",
+      "site": "019E:05D7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:0527",
+      "site": "019E:05E0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0708",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0711",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0794",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:079D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0820",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0829",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0B94",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0C33",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0BB8",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "019E:06C5",
+      "site": "019E:0BC1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0069",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0072",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0CE1",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0CEA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1861",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:186A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:18AB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:18B4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1921",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:192A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:196B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1974",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1A7D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1A86",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1AC7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1AD0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1B11",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1B1A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1BF4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0267:15E4",
+      "site": "0267:1BFD",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0432:0006",
+      "site": "0432:0013",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:00A9",
+      "site": "0432:0128",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0432:01B2",
+      "site": "0432:0230",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0432:02BF",
+      "site": "0432:0348",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:02BF",
+      "site": "0432:0358",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:02BF",
+      "site": "0432:0368",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:04F1",
+      "site": "0432:0552",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:04F1",
+      "site": "0432:0614",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:0C0E",
+      "site": "0432:0CC4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:0D35",
+      "site": "0432:0D76",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0432:0D35",
+      "site": "0432:0EDE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:0D35",
+      "site": "0432:0EE7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0432:0D35",
+      "site": "0432:0E0D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:0F71",
+      "site": "0432:0FB0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0432:0F71",
+      "site": "0432:111C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:0F71",
+      "site": "0432:1125",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0432:0F71",
+      "site": "0432:1045",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:11AE",
+      "site": "0432:12AB",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:11AE",
+      "site": "0432:12B4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0432:1341",
+      "site": "0432:143E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:1341",
+      "site": "0432:1447",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0432:14DB",
+      "site": "0432:187A",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0432:14DB",
+      "site": "0432:1883",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0645:0000",
+      "site": "0645:001B",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0000",
+      "site": "0645:0024",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0645:0186",
+      "site": "0645:022D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0186",
+      "site": "0645:0236",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0645:0271",
+      "site": "0645:029E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0271",
+      "site": "0645:02A7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "0645:0389",
+      "site": "0645:0411",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0389",
+      "site": "0645:03C3",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0389",
+      "site": "0645:0427",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0389",
+      "site": "0645:03DD",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0470",
+      "site": "0645:04BF",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0470",
+      "site": "0645:0519",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    },
+    {
+      "owner": "0645:0470",
+      "site": "0645:054F",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "0645:0470",
+      "site": "0645:0558",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "13A8:0978",
+      "site": "13A8:09DE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "13A8:0978",
+      "site": "13A8:09FC",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2916"
+    },
+    {
+      "owner": "13A8:10C6",
+      "site": "13A8:122C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B82"
+    },
+    {
+      "owner": "1748:000E",
+      "site": "1748:001C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "1748:000E",
+      "site": "1748:006D",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "1748:000E",
+      "site": "1748:00EF",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "1748:000E",
+      "site": "1748:00B7",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2956"
+    },
+    {
+      "owner": "1748:000E",
+      "site": "1748:00FF",
+      "kind": "lcall",
+      "size": 5,
+      "target": "13A8:2B40"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "All five roots use current DS near arguments and actual SS BP/far frames, plain RETF/caller clean; no CLD.",
+    "2916 scans destination then source, computes raw tail pointer via DI-1 and second DI-NOTCX, rereads SS destination before copies. 2956 scans source then reads SS destination.",
+    "Both copies peel one byte according to source parity (2916) or destination parity (2956), then word REP and ADC residual-byte REP. Sequential overlap and DF retained.",
+    "2988 scans second string then subtracts scanned count irrespective of DF, REPE CMPSB including terminator/count, mismatch SBB/SBB gives AX1/FFFF and CF1; equal AX0/CF0.",
+    "2B40 BX advances +1 while LODSB SI follows DF; differing bytes fold ASCII41..5A with raw byte arithmetic, CL final mask from first byte. Unprefixed98 gives word AX sign extension.",
+    "2B82 zero count preserves incoming CF and leaves BX=incomingDS after XCHG; nonzero repeated-byte AX and word/byte stores, final BX=repeated-byte word, CF0. DI restored via DX, AX near destination."
+  ],
+  "limits": "Static original instruction and caller-candidate inventory only. Actual caller capacity/NUL/DF/otherFLAGS/DS-SS views/writers/lifetime/exclusion/core remain open; no host string substitutions/source C types or device/session/game/fidelity acceptance."
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_timer_control.cmd",
+    "sha256": "1f94ea746582132d1e7d1b4e79e0dee7cac0099d5b3382a78e97df7e2ce18f43"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_timer_control.c",
+      "sha256": "cfad1442cfd114bebeeb113863bf0b6344c46eb2ec4917ee61da4239a56cb4f3"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control.h",
+      "sha256": "ac6396140ab0acc4e0a392a72791ed3981f5e394828f844edf2f6f548931ff26"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_callbacks.h",
+      "sha256": "d3eceb24b49e417a6f0980885f3ca8aaeb9588a6a8226432919fb0638669d2c0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/timer-control-repro/td2ega_timer_control.dll",
+      "sha256": "23688cc508c88cc834a34c59b3a4071aa323bd80bd7beee028322231955c9dda",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/timer-control-repro/td2ega_timer_control.obj",
+      "sha256": "46566ae9fc73b3e20dd2df4f6a9c16e89475e55d3f613447471dc5ade05a853f",
+      "bytes": 6206
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/timer-control-build-v1.log",
+    "sha256": "74f9049bcdd5b711da1cb70abe68c9a01c4985883792e53c53c2b1e285386234"
+  },
+  "limit": "Three port/vector metadata entries, serializedsyntheticprofile; signeddivisionfaultprefix, separatevectorwordtests preserved. NoactualIRQ/hardware/cadence/external086Csemantics/game acceptance.",
+  "function_ids": [
+    "FN-EGA-000147",
+    "FN-EGA-000148",
+    "FN-EGA-000149"
+  ]
+}

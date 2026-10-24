@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_key_dispatch.cmd",
+    "sha256": "6ee6999d20f806115c5cf849dde593bac0b0f68903cbfaf1056893e7bfd69afe"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_key_dispatch.c",
+      "sha256": "5ba1a5663d3ab534b05362b734637fe5abcd4c4f45d5c3b7d2fbf52310a1dbc7"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.h",
+      "sha256": "17bbb527c847a3beb63b35ce097540a5cb5a6b1bb950695747792addab490c56"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/key-dispatch-repro-v2/td2ega_key_dispatch.dll",
+      "sha256": "56d8a6f3fe6fd2d5cd067444b409fa8a41347461bc72c5b34aaea072adedc85f",
+      "bytes": 102912
+    },
+    {
+      "path": "analysis/build/key-dispatch-repro-v2/td2ega_key_dispatch.obj",
+      "sha256": "3ff17909524ad44beafdec65f6e907d22cd5b42c4be3e5cd571c570787c774b4",
+      "bytes": 2279
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/key-dispatch-build-v2.log",
+    "sha256": "f95feec9b381277cc413ad82337b19b93a8a0392dc25bcea73968f09a4f2d538"
+  },
+  "limit": "Complete6528 bounded dispatch andexplicitfarcallback adapter profile; PUSHsegment/nearCALL frame compared. Actual callbackbodies, tablewriters/IRQ and DS-changingcallbacks remainopen.",
+  "function_id": "FN-EGA-000153"
+}

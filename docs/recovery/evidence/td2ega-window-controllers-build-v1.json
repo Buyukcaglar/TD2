@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-16",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_window_controllers.cmd",
+    "sha256": "d4d29f17cef2e0bce70d8e4e57f9acb274367871d61855f9c5cb7e79c43b3b2d"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_window_controllers.c",
+      "sha256": "6a3c5a0b45c83d42ae93d71305848bb4fb4b20ccd533c2fd18d6f625cc7eca88"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.c",
+      "sha256": "d8e9e7a14bb38872c2e0ec5eb1636555114022f88569d6ef3ff23048a4c706e9"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.c",
+      "sha256": "e7b095ce158e96eaa8dd7b7bff823f37d6c3d7766fc615b513c68dc8eb65f505"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_control_bus.h",
+      "sha256": "c9fff1e35fba958fefba6123e2ac4f7e88307fda64d189d05a705f0f23d20d46"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_sample_adjust.h",
+      "sha256": "0c913a5b7eff7f98859d0f9117520a6704ae538f9c44105dfaf5656125bfced9"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_window_controllers.h",
+      "sha256": "d1bbaf540a1d06fd120188bac25c88b8eca21dbf650013cace5f91b2d0388aad"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/window-controllers-repro/td2ega_window_controllers.dll",
+      "sha256": "62a239b071ba93ed54984505573d8dcaf43e8dfc3ca405c905bc799df120b84b",
+      "bytes": 111616
+    },
+    {
+      "path": "analysis/build/window-controllers-repro/td2ega_window_controllers.obj",
+      "sha256": "8646b5d0464369778ccadbe4155c89d8379872d6da0843860752a0eba5e43549",
+      "bytes": 9121
+    },
+    {
+      "path": "analysis/build/window-controllers-repro/td2ega_sample_adjust.obj",
+      "sha256": "e78cf5253da1a386df747e0a254b5035d12564cfd99508411394573ed5f363ff",
+      "bytes": 11105
+    },
+    {
+      "path": "analysis/build/window-controllers-repro/td2ega_control_bus.obj",
+      "sha256": "7a25a280f955244a78cd374a0f15efff40dad08b2ec19b699d61faa53765b817",
+      "bytes": 6551
+    },
+    {
+      "path": "analysis/build/window-controllers-repro/td2ega_byte_ring.obj",
+      "sha256": "8e6ddc6adc70ab629ba6dba96a0ca7ee1d4dd000a957681e06fa014dfbd991e2",
+      "bytes": 700
+    },
+    {
+      "path": "analysis/build/window-controllers-repro/td2ega_sim_primitives.obj",
+      "sha256": "e5b69c41af64f64029c108414903a0908062cbc105a6c9026fac7dff6f6a847e",
+      "bytes": 4595
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/window-controllers-build-v1.log",
+    "sha256": "1c83714e9f69ff50fe95b8d4276a06b204e4a41c3cc00a175fbe5b726bb70556"
+  },
+  "limit": "Actual4AFAnear/windowwrites/signedCL-CMP-statebranches/actual4B5DbyteDEC-TESTperiodgate/4D26fullSSrequiredZF/frozenintervalC/actualnear4A2EfullSS-control-setter-ring/globalguard-parent-child-controlCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. Entry0SP0..FFFE/entry1SP22..FFE0; no actualcaller-writers-validselector-tablecapacity-sharedsource-reset-IRQ-lifetime-core acceptance. NoDOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000382",
+    "FN-EGA-000383"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-window-controllers-context-v2.json",
+    "sha256": "82c415a30bc1d7594a5250ae0ad5f76e4aebfd9e9a58c0f3a535fc4430ac72af"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/window-controllers-context-attempt-v1.json",
+      "sha256": "2f191a1c98f238c1560d25362e1ed462bd0dd32c2087724bb3c937f7c64ff87e"
+    },
+    {
+      "path": "analysis/history/window-controllers-validation-attempt-v1.json",
+      "sha256": "33cdd2e7712582cb3ac23743b1083b6f2fb1fe02f2be30ec7ba5133f35ca0bc0"
+    }
+  ],
+  "prior_registration_preflight": {
+    "path": "analysis/history/window-controllers-registration-preflight-v1.json",
+    "sha256": "20cc8cd23779c5887092649b794e11051d22358cd67181e2c9037c59cda44c8a"
+  }
+}

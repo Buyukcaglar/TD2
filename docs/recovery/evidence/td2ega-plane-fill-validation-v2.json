@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000215"
+  ],
+  "vectors": 1472,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "d992db5bf986911c6b36d92228f012959837ebce3a271c0981bd4254166bcfd0",
+  "source_sha256": "06180015c596dea0c596f877ff38c1f686089f3a385bd21b2591542786eeef1a",
+  "validator_sha256": "9ebb886181fb66363138c991369770e68115209642352cdfa1fb9e33f8a35a7a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    },
+    {
+      "path": "analysis/reviews/far-return-stack-probe-v1.json",
+      "sha256": "adfad57608037b766121f6f094a379a2b76050951e28c90c347b7d916787be55"
+    },
+    {
+      "path": "tools/validation/probe_far_return_stack.py",
+      "sha256": "5e80d71447e6d26b1dc104e0711803378414d5da9589ede2991441ee29dc7a85"
+    }
+  ],
+  "original_instructions_executed": 2079120,
+  "instruction_sites_in_fence": 30,
+  "instruction_sites_exercised": 30,
+  "fixture_coverage": {
+    "root_far_return": 144,
+    "byte_OUTs": 5920,
+    "device_byte_writes": 2048896,
+    "bus_write_events": 2051840,
+    "adapter_bus_mutations": 160,
+    "incomingDF1_cases": 736,
+    "SS_A000_cases": 64,
+    "SS_FFFF_cases": 320,
+    "all16bitSP_wrap_cases": 384,
+    "raw_root_returns": 56,
+    "all_byte_input_cases": 1024,
+    "event_budget_prefix": 1312,
+    "unqualified_farframe_prefix": 16
+  },
+  "limits": "Actual06C9:840A far/oneSSwordfill/6actualbyteOUTs/REP8000STOSB/incomingDF/fullSS/all16bitSPthroughpreRETqualification(SP>FFFC native5/noRET/faultclaim)/typedport-deviceevents preserveGPR-FLAGS (responseGPRignored)/rawRAMadapterownsdevicewrite/orderedSSargumentread-saves-farreturnafteradaptermutations-fill. Wholebus/GPR-BP-CFIFDF/control/eventcounts. Syntheticserialized20bitRAM/A000literaladdresses do notadmitEGAplanar-register-latchhardwareeffects/renderer. Nativeeventbudgets/failureprefixesnotoriginalerrors; rawrootfarwordsafterRETneverfollowed. HistoricalCPU-A20/actualcallers/writers/storage/domain/IRQ/core/resource/device/session/gameplay/fidelity open."
+}

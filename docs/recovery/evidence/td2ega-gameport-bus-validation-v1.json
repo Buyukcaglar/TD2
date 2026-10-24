@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000156",
+    "FN-EGA-000412",
+    "FN-EGA-000413"
+  ],
+  "vectors": 20232,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f3875aa4e19874dc54124a99cc200f1f025c140c158c78bd6fdec2177e8a44fd",
+  "source_sha256": "d538ab0b3d17bfe7441ad91374d0aedc403ce76885c7360df739ab5241dd1676",
+  "validator_sha256": "746801806e2bbcfd6bdecf83d9b70858ad1fea14a6fb08068e55e27c68606492",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    },
+    {
+      "path": "analysis/reviews/far-return-stack-probe-v1.json",
+      "sha256": "adfad57608037b766121f6f094a379a2b76050951e28c90c347b7d916787be55"
+    },
+    {
+      "path": "tools/validation/probe_far_return_stack.py",
+      "sha256": "5e80d71447e6d26b1dc104e0711803378414d5da9589ede2991441ee29dc7a85"
+    }
+  ],
+  "original_instructions_executed": 31334942,
+  "instruction_sites_in_fence": 150,
+  "instruction_sites_exercised": 150,
+  "fixture_coverage": {
+    "entry_0": 9448,
+    "root_RETF": 17896,
+    "CPU_bus_writes": 161676,
+    "port_reads": 4386202,
+    "port_transfers": 4394350,
+    "DS_equals_SS": 12496,
+    "changed_root_coordinates": 4596,
+    "4000_counter_timeout": 1076,
+    "translation_savedBP_overlaps_lookup": 336,
+    "initializer_incoming_ZF1": 1024,
+    "pre_RETF_boundary": 2016,
+    "before_IN_budget": 320,
+    "entry_1": 2048,
+    "entry_2": 8736
+  },
+  "limits": "Three additional actualSS gameport6686/680A/6828/plainRETF-caller-clean/currentDS-independentSS/whole1MiB20bitRAM/GPR-BP-CFIFDF-normalZF/ordered40byteportrequests/CPUwrites. Syntheticbyte201adapter preservesRAM-GPR-FLAGS; onlyINreturnsAL. Native3beforeINbudget/5beforefarRETSP>FFFC retainqualifiedbackendprofile; nativefailedservice4 separatediagnostics. MOV-onlyinitializerpreservesexplicitincomingZF; translatoractualsavedBP-before-liveDSlookup. Same3originalentriescountedonce/oldsource-DLL-receiptsfrozen. No actualporthardware-timebase-IRQ/caller-allwriters-capacity-lifetime/full420A-403B-core/resourceformats/session/renderer/audio/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure."
+}

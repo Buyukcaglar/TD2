@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000426",
+    "FN-EGA-000427",
+    "FN-EGA-000428",
+    "FN-EGA-000429",
+    "FN-EGA-000430",
+    "FN-EGA-000431",
+    "FN-EGA-000432",
+    "FN-EGA-000433",
+    "FN-EGA-000434",
+    "FN-EGA-000435",
+    "FN-EGA-000437"
+  ],
+  "vectors": 36356,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b5fd86bb437bd80835ed68b36adb87ecb5a06dd8b777da9f99e08e8c55b4f9f5",
+  "source_sha256": "f81d9e2361ad54c5cad79ff0626812b9a88fe7103fc6b6a39f079bb2d49dc072",
+  "validator_sha256": "9184006e2cc09438228c5ef9095673c8ff159e1293588b30ef4b0cf882c716c2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 402414,
+  "instruction_sites_in_fence": 64,
+  "instruction_sites_exercised": 64,
+  "fixture_coverage": {
+    "entry_0": 440,
+    "CPU_bus_writes": 55902,
+    "DS_equals_SS": 16984,
+    "DS_differs_SS": 19372,
+    "changed_near_returns": 44,
+    "near_SP_wraps": 704,
+    "entry_1": 406,
+    "entry_2": 1432,
+    "entry_3": 1426,
+    "entry_4": 19890,
+    "curve_cross_segment_alias_fixtures": 3072,
+    "curve_postwrite_read_discriminators": 1024,
+    "entry_5": 2480,
+    "entry_6": 2494,
+    "entry_7": 2454,
+    "entry_8": 2464,
+    "entry_9": 2458,
+    "entry_10": 412
+  },
+  "limits": "Eleven literal near bodies/full1MiB bus/separateDS-SS/actualBP-defaultSScurve stores/liveDSread/CFZFIFDF-GPR-BP/actualreturnword/SP0..FFFE. Additional interface views only, no new unique original entries. Whole4674/491Dtargetbounds-allwriters/sourceownership-reset-IRQ-exclusion-lifetime/core remainopen. NoDOSsession/renderer/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure."
+}

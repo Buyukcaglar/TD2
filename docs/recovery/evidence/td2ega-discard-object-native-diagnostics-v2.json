@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 38,
+  "script_sha256": "57e9d3fe53dc8334ce6a043dc4b71d42d5e6c4087fb7262596180c9c0766a0df",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "740501509c545babe29f398a798b3f6e5f208e78b2ed774695caaedc10ae0f06",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_discard_object.py",
+      "sha256": "dc51fb0bc2c4f790e37f4a823e437af9ce88091ae4e0acd5382534a0ffb3c00e"
+    }
+  ],
+  "limits": "NativeABI/counterwordwrap/livefardescriptor-SSframes/cachematchignorestatus/toptrim/fatalpreCALL/CALL-search-trimbudgets/return-and-savedDSaliases/finalADDSPcarry/preRETqualification only. Originalcomparison/staticproofsseparate; no storage-writers-lifetime-exclusion/historicalCPU-A20/fatalcleanup/core/resources/session/fidelity acceptance."
+}

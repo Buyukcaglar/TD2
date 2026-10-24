@@ -1,0 +1,66 @@
+{
+  "result": "pass",
+  "mode": "saved_readback",
+  "image_bytes_unchanged": true,
+  "relocated_image_sha256": "e36b827719c4692f9f89c5ba5d647111a82e61e8843f4d8b32ee653b7280ba99",
+  "load_segment": 4096,
+  "fixed_context_ranges": [
+    {
+      "start": "23a8:003b",
+      "end_inclusive": "23a8:0045",
+      "register": "DS",
+      "before_start": "0",
+      "before_end": "0",
+      "after_start": "0",
+      "after_end": "0"
+    },
+    {
+      "start": "23a8:0046",
+      "end_inclusive": "23a8:0163",
+      "register": "DS",
+      "before_start": "23a8",
+      "before_end": "23a8",
+      "after_start": "23a8",
+      "after_end": "23a8"
+    },
+    {
+      "start": "23a8:0169",
+      "end_inclusive": "23a8:0180",
+      "register": "DS",
+      "before_start": "16c9",
+      "before_end": "16c9",
+      "after_start": "16c9",
+      "after_end": "16c9"
+    },
+    {
+      "start": "23a8:0182",
+      "end_inclusive": "23a8:0187",
+      "register": "DS",
+      "before_start": "2793",
+      "before_end": "2793",
+      "after_start": "2793",
+      "after_end": "2793"
+    },
+    {
+      "start": "23a8:0189",
+      "end_inclusive": "23a8:01a2",
+      "register": "DS",
+      "before_start": "23a8",
+      "before_end": "23a8",
+      "after_start": "23a8",
+      "after_end": "23a8"
+    },
+    {
+      "start": "23a8:01a3",
+      "end_inclusive": "23a8:01a7",
+      "register": "DS",
+      "before_start": "0",
+      "before_end": "0",
+      "after_start": "0",
+      "after_end": "0"
+    }
+  ],
+  "entry_DS": "unknown",
+  "restored_caller_DS": "unknown",
+  "limits": "Six instruction-established DS ranges in main-called mutator/helper context. SS inherited; entry/restored DS symbolic. Canonical program bytes remain initial image, so prepared opcode boundaries require separate mutable-state ledgers. No decompiler prototype or runtime profile admitted."
+}

@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_secondary_fields.cmd",
+    "sha256": "7fa977f9e9fb27517a77615583936dd44710f5238a5ffd0f94a08acb29d928cc"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_secondary_fields.c",
+      "sha256": "36a3630bc30ebaca88bcfa50fac8430fd7e263c6bb77d4b4f1bc6bf4fa387506"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.c",
+      "sha256": "f8fde6bd2dd100b4c2b172bb8984432ffd69cc8e940d770f30e4e4acba8aa0c8"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.c",
+      "sha256": "add10da1e40cb4aa237a2015c96b56cee7839bc6883f11536ee72eea763775e6"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.c",
+      "sha256": "6b48b50e37ef67f34a7a8261a6bbf96cdb6f8e31875cc73a709c91eaa65ea486"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_record_math.h",
+      "sha256": "8edcee67320c9d07ea4c2887af1238199e5047f95ddd9fc62afb7a82eb587fe5"
+    },
+    {
+      "path": "src/recovered/td2ega_secondary_fields.h",
+      "sha256": "48027424a340df4bb449a97694a5233aa8956c02326a05c34442ce409880b112"
+    },
+    {
+      "path": "src/recovered/td2ega_small_algorithms.h",
+      "sha256": "d4bdef46a5afd3f4a7c9051a17765db281741dd6c9f21fd690c630675c661099"
+    },
+    {
+      "path": "src/recovered/td2ega_small_arithmetic.h",
+      "sha256": "46be463e0d8382fac77f4114180df0d0feed44e045785183427a38d9b63d25b8"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/secondary-fields-repro/td2ega_secondary_fields.dll",
+      "sha256": "7b519d35ff801183d7c799a93e3050f064da210608e58254043d3a0d5cd3a1c3",
+      "bytes": 122368
+    },
+    {
+      "path": "analysis/build/secondary-fields-repro/td2ega_secondary_fields.obj",
+      "sha256": "1951a8be2a17ed9877729656b4049e7b74e35dff4d8dbe1a978b2981fc8ffd29",
+      "bytes": 12100
+    },
+    {
+      "path": "analysis/build/secondary-fields-repro/td2ega_record_math.obj",
+      "sha256": "494258e31ca3f915a42a6a793b8f2c70d623b52a30ca9481e164c397d14e8761",
+      "bytes": 10927
+    },
+    {
+      "path": "analysis/build/secondary-fields-repro/td2ega_small_arithmetic.obj",
+      "sha256": "e1b218e22bdb5ff931dac5fcfaf9e254fb9d3d0c2a28312c9dfdf31a5184f891",
+      "bytes": 6182
+    },
+    {
+      "path": "analysis/build/secondary-fields-repro/td2ega_small_algorithms.obj",
+      "sha256": "39ffe22988328fd9ff2fda9ae700943589e4860a1af99e5333361be83219c2e8",
+      "bytes": 5926
+    },
+    {
+      "path": "analysis/build/secondary-fields-repro/td2ega_table_scalar.obj",
+      "sha256": "399eb0ed793be599703885da56df042822dabef5b75609b0ab3e99f6ec795a66",
+      "bytes": 5798
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/secondary-fields-build-v1.log",
+    "sha256": "10b1850f9021bfaa3ef69efb7fa17b03e3dcf8ae9d192b81d77c78085be05049"
+  },
+  "limit": "Actual50A1 plus fiveactualfrozenchildC bodies5299/5C5A/52FD/5334/535B, tennearCALLsites/actualSSframes/RET2. NoABI-valuemock orSSscratch exclusion. Fullbus/GPR/BP/CFIFDF/control/writecount/childbudget. Rawtablebyte/wordlookups/lowbyteMUL/guardedDIV/signedfieldclamps andparentorderedrereads/branch/store effects retained; rawreturntargetsexposedafteractualRET neverfollowed. Source5299JL infeasiblefromselectedentry and52FD5303excluded byadjacentcomplementarysignedbranches requirestaticdisposition ifunexercised. DynamicDI=(3318highbyte)*4 may0, before5C79DIVfaultprefix5 withoutdelivery; byte-only52D0store/ordered52D2/fieldcurve/table5616evenindex0..30 and324A0..63 retained. Actual403B/fullcaller/writer/bounds/lifetime/IRQ/core/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000390"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000391",
+    "FN-EGA-000392",
+    "FN-EGA-000393",
+    "FN-EGA-000394",
+    "FN-EGA-000402"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-secondary-fields-context-v1.json",
+    "sha256": "0812f36db4d15c197947820af2d1dd1c93b01d43e483e8ac8607c6e944352456"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_secondary_fields_before_scope_indices_v1.py",
+      "sha256": "efab3807d048e13ad6db6e841d9ebb867f408f38f1a4d97c89b16042917267c2"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-secondary-fields-validation-v1.json",
+      "sha256": "e33855b3c8d27e27554ec15c1b73b2442c868fc797064da5c9b28ba3afb7de35"
+    },
+    {
+      "path": "analysis/logs/secondary-fields-validation-v1.log",
+      "sha256": "ea73a4c0268db7f183caf23ec0d6e9ad812d0828bdb178bea0a227fcfed8f211"
+    },
+    {
+      "path": "analysis/refine_secondary_fields_scope_v1.py",
+      "sha256": "82f501b5525aab62b96e0307bd4284f1a9fa3ecd18f0abf22a285693064eedc3"
+    }
+  ],
+  "failure_resolution": "No C/build/comparisonfailure. v1passed31648cases/all303feasiblesites, but5303dispositionscopecopied5880label. Selectedv2 corrects50A1scope andrecordsactual5616/324Aindexdomains; source/nativebodies/DLLunchanged."
+}

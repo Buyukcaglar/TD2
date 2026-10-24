@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_runtime_dispatch_bus.cmd",
+    "sha256": "fcf364d45d12a04ca8b75698e8951245ffb34e1c3a4cce26b78539bd3df563e2"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_runtime_dispatch_bus.c",
+      "sha256": "59cc61da9058cfca6fb0b9293868c8d4da7045b5e178e34b5745102928971c70"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_exit.c",
+      "sha256": "9c50be81f5d9e57aeae9eb5c1e772831cf59b4749e36b0e1416ebfae16396da5"
+    },
+    {
+      "path": "src/recovered/td2ega_finalizer_list.c",
+      "sha256": "393fa5a352acb6403cb2fc84e776abcc0569bf55e1a8e8d07ff8d920ac1498a1"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_diagnostic.c",
+      "sha256": "fb3013b9884ca8d0dd6fd1bfd65f4e8d867570b63e1c860d44b24114655944bd"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_message.c",
+      "sha256": "257a111ed894575e4339675a4e4363d673236384966e0c98ada04029b608ba8a"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_vectors.c",
+      "sha256": "56b94e2cacbb841971315d2cf8f66eeaf31e797703427e39c47dc8188e14be94"
+    },
+    {
+      "path": "src/recovered/td2ega_finalizer_list.h",
+      "sha256": "f80c7b1956c4de100efc4490512ba639f2ee07c0e6d3de646bb4c6f8350c183e"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_diagnostic.h",
+      "sha256": "4cb6b8212b2271e3a8ba665fe81994588039284075a4a79e7af37be6aafb5f2e"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_dispatch_bus.h",
+      "sha256": "3f565d39dccefc4459401c4aa8c16a27eef376daf6861fa9ff4051b8c0baeda7"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_exit.h",
+      "sha256": "f479c2df85bf59e35207405f67b7e4f0cfe71e655ad6ff288399345cbdd830f5"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_message.h",
+      "sha256": "204e7a9ed73c68887ba10cf34907895dc900609c31820caacf98ee822f1cf780"
+    },
+    {
+      "path": "src/recovered/td2ega_runtime_vectors.h",
+      "sha256": "f412c2cc5397d0d183c5e83e515f8092b1770fbdf434a927a660e019617f0b92"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_runtime_dispatch_bus.dll",
+      "sha256": "3831138be4d5647399fd6defebb6648acf78fa988828328f4759581c0aa38ecb",
+      "bytes": 123392
+    },
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_runtime_dispatch_bus.obj",
+      "sha256": "237a838ec1df9a3e0786ce4dbe0face5ef915c57c6c9b7726b91f00a0077d0fe",
+      "bytes": 24700
+    },
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_runtime_exit.obj",
+      "sha256": "b14efd85293df9323193f559a41f36bebcd3f9aba67a04e8181426ad53f17748",
+      "bytes": 6613
+    },
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_finalizer_list.obj",
+      "sha256": "90e9c4a3e0b044be8d905cb2e2436c415613a57e2e5e67d78391bd0c18863648",
+      "bytes": 4024
+    },
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_runtime_diagnostic.obj",
+      "sha256": "ea7c7eadfe62effebe79c2b50c9fa61dfe9668aba3c619a30320021006866b9d",
+      "bytes": 6619
+    },
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_runtime_message.obj",
+      "sha256": "c4837f96870306da4de2132d8db3764e7b647c8b1facbb18d8d81728f91d845a",
+      "bytes": 6516
+    },
+    {
+      "path": "analysis/build/runtime-dispatch-bus-repro/td2ega_runtime_vectors.obj",
+      "sha256": "2aa26f9257d2136ab01503c6209effab998f9064d7bac44a7bd64121b6bfb134",
+      "bytes": 5609
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/runtime-dispatch-bus-build-v1.log",
+    "sha256": "1938570879aae922159d767d1d8c42b39fa0b53567a45f4caeb8e01a7490c919"
+  },
+  "limit": "Actual2D57-2C1C-29F6/fullSS-GPR-BP-CFIFDF-definedFLAGS/literalcurrentCSkeys-andnearworddispatch/SS707Efallback/actualcallee message-exit bodies/callerargumentcleanup/typedretiredhandlers-wholeRAM-independentwrites. DOSserviceABI omitsrealINTframes/device; actualcallbackbodies-universaltargetdomains-allwriters/callerSS-SP/terminal-historicalDOS/B0FEarenaexclusion/core/P1-GATE unproved. PreparedAH4Crequests notactualprocess exit; postterminalepilogue notinvented. Physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000340",
+    "FN-EGA-000339",
+    "FN-EGA-000332"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-runtime-dispatch-bus-context-v2.json",
+    "sha256": "c09ea707f4137da2b0001434d6359ac2e37d8361cf6062e6a9c80255a8fa1c26"
+  },
+  "build_setup": {
+    "path": "analysis/history/runtime-dispatch-bus-build-setup-v1.json",
+    "sha256": "0b6672462db19d1bd9035a19c7892649a559127186a82a819f988bc49e165057"
+  }
+}

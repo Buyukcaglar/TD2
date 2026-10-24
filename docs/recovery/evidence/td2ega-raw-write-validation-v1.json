@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000192",
+    "FN-EGA-000193"
+  ],
+  "vectors": 38400,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4a7482a505a425825d62dd272ba753c5d15c8bade7257d6b68ef176b78358ede",
+  "source_sha256": "3c0ce60c1faac626886ab4d67d8745ac46bb61d426edab5834feebbf956800a8",
+  "validator_sha256": "fd7afe371d73d8e6a31e0e3eaae89c3b6211dfa1660af74bf3395741348d9c10",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_small_platform.py",
+      "sha256": "46eea3dc57a971aa9a3c45a68e1f18d0fed4e9ab86b33e73b6e727f841b4b25e"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1267824,
+  "instruction_sites_in_fence": 58,
+  "instruction_sites_exercised": 58,
+  "fixture_coverage": {
+    "entry_0": 19200,
+    "prefix": 18688,
+    "DOS_services": 72016,
+    "write_requests": 26848,
+    "successful_writes": 20160,
+    "stale_create_failure_close_calls": 2560,
+    "bus_write_events": 357888,
+    "far_returns": 13168,
+    "error_call_boundaries": 6544,
+    "entry_1": 19200
+  },
+  "limits": "Two rawcreate/write/close wrappers withsyntheticDOS3C/40/3E, fullreturnedDS/BP/CFIFDF andsharedbus includingcallerlength/source-segment/savedframes. LengthSUB/SBB beforewrite,400segmentadvance evenaftershortsuccess, stalehandleclose onoptionalcreatefailure andignoredcloseCF retained. Before-INTnativebudgetprefix separate; policy0errors stopatactual16A7:0002farcalleeentry afterpreparednearargs/farframe. ErrorcalleeFN348 contractpending, no body/no-return/normalhandler-return assumption admitted. SyntheticINT profile omitsrealinterruptframes/OS/files, noactualfile writes/resource decode/device/session/core/game/fidelity. Allactualproducer/caller/capacity/lifetime/IRQ/errorhandler integration andresource-fedP2/P3 remainopen; nativeinvalid/adapterchecks separate."
+}

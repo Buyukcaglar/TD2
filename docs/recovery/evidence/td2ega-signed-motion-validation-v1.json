@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000344",
+    "FN-EGA-000364"
+  ],
+  "result": "pass",
+  "vectors": 423670,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4fee2a816864c0f51a5ede2c60c4cbbaf08038ec5047cac0e4374058d5f68fdb",
+  "source_sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc",
+  "validator_sha256": "e56c6769c4372face43df3d7e9a08ba520cbba47bc2c49eecce2ff558b2cf634",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_targets.py",
+      "sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2"
+    }
+  ],
+  "original_instructions_executed": 16934826,
+  "fixture_coverage": {
+    "all_lowwords_fast_product": 131072,
+    "all_lowwords_cross_product": 131072,
+    "long_product_boundaries": 200,
+    "varied_long_products": 8192,
+    "all_signed_byte_pairs": 131072,
+    "product_path": 152958,
+    "damping_and_clamp_boundaries": 13230,
+    "damping_path": 176,
+    "logical_shift_factor_boundaries": 640,
+    "varied_motion_states": 8192
+  },
+  "limits": "Complete06B3:0008 and13A8:2EE8 withactualcallee-cleanmultiply, serializedsyntheticfullgroup. Arithmeticrightshift/CBW/CWD, wrappedabsolute8000/damping, productextraction/clamps, scratchoutputs/stacklocals andRETF8 checked. No originalphysicalunits/resourcefields/callerflag/IRQ/fullstate, renderer/audio/game/fidelity acceptance."
+}

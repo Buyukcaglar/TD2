@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "b19ced9ab2ecd37a04b582c606d45ecdae37d62ff671c6a4ea68c2dd9c44c238",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4be54572a011df0f5a4208533f26d1a44f333732bfe91784e121d84880e52e1b",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_bridge.py",
+      "sha256": "d7a431f9ab538c76d3944cb0e08d925a6d82d4f15e4927b80449a35575bcb488"
+    }
+  ],
+  "limits": "Five native-only diagnostics, excluded from original comparisons/error equivalence. No original instructions, actual BIOS/IRQ/inputsession/core/game/fidelity acceptance."
+}

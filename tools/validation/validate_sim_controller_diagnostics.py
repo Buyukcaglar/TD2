@@ -1,0 +1,16 @@
+"""Native-only invalid-interface and before46CA iteration-budget checks."""
+import argparse,ctypes as C,hashlib,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'tools'))
+from validate_sim_controller import Registers,StateRegisters,Limits,Result,require
+def main():
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--library',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();lib=a.library.resolve();out=a.output.resolve();require(lib.is_relative_to(ROOT/'analysis') and out.is_relative_to(ROOT/'docs/recovery/evidence') and not out.exists(),'Freshprivatepaths')
+ fn=C.CDLL(str(lib)).td2ega_sim_controller;fn.argtypes=[C.POINTER(C.c_uint8),C.c_uint32]+[C.c_uint16]*3+[C.POINTER(StateRegisters),C.POINTER(Limits),C.POINTER(Result)];fn.restype=None;bus=(C.c_uint8*0x100000)();state=StateRegisters(Registers(0,0,0,0,0,0,0x5000,0,0,0),0,0);limits=Limits();r=Result();vectors=0
+ for memory,count,sp,s,l in [(None,len(bus),0xe000,C.byref(state),C.byref(limits)),(bus,len(bus)-1,0xe000,C.byref(state),C.byref(limits)),(bus,0,0xe000,C.byref(state),C.byref(limits)),(bus,len(bus),23,C.byref(state),C.byref(limits)),(bus,len(bus),0xffe1,C.byref(state),C.byref(limits)),(bus,len(bus),0xe000,None,C.byref(limits)),(bus,len(bus),0xe000,C.byref(state),None)]:
+  fn(memory,count,0x1000,0x9000,sp,s,l,C.byref(r));require(r.status==2 and r.bus_writes==0 and not any(bus),'Invalidbeforeeffects');vectors+=1
+ for field in ['carry','interrupts_enabled','direction']:
+  target=state if field=='carry' else state.registers;setattr(target,field,2);fn(bus,len(bus),0x1000,0x9000,0xe000,C.byref(state),C.byref(limits),C.byref(r));require(r.status==2 and r.bus_writes==0 and not any(bus),'Invalidboolean');setattr(target,field,0);vectors+=1
+ fn(bus,len(bus),0x1000,0x9000,0xe000,C.byref(state),C.byref(limits),None);require(not any(bus),'Nulloutputbeforeeffects');vectors+=1
+ bus[0x9e000]=0x11;bus[0x9e001]=0x11;fn(bus,len(bus),0x1000,0x9000,0xe000,C.byref(state),C.byref(limits),C.byref(r));require((r.status,r.current_sp,r.next_segment,r.next_ip,r.iterations,r.direct_calls,r.bus_writes,r.flags_valid)==(3,0xe000,0x16c9,0x46ca,0,1,6,0),'Initialprefixretainsactualfirstchild');require(bytes(bus[0x53332:0x53338])==bytes.fromhex('2800ceff8200') and bytes(bus[0x9e000:0x9e002])==b'\x11\x11','Actualwindowwrites/rootframe');vectors+=1
+ deps=['tools/validate_sim_controller.py'];record={'schema':1,'result':'pass','vectors':vectors,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'image_sha256':hashlib.sha256((ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes()).hexdigest(),'library_sha256':hashlib.sha256(lib.read_bytes()).hexdigest(),'validator_dependencies':[{'path':v,'sha256':hashlib.sha256((ROOT/v).read_bytes()).hexdigest()} for v in deps],'limits':'Twelve native-only null/count/SP/booleanflags rejection andinitial46CA-budgetintentchecks; firstactual4AFAframe/windoweffectsretained beforebudget. Separatefromoriginalequivalence andallcaller-IRQ-core-game-fidelity acceptance.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','vectors':vectors}))
+if __name__=='__main__':main()

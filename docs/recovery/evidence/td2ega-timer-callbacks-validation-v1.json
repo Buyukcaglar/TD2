@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000150",
+    "FN-EGA-000151"
+  ],
+  "source_sha256": "193dea747f7c7112c07aafcd4a77c5b19ec521d47e7430d342876ad476a209d2",
+  "validator_sha256": "87d7c5047fb49e40a549454b074548739358d50c2b693a9883bac7b84251652b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "9112e852fcb366a422406e7224b4794c379f03e66bd598b16aad30f5aca9737b",
+  "vectors": 7232,
+  "native_only_diagnostics": 4,
+  "original_instructions_executed": 194080,
+  "fatal_prefix_cases": 304,
+  "remove_match_cases": 2416,
+  "original_spans": [
+    {
+      "load_segment": 4096,
+      "module_offset": 52700,
+      "length": 115,
+      "unrelocated_sha256": "f1582dc319ca174fa9c9c568ba81fb9556edcbeaaba43bb7c446aa41cf756625"
+    },
+    {
+      "load_segment": 9029,
+      "module_offset": 52700,
+      "length": 115,
+      "unrelocated_sha256": "f1582dc319ca174fa9c9c568ba81fb9556edcbeaaba43bb7c446aa41cf756625"
+    }
+  ],
+  "limits": "Only isolated five-slot callback metadata, opaque synthetic addresses and ordered writes. Add is unmasked; matchedremove masks writes then unconditionallySTI. Actualcallbacks, asynchronousIRQ/nesting, fulltimer/audio/device behavior, caller lifetimes and game/session acceptance remainopen."
+}

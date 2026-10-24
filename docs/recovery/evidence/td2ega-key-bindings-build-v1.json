@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_key_bindings.cmd",
+    "sha256": "d1716490338784a423f5440a5f135293bd1110d3a1c4fe78e012891e33d57b5f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_key_bindings.c",
+      "sha256": "1fe6bb73f3ca9f1f465a85a95f2480588c75357609d6d0b9d12a85a9ef915ac4"
+    },
+    {
+      "path": "src/recovered/td2ega_key_bindings.h",
+      "sha256": "e9e90c527d91280df4980149244f35ed0f351dbeea7e54ecce9023a4156ea4e5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/key-bindings-repro/td2ega_key_bindings.dll",
+      "sha256": "f5ad0749018c80c530a9313a19fbc05381e57d04fc3a5048f206dbf84a56b49a",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/key-bindings-repro/td2ega_key_bindings.obj",
+      "sha256": "48e92e85f72028f5cdc17209f4052b9f30fefd99d5398cbe54e2bdecb810ba17",
+      "bytes": 3008
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/key-bindings-build-v1.log",
+    "sha256": "b5117e8d2247d86e93c557b9284fbb648c1598a880d508871a34a1278eed80c7"
+  },
+  "limit": "Complete6585 and16FC:0002 bounded group contracts; exhaustive literalkey domain separate fromsix discoveredconstant-keycalls. No actualcallback/keyboard/IRQ/platform/fullcaller acceptance.",
+  "function_ids": [
+    "FN-EGA-000154",
+    "FN-EGA-000357"
+  ]
+}

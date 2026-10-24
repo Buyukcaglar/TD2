@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 31,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "02a37ddf99af0c514b6ff21681f1f963f5b20a92a402018c6fe0c46ade5e63e2",
+  "source_sha256": "2e650f035abeda032477dd4cfc5f3558993c146c9a44098780b1947d999cd2fa",
+  "script_sha256": "8b9047f7350b4a63b28148b6ea9f3d31d08d24ad812a9dada4c29a28cf27ba54",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-build-setup-v3.json",
+      "sha256": "16f88c70323b40f3bbb33b78c8c2fdbcf4ebf816e12b3843e2a12e1a6dadd730"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-handler-bus-context-v1.json",
+      "sha256": "23c4a5e0a90e4e8745d7cc667417784daba17d4b3aeba6606add9a82624dd762"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-diagnostics-refinement-v2.json",
+      "sha256": "e3d22e3f6ca8a2990c1228af92a674cc8c2da6b6f3488759059db49ea14858ac"
+    },
+    {
+      "path": "analysis/history/validate_timer_handler_bus_diagnostics_attempt_v1.py",
+      "sha256": "cc4f55855d1695095b5c3e71f1da69cdedd3f602b62fc01896f925b6d650c960"
+    }
+  ],
+  "limits": "Nativeonly invalid-beforeeffects/null-interface/beforeCLI-beforeEOI-nineSSsaves/beforeINTpostIVTwrites/undefinedAF0-1storedFLAGS/rejectedoldINTandfarcallbackactualframes. Diagnosticbudgets-servicefailures distinctfromsourceerrors. No actualcallbackbody/IRQdelivery/lifetime/core/gameplay/fidelity."
+}

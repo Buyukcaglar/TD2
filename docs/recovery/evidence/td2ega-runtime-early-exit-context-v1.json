@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000260"
+  ],
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "8acff30da8f4539d6d768d172459d57704c11f9d4d88c4f6abfc9ac51b79741c",
+  "root_sites_in_fence": 51,
+  "root_sites_admitted": 50,
+  "raw_view_candidates": [
+    {
+      "segment": 6031,
+      "offset": 28802,
+      "length": 4,
+      "role": "currentDS_early_exit_finalizer_pair",
+      "sha256": "2fe047025ce6b402f8ccd88a63de4b05486876f1d3e74a480815667a79a728c1",
+      "intersecting_relocations": 1,
+      "segment_relocation_relative_offset": 2,
+      "initial_target": "13A8:0A3A",
+      "initial_target_function": "FN-EGA-000274"
+    }
+  ],
+  "validator_dependencies": [
+    {
+      "path": "analysis/flow/indirect-v8/direct-flow.json",
+      "sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4"
+    },
+    {
+      "path": "analysis/history/runtime-early-exit-source-setup-v1.json",
+      "sha256": "ae0aef1dfa342e70c559087a4cddb8f79e23ddf535eda1039fcd1542517f93fe"
+    },
+    {
+      "path": "analysis/history/runtime-early-exit-build-setup-v1.json",
+      "sha256": "958f318ff3355d6c974cbe6ec09a792141e2e0d8f193569896a3e173513be00b"
+    },
+    {
+      "path": "analysis/history/runtime-early-exit-validation-refinement-v2.json",
+      "sha256": "ba045a9fe8c2b649dbf8ab30c093196febc262266440b288987b37d8a33dbecc"
+    },
+    {
+      "path": "tools/validate_runtime_early_exit.py",
+      "sha256": "b9f50025ed6aec1102be383f669ef80f6f3af2b7c0ac981e96babb28962ff448"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-early-exit-validation-v2.json",
+      "sha256": "de2a3e833f271ab22c224140c2efd02cd97ecb882fd97fbe3b42d1f075695516"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-exit-context-v1.json",
+      "sha256": "433b43c7ea508a3610626d83fd6ca925b5195eee9c21e6135e4c87a7a87c8890"
+    },
+    {
+      "path": "analysis/reviews/runtime-formatter-frontier-v1.json",
+      "sha256": "1bc6eb705cbad2247e6af06b061558ceec0bdecfd8fbd848779f2e027019290d"
+    }
+  ],
+  "facts": [
+    "0582ownsonePUSHBP/actualempty060D841A..841A andonefourbyte060D7082..7086, thenJMP059C. Shared0599tailinheritsBP; noextraPUSHBP/CALL0599 inserted. All50rootexecutablesites compared;05DEpreparednotexecuted.",
+    "Finalizer060D readsDI-=4/currentDSwordOR, capturedfaroperandbeforeCALLwrites. FF1D at061Bsize2 returns061D. FullSSsavedBP/nearwords/farcallbackframes mayaliasDS7082pair; SP7086/DS=SSfixturechangescallbacktargetbeforeuse.",
+    "RS306candidatecurrentDS7082fourbytesinitialfar13A8:0A3A withone segmentrelocation. Actual0A3A/FN27425sitescalls105C andremainsunrecovered. Typedfinalizerprofiles/synthetic48516RETFs arenotactual0A3Abodyacceptance; integrateafter2558-105Cclosure.",
+    "Initiallyprincipal6D28=0599;startup04A3writesSS6D28=0582. Shared04BAreadsCURRENTDS6D28 afterPUSHCS. CurrentDS/SSbinding, indexedaliases/allwriters/hookphase andhandlerlifetime remainopen.",
+    "6912cases include840preparedexits/828rawchild/5244budgetprefixes/2304minimumSP80. Prefix060Diterationsshareoperationbudget; callbacks mayalterDIandrepeatuntilbudget. Whole1MiBRAM/GPR-BP-CFIFDF/requestevents/CPUwrites match. OtherarithmeticFLAGS unexposed.",
+    "First32probe/failingv1harness exactbytes preserved. OnlyexpectedCALLlength correctedto2; C/header/DLLunchanged. AllcallbackEFLAGSeffects appliedoutsideCODEhook; genericRETF bytesimmutableinitialfixture andnotoriginalinstructioncounts.",
+    "NoactualDOSprocess exit/realINTframes-device-IRQ/formatterbody/B0FEarena-pruning/allwriters-lifetime/core-P1-GATE/game-fidelity. CGAbehindEGAclosure/physical086Cunassigned;fullresources/Windowshost/Amiga notstarted."
+  ],
+  "limits": "Staticinstruction/ABI/relocation/derivationreview andtypedcallbackprofiles only. Actual0A3A/105C/2558 integration, hookbinding-allwriters-lifetimes andcompleteP1 remainopen."
+}

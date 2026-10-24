@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000360",
+    "FN-EGA-000361"
+  ],
+  "result": "pass",
+  "vectors": 3586,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "e8e04fb008068831096754fe8850768df63886c96b20179b2445232351e54990",
+  "source_sha256": "bf8214cf227a3c74f9b7d22d624c5c43010fc1ba5a662fb790e00273dafe6474",
+  "validator_sha256": "2b327231f40c8fb56bf78c607c18a9cba3500c4be973e06ba8f430292f975cf6",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_music_tick.py",
+      "sha256": "da0da04ad6a5a46f6d2882ada2ca9e4622716f1c41cc1c0471e6e0cc1f7a51e2"
+    }
+  ],
+  "original_instructions_executed": 199560,
+  "fixture_coverage": {
+    "counter_guard_callbacks": 3240,
+    "old_vector_profiles": 108,
+    "indexed_alias_and_carry": 198,
+    "mutable_callback_state": 16,
+    "iret_flags": 24
+  },
+  "instruction_sites_exercised": 71,
+  "instruction_sites_in_fence": 71,
+  "limits": "Serialized61BF/6230 fullsyntheticbus withPIC/port, oldINT08 sixbyteIRET ABI andfarcallback mocks. SignedDEC/JG/overflow, carry, indexedaliases, zero-to-sixcallbackrows, mutableDS/ES/DI/table effects andactualIRETregister/flags restoration compared. Stackwrites excludedfrombus andframe/guards checkedseparately. No actualBIOS/PIC/IRQ/nesting/callbackbodies/timerfrequency/086Cmeaning, game/audio/fidelity acceptance. Adapterincidental arithmeticflags outsideprofile."
+}

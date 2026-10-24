@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "reviewed_on": "2026-10-14",
+  "method": "Official Intel PDFs opened and relevant text read through the web tool. No complete download or PDF hash claimed.",
+  "sources": [
+    {
+      "source": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2A, 253666-060US, September 2016",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf",
+      "pdf_pages_one_based": [255, 551, 585],
+      "sections": ["CMP printed3-153", "INC printed3-449", "Jcc opcode75 printed3-483"],
+      "facts": [
+        "CMP obtains status flags from the first operand minus the second without storing that result.",
+        "INC preserves CF while updating OF, SF, ZF, AF and PF from the incremented result.",
+        "Short opcode75 JNE/JNZ takes its branch when ZF is zero."
+      ]
+    },
+    {
+      "source": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2C, 326018-060US, September 2016",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2c-manual.pdf",
+      "pdf_pages_one_based": [597],
+      "sections": ["XOR Flags Affected printed5-595"],
+      "facts": ["XOR clears CF and OF, derives SF/ZF/PF from its result, and leaves AF architecturally undefined."]
+    }
+  ],
+  "limits": "ISA corroboration only. A defined-flags/mask view is not a raw PUSHF image. CPU-specific reserved/undefined flag images, actual CPU behavior, historical timing, IRQ/DOS/game sessions and fidelity remain separate."
+}

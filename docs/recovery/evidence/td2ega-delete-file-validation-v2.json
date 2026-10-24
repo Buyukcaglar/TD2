@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000341"
+  ],
+  "vectors": 6144,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "89a6c1c16b45c3c7c05cc6f3eaba85efb33e8a334c5e22e568cfabddbb78153b",
+  "source_sha256": "c5d5e08550d986194abf69bea517ac68a820015b37fb30f93c6e9e422ce66bec",
+  "validator_sha256": "3fe6ecbca0a245604177fb16578ed6993b84c63ff19280109c0b25602264f9df",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 83808,
+  "instruction_sites_in_fence": 38,
+  "instruction_sites_exercised": 38,
+  "fixture_coverage": {
+    "prefix": 3072,
+    "raw_root_return": 1424,
+    "syntheticDOSservices": 3072,
+    "actual_error_calls": 2688,
+    "bus_write_events": 14208,
+    "service_write_events": 1536,
+    "root_far_return": 2848,
+    "raw_near_return": 224
+  },
+  "limits": "Actual13A8:2E20/shared0924-0939tails plus actual094Anearerror mapper, fullnestedSS/wholebus/GPR/BP/CFIFDF/actualrootfarreturn orrawchildnearreturn. SyntheticDOS41service fullreturnedregister/BP/DS/IFDF andbus mutations, SS/SP/CSpreserved, no realINTentry/return frames oractualDOS/fileoperations. NativebeforeINT/adapterdiagnostics separate. Caller/otherFLAGS/bounds/writers/lifetime/core/resourcefedP2/P3/device/session/game/fidelity open."
+}

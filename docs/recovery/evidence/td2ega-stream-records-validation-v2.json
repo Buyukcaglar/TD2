@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000284",
+    "FN-EGA-000307",
+    "FN-EGA-000308"
+  ],
+  "vectors": 56904,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c360c6dfcfc33873500172307a6894fb45b3a2114214e82e8676ec274e44c893",
+  "source_sha256": "a6d57f620ae8245c412063c54b09f00b7b33616e1e492d7ea2beceab1450fe41",
+  "validator_sha256": "6df925d4cbaa057ec8c7e83f341e14094370b731134bae37bba18ed3e05cb847",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 3751616,
+  "instruction_sites_in_fence": 112,
+  "instruction_sites_exercised": 112,
+  "fixture_coverage": {
+    "entry_0": 43008,
+    "root_far_return": 48404,
+    "iterations": 468632,
+    "bus_write_events": 318096,
+    "raw_root_returns": 432,
+    "negative_index_byte_fixtures": 18432,
+    "member_full_cycle_prefix": 4,
+    "record_full_cycle_end": 4,
+    "entry_1": 6404,
+    "budget_prefix": 8500,
+    "entry_2": 7492
+  },
+  "limits": "Actual0F16specialrecord/signedbyte*6/sideflag orderedsetup,2170rawbyte membership/CHpreservation/INCSI,219Araw8byte scan/old-SI-inclusiveend/resetstores. Fullbus/actualSSsaves/farframes/GPR/BP/CFIFDF/control, all256indexbytes/negative/wrap/SSglobalaliases. Nativebefore-scanbudget separate; rawmissingNUL/nonalignedend maycycle. SourceCtypes/recordunits/actualcaller bounds/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity open."
+}

@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_gameport.cmd",
+    "sha256": "d58f93142108cd9d2194eae6cd250f5639bb1dd6da4429ffa5cb832ef144cd50"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_gameport.c",
+      "sha256": "ce85a66e28b75db3a1f002bbaa4832477116211dec3c73e917c207e4e51bf313"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.h",
+      "sha256": "db90386ecb2dd22f8efde0a40433a535d9c3b74c5c4dee8ce9021e7912115ed6"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/gameport-repro/td2ega_gameport.dll",
+      "sha256": "2335e8a009e2dcc9eb66b6daff94d5b6e760eb66a44190fdb91f3779a3aee7c1",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/gameport-repro/td2ega_gameport.obj",
+      "sha256": "08c265693c189fd0ff098d05ac3d4bfb6b15d7b93c265867f1a6f8167dc1859e",
+      "bytes": 7554
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/gameport-build-v1.log",
+    "sha256": "ef6632c33f373ff775690fd81aa0cd4fa56bca285332a3d8e011ea162b22d35e"
+  },
+  "limit": "Complete6686/680A/6828 native effects with serialized synthetic port201/fullgroup profile; no physical timing/hardware/inputsession/IRQ/platform/fullcaller acceptance.",
+  "function_ids": [
+    "FN-EGA-000156",
+    "FN-EGA-000412",
+    "FN-EGA-000413"
+  ]
+}

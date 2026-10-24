@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "2d75c0c97c17a7dc96eddb5ed13136f843884e28f93f9d8a1abd0911c18f90d1",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "eb34769e316cf2f789d7929ca986f3744c1e31d2931728d04085bd50896039f5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_wait_control.py",
+      "sha256": "89b440d8e0ab395505e5b6d6a4a54b83cd85cf7f12a4ec0b4508f458e17e983b"
+    }
+  ],
+  "limits": "Five native-only wait diagnostics. No original instructions/counterIRQ/clock/inputcallback execute; excluded from original differential totals/error equivalence. No actualtimerfrequency/086Cmeaning/session/game/fidelity claim."
+}

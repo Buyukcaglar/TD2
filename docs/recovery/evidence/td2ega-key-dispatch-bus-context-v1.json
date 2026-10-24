@@ -1,0 +1,365 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "bcf5574d2c643604ba96b24d0c8fa1e5f59e21724a269a8d96a998df02cbadd3",
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "instruction_observations": [
+    {
+      "site": "06C9:6528",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:6529",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "06C9:652B",
+      "bytes": "fa",
+      "text": "cli "
+    },
+    {
+      "site": "06C9:652C",
+      "bytes": "803e526200",
+      "text": "cmp byte ptr [0x6252], 0"
+    },
+    {
+      "site": "06C9:6531",
+      "bytes": "7403",
+      "text": "je 0x6536"
+    },
+    {
+      "site": "06C9:6533",
+      "bytes": "fb",
+      "text": "sti "
+    },
+    {
+      "site": "06C9:6534",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:6535",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:6536",
+      "bytes": "c606526201",
+      "text": "mov byte ptr [0x6252], 1"
+    },
+    {
+      "site": "06C9:653B",
+      "bytes": "fb",
+      "text": "sti "
+    },
+    {
+      "site": "06C9:653C",
+      "bytes": "8b5e06",
+      "text": "mov bx, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:653F",
+      "bytes": "0adb",
+      "text": "or bl, bl"
+    },
+    {
+      "site": "06C9:6541",
+      "bytes": "7423",
+      "text": "je 0x6566"
+    },
+    {
+      "site": "06C9:6543",
+      "bytes": "83e37f",
+      "text": "and bx, 0x7f"
+    },
+    {
+      "site": "06C9:6546",
+      "bytes": "895e06",
+      "text": "mov word ptr [bp + 6], bx"
+    },
+    {
+      "site": "06C9:6549",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "06C9:654B",
+      "bytes": "8b9f4860",
+      "text": "mov bx, word ptr [bx + 0x6048]"
+    },
+    {
+      "site": "06C9:654F",
+      "bytes": "0bdb",
+      "text": "or bx, bx"
+    },
+    {
+      "site": "06C9:6551",
+      "bytes": "7428",
+      "text": "je 0x657b"
+    },
+    {
+      "site": "06C9:6553",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "06C9:6554",
+      "bytes": "56",
+      "text": "push si"
+    },
+    {
+      "site": "06C9:6555",
+      "bytes": "b8c906",
+      "text": "mov ax, 0x6c9"
+    },
+    {
+      "site": "06C9:6558",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:6559",
+      "bytes": "ffd3",
+      "text": "call bx"
+    },
+    {
+      "site": "06C9:655B",
+      "bytes": "5e",
+      "text": "pop si"
+    },
+    {
+      "site": "06C9:655C",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:655D",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:655F",
+      "bytes": "c606526200",
+      "text": "mov byte ptr [0x6252], 0"
+    },
+    {
+      "site": "06C9:6564",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:6565",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:6566",
+      "bytes": "8adf",
+      "text": "mov bl, bh"
+    },
+    {
+      "site": "06C9:6568",
+      "bytes": "32ff",
+      "text": "xor bh, bh"
+    },
+    {
+      "site": "06C9:656A",
+      "bytes": "81fb8400",
+      "text": "cmp bx, 0x84"
+    },
+    {
+      "site": "06C9:656E",
+      "bytes": "7c03",
+      "text": "jl 0x6573"
+    },
+    {
+      "site": "06C9:6570",
+      "bytes": "bb8400",
+      "text": "mov bx, 0x84"
+    },
+    {
+      "site": "06C9:6573",
+      "bytes": "d1e3",
+      "text": "shl bx, 1"
+    },
+    {
+      "site": "06C9:6575",
+      "bytes": "8b9f4861",
+      "text": "mov bx, word ptr [bx + 0x6148]"
+    },
+    {
+      "site": "06C9:6579",
+      "bytes": "ebd4",
+      "text": "jmp 0x654f"
+    },
+    {
+      "site": "06C9:657B",
+      "bytes": "8b4606",
+      "text": "mov ax, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:657E",
+      "bytes": "c606526200",
+      "text": "mov byte ptr [0x6252], 0"
+    },
+    {
+      "site": "06C9:6583",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:6584",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "instruction_sites_in_fence": 42,
+  "direct_caller_candidates": [
+    {
+      "owner": "06C9:65C5",
+      "site": "06C9:65D0",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6528"
+    },
+    {
+      "owner": "06C9:6601",
+      "site": "06C9:6617",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6528"
+    }
+  ],
+  "caller_windows": [
+    {
+      "site": "06C9:65CF",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:65D0",
+      "bytes": "9a2865c906",
+      "text": "lcall 0x6c9, 0x6528"
+    },
+    {
+      "site": "06C9:65D5",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "06C9:65D8",
+      "bytes": "cb",
+      "text": "retf "
+    },
+    {
+      "site": "06C9:6616",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:6617",
+      "bytes": "9a2865c906",
+      "text": "lcall 0x6c9, 0x6528"
+    },
+    {
+      "site": "06C9:661C",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "06C9:661F",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "external_span_candidates": [
+    {
+      "name": "raw-ascii-extended-near-callback-view",
+      "segment": 6031,
+      "segment_offset": 24648,
+      "offset": 121144,
+      "length": 522,
+      "sha256": "884138dd0d700d20de1a817df6cc127ef28e570cb4ed2ac50f14cf73494a6084",
+      "relocations": [],
+      "initialized_nonzero_bytes": 0,
+      "scope": "Initialized522byte identity and261nearword codefootprint only; actualvalidcallbackdomain/allwriters-capacity-lifetime-exclusion unproved."
+    }
+  ],
+  "dispatcher_code_index_domain": {
+    "all_key_words": 65536,
+    "ASCII_words": 128,
+    "extended_words": 133,
+    "distinct_word_positions": 261,
+    "first": 24648,
+    "last": 25168,
+    "last_byte": 25169,
+    "target_segment": "currentCS/relocated06C9",
+    "far_pointer_type_inferred": false
+  },
+  "setter_potential_word_domain": {
+    "all_key_words": 65536,
+    "admitted_inputs": 32767,
+    "distinct_even_word_offsets": 32640,
+    "excluded_even_offsets_count": 128,
+    "excluded_inside_callback_view": [
+      24648,
+      25160
+    ],
+    "reason": "6585nonzero-lowbyte andSIGNEDkey<=127; doubledkey address wraps16bits. Negativeword inputs canwriteextended andoutside-table words; notclaimedreachable fromknownsixliteralcalls."
+  },
+  "indirect_disposition": {
+    "site": "06C9:6559",
+    "complete": false,
+    "registered_targets": [
+      "06C9:645A",
+      "06C9:646F",
+      "06C9:6508",
+      "06C9:64C7",
+      "06C9:6488",
+      "06C9:6518"
+    ],
+    "additional_SS_writer_obligation": "PUSHBP/ASCIIargumentrewrite/savedDI-SI/CS/CALLword writes canaliascallbacktable/guard underactualDS=SS-SP binding. Closeactualcallerstackstorage domains, notonly6585DSwriters."
+  },
+  "facts": [
+    "RootPUSHBP occursbeforeguardread:SS=DS/SP6254 writes savedBP into6252 guard and canforcebusyreturn. ArgumentwordBP+6 isreadafterguardpublication andrewrittenonASCIIpath, possiblyaliasingtable orstate.",
+    "TabletargetcapturedinBXbeforePUSHCS/nearCALLBX; actualCALL pushes655B afterexplicitCSword, yieldingfarframe atrootSP-10. Laterframewriteoverlapsmustnotretargetcall. CallbackmustretirefarRET orreportexplicitprefix; rawcoordinatesneverfollowed.",
+    "Typedrequest34/response36/result48; callbackresponse reportsactualretiredcontrol-SP/fullGPR-BP-CFIFDF/CPUwrites andcanwrapactualrecoveredbody. CurrentunitusesABIeffects/privategenericRETF only; nooriginalcallbackbodyproof.",
+    "Onnormalcallbackreturn checkCS-IP-SP beforeactualpopsSI-DI/XORAX0/clearreturnedDS6252/POPBP/rootplainRETF. CallbackreturnedDSgovernsguardclear; callbackBPneednotmatchbecauseownPOPBP restoresfromactualsavedstorage.",
+    "NormalbusyreturnsCF0ZF0 andIF1; missingtargetreturnsCF0ZF1 evenAXkeynonzero; callbacknormalXORAX0 CF0ZF1 whilecallbackIFDFsurvive. PrefixZF unadmitted; allotherFLAGS separate.",
+    "BeforeCALLbudget3 stopsat6559 afterPUSHDI-SI-CS, preservingthosewrites. Servicefailures4 andpreunqualifiedfarRET5 aredistinctnative outcomes. RootallwordSP admittedthroughprefixes; actualcallerstackdomain unproved.",
+    "BothactualcallersPUSHAX beforefarCALL:calleeSP=callerSP-6/deepestcallbackframe=callerSP-16. ADDSP2 afterreturnreplacesarithflags andconsumesthekeyword. Noactualcaller-lifetime-IRQ admission fromthisrelation.",
+    "Known6585setter and16FCinstaller conditionalDSwriters; 6528itself conditionalSS tablewriter. Initialtablezero andknownsixregistrationsdonotboundallfuturetargetvalues. Preserve6559complete=false andallwriter-validdomain-storage-lifetime-exclusion obligations.",
+    "Physical086Cunassigned/CGAbehindEGAclosure/noDOSsession-device-IRQ-renderer-audio-fullresources-complete-state-machine-gameplay-fidelity."
+  ],
+  "validator_dependencies": [
+    {
+      "path": "docs/recovery/evidence/td2ega-key-dispatch-validation-v1.json",
+      "sha256": "822f16900114528433d11efa522eaba5d309a5746b6c6be04a4485787356a730"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-key-bindings-validation-v1.json",
+      "sha256": "f07e41c33c67c56e38f08d21aa8b66234244548c9377fedbc6b90db81e27d77d"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-key-actions-validation-v1.json",
+      "sha256": "70e6a1c0cb63b28ef9ad37077b99117c86f881ef20996333f3990fb5aa5721bc"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-indirect-review-v8.json",
+      "sha256": "9c5ee5f8d987b00c277dd6297b9a1013566200b74b2e043e29bc4f29bbe94a7b"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    },
+    {
+      "path": "analysis/reviews/far-return-stack-probe-v1.json",
+      "sha256": "adfad57608037b766121f6f094a379a2b76050951e28c90c347b7d916787be55"
+    }
+  ],
+  "limits": "42sites/additionalactualSS6528/frame-argument-guard-tablealiascontext/261word rawfootprint/all65536selectorandsetterpotentialdomains/twocallers. Callbackbodies/validtargetdomains-allwriters-capacity-lifetime-exclusion/actualIRQ/inputpoll-420A-403B-core/P1-GATE open."
+}

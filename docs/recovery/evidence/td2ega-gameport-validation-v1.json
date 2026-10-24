@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000156",
+    "FN-EGA-000412",
+    "FN-EGA-000413"
+  ],
+  "result": "pass",
+  "vectors": 136074,
+  "native_only_diagnostics": 3,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2335e8a009e2dcc9eb66b6daff94d5b6e760eb66a44190fdb91f3779a3aee7c1",
+  "source_sha256": "ce85a66e28b75db3a1f002bbaa4832477116211dec3c73e917c207e4e51bf313",
+  "validator_sha256": "a3a509fa66ee7b97bd5f5ac4a899d761b88f4c5d4567725123edffa6936d40a6",
+  "original_instructions_executed": 33298802,
+  "fixture_coverage": {
+    "structured": 2912,
+    "poll_completed": 3850,
+    "poll_timeout": 1120,
+    "random_state": 2048,
+    "disabled": 10,
+    "initialize": 32,
+    "translate": 131072
+  },
+  "limits": "Complete6686/680A/6828 bounded synthetic fullgroup andport201 streams, serialized noIRQ adapterprofile. Pollcounts, timeoutdefaults, signed/unsigned calibration andSUBoverflow, orderedIF/ports andscratchoutputs compared; no actual gameport timing/hardware, inputsession, caller/resource/IRQ or game/fidelity acceptance. Native service/budget diagnostics areoutside original."
+}

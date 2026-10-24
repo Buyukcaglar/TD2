@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000436",
+    "FN-EGA-000438"
+  ],
+  "vectors": 24320,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a65ab3dbc4d727ee2fd0d9de9649ce142b55594ba7e41f4408d4e7f9ae3370ba",
+  "source_sha256": "60f672b8de84a680db60b6e4f75f6a1195e48ad912a26cae1c2ad8711d586c3b",
+  "validator_sha256": "3b9b9986b7fde65dbf4a745ddd84406f50cdf6bb03bfda51a298d9aeb554eb4c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 1566968,
+  "instruction_sites_in_fence": 156,
+  "instruction_sites_exercised": 156,
+  "fixture_coverage": {
+    "entry_0": 15456,
+    "root_near_return": 21816,
+    "guard_CALLs": 29600,
+    "tail_control_setter_ring_CALLs": 49800,
+    "control_4612_CALLs": 16760,
+    "CPU_bus_writes": 378416,
+    "DS_equals_SS_cases": 13408,
+    "raw_root_returns": 192,
+    "no_sample_root_returns": 6016,
+    "actual_IF1_sample_returns": 15800,
+    "entry_1": 8864,
+    "prefix_guard": 1024,
+    "prefix_sample": 400,
+    "prefix_control": 120,
+    "raw_product_return": 192,
+    "raw_control_return": 192,
+    "raw_setter_return": 192,
+    "raw_ring_return": 384
+  },
+  "limits": "Twoactualnearroots49E7/4A19/fullSS4D26guardframes/frozeninterval-arithmeticC/requiredZF/conditional4A2E-tail-fullcontrol-setter-ring/globalguard-sample-controlCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. No newspan. Actualindirectcaller-indexdomains/allwriters-reset-seed-sharedsource-lifetime-IRQexclusion/core/RNGpurpose open. NoDOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure."
+}

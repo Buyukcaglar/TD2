@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 2048,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a34fd5e3b1487a2fe1f7f24dd39f06a0886a658afe4aa6e883dc274642a8edb2",
+  "script_sha256": "0c3d893f6aabee4990512a4dc393496cf240cd566af35be06bf14fb4ed7cb269",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_ring_selection.py",
+      "sha256": "d78dc9229c67f3244058495a921389417d3c82c6bd56bf83c161991c5b249764"
+    }
+  ],
+  "original_instructions_executed": 84992,
+  "changed_saved_SI_cases": 2048,
+  "categories": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "limits": "Scoped source/native discriminator only, excluded main helper-suite/vector totals. SP67F4/DS=SS/cursor0 means child PUSHSI highbyte atDS67E7 is selected by actualringDEC toFFFF; update thenactualPOPSI changes returnedSI. All256incomingSIhighbytes/fourIFDFprofiles/twoloads, actual019E0004/780E/fullbus/GPR/BP/CFIFDF/farframe. No actualIRQ/exclusion/seed/reset/writer/lifetime/core/session/gameplay/fidelity proof."
+}

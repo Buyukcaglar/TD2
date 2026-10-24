@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000316"
+  ],
+  "vectors": 13440,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4a4c4cacf5d2d7721acfd3b5f1c501376b17f2c244feec6600adb8cddfa1e675",
+  "source_sha256": "67dba81407f8113c0a2e9ba18b91a0ac482061bce9abf86c48b451321248c58d",
+  "validator_sha256": "c380147a806c2917229e70e2d19d8ec41fb9ab03dc9b93cd298d34e544e7f8c4",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 235412,
+  "instruction_sites_in_fence": 64,
+  "instruction_sites_exercised": 51,
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:0951",
+        "13A8:0956",
+        "13A8:0958",
+        "13A8:095A",
+        "13A8:095C",
+        "13A8:095E",
+        "13A8:0960",
+        "13A8:0962",
+        "13A8:0965",
+        "13A8:0967",
+        "13A8:0969",
+        "13A8:096B",
+        "13A8:096E"
+      ],
+      "scope": "094Aenteredonlythrough2600sharedSTC-AX1C00orstackcarry-AH09",
+      "reason": "AHnonzero at0939, actualMOVs-POPs-CALL do notchangeAH; mapperORAH-JNE selects8of21sites. Standalone094Aall21passed, notglobaldead."
+    }
+  ],
+  "fixture_coverage": {
+    "root_near_return": 4880,
+    "mapper_CALLs": 2232,
+    "syntheticDOS40": 7040,
+    "bus_write_events": 49976,
+    "service_write_events": 5360,
+    "initial_DS_equals_SS_cases": 6720,
+    "SP_wrap_boundary_cases": 8064,
+    "stack_ADDSP8_carry_cases": 3024,
+    "ctrlZ_CLC_shared_exit_cases": 576,
+    "raw_root_returns": 880,
+    "prefix_service": 3520,
+    "prefix_mapper_call": 2232,
+    "root_far_return": 2748,
+    "raw_mapper_return": 60
+  },
+  "limits": "Actual13A8:2600 near/inheritedBP-DX-DI/fullSS/threeactualsaves/typedDOS40/currentreturnedGPR-BP-DS-IFDF/addactualcount/normalnearRET orADDSP8carry-replacesDOSCF/rawhandleflags-1A/sharednonlocalfarRET/actual094Anearframe-rawreturn. All16bitSPprofile inclwrap/wholebus/GPR-BP-CFIFDF/control/counts. OtherarithFLAGSunexposed/knowncallerslivenessreviewseparate. Serialized20bitRAM/noMEM_READhook/realDOS-INTframesunexercised/historicalCPU-A20unqualified. Nativebudgets/rawRETtargetsexposedafterinstructionneverfollowed. Whole2558/allwriters/storage/domains/capacity/lifetime/exclusion/core/resource/device/session/gameplay/fidelity open."
+}

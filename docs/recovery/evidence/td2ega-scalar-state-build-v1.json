@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_scalar_state.cmd",
+    "sha256": "5671d11ddef2ddfb57c21f47cc592171e583a561e425dd9e5fd8185a87484ee8"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_scalar_state.c",
+      "sha256": "416d5a660edd7f178a24808d79149530666b4385b7e3496604cfe262047dae9a"
+    },
+    {
+      "path": "src/recovered/td2ega_scalar_state.h",
+      "sha256": "a31cbde260681305b08b6bcb7d08c195accfc77c5b0c36c2695661e92141fd5d"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/scalar-state-repro/td2ega_scalar_state.dll",
+      "sha256": "e74fb4a05a401bb87ce6cf1a00ba595d9bd16c08a6fc58261716f7f0be10ce9d",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/scalar-state-repro/td2ega_scalar_state.obj",
+      "sha256": "2dfa04944c40bec3ab4d65e2971ca034030f81f445951ac643070c341de88142",
+      "bytes": 4557
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/scalar-state-build-v1.log",
+    "sha256": "04f4ae6099c3dc117d167204a15e51b3b88fec6d2dc5cdc4fcc03e31e96c364a"
+  },
+  "limit": "Four finitebodies/fullbusincludingSS/GPR/BP/CFIFDF/plainfarreturns. FN421all256signedbytecases/argumenthighbyte preservation/ASCIIlowercase lowbyteSUB andunprefixed98AXsignextension; originalupperEAXpreservation checkedseparatelyfrom16bitnativeAPI, primaryISA+60microfixtures pinwidth. Signedindex/limit+bit40, rawflag/signedpositivecounter andindexedresetpostwritealiases/SHLcarry retained. ControlledSS/global/rootreturnaliases exposeactualfarcoordinateafterRETF, no targetfollowed. NooriginalCreturntype/tableformat/globalunits inferred. Actualcaller/otherFLAGS/bounds/writers/lifetime/IRQ/fullstate/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalidchecks separate.",
+  "function_ids": [
+    "FN-EGA-000421",
+    "FN-EGA-000333",
+    "FN-EGA-000295",
+    "FN-EGA-000052"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-scalar-state-context-v1.json",
+    "sha256": "f40b0ead200d06b0f1f47355bed8b8b542458de124cbc384c1f2926cd50e67e5"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-sign-extension-reference-v1.json",
+    "sha256": "db7218b5cecf4fe27bfbae5ce3ddaa44e3cda5b33afc86143c0c9806a2b92764"
+  }
+}

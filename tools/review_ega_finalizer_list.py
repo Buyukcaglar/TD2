@@ -1,0 +1,19 @@
+"""Review reverse callback mechanism and each constant-bound caller slice."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'analysis/tools/python'))
+from capstone import Cs,CS_ARCH_X86,CS_MODE_16
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output.resolve();assert not out.exists() and out.is_relative_to(ROOT/'docs/recovery/evidence');image=(ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes();sha=hashlib.sha256(image).hexdigest();assert sha=='8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4';graph='analysis/flow/indirect-v8/direct-flow.json';g=json.loads((ROOT/graph).read_text());md=Cs(CS_ARCH_X86,CS_MODE_16);f=next(f for f in g['functions'] if f['entry']=='13A8:060D');observations=[]
+    for ip in sorted(f['instructions']):
+        i=next(md.disasm(image[0x13a80+ip:0x13a80+ip+15],ip,count=1));observations.append({'site':f'13A8:{ip:04X}','bytes':i.bytes.hex(),'text':i.mnemonic+' '+i.op_str})
+    expected={0x60d:'3bf7',0x611:'83ef04',0x614:'8b05',0x616:'0b4502',0x61b:'ff1d',0x61f:'c3'}
+    for ip,raw in expected.items():assert image[0x13a80+ip:0x13a80+ip+len(raw)//2].hex()==raw
+    callers=[{'owner':f['entry'],**c} for f in g['functions'] for c in f['calls'] if c['target']=='13A8:060D'];unique=sorted({c['site'] for c in callers});bounds=[]
+    for site in unique:
+        ip=int(site[5:],16);raw=image[0x13a80+ip-6:0x13a80+ip];assert raw[0]==0xbe and raw[3]==0xbf;si=int.from_bytes(raw[1:3],'little');di=int.from_bytes(raw[4:6],'little');bounds.append({'site':site,'si':si,'di':di,'initial_span_bytes':di-si,'empty':si==di,'operand_source_bytes':raw.hex()})
+    assert len(unique)==6 and sum(not b['empty'] for b in bounds)==1;assert next(b for b in bounds if not b['empty'])['site']=='13A8:0594';raw=image[0x178f0+0x7082:0x178f0+0x7086];assert raw==bytes.fromhex('3a0aa813');record={'schema':1,'result':'pass','image_sha256':sha,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'instruction_observations':observations,'direct_caller_candidates':callers,'unique_direct_sites':unique,'caller_constant_bounds':bounds,'initialized_nonempty_target':{'callsite':'13A8:0594','span':'DS:7082..7085','target_unrelocated':'13A8:0A3A','scope':'Only initial DS view and fixed caller operands; all aliases/writers/actual callback body/lifetime stillopen.'},'flow_ledger':graph,'flow_ledger_sha256':hashlib.sha256((ROOT/graph).read_bytes()).hexdigest(),'facts':['UnsignedSI<DI, DI-=4, word[DI]ORword[DI+2] skipzero; indirectfarCALL[DS:DI] pushes actualCS/061D, callbackreturnedGPR/BP/CFIFDF/DS/position used by nextiteration. RootnearRET2.','Zero test consists of two separately computed16bitEAs; indirectfaroperand usesonefourbyte memoryoperand. Boundaryfixture distinguishes views; stack-aliasfixtures review operand capture before CALL overwritesitsownaddress.','Six uniqueconstant-bound nearcall sites across20ownerrecords:0575/057E empty7082;058B empty841A;0594nonempty7082..7086;05A2/05ABempty7086. Direct0599doesnotinvoke the nonemptyspan;0582does.','Initialized7082farword is13A8:0A3A before relocation; callbackbody andall tablewriters/alias/lifetime/actualDSview remainopen. Existing061Bindirectcomplete=false retained.'],'limits':'Static caller-slice and raw mechanism review plus syntheticcallbackABI comparison only. No callbackbody/alltargets/writer/lifetime/otherFLAGS/core or actualplatform/session/game/fidelity acceptance. Originaltablepayload notembeddedinC.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','sites':len(observations),'caller_records':len(callers),'unique_sites':len(unique),'initial_nonempty_spans':1}))
+if __name__=='__main__':main()

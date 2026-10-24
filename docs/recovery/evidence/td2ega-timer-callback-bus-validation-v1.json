@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000150",
+    "FN-EGA-000151"
+  ],
+  "vectors": 10392,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2ae704414d9010064629d5154a7e87147841270082f5cff40e31a618542390e9",
+  "source_sha256": "46d93d3c8d0e8d139d3c84e7a2e9b075f12c8ebcab34fddeeb3ecf4be5d4ffa7",
+  "validator_sha256": "12c05b9cf2c286a84287ce40c9e18949a1c76108d244fc8e41058af4c83e9025",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "analysis/history/timer-callback-bus-build-setup-v1.json",
+      "sha256": "82281dbead80b4eb04a4c09674901899a6223b9bd0546c61fdc193a220f19c9f"
+    },
+    {
+      "path": "analysis/reviews/timer-startup-bus-frontier-v1.json",
+      "sha256": "b0fe6df8a3c5d8f0060589055b961aa512daa0e34721f0aade6408dd8cfa9204"
+    }
+  ],
+  "original_instructions_executed": 257058,
+  "instruction_sites_in_fence": 47,
+  "instruction_sites_admitted": 46,
+  "instruction_sites_exercised": 46,
+  "preCALL_boundary_sites": [
+    "06C9:6164"
+  ],
+  "fixture_coverage": {
+    "entry_0": 5196,
+    "status_0": 6490,
+    "tag_base": 1152,
+    "slot_0": 2362,
+    "CPU_writes": 38062,
+    "DS_equals_SS": 6432,
+    "changed_root": 216,
+    "published_segment_before_stale_sentinel_clear_IF1": 60,
+    "slot_1": 614,
+    "slot_2": 1010,
+    "slot_3": 554,
+    "slot_4": 1470,
+    "status_6": 1322,
+    "slot_5": 4382,
+    "entry_1": 5196,
+    "tag_live_SS_alias": 3312,
+    "status_5": 192,
+    "status_3": 2388,
+    "tag_publication_prefix": 4896,
+    "tag_word_arguments": 600,
+    "tag_physical_word_alias": 384,
+    "tag_partial_flags": 48
+  },
+  "limits": "ActualSS614C-6180/wholeRAM-GPR-BP-CFIFDF-definedFLAGS/actualsavedBP-farRET/orderedargumentreads-and-publicationwrites/matchedremoveCLI-STI/5rowscan/fatalpreCALL6164withactualPUSHAX/qualifiedbudget-preRET. Sourcepublicationprefixafter6176-before6179withIF1andstalerow iswitnessed, notrealIRQfeasibility orhistoricalfailure. Fatalcallee notexecuted; no nativeproducer/actualIRQ-allwriters-reset-lifetime-exclusion/core/P1-GATE/game-fidelity acceptance. Physical086Cunassigned/CGAbehindEGAclosure."
+}

@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-18",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_timer_control_bus.cmd",
+    "sha256": "75475c7724f5e08777190ee7821e8303449f5a614c58fbe9f90eae6f1834e05b"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.c",
+      "sha256": "4a39b911e3043f82273f18444cf2465e17b6e526269f1e003e81f17df05f2933"
+    },
+    {
+      "path": "src/recovered/td2ega_input_flags.h",
+      "sha256": "44bd5afa5ee6353c7b55a3d15dd1ff1f8454050e718d2725cdd4da475fe5bec8"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_timer_control_bus.h",
+      "sha256": "a4095c9e94db41a6be15fc4bee4d1083fdc25aacbb3fb29799745c35c068dba6"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/timer-control-bus-repro/td2ega_timer_control_bus.dll",
+      "sha256": "5a90ce057789bf3daea826288f99d81171d7ee48e0459d7deefcace2dc776ec2",
+      "bytes": 109568
+    },
+    {
+      "path": "analysis/build/timer-control-bus-repro/td2ega_timer_control_bus.obj",
+      "sha256": "eb7f2d6d2a0149078177094593a69c1a22191e8e1e2a8ef6a61f5e4a5b9cb602",
+      "bytes": 16900
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/timer-control-bus-build-v1.log",
+    "sha256": "8621de1d9414d03c438e2f7d36f14adcb3fa7ccc8a9e9037e6608da89b887c7c"
+  },
+  "limit": "AdditionalactualSS601C-6059-610A/currentDS/fullGPR-BP-IFDF-definedCF-FLAGS/maskF72ApostIDIV/actualSSdivisor reread afterquotientpublications/literalIVTindependentoffset-segmentcomparisons/40histogramwrites/orderedbyteports/actualfarRET-aftereffects/whole1MiBRAM. Budgets/portfailure/preIDIV/preRETqualifications separatefromsourceerror-return orhistoricalexceptiondelivery. No assignedclockunits/physical086Csemantics/realIRQ-nesting/allwriters-reset-lifetime/fullnativeproducer/core/P1-GATE/DOSsession-audio-game-fidelity; CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000147",
+    "FN-EGA-000148",
+    "FN-EGA-000149"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-timer-control-bus-context-v1.json",
+    "sha256": "78117236182bdf110c11e81027cc15acddc83aba3b2fbf06c6356b0869e6c199"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/timer-control-bus-build-setup-v1.json",
+      "sha256": "82fd5212677e5abb2ce1ad13fe9bc34109e48f9fa04859f088e2143fe5a2daf6"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000364",
+    "FN-EGA-000344",
+    "FN-EGA-000372"
+  ],
+  "vectors": 50512,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b6e75621a8a08f0a65aefd1b0e836f4ace1cf34db0a124801ca49daeb61cd110",
+  "source_sha256": "a8a3d6e2511017734f5e768589577383cd5cf6833bdc633fad83b0f62af18988",
+  "validator_sha256": "8958efcede8105df5a049420c9142208382cbd25556cc7f01b073f1461ef7fe8",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    },
+    {
+      "path": "analysis/reviews/far-return-stack-probe-v1.json",
+      "sha256": "adfad57608037b766121f6f094a379a2b76050951e28c90c347b7d916787be55"
+    },
+    {
+      "path": "tools/validation/probe_far_return_stack.py",
+      "sha256": "5e80d71447e6d26b1dc104e0711803378414d5da9589ede2991441ee29dc7a85"
+    }
+  ],
+  "original_instructions_executed": 2199880,
+  "instruction_sites_in_fence": 166,
+  "instruction_sites_exercised": 166,
+  "fixture_coverage": {
+    "entry_0": 22320,
+    "root_return": 46048,
+    "actual_far_calls": 21920,
+    "CPU_bus_writes": 328928,
+    "DS_equals_SS": 26794,
+    "ES_differs_DS": 2560,
+    "changed_root_coordinates": 224,
+    "stack_offset_wrap_cases": 9408,
+    "undefined_fast_MUL_ZF_excluded": 360,
+    "prefix_3": 144,
+    "entry_1": 6928,
+    "prefix_5": 2400,
+    "entry_2": 21264,
+    "scanner_target_0x44be": 2144,
+    "scanner_target_0x44bf": 2144,
+    "scanner_target_0x44c5": 2160,
+    "scanner_target_0x44d2": 2144,
+    "prefix_4": 1920
+  },
+  "limits": "Three additional actualSS interfaces/motion plainRETF/multiply four-word RETF8/scanner nearRET; frozen pure multiply C and actual SS writes/frames/locals plus ordered currentDS reads. Full1MiB20bitRAM/GPR-BP-CFIFDF/defined-normalZF/control/writecounts; fastMUL ZF undefined and excluded. Scanner recognizes three actions plus44BE RETtail; unknown rawtarget prefix4 beforeJMP. FarSP>FFFC stops5 beforeRETF per bounded backend profile, not historicalISA qualification. Whole420A-403B/caller-writer-domain/storage-capacity-lifetime-exclusion/IRQ/core remainopen; no DOSsession/realdevices/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+}

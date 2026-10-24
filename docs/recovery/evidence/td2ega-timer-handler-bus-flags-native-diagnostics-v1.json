@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 9,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "d19ed550250e6fe30cea6f5061b83c911c69d800153ec5094037a117500e113c",
+  "library_sha256": "0a1eeea2bb1ab9c0d257ed7556fee5c081e0e14ac84e5f112245af32413d6eaa",
+  "source_sha256": "dd47e0d6adbd40f248ae89a490cf5feb2aa26239cee0d70830b92b9d2d376e4f",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_handler_bus.py",
+      "sha256": "07d53869d389bc0b38eb48edfd50dbfc71722f78cb154705647ecdeebe9a8d5d"
+    },
+    {
+      "path": "analysis/history/timer-handler-bus-flags-build-setup-v1.json",
+      "sha256": "28e9638265bbf1add13bd83f87a54d7c33a5301e5528da1c05a1a4bba7f87e70"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-handler-bus-flags-context-v1.json",
+      "sha256": "2523369d01a8bccf7962ec60b090ed9da8efb3a24527925591ec3d81cdc4c523"
+    }
+  ],
+  "limits": "Nativeonly invalidpartialmasks/incomingpartialprefix/retiredchildprefix-rawreturn/normalIRETflagrestore/ADDDI4arithmeticmask-regaining. ExplicitABIprofilediagnostics, not sourceerror or actualchildbody/IRQ/core/game-fidelity acceptance."
+}

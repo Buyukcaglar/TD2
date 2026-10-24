@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_finalizer_list.cmd",
+    "sha256": "0c0740911ebe43e8498b04d79f04c956dfe390997098a2ce87ce561c5b146857"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_finalizer_list.c",
+      "sha256": "393fa5a352acb6403cb2fc84e776abcc0569bf55e1a8e8d07ff8d920ac1498a1"
+    },
+    {
+      "path": "src/recovered/td2ega_finalizer_list.h",
+      "sha256": "f80c7b1956c4de100efc4490512ba639f2ee07c0e6d3de646bb4c6f8350c183e"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/finalizer-list-repro/td2ega_finalizer_list.dll",
+      "sha256": "c9037f828a2d8db16997bda4a4767418cbd8da68a48ab863c41505c0277bbd80",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/finalizer-list-repro/td2ega_finalizer_list.obj",
+      "sha256": "5fc498c7c92b6ee4a78cc5f3c227d94c3eacd060f63f2cb9e01a51c716d79dec",
+      "bytes": 4020
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/finalizer-list-build-v1.log",
+    "sha256": "14d426b568844d4cf78aa91ef602ed1ce3ce579239f9179faad76b13f3f34552"
+  },
+  "limit": "Actual13A8:060D reverse list/unsignedguard/wordOR/indirectfarCALL/rootnearRET with actualnestedSSframes/fullbus/GPR/BP/CFIFDF/control. Syntheticcallback fullreturnedABI/DS/position/flags/busmutations andRETF separatefromoriginalinstructioncount/calleebodies. Boundaryfaroperand physical4byteview distinctfromtwo separatelywrappedwordORreads. Nativebefore-record/adapter/rawchildreturn outcomes separate. Actualcallbacktargets/allwriters/callerbounds/lifetime/exclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen.",
+  "function_ids": [
+    "FN-EGA-000263"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-finalizer-list-context-v1.json",
+    "sha256": "c7439089064210c137fc659788af6019f5a7bebe77907f0bc83b4ac3265dc396"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate-finalizer-list-attempt-v1.py",
+      "sha256": "aeefa94a0a501db7ed31ac669f2123a9ff488af80f908ea5512e775a2ae03be7"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-finalizer-list-validation-v1.json",
+      "sha256": "7dd1fbd19a53e15ca8e7d2b71b7ccd8ae47a98bfb6abd093305e16fd765f5998"
+    }
+  ],
+  "failure_resolution": "No failed build/algorithm. Successfulv1comparison6208cases retained; v2adds448operand/stack-aliasfixtures, selected6656cases. C/DLL unchanged."
+}

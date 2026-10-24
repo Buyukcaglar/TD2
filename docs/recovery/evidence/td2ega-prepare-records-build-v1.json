@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_prepare_records.cmd",
+    "sha256": "0bf660fb4b7d546997d6ff10a7f471f22285fe94d749ee841d5032552025777f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_prepare_records.c",
+      "sha256": "49bb5d9af7ecc44b2218028a6303dad720bd11f0bbf449b843244df004b2ea11"
+    },
+    {
+      "path": "src/recovered/td2ega_prepare_records.h",
+      "sha256": "d2740e544e31dba419bb4d4d5ec336d448ca127c71e836fb88b4291155838741"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.c",
+      "sha256": "9152aa0655e352ef7a458d559d98e10c86bf188c26e2d67c8ae644dc6c3f3c74"
+    },
+    {
+      "path": "src/recovered/td2ega_byte_ring.h",
+      "sha256": "8f87ec27fb21c5bfe7c59d8805066bcc348c1bcb65fd620efb68ee8994026891"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/prepare-records-repro/td2ega_byte_ring.obj",
+      "sha256": "67fcdea25a3873093dc0beb4a10dcc84a48eb9eb4d2516a3294f3ef5fa1f5b64",
+      "bytes": 700
+    },
+    {
+      "path": "analysis/build/prepare-records-repro/td2ega_prepare_records.dll",
+      "sha256": "eb9e8e0a3f3475cd02083dd61adb50b546539693b70c1a329f4caff45bab1f81",
+      "bytes": 104448
+    },
+    {
+      "path": "analysis/build/prepare-records-repro/td2ega_prepare_records.obj",
+      "sha256": "c1aafafd7c6fe7a39868900b6324d3518f443e5180ab57d688744829a8a4ef0d",
+      "bytes": 4666
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/prepare-records-build-v1.log",
+    "sha256": "66757abb3cf9e1a8c053ccde74f03200fa477c6a0c4d77aab7ba1f83743331a2"
+  },
+  "limit": "Complete1E59 andlinkedbyte-source C, serializedsyntheticfullbus/SS-DS/rawrecord/divideprefix/consumption profile. ConditionalSSaliases notactualreset/callerproof; no resources/IRQ/core/RNGmeaning/game/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000083"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000003"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000368",
+    "FN-EGA-000369"
+  ],
+  "result": "pass",
+  "vectors": 544544,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2c0ebbdb5d2be0651680732dcc50bdba2648c317e95fa58ccd0709ad2090d127",
+  "source_sha256": "0c64fc94f82da90fd039803c46e54c08d7bf6386dd1d121226ae9d0f55494632",
+  "validator_sha256": "ebe76d5f14ff90553b2dca6b2eac7f5babe4e47c177e920f8b89620b8de7c91a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_mutable_control.py",
+      "sha256": "dc91b87e9d5e06b05330d45ec228ff5eacd42ea7ef78fd0ce39ec9dd27912891"
+    },
+    {
+      "path": "tools/validate_sim_targets.py",
+      "sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2"
+    }
+  ],
+  "original_instructions_executed": 25331590,
+  "fixture_coverage": {
+    "all_retained_BH_and_low_indices": 131072,
+    "all_input_byte_and_branch_profiles": 122880,
+    "all_alternate_record_byte_indices": 262144,
+    "pair_signed_step_boundaries": 3872,
+    "varied_update_states": 16384,
+    "varied_pair_states": 8192
+  },
+  "code_states": {
+    "42AD": [
+      "initial_JA",
+      "prepared_JNE"
+    ],
+    "43C3": "unmodified"
+  },
+  "limits": "Explicit branch-form inputs; Complete4281/43C3 with actual4612/4441, serialized syntheticfullgroup, retainedbytehalves/indexaliases andBPclobber/preserve, signed/unsigned boundary andstatepublication. Actualresourcefield/table schema/units, callerflag/IRQ/fullstate/game/fidelity remainopen. NoBIOS/input/device ororiginalresource executes."
+}

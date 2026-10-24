@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000329"
+  ],
+  "vectors": 896,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "ddca699b4fc0af8c3ecd774e19cd2aef3e55bd307967ac6e1790a65e4f386ff2",
+  "source_sha256": "eea67553b752067e0d6c0ea274d500a0b976fd52c634ea11e61a17a61ff6630d",
+  "validator_sha256": "0abc9e9e7a733bd14d2a6f807a0e002cf94c56d7d01f01d1fe061aa9a2705386",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 6310336,
+  "instruction_sites_in_fence": 15,
+  "instruction_sites_exercised": 15,
+  "fixture_coverage": {
+    "prefix": 576,
+    "scan_iterations": 6301184,
+    "reverse_DF_fixtures": 448,
+    "bus_write_events": 896,
+    "far_returns": 320,
+    "last_eligible_match_scans": 32,
+    "full_no_match_scans": 64
+  },
+  "limits": "Actual13A8:29B4 nearcurrentDS scan, ES=DS/AL0/CXFFFF REPNE SCASB with incomingDF retained, wordDIwrap, NOTCX/DECCX/XCHG ->AXcount/CX0 andDIrestoredviaDX. FullbusincludingSSBPsave/GPR/BP/CFIFDF/plainfarreturn. No-matchFFFFscans andlast-eligible-NUL bothAXFFFE distinguishedbyCF; noerror orstandardhoststrlen substitution. Nativebefore-scanprefix separate. Callerbounds/NUL/DF/otherFLAGS/lifetime/IRQ/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalidchecks separate."
+}

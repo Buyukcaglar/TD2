@@ -1,0 +1,455 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "a776bdfb9df8874492b9273cfc2d249d72a0bf98d1681a6001d5b4c88b8e3723",
+  "vectors": 12,
+  "cases": [
+    {
+      "load_segment": 4096,
+      "path": "cache_hit",
+      "stack_fill_byte": 165,
+      "si": 48059,
+      "di": 43690,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 24576
+        }
+      ],
+      "body_instructions": 15
+    },
+    {
+      "load_segment": 4096,
+      "path": "cache_hit",
+      "stack_fill_byte": 60,
+      "si": 48059,
+      "di": 43690,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 24576
+        }
+      ],
+      "body_instructions": 15
+    },
+    {
+      "load_segment": 4096,
+      "path": "cache_miss_codec1",
+      "stack_fill_byte": 165,
+      "si": 42405,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:6B02",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 4096,
+      "path": "cache_miss_codec1",
+      "stack_fill_byte": 60,
+      "si": 15420,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:6B02",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 4096,
+      "path": "cache_miss_codec2",
+      "stack_fill_byte": 165,
+      "si": 42405,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:7C16",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 4096,
+      "path": "cache_miss_codec2",
+      "stack_fill_byte": 60,
+      "si": 15420,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:7C16",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 9029,
+      "path": "cache_hit",
+      "stack_fill_byte": 165,
+      "si": 48059,
+      "di": 43690,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 24576
+        }
+      ],
+      "body_instructions": 15
+    },
+    {
+      "load_segment": 9029,
+      "path": "cache_hit",
+      "stack_fill_byte": 60,
+      "si": 48059,
+      "di": 43690,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 24576
+        }
+      ],
+      "body_instructions": 15
+    },
+    {
+      "load_segment": 9029,
+      "path": "cache_miss_codec1",
+      "stack_fill_byte": 165,
+      "si": 42405,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:6B02",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 9029,
+      "path": "cache_miss_codec1",
+      "stack_fill_byte": 60,
+      "si": 15420,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:6B02",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 9029,
+      "path": "cache_miss_codec2",
+      "stack_fill_byte": 165,
+      "si": 42405,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:7C16",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    },
+    {
+      "load_segment": 9029,
+      "path": "cache_miss_codec2",
+      "stack_fill_byte": 60,
+      "si": 15420,
+      "di": 48059,
+      "sp_after_return": 32772,
+      "helper_mocks": [
+        {
+          "entry": "06C9:71B4",
+          "sp_at_call": 32746,
+          "ax_result": 0,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:5E8A",
+          "sp_at_call": 32746,
+          "ax_result": 16,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:70A3",
+          "sp_at_call": 32744,
+          "ax_result": 0,
+          "dx_result": 24576
+        },
+        {
+          "entry": "06C9:5E1C",
+          "sp_at_call": 32746,
+          "ax_result": 2,
+          "dx_result": 0
+        },
+        {
+          "entry": "06C9:6AA2",
+          "sp_at_call": 32742,
+          "ax_result": 0,
+          "dx_result": 24591
+        },
+        {
+          "entry": "06C9:7C16",
+          "sp_at_call": 32740,
+          "ax_result": 256,
+          "dx_result": 0
+        }
+      ],
+      "body_instructions": 62
+    }
+  ],
+  "conclusion": "Cachehit restoresSI/DI. Uncached singlepass usesADDSP8 afterthreeword6AA2 arguments, shifting pops:DIgets incomingSI;SIgets untouchedlocal stackword. BP/SP/farreturn remain restored.",
+  "scope": "6D50 body control/stack execution only; all listedcallees mocked withnormalRETF, preservedSI/DI and namedAX/DX results. No DOS, codec/data semantics or real resource validated."
+}

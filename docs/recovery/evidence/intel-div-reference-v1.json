@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "date": "2026-10-14",
+  "result": "reviewed",
+  "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf#page=388",
+  "title": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2A, Instruction Set Reference A-L",
+  "section": "DIV, printed pages 3-285 through 3-287; PDF pages 387 through 389",
+  "retrieval": "Official primary PDF read through web tool. No local full-document bytes or hash claimed; prior direct download access denial remains separately recorded.",
+  "observations": [
+    "Word division uses unsigned DX:AX and returns a word quotient in AX and remainder in DX.",
+    "A zero divisor or quotient beyond word range causes divide error, including real-address mode.",
+    "Arithmetic flags after DIV are unspecified; fault comparisons use the captured pre-instruction carry."
+  ],
+  "limit": "Architecture reference for the comparison policy. No historical CPU, exception-handler execution, device timing, DOS session or fidelity acceptance. No manual implementation or long quotation copied."
+}

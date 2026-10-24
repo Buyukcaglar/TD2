@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 14,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "0dbe44e3c8d61edbc32bde52e144170a67aef5fa24d01e8898a5f71cd35c66ed",
+  "library_sha256": "1da658bfd7602b3f519f2206d354ffdfe10a1ca4d1edfdbbc7ce57989d24d354",
+  "source_sha256": "277a2e008988136411f4a8dc938b2b1ded12fc5f88f14959ef32c6adc6dc2f47",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_timer_startup_tail_bus.py",
+      "sha256": "e6b292caf3d778f8b5e052c0d6f0e6a4b5ce2e75d4136573e750a908abed9326"
+    },
+    {
+      "path": "analysis/history/timer-startup-tail-bus-build-setup-v1.json",
+      "sha256": "c6bdaa98b7821d25b0e26ac8b7810eab4e7e1b10f71dcf257f6d8cf0a95cfce6"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-timer-startup-tail-bus-context-v1.json",
+      "sha256": "ff42a9a5f4989c570707d555111823e34394816f6f00a92e7bc4b95fb1f92cc4"
+    }
+  ],
+  "limits": "Nativeonlyinvalid/CALLbudget/actualarguments/secondpublicationprefix/portfailure/rawchildstop/nativepublishedorder diagnostics, notwhole3F40/actualIRQ-lifetime/core/gameacceptance."
+}

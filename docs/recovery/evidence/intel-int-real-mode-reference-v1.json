@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "source": {
+    "title": "Intel 64 and IA-32 Architectures Software Developers Manual Volume 2A",
+    "order_number": "253666-060US",
+    "date": "September 2016",
+    "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2a-manual.pdf",
+    "pdf_pages": 652,
+    "zero_based_pages": [560],
+    "printed_pages": ["3-459"],
+    "locator": "INT n operation, REAL-ADDRESS-MODE"
+  },
+  "claim": "The real-address operation pushes the FLAGS, CS and IP words before loading CS/IP from the interrupt vector. An explicitly modeled INT08 profile must therefore read its target after its modeled frame writes when those bytes alias the IVT.",
+  "read_provenance": "Official PDF opened and text read on 2026-10-18. No complete PDF download or hash claim.",
+  "limits": "ISA reference for a named serialized analysis profile only. Does not qualify the historical CPU, actual IRQ delivery, interrupt ownership or game runtime."
+}

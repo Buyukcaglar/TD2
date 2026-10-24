@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 34,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "503d04ff45998b3b0b24ba47312ca8fcc59a715d3717987caa0b480096dfc930",
+  "library_sha256": "50db84cef4e786a1774771f06493c8c28d4a90686281b93af40cee196568fbc2",
+  "source_sha256": "8a2c75d9839d62c804a79356347bd7b8a64f775a3e0a2c95ec674321072b1c3a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_session_init_bus.py",
+      "sha256": "deef1850c251dd97d056520b45995320d22ce4823eac2623e1effc509cbb1e98"
+    },
+    {
+      "path": "analysis/history/session-init-bus-build-setup-v1.json",
+      "sha256": "8825788ef2350f336f6c63bbc56a365c93abb1e9784412d86e62aad015dcf29e"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-session-init-bus-context-v1.json",
+      "sha256": "9934d675de181faf84c247f60e2210af5a48cbc27ad7447599a6e4061bf4c1a5"
+    }
+  ],
+  "limits": "Nativeonlyinvalid/budget/partialREP-fold/current3811-wrap/delegatedtail/ringstackaliases/near-farrawreturns/livebounds/BSS942E/preRET/portfailure diagnostics. Conditionalstackwrites are not intentionalreset/seeding oractualcaller-domain/IRQ-lifetime/core/game acceptance."
+}

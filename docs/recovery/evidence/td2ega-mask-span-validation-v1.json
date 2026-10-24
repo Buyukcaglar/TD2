@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000212",
+    "FN-EGA-000213",
+    "FN-EGA-000214",
+    "FN-EGA-000238",
+    "FN-EGA-000239",
+    "FN-EGA-000240"
+  ],
+  "vectors": 15268,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7f24d74e3841710c721d1e00bc81ca9bac6002b5707352f7d7776e5683e65ed3",
+  "source_sha256": "7ccc35f4e6ca67cc695d97d84fc9721f7b6dfd7945155f7606af3119c02381b1",
+  "validator_sha256": "da92ba339aa226cad6ac24eb6155ccb8f40acd1833603b9fba78c48b16f0e72a",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 4757078,
+  "instruction_sites_exercised": 306,
+  "instruction_sites_in_fence": 306,
+  "fixture_coverage": {
+    "82D0": 2546,
+    "normal": 8112,
+    "byte_writes": 1581868,
+    "device_reads": 366504,
+    "device_writes": 366372,
+    "full_zero_LOOP_cases": 4,
+    "prefix": 7156,
+    "8336": 2544,
+    "839C": 2546,
+    "AD22": 2544,
+    "AD8B": 2544,
+    "ADF4": 2544
+  },
+  "limits": "SixcompleteRAM/device maskhelpers nearRET2, implicitGPR/BP/CFIFDF/fullbus, rawBXexternalCSmask/index/byteDL-DECoverflowJL/wordstride/DIwrap, REP0versusLOOP0/DECSIrow distinction andDFSTOSBversusexplicitINC retained. DeviceAH-lastreadclobber andXORAHbutSTOSBAL preserved, explicitbyteRead/Write traces syntheticflatbus only. Nativeworkprefix separate, noactualspritecaller/bounds/writers/device/renderer/resourcefed/IRQ/core/game/fidelity; native diagnostics separate."
+}

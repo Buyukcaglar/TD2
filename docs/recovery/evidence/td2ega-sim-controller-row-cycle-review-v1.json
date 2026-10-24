@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000380"
+  ],
+  "vectors": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7a546081c4a8032744c9af71a3d0740ff1dbc4a2f3a2b8beaa35b36f8bd99508",
+  "source_sha256": "6839f0b666c8314479bc4acc82a95c5e259d961b1c8be0c610db552c4ae43ff9",
+  "validator_sha256": "14c90cc3dd891bf6eb53057cd26dcc70a07180464cb14c4c5bc4676b2007e2dd",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "tools/validate_sim_controller.py",
+      "sha256": "455517159049add9390240fcf5432ca2156bb16bb417cdd72d83659c0af2de41"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+      "sha256": "3cbab05c661297e0887f8e7e7a85fabc88cdc649b46add59e17010e6ea967170"
+    }
+  ],
+  "original_instructions_executed": 98484,
+  "instruction_sites_in_fence": 687,
+  "instruction_sites_exercised": 79,
+  "fixture_coverage": {
+    "prefix_3": 2,
+    "changed_root_coordinates": 0,
+    "DS_equals_SS": 0,
+    "rejection_calls": 0,
+    "actual_1793_rejection_loops": 0,
+    "actual_8192_source_row_cycles": 2,
+    "iterations": 2,
+    "rows": 16386,
+    "ring_calls": 4,
+    "guard_calls": 0,
+    "sample_calls": 0,
+    "child_calls": 0,
+    "control_calls": 0,
+    "dispatch_calls": 0,
+    "direct_calls": 6
+  },
+  "limits": "Two targetedoriginal-instruction/fullnativeC comparisons atloads1000-2345 forwhole4674source-rowfixture. ActualADD SI8 wrapeventat4742/FFF8,8193heads,SI8,onewrapeach. Supplementalerratumonly: selectedfull59202case/687siteoutputs remainvalid; itslegacy366counterincludesfreshscanresets andisnotafullcyclecount. No newhelper-suitevectors/actualcaller-IRQ-storage-lifetime-core orruntime-game-fidelity acceptance.",
+  "counter_erratum": {
+    "full_comparison": "docs/recovery/evidence/td2ega-sim-controller-validation-v3.json",
+    "full_run_legacy_counter_name": "actual_8192_source_row_cycles",
+    "full_run_legacy_counter_value": 366,
+    "legacy_meaning": "SIzeroatrowheadafteranypriorrow; includesfreshscanstarts inlatercontrolleriterations, notonlyfullcycles. Do notinterpret366asfullcycles.",
+    "targeted_exact_ADD_SI_wraps": 2,
+    "targeted_fixture_count": 2,
+    "exact_event": "06C9:4742 ADD SI,8 withpreinstructionSI=FFF8",
+    "per_fixture_required_outcome": "8193rowheads/SI8/before4735budgetprefix, oneactualwrap; fullRAM-GPR-CFIFDF-control-counts matchnativeC."
+  }
+}

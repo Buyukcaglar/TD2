@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_member_reorder.cmd",
+    "sha256": "2d356d62e0c1fdd48dcc56f81087c0a0641f44611374c88152b3c2e67b1d8ba4"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_member_reorder.c",
+      "sha256": "594b95bef81fc695b30a79c5f6559fc0a45f4a95b205e4d9ad7f859567a4e444"
+    },
+    {
+      "path": "src/recovered/td2ega_far_member.c",
+      "sha256": "90c1d6efd6967ed0cb0ed7302c109591eac016d08305d64ba6d874f0d8402499"
+    },
+    {
+      "path": "src/recovered/td2ega_far_member.h",
+      "sha256": "8dd9c3b640261fd96485814053a5f2b758c5dcf2462af8ca132c5f0680054596"
+    },
+    {
+      "path": "src/recovered/td2ega_member_reorder.h",
+      "sha256": "861a97d24dbb64f1febb1c719a9ebf39fb1a0cf46a7826d3e94f900b5061a211"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/member-reorder-repro/td2ega_member_reorder.dll",
+      "sha256": "135e2ec77ac0eda10a98d3555b617df112396ff4028bc7620261ba3ec34a13c8",
+      "bytes": 108544
+    },
+    {
+      "path": "analysis/build/member-reorder-repro/td2ega_member_reorder.obj",
+      "sha256": "3ff32740dedf70f6059bbe3353b07dc36aed6f37eb49e210396e646b32b2c9c4",
+      "bytes": 8302
+    },
+    {
+      "path": "analysis/build/member-reorder-repro/td2ega_far_member.obj",
+      "sha256": "ba63269e144efa5f96c6042d56019411118be6d5ac942ba808b38859c95ec268",
+      "bytes": 3125
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/member-reorder-build-v1.log",
+    "sha256": "86ecd9fb9fc2a084df4ffcb693d305083f8861d414c2467344209ea6bc682645"
+  },
+  "limit": "ActualC838+actualC701, fourSSargs/header-segment/principal/member/scratch DS transitions, nibble-normalizedfar addresses/raw count/shapes/flags, incomingDF STOSB/REP vs explicit forward-stride source, actualSSlocals/saves/near-farframes/fullbus/GPR/BP/CFIFDF/control. Word/bytewrap, zero-CX do-onceLOOP, signedDEC count8000 overflow guard, orderedtranspose/copyback/rereads. Native beforemember/plane/byte/REP budget distinct; executing-code writes excluded and checked. Synthetic table/member payload only, no suppliedresource decoding/fullformat/producer/capacity/allwriters/lifetime/exclusion/newcallerFLAGS/core/realdevice/session/gameplay/fidelity acceptance.",
+  "function_ids": [
+    "FN-EGA-000252"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000251"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-member-reorder-context-v1.json",
+    "sha256": "bec160635e26d59f4fa5752df0ad42b93467092acff4f16e217e1fbb8b9bfd8e"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_member_reorder_before_caller_zero_v1.py",
+      "sha256": "6527fddba6d10932ba76deb337bd7af266e260051c16385a60ca26138de7b1b4"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-member-reorder-validation-v1.json",
+      "sha256": "808d77042ef29c48a012d83ce14bbe22d3ad5442671012aa35e65252eb4fe00a"
+    },
+    {
+      "path": "analysis/logs/member-reorder-validation-v1.log",
+      "sha256": "2aec1365f5fe418ea662c1dfe9c9bb3ee5b7722a6a387aa6e0fa667c2bcb8023"
+    },
+    {
+      "path": "analysis/logs/member-reorder-validation-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analysis/refine_member_reorder_zero_v1.py",
+      "sha256": "caeefbf501bb1264163a7a3094265acbdeae8718a4d3d5e4e464d13d768724e9"
+    }
+  ],
+  "failure_resolution": "No C/build/comparison failure. v1 passed15852cases. A shell edit parse error preceded all file changes; redundant unmodified v2 run stopped at verifiedPID34836 before receipt. v3 includes1536 actualcaller zero-scratch-offset fixtures and removes a dead fixture-initialization expression; exact C/DLL unchanged."
+}

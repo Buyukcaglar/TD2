@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_input_update.cmd",
+    "sha256": "db466325b316bfc296e49ced59a3477b754295a94db900c3908a1bbca97a001f"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_control_ops.c",
+      "sha256": "b787378cb4007d82e7c6e6ee3d9705d8f9066efe9fac9e38410c5f8a5ebcbd98"
+    },
+    {
+      "path": "src/recovered/td2ega_control_ops.h",
+      "sha256": "b0dca900b2d4497a6996e98397117b0c91382a9c0400f57d7366baa2d645f726"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.c",
+      "sha256": "ce85a66e28b75db3a1f002bbaa4832477116211dec3c73e917c207e4e51bf313"
+    },
+    {
+      "path": "src/recovered/td2ega_gameport.h",
+      "sha256": "db90386ecb2dd22f8efde0a40433a535d9c3b74c5c4dee8ce9021e7912115ed6"
+    },
+    {
+      "path": "src/recovered/td2ega_input_control.c",
+      "sha256": "0c64fc94f82da90fd039803c46e54c08d7bf6386dd1d121226ae9d0f55494632"
+    },
+    {
+      "path": "src/recovered/td2ega_input_control.h",
+      "sha256": "abe2bda3514528703f4c92a82206e6798b5f39e7ee2c1b91a23f7819a36c1ae7"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll.c",
+      "sha256": "db346611e51e4e7e45df78efedc3013b393d664fc7f5b0f35ee42f317310c2a3"
+    },
+    {
+      "path": "src/recovered/td2ega_input_poll.h",
+      "sha256": "e656de9d0d943c2d5ea5b408ce64039df8a3bf277a7b7817a0229c1738c53c10"
+    },
+    {
+      "path": "src/recovered/td2ega_input_update.c",
+      "sha256": "147b869baf042b9c503f97961f1b2c88934d8d4d9aade70af41fd4ed4ae28bc5"
+    },
+    {
+      "path": "src/recovered/td2ega_input_update.h",
+      "sha256": "efb0d3f39dbf358159df52b878087f89a38ae8f4e73f776b62be0fc4d2b3f442"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.c",
+      "sha256": "5ba1a5663d3ab534b05362b734637fe5abcd4c4f45d5c3b7d2fbf52310a1dbc7"
+    },
+    {
+      "path": "src/recovered/td2ega_key_dispatch.h",
+      "sha256": "17bbb527c847a3beb63b35ce097540a5cb5a6b1bb950695747792addab490c56"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.c",
+      "sha256": "2670f03a4739d3e9a9501f49c202f74fe0b0b80fabf956cb677cb9f22b4f3ddc"
+    },
+    {
+      "path": "src/recovered/td2ega_signed_motion.h",
+      "sha256": "1ca9473ab53fa3b545dcb697df135ddcea989691dc877628b76c90bd4bc4663f"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.c",
+      "sha256": "1b909523f1bd8d729732ee8d87851cd78ae1c0f52bffb4bc4c869cb46244973a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_primitives.h",
+      "sha256": "f5268e3f61b99886753dfd9e15ccff31c3823250ecb901f0e12fc3d4b1fa566a"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.c",
+      "sha256": "6ca4968297479261fb7bda6db8e15a219d9e8ebdf8aa419ea427834a4858f4ae"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_targets.h",
+      "sha256": "792daf39cb91e4de11393dee93b8b0f936db73659b78ac0f6790cd7d48d41d66"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_control_ops.obj",
+      "sha256": "9c1f4b82f5802062d5998f637fe211d4b525aeff09d4c9dee7aa86af3e177519",
+      "bytes": 5256
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_gameport.obj",
+      "sha256": "4ddc5c7f8502de6a62aac2827c5c4c3664a583aee840c1da708ac2440506848a",
+      "bytes": 7558
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_input_control.obj",
+      "sha256": "c68e643cfc1ecb15a3253817647596086855d6e4668c317d8ae63a8ca0c97766",
+      "bytes": 5624
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_input_poll.obj",
+      "sha256": "c6e4be07de07adbeb508628998fbb8091909c93df6b75015ddf9918d412731b7",
+      "bytes": 7982
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_input_update.dll",
+      "sha256": "2817296be44a59f0aa35ce7e1bb170ccea75c0473038f1fbb0f1fc70511be104",
+      "bytes": 113152
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_input_update.obj",
+      "sha256": "af7a9e37645df1b8ac58f5ef63d360a3534e12af0f787199718e53b0472f1e42",
+      "bytes": 4075
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_key_dispatch.obj",
+      "sha256": "0b90f273a5f50540455646c81b29652dec5daa4b56489fdff9e7e6fdf6b64582",
+      "bytes": 2279
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_signed_motion.obj",
+      "sha256": "8a8e252c9fc868023088b9a10f290fcb25cb78ffa3374544aafa09a73412889d",
+      "bytes": 3114
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_sim_primitives.obj",
+      "sha256": "35a937fe659aff3b13980ab319dcabe56838877122f52cae1b42cd722918fd52",
+      "bytes": 4591
+    },
+    {
+      "path": "analysis/build/input-update-repro-v3/td2ega_sim_targets.obj",
+      "sha256": "cbc00d9c8c7afdbafc67207f8e3919c2ef821261c56b87ecea99251f6f78c656",
+      "bytes": 4395
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/input-update-build-v3.log",
+    "sha256": "0322c913be1e135adef854549f334d18f2261b1461538c4d40e530aa4fc1a02f"
+  },
+  "limit": "ExplicitBIOSresponseIFDF servicecontract; Explicit initial/prepared branch-form inputs at424A/4275/42AD where applicable. Complete420A recoverednative composition, actualrootplus13calleeentries under serializedsyntheticBIOS/port/farcallback andscanner targetdomains. DS/SS/EScontrast, scratch/BP/DI/state effects; no byte-ring/core/IRQ/fullstate/resource/game acceptance.",
+  "function_id": "FN-EGA-000367",
+  "historical_initial_only": "docs/recovery/evidence/td2ega-initial-input-contract-history-v1.json",
+  "historical_preserving_flags": "docs/recovery/evidence/td2ega-bios-flag-contract-history-v1.json"
+}

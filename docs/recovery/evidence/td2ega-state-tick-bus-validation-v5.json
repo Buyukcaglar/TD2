@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000365"
+  ],
+  "vectors": 25024,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "2220e5cc7c16a3aba24691863080f5aa12072cc2ba7c7a94e07499ae7ddec103",
+  "source_sha256": "a2d4aeb58ddd7e6e06fb9b627a01e6ce92b913debc9d254265f344826455ef3c",
+  "validator_sha256": "f7c9e21e978bff554b5d917a6c09a25ea08a6fa0b3288493b27c73d56a36f8c8",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_input_update_bus.py",
+      "sha256": "f4f2a6ef4296794aa9c83ed92633f9e3c139498038bec1cd6c7de06290d646f0"
+    },
+    {
+      "path": "tools/validate_sim_controller.py",
+      "sha256": "455517159049add9390240fcf5432ca2156bb16bb417cdd72d83659c0af2de41"
+    },
+    {
+      "path": "tools/validate_mode_controller.py",
+      "sha256": "81f63d908b8912b77ce2bca68cbb44385f1ebb580fe88ac31347f7ebc9e977fd"
+    },
+    {
+      "path": "tools/validate_record_controller.py",
+      "sha256": "f9edeae995307561833d78d8acea6c6cd2890a29beb2fa3f95b952adaf2743d5"
+    },
+    {
+      "path": "tools/validate_field_controller.py",
+      "sha256": "32755c33086adcbaa84b3ae6e6ed24d54f5e57cd1698ad24685e7b54df334b18"
+    },
+    {
+      "path": "tools/validate_secondary_fields.py",
+      "sha256": "ab2b7196f913a248e7baf0db6e5b191a36526e3a80ac8e1a3a54627f35655b2d"
+    },
+    {
+      "path": "tools/validation/validate_state_tick_bus_diagnostics.py",
+      "sha256": "726700b686c5a31cc0ba6b147f0eef5582fa6b8e30bc1b0ebf2d86283d660e11"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-input-update-bus-validation-v3.json",
+      "sha256": "92fca5b5a4de5b8000516bf9809686350a679adf38fd179cf9e5186ea1815776"
+    },
+    {
+      "path": "analysis/history/state-tick-bus-build-setup-v1.json",
+      "sha256": "1f9f4d48763c04112a29915b1b37659abf1cd555fa7ae736e7276e1ea58c2126"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-state-tick-bus-context-v2.json",
+      "sha256": "99ad5245ec3268e3412b65baf4fe5e8ac8b5ccb36de3ca39009298de4ba83be2"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-refinement-v2.json",
+      "sha256": "cdddc4674219cbd1b42ca4a6e2751035f61088882b5e4e71ac358fb7174d2ea8"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-refinement-v3.json",
+      "sha256": "037341414ae09ebb186d58f886dcc0c5bc75ca6660feffaac0382f123b2ff2bf"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-refinement-v4.json",
+      "sha256": "0f7d97911b30c7ac264f0254d6c5f13475d376988f66cb99a68e4d687f1c02c7"
+    },
+    {
+      "path": "analysis/history/state-tick-validation-attempt-v4.json",
+      "sha256": "9857de75b2421dac2f22cae7ac37b057ccf414a6431a3a1181495c958fb75b0c"
+    },
+    {
+      "path": "analysis/history/state-tick-nonlocal-probe-v1.json",
+      "sha256": "fb7c273cc7f2368f31cc20cadef2a9073251162d54c6d8745871aa290b431a6a"
+    },
+    {
+      "path": "analysis/reviews/probe_state_tick_nonlocal_v1.py",
+      "sha256": "d2ca0b0c73b3436718cc1ce19ca1d241ccb92c10c4fc0547f3fdad6f57f6f6fb"
+    }
+  ],
+  "original_instructions_executed": 24854592,
+  "instruction_sites_in_fence": 2813,
+  "instruction_sites_exercised": 1249,
+  "root_instruction_sites_in_fence": 80,
+  "root_instruction_sites_exercised": 80,
+  "actual_callee_bodies_in_fence": 61,
+  "synthetic_callback_farRET_operations": 2304,
+  "fixture_coverage": {
+    "prefix_3": 8384,
+    "root_CALLs": 97472,
+    "CPU_and_modeled_INT_writes": 4168192,
+    "modeled_INT_frame_writes": 48576,
+    "actual_69B7_entries": 16192,
+    "PUSHF_words": 448,
+    "actual_780E_entries": 192,
+    "mode_nonlocal_exits": 256,
+    "AF_choice_0": 23616,
+    "form_(0, 0, 1)": 3128,
+    "tag_base": 1536,
+    "AF_choice_1": 1408,
+    "root_far_RETF": 14144,
+    "tag_counters": 12288,
+    "tag_root_budget": 1536,
+    "tag_callbacks": 2304,
+    "prefix_6": 960,
+    "raw_child_return": 1536,
+    "tag_simulation": 5376,
+    "tag_mode_records": 1024,
+    "tag_stack_alias": 704,
+    "tag_nonlocal_probe": 256,
+    "form_(0, 0, 2)": 3128,
+    "form_(0, 2, 1)": 3128,
+    "form_(0, 2, 2)": 3128,
+    "form_(2, 0, 1)": 3128,
+    "form_(2, 0, 2)": 3128,
+    "form_(2, 2, 1)": 3128,
+    "form_(2, 2, 2)": 3128
+  },
+  "limits": "Whole403B originalroot80sites/11CALLs plusactualoriginalcalleeinstructions; previouslyunit-reviewedchildcodecoverage remainsseparatefromthiscallerprofile. ActualSS/farrootRET/DS-ES-DI-BP restoration/motionfullFLAGS-inputINT/actual69B7/actual56EDnonlocalPOPAX-RET/actualPUSHF-POPFprofile/wholeRAM-GPR-CFIFDF-control-writecounts. UndefinedAF materializedonlyatmodeledINTFLAGS orpostCPU-PUSHF storage; noCODE-hookEFLAGSrewrites. Explicitbudgets/unknownindirect/division-or-POPFprefixes distinctfromsourceerrors. Keycallbacks ABIeffects+genericRETF/notbodyproof; sourcewriter-reset-lifetime-IRQ/core/P1-GATE remainopen. NoDOSsession/realdevices/renderer/audio/fullresources/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+}

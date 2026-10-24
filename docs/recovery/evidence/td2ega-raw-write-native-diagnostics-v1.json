@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 10,
+  "script_sha256": "6cd9c73a56485d8c86a1dcaa6a8fd38c75abb65bd489c85e05252eeef9eedef1",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "4a7482a505a425825d62dd272ba753c5d15c8bade7257d6b68ef176b78358ede",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_raw_write.py",
+      "sha256": "fd7afe371d73d8e6a31e0e3eaae89c3b6211dfa1660af74bf3395741348d9c10"
+    }
+  ],
+  "limits": "Eightnativeinvalidprofilechecks plusadapterfailure/invalidreturnedflag prefixes. SeparatefromoriginalDOSerror/rootreturn/rawerrorfarcall andnativebefore-servicebudget. NoactualOS/file/IRQ/core/game/fidelity."
+}

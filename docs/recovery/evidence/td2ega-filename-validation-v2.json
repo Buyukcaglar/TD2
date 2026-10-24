@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "function_id": "FN-EGA-000181",
+  "result": "pass",
+  "vectors": 1835,
+  "native_only_diagnostic_cases": 3,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "function_module_offset": 56595,
+  "function_length": 32,
+  "function_sha256": "f926e5ccb0c3d7dd7bee434dfcfb09e5568a48049e1b46d2bfec48be06de6f31",
+  "library_sha256": "4aedc4f686969152566483d1614611962564aec08bfe08faceda8ce55104f775",
+  "source_sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075",
+  "validator_sha256": "652e532c76374fa0a39a17c00d14c84517ade7db3cd741ddccbb01c9e997544d",
+  "original_instructions_executed": 2561665,
+  "coverage": [
+    "All256 bytevalues inthree contexts",
+    "Separator positions0..255",
+    "Seeded512 variedbyte paths",
+    "Empty input, offsetzero, case/slash distinctions, embeddedterminator andfull64KiB spans",
+    "Guest AX/argumentcopy, preservedregisters/segments, farframe, flags and memoryguards"
+  ],
+  "limits": "Nonwrapping terminatedbyte spans only. Native missing-terminator diagnostics have no original-equivalence claim. No DOS/filesystem, resource codec, secondcompiler/host, game integration or fidelity."
+}

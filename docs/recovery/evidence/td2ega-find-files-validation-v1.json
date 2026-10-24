@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000143",
+    "FN-EGA-000144"
+  ],
+  "result": "pass",
+  "vectors": 262882,
+  "native_only_diagnostics": 2,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "9c74b7e033f3b775aade46b7456afb77dfb042f8530d3698a897a3bc5b8fc0e5",
+  "source_sha256": "95f7b0d0e049d0d670b546ef4d877c162537eb9750008285aa262056ceb39291",
+  "validator_sha256": "9596c97b14468b56dd8f71086969c1116438a8b87bfd0192a4706cc3a95ebf9c",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sim_targets.py",
+      "sha256": "b7c0d8b64e5e651a29c5a0d475922837b4606872c59b8d98508cb46b5c2504c2"
+    }
+  ],
+  "original_instructions_executed": 115029816,
+  "fixture_coverage": {
+    "all_filename_near_offsets": 131072,
+    "found": 262618,
+    "prefix87": 87272,
+    "all_replacement_near_offsets": 131072,
+    "service_failure_and_alias_profiles": 528,
+    "failure": 264,
+    "prefix_separator_and_limit": 210
+  },
+  "api_reference": "docs/recovery/evidence/msdos-api-reference-v1.json",
+  "limits": "Complete5EF4/5F4E, serializedsyntheticDOS1A/4E/4F andfullgroup. GlobalDTA/path/basename ownership, CHattribute preservation,87byteprefix andliteral13byteforwardcopy/alias/wrap,near5D88/zero returns andconditionalES/DF preserved. NoactualDOSsearch/filesystem/version, callerinterleaving/resource/schema/core/game/fidelity acceptance. Native service diagnostics outsideoriginal."
+}

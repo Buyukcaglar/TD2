@@ -1,0 +1,3596 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "3c718abc5952c10ecf905eabc5017bdca6d9a95de51a06aed5407e269374dfb4",
+  "vectors": 224,
+  "original_instructions_executed": 39264,
+  "cases": [
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 4096,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 0,
+      "selected_word": 65535,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 65535,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 1,
+      "selected_word": 0,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 1,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 2,
+      "selected_word": 1,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 2,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 3,
+      "selected_word": 2,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 3,
+      "control_bytes": [
+        248,
+        117,
+        117,
+        117
+      ],
+      "instructions": 192,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 4,
+      "selected_word": 3,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 280,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 65535,
+      "selected_word": 65534,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 65534,
+      "control_bytes": [
+        248,
+        118,
+        118,
+        119
+      ],
+      "instructions": 76,
+      "queries": 1
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 0,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 1,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 2,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 0,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 1,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 2,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    },
+    {
+      "load_segment": 9029,
+      "synthetic_helper_ax": 257,
+      "selected_word": 256,
+      "first_equipment_index": 3,
+      "second_equipment_index": 3,
+      "result_word": 0,
+      "control_bytes": [
+        203,
+        117,
+        117,
+        117
+      ],
+      "instructions": 298,
+      "queries": 2
+    }
+  ],
+  "conclusion": "09D8 unconditionally reaches DEC AX and stores helper-return-minus-one at DS5657 before actual002E. Helper AX1 (and0101 by low-byte comparison) admits both synthetic equipment queries and installs CB/75/75/75; DS007C receives0. AX0 wraps selected word toFFFF and rejects all tested query indexes.",
+  "limits": "Actual0477 helper/file success, main history and later state-machine execution are not exercised. Synthetic AX/INT11, isolated loaded copies, DF0. Stops before5D83; no timer semantics, DOS session, complete state-machine or fidelity acceptance."
+}

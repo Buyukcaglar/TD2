@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_block_request.cmd",
+    "sha256": "a15d0153e68c8258f22e302bafc846a2a4157a79ec32ecb363cc36429474a9b1"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_block_request.c",
+      "sha256": "f1b581c93578503f35e7f17bb0f734931df5700b1dd8371f4cf9d93d0d43787c"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.c",
+      "sha256": "7479905e9074c4de5b9fd6c48f7902a3dec03127728ae9f777a1c1eda5698186"
+    },
+    {
+      "path": "src/recovered/td2ega_block_adjust.h",
+      "sha256": "d56d77af874656170dedc475b46af63d5470473684fc4d324e6d0f583dbb30a5"
+    },
+    {
+      "path": "src/recovered/td2ega_block_request.h",
+      "sha256": "b6ee29221e4c33dfc140b6d21c061efc64da4633a3c3b46527aa0f5bea6a4099"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/block-request-repro/td2ega_block_request.dll",
+      "sha256": "03b0ea8bec18f58ca9252e6a109153c6495f4251b6f6b45989844c4e9a3c06b5",
+      "bytes": 107520
+    },
+    {
+      "path": "analysis/build/block-request-repro/td2ega_block_request.obj",
+      "sha256": "20ec946ba81ecc7c5b38f90c2af6da1dee5c5fb0b47204b26de947b2ae692174",
+      "bytes": 7634
+    },
+    {
+      "path": "analysis/build/block-request-repro/td2ega_block_adjust.obj",
+      "sha256": "b4dddf130b00bdb3cc1aebfa809848e55f2e22335df5d8c1a6bfd02eaadd96ae",
+      "bytes": 4911
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/block-request-build-v1.log",
+    "sha256": "f4d350492232f1013fc7e04a2db37598c6181a07f17d72b6eb1d153f4a069a02"
+  },
+  "limit": "Actual13A8:2852/28C0/fullSS/inheritedBP/nearCALL/secondPUSHSI-actualPOPSI/CFbranches/rawmode-cursor/wordrounding/sharedsyntheticDOS48-4Aservicebudget/fullreturnedGPR-BP-DS-IFDF/orderedmetadata/farRET. Callbackbusmutations included/excludedfrominstructionwritecounts; SS-SP-CSpreserved/realINTframesomitted. Nativebudgets/rawchildnearRET/rawrootfarRET exposedafterinstructionneverfollowed. No allwriters/validdomains/caller/capacity/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000324"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000325"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-block-request-context-v1.json",
+    "sha256": "b403e9ef4753f4980bc181e33654188edce5ab975a90d53f443047f5adf2feaf"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_block_request_before_write_hook_v1.py",
+      "sha256": "91269ccff59742343a9fb7f6488701b88b5d384fab028d9fd77680cc463ffd4d"
+    },
+    {
+      "path": "analysis/history/validate_block_request_before_first_row_v2.py",
+      "sha256": "f6bcbf9a329e54d91ccc51bd783a07f857785630f4c811e83b82f7d742740c96"
+    },
+    {
+      "path": "analysis/logs/block-request-validation-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analysis/logs/block-request-validation-v2.log",
+      "sha256": "abeff43452394e2338f14340f39c1a4c9b2ab85a5839045eed1bff82121d2999"
+    }
+  ],
+  "failure_resolution": "FirstvalidatorfailedsetupmissingWRITEhook, correctedvalidatoronly. v2matched20432cases butfirstrowkeycoupledwithhighguardrejection, sevenfeasiblesitesmissed. Selectedv3adds1008independentfirstrowfixtures/all92sites; noC/build/instructioncomparisonfailure, C/DLLunchanged."
+}

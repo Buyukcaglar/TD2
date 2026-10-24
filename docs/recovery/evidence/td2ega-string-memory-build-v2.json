@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_string_memory_v2.cmd",
+    "sha256": "9c7ac2d34f77c7a0830ce8161b9313eaa459d616db0e4dd522fc1b31c1de28e3"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_string_memory.c",
+      "sha256": "448034c548fafa78df75074e8d19a44fece3e8d8a30bfe8cbdf05edf20c4a3fa"
+    },
+    {
+      "path": "src/recovered/td2ega_string_memory.h",
+      "sha256": "39a9d28936fc0ec39b791a506a6e3b97039d7ece76dc018efb292935a1aef962"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/string-memory-repro-v2/td2ega_string_memory.dll",
+      "sha256": "962fd011ea4aa791fbdc4fca3cc350f1b789064e01911495259dc8e41e3e1166",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/string-memory-repro-v2/td2ega_string_memory.obj",
+      "sha256": "4be3612e0616bb1e4b6680103c0f188d63bdae8bfaccc6316a79dc5e2e99d6ab",
+      "bytes": 7919
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/string-memory-build-v2.log",
+    "sha256": "9de86442885efd2ee7cbc115a63574476117f43a0b04b80ee82feb47080fec50"
+  },
+  "limit": "Actual near currentDS copy/tail-copy/compare/bytecase-compare/fill algorithms, incomingDF, word EA and sequential byte/word transfers, actual SS savedBP and raw far return operation. Full bus/GPR/BP/CFIFDF. Native before-element prefix separate. Caller capacity/NUL/DF/otherFLAGS/writers/lifetime/core/resource-fedP2/P3/device/session/game/fidelity remain open; no original source C types or host string substitutions inferred.",
+  "function_ids": [
+    "FN-EGA-000326",
+    "FN-EGA-000327",
+    "FN-EGA-000328",
+    "FN-EGA-000337",
+    "FN-EGA-000338"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-string-memory-context-v1.json",
+    "sha256": "5dd4c3397187621f97a8e8df2fdc51a39165484fed0e06c8dd6bc52d526b6fb6"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/td2ega-string-memory-attempt-v1.c",
+      "sha256": "e907e6247e721e7a43fa5dbbd53d2f0a699fa97f09df91ec67c7b5cfd50bfddc"
+    },
+    {
+      "path": "analysis/history/validate-string-memory-attempt-v1.py",
+      "sha256": "c931aea62c4ccacaa5d9a1902c9b901486e12ed5ddacc505c1872fc698720d9f"
+    },
+    {
+      "path": "tools/compile_string_memory.cmd",
+      "sha256": "671c7b980aafa8cf07a6a150491f0aee2014ea6cd8e2090dea43a5a4fcce99ab"
+    },
+    {
+      "path": "analysis/build/string-memory-repro/td2ega_string_memory.dll",
+      "sha256": "512c1e73d6c84ebe6c3ff1d30713e00afdbb7826e8e25a2a3bd0c8cf1a31dd48"
+    },
+    {
+      "path": "analysis/build/string-memory-repro/td2ega_string_memory.obj",
+      "sha256": "35f54e1f33a52f55a70266e1a289b062b8a49270bbd0dc564e8870f484b03dc8"
+    },
+    {
+      "path": "analysis/logs/string-memory-build-v1.log",
+      "sha256": "787bfd1187bee06b0229bcc1b41c30e22e90ffa5817859ff7b26bc05201b00c8"
+    },
+    {
+      "path": "analysis/logs/string-memory-validation-v1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "failure_resolution": "First C build CL mask subtraction lacked wrapping byte cast; observed original CL00/nativeCL20 under SS alias. Failed artifacts retained; corrected byte cast, fresh v2 build/full comparison passed."
+}

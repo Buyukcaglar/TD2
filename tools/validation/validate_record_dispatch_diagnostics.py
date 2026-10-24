@@ -1,0 +1,21 @@
+"""Native-only56ED interface/budgets/rawindirectprefix/actualtwo-wordunwind checks."""
+import argparse,ctypes as C,hashlib,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'tools'))
+from validate_record_dispatch import Registers,StateRegisters,Result,require
+def main():
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--library',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();lib=a.library.resolve();out=a.output.resolve();require(lib.is_relative_to(ROOT/'analysis') and out.is_relative_to(ROOT/'docs/recovery/evidence') and not out.exists(),'Private/freshpaths');fn=C.CDLL(str(lib)).td2ega_record_dispatch;fn.argtypes=[C.POINTER(C.c_uint8),C.c_uint32,C.c_uint16,C.c_uint16,C.c_uint16,C.POINTER(StateRegisters),C.c_uint32,C.c_uint32,C.POINTER(Result)];fn.restype=None;bus=(C.c_uint8*0x100000)();s=StateRegisters(Registers(0,0,0,0,0,0,0x4000,0,0,0),0,0);r=Result();vectors=0
+ for memory,count,sp,state in [(bus,len(bus)-1,34,C.byref(s)),(bus,len(bus),33,C.byref(s)),(bus,len(bus),0xffff,C.byref(s)),(None,len(bus),34,C.byref(s)),(bus,len(bus),34,None)]:
+  fn(memory,count,0x1000,0x9000,sp,state,8,4,C.byref(r));require(r.status==2 and r.bus_writes==0 and not any(bus),'Invalid beforeeffects');vectors+=1
+ for field in ['carry','interrupts_enabled','direction']:
+  target=s if field=='carry' else s.registers;setattr(target,field,2);fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),8,4,C.byref(r));require(r.status==2 and r.bus_writes==0,'Invalid '+field);setattr(target,field,0);vectors+=1
+ fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),8,4,None);require(not any(bus),'Nullresult beforeeffects');vectors+=1
+ fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),0,4,C.byref(r));require((r.status,r.current_sp,r.next_ip,r.calls,r.bus_writes)==(3,34,0x56fa,0,1),'BeforeCALL/3374write');vectors+=1
+ fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),8,0,C.byref(r));require((r.status,r.current_sp,r.next_ip,r.calls,r.bus_writes)==(3,30,0x52bf,1,5),'Actual5299prefix/nearframe/saveAX');vectors+=1
+ fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),8,4,C.byref(r));require((r.status,r.current_sp,r.next_ip,r.dispatch_offset,r.raw_target,r.return_kind,r.returned.carry)==(6,34,0x57a7,0x345e,0,0,1),'Byte0wrappedunknownnearJMPprefix/CF');vectors+=1
+ def put(o,v):bus[0x40000+o]=v&255;bus[0x40000+o+1]=(v>>8)&255
+ bus[0x433b8]=1;put(0x3460,0x57b7);fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),8,4,C.byref(r));require((r.status,r.current_sp,r.return_kind,r.raw_target)==(0,36,0,0x57b7),'Knownactualtarget/ordinarynearRET2');vectors+=1
+ put(0x52da,0);put(0x52d8,0);put(0x52ca,200);put(0x52c8,0);put(0x380d,1000);put(0x52de,0);put(0x331a,0x100);bus[0x433b7]=1;bus[0x90022]=0x11;bus[0x90023]=0x11;bus[0x90024]=0x22;bus[0x90025]=0x22;fn(bus,len(bus),0x1000,0x9000,34,C.byref(s),8,4,C.byref(r));require((r.status,r.current_sp,r.return_kind,r.discarded_word,r.returned.registers.ax,r.next_ip,r.returned.carry,bus[0x49258])==(0,38,1,0x1111,0x1111,0x2222,0,1),'POPactualnearwordthenRETsecond/unchangedCS');vectors+=1
+ put(0x52da,0);put(0x52d8,0);put(0x52de,0);bus[0x433b7]=1;bus[0x433b8]=1;put(0x9258,0x1111);put(0x925a,0x2222);fn(bus,len(bus),0x1000,0x4000,0x9258,C.byref(s),8,4,C.byref(r));require((r.status,r.current_sp,r.return_kind,r.discarded_word,r.returned.registers.ax,r.next_ip)==(0,0x925c,1,0x1101,0x1101,0x2222),'9258writechangesactualdiscardedSSword');vectors+=1
+ record={'schema':1,'result':'pass','vectors':vectors,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'image_sha256':hashlib.sha256((ROOT/'analysis/derived/td2ega-v1/TD2EGA.image.bin').read_bytes()).hexdigest(),'library_sha256':hashlib.sha256(lib.read_bytes()).hexdigest(),'validator_dependencies':[{'path':'tools/validate_record_dispatch.py','sha256':hashlib.sha256((ROOT/'tools/validate_record_dispatch.py').read_bytes()).hexdigest()}],'limits':'Eightinvalid/noeffects/nullresult/root-childbudgets/byte0wrappedunknownJMP/knownactualtarget/ordinaryRET2/literalPOPAX+RET2 andactualdiscardwordalias. Nativeonly, notindirectdomainclosure/allwriters/whole53A6/caller/lifetime/IRQ/core/resource/device/session/gameplay/fidelity acceptance.'};out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'result':'pass','vectors':vectors}))
+if __name__=='__main__':main()

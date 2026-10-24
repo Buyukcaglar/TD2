@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 12,
+  "script_sha256": "fef215a25ab3297af05e41429fe982b7d2bea7f9b56cc9cac0a16938385aa96d",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "8770d0bd396c4687f6f7019271fc84abe9ee3caef5c7c47edda48666c04517b5",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_math.py",
+      "sha256": "822a352bd0fc94ea1e30c37c5b0e201442496d47519d560b794243556e527bba"
+    }
+  ],
+  "limits": "Nine invalid profiles before bus effects, actual AXsave budget, minimumSP16 near return and actual SIsave budget. Native-only; counters, source errors, source units/recordbounds/caller/writer/lifetime/core/device/session/gameplay/fidelity separate."
+}

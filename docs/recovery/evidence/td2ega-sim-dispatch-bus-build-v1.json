@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-16",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_sim_dispatch_bus.cmd",
+    "sha256": "3e0826459b1b4f5e0268a41bb126ea9de204cba1b64b2f8d076241c889ac64a9"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_sim_dispatch_bus.c",
+      "sha256": "f81d9e2361ad54c5cad79ff0626812b9a88fe7103fc6b6a39f079bb2d49dc072"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_sim_dispatch_bus.h",
+      "sha256": "11753b58cc2629d3cd3bad53b50ef83dca4796ddcf39a89bd44b246af18220dd"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/sim-dispatch-bus-repro/td2ega_sim_dispatch_bus.dll",
+      "sha256": "b5fd86bb437bd80835ed68b36adb87ecb5a06dd8b777da9f99e08e8c55b4f9f5",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/sim-dispatch-bus-repro/td2ega_sim_dispatch_bus.obj",
+      "sha256": "9f16a1f7a7786798fed1012975d16a3d9776c943240046b629d6102e04dce322",
+      "bytes": 5130
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/sim-dispatch-bus-build-v1.log",
+    "sha256": "bc3c4e7bf453d280541d2040065edd61e7aaeec0295300c8577eefa922c7522f"
+  },
+  "limit": "Eleven literal near bodies/full1MiB bus/separateDS-SS/actualBP-defaultSScurve stores/liveDSread/CFZFIFDF-GPR-BP/actualreturnword/SP0..FFFE. Additional interface views only, no new unique original entries. Whole4674/491Dtargetbounds-allwriters/sourceownership-reset-IRQ-exclusion-lifetime/core remainopen. NoDOSsession/renderer/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure.",
+  "function_ids": [
+    "FN-EGA-000426",
+    "FN-EGA-000427",
+    "FN-EGA-000428",
+    "FN-EGA-000429",
+    "FN-EGA-000430",
+    "FN-EGA-000431",
+    "FN-EGA-000432",
+    "FN-EGA-000433",
+    "FN-EGA-000434",
+    "FN-EGA-000435",
+    "FN-EGA-000437"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-sim-dispatch-bus-context-v1.json",
+    "sha256": "c237648277210e4809e84a42e9ad5313669a3fae1fb07723432788ae4be1cb00"
+  }
+}

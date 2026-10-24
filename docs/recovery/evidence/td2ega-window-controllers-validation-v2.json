@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000382",
+    "FN-EGA-000383"
+  ],
+  "vectors": 57568,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "62a239b071ba93ed54984505573d8dcaf43e8dfc3ca405c905bc799df120b84b",
+  "source_sha256": "6a3c5a0b45c83d42ae93d71305848bb4fb4b20ccd533c2fd18d6f625cc7eca88",
+  "validator_sha256": "c324866dc1944a0d69852dabd8d705cfa999978c7cbf3910087650f3659f9363",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 1727334,
+  "instruction_sites_in_fence": 185,
+  "instruction_sites_exercised": 185,
+  "fixture_coverage": {
+    "entry_0": 31632,
+    "root_near_return": 55928,
+    "guard_CALLs": 26320,
+    "parent_4A2E_CALLs": 10784,
+    "child_control_setter_ring_CALLs": 31548,
+    "control_4612_CALLs": 10628,
+    "CPU_bus_writes": 373316,
+    "DS_equals_SS_cases": 30248,
+    "raw_root_returns": 552,
+    "no_sample_root_returns": 14320,
+    "entry_1": 25936,
+    "prefix_guard": 640,
+    "prefix_parent_sample": 192,
+    "prefix_child": 120,
+    "prefix_control": 36,
+    "raw_product_return": 96,
+    "raw_control_return": 96,
+    "raw_setter_return": 96,
+    "raw_sample_root_return": 172,
+    "raw_ring_return": 192
+  },
+  "limits": "Actual4AFAnear/windowwrites/signedCL-CMP-statebranches/actual4B5DbyteDEC-TESTperiodgate/4D26fullSSrequiredZF/frozenintervalC/actualnear4A2EfullSS-control-setter-ring/globalguard-parent-child-controlCALLcaps/wholebus-GPR-BP-CFIFDF-rootZF/control/counts. Entry0SP0..FFFE/entry1SP22..FFE0; no actualcaller-writers-validselector-tablecapacity-sharedsource-reset-IRQ-lifetime-core acceptance. NoDOSsession/device/audio/fullresourcecodec/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+}

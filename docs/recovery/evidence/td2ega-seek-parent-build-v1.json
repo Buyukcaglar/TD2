@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_seek_parent.cmd",
+    "sha256": "fe90324cbc2e8594786c5dedbe3c328306ce49b8a88c10b1523e27cd3009435e"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_seek_parent.c",
+      "sha256": "7aa2dac03c48fd738e6e5cd2b8d56123ef265ea17ba45b8187c59734081df0ac"
+    },
+    {
+      "path": "src/recovered/td2ega_seek_handle.c",
+      "sha256": "4a8fa40785affe9afa1fed4008cdcc439a985f3267a9b21689ca588d4519b878"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.c",
+      "sha256": "99238f542699d92cfa92f6a1cba57564acd9ffa492c0f0476ef69192db5a3556"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_seek_handle.h",
+      "sha256": "ab9483017f35a2938583107acd2d88c9d417951e9eeaca32ff74ae521a2f89a7"
+    },
+    {
+      "path": "src/recovered/td2ega_seek_parent.h",
+      "sha256": "e673b8d83212fb37166e5d4da1c705b7be2a38e943f5362767c5d8c756b5860e"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_table_scalar.h",
+      "sha256": "6d32432598bd7050a7d589f73d305c24be04bf14a5904ef57cbd7b5c80379e76"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/seek-parent-repro/td2ega_seek_parent.dll",
+      "sha256": "7ce7d7ad5ce2bbbf1eacd3b7bc8e8c04541e54cafe31c185332f6bdb57d3998e",
+      "bytes": 111104
+    },
+    {
+      "path": "analysis/build/seek-parent-repro/td2ega_seek_parent.obj",
+      "sha256": "3a9a3d1d4325a2643e79b6a5f091a55dbe428eb7d1726b79a5296a565287cdcb",
+      "bytes": 7682
+    },
+    {
+      "path": "analysis/build/seek-parent-repro/td2ega_seek_handle.obj",
+      "sha256": "5c8eac78ad260fe537123798b1d5c87ca70b10d8ad2acd62c0d66e3ad5bc5adb",
+      "bytes": 6732
+    },
+    {
+      "path": "analysis/build/seek-parent-repro/td2ega_table_scalar.obj",
+      "sha256": "b9d818b6a96f678b674ad2b65572931b667c175a6631e38533fdfe42d5970596",
+      "bytes": 5790
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/seek-parent-build-v1.log",
+    "sha256": "4e62b0f7f5f994f5ff218802f2cca10bea8ec66cf792bb3eeda9b70364e564d9"
+  },
+  "limit": "Actual2AD8 oneSSword plus actual225E/094A, threefarCALLpools/twolayersactualSSlocals/saves/near-farframes/fullbus/GPR/BP/CFIFDF/control/writecount. SyntheticDOS42fullreturnedstate/busmutations/SS-SP-CS preserved, actualINTentryframes omitted. Rawmode/negativeoffset/query/end/restore/finalseek andignoredCF sourcepaths, unsignedhandlelimit/returnedDS-BXbyteflagclear retained. NativebeforeINT/adapterfailure/rawreturns distinct fromoriginalerrors/normalreturns, targetsexposedafterRET neverfollowed. Parentfirst-current(1)/second-end(2) pools havezerooffset; thirdrestore(0) rawsavedposition resultignored. Thuschildnegativequery/end/restorepreflight23sites unreachablefromtheseparentpools, notglobaldead. Actualcaller/record-handlewriters/capacity/lifetime/IRQ/core/actualDOS/resource/device/session/gameplay/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000336"
+  ],
+  "covered_original_local_helpers": [
+    "FN-EGA-000311",
+    "FN-EGA-000272"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-seek-parent-context-v1.json",
+    "sha256": "d54a8fbcf8a889a474cf9a9be6eb44e0d8aa9b0bbdf8be2bee5920784d123592"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/validate_seek_parent_before_return_classes_v1.py",
+      "sha256": "d76447f5aecbf7eebaf75d83f9b2bc01523b1b9a37c62daf2700a62e8868e49a"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-seek-parent-validation-v1.json",
+      "sha256": "fcafab6a60bbb6fa93df85298d99a8fde7f615c16f2742d10ac12db4819f5e52"
+    },
+    {
+      "path": "analysis/logs/seek-parent-validation-v1.log",
+      "sha256": "d4b4006c6cc8a66d691d702315ce66ec5a3f37c5cd51068b2909b343ea5c8656"
+    },
+    {
+      "path": "analysis/refine_seek_parent_return_classes_v1.py",
+      "sha256": "de63b2b8d2c6f32a3d3ac38ec41087cb897644e159818d25b9b48b8e6db05bea"
+    }
+  ],
+  "failure_resolution": "No C/build/comparison failure. v1passed29648cases butraw_mapper_returnlabelcombinedseekfarandmappernearreturns. Selectedv2 separatesactualreturnclasses, adds256root-returnaliascases/96rawrootreturns. All3824rawnestedreturns areseekfarRET, zerorawmappernearRETinselectedcomposition. C/DLLunchanged; nativev1dependencyhashsupersededbyv2."
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 17,
+  "script_sha256": "c912ebe190983c745b6c45713153e807814630dc0dee7eeb572387ca00dfd013",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "150d9840599e297ba567ab8b1759dc7454bad09688c4f00a18c9ae3764754b80",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_seek_handle.py",
+      "sha256": "a5d3fd5d21a0b0a95adda87c164a64a1dff0e97d5ec6d1bbea3dd0b91782c1c7"
+    }
+  ],
+  "limits": "Teninvalid/noeffects/nullresult/missing-badadapter/minimumSP24mapper/beforeINT/invalidindexbypass/successAXDX preservation checks. Nativeonly, noactualDOS/file/IRQ/caller/lifetime/core/resource/device/session/gameplay/fidelity admission."
+}

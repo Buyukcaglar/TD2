@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "original_image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "5dea1ecccda6b817068833e18ab5152a52508cfdc18bddf3d5cb0fe8bde0a423",
+  "source_trace": "docs/recovery/evidence/td2ega-main-mutator-validation-v2.json",
+  "source_trace_sha256": "7db3f7571a212ed568655e4c74b26bca407195898c81976c2c8c38eb94967f48",
+  "reviewed_explicit_indirect_mechanisms": 44,
+  "additional_saved_near_return_mechanisms": 1,
+  "saved_near_return": {
+    "site": "13A8:0162",
+    "targets": [
+      "13A8:006E",
+      "13A8:007B"
+    ],
+    "preconditions": "Onlythetwo002E callsinto007E, CS2Csavedword and1920fencedmutator cases. RETtargets alreadyrepresentedbyconservativecallerfallthrough; notfollowedashelper-bodytail."
+  },
+  "registered_union_entries": 440,
+  "states": [
+    {
+      "name": "initial_image",
+      "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+      "ledger": "analysis/flow/mutable-v3/initial_image/direct-flow.json",
+      "ledger_sha256": "238a538bf779840940acf3d3a53b2dd1a47ae5d5ca5d5b4516378dbfd5979b58",
+      "function_candidates": 440,
+      "instruction_locations": 35547,
+      "syntactic_code_bytes": 92306,
+      "overlap_byte_count": 0,
+      "patches": []
+    },
+    {
+      "name": "prepared_high_drive",
+      "image_sha256": "e0b08302409b8a2ad03e4a60989e794cd7063335df48c50a93fef173cce9d067",
+      "ledger": "analysis/flow/mutable-v3/prepared_high_drive/direct-flow.json",
+      "ledger_sha256": "9bcfe9344e262cba7f8f5d3de3c70a3b7d10bbf969ea93f4f4e238e891e5d45f",
+      "function_candidates": 440,
+      "instruction_locations": 35547,
+      "syntactic_code_bytes": 92304,
+      "overlap_byte_count": 0,
+      "patches": [
+        {
+          "module_offset": 34951,
+          "old_byte": 248,
+          "new_byte": 248
+        },
+        {
+          "module_offset": 44762,
+          "old_byte": 118,
+          "new_byte": 118
+        },
+        {
+          "module_offset": 44805,
+          "old_byte": 118,
+          "new_byte": 118
+        },
+        {
+          "module_offset": 44861,
+          "old_byte": 119,
+          "new_byte": 119
+        },
+        {
+          "module_offset": 80699,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 80852,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 81498,
+          "old_byte": 33,
+          "new_byte": 144
+        }
+      ]
+    },
+    {
+      "name": "prepared_low_drive",
+      "image_sha256": "fa10bfcfc75f186b1a2638593599fa583ce4b8629cd325a29d6cab459cc766fe",
+      "ledger": "analysis/flow/mutable-v3/prepared_low_drive/direct-flow.json",
+      "ledger_sha256": "46bcf8b543b56a1825972cccc1836b125cf072837eb9f2d8960e89b4e97c81d0",
+      "function_candidates": 440,
+      "instruction_locations": 35543,
+      "syntactic_code_bytes": 92294,
+      "overlap_byte_count": 0,
+      "patches": [
+        {
+          "module_offset": 34951,
+          "old_byte": 248,
+          "new_byte": 203
+        },
+        {
+          "module_offset": 44762,
+          "old_byte": 118,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 44805,
+          "old_byte": 118,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 44861,
+          "old_byte": 119,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 80699,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 80852,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 81498,
+          "old_byte": 33,
+          "new_byte": 144
+        }
+      ]
+    },
+    {
+      "name": "prepared_mixed_query",
+      "image_sha256": "3a0c4fa29349b5f7907d5361c23e7ccd82e8de746b8d9da07d47f31c671b4fba",
+      "ledger": "analysis/flow/mutable-v3/prepared_mixed_query/direct-flow.json",
+      "ledger_sha256": "1268077ad574a0a41aa31eedf5cc9675c6091d29bcb6906ea762bfbc22fb96cd",
+      "function_candidates": 440,
+      "instruction_locations": 35547,
+      "syntactic_code_bytes": 92304,
+      "overlap_byte_count": 0,
+      "patches": [
+        {
+          "module_offset": 34951,
+          "old_byte": 248,
+          "new_byte": 248
+        },
+        {
+          "module_offset": 44762,
+          "old_byte": 118,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 44805,
+          "old_byte": 118,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 44861,
+          "old_byte": 119,
+          "new_byte": 117
+        },
+        {
+          "module_offset": 80699,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 80852,
+          "old_byte": 33,
+          "new_byte": 144
+        },
+        {
+          "module_offset": 81498,
+          "old_byte": 33,
+          "new_byte": 144
+        }
+      ]
+    }
+  ],
+  "limits": "Four conservative code-state snapshots andone reconstructednear-return mechanism, notcomplete mutablegraph/transition/interrupt/caller-domain orportableEGA/CGA/runtime/fidelity acceptance. Initial-image no-conflict metrics cannotbeappliedtoallcode states."
+}

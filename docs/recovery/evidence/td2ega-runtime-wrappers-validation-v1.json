@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000291",
+    "FN-EGA-000282"
+  ],
+  "vectors": 65280,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b2b0ecb7ab11ad3623419977df2564d592448f5d091dcd4f573b2085df28d56a",
+  "source_sha256": "32b8018d6defeba76f4cfaada7fb839a55785c11df3fb51067264a8f8903ac42",
+  "validator_sha256": "96d3cacb14f47d66ccafb3ee77c0414bfe3474d5fad47a7a85215438ac356db2",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 829596,
+  "instruction_sites_in_fence": 55,
+  "instruction_sites_exercised": 55,
+  "fixture_coverage": {
+    "entry_0": 34560,
+    "root_far_return": 47652,
+    "actual_child_CALLs": 16800,
+    "bus_write_events": 190752,
+    "raw_root_returns": 240,
+    "minimumSP22_or26_cases": 22272,
+    "DS_equals_SS_cases": 32640,
+    "before_CALL_prefix": 16800,
+    "raw_child_far_return": 828,
+    "entry_1": 30720
+  },
+  "limits": "Actual184A+190E PUSHCS/nearCALL far-return frames and0DF0+2696 farframes, actualfrozenCchild bodies/fullreturnedstate/orderedrecordflag/free-bit/base-buffer-count reset, fullbus/SSargs/saves/GPR/BP/CFIFDF/control. Sourceguard/value/counter/SSaliases andminimumSP22/26. NativebeforePUSHCS orbeforefarCALL prefixes, actualchangedchild/rootcoordinates exposed afterRET neverfollowed. No hoststream type, fullcaller/record/arena/writer/lifetime/IRQexclusion/otherFLAGS/core/resourcefedP2/P3/session/gameplay/fidelity acceptance."
+}

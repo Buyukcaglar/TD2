@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 19,
+  "script_sha256": "0a3b29fdfc3cc2f780f0e8e023552bd90add29240cf84b6b06f3b69a8a4d6e8a",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "116e666f524bdcf4e66161b8690de3b5f5211d5bf75c4da3ff8d979c00d6e455",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_mode_controller.py",
+      "sha256": "81f63d908b8912b77ce2bca68cbb44385f1ebb580fe88ac31347f7ebc9e977fd"
+    }
+  ],
+  "limits": "Native interface/budget/unknown-transfer/knownretarget/actualSSsavedAX andtwo-wordnonlocalparentreturn diagnostics only. Originalx86 comparison separate; noallwriters/domain/caller/core/session/gameplay/fidelity acceptance."
+}

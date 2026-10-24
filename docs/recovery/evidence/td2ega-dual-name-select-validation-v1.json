@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000010"
+  ],
+  "vectors": 8176,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "62f194e5ab8eb825a65d426189d67989a37858d9ca00f29ca815cc85a53582bd",
+  "source_sha256": "9cf2dd164eaf8c11ed86812fdf8077949621acb46e0d69854090e2e8abaecbc1",
+  "validator_sha256": "c492ec2af807fab11fc62d3c792292925257813308b6da2a95835faeb2eed59d",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 1624786,
+  "instruction_sites_in_fence": 134,
+  "instruction_sites_exercised": 132,
+  "fixture_coverage": {
+    "prefix_call": 1536,
+    "actual_far_CALLs": 33134,
+    "child_operations": 47828,
+    "parent_iterations": 18874,
+    "bus_write_events": 235328,
+    "DS_equals_SS_cases": 4104,
+    "minimumSP28_cases": 1024,
+    "reverse_DF_cases": 4088,
+    "raw_root_returns": 104,
+    "returned_CF1_root_cases": 104,
+    "prefix_child": 1536,
+    "prefix_parent": 2030,
+    "far_root_return": 3062,
+    "raw_child_return": 12
+  },
+  "static_site_dispositions": [
+    {
+      "sites": [
+        "13A8:2978",
+        "13A8:2979"
+      ],
+      "scope": "0651fixedcopydestinations8428-90B0/even",
+      "reason": "LastPUSHAXbeforeactualfarCALLwrites8428or90B0destinationargument; distinctnonwrappingSSfarframe-ownBPsave/nointerveningdatawrites beforeTESTAL1. Standalone2956full26passed; notglobaldead."
+    }
+  ],
+  "limits": "Actual0000:0651 far/noargs/SSlocalcounter-currentDS8A7Asignedrereads/stride30two-casequeries8428-90B0/lastmatches9266-8CFE/primaryfallback0-secondary0or1fromactualcount/actual2B40-2956incomingDF/fullSS/allactualfarframes. SignedwordIMUL30*actualindices-DXAX-CF/lowwordpointerwrap/wordrecord+26/outputs8A82-9264/allfourADDSP4/MOVSPactualBP-POPBP-farRET. Wholebus/GPR-BP-CFIFDF/control/counts. NativeCALL-perchildoperation-rootiterationbudgets/rawchildfarreturnsafterRETneverfollowed. Serialized20bitRAM/historicalCPU-A20unqualified. No name-count-indexschema/NUL-capacity/allwriters/storage/DF-caller/ownership/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

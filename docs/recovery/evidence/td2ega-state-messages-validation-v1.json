@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "function_ids": [
+    "FN-EGA-000100",
+    "FN-EGA-000101",
+    "FN-EGA-000102",
+    "FN-EGA-000103",
+    "FN-EGA-000104",
+    "FN-EGA-000105",
+    "FN-EGA-000106",
+    "FN-EGA-000107",
+    "FN-EGA-000108",
+    "FN-EGA-000123",
+    "FN-EGA-000130"
+  ],
+  "result": "pass",
+  "vectors": 7140,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "45509894feaadf906bb519040a8b427b623f4befc2d855633b46326351984dd8",
+  "source_sha256": "6db1ebff11a8d881623c6ca1af4cfc27449965e74f164088f1d90c3ad0570cbb",
+  "validator_sha256": "d8e8cca9a85ab0371e19ed936e9dc962eb1f1bf6377f62b533e80f71a781a477",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 401496,
+  "fixture_coverage": {
+    "36E0": 660,
+    "same_DS_SS_False": 3570,
+    "leaf_calls": 56970,
+    "same_DS_SS_True": 3570,
+    "3713": 648,
+    "371F": 648,
+    "372B": 648,
+    "3737": 648,
+    "3743": 648,
+    "374F": 648,
+    "375F": 648,
+    "3788": 648,
+    "3F0D": 648,
+    "5C98": 648
+  },
+  "instruction_sites_exercised": 122,
+  "instruction_sites_in_fence": 122,
+  "limits": "Elevenentry/sharedcontrol bodies, near3788RET2/otherRETF4, paired10liveargumentwords/20bytecleanup,3wordformatter,CSAF54farptr, counters/optionalbranch/inputloop/activitygate/CFIFDF/returnedsegments andvirtualstack compared. Graphics/text/formatter/wait/input leafbodies arefarABImocks, no actualrendering/textdecode/clock/IRQ/inputsession/resource/core/game/fidelity. Nativeframe/budget/adapterdiagnostics separate."
+}

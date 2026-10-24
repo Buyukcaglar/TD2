@@ -1,0 +1,323 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "2cbaadff5bfd4525cd30da2a921b1a82f829f927d1ae804e2f1ccf1b305c9aab",
+  "instruction_observations": [
+    {
+      "site": "06C9:840A",
+      "bytes": "55",
+      "text": "push bp"
+    },
+    {
+      "site": "06C9:840B",
+      "bytes": "8bec",
+      "text": "mov bp, sp"
+    },
+    {
+      "site": "06C9:840D",
+      "bytes": "57",
+      "text": "push di"
+    },
+    {
+      "site": "06C9:840E",
+      "bytes": "b800a0",
+      "text": "mov ax, 0xa000"
+    },
+    {
+      "site": "06C9:8411",
+      "bytes": "8ec0",
+      "text": "mov es, ax"
+    },
+    {
+      "site": "06C9:8413",
+      "bytes": "bace03",
+      "text": "mov dx, 0x3ce"
+    },
+    {
+      "site": "06C9:8416",
+      "bytes": "b005",
+      "text": "mov al, 5"
+    },
+    {
+      "site": "06C9:8418",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:8419",
+      "bytes": "42",
+      "text": "inc dx"
+    },
+    {
+      "site": "06C9:841A",
+      "bytes": "b002",
+      "text": "mov al, 2"
+    },
+    {
+      "site": "06C9:841C",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:841D",
+      "bytes": "bac403",
+      "text": "mov dx, 0x3c4"
+    },
+    {
+      "site": "06C9:8420",
+      "bytes": "b002",
+      "text": "mov al, 2"
+    },
+    {
+      "site": "06C9:8422",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:8423",
+      "bytes": "42",
+      "text": "inc dx"
+    },
+    {
+      "site": "06C9:8424",
+      "bytes": "b00f",
+      "text": "mov al, 0xf"
+    },
+    {
+      "site": "06C9:8426",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:8427",
+      "bytes": "8b4606",
+      "text": "mov ax, word ptr [bp + 6]"
+    },
+    {
+      "site": "06C9:842A",
+      "bytes": "33ff",
+      "text": "xor di, di"
+    },
+    {
+      "site": "06C9:842C",
+      "bytes": "b9401f",
+      "text": "mov cx, 0x1f40"
+    },
+    {
+      "site": "06C9:842F",
+      "bytes": "f3aa",
+      "text": "rep stosb byte ptr es:[di], al"
+    },
+    {
+      "site": "06C9:8431",
+      "bytes": "bace03",
+      "text": "mov dx, 0x3ce"
+    },
+    {
+      "site": "06C9:8434",
+      "bytes": "b005",
+      "text": "mov al, 5"
+    },
+    {
+      "site": "06C9:8436",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:8437",
+      "bytes": "42",
+      "text": "inc dx"
+    },
+    {
+      "site": "06C9:8438",
+      "bytes": "b000",
+      "text": "mov al, 0"
+    },
+    {
+      "site": "06C9:843A",
+      "bytes": "ee",
+      "text": "out dx, al"
+    },
+    {
+      "site": "06C9:843B",
+      "bytes": "5f",
+      "text": "pop di"
+    },
+    {
+      "site": "06C9:843C",
+      "bytes": "5d",
+      "text": "pop bp"
+    },
+    {
+      "site": "06C9:843D",
+      "bytes": "cb",
+      "text": "retf "
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "06C9:642E",
+      "site": "06C9:6431",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:840A"
+    },
+    {
+      "owner": "06C9:90E8",
+      "site": "06C9:9114",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:840A"
+    },
+    {
+      "owner": "1769:000E",
+      "site": "1769:007C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:840A"
+    }
+  ],
+  "caller_instruction_observations": [
+    {
+      "site": "06C9:642E",
+      "bytes": "33c0",
+      "text": "xor ax, ax"
+    },
+    {
+      "site": "06C9:6430",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:6431",
+      "bytes": "9a0a84c906",
+      "text": "lcall 0x6c9, 0x840a"
+    },
+    {
+      "site": "06C9:6436",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "06C9:9110",
+      "bytes": "b80000",
+      "text": "mov ax, 0"
+    },
+    {
+      "site": "06C9:9113",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "06C9:9114",
+      "bytes": "9a0a84c906",
+      "text": "lcall 0x6c9, 0x840a"
+    },
+    {
+      "site": "06C9:9119",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "1769:0079",
+      "bytes": "2bc0",
+      "text": "sub ax, ax"
+    },
+    {
+      "site": "1769:007B",
+      "bytes": "50",
+      "text": "push ax"
+    },
+    {
+      "site": "1769:007C",
+      "bytes": "9a0a84c906",
+      "text": "lcall 0x6c9, 0x840a"
+    },
+    {
+      "site": "1769:0081",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    }
+  ],
+  "caller_cleanup_observations": [
+    {
+      "site": "06C9:6436",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "06C9:9119",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    },
+    {
+      "site": "1769:0081",
+      "bytes": "83c402",
+      "text": "add sp, 2"
+    }
+  ],
+  "literal_port_sequence": [
+    {
+      "site": "06C9:8418",
+      "port": 974,
+      "width_bytes": 1,
+      "value": 5
+    },
+    {
+      "site": "06C9:841C",
+      "port": 975,
+      "width_bytes": 1,
+      "value": 2
+    },
+    {
+      "site": "06C9:8422",
+      "port": 964,
+      "width_bytes": 1,
+      "value": 2
+    },
+    {
+      "site": "06C9:8426",
+      "port": 965,
+      "width_bytes": 1,
+      "value": 15
+    },
+    {
+      "site": "06C9:8436",
+      "port": 974,
+      "width_bytes": 1,
+      "value": 5
+    },
+    {
+      "site": "06C9:843A",
+      "port": 975,
+      "width_bytes": 1,
+      "value": 0
+    }
+  ],
+  "static_direction_address_cases": 16000,
+  "literal_fill": {
+    "ES": 40960,
+    "initial_DI": 0,
+    "initial_CX": 8000,
+    "forward_last_offset": 7999,
+    "reverse_first_offsets": [
+      0,
+      65535
+    ],
+    "reverse_last_offset": 57537,
+    "argument_read_site": "06C9:8427",
+    "argument_SS_offset": "actualBP+6/read afterfourOUTs"
+  },
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "Far/oneavailableSSwordfill/PUSHBP-MOVBP-SP/PUSHDI; noCLD. ESexplicitA000. All16bitSPserialized20bitRAM/actualSSwords, no borrowedchildAPIstackprofile. DS-BX-SI unchangedbysourcebody, IFDF preserved/ports-deviceadaptercannotclobberGPR-FLAGS.",
+    "FirstfourliteralbyteOUTs3CE5/3CF2/3C42/3C50F precedeargumentreadactualSS[BP+6]. ThenXORDI0/CF0/CX1F40/REPSTOSB AL8000elements. Literaladdressesonly; no pixel-count/planar-register-latch semantics oractualhardware model inferred by this packet.",
+    "IncomingDF0writesA000:0000..1F3F; DF1writes0000thenFFFFdownthroughE0C1, offsetwrapretained. No hostmemset-forward assumption. Typedkind3devicewrite ownsbyteeffect underselectedrawRAMadapter; CPUdirections/countsadvanceonlyacceptedbyte. NativeeventbudgetprefixbeforeOUTorelement, no cleanupmodeportsinventedonprefix.",
+    "Afterall8000elements, finaltwoOUTs3CE5/3CF0. LowALchangespreserveAHfromactualfillword, finalCX0/DX3CF/ESA000/CF0, actualPOPD I-POPBP/plainfarRET4. Filloradaptermutationscanoverwriteargs/saves/farwords; no cachedinputorreturns. Port-responseGPR/valueignoredbecauseOUT/STOSBdo notreadthem.",
+    "Allthreeactualcallerspushliteralzero/nextADDSP2consumescaller-ownedfillargument andkillsarithstatus. ActualDF/IF/storage/liveness/fullcaller domainsremainopen; sourceprefix-kindselectionandoriginal EGAexeedition preserved, no CGAeditionrecovery.",
+    "No new initializedresource/media span. Rawport-CPUwriteeventsequence/fullSS/privateoriginalcomparison separatefromEGAplanar/register/latchhardwareeffects/renderer/audio/session/gameplay/fidelity. HistoricalCPU-A20/segmentlimits/IRQ/core unqualified."
+  ],
+  "limits": "Whole30-site840A/sixliteralbyteOUTs/REP8000byteeffects/incomingDF/SSargument-after-ports/actualsavedwords-farRET/threecallerzero-ADDSP2/static16000offsetcases. Fullbusoriginalcomparison separate. SelectedrawRAMdeviceadapterdoesnotadmitEGAplanar-register-latchsemantics/renderer. No actualcaller/DF-IF-storage/domain/writers/capacity/exclusion/CPU-A20/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

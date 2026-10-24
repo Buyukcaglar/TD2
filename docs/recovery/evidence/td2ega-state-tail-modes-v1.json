@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "c590c2faf3d5b01c6b7f3975268f1448fb05b8e0f0476c3e5bb03bb0735221f0",
+  "source_mutator_trace_sha256": "7db3f7571a212ed568655e4c74b26bca407195898c81976c2c8c38eb94967f48",
+  "vectors": 2048,
+  "cases_by_mode": {
+    "initial_or_rejected": 1024,
+    "both_queries_admitted": 1024
+  },
+  "original_instructions_executed": 16384,
+  "conclusion": "Mutator-admitted RETF at1BF7 returnssignextended5490 byte, preservesentryES/CF anddoesnotwritelow0086. Initial/rejected CLC pathreturnsAX2/ES2/CF0 andwritesword2 atphysical0086. SavedSI/DS/BP, untouchedDI andfarframe checked forall256states, twocarry inputs andtwoloadsegments.",
+  "limits": "Isolated18byteepilogue withsyntheticframe/state only; notwhole1B2C, livecaller/BIOS/DOS profile, mutabletransition/interleaving, gameplay orfidelity acceptance."
+}

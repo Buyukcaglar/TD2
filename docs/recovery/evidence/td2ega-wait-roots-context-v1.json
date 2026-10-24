@@ -1,0 +1,199 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "9b5f67885d4a1ec9679540bb0d2e981ebabdff198d19beb1b8ba2be4e3725860",
+  "instruction_observations": [
+    {
+      "site": "06C9:69FE",
+      "instruction": "lcall [0x64dc]"
+    },
+    {
+      "site": "06C9:6A02",
+      "instruction": "retf"
+    },
+    {
+      "site": "06C9:6A30",
+      "instruction": "lcall 0x6c9, 0x69fe"
+    },
+    {
+      "site": "06C9:6A35",
+      "instruction": "cmp ax, 0"
+    },
+    {
+      "site": "06C9:6A38",
+      "instruction": "je 0x6a30"
+    },
+    {
+      "site": "06C9:6A4A",
+      "instruction": "lcall 0x6c9, 0x69fe"
+    },
+    {
+      "site": "06C9:6A54",
+      "instruction": "lcall 0x6c9, 0x79c8"
+    },
+    {
+      "site": "06C9:6A59",
+      "instruction": "cmp dx, word ptr [0x681a]"
+    },
+    {
+      "site": "06C9:6A5F",
+      "instruction": "ja 0x6a67"
+    },
+    {
+      "site": "06C9:6A61",
+      "instruction": "cmp ax, word ptr [0x6818]"
+    },
+    {
+      "site": "06C9:7A3B",
+      "instruction": "lcall 0x6c9, 0x79c8"
+    },
+    {
+      "site": "06C9:7A40",
+      "instruction": "cmp dx, word ptr [0x681a]"
+    },
+    {
+      "site": "06C9:7A46",
+      "instruction": "ja 0x7a4e"
+    },
+    {
+      "site": "06C9:7A48",
+      "instruction": "cmp ax, word ptr [0x6818]"
+    },
+    {
+      "site": "06C9:C63E",
+      "instruction": "lcall 0x6c9, 0x69fe"
+    },
+    {
+      "site": "06C9:C648",
+      "instruction": "lcall 0x6c9, 0xc692"
+    },
+    {
+      "site": "06C9:C64D",
+      "instruction": "cmp dx, word ptr [0x68d8]"
+    },
+    {
+      "site": "06C9:C651",
+      "instruction": "jb 0xc63e"
+    },
+    {
+      "site": "06C9:C653",
+      "instruction": "cmp ax, word ptr [0x68d6]"
+    },
+    {
+      "site": "06C9:C657",
+      "instruction": "jb 0xc63e"
+    },
+    {
+      "site": "06C9:79C9",
+      "instruction": "mov ax, word ptr [0x5e8c]"
+    },
+    {
+      "site": "06C9:79CC",
+      "instruction": "mov dx, word ptr [0x5e8e]"
+    },
+    {
+      "site": "06C9:C693",
+      "instruction": "mov ax, word ptr [0x5e90]"
+    },
+    {
+      "site": "06C9:C696",
+      "instruction": "mov dx, word ptr [0x5e92]"
+    }
+  ],
+  "direct_caller_candidates": [
+    {
+      "owner": "0000:0090",
+      "site": "0000:015E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    },
+    {
+      "owner": "0000:01B0",
+      "site": "0000:0258",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    },
+    {
+      "owner": "00C0:027A",
+      "site": "00C0:037E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A4A"
+    },
+    {
+      "owner": "010C:000E",
+      "site": "010C:0152",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A4A"
+    },
+    {
+      "owner": "0143:01E1",
+      "site": "0143:041C",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A4A"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0705",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0CA4",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    },
+    {
+      "owner": "0267:0039",
+      "site": "0267:0A43",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    },
+    {
+      "owner": "16BB:000A",
+      "site": "16BB:00AA",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:C63E"
+    },
+    {
+      "owner": "16BB:000A",
+      "site": "16BB:00FE",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:7A3B"
+    },
+    {
+      "owner": "16FC:007C",
+      "site": "16FC:018E",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    },
+    {
+      "owner": "16FC:0358",
+      "site": "16FC:0468",
+      "kind": "lcall",
+      "size": 5,
+      "target": "06C9:6A30"
+    }
+  ],
+  "flow_ledger": "analysis/flow/indirect-v8/direct-flow.json",
+  "flow_ledger_sha256": "612c0550bb70f25d71900ebdfa5c342b8f42090156859390833d596e2b11e8f4",
+  "facts": [
+    "Inputcondition comparesfullAX with0; AH-onlynonzero values areaccepted, noAL-onlynormalization.",
+    "6A4A/7A3B unsignedhighgreater branches skip lowcompare; C63E requiresbothDX>=high andAX>=low evenwhenDXgreater.",
+    "79C8rawDS5E8C/5E8E andC692rawDS5E90/5E92 aredistinctownedpairs, bothCLI/read/STI/RETF andIF1; nouints/frequency inferred.",
+    "69FE currentDS64DCfarptr rereadperinputcall, dynamicfarreturn6A02 thenouterRETF4; actualinputtargetbody remainsexplicitservice."
+  ],
+  "limits": "Staticinstruction/callerinventory only. Actualinput/counterwriters/lifetime/IRQ/reentry/exclusion/fullstate/core andresource-fedP2/P3/device/session/game/fidelity remainopen. Physical086C literalreader isunrelated; nohardwaretimebase/frequency. Syntheticcounterobservations arefixtureupdates, notdeliveredIRQs."
+}

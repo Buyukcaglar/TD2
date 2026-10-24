@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 14,
+  "script_sha256": "269880d007dc3383ed52d2f952fbeeecafe75114a39abe86ed1446cb2f22d76b",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "cd15796db88dfd239aced37f995192a81fa85e2ae646ea53f4026a24a409a753",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_close_handle.py",
+      "sha256": "4670edbe58587ec7f01995d05ebc7160c959f6742b896617c365817b0f335efc"
+    }
+  ],
+  "limits": "Ten invalid bus/count/SP/null/boolean profiles beforeeffects, minimumSP20linkedmapper composition, missing/badadapter andbeforeINTbudget diagnostics. Nativeonly,separatefromoriginalDOSerrors/actualINT/file/device/session/game/core/fidelity."
+}

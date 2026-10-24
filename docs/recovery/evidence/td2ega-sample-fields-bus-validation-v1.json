@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000366",
+    "FN-EGA-000379"
+  ],
+  "vectors": 40164,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7f0f40a24c1a8baa8b41c1a62f1bdb324cb75a09b19c39325d58c0f8f12725fa",
+  "source_sha256": "978d52683d122c37c3ae57d2c2e163db38368e9fbfafd97dfd12f39808585d25",
+  "validator_sha256": "5651d6aace1c2629d447a355685d60568a8eb4a94179c9a6cc56780eb53c80f9",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    }
+  ],
+  "original_instructions_executed": 779586,
+  "instruction_sites_in_fence": 95,
+  "instruction_sites_exercised": 95,
+  "fixture_coverage": {
+    "entry_0": 12332,
+    "CPU_bus_writes": 108890,
+    "DS_equals_SS": 21324,
+    "changed_near_return_words": 880,
+    "near_SP_wraps": 224,
+    "signed_DEC_80_return_without_store": 224,
+    "target_table_postwrite_alias": 576,
+    "entry_1": 27832
+  },
+  "limits": "Additional412C/4639fullSSnearinterfaces/currentDS/actualnearreturnword/GPR-BP-CFZFIFDF/fullbus/writecounts/SP0..FFFE. Post332A-store tablealias/signedDEC80-JLoverflow/INC-bytewrap/wordINC-DECwrap/branchflags retained; oldgroup APIsunchanged. Whole403B/420A/caller-writers-storage-lifetime-IRQ-exclusion/core open. No newuniqueoriginalentry andnoDOSsession/devices/renderer/audio/fullresourceformat/complete-state-machine/gameplay/fidelity; physical086Cunassigned/CGAbehindEGAclosure."
+}

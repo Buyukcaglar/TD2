@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "result": "pass",
+  "scope": "Representative actual candidate C versus original instructions, synthetic disjoint native caller profile; no game/DOS/device/session/fidelity acceptance",
+  "error": null,
+  "vectors": 16,
+  "vectors_by_family": {
+    "byte_ring": 16
+  },
+  "candidate_mismatches": {},
+  "baseline_mismatches": {},
+  "excluded_ss_alias": {},
+  "witnesses": [],
+  "original_instructions_executed": 1584,
+  "original_instruction_sites_exercised": 11,
+  "original_sites": [
+    "06C9:780E",
+    "06C9:780F",
+    "06C9:7813",
+    "06C9:7817",
+    "06C9:781B",
+    "06C9:781F",
+    "06C9:7821",
+    "06C9:7823",
+    "06C9:7827",
+    "06C9:7829",
+    "06C9:782A"
+  ],
+  "fixture_stream_sha256": "dd3c1151827b00ad1312b44bdbb2382e27fce6166c3accad60ff56b44e444863",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "normalized_mz_sha256": "71b5a2113033dd456b049b75f26f1996284a3ffb75d082c350003caa8b0289a2",
+  "relocations": 1652,
+  "load_segment": 4096,
+  "validator_sha256": "e3b8eac08ded3064ec4bee8669f1b5a13e03a7cb61bde6cc0812951846f474ca",
+  "library": "analysis\\candidates\\kylofon-r03-v1\\native-build-v1\\candidate\\td2r03_probe.dll",
+  "library_sha256": "9920550632c937c9fbd1be06e3385b1105b4fc09e33ab8ebea0f4362b39bf031",
+  "baseline_library_sha256": "a198154fc2375c98271672998de3bce1881181a1b61f7165d0e80eadd7cad806",
+  "build_record": null,
+  "dependencies": [
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    }
+  ],
+  "elapsed_seconds": 0.557,
+  "probe_limit": 16,
+  "limits": [
+    "Only selected entrypoints/fixtures; no inherited whole-core or previous raw-bus receipt credit.",
+    "C API scalar/state observations; GPR/FLAGS and original scratch stores are not native ABI promises.",
+    "Original SS scratch aperture SP-0300 through caller frame is excluded; four explicit live-argument aliases are reported outside admission.",
+    "Run-only codec ec high-bit and1..11escapes with disjoint bounded source/output; no supplied resources, ec0/fullLOOP or sequence-stage acceptance.",
+    "Graphics plot selects RAM planar branch; no EGA device/latch/register/pixel output acceptance.",
+    "20bit shared RAM mapping is an explicit serialized analysis bus profile, not observed hardware/A20 timing.",
+    "No actual keyboard BIOS, IRQ delivery/nesting, input event history, audio or supported historical caller reachability proof."
+  ]
+}

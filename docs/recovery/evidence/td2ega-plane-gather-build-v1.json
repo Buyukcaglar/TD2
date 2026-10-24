@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-15",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_plane_gather.cmd",
+    "sha256": "f473bfd00c89b3b129cb906842081ddbcb0fc8509432cd9c404fcee9a51578f5"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_plane_gather.c",
+      "sha256": "4388fccc8610faa4c184b7ee51e47ac03d11121e2e65781719602e3250133cec"
+    },
+    {
+      "path": "src/recovered/td2ega_line_draw.h",
+      "sha256": "087b2d0d1b859cf142250b7a7d48f798ef72d8b22c621792db58fe180b0e14db"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    },
+    {
+      "path": "src/recovered/td2ega_plane_gather.h",
+      "sha256": "ef07810f2c254182d0b2c9893c4a50935616fc35e8d4fdbe1c41d05a67dce2c3"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/plane-gather-repro/td2ega_plane_gather.dll",
+      "sha256": "83410b92fdeb141e8ae0acdd27976ccd48169b2d25015d34e96499a5b0022240",
+      "bytes": 106496
+    },
+    {
+      "path": "analysis/build/plane-gather-repro/td2ega_plane_gather.obj",
+      "sha256": "c393582be42224581b809cfa99d795c4285eb6009e0287db21edc0e8dc3c0099",
+      "bytes": 7864
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/plane-gather-build-v1.log",
+    "sha256": "f11713a01bc0d5f553d1834e5d4e753e5aa18fb6b6972c045f0d3bab06a6d79a"
+  },
+  "limit": "ActualAC40far/SSmemberoffset-segment-x-y/fullSS/headerx-ywrites-before-sharedlocals/rawwidth-height/signedxSAR3/CSrow-stride/ESmember-DSA000-CLD/fourbyte-overlappingwordnibbles/currentCSselector/packedCOPY+highnibblegap/liveSSwidth-height-start-stride-counter/configptr/DEC-JGwide/plane-row-port-copybudget/actualSSrestore-farRET/native5preRET. Fullbus-GPR-BP-CFIFDF/deviceABI/control/counts. RawRAMadapterownsbyteeffects/originalMOVSBidempotentstore. No formatdecode-capacities-allwriters-storage-lifetime-exclusion/device-readmap-latches-renderer/CPU-A20/core/resource/CGA/session/fidelity closure.",
+  "function_ids": [
+    "FN-EGA-000237"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-plane-gather-context-v2.json",
+    "sha256": "0b804d0d5a868587393eb084bdf89dae25eaea334e7f59c6e0fb9583074084af"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+    "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+  },
+  "prior_failed_attempt": [
+    {
+      "path": "analysis/history/plane-gather-review-attempt-v1.json",
+      "sha256": "07c9c42db470b9c416c5f64232bcf22f8683384f24bfd352d7f4ee9e2c4f57dd"
+    }
+  ],
+  "failure_resolution": "ReviewdraftallAC40assertionspassed/alternateAC64prefixhas13instructionsnot12. Exactdraft/logarchived; contextv2corrects13; C-DLL-comparison-nativeunchanged/no alternateentryadmitted."
+}

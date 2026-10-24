@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "source": {
+    "title": "Intel64andIA32ArchitecturesSoftwareDevelopersManualVolume2B",
+    "order_number": "253667-060US",
+    "date": "September2016",
+    "url": "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf",
+    "pdf_pages": 706,
+    "zero_based_pages": [
+      555,
+      556
+    ],
+    "printed_pages": [
+      "4-554",
+      "4-555"
+    ],
+    "locators": "REToperation/real-addressorvirtual8086/farreturn/OperandSize16/fullfourbytestacklimitcheck thenEIP-CS Pop"
+  },
+  "claim": "The2016real-address/v8086wordfarREToperationchecksallfourstackbytesagainstlimitsbeforepoppingIPandCS. Thisdoesnotqualifythe1989gamehistoricalCPUorchooseUnicornlinearloadversusseparatewordwrapas8086truth.",
+  "read_provenance": "OfficialPDFopened/readviawebtexton2026-10-15; no fullPDFdownload/hash claim.",
+  "backend_probe": {
+    "path": "analysis/reviews/far-return-stack-probe-v1.json",
+    "sha256": "adfad57608037b766121f6f094a379a2b76050951e28c90c347b7d916787be55"
+  },
+  "probe_script": {
+    "path": "tools/validation/probe_far_return_stack.py",
+    "sha256": "5e80d71447e6d26b1dc104e0711803378414d5da9589ede2991441ee29dc7a85"
+  },
+  "limits": "Referenceverification/24freshCPUbackendobservationsonly; no game/session/callerstackdomain/historicalCPU-A20-faultdeliveryqualification."
+}

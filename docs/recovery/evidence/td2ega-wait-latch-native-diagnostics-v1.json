@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "a4f4a158b7772df5b0e1871d2883d175833159afa620f2d70d36f3af9886f2c4",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "9b27ec20c8679fc53f53e0ef7aff825babbc2cc068fc5d7c85e79faa3cde8124",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_wait_control.py",
+      "sha256": "89b440d8e0ab395505e5b6d6a4a54b83cd85cf7f12a4ec0b4508f458e17e983b"
+    }
+  ],
+  "limits": "Five native-only diagnostics; excluded from original comparison/error equivalence. No original instructions, actualcounterIRQ/clock/input/device/core/game/fidelity admission."
+}

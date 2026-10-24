@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000252"
+  ],
+  "vectors": 17388,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "135e2ec77ac0eda10a98d3555b617df112396ff4028bc7620261ba3ec34a13c8",
+  "source_sha256": "594b95bef81fc695b30a79c5f6559fc0a45f4a95b205e4d9ad7f859567a4e444",
+  "validator_sha256": "d56024c32147b701397a54f76feeeeb724da817a1d0e58b2bc55ff6fcc7bd006",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 2654760,
+  "instruction_sites_in_fence": 125,
+  "instruction_sites_exercised": 125,
+  "fixture_coverage": {
+    "budget_prefix": 8928,
+    "actual_C701_calls": 27060,
+    "byte_transfers": 105048,
+    "bus_write_events": 565428,
+    "raw_root_returns": 76,
+    "minimumSP54_cases": 864,
+    "incoming_DF1_cases": 8694,
+    "SS_scratch_alias_cases": 5900,
+    "DEC8000_guard_returns": 320,
+    "source_CX0_column_prefixes": 628,
+    "nonzero_header_offset_cases": 13912,
+    "actual_caller_zero_scratch_offset_cases": 1536,
+    "root_far_return": 8460
+  },
+  "limits": "ActualC838+actualC701, fourSSargs/header-segment/principal/member/scratch DS transitions, nibble-normalizedfar addresses/raw count/shapes/flags, incomingDF STOSB/REP vs explicit forward-stride source, actualSSlocals/saves/near-farframes/fullbus/GPR/BP/CFIFDF/control. Word/bytewrap, zero-CX do-onceLOOP, signedDEC count8000 overflow guard, orderedtranspose/copyback/rereads. Native beforemember/plane/byte/REP budget distinct; executing-code writes excluded and checked. Synthetic table/member payload only, no suppliedresource decoding/fullformat/producer/capacity/allwriters/lifetime/exclusion/newcallerFLAGS/core/realdevice/session/gameplay/fidelity acceptance."
+}

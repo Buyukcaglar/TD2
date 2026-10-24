@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000153"
+  ],
+  "vectors": 35584,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "b34fdab9d893ec6f79c24e8145652ae983dec05c373d0f4b8372f4f037925082",
+  "source_sha256": "6f5dab553ec307cfe859bf6e83e41ca23899d16ddc8223466f5836b7b3177f89",
+  "validator_sha256": "1b6151044f9ae21dc38d7392b535bb1dcad3118c9b88eda63601804268e24c66",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_adjust.py",
+      "sha256": "9fbcff6541cb23e8b7db862f11f473d29f00ba720c16046dd0f1165ac17b6050"
+    },
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    },
+    {
+      "path": "tools/validation/twenty_bit_bus.py",
+      "sha256": "1bce95dbf03d5bfc5226a74772b25fbecbb58e03999e63e59ed172a8184a65d8"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-twenty-bit-bus-v1.json",
+      "sha256": "bc2c61831f2e4d1a3504c15d0c05765f56809e3cbb8aba68bd421f9a8d12af11"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-key-dispatch-validation-v1.json",
+      "sha256": "822f16900114528433d11efa522eaba5d309a5746b6c6be04a4485787356a730"
+    },
+    {
+      "path": "docs/recovery/evidence/intel-far-return-stack-reference-v1.json",
+      "sha256": "c5e95c256b9c1b10702a178ca750bb9cb837fc62c2613c907d8f752e0aacf64d"
+    },
+    {
+      "path": "analysis/reviews/far-return-stack-probe-v1.json",
+      "sha256": "adfad57608037b766121f6f094a379a2b76050951e28c90c347b7d916787be55"
+    }
+  ],
+  "original_instructions_executed": 630232,
+  "instruction_sites_in_fence": 42,
+  "instruction_sites_exercised": 42,
+  "synthetic_callback_farRET_operations": 11998,
+  "fixture_coverage": {
+    "root_RETF": 32316,
+    "actual_near_CALLBX": 12190,
+    "CPU_bus_writes": 141004,
+    "DS_equals_SS": 17796,
+    "changed_root_coordinates": 842,
+    "callback_DS_changes": 1122,
+    "callback_target_from_saved_BP": 48,
+    "callback_saved_SI_DI_BP_mutations": 1098,
+    "busy_guard_from_saved_BP": 144,
+    "prefix_3": 1280,
+    "raw_child_farRET": 1364,
+    "prefix_5": 624
+  },
+  "limits": "AdditionalactualSS6528/42originalsites/whole1MiB20bitRAM/GPR-BP-CFIFDF-normalZF/SSkeyrewrite-guard-table-aliases/savedDI-SI/PUSHCS-actualnearCALLBX/retiredfarcallbackresponse/actualrootRETF. Callbackbodies areexplicitABI effects plusprivategenericRETFinstruction; syntheticreturns excludedfromoriginalinstructioncount andnotbodyproof. Responsecanwrapactualrecoveredcallee later; unknown/rawreturnneverfollowed. NativebeforeCALL3/preunqualifiedfarRET5 prefixes separatefromoriginalerrors. Sameentrycountedonce/oldsource-DLL-receiptsfrozen. Callbackdomain-allwriters-lifetime-exclusion/actualIRQ/inputpoll-420A-403B-core/P1-GATE remainopen; noDOSsession/realdevices/renderer/audio/fullresourceformats/complete-state-machine/gameplay/fidelity. Physical086Cunassigned/CGAbehindEGAclosure."
+}

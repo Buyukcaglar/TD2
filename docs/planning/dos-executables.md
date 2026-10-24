@@ -2,6 +2,8 @@
 
 This is the earlier static planning snapshot. New Phase 1 results, including validated unpacking and startup/C recovery, are tracked in the [current recovery checkpoint](../recovery/README.md); the historical observations and limits below remain scoped to the planning inspection.
 
+On22 October2026, the [Kylofon static crosscheck](evidence/kylofon-static-crosscheck-v1.json) confirmed its EGA loader's size and three fixed markers against our independently admitted image, and aligned417 exact function starts. The [reuse assessment](kylofon-reuse-assessment.md) records the limits: no upstream input-image hash or retained original-oracle receipts, no new unpacking/runtime acceptance, and no CGA gate credit from its candidate index. Preserve the11-byte CGA remainder and range-specific segment/stack evidence.
+
 Snapshot date: 2026-10-13. Scope: read-only, static inspection of the supplied DOS executable bytes. No game, installer, loader, emulator, unpacker, disassembler, decompiler, or compatibility test was executed. No original file was modified. This document is a planning artifact, not recovered source or a claim of behavioral fidelity.
 
 All offsets in this document are hexadecimal **file offsets in the supplied, still-packed executable**, unless explicitly labelled segment-relative. They must not be reused as unpacked-image or runtime addresses. SHA-256 values pin the evidence to these exact supplied files.

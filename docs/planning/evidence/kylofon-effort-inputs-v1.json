@@ -1,0 +1,580 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Planning judgment for remaining work after R02/R03, not measured throughput or completed-phase credit",
+  "units": {
+    "hours_per_engineer_day": 8,
+    "days_per_engineer_week": 5,
+    "hours_per_engineer_week": 40
+  },
+  "starting_checkpoint": {
+    "backlog_tasks": 67,
+    "status_seen": {
+      "complete": 12,
+      "in_progress": 1,
+      "pending": 54
+    },
+    "core_task": "P1-05",
+    "P1_R04": "decision in progress at estimate preparation",
+    "accepted_native_exports": 215,
+    "whole_core_playable": false
+  },
+  "basis": {
+    "both_routes_keep_existing_tools_images_evidence_and_locally_authored_adapters": true,
+    "both_routes_may_consult_upstream_source_and_documentation": true,
+    "past_effort_excluded": true,
+    "phase_order_unchanged": true,
+    "no_credit_for_missing_CGA_Amiga_scenery_switching": true,
+    "all_acceptance_gates_budgeted": true,
+    "engineering_time_not_contemporaneously_logged": true
+  },
+  "mutable_plan_inputs": [
+    {
+      "path": "docs/planning/backlog.json",
+      "use": "All67 tasks and phase/dependency order; mutable parent plan is not pinned as an immutable input"
+    },
+    {
+      "path": "docs/planning/risks-and-estimates.md",
+      "use": "Historical initial43-98week baseline and reserve; not subtracted from remaining estimate"
+    }
+  ],
+  "measured_machine_evidence": [
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+      "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4",
+      "use": "build machine duration35.585seconds"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+      "sha256": "b4d92c11381dae416e490418768f849da12fb0c4b37022b21c76f5fd89a34954",
+      "use": "original-body machine duration81.974seconds;2233admitted/291baseline/4excluded"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+      "sha256": "219cbb195ce223df13d31084df7222e6e96a9f67ddeecd8d36416c9e3b81ebc3",
+      "use": "380supportcases;5.44209seconds"
+    }
+  ],
+  "work_packages": [
+    {
+      "phase": "P1",
+      "family": "EGA state/ownership/callers/indirect and mutable domains",
+      "tasks": [
+        "P1-05"
+      ],
+      "low_days": 15,
+      "high_days": 30,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P1",
+      "family": "Remaining arithmetic/RNG and mechanics",
+      "tasks": [
+        "P1-06",
+        "P1-08"
+      ],
+      "low_days": 10,
+      "high_days": 25,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P1",
+      "family": "Remaining platform contracts",
+      "tasks": [
+        "P1-07"
+      ],
+      "low_days": 5,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P1",
+      "family": "Drawing/menu and PC Speaker contracts",
+      "tasks": [
+        "P1-09",
+        "P1-10"
+      ],
+      "low_days": 10,
+      "high_days": 25,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P1",
+      "family": "EGA integration and gate review",
+      "tasks": [
+        "P1-11"
+      ],
+      "low_days": 5,
+      "high_days": 10,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P1",
+      "family": "CGA image/alignment/graphics and P1 gate",
+      "tasks": [
+        "P1-12",
+        "P1-13",
+        "P1-14",
+        "P1-GATE"
+      ],
+      "low_days": 10,
+      "high_days": 25,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P2",
+      "family": "Consumer registry and bounded wrapper/codec admission",
+      "tasks": [
+        "P2-01",
+        "P2-02"
+      ],
+      "low_days": 5,
+      "high_days": 10,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P2",
+      "family": "Graphics/animation/car and ordered SS data",
+      "tasks": [
+        "P2-03",
+        "P2-04"
+      ],
+      "low_days": 8,
+      "high_days": 16,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P2",
+      "family": "Routes/progression/signs/fonts",
+      "tasks": [
+        "P2-05",
+        "P2-06"
+      ],
+      "low_days": 7,
+      "high_days": 14,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P2",
+      "family": "Audio/catalog/selection/scores/embedded-media policy",
+      "tasks": [
+        "P2-07",
+        "P2-08",
+        "P2-09"
+      ],
+      "low_days": 5,
+      "high_days": 10,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P2",
+      "family": "Corpus disposition and gate",
+      "tasks": [
+        "P2-GATE"
+      ],
+      "low_days": 5,
+      "high_days": 10,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P3",
+      "family": "Native portable host/build and input lifecycle",
+      "tasks": [
+        "P3-01",
+        "P3-09"
+      ],
+      "low_days": 8,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P3",
+      "family": "External content and user profile",
+      "tasks": [
+        "P3-02",
+        "P3-08"
+      ],
+      "low_days": 5,
+      "high_days": 10,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P3",
+      "family": "Canonical state/flow/race integration",
+      "tasks": [
+        "P3-03",
+        "P3-04"
+      ],
+      "low_days": 8,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P3",
+      "family": "EGA/CGA presentation and speaker integration",
+      "tasks": [
+        "P3-05",
+        "P3-06"
+      ],
+      "low_days": 7,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P3",
+      "family": "Complete sessions/content/visual/audio/package/gate",
+      "tasks": [
+        "P3-10",
+        "P3-11",
+        "P3-GATE"
+      ],
+      "low_days": 12,
+      "high_days": 20,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P4",
+      "family": "Amiga edition/loading/relocations/patches",
+      "tasks": [
+        "P4-01",
+        "P4-02",
+        "P4-03"
+      ],
+      "low_days": 10,
+      "high_days": 25,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P4",
+      "family": "Amiga game C and platform semantics",
+      "tasks": [
+        "P4-04"
+      ],
+      "low_days": 15,
+      "high_days": 35,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P4",
+      "family": "Amiga resources/graphics/audio",
+      "tasks": [
+        "P4-05",
+        "P4-06",
+        "P4-07"
+      ],
+      "low_days": 15,
+      "high_days": 35,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P4",
+      "family": "Content identity and Northern Germany normalization",
+      "tasks": [
+        "P4-08",
+        "P4-09",
+        "P4-10"
+      ],
+      "low_days": 5,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P4",
+      "family": "Amiga validation and gate",
+      "tasks": [
+        "P4-11",
+        "P4-GATE"
+      ],
+      "low_days": 5,
+      "high_days": 10,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P5",
+      "family": "Semantic interfaces/capability matrix/providers",
+      "tasks": [
+        "P5-01",
+        "P5-02",
+        "P5-04"
+      ],
+      "low_days": 8,
+      "high_days": 18,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P5",
+      "family": "Atomic graphics and independent audio switching",
+      "tasks": [
+        "P5-05",
+        "P5-06"
+      ],
+      "low_days": 10,
+      "high_days": 22,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P5",
+      "family": "Northern Germany import and complete route play",
+      "tasks": [
+        "P5-03",
+        "P5-08"
+      ],
+      "low_days": 5,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    },
+    {
+      "phase": "P5",
+      "family": "Combination/failure/device/package/docs/gate",
+      "tasks": [
+        "P5-07",
+        "P5-09",
+        "P5-GATE"
+      ],
+      "low_days": 7,
+      "high_days": 15,
+      "estimate_kind": "engineering judgment"
+    }
+  ],
+  "route_I": {
+    "meaning": "No additional implementation adoption, while retaining all current knowledge/tools/local adapters",
+    "phase_days": {
+      "P1": {
+        "low_days": 55,
+        "high_days": 130
+      },
+      "P2": {
+        "low_days": 30,
+        "high_days": 60
+      },
+      "P3": {
+        "low_days": 40,
+        "high_days": 75
+      },
+      "P4": {
+        "low_days": 50,
+        "high_days": 120
+      },
+      "P5": {
+        "low_days": 30,
+        "high_days": 70
+      }
+    },
+    "total_days": [
+      205,
+      455
+    ],
+    "total_weeks": [
+      41,
+      91
+    ]
+  },
+  "route_Q_current_qualified": {
+    "meaning": "Only sampled native APIs/canonical loader implementation; no large-family credit",
+    "gross_implementation_credit_days": [
+      2,
+      5
+    ],
+    "extra_costs": [
+      {
+        "family": "symbol extraction and dependency closure",
+        "days": [
+          1,
+          3
+        ]
+      },
+      {
+        "family": "native data API to raw bus boundary",
+        "days": [
+          1,
+          3
+        ]
+      },
+      {
+        "family": "provenance/license/rebuild/fixture hookup",
+        "days": [
+          1,
+          2
+        ]
+      }
+    ],
+    "total_extra_overhead_days": [
+      3,
+      8
+    ],
+    "net_effort_change_days": [
+      -2,
+      6
+    ],
+    "midpoint_extra_days": 2,
+    "outer_arithmetic_total_days": [
+      203,
+      461
+    ],
+    "outer_arithmetic_total_weeks": [
+      40.6,
+      92.2
+    ],
+    "planning_rounded_weeks": [
+      41,
+      93
+    ],
+    "rounding": "Practical approximate whole weeks, not statistical bounds or mathematically outward rounding",
+    "booked_substantial_saving": false
+  },
+  "route_Q_conditional_expansion": {
+    "meaning": "Only after additional major EGA/game/format/host families pass admission; NOT current budget credit",
+    "gross_credit_days": [
+      45,
+      95
+    ],
+    "extra_overhead_days": [
+      25,
+      50
+    ],
+    "phase_pairs": [
+      {
+        "phase": "P1",
+        "baseline_days": [
+          55,
+          130
+        ],
+        "gross_credit_days": [
+          15,
+          35
+        ],
+        "extra_overhead_days": [
+          13,
+          26
+        ],
+        "conditional_days": [
+          53,
+          121
+        ]
+      },
+      {
+        "phase": "P2",
+        "baseline_days": [
+          30,
+          60
+        ],
+        "gross_credit_days": [
+          10,
+          25
+        ],
+        "extra_overhead_days": [
+          5,
+          12
+        ],
+        "conditional_days": [
+          25,
+          47
+        ]
+      },
+      {
+        "phase": "P3",
+        "baseline_days": [
+          40,
+          75
+        ],
+        "gross_credit_days": [
+          20,
+          35
+        ],
+        "extra_overhead_days": [
+          7,
+          12
+        ],
+        "conditional_days": [
+          27,
+          52
+        ]
+      },
+      {
+        "phase": "P4",
+        "baseline_days": [
+          50,
+          120
+        ],
+        "gross_credit_days": [
+          0,
+          0
+        ],
+        "extra_overhead_days": [
+          0,
+          0
+        ],
+        "conditional_days": [
+          50,
+          120
+        ]
+      },
+      {
+        "phase": "P5",
+        "baseline_days": [
+          30,
+          70
+        ],
+        "gross_credit_days": [
+          0,
+          0
+        ],
+        "extra_overhead_days": [
+          0,
+          0
+        ],
+        "conditional_days": [
+          30,
+          70
+        ]
+      }
+    ],
+    "matched_total_days": [
+      185,
+      410
+    ],
+    "matched_total_weeks": [
+      37,
+      82
+    ],
+    "matched_saving_days": [
+      20,
+      45
+    ],
+    "matched_saving_weeks": [
+      4,
+      9
+    ],
+    "midpoint_sensitivity": {
+      "baseline_days": 330,
+      "gross_credit_days": 70,
+      "extra_overhead_days": 37.5,
+      "conditional_days": 297.5,
+      "conditional_weeks": 59.5
+    },
+    "adverse_crossed_assumption_net_saving_days": -5,
+    "favorable_crossed_arithmetic_net_saving_days": 70,
+    "limits": "Matched low/high workload cases, not probabilistic confidence bounds. Favorable crossed14week arithmetic is not budgetable without cheap broad acceptance. Refuse failed families and retain independent fallback."
+  },
+  "reserve": {
+    "fraction": [
+      0.25,
+      0.4
+    ],
+    "purpose": "New discoveries/rework beyond named base work; not omitted acceptance or duplicate known obligations",
+    "qualified_current_exact_total_days_with_reserve": [
+      253.75,
+      645.4
+    ],
+    "qualified_current_exact_total_weeks_with_reserve": [
+      50.75,
+      129.08
+    ],
+    "qualified_current_approximately_rounded_weeks": [
+      51,
+      130
+    ],
+    "waits_and_elapsed_calendar": "User/hardware/input waits separate; no promised release date"
+  },
+  "recommendation": "Current planning budget approximately41-93engineerweeks before contingency; hold no substantial net saving for current11-entry subset. Larger conditional route37-82weeks only after admission. Record actual human package costs at upcoming gates."
+}

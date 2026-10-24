@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 14,
+  "script_sha256": "e0e47a752948871243d434a10d92a901e4f83f9ede9def97d6aa5ccc072e14aa",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c360c6dfcfc33873500172307a6894fb45b3a2114214e82e8676ec274e44c893",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_stream_records.py",
+      "sha256": "122a7cea6b4953d5bd2f0e0f3f93de172aa02edd796639c785bc1101eabfd614"
+    }
+  ],
+  "limits": "Teninvalidbus/count/SP/null/selector/boolean profiles plusminimumSP32membership/recordbudget andnormalorderedreset checks. Nativeonly; actualcaller/index/bounds/writers/lifetime/core/device/session/game/fidelity separate."
+}

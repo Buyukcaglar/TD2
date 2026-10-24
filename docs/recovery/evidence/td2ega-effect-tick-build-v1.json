@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_effect_tick.cmd",
+    "sha256": "a91fb9bb88f89c6daa396ab84e8ef8b4fcec9069d79632bb70460a4f0c747155"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_effect_tick.c",
+      "sha256": "ebc7cee4039c2bfa88a48bf200191a1fd8106bacb4a15e47fac39358bac1f8ac"
+    },
+    {
+      "path": "src/recovered/td2ega_effect_tick.h",
+      "sha256": "d8261f2cc04f2b67a90aa9e229d3ad707574f63bae40c5c0371b6dd0c3a8f40e"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/effect-tick-repro/td2ega_effect_tick.dll",
+      "sha256": "6bd1c5541ed109dbfc764f61919d26610ee213ef89c050e8c08a72312946a7e2",
+      "bytes": 105472
+    },
+    {
+      "path": "analysis/build/effect-tick-repro/td2ega_effect_tick.obj",
+      "sha256": "a10c577eabb1c5ddc706990c5587ae623ad0c30e0abd2a1716cf26cdda173d19",
+      "bytes": 6174
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/effect-tick-build-v1.log",
+    "sha256": "1917c37a94623ed1eadaf39a0fbb6050225fb83a07b045ffcee355500b602e24"
+  },
+  "limit": "Serialized effect6269 C17, synthetic fullbus and typedport requests,11command targets/threeJSloopcounters/queuedfarptrs. Explicit command-budget diagnostics; no sourcecorpus/PIT/speaker/IRQ/timebase or audio/game/fidelity admission.",
+  "function_ids": [
+    "FN-EGA-000403"
+  ]
+}

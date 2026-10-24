@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_small_platform.cmd",
+    "sha256": "87984dd62ec1d5b9f36ffdb3546ee738d8092724c8eb128d3ae827b335e705a6"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_small_platform.c",
+      "sha256": "d1b229550c8c427524fa77a943553f3463922a4c36ec569161c1e880da86cb78"
+    },
+    {
+      "path": "src/recovered/td2ega_small_platform.h",
+      "sha256": "6c20618ac2534f960a8bd0c795a4acad57f9aeebc6926883de57e1d4556bb14c"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/small-platform-repro/td2ega_small_platform.dll",
+      "sha256": "d862713e527e064ab48a239445d398e37df36f7689fe6f7c2d2393172cbfbca2",
+      "bytes": 104960
+    },
+    {
+      "path": "analysis/build/small-platform-repro/td2ega_small_platform.obj",
+      "sha256": "955373e24e704f41fd592a4cc685ad7b099df91438be31b24c001678deccde64",
+      "bytes": 7062
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/small-platform-build-v1.log",
+    "sha256": "fa7ceba0657c0a30b252d8ca09235dc67bba7810ae3c5a90838eee2a9e36bb35"
+  },
+  "limit": "Five finite wrappers, explicit syntheticINT21/11/1A requests andfullreturnedGPR/BP/CFIFDF includingmutatedDS/BP, currentSSargumentrereads/fullbus/materializedBP/farreturnframes andnativebefore-callprefixes. Modeled servicecontrol preservesSS/SP/CS; UnicornINT hook andnativeadapter omitrealinterrupt-entry/returnframes andactualOS/BIOS/IRQ/devicebehavior. RawAL-byte/DL/AH/CL/order andcurrentDS52C2/4 masks/stores retained, nofrequency/unit orphysical086C semantics assigned. Realplatform/caller/writer/lifetime/fullstate/core/gameplay/fidelity andresource-fedP2/P3 remainopen; nativeinvalid/adapterfailure checks separate.",
+  "function_ids": [
+    "FN-EGA-000135",
+    "FN-EGA-000137",
+    "FN-EGA-000342",
+    "FN-EGA-000136",
+    "FN-EGA-000134"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-small-platform-context-v1.json",
+    "sha256": "ccb2356a3ef1e5ccba1c0fdcb997ed79504fc9191106b23aaf4eef56392e63d7"
+  },
+  "architecture_reference": {
+    "path": "docs/recovery/evidence/msdos-api-reference-v1.json",
+    "sha256": "5c561e753a978ac628857df63f93b9383eb5f0db2334665768cc2e3ae79a4684"
+  }
+}

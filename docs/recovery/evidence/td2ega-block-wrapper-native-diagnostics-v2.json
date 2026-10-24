@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 20,
+  "script_sha256": "35154be9b277e2c1020d26c71d056e535bc7e617aa2f50dab2bfd1f905755c8a",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "60bffcdb254c47090eb0b562082f252070b19c5a31bc3d4a80f0efe518c031ab",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_block_wrapper.py",
+      "sha256": "afde42444f2c65f8b16a25ab3f235407289546444240b6d12ccf1ae4dbd45b07"
+    }
+  ],
+  "limits": "Nativeinterfaces/realSSframes-DSswitch/fiveargs/restores/requirednormalZF/discriminator/actualsavedAXalias/diagnosticZFnotvalid only. Fulloriginalcomparison separate; syntheticDOSnoINTframes, wholecaller/writers/capacity/core/session/fidelity open."
+}

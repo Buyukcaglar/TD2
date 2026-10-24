@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 36,
+  "script_sha256": "0a41e3c44098d6f1da1db0f52cd57b4a985a44826898cf5c6fb546dedace993f",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "7c113c8979ae7c880850f67629f8b9a6a296f6475f2c019bcdd0bfc0c9a14e80",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_plane_byte_copy.py",
+      "sha256": "1929b912745c8f0735a578a70630a965d6f7c32a4092dcb9d76cbdfcd7d1a639"
+    }
+  ],
+  "limits": "NativeC784fullSS/in-placeSAR3args/livewidth-stride-heightlocals/CLD/fourplane-OUTs/atomicCOPY-forwardoverlap/DECJGoverflow-do-oncerows/workbudgetincludingzerowidth/SSsave-controlaliases/finalstackADDcarry/preRETqualification only. Originalcomparison/staticproofs separate; no actualEGAselector-latch-hardware/renderer/clippingbounds/allwriters-storage-lifetime-exclusion/CPU-A20/core/resource/CGA/session/fidelity acceptance."
+}

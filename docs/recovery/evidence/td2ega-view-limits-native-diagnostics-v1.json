@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 4,
+  "script_sha256": "015fc281df45acc51bbe01b25ee63d8dc4708748c91934d63cb0b5cb3ccc491c",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "96572b807f038e642642e74e34e2fd01b98e766ddf5a177059db69ce356b9b65",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_view_limits.py",
+      "sha256": "449c9798e56061edc6e2546542c533aa04bfe22e6aec06652df5e3bbb6610e4a"
+    }
+  ],
+  "limits": "Four native-only invalid bus/flag checks. Excluded from original differential and original error equivalence; no actual session, device, renderer, core or fidelity acceptance."
+}

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000031"
+  ],
+  "vectors": 11216,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "692abae49f3d0e52b98a2b34c3c058a2dd81dc87f77602d395cb02bac6e0283f",
+  "source_sha256": "99928d1246c5e2fb2d4acd2db86e6a909289e822b8aa43f7f37579b13ab57882",
+  "validator_sha256": "ca6b9745bd202017aa26f2263b0675dbfcbcbfc134e5075659ee720ef7d7fbb8",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 1242306,
+  "instruction_sites_in_fence": 60,
+  "instruction_sites_exercised": 60,
+  "fixture_coverage": {
+    "prefix_call": 4608,
+    "actual_far_CALLs": 6608,
+    "child_operations": 92048,
+    "parent_iterations": 132628,
+    "bus_write_events": 237014,
+    "DS_equals_SS_cases": 5608,
+    "minimumSP30_cases": 3072,
+    "reverse_DF_cases": 5608,
+    "raw_root_returns": 220,
+    "prefix_child": 2352,
+    "prefix_parent": 2090,
+    "far_root_return": 1694,
+    "raw_child_return": 472
+  },
+  "limits": "Actual0432:0006/far/twoSSnearoffsetarguments, actual2956copy/farframe/fullSSlocals-saves/returnedGPR-BP/orderedtrim17downward andspace-to-underscoreforward loops. IncomingDF childcopy retained; parentscalarforward independent. Fullbus/GPR/BP/CFIFDF/control/counts. NativeCALL-childoperation-parentloopbudgets/rawchildfarreturn exposedafterRETneverfollowed. No stringcapacity/NUL/format/allwriters/caller/DS-SS/lifetime/IRQ/core/resource/device/session/gameplay/fidelity closure."
+}

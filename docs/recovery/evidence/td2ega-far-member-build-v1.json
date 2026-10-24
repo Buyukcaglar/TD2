@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_far_member.cmd",
+    "sha256": "b2a1daf4d361db6da3646bc1ec1d1b600a0fbcaeeb3f221cd42400095dd79ae6"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_far_member.c",
+      "sha256": "90c1d6efd6967ed0cb0ed7302c109591eac016d08305d64ba6d874f0d8402499"
+    },
+    {
+      "path": "src/recovered/td2ega_far_member.h",
+      "sha256": "8dd9c3b640261fd96485814053a5f2b758c5dcf2462af8ca132c5f0680054596"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/far-member-repro/td2ega_far_member.dll",
+      "sha256": "cf508c7e05c6221344a63b05f64ed4d1fdb0d8d8eeb8072df9c061913e187abd",
+      "bytes": 103424
+    },
+    {
+      "path": "analysis/build/far-member-repro/td2ega_far_member.obj",
+      "sha256": "801a4595b150e02046d76aa879ff5c68152b53fa94bcbde57c3feb81eeee5264",
+      "bytes": 3121
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/far-member-build-v1.log",
+    "sha256": "922a2d970920f00c61e4a15c88798245eef543dd509f35c803d4212c48251bff"
+  },
+  "limit": "ActualC701SSthreewords/headerES:SI+4/separatelywrappedES-tableword reads/wordbase truncation/raw32bitadd/4SHR-RCR normalization toAXnibble/DXsegment/CFbit3; fullbus/SSsaves/farframe/GPR/BP/CFIFDF/control. Nonzeroheaderoffset retained, tableindicesnotSI-relative. Zerooffset/nonzerosegment validrawoutput, nohostNULL substitution. SourceESranges0..9000 andflatbus only, noA20/device/realDOS qualification. Actualcaller/header-alignment/index/table/buffer/outputbounds/writers/lifetime/otherFLAGS/core/resourcefedP2/P3/session/game/fidelity open.",
+  "function_ids": [
+    "FN-EGA-000251"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-far-member-context-v1.json",
+    "sha256": "8fcf91952c119a5888573755060e58f296bd5284d422125a3cd21bb8ef1f8793"
+  }
+}

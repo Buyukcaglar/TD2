@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 14,
+  "script_sha256": "a8c9bafe4fa4cb90f7b9286815227cd8dea978063d80a3fa70e3256761316005",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "88fcf45a2971594b37922774816ada46cc05517ec3b221c681d867f1de53d124",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_record_projection.py",
+      "sha256": "51e306a34025de7eeeccebbfe5b7030a67e48c1a6f70ff77e94d1385418787a7"
+    }
+  ],
+  "limits": "Nativeinterface/initialREP/ESDS-CLD/digit-independentrecordbudget/do-oncezerocounts/sharedDI/partialstores/BPclobber/rawfarframe/unalignedbound diagnostics only; originalinstructioncomparison separate. No capacity/caller/writers/core/session/gameplay/fidelity closure."
+}

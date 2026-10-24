@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 5,
+  "script_sha256": "9420271c5af17c7fde34a2866a46bfc361a2b4738812d8c2fa6d7ca2afe5f2d0",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "f5af29b590a6145d709380533ea2e48d881d563548e53b338a8e1f9258f5ef02",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_state_messages.py",
+      "sha256": "d8e8cca9a85ab0371e19ed936e9dc962eb1f1bf6377f62b533e80f71a781a477"
+    }
+  ],
+  "limits": "Five native-only diagnostics, excluded from original comparison/error equivalence. No original instructions/graphics/resources/device/IRQ/core/game/fidelity acceptance."
+}

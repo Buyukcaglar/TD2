@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-13",
+  "function_id": "FN-EGA-000185",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_cache_query.cmd",
+    "sha256": "0eaed7f53c02c14032d8f1699ba39e843363849c424bef90185edab42a32a5a3"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_filename.c",
+      "sha256": "668af3fb6d49b1e4158afc77ee03a1c759392dad169459ac56e09f545f004075"
+    },
+    {
+      "path": "src/recovered/td2ega_filename.h",
+      "sha256": "7f0342e6882eafdf84c8960c98584a0c315f16e1c33c0ed578342439a5bac79f"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.c",
+      "sha256": "7f33e08eda584032b3d7251a0eb17dad9c18e0f2b8bcf3dda6f8a2f0d4bec7d5"
+    },
+    {
+      "path": "src/recovered/td2ega_cache_query.h",
+      "sha256": "2cd2ae478ddb878721017c3cd373069f14bc9ce87b4d6346c1080feb179d444f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/cache-query-repro/td2ega_filename.obj",
+      "sha256": "41e4950423e67cecc9e85e9c9d5110f8d19c708732950dc213f31f9fdc51abb0",
+      "bytes": 735
+    },
+    {
+      "path": "analysis/build/cache-query-repro/td2ega_cache_query.obj",
+      "sha256": "24eaf01887fd6eac7b31e7168b8f1e1a3fd492153b1673e1047a9ab218016607",
+      "bytes": 1263
+    },
+    {
+      "path": "analysis/build/cache-query-repro/td2ega_cache_query.dll",
+      "sha256": "4c5bffe4e74c6ee7b95ba981ab0f42564f50cf11a30e85a1bf97704148401ed7",
+      "bytes": 103424
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/cache-query-build-v1.log",
+    "sha256": "57f589ad68249e3bc5bdb9bd1139678ec28d26410f3da911c81e59495a074f1e"
+  },
+  "limit": "Readonly metadata query anddependency filenamehelper compiled onWindowsx64; no fullcachemanager, decoder, core, platform orsecondhost build."
+}

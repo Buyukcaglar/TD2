@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "function_ids": [
+    "FN-EGA-000263"
+  ],
+  "vectors": 6208,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "c9037f828a2d8db16997bda4a4767418cbd8da68a48ab863c41505c0277bbd80",
+  "source_sha256": "393fa5a352acb6403cb2fc84e776abcc0569bf55e1a8e8d07ff8d920ac1498a1",
+  "validator_sha256": "aeefa94a0a501db7ed31ac669f2123a9ff488af80f908ea5512e775a2ae03be7",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_line_draw.py",
+      "sha256": "82c2084c93910f6a3f61d17eac6c6dd0fffb52803d99b8509ca125002c3104bc"
+    },
+    {
+      "path": "tools/validate_state_loop.py",
+      "sha256": "d6d353ca65aebece38b34fd9698d8a3b7c3f697f76ef48baea73b6cda1783017"
+    }
+  ],
+  "original_instructions_executed": 56800,
+  "instruction_sites_in_fence": 9,
+  "instruction_sites_exercised": 9,
+  "fixture_coverage": {
+    "root_near_return": 3696,
+    "iterations": 5872,
+    "callbacks": 3088,
+    "bus_write_events": 6176,
+    "synthetic_RETF_instructions": 3088,
+    "far_operand_boundary_fixtures": 64,
+    "budget_prefix": 2272,
+    "raw_child_return": 240
+  },
+  "limits": "Actual13A8:060D reverse list/unsignedguard/wordOR/indirectfarCALL/rootnearRET with actualnestedSSframes/fullbus/GPR/BP/CFIFDF/control. Syntheticcallback fullreturnedABI/DS/position/flags/busmutations andRETF separatefromoriginalinstructioncount/calleebodies. Boundaryfaroperand physical4byteview distinctfromtwo separatelywrappedwordORreads. Nativebefore-record/adapter/rawchildreturn outcomes separate. Actualcallbacktargets/allwriters/callerbounds/lifetime/exclusion/otherFLAGS/core/resourcefedP2/P3/device/session/game/fidelity remainopen."
+}

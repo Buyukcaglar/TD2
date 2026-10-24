@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 15,
+  "script_sha256": "b150ae96c1ce5b770d61f9bd036e23e1b6e45868d1a47250978b2c1702cf14f6",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "1fd5f16e657c881af7ca955ff4786979b9984d557efff4896e39ac57decc8281",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_long_arithmetic.py",
+      "sha256": "659bd2af1c2434952bca37339ae859034fa4ea3630d32620224aa272aa06feac"
+    }
+  ],
+  "limits": "Nineinvalid/noeffects, INT_MIN/-1 rawwrap/rootRETF8, zeroDIVprefix, beforeCALL fourargpool, actualchild/rootRETF8estimatecorrection andnegativefast/slow remainderCF distinction. Nativeonly; no actualexceptiondelivery/caller/lifetime/core/runtime/gameplay/fidelity admission."
+}

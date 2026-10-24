@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 51,
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "script_sha256": "4d14dadcf98b706f7fed286a5bdc797b81444011cbc5171c5bc56f5c8140ec5d",
+  "library_sha256": "2fb96b0fcc698da29b16438fbb575cbd3635b50db54a93c327bedb51def8b884",
+  "source_sha256": "05895c7895015fa54483bc3e4b1c231039d09f8046ccd3caf5731ce224a89672",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_runtime_report_bus.py",
+      "sha256": "12040977ac27f17f21bfcaf91c20e0c170519fec3f3dcda6162d7aa8445c639d"
+    },
+    {
+      "path": "analysis/history/runtime-report-bus-build-setup-v1.json",
+      "sha256": "e5bf029f086c88bd65537077aba57389b35d23172e4e54bef1ddf552d288e962"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-report-bus-context-v1.json",
+      "sha256": "4fe65e0a09dccd97a3448e8b0e63e102dbd07eaa41e4118bb3703900bd3e42be"
+    },
+    {
+      "path": "docs/recovery/evidence/td2ega-runtime-report-bus-alias-validation-v1.json",
+      "sha256": "750762086b16605b775fbee1323509a840c3ff1f63b607fa7c09a0bbc75e33a4"
+    }
+  ],
+  "limits": "Nativeonlyinvalid/budget/adapter/actualSS-IVT-BDA-returnaliases/PICrestoreAH/returnedBP-latefivewordcascade/typedformatterprefix-raw-invalidresponses/callerADDSPFLAGS/preparedDOSexit. Originalcomparisonsseparate; noformatterbody/historicalterminalDOS/arena-pruning/caller-allwriters-lifetime-IRQ-core/P1-GATE/runtime-game-fidelity acceptance."
+}

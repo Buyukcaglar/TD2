@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "result": "pass",
+  "problems": [],
+  "scope": "Read-only custody/hash/origin/selection/estimate/planning checks; no accepted maker, compiler, candidate, original or differential fixture rerun",
+  "normative_decision": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+  "normative_origin_manifest": "docs/recovery/evidence/kylofon-reuse-origin-manifest-v2.json",
+  "original_files_unchanged": 250,
+  "frozen_clone_files_unchanged": 113,
+  "baseline_tracked_files_exact": 85,
+  "existing_recovered_source_headers_unchanged": 331,
+  "function_registry_unchanged": true,
+  "old_artifact_pins_rechecked": 38,
+  "current_nested_pinned_files_verified": 902,
+  "selected_groups": 10,
+  "original_body_value_groups": 6,
+  "support_adapter_groups": 4,
+  "already_passed_existing_entry_ids": [
+    "FN-EGA-000003",
+    "FN-EGA-000138",
+    "FN-EGA-000139",
+    "FN-EGA-000163",
+    "FN-EGA-000414",
+    "FN-EGA-000371",
+    "FN-EGA-000376",
+    "FN-EGA-000378",
+    "FN-EGA-000140",
+    "FN-EGA-000243",
+    "FN-EGA-000169"
+  ],
+  "newly_recovered_functions": 0,
+  "selected_source_files": 8,
+  "source_spans_verified": 16,
+  "git_blob_origins_verified": 10,
+  "representative_vectors": 2233,
+  "support_cases": 380,
+  "baseline_admitted_disagreements": 291,
+  "excluded_ss_alias_witnesses": 4,
+  "primary_source_imports": 0,
+  "remaining_tasks_estimated_once": 54,
+  "independent_remaining_days": [
+    205,
+    455
+  ],
+  "qualified_remaining_days": [
+    203,
+    461
+  ],
+  "qualified_net_effort_change_days": [
+    -2,
+    6
+  ],
+  "conditional_remaining_days": [
+    185,
+    410
+  ],
+  "conditional_matched_saving_weeks": [
+    4,
+    9
+  ],
+  "P4_P5_reuse_implementation_credit_days": 0,
+  "effort_is_engineering_judgment_not_machine_throughput": true,
+  "task_status_changes": {
+    "P1-R04": [
+      "pending",
+      "complete"
+    ]
+  },
+  "task_counts": {
+    "complete": 13,
+    "in_progress": 1,
+    "pending": 53
+  },
+  "native_summary_unchanged": {
+    "exports": 215,
+    "original_entries": 292,
+    "comparison_suites": 164,
+    "vectors": 7132350
+  },
+  "prior_continuation_byte_suffix_unchanged": true,
+  "staged_files": 0,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 3687,
+      "sha256": "77ab853c3cf0402f13c36621b454b274a3f89c27e993f36211172946e3fb65b4"
+    },
+    {
+      "path": "analysis/history/backlog-before-kylofon-r04-v1.json",
+      "bytes": 104069,
+      "sha256": "7935be4b6cbebfd72fc524f647e2cdacce2f3a473b3ffcb6003e911a92f97480"
+    },
+    {
+      "path": "analysis/history/continuation-before-kylofon-r04-v1.md",
+      "bytes": 22306,
+      "sha256": "1baab8d22ad6ec6a9b86be75c318572d875f6d32ac5c797867635b21df86dff3"
+    },
+    {
+      "path": "analysis/history/progress-before-kylofon-r04-v1.json",
+      "bytes": 66176,
+      "sha256": "c7e0a7d574e1829ba8c105aea9493987a20f850678a5e17dd2720b1db26ba52a"
+    },
+    {
+      "path": "docs/planning/architecture.md",
+      "bytes": 13725,
+      "sha256": "31dcb808226f9636e1c31aac0a18eea9a93fb556b7545c07912def146a63ae9c"
+    },
+    {
+      "path": "docs/planning/backlog.json",
+      "bytes": 111036,
+      "sha256": "faf7e95ff201e2d044de329d2d386e2063f14c25ccf4bf5cd90539d352e57bfe"
+    },
+    {
+      "path": "docs/planning/continuation.md",
+      "bytes": 26708,
+      "sha256": "946330df613fbb1f3cb39c456485aa081319c9e4a6b5c789a9ca1f5b12903f3d"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-effort-inputs-v1.json",
+      "bytes": 13452,
+      "sha256": "96ec6e77b794339925b8753737932238fcff29525f81839ec12fb84b49341fed"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-reference-snapshot-v1.json",
+      "bytes": 54742,
+      "sha256": "f681ce5650c38af2499fdf245939cedfbed6c8f1db278da49ce01b659a75a5c0"
+    },
+    {
+      "path": "docs/planning/evidence/kylofon-static-crosscheck-v1.json",
+      "bytes": 109276,
+      "sha256": "45a71892f3c390f61d6c804801ad9fa1667e847373b048db5a63c2230d988d09"
+    },
+    {
+      "path": "docs/planning/kylofon-effort-review.md",
+      "bytes": 15693,
+      "sha256": "c01beadefed69dc211b6a7e90c67dcd979085b9104fba27b843e01f910ea692d"
+    },
+    {
+      "path": "docs/planning/kylofon-reuse-assessment.md",
+      "bytes": 18466,
+      "sha256": "1ab5e26fd965da590de7a1bb38a8cbf94b604f81f32687033e505bf99b40b762"
+    },
+    {
+      "path": "docs/planning/risks-and-estimates.md",
+      "bytes": 13722,
+      "sha256": "5b2c14c22eef2fcae097597242aa27f342b68155fae159b9d60cfaf9929f71f0"
+    },
+    {
+      "path": "docs/planning/roadmap.md",
+      "bytes": 26425,
+      "sha256": "4515958be4c43347daa2d21c4b39aa3fefa57366f6a7d6143878b82b53d0a1ad"
+    },
+    {
+      "path": "docs/planning/tooling-and-sources.md",
+      "bytes": 22088,
+      "sha256": "dacaf4ec62c1959c5c973f2aede85b3d0941a4bfad83c21ff2a673512a8b38ec"
+    },
+    {
+      "path": "docs/planning/validation.md",
+      "bytes": 13945,
+      "sha256": "9ae15b30b50cbe0dab8b95117b3f54065e09fc1838678b7bf1957c21616fd511"
+    },
+    {
+      "path": "docs/recovery/README.md",
+      "bytes": 29066,
+      "sha256": "58517f564f6426def2294d0bea08b59debb24b0ef4c21e007eb4c91f0a4b403e"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-address-admission-v1.json",
+      "bytes": 2530877,
+      "sha256": "8a65805699c9b2b9c41479711e32834bd476f1c25f93758abfc44f2b7a234177"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-admission-support-v2.json",
+      "bytes": 64076,
+      "sha256": "219cbb195ce223df13d31084df7222e6e96a9f67ddeecd8d36416c9e3b81ebc3"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-build-v1.json",
+      "bytes": 242343,
+      "sha256": "9d05b5c953295df72af8d17d206e741c0681142d6d8f5a7d9d1bb0d2f5fee4a4"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-candidate-changes-v1.json",
+      "bytes": 3474,
+      "sha256": "5e5149d46f03180c242d7b4abd007ebf0ec5f73b785183e0a535942433497aa8"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-gap-dispositions-v2.json",
+      "bytes": 31967,
+      "sha256": "ed2c23533fe8440c609f5299f832b64b2c61d613398f0d8d6c4c78d0d1faedf2"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-r04-baseline-verification-v1.json",
+      "bytes": 5992,
+      "sha256": "259c913aa4382686f3129249ee382ccad7386bb3412ff7f0dde9f9153c44d7b2"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-representative-validation-v1.json",
+      "bytes": 28504,
+      "sha256": "b4d92c11381dae416e490418768f849da12fb0c4b37022b21c76f5fd89a34954"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-decisions-v1.json",
+      "bytes": 53439,
+      "sha256": "05ea97de36a4de1ccf2c515be6b18485547524b6f8167b8426c61292da1984eb"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-decisions-v2.json",
+      "bytes": 58108,
+      "sha256": "7d2cb862a4f0b98f923322d75b8799a5e9542ea295b8c83708d9aa695eb75326"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-origin-manifest-v1.json",
+      "bytes": 6867,
+      "sha256": "40592ab22d611ca10bff71c9948da9149cd60293f97f4f90d158091275aec407"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-origin-manifest-v2.json",
+      "bytes": 7828,
+      "sha256": "726e8f565d3e4d1fd8b90b12d7e137fdeb24d099f011ed81f340c74cf7815e88"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-reuse-selection-review-v1.json",
+      "bytes": 14412,
+      "sha256": "928a3b6597a29570dddd24fa42e5a382ea1223c85c85ce5f134a2e14626581fe"
+    },
+    {
+      "path": "docs/recovery/evidence/kylofon-source-admission-v1.json",
+      "bytes": 251567,
+      "sha256": "df3fa2889e7e3ccfa3dbf2f4a49b78958976601b1ca924f8b6972a76b710baf6"
+    },
+    {
+      "path": "docs/recovery/evidence/p1-kylofon-r04-audit-v1.json",
+      "bytes": 245725,
+      "sha256": "33e74f37a05534dd84c4a61537822ae6ab86a884710dbb2a387e504dc1186c08"
+    },
+    {
+      "path": "docs/recovery/kylofon-r04-boundary-review.md",
+      "bytes": 9386,
+      "sha256": "444df7041c19c43bd76563ff7307ff45f83be748452f8e937e6391a3a3f1631c"
+    },
+    {
+      "path": "docs/recovery/kylofon-r04-final-review.md",
+      "bytes": 5300,
+      "sha256": "b6fd7b2f1fba8eda396456c9c9e4fd34d8c9ea0f1bd77850e8f1a22de5e8ff72"
+    },
+    {
+      "path": "docs/recovery/kylofon-r04-reuse-decision.md",
+      "bytes": 13135,
+      "sha256": "37f5cf6b509f81249a2e1167dcacafdcb1c54ae42ef4c946b3d2e5ca9fc4cdeb"
+    },
+    {
+      "path": "docs/recovery/kylofon-reuse-selection-review.md",
+      "bytes": 16916,
+      "sha256": "fe9722b3459cb30cce77873dbec8ff8b088915e9062592c834b3d5d9779f9f18"
+    },
+    {
+      "path": "docs/recovery/progress.json",
+      "bytes": 66684,
+      "sha256": "048b7d745a43e0d21d6edf18ad66409885766df4be688a9552071c815e53aaf5"
+    },
+    {
+      "path": "tools/record_kylofon_reuse_decision_v1.py",
+      "bytes": 19795,
+      "sha256": "d0315c8eb0dc56ebb0344ebe88094be7a036ad0792f78933617fb78f7db7071b"
+    },
+    {
+      "path": "tools/record_kylofon_reuse_decision_v2.py",
+      "bytes": 21987,
+      "sha256": "3724d53d89cff0b71d05fc46136348d282dbf663f070b91c49ae1d31647922a0"
+    },
+    {
+      "path": "tools/record_kylofon_reuse_plan_v1.py",
+      "bytes": 9728,
+      "sha256": "8acfb16a1f64ab25ea6e5e1234dfe4a6559f732d09e7aa7be06b2fd630a0e50f"
+    },
+    {
+      "path": "tools/verify_kylofon_reuse_decision_v1.py",
+      "bytes": 32319,
+      "sha256": "55a1bbcc9be36884245a75d9be8be7847086a1ca35dde06593649733aaf7baad"
+    }
+  ]
+}

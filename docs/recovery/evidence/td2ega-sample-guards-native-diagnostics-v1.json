@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "result": "pass",
+  "vectors": 59,
+  "script_sha256": "d3668f68bc6a09858bf2db8143b37aed69053bac81f0ca8324cff78509dc00ae",
+  "image_sha256": "8db38a02cc318a62b15928e217bb9f935699c6566088c21d32382a1c908a59c4",
+  "library_sha256": "a65ab3dbc4d727ee2fd0d9de9649ce142b55594ba7e41f4408d4e7f9ae3370ba",
+  "validator_dependencies": [
+    {
+      "path": "tools/validate_sample_guards.py",
+      "sha256": "3b9b9986b7fde65dbf4a745ddd84406f50cdf6bb03bfda51a298d9aeb554eb4c"
+    }
+  ],
+  "limits": "Native49E7-4A19/fullSSguard-CXsave/requiredZF/negative-first-positive-second/MOVAH6F/rawsignedbounds-unsignedCF/actualSSboundsaliases/conditionalfrozen4A2E-tail/globalCALLbudgets/inheritedrawRETandSIaliases/IFconditional-DF/SPdomain/zero-highDS only. Originalcomparison/staticreviewseparate. No491Dvalidselector-allwriters/full4674/sharedsource-reset-lifetime-IRQexclusion/core/RNGpurpose/session/fidelity acceptance."
+}

@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_directory.cmd",
+    "sha256": "53b15b9c48ee0f3cdaaafe890e5baeb09041a92e816194eccbf070733c9c1a16"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_directory.c",
+      "sha256": "b3a0209715f37bbae9985c6ea74c90f4f2dba8e8dee9ad708690f104a07d32b4"
+    },
+    {
+      "path": "src/recovered/td2ega_directory.h",
+      "sha256": "3adb8de02725aa32d962064d19b7560df29f2ddf80bb76eef5b970a1a667c6d4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/directory-repro-v2/td2ega_directory.dll",
+      "sha256": "11e3bcfbe66f76e2db9e988d6c65a927633f5aef5a94d70961e0bfb8d7567ad1",
+      "bytes": 103424
+    },
+    {
+      "path": "analysis/build/directory-repro-v2/td2ega_directory.obj",
+      "sha256": "ef26b7a717dea73bf90701b1072c7e07ef1a5f5e738a9446b310a8ec33d00600",
+      "bytes": 2433
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/directory-build-v2.log",
+    "sha256": "159616300abb1d24e67dfff5636c52992fa0261ade78889fd64836bcd2bda7ac"
+  },
+  "limit": "One native export covers optional6E4E/required6E59 literal directory effects with serialized ordinary-memory views; source/archive schema, actual callers, fatal cleanup and platform/resource integration remain open.",
+  "function_id": "FN-EGA-000174",
+  "covered_original_local_helpers": [
+    "FN-EGA-000175"
+  ]
+}

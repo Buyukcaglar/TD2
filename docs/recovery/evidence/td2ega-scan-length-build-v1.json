@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-14",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_scan_length.cmd",
+    "sha256": "56e823dd8ea1e2e1811b20748c4e9170513d670e07feb26e482cc251e16f472b"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_scan_length.c",
+      "sha256": "eea67553b752067e0d6c0ea274d500a0b976fd52c634ea11e61a17a61ff6630d"
+    },
+    {
+      "path": "src/recovered/td2ega_scan_length.h",
+      "sha256": "ddcb42b9f5dc7c8bf58c82bf46dcc9a72fff6f77b1a4833cd1d6002b1a3f540e"
+    },
+    {
+      "path": "src/recovered/td2ega_state_loop.h",
+      "sha256": "eae9e2c8486552f6b61d021d647365665915a4e4fabcdb6a2ec157b7787f414b"
+    },
+    {
+      "path": "src/recovered/td2ega_music_tick.h",
+      "sha256": "135a9072cca61755f4710ab9fa9e386e976a30f70941079d5b525cb574c12e8a"
+    },
+    {
+      "path": "src/recovered/td2ega_mutable_control.h",
+      "sha256": "9deea88f569afdadf68ab46c63bf175262ea4b09ea68089da4c84bb0643a1a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/scan-length-repro/td2ega_scan_length.dll",
+      "sha256": "ddca699b4fc0af8c3ecd774e19cd2aef3e55bd307967ac6e1790a65e4f386ff2",
+      "bytes": 103936
+    },
+    {
+      "path": "analysis/build/scan-length-repro/td2ega_scan_length.obj",
+      "sha256": "141a5902f9c037bc77639748833956850bbc1203c0b0cd49cb1de976db8acab4",
+      "bytes": 3026
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/scan-length-build-v1.log",
+    "sha256": "aefb55112c82616021da59416382579c7bd2a9d1b592fdda162b0a089b9f9bad"
+  },
+  "limit": "Actual13A8:29B4 nearcurrentDS scan, ES=DS/AL0/CXFFFF REPNE SCASB with incomingDF retained, wordDIwrap, NOTCX/DECCX/XCHG ->AXcount/CX0 andDIrestoredviaDX. FullbusincludingSSBPsave/GPR/BP/CFIFDF/plainfarreturn. No-matchFFFFscans andlast-eligible-NUL bothAXFFFE distinguishedbyCF; noerror orstandardhoststrlen substitution. Nativebefore-scanprefix separate. Callerbounds/NUL/DF/otherFLAGS/lifetime/IRQ/core/resource-fedP2/P3/device/session/game/fidelity remainopen; nativeinvalidchecks separate.",
+  "function_ids": [
+    "FN-EGA-000329"
+  ],
+  "static_context": {
+    "path": "docs/recovery/evidence/td2ega-scan-length-context-v1.json",
+    "sha256": "81b88bc224c44f7e13005a583df22b1af2144795404f80fd3df1b0660a0e3bcc"
+  },
+  "prior_failed_attempt": {
+    "path": "analysis/history/review-ega-scan-length-attempt-v1.py",
+    "sha256": "d5c525e88efc85a8bc36e98750a1541d9cf4a93b0d932550dfdcc4ed1dc75b0d"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-13",
+  "result": "pass",
+  "compiler": {
+    "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+    "sha256": "88c8344236a27a6e727e0a8edc49aaa2690bdc7a9464b9d18cc7abe70a9f1c0d",
+    "version": "19.44.35228 x64"
+  },
+  "flags": [
+    "/TC",
+    "/std:c17",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/LD"
+  ],
+  "executed_recipe": {
+    "path": "tools/compile_raw_load.cmd",
+    "sha256": "63fab453f7180ecc220d81745938c02b223cb537439514812cd5cf6b01a49ca6"
+  },
+  "sources": [
+    {
+      "path": "src/recovered/td2ega_raw_load.c",
+      "sha256": "cccd7f8f965488c2401389c2891e89c71076a203032b1667e31616e52c940ad4"
+    },
+    {
+      "path": "src/recovered/td2ega_raw_load.h",
+      "sha256": "b450213bad70d48d6b4cadfc353bac48945c9b18d76050aba7c0a39e69690c06"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/build/raw-load-repro/td2ega_raw_load.dll",
+      "sha256": "87bd2345a1477d2ff47cf84210715001c9f2aa494416e9d3e429e66c9611fe71",
+      "bytes": 103424
+    },
+    {
+      "path": "analysis/build/raw-load-repro/td2ega_raw_load.obj",
+      "sha256": "84652879f2d0defe72c18ddb5f46c40e5adb47d18ed8e8ad035bbe40543f94b5",
+      "bytes": 4309
+    }
+  ],
+  "log": {
+    "path": "analysis/logs/raw-load-build-v1.log",
+    "sha256": "f6613a2ece2cb86ad230fc2306034f3688a798221172ca9611469390a3dfb1df"
+  },
+  "limit": "Rawloader6AA2 normalreturn andopen/readfatalprefix underexplicitserviceprofile; noactualDOS/file/fatalcleanup/game acceptance.",
+  "function_id": "FN-EGA-000168"
+}
