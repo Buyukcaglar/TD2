@@ -1,6 +1,6 @@
 # TD2CGA against TD2EGA
 
-How the CGA executable differs from the EGA one we already run, function by function, the design of the CGA backend that follows from it, and where that backend stands. `python tools/cga_compare.py` produces every number here; `python tools/cga_compare.py 06c9:0c17` prints one function's differences side by side. It reads both executables from `runs/game` and unpacks them in memory with `tools/exepack.py` (`unpack()`; it also handles TD2TDY).
+How the CGA executable differs from the EGA one we already run, function by function, the design of the CGA backend that follows from it, where that backend stands, and TD2CGA's Hercules mode. `python tools/cga_compare.py` produces every number here; `python tools/cga_compare.py 06c9:0c17` prints one function's differences side by side. It reads both executables from `runs/game` and unpacks them in memory with `tools/exepack.py` (`unpack()`; it also handles TD2TDY).
 
 ## Summary
 
@@ -28,6 +28,17 @@ The backend is built as designed and plays: `.\run.ps1 --cga`.
 - **Deliberate differences.**
   - For a steep line drawn upwards, TD2CGA's OR line takes its start x from a stale stack word. The port uses x1; the game only draws straight OR lines.
   - A ground span ending before the current x would make TD2CGA's `rep stosb` run through 64K. The port writes nothing; the shipped spans are always ordered.
+
+## Hercules mode
+
+`DUEL.EXE`, the original launcher, offers four modes. Option 1 runs `td2cga.exe` (CGA or Tandy 4-colour), option 2 `td2tdy.exe` (Tandy 16-colour), option 3 `td2ega.exe`, and option 4 runs `td2cga.exe herc`. So Hercules is TD2CGA's game, not TD2EGA's. TD2EGA has a Hercules branch too, but its drawing still writes the EGA planes, and the launcher never uses it. Tandy 16-colour is out of scope by the user's decision.
+
+- **What changes.** TD2CGA's `main` calls `herc_init` (06CF:5E86) instead of the CGA mode set (06CF:8854) when `argv[1]` is `herc`, and at the end it calls `video_shutdown` (06CF:5EDE), which restores Hercules text mode. Nothing else reads the Hercules flag (DS:5D0E): every drawing routine is the CGA one, writing the CGA layout at B800h.
+- **What the monitor shows.** `herc_init` sets BIOS mode 4, then programs the Hercules card: 3BFh = 3, the 6845 from DS:5D10, page 1 (B800h) cleared, and 3B8h = 8Ah (graphics, video on, page 1). The 6845 table gives 40 character columns of 16 pixels and 100 character rows of 3 scan lines (R1 = 28h, R6 = 64h, R9 = 2). Scan line k of a character row reads bank k at offset k × 2000h. Row r therefore shows game row 2r from bank 0, game row 2r+1 from bank 1, and a line from bank 2, which stays clear. The picture is 640 × 300 one-bit pixels:
+  - each 2-bit pixel becomes two 1-bit pixels (colour 1 lights the right one, 2 the left one, 3 both);
+  - every third line is dark, which stretches the 200 game rows over the taller Hercules raster.
+- **What has no effect.** The game's CGA register writes (`gfx_video_hook`, the crash flash on 3D9h) go to ports that a Hercules machine does not have, so there is no flash.
+- **Port.** `gfx_herc_backend` in `gfx_cga.c` (`--hercules`) shares the whole CGA drawing table and has its own reset, compose (640 × 300), `set_mode` (`herc_init`) and shutdown. The monitor colour is a white phosphor, a port choice; the original card shows whatever the monochrome monitor's phosphor was. The CGA cursor glyphs moved from BC00h, inside Hercules page 1, to C000h. `tests/herc_snapshots.txt` holds the same two runs as the EGA and CGA baselines.
 
 ## Layout of the two executables
 
