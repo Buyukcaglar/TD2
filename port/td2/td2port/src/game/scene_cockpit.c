@@ -27,7 +27,7 @@ void cockpit_load(void)
     blit_copy_own(hnd(DASH_H(DASH_dash)));
     blit_copy_own(hnd(DASH_H(DASH_roof)));
     gfx_draw_line(0, 0, 0x13F, 0, 0);                     /* progress line */
-    gfx_plot((s16)(DSW(DS_stage_length) >> 5), 0, 15);  /* stage end marker */
+    gfx_plot((s16)(DSW(DS_stage_length) >> 5), 0, COL(15, 3));   /* stage end marker */
     DSW(DS_dot_x) = 0xFFFF;
     DSW(DS_dot_x + 2) = 0xFFFF;
     DSW(DS_dot_x + 4) = 0xFFFF;
@@ -87,7 +87,7 @@ static void draw_radar_detector(void)
 }
 
 /* 06c9:3ab8 progress_dot: SI = road pointer, BX = slot * 2, DX = colour */
-static void progress_dot(u16 si, u16 bx, u8 dx)
+static void progress_dot(u16 si, u16 bx, u16 dx)
 {
     s16 x = (s16)si < 0x3B51 ? -32 : (s16)(si - 0x3B51);
     s16 old = DSS((u16)(DS_dot_x + bx));
@@ -101,9 +101,9 @@ static void progress_dot(u16 si, u16 bx, u8 dx)
 /* 06c9:3a91 draw_progress_dots */
 static void draw_progress_dots(void)
 {
-    progress_dot(DSW(DS_player_pos), 0, 12);
-    progress_dot(DSW(DS_opp_pos), 2, 9);
-    progress_dot(DSW(DS_cop_pos), 4, 14);
+    progress_dot(DSW(DS_player_pos), 0, COL(12, 2));
+    progress_dot(DSW(DS_opp_pos), 2, COL(9, 1));
+    progress_dot(DSW(DS_cop_pos), 4, COL(14, 1));
 }
 
 /* digit handle k of ROAD (dgt0..9), index as the original computes it (may be out of range) */
@@ -212,7 +212,7 @@ void draw_steering(void)
     u16 cx = (u16)(tip >> 8);
     DSB(DS_marker_saved) = (u8)cx;
     u16 sy = (u16)(cx - 2);
-    u16 sx = (u16)((dx - 2) & ~(gfx_backend()->px_per_byte - 1));   /* 0FFF8h, CGA 0FFFCh */
+    u16 sx = (u16)((dx - 2) & ~(gfx_px_per_byte() - 1));   /* 0FFF8h, CGA 0FFFCh */
     DSW(DS_marker_save_y) = sy;
     DSW(DS_marker_save_x) = sx;
     grab_into_sprite_raw(save, (s16)sx, (s16)sy);
@@ -282,7 +282,7 @@ void draw_instruments(void)
     } else {                                              /* speed needle */
         u16 q = (u16)(u8)div16_8((u16)(DSB(0x52CF) << 1), 5);
         u16 tip = CARW((u16)(0x179 + (q << 1)));
-        gfx_draw_line(CARS(0x175), CARS(0x177), (s16)(tip & 0xFF), (s16)(tip >> 8), 15);
+        gfx_draw_line(CARS(0x175), CARS(0x177), (s16)(tip & 0xFF), (s16)(tip >> 8), COL(15, 0xFFFF));
     }
 tach:
     if (CARW(0x14D) & 0x0C) {
@@ -308,7 +308,7 @@ tach:
         bx = (u16)(bx >> 6);
         if (CARB(0x24D) != 0) bx = (u16)(bx >> 1);
         u16 tip = CARW((u16)(0x24F + (bx << 1)));
-        gfx_draw_line(CARS(0x249), CARS(0x24B), (s16)(tip & 0xFF), (s16)(tip >> 8), 15);
+        gfx_draw_line(CARS(0x249), CARS(0x24B), (s16)(tip & 0xFF), (s16)(tip >> 8), COL(15, 0xFFFF));
     }
 done:
     blit_or_clip_raw(hnd(DASH_H(DASH_inst)), 0, 0);

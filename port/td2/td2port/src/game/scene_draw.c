@@ -52,6 +52,7 @@ void draw_sky(const SceneView *v)
     if (v->front) {
         s16 di = (s16)((u16)-(u16)(DSW(DS_heading) - (u16)heading) & 0x3FF);  /* DS:5344 mountain scroll */
         s16 y = VS(v, top_sy);
+        if (gfx_is_cga()) { di = (s16)(di | 1); y = (s16)(y | 1); }   /* odd x and row (dither phase?) */
         blit_copy_clip_hot(hnd((u16)(hb + 8 * 4)),  (s16)(di - 1024), y);
         blit_copy_clip_hot(hnd((u16)(hb + 10 * 4)), (s16)(di - 500), y);
         blit_copy_clip_hot(hnd((u16)(hb + 9 * 4)),  (s16)(di - 300), y);
@@ -60,6 +61,7 @@ void draw_sky(const SceneView *v)
         di = (s16)((u16)-(u16)(DSW(DS_cloud_scroll) - (u16)heading) & 0x3FF);
         y = (s16)(RW(v, row_sy, 0x76) - 30);
         di = (s16)(di - 100);
+        if (gfx_is_cga()) { di = (s16)(di | 1); y = (s16)(y | 1); }
         blit_copy_clip_hot(hnd((u16)(hb + 11 * 4)), (s16)(di - 1024), y);
         blit_copy_clip_hot(hnd((u16)(hb + 13 * 4)), (s16)(di - 500), y);
         blit_copy_clip_hot(hnd((u16)(hb + 12 * 4)), (s16)(di - 300), y);
@@ -68,6 +70,7 @@ void draw_sky(const SceneView *v)
         s16 di = (s16)((u16)(DSW(DS_heading) - (u16)heading) & 0x3FF);
         di = (s16)(di >> 1);
         s16 y = RW(v, row_sy, 0x30);
+        if (gfx_is_cga()) { di = (s16)(di | 1); y = (s16)(y | 1); }
         blit_copy_clip_hot(hnd((u16)(hb + 8 * 4)),  (s16)(di - 512), y);   /* rmt0 */
         blit_copy_clip_hot(hnd((u16)(hb + 10 * 4)), (s16)(di - 250), y);   /* rmt2 */
         blit_copy_clip_hot(hnd((u16)(hb + 9 * 4)),  (s16)(di - 150), y);   /* rmt1 */
@@ -104,7 +107,7 @@ void draw_ground(const SceneView *v)
         }
         if (r->span_to(&di, SPAN(span_ol, si), bx, odd)) goto next;
         if (r->span_to(&di, SPAN(span_l, si), DSW(DS_col_shoulder), odd)) goto next;
-        if (r->span_to(&di, SPAN(span_r, si), 7, odd)) goto next;
+        if (r->span_to(&di, SPAN(span_r, si), COL(7, 0), odd)) goto next;   /* road */
         if (r->span_to(&di, SPAN(span_or, si), DSW(DS_col_shoulder), odd)) goto next;
         if (DSW((u16)(DS_span_flags + si)) & 0x04) {       /* right drop-off */
             if ((s16)si >= VS(v, right_sky_sy2) && VS(v, right_sky_x) >= SPAN(span_or, si)) {
@@ -139,11 +142,11 @@ void draw_tunnel_walls(const SceneView *v)
         u16 bx;
         if (DSB(DS_toggle_37f7) == 0) {
             hline(VS(v, tunnel_in_l), l, di, 0);
-            hline(SPAN(span_l, (u16)si), SPAN(span_r, (u16)si), di, 8);
+            hline(SPAN(span_l, (u16)si), SPAN(span_r, (u16)si), di, COL(8, 0x9966));
             bx = 0;
         } else {
-            hline(VS(v, tunnel_in_l), l, di, 8);
-            bx = 8;
+            bx = COL(8, 0);
+            hline(VS(v, tunnel_in_l), l, di, bx);
         }
         hline(SPAN(span_r, (u16)si), VS(v, tunnel_in_r), di, bx);
         di++;

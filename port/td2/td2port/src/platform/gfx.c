@@ -156,6 +156,9 @@ void gfx_free_buffer(FarPtr desc)
 /* ------------------------------------------------------------------------------------------------ */
 /* Clears, fills, lines, plot                                                                       */
 
+bool gfx_is_cga(void) { return be->adapter == GFX_CGA; }
+u16 gfx_px_per_byte(void) { return be->px_per_byte; }
+
 void gfx_clear_screen(u16 colour) { be->clear_screen(colour); }   /* 06c9:840a */
 void gfx_clear_clip(u16 colour) { be->clear_clip(colour); }       /* 06c9:843e */
 

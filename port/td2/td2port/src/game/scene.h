@@ -30,6 +30,7 @@ void project_mirror(void);              /* 06c9:1f71 */
 void draw_mirror(void);                 /* 06c9:1f99 */
 void snapshot_mirror(void);             /* 06c9:2089 */
 void crash_sequence(void);              /* 06c9:3532 */
+void scene_colours_load(void);          /* part of stage_load: the scenery colours */
 void message_wait_tail(void);           /* 06c9:362f */
 void engine_smoke_sequence(void);       /* 06c9:3643 */
 void msg_missed_gas(void);              /* 06c9:36e0 */

@@ -10,7 +10,7 @@
  *
  * One backend is active at a time (EGA today). gfx_set_backend() must be called before gfx_init();
  * switching during play is a later milestone. */
-#include "../mem.h"
+#include "gfx.h"
 
 typedef enum { BLIT_REPLACE, BLIT_OR, BLIT_AND, BLIT_XOR } BlitOp;
 
@@ -34,6 +34,7 @@ typedef struct SceneRaster {
 
 typedef struct GfxBackend {
     const char *name;
+    GfxAdapter adapter;                         /* which original's game code constants apply */
     int frame_w, frame_h;                       /* host frame size */
     u8 px_per_byte;                             /* pixels in one buffer byte (EGA 8 per plane, CGA 4) */
     const SceneRaster *scene;

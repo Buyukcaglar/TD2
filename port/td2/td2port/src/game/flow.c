@@ -217,7 +217,7 @@ s16 message_box_0000_0090(u16 msg_ds, s16 timed)
     grab_into_sprite_raw(gfx_desc_sprite(save), 0, 0x50);
     gfx_fill_rect(0, 0x50, 0x140, 0x28, 0);
     draw_rect_outline(0, 0x50, 0x13F, 0x77, 0xFFFF);
-    gfx_set_text_colours(0x0F, 0);
+    gfx_set_text_colours(COL(0x0F, 3), 0);
     draw_text_centered(msg_ds, 0x5B);
     draw_text_centered(0x70A6, 0x65);                                /* "Press any key to continue." */
     s16 k = (s16)(timed ? getkey_timeout(3000) : getkey_wait());
@@ -239,7 +239,7 @@ s16 question_box(s16 unused, u16 msg_ds)
     grab_into_sprite_raw(gfx_desc_sprite(save), 0, 0x50);
     gfx_fill_rect(0, 0x50, 0x140, 0x28, 0);
     draw_rect_outline(0, 0x50, 0x13F, 0x77, 0xFFFF);
-    gfx_set_text_colours(0x0F, 0);
+    gfx_set_text_colours(COL(0x0F, 3), 0);
     draw_text_centered(msg_ds, 0x60);
     s16 k = (s16)getkey_wait();
     blit_copy_raw(gfx_desc_sprite(save), 0, 0x50);
@@ -375,7 +375,7 @@ int game_main(void)
         if (r == KEY_ESC) {
             gfx_fill_rect(0x28, 0x50, 0x118, 0x28, 0);
             draw_rect_outline(0x28, 0x50, 0x117, 0x77, 0xFFFF);
-            gfx_set_text_colours(0x0F, 0);
+            gfx_set_text_colours(COL(0x0F, 3), 0);
             draw_text_centered(0x71D3, 0x60);        /* "Exit to DOS (Y/N)?" */
             do r = (s16)getkey_timeout(3000); while (r == KEY_ESC);
             if (r == 'y' || r == 'Y') {

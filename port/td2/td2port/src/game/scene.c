@@ -101,7 +101,7 @@ void draw_front(void)
     if (ax == 0) return;
     if (DSB(DS_fall_mode) == 4) {                         /* water */
         blit_copy_clip_raw(ds_far(DS_main_sprite), 0, (s16)-ax);
-        fill(0, (s16)(0x5C - ax), 320, 0xB4, 9);
+        fill(0, (s16)(0x5C - ax), 320, 0xB4, COL(9, 0x4444));
         return;
     }
     blit_copy_clip_raw(ds_far(DS_main_sprite), 0, (s16)-ax);
@@ -109,10 +109,10 @@ void draw_front(void)
     u16 cl, cr, cb;
     if (DSB(DS_fall_mode) == 1) {
         bx = DSS(DS_left_sky_x);
-        cl = DSW(DS_col_sky); cr = 6; cb = 6;
+        cl = DSW(DS_col_sky); cr = COL(6, 0x8822); cb = cr;
     } else {
         bx = DSS(DS_right_sky_x);
-        cl = 6; cr = DSW(DS_col_sky); cb = 6;
+        cl = COL(6, 0x8822); cr = DSW(DS_col_sky); cb = cl;
     }
     s16 cy = (s16)(0x5C - DSW(DS_fall_scroll));
     fill(0, (s16)(cy + 0xB4), 320, 100, cb);
@@ -137,10 +137,10 @@ void draw_mirror(void)
         u16 ax = (u16)(DSW(DS_fall_scroll) >> 3);
         if (DSB(DS_fall_mode) == 4) {
             blit_copy_clip_raw(ds_far(DS_mirror_sprite), 0, (s16)-ax);
-            fill(0, (s16)(0x11 - ax), 0x50, 0xB4, 9);
+            fill(0, (s16)(0x11 - ax), 0x50, 0xB4, COL(9, 0x4444));
         } else {
             ax = (u16)(ax + VW(v, top_sy));
-            fill(0, (s16)ax, 0x50, (s16)(0x11 - ax), 6);
+            fill(0, (s16)ax, 0x50, (s16)(0x11 - ax), COL(6, 0x8822));
             fill(0, 0, 0x50, (s16)ax, DSW(DS_col_sky));
         }
     }
@@ -288,6 +288,18 @@ void mirror_free(void)
     gfx_free_buffer(ds_far(DS_mirror_desc));
 }
 
+/* stage_load's colour copy: the scenery colours from the stage file. The file holds a CGA pattern and
+ * an EGA colour for each, as pairs of words from DAT+0x320; each build reads its own (docs/cga.md). */
+void scene_colours_load(void)
+{
+    u16 dat = (u16)(gfx_is_cga() ? 0x378A : 0x378C);     /* DAT+0x320 CGA, DAT+0x322 EGA */
+    DSW(DS_scene_words) = DSW(dat);                       /* col_left */
+    DSW(DS_col_right) = DSW((u16)(dat + 4));
+    DSW(DS_col_shoulder) = DSW((u16)(dat + 8));
+    DSW(DS_col_sky) = DSW((u16)(dat + 0x0C));
+    DSW(DS_col_far) = DSW((u16)(dat + 0x10));
+}
+
 /* 06c9:1c8f stage_load — §4.2 */
 void stage_load(void)
 {
@@ -297,11 +309,7 @@ void stage_load(void)
     u16 dx = DSW(DS_dat_road_units);
     DSW(DS_stage_len_copy) = dx;
     DSW(DS_fuel) = (u16)(dx - 10);                        /* DS:3320 */
-    DSW(DS_scene_words) = DSW(0x378C);                    /* col_left     DAT+0x322 */
-    DSW(DS_col_right) = DSW(0x3790);                      /* col_right    DAT+0x326 */
-    DSW(DS_col_shoulder) = DSW(0x3794);                   /* col_shoulder DAT+0x32A */
-    DSW(DS_col_sky) = DSW(0x3798);                        /* col_sky      DAT+0x32E */
-    DSW(DS_col_far) = DSW(0x379C);                        /* col_far      DAT+0x332 */
+    scene_colours_load();
     DSW(DS_player_pos) = 0x3B51;
     DSW(DS_opp_pos) = 0x3B51;
     if (DSB(DS_game_mode) == 0) DSW(DS_opp_pos) = 0;      /* DS:843E opponent selected */
@@ -538,7 +546,7 @@ void engine_smoke_sequence(void)
 void message_box_06C9_3788(void)
 {
     select_screen();
-    gfx_set_text_colours(15, 0);
+    gfx_set_text_colours(COL(15, 3), 0);
     gfx_fill_rect(30, 30, 0x105, 0x33, 0);
     draw_rect_outline(0x21, 0x21, 0x11F, 0x4D, 0xFFFF);
 }

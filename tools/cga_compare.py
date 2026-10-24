@@ -448,10 +448,10 @@ def main(argv: list[str]) -> int:
             print(f"{f['start']} {nm:28} {owner:12} {what}")
             continue
         g = c.cga.by_addr[cf]
-        if signature(f) == signature(g):
-            continue
         ea, ca = c.norm_pair(f['start'])
         kind, _ = classify(ea, ca, c.addr)
+        if kind == 'same after relink' and signature(f) == signature(g):
+            continue                       # identical: not listed
         print(f"{f['start']} {nm:28} {owner:12} -> {cf}  size {f['size']}/{g['size']}  {kind}")
     return 0
 

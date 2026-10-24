@@ -64,8 +64,8 @@ void results_section_page(void)
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     DSW(DS_results_y) = 0x20;
-    draw_rect_outline(0, 0x24, 0x137, 0x6C, 4);
-    draw_rect_outline(0, 0x7C, 0x137, 0xBC, 4);
+    draw_rect_outline(0, 0x24, 0x137, 0x6C, COL(4, 0x5555));
+    draw_rect_outline(0, 0x7C, 0x137, 0xBC, COL(4, 0x5555));
     snprintf(buf, sizeof buf, " Section %d ", DSS(DS_stage));                            /* DS:7CE2 */
     results_line(buf, 0x40);
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) - 8);
@@ -122,7 +122,7 @@ static s16 police_ending(void)
     gfx_select_target(bg);
     blit_copy_own(flow_page_sprite());
     gfx_select_target(work);
-    gfx_clear_clip(0x0F);
+    gfx_clear_clip(COL(0x0F, 0xFFFF));
     flow_find_list(e, DSTR(0x7B89), xcop, 2);       /* "xcopcopM" */
     flow_find_list(e, DSTR(0x7B92), guy, 14);       /* "guy0gu0M...guy6gu6M" */
     flow_find_list(e, DSTR(0x7BCB), cop, 18);       /* "cop0co0M...copCcoCM" */
@@ -152,7 +152,7 @@ static s16 police_ending(void)
     delay_ticks(700);
     gfx_fill_rect(10, 10, 300, 0x46, 0);                                       /* on the screen */
     draw_rect_outline(11, 11, 0x134, 0x4E, 0xFFFF);
-    gfx_set_text_colours(0x0F, 0);
+    gfx_set_text_colours(COL(0x0F, 3), 0);
     draw_text_centered(0x7C14, 0x12);               /* "License revoked and a 30" */
     draw_text_centered(0x7C2D, 0x1A);               /* "day jail sentence for the" */
     draw_text_centered(0x7C47, 0x22);               /* "following infractions:" */
@@ -196,7 +196,7 @@ s16 stage_results(s16 kind)
         if (getkey_timeout(200) == KEY_ESC) return KEY_ESC;          /* the text buffer leaks (original) */
         gfx_select_target(text);
         gfx_clear_clip(0);
-        gfx_set_text_colours(0x0F, 0);
+        gfx_set_text_colours(COL(0x0F, 3), 0);
         DSW(DS_results_y) = 0;
         if (DSS(DS_crashes) != 0) {
             snprintf(buf, sizeof buf, "You crashed %d time%s.", DSS(DS_crashes),
@@ -222,7 +222,7 @@ s16 stage_results(s16 kind)
         results_line(buf, 0);
         results_line_ds(0x77F0, 0);                                  /* "Press key or joystick to continue..." */
         select_screen();
-        gfx_set_clip_current(0, 0x28, 0xB0, 0xC8);
+        gfx_set_clip_current(0, XBYTES(0x28), 0xB0, 0xC8);
         gfx_clear_clip(0);
         s16 y = 0xC8;
         kbd_flush();

@@ -53,11 +53,15 @@ static void cliff_wall(const SceneView *v, u16 si, bool left)
         di = 0;
         bp = left ? 0 : v->width;
     }
-    if (left) fill(bp, di, (s16)(ax - bp), cx, 6);
-    else      fill(ax, di, (s16)(bp - ax), cx, 6);
+    if (left) fill(bp, di, (s16)(ax - bp), cx, COL(6, 0x8822));
+    else      fill(ax, di, (s16)(bp - ax), cx, COL(6, 0x8822));
     s16 x = left ? RW(v, row_ol, si) : RW(v, row_or, si);
     s16 dy = RW(v, row_sy, si);
     if (dy >= v->height) dy = v->height;
+    if (gfx_is_cga()) {                                   /* odd row; even x on the left, odd on the right */
+        dy = (s16)(dy | 1);
+        x = left ? (s16)(x & ~1) : (s16)(x | 1);
+    }
     u16 hb = v->sky_handles;
     u16 k = left ? 4 : 0;                                 /* lcfA/lcfa (lcfC/lcfc), rcfA/rcfa (rcfC/rcfc) */
     and_ch((u16)(hb + 4 * k), x, dy);
@@ -78,7 +82,7 @@ static void cliff_deco(const SceneView *v, u16 si, bool left)
     u16 di = (u16)(VW(v, scale4) + ax);
     s16 dx = RW(v, row_sy, si);
     if (cl != 0) dx = (s16)(dx - (u16)((u8)(VB(v, obj_size) >> 1) * cl));
-    and_ch((u16)(di + 0x30), x, dx);                      /* upper case = mask */
+    if (!gfx_is_cga()) and_ch((u16)(di + 0x30), x, dx);   /* upper case = mask; CGA draws no mask */
     or_ch(di, x, dx);
 }
 
@@ -94,7 +98,7 @@ static void tunnel_mouths(const SceneView *v, u16 si)
         s16 bx = VS(v, tunnel_in_top), cx = VS(v, tunnel_out_sy);
         s16 ax = VS(v, tunnel_in_l), di = VS(v, tunnel_out_l);
         if (style) {
-            dx = 8;
+            dx = COL(8, 0);
             di = RW(v, row_l, si);
             bx = (s16)(VS(v, top_sy) - 5);
         }
@@ -131,8 +135,8 @@ static void tunnel_mouths(const SceneView *v, u16 si)
             fill(in_r, 0, (s16)(wd - in_r), clip, 0);
         } else {
             s16 t = (s16)(VS(v, top_sy) - 5), h = (s16)(clip - t);
-            fill(in_r, t, (s16)(wd - in_r), h, 8);
-            fill(0, t, in_l, h, 8);
+            fill(in_r, t, (s16)(wd - in_r), h, COL(8, 0));
+            fill(0, t, in_l, h, COL(8, 0));
         }
         return;
     }
@@ -151,17 +155,18 @@ static void tunnel_mouths(const SceneView *v, u16 si)
             fill(0, 0, bp, top_sy, sky);
             px = RW(v, row_l, si);
         } else {
-            fill(di, 0, (s16)(bp - di), clip, 6);
+            fill(di, 0, (s16)(bp - di), clip, COL(6, 0x8822));
             bp = di;
             if (bp == 0) goto walls_a;
             fill(0, 0, bp, top_sy, sky);
             px = bp;
         }
+        if (gfx_is_cga()) px = (s16)(px | 1);
         and_ch((u16)(hb + 2 * 4), px, v->portal_y);       /* rcfB / rcfD */
         or_ch((u16)(hb + 3 * 4), px, v->portal_y);        /* rcfb / rcfd */
     walls_a:
-        fill(bp, 0, (s16)(wd - bp), in_top, 6);
-        fill(in_r, in_top, (s16)(wd - in_r), (s16)(clip - in_top), 6);
+        fill(bp, 0, (s16)(wd - bp), in_top, COL(6, 0x8822));
+        fill(in_r, in_top, (s16)(wd - in_r), (s16)(clip - in_top), COL(6, 0x8822));
     } else {                                              /* portal B (left cliff state) */
         s16 bp = in_r, di = VS(v, right_sky_x), px;
         bool first;
@@ -172,15 +177,16 @@ static void tunnel_mouths(const SceneView *v, u16 si)
             fill(bp, 0, (s16)(wd - bp), top_sy, sky);
             px = RW(v, row_r, si);
         } else {
-            fill(in_r, 0, (s16)(di - in_r), clip, 6);
+            fill(in_r, 0, (s16)(di - in_r), clip, COL(6, 0x8822));
             bp = di;
             fill(bp, 0, (s16)(wd - bp), top_sy, sky);
             px = bp;
         }
+        if (gfx_is_cga()) px = (s16)(px | 1);
         and_ch((u16)(hb + 6 * 4), px, v->portal_y);       /* lcfB / lcfD */
         or_ch((u16)(hb + 7 * 4), px, v->portal_y);        /* lcfb / lcfd */
-        fill(0, 0, bp, in_top, 6);
-        fill(0, in_top, in_l, (s16)(clip - in_top), 6);
+        fill(0, 0, bp, in_top, COL(6, 0x8822));
+        fill(0, in_top, in_l, (s16)(clip - in_top), COL(6, 0x8822));
     }
     if (si != 0) tunnel_rib(v, si);
 }
@@ -223,7 +229,7 @@ static void road_object(const SceneView *v, u16 si, u8 o)
         CSW(GFX_CUR_CLIP_Y1) = (u16)v->height;
         u16 s = (u16)(bx << 1);
         do {
-            hline(SPAN(span_l, s), SPAN(span_r, s), (s16)(s >> 1), 15);
+            hline(SPAN(span_l, s), SPAN(span_r, s), (s16)(s >> 1), COL(15, 0xFFFF));
             s = (u16)(s + 2);
         } while ((s16)s <= (s16)end2);
         CSW(GFX_CUR_CLIP_Y1) = RU(v, row_clip, si);
@@ -316,11 +322,12 @@ static void scenery(const SceneView *v, u16 si)
     DSS(0x52E2) = x;                                      /* sign x */
     s16 post_h = DSS(0x52FC);
     s16 cy = (s16)(RW(v, row_sy, si) - post_h);
-    u16 post_c = DSW(0x52F4);
+    u16 cga = (u16)(gfx_is_cga() ? 2 : 0);               /* the record's CGA word follows each EGA colour */
+    u16 post_c = DSW((u16)(0x52F4 + cga));
     s16 sw = DSS(0x52E4), sh = DSS(0x52E6);
     s16 board_top = (s16)(cy - sh);
     DSS(0x52E6) = board_top;                              /* sign y */
-    fill(x, board_top, sw, sh, DSW(0x52F0));             /* board */
+    fill(x, board_top, sw, sh, DSW((u16)(0x52F0 + cga))); /* board */
     fill((s16)(x + sw - (s16)pw), cy, (s16)pw, post_h, post_c);
     fill(x, cy, (s16)pw, post_h, post_c);
 
@@ -354,7 +361,7 @@ static void scenery(const SceneView *v, u16 si)
                 DSW(0x52FC) = (u16)(DSW(0x52FC) + sx);
                 bp = (u16)(bp + DSW(0x52E6));
                 ax = (u16)(ax + DSW(0x52E6));
-                gfx_draw_line((s16)DSW(0x52FC), (s16)bp, (s16)cx, (s16)ax, DSW(0x52EC));
+                gfx_draw_line((s16)DSW(0x52FC), (s16)bp, (s16)cx, (s16)ax, DSW((u16)(0x52EC + cga)));
             }
         }
         DSW(0x52F8) = (u16)(DSW(0x52F8) + DSW(0x52E8));

@@ -77,7 +77,7 @@ s16 name_entry_screen(void)
     FarPtr a = load_shapes(DS_disk_path);
     blit_copy_own(res_find(a, 0x8219));                                     /* "logL" */
     mem_release_cache(a);
-    gfx_set_text_colours(0x0F, 0);
+    gfx_set_text_colours(COL(0x0F, 3), 0);
     draw_text_centered(0x821E, 0x96);              /* "You have qualified as one of" */
     draw_text_centered(0x823B, 0xA0);              /* "THE DUEL: Test Drive II's best drivers." */
     gfx_draw_text(0x8263, 0x14, 0xB4);             /* "Enter your name:" */
@@ -113,7 +113,7 @@ s16 hisc_show(s32 timeout)
     char t[72], name[26];
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
-    gfx_set_text_colours(0x0F, 0);
+    gfx_set_text_colours(COL(0x0F, 3), 0);
     draw_text_centered(0x8274, 0);                 /* "THE DUEL: TEST DRIVE II TOP SCORES" */
     snprintf(t, sizeof t, "%s", DSTR(scn_name(DSS(DS_scn_idx))));
     for (s16 k = 0x11; ; ) {                       /* trim trailing spaces from index 17 */

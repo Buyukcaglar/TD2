@@ -53,6 +53,14 @@ class CgaCompareTest(unittest.TestCase):
         _, diff = cc.classify(ea, ca, self.c.addr)
         self.assertEqual([d for d in diff if d[0] in '+-'], ['-mov dx, 0xf', '+mov dx, 0xffff'] * 2)
 
+    def test_a_constant_only_change_is_listed(self):
+        """credits has the same size and calls in both builds; only its text colours differ."""
+        import contextlib, io
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            cc.main([])
+        self.assertRegex(out.getvalue(), r'010c:0285 credits .* 2 EGA / 2 CGA lines differ')
+
     def test_unrelated_functions_do_not_compare_equal(self):
         ea, _ = self.c.norm_pair('06c9:4d3f')            # traffic
         _, ca = self.c.norm_pair('06c9:4674')            # motion

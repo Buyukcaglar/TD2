@@ -37,17 +37,17 @@ s16 title_screen(void)
     for (s16 s = 0; s <= 0x20; s++) {
         s16 t = (s16)(0x20 - s);
         gfx_select_target(flow_page_desc());
-        gfx_set_clip_current(5, 0x23, 0x5E, 0x65);
+        gfx_set_clip_current(XBYTES(5), XBYTES(0x23), 0x5E, 0x65);
         gfx_clear_clip(0);
         for (int i = 0; i < LOGO_LINES; i++) {
             u16 l = (u16)(DS_logo_lines_a + 8 * i);
             gfx_draw_line(morph(DSS(l),     s, start[i][0], t),
                           morph(DSS(l + 2), s, start[i][1], t),
                           morph(DSS(l + 4), s, start[i][2], t),
-                          morph(DSS(l + 6), s, start[i][3], t), 0xFF);   /* colour 0xFFFF */
+                          morph(DSS(l + 6), s, start[i][3], t), 0xFFFF);
         }
         select_screen();
-        gfx_set_clip_current(5, 0x23, 0x5E, 0x65);
+        gfx_set_clip_current(XBYTES(5), XBYTES(0x23), 0x5E, 0x65);
         blit_copy_clip_own(flow_page_sprite());
         flow_pace(3);                                /* PORT: unpaced in the original (§7) */
         k = (s16)getkey();
@@ -123,7 +123,7 @@ s16 dsi_logo_screen(void)
     for (s16 s = 0; s <= 0x20; s++) {
         s16 t = (s16)(0x20 - s);
         gfx_select_target(flow_page_desc());
-        gfx_set_clip_current(2, 0x23, 0x5E, 0xBD);
+        gfx_set_clip_current(XBYTES(2), XBYTES(0x23), 0x5E, 0xBD);
         gfx_clear_clip(0);
         deadline_set(5);
         for (int i = 0; i < LOGO_LINES; i++) {
@@ -132,12 +132,12 @@ s16 dsi_logo_screen(void)
             gfx_draw_line(morph(DSS(b),     s, DSS(a),     t),
                           morph(DSS(b + 2), s, DSS(a + 2), t),
                           morph(DSS(b + 4), s, DSS(a + 4), t),
-                          morph(DSS(b + 6), s, DSS(a + 6), t), 0xFF);    /* colour 0x0000FFFF */
+                          morph(DSS(b + 6), s, DSS(a + 6), t), 0xFFFF);
         }
         select_screen();
-        gfx_set_clip_current(2, 0x23, 0x5E, 0xBD);
+        gfx_set_clip_current(XBYTES(2), XBYTES(0x23), 0x5E, 0xBD);
         if (s == 0) {
-            gfx_set_clip_current(0, 0x28, 0, 0x65);
+            gfx_set_clip_current(0, XBYTES(0x28), 0, 0x65);
             k = screen_reveal(0);
             if (k != 0) return k;
         } else {
@@ -163,12 +163,12 @@ s16 credits(void)
 {
     s16 r = dsi_logo_screen();
     if (r != 0) return r;
-    gfx_set_text_colours(0x0F, 1);
+    gfx_set_text_colours(COL(0x0F, 2), 1);
     draw_text_centered(0x724F, 0x00);                /* " Created by " */
     draw_text_centered(0x725C, 0x20);                /* " Design and Programming " */
     draw_text_centered(0x7275, 0x48);                /* " Art " */
     draw_text_centered(0x727B, 0x60);                /* " Music " */
-    gfx_set_text_colours(0x0E, 0);
+    gfx_set_text_colours(COL(0x0E, 3), 0);
     draw_text_centered(0x7283, 0x0C);                /* "Distinctive Software Inc." */
     draw_text_centered(0x729D, 0x14);                /* "Vancouver B.C." */
     draw_text_centered(0x72AC, 0x2C);                /* "Amory Wong   Rick Friesen Don Mattrick " */
@@ -279,7 +279,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
     flow_find_list(a, DSTR(0x7390), rear, 3);        /* "rrm0rrm1rrm2" */
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
-    gfx_set_clip_current(0, 0x28, (s16)(y - 0x50), y);
+    gfx_set_clip_current(0, XBYTES(0x28), (s16)(y - 0x50), y);
     if (anim) {
         if (reveal) {
             blit_copy_clip_hot(carS, x, y);
@@ -309,7 +309,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
         s16 w = flow_imod(flow_idiv(d, 12), 3);
         s16 cx = (s16)(x - d);
         gfx_select_target(flow_page_desc());
-        gfx_set_clip_current(0, 0x28, (s16)(y - 0x50), y);
+        gfx_set_clip_current(0, XBYTES(0x28), (s16)(y - 0x50), y);
         gfx_clear_clip(0);
         blit_copy_clip_hot(carS, cx, y);
         if (anim) {
@@ -319,7 +319,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
         blit_copy_clip_hot(front[w], cx, y);
         blit_copy_clip_hot(rear[w], cx, y);
         select_screen();
-        gfx_set_clip_current(0, 0x28, (s16)(y - 0x50), y);
+        gfx_set_clip_current(0, XBYTES(0x28), (s16)(y - 0x50), y);
         blit_copy_clip_raw(flow_page_sprite(), 0, 0);
         host_pump();                                 /* PORT: the original redrew at CPU speed */
         r = (s16)getkey();
@@ -369,7 +369,7 @@ FarPtr car_slide(s16 car, s16 from, s16 to, FarPtr old)
     if (from > to) { y0 = 0x57; delta = -0x28; }     /* Up: new rows enter at the top */
     else           { y0 = 0;    delta = 0x28; }      /* Down: new rows enter at the bottom */
     select_screen();
-    gfx_set_clip_current(0, 0x28, 0, 0x58);
+    gfx_set_clip_current(0, XBYTES(0x28), 0, 0x58);
     do {
         if (from > to) { from--; row = (s16)(from - to); }
         else           { from++; row = (s16)(from - to + 0x57); }
@@ -423,7 +423,7 @@ s16 car_select(s16 car)
         mem_release_cache_old(a);
     }
     select_screen();
-    gfx_set_clip_current(0, 0x28, 0, 0x58);
+    gfx_set_clip_current(0, XBYTES(0x28), 0, 0x58);
     blit_copy_clip_hot(flow_page_sprite(), 0, 0);   /* the top 88 rows show only the car on black */
     return car;
 }
@@ -471,10 +471,10 @@ static void menu_draw_highlight(void)
 {
     FarPtr s = ds_far((u16)(DS_gameopt_spr + 4 * DSS(DS_menu_sel)));
     s16 x = spr_x(s), y = spr_y(s), w = spr_w(s), h = spr_h(s);
-    draw_rect_outline((s16)(x + 2), y, (s16)((s16)(w << 3) + x - 3), (s16)(y + h - 1), 0xFFFF);
+    draw_rect_outline((s16)(x + 2), y, (s16)((s16)(w * gfx_px_per_byte()) + x - 3), (s16)(y + h - 1), 0xFFFF);
     s = ds_far((u16)(DS_gameopt_spr + 4 * DSS(DS_menu_sel)));
     x = spr_x(s); y = spr_y(s); w = spr_w(s); h = spr_h(s);
-    draw_rect_outline((s16)(x + 1), (s16)(y - 1), (s16)((s16)(w << 3) + x - 2), (s16)(y + h), 0xFFFF);
+    draw_rect_outline((s16)(x + 1), (s16)(y - 1), (s16)((s16)(w * gfx_px_per_byte()) + x - 2), (s16)(y + h), 0xFFFF);
 }
 
 /* 019e:06c5 main_menu — game_flow.md §4.7 (verified against the disassembly) */
@@ -486,7 +486,7 @@ s16 main_menu(void)
         DSS(DS_menu_prev_sel) = (s16)(DSS(DS_menu_sel) + 1);
         gfx_select_target(flow_page_desc());
         gfx_clear_clip(0);
-        gfx_set_text_colours(0x0F, 0);
+        gfx_set_text_colours(COL(0x0F, 3), 0);
         if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x744B)),
                           DSS(DS_car_disk), 0) == 0) {                              /* "rear" */
             a = load_shapes(DS_disk_path);

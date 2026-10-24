@@ -75,8 +75,8 @@ void exit_prompt(void)
 {
     Box b;
     box_open(&b, 0x50, 0x58, 0xA0, 0x18);
-    draw_rect_outline(4, 4, 0x9B, 0x14, 4);
-    gfx_set_text_colours(15, 0);
+    draw_rect_outline(4, 4, 0x9B, 0x14, COL(4, 0xAAAA));
+    gfx_set_text_colours(COL(15, 1), 0);
     draw_text_centered(DS_str_exit_to_dos, 9);          /* "EXIT TO DOS (Y/N)" */
     box_show(&b, 0x50, 0x58);
     FarPtr fn = kbd_get_getkey_fn();
@@ -99,7 +99,7 @@ void status_strip(u16 msg_ds, u32 ticks)
 {
     Box b;
     box_open(&b, 0, 0xBE, 0x140, 0x0A);
-    gfx_set_text_colours(15, 0);
+    gfx_set_text_colours(COL(15, 1), 0);
     draw_text_centered(msg_ds, 1);
     box_show(&b, 0, 0xBE);
     delay_slow(ticks);                        /* not paused: the game keeps running meanwhile */
@@ -111,8 +111,8 @@ void pause_prompt(void)
 {
     Box b;
     box_open(&b, 0, 0x58, 0x140, 0x18);
-    gfx_set_text_colours(15, 0);
-    draw_rect_outline(4, 4, 0x13C, 0x14, 4);
+    gfx_set_text_colours(COL(15, 1), 0);
+    draw_rect_outline(4, 4, 0x13C, 0x14, COL(4, 0xAAAA));
     draw_text_centered(DS_str_pause, 8);                 /* "PAUSE - PRESS ANY KEY TO RESUME" */
     box_show(&b, 0, 0x58);
     FarPtr fn = kbd_get_getkey_fn();
@@ -142,15 +142,15 @@ void joy_calibrate_screen(void)
     gfx_clear_screen(0);
     gfx_select_target(gfx_screen_desc());
     gfx_set_clip_current(0, (s16)CSW(CS_screen_stride), 0, 0xC8);
-    gfx_set_text_colours(15, 0);
+    gfx_set_text_colours(COL(15, 1), 0);
     draw_text_centered(DS_calib_line1, 0x23);
     draw_text_centered(DS_calib_line2, 0x2D);
     draw_text_centered(DS_calib_line3, 0x37);
     draw_text_centered(DS_calib_line4, 0xB9);
-    gfx_draw_line_or(0x82, 0x46, 0x82, 0xA0, 15);        /* 06c9:c984 */
-    gfx_draw_line_or(0xAA, 0x46, 0xAA, 0xA0, 15);
-    gfx_draw_line_or(0x5A, 0x64, 0xD2, 0x64, 15);
-    gfx_draw_line_or(0x5A, 0x82, 0xD2, 0x82, 15);
+    gfx_draw_line_or(0x82, 0x46, 0x82, 0xA0, COL(15, 0xFFFF));        /* 06c9:c984 */
+    gfx_draw_line_or(0xAA, 0x46, 0xAA, 0xA0, COL(15, 0xFFFF));
+    gfx_draw_line_or(0x5A, 0x64, 0xD2, 0x64, COL(15, 0xFFFF));
+    gfx_draw_line_or(0x5A, 0x82, 0xD2, 0x82, COL(15, 0xFFFF));
     s16 prev = -1;
     joy_calib_reset();
     for (;;) {                                /* 1769:0176 */
@@ -164,7 +164,7 @@ void joy_calibrate_screen(void)
             gfx_fill_rect((s16)DSW((u16)(DS_calib_sq_x + (i << 1))), (s16)DSW((u16)(DS_calib_sq_y + (i << 1))),
                           0x20, 0x18, 0);
         gfx_fill_rect((s16)DSW((u16)(DS_calib_sq_x + (d << 1))), (s16)DSW((u16)(DS_calib_sq_y + (d << 1))),
-                      0x20, 0x18, 4);
+                      0x20, 0x18, COL(4, 0xAAAA));
         prev = d;
     }
     blit_copy_own(gfx_desc_sprite(save));

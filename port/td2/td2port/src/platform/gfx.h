@@ -43,6 +43,18 @@ static inline FarPtr gfx_desc_sprite(FarPtr desc)
     return far_make(rd16(desc.seg, (u16)(desc.off + 2)), rd16(desc.seg, desc.off));
 }
 
+/* ---- adapter differences in the game code (docs/cga.md, "Colours")
+ * TD2EGA and TD2CGA share the game code, except for constants that mean pixels or colours. */
+typedef enum { GFX_EGA, GFX_CGA } GfxAdapter;
+bool gfx_is_cga(void);
+u16  gfx_px_per_byte(void);                                             /* 8 EGA, 4 CGA */
+/* A colour constant: the EGA colour number, and the CGA value (a pattern word for fills and lines,
+ * a 2-bit pixel value for text and plots). */
+#define COL(ega, cga) ((u16)(gfx_is_cga() ? (cga) : (ega)))
+/* A horizontal position or size in bytes of a 320-pixel row (clip columns, scroll widths): EGA has
+ * 40 bytes per row, CGA 80. */
+#define XBYTES(n) ((s16)(gfx_is_cga() ? (n) * 2 : (n)))
+
 /* ---- port setup / presentation (no original counterpart) */
 
 /* Resets the backend's video model (EGA: planes, registers, default mode-0Dh palette), checks the

@@ -813,6 +813,7 @@ static void ega_grab_into_sprite(FarPtr spr, u16 px, u16 py)
 
 const GfxBackend gfx_ega_backend = {
     .name = "EGA",
+    .adapter = GFX_EGA,
     .frame_w = 320,
     .frame_h = 200,
     .px_per_byte = 8,
