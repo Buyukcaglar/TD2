@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.24)
+project(td2port C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# The EGA port (td2port) ports TD2EGA.EXE. The CGA / Hercules builds (TD2CGA.EXE) come later.
+
+find_package(SDL3 REQUIRED CONFIG)
+
+file(GLOB_RECURSE TD_SOURCES CONFIGURE_DEPENDS src/*.c)
+
+add_executable(td2port ${TD_SOURCES})
+target_include_directories(td2port PRIVATE src)
+target_link_libraries(td2port PRIVATE SDL3::SDL3)
+if(MSVC)
+    target_compile_options(td2port PRIVATE /W3)
+else()
+    # The memory model reads multi-byte values through byte pointers (see src/mem.h).
+    target_compile_options(td2port PRIVATE -Wall -Wextra -Wno-unused-parameter -fno-strict-aliasing)
+    # Game strings are copied out of mem[] into fixed buffers with snprintf; truncation is intended.
+    if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+        target_compile_options(td2port PRIVATE -Wno-format-truncation)
+    endif()
+endif()
+if(WIN32)
+    add_custom_command(TARGET td2port POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_RUNTIME_DLLS:td2port> $<TARGET_FILE_DIR:td2port>
+        COMMAND_EXPAND_LISTS)
+endif()

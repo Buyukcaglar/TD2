@@ -22,3 +22,7 @@ __pycache__/
 
 # Exception: published code may describe formats, but must never include game
 # payloads, binary-derived arrays, memory dumps, screenshots or original media.
+
+# Build output inside the vendored port
+/port/**/build*/
+/port/**/out/
