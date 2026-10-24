@@ -20,6 +20,7 @@ void host_set_tick_handler(void (*handler)(void));
 #define HOST_FRAME_MAX_W 640
 #define HOST_FRAME_MAX_H 300
 void host_set_frame_source(bool (*compose)(u32 *xrgb), int w, int h);
+void host_set_title_mode(const char *mode);   /* "Test Drive II (<mode>)" */
 
 /* Runs due timer ticks, generates speaker audio, handles window events and presents the screen when
  * it changed. Every busy-wait loop of the original (key polls, deadlines, delays) must call this.

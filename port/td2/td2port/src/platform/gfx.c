@@ -30,6 +30,7 @@ void gfx_init(void)
         host_fatal("gfx_init: unexpected graphics state in %s", TD_EXE_NAME);
     be->reset();
     host_set_frame_source(gfx_compose, be->frame_w, be->frame_h);
+    host_set_title_mode(be->name);
 }
 
 bool gfx_compose(u32 *xrgb) { return be->compose(xrgb); }

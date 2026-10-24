@@ -185,6 +185,12 @@ void host_shutdown(void)
 }
 
 void host_set_tick_handler(void (*handler)(void)) { tick_handler = handler; }
+void host_set_title_mode(const char *mode)
+{
+    char title[64];
+    SDL_snprintf(title, sizeof title, "Test Drive II (%s)", mode);
+    SDL_SetWindowTitle(window, title);
+}
 void host_set_frame_source(bool (*compose)(u32 *), int w, int h)
 {
     frame_source = compose;
