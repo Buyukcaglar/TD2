@@ -20,7 +20,12 @@ int  app_data_game_dir_count(void);
 const char *app_data_game_dir(int i);
 char *app_data_find(const char *name);                   /* first game folder's file, or NULL; SDL_free it */
 bool app_data_write_catalogues(char *err, size_t err_size);
+/* How many complete cars and sceneries a folder or archive adds (an archive is unpacked); false if none. */
+bool app_data_probe(const char *path, int *car_count, int *scenery_count);
+/* The game folders and the cars and sceneries of the catalogues, as text for the Game files window. */
+void app_data_summary(char *buf, size_t size);
 
 /* Settings (settings.ini in the profile folder: "key=value" lines). */
 const char *app_setting(const char *key);                /* NULL when not set */
 void app_setting_set(const char *key, const char *value);   /* saves the file */
+void app_setting_add(const char *key, const char *value);   /* another value of a key ("expansion"); saves */

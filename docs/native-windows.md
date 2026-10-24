@@ -68,17 +68,24 @@ The game picture stays the original game. App features live in `src/app/`:
 - `app_ui.h` is the operating-system layer, with one implementation per system: `app_ui_win32.c` now, `app_ui_macos.m` later.
 - `app_menu.c` builds the menu and carries out the choice, the same on every system.
 
-The context menu, the pause and the theme are built (step 4 below). The question windows come with the game data manager, which is their first user.
+The context menu, the pause, the theme and the question windows are built (steps 4 and 5 below).
 
 - **Context menu.** It opens with a right click on the window or with Ctrl+Shift+M. It lists:
   - Graphics: EGA, CGA, Hercules, and "Next mode" (Ctrl+Shift+G). The current or pending mode has the radio mark.
-  - Hercules monitor: white, green or amber, which changes the picture at once. This answers the phosphor question without a decision now; the choice is not saved yet (the settings file comes with step 5).
+  - Hercules monitor: white, green or amber, which changes the picture at once. This answers the phosphor question without a decision now. The choice is saved in the settings.
   - Window size: 1× to 4×, and full screen (Alt+Enter).
+  - Game files…: what is installed, and adding an expansion folder or archive (section 3).
+  - About Test Drive II: the version, where the game files come from, the licences and the key combinations.
   - Quit.
-  - Still to come: Game files (what is installed, add an expansion folder) and About.
   On Windows it is a Win32 popup menu (`TrackPopupMenuEx`) on the SDL window's handle. On macOS it will be an `NSMenu`.
   The menu opens inside `host_pump`, at any point of the game, so every command is one that is safe at any time. A graphics choice is only a request, applied at the next safe point (section 1).
-- **Question windows.** Used for errors, confirmations and the first-start setup. On Windows, the standard message box and task dialog do not follow dark mode. So the layer draws its own small dialogs with Win32 controls themed for dark mode, or with standard ones in light mode. The folder picker is `SDL_ShowOpenFolderDialog` (the Windows file dialog, which follows the theme). On macOS, `NSAlert` and `NSOpenPanel` follow the theme by themselves.
+- **Question windows.** Used for errors, confirmations, the first-start setup, Game files and About. On Windows, the standard message box and task dialog do not follow dark mode, so `app_ui_question` draws its own small window: a text and up to a few buttons, the first one the default, Esc or the close box for the last.
+  - It uses the system's message font at the window's DPI, and wraps the text at about 440 pixels.
+  - In dark mode it has a dark background and text, the dark title bar (`DWMWA_USE_IMMERSIVE_DARK_MODE`) and the dark Explorer theme on its buttons. In light mode it uses the standard colours.
+  - It is modal: the owner window is disabled while it is open, and the game is paused.
+  - The folder and archive pickers are the Windows file dialog (`IFileOpenDialog`), which follows the theme. The archive picker filters zip, 7z, rar, lha and lzh.
+  - Checked in dark mode only: the machine here is set to dark. Light mode is still to be looked at.
+  - On macOS, `NSAlert` and `NSOpenPanel` will follow the theme by themselves.
 - **Theme.** SDL3 does this already for its windows: on creation and on every theme change, `WIN_UpdateDarkModeForHWND` does three things.
   - It calls uxtheme's undocumented `SetPreferredAppMode(AllowDark)` (ordinal 135, Windows 10 1903 and later) and `AllowDarkModeForWindow`.
   - It sets the title bar's dark mode.
@@ -139,9 +146,9 @@ Built (`src/app/app_data.c`; step 5 below, first half).
   - The user's Amiga archive (`TestDrive2&DataDisks_v1.1_HD_JOTD.lha`, 352 files, lh5) unpacks with every file's checksum passing.
 - **Tested folders.** A base-only folder (73 files) lists two cars and the Master scenery. Adding a separate Supercars folder with its own `CARS.DAT` lists seven cars. The full game folder gives the same catalogues as its own files, and every snapshot is unchanged.
 
-Still to come:
-
-- **Question windows and first start.** Without a base folder, a question window explains what is needed and opens the folder or archive picker. The context menu gets "Game files…" (what is installed, add an expansion folder or archive) and About.
+- **First start.** Without `--game-dir`, a set `game` folder or a `Game` folder next to the exe, a question window says that the base DOS game is needed and that expansions are optional. Its buttons choose a folder, choose an archive, or quit. The choice is checked, saved as `game`, and the start goes on. A folder without the base game says what is missing and asks again.
+- **Game files….** The menu entry lists the base game and each expansion as the player chose them (the archive, not its unpacked folder), then the complete cars and sceneries by name. Add folder… and Add archive… pick an expansion and check it. One with no complete car or scenery is refused with a message. Otherwise it is saved as an `expansion` entry and the window offers a restart, which starts the exe again with the same command line.
+- **Errors at start** (no base game, a broken archive, no profile folder) come in the same question window rather than only on the console.
 
 ## 4. Single portable exe
 
@@ -161,7 +168,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
 3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run. Other screens leave the switch pending.
 4. **App UI layer on Windows.** Done: the context menu with the system theme, Ctrl+Shift+M and right click, pausing, and the graphics, monitor, window size, full screen and quit commands. The question windows move to step 5.
-5. **Game data manager.** First half done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues. Archives (zip, 7z, rar, lha) done too. Still to come: question windows, first-start setup, the "Game files…" menu entry.
+5. **Game data manager.** Done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues, archives (zip, 7z, rar, lha), the question windows, the first-start setup, and the Game files… and About entries.
 6. **macOS** (later): the same `app_ui` interface with AppKit.
 
 ## Decisions (user, 24 October 2026)

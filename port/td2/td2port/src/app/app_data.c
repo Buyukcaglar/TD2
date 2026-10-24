@@ -13,6 +13,7 @@
 static char *profile_dir;
 static char *settings_path;
 static char *dirs[MAX_DIRS];
+static char *sources[MAX_DIRS];     /* each game folder as the settings name it (an archive, say) */
 static int ndirs;
 static struct { char key[32]; char value[512]; } settings[MAX_SETTINGS];
 static int nsettings;
@@ -54,6 +55,15 @@ const char *app_setting(const char *key)
     for (int i = 0; i < nsettings; i++)
         if (SDL_strcmp(settings[i].key, key) == 0) return settings[i].value;
     return NULL;
+}
+
+void app_setting_add(const char *key, const char *value)
+{
+    if (nsettings == MAX_SETTINGS) return;
+    SDL_strlcpy(settings[nsettings].key, key, sizeof settings[0].key);
+    SDL_strlcpy(settings[nsettings].value, value, sizeof settings[0].value);
+    nsettings++;
+    settings_save();
 }
 
 void app_setting_set(const char *key, const char *value)
@@ -171,14 +181,10 @@ static char *find_game_folder(const char *dir, int depth)
 
 /* A game folder, or an archive (zip, 7z, rar, lha) unpacked once into Profile/Archives/<its name>.
  * The marker file there records the archive's size and time, so a changed archive is unpacked again. */
-static void add_dir(const char *dir)
+static char *resolve_source(const char *dir)
 {
     SDL_PathInfo info;
-    if (ndirs == MAX_DIRS || !dir || !*dir) return;
-    if (!SDL_GetPathInfo(dir, &info) || info.type != SDL_PATHTYPE_FILE) {
-        dirs[ndirs++] = SDL_strdup(dir);
-        return;
-    }
+    if (!SDL_GetPathInfo(dir, &info) || info.type != SDL_PATHTYPE_FILE) return SDL_strdup(dir);
     const char *base = dir + SDL_strlen(dir);
     while (base > dir && base[-1] != '/' && base[-1] != '\\') base--;
     char *dest = NULL, *marker_path = NULL, stamp[64];
@@ -193,16 +199,23 @@ static void add_dir(const char *dir)
     if (!current) {
         if (!app_archive_unpack(dir, dest, err, sizeof err)) {
             fprintf(stderr, "%s\n", err);
-            dirs[ndirs++] = dest;                      /* the base check then reports what is missing */
             SDL_free(marker_path);
-            return;
+            return dest;                               /* the checks then report what is missing */
         }
         SDL_SaveFile(marker_path, stamp, SDL_strlen(stamp));
     }
     SDL_free(marker_path);
     char *inner = find_game_folder(dest, 4);
-    dirs[ndirs++] = inner ? inner : SDL_strdup(dest);
+    if (!inner) return dest;
     SDL_free(dest);
+    return inner;
+}
+
+static void add_dir(const char *dir)
+{
+    if (ndirs == MAX_DIRS || !dir || !*dir) return;
+    sources[ndirs] = SDL_strdup(dir);
+    dirs[ndirs++] = resolve_source(dir);
 }
 
 static bool open_profile(const char *dir)
@@ -225,6 +238,15 @@ static bool open_profile(const char *dir)
 
 bool app_data_init(const char *game_dir_arg, const char *user_dir_arg, char *err, size_t err_size)
 {
+    /* It may run again, after the first-start question chose a game folder. */
+    for (int i = 0; i < ndirs; i++) {
+        SDL_free(dirs[i]);
+        SDL_free(sources[i]);
+    }
+    ndirs = 0;
+    SDL_free(profile_dir);
+    SDL_free(settings_path);
+    profile_dir = settings_path = NULL;
     const char *base = SDL_GetBasePath();
     char *portable = NULL;
     if (base) SDL_asprintf(&portable, "%sProfile", base);
@@ -255,6 +277,13 @@ bool app_data_init(const char *game_dir_arg, const char *user_dir_arg, char *err
         SDL_free(next_to_exe);
     }
     const char *missing = missing_base_file(dirs[0]);
+    if (missing && !game_dir_arg && !app_setting("game")) {
+        SDL_snprintf(err, err_size,
+                     "No game folder is set up yet, and there is no Game folder with the game next to the app.\n\n"
+                     "The base game is TD2EGA.EXE with its screens and music, the Ferrari F40, the Porsche 959 "
+                     "and the Master scenery. Car and scenery expansions are optional.");
+        return false;
+    }
     if (missing) {
         SDL_snprintf(err, err_size,
                      "The folder %s does not hold the base DOS game of Test Drive II: %s is missing.\n\n"
@@ -326,10 +355,67 @@ static bool listed(const Entry *e, int n, const char *code)
     return false;
 }
 
+/* The catalogues as last written, for app_data_summary. */
+static Entry cars[MAX_ENTRIES], scenes[MAX_ENTRIES];
+static int ncars, nscenes;
+
+/* The complete cars and sceneries one folder's catalogues list. */
+static void count_complete(const char *dir, int *car_count, int *scenery_count)
+{
+    Entry found[MAX_ENTRIES];
+    int n = read_catalogue(dir, "CARS.DAT", false, found, MAX_ENTRIES);
+    *car_count = *scenery_count = 0;
+    for (int i = 0; i < n; i++) *car_count += car_complete(dir, found[i].code);
+    n = read_catalogue(dir, "SCENES.DAT", true, found, MAX_ENTRIES);
+    for (int i = 0; i < n; i++) *scenery_count += scenery_stages(dir, found[i].code, found[i].stages) > 0;
+}
+
+bool app_data_probe(const char *path, int *car_count, int *scenery_count)
+{
+    char *dir = resolve_source(path);
+    count_complete(dir, car_count, scenery_count);
+    SDL_free(dir);
+    return *car_count > 0 || *scenery_count > 0;
+}
+
+static void append(char *buf, size_t size, const char *fmt, const char *s)
+{
+    size_t n = SDL_strlen(buf);
+    if (n < size) SDL_snprintf(buf + n, size - n, fmt, s);
+}
+
+static void append_names(char *buf, size_t size, const Entry *e, int n)
+{
+    for (int i = 0; i < n; i++) {
+        char name[sizeof e[i].name];
+        SDL_strlcpy(name, e[i].name, sizeof name);
+        for (char *p = name; *p; p++)
+            if (*p == '_') *p = ' ';
+        append(buf, size, i ? ", %s" : "%s", name);
+    }
+}
+
+void app_data_summary(char *buf, size_t size)
+{
+    char line[64];
+    buf[0] = 0;
+    for (int i = 0; i < ndirs; i++) append(buf, size, i ? "Expansion: %s\n" : "Base game: %s\n", sources[i]);
+    SDL_snprintf(line, sizeof line, "\nCars (%d): ", ncars);
+    append(buf, size, "%s", line);
+    append_names(buf, size, cars, ncars);
+    SDL_snprintf(line, sizeof line, "\nSceneries (%d): ", nscenes);
+    append(buf, size, "%s", line);
+    append_names(buf, size, scenes, nscenes);
+#ifdef _WIN32
+    for (char *c = buf; *c; c++)
+        if (*c == '/') *c = '\\';
+#endif
+}
+
 bool app_data_write_catalogues(char *err, size_t err_size)
 {
-    Entry cars[MAX_ENTRIES], scenes[MAX_ENTRIES], found[MAX_ENTRIES];
-    int ncars = 0, nscenes = 0;
+    Entry found[MAX_ENTRIES];
+    ncars = nscenes = 0;
     for (int d = 0; d < ndirs; d++) {
         int n = read_catalogue(dirs[d], "CARS.DAT", false, found, MAX_ENTRIES);
         for (int i = 0; i < n && ncars < MAX_ENTRIES; i++)

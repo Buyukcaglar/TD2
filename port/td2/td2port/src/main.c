@@ -21,6 +21,7 @@
 #include "host.h"
 #include "app/app_data.h"
 #include "app/app_menu.h"
+#include "app/app_ui.h"
 #include "mem.h"
 #include "platform/gfx.h"
 #include "platform/gfx_backend.h"
@@ -39,9 +40,31 @@ static void app_command(HostCommand cmd)
 
 static int startup_error(const char *msg)
 {
+    static const char *const ok[] = { "OK" };
     fprintf(stderr, "%s\n", msg);
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Test Drive II", msg, NULL);
+    app_ui_question(NULL, "Test Drive II", msg, ok, 1);
     return 1;
+}
+
+/* First start, or the saved game folder no longer holds the base game: ask for the folder or archive
+ * that does, until one does or the player quits. */
+static bool ask_for_game(const char *user_dir, char *err, size_t err_size)
+{
+    static const char *const buttons[] = { "Choose folder…", "Choose archive…", "Quit" };
+    for (;;) {
+        char text[1024];
+        SDL_snprintf(text, sizeof text,
+                     "Test Drive II needs the original DOS game files.\n\n%s\n\n"
+                     "Choose the folder, or the archive (zip, 7z, rar, lha), that holds them.", err);
+        int choice = app_ui_question(NULL, "Test Drive II", text, buttons, 3);
+        if (choice != 0 && choice != 1) return false;
+        char *path = app_ui_pick_path(NULL, choice == 0, choice == 0 ? "The Test Drive II game folder"
+                                                                     : "The Test Drive II game archive");
+        if (!path) continue;
+        app_setting_set("game", path);
+        SDL_free(path);
+        if (app_data_init(NULL, user_dir, err, err_size)) return true;
+    }
 }
 
 /* The saved settings, where the command line did not choose (app/app_data.h). */
@@ -100,7 +123,10 @@ int main(int argc, char **argv)
     }
 
     char err[512];
-    if (!app_data_init(dir, user_dir, err, sizeof err)) return startup_error(err);
+    if (!app_data_init(dir, user_dir, err, sizeof err)) {
+        if (dir || !app_data_profile_dir() || check) return startup_error(err);
+        if (!ask_for_game(user_dir, err, sizeof err)) return 1;
+    }
     char *exe_path = app_data_find(TD_EXE_NAME);
     bool loaded = exe_path && mem_load_exe(exe_path, err, sizeof err);
     SDL_free(exe_path);
