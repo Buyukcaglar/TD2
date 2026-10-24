@@ -1,6 +1,6 @@
 """The Amiga audio backend (amiga/audio_amiga.c) as the game drives it: what it plays for each event.
 
-Opens the Amiga game folder, then: the title song; a race on the F40 with the car's state ten times a
+Opens the Amiga game folder, then: the title song, and the speech over it; a race on the F40 with the car's state ten times a
 second (revving up, the siren, a bump, a crash and the end); the game over sound; the song again. Each
 part must sound (not be silent), the engine's pitch must follow the rpm, and the end of a race must
 fade the car out.
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 AMIGA = ROOT / 'runs/amiga'
 DLL = ROOT / 'build/td2diff.dll'
 RATE = 22050
-SONG, RACE_START, RACE_END, BUMP, CRASH, GAME_OVER = range(6)
+SONG, RACE_START, RACE_END, BUMP, CRASH, GAME_OVER, TITLE = range(7)
 
 
 class Backend:
@@ -69,7 +69,14 @@ class AmigaAudioTest(unittest.TestCase):
         self.assertLess(rms(b.render(0.5)), 1)                  # silent until the game says what plays
 
         b.event(SONG, 1)
-        self.assertGreater(rms(b.render(3)), 300)               # the title song
+        song = b.render(3)
+        self.assertGreater(rms(song), 300)                      # the title song
+        b.event(SONG, 1)
+        b.event(TITLE)
+        speech = b.render(3)
+        self.assertGreater(rms(speech), 300)
+        self.assertNotEqual(speech, song)                       # the speech over the song
+        b.render(3)
 
         b.event(RACE_START, car='F40')
         b.render(0.3)

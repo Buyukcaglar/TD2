@@ -60,6 +60,7 @@ s16 title_screen(void)
     blit_copy_own(res_find(a, 0x71EF));              /* "tdri" */
     blit_copy_own(res_find(a, 0x71F4));              /* "duel" */
     mem_release_cache_old(a);
+    host_sound_event(SOUND_TITLE, 0, NULL);          /* PORT: sample-based audio (the Amiga's speech) */
     k = screen_reveal(1);
     if (k != 0) return k;
     return (s16)getkey_timeout(300);

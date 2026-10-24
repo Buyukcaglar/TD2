@@ -22,6 +22,8 @@
 #define FORM_END  0x60000u
 
 static u32 game_over;                               /* sfx/gameover, an 8SVX; 0 if missing */
+static u32 speech[2];                               /* sfx/the_duel, sfx/test_drive_ii */
+static int speech_next;                             /* the speech sample to play when the first ends */
 
 static char root[1024];
 static u8 *song_file;
@@ -59,14 +61,42 @@ static u8 *read_file(const char *name, u32 *len)
     return buf;
 }
 
-/* Copies a file to amiga_mem at *at (word aligned) and moves *at past it; 0 if missing or too big. */
+/* duel's Rpck unpacker ($1e518, tools/amiga/rpck.py): 'Rpck', the size, then count bytes n, n >= 0
+ * repeating the next byte n + 1 times, n < 0 copying -n bytes. Writes at most max bytes; returns the
+ * size, or 0 when the stream does not give it (some streams write one byte more, which is dropped). */
+static u32 unpack_rpck(const u8 *in, u32 len, u8 *out, u32 max)
+{
+    u32 size = (u32)in[4] << 24 | (u32)in[5] << 16 | (u32)in[6] << 8 | in[7];
+    if (size > max) return 0;
+    u32 o = 0;
+    for (u32 i = 8; i < len && o < size;) {
+        u8 n = in[i++];
+        if (n < 0x80) {
+            if (i >= len) break;
+            for (u32 k = 0; k <= n && o < size; k++) out[o++] = in[i];
+            i++;
+        } else {
+            for (u32 k = 0; k < 256u - n && i < len && o < size; k++) out[o++] = in[i++];
+        }
+    }
+    return o == size ? size : 0;
+}
+
+/* Copies a file to amiga_mem at *at (word aligned), unpacked if it is packed, and moves *at past it;
+ * 0 if missing or too big. */
 static u32 load_at(const char *name, u32 *at, u32 end)
 {
     u32 len;
     u8 *buf = read_file(name, &len);
     if (!buf) return 0;
     u32 a = 0;
-    if (*at + len <= end) {
+    if (len >= 8 && memcmp(buf, "Rpck", 4) == 0) {
+        u32 n = unpack_rpck(buf, len, amiga_mem + *at, end - *at);
+        if (n) {
+            a = *at;
+            *at = (a + n + 1) & ~1u;
+        }
+    } else if (*at + len <= end) {
         a = *at;
         memcpy(amiga_mem + a, buf, len);
         *at = (a + len + 1) & ~1u;
@@ -104,6 +134,8 @@ bool audio_amiga_open(const char *dir, char *err, size_t errlen)
     }
     at = FORM_BASE;
     game_over = load_at("sfx/gameover", &at, FORM_END);
+    speech[0] = load_at("sfx/the_duel", &at, FORM_END);
+    speech[1] = load_at("sfx/test_drive_ii", &at, FORM_END);
     car_loaded[0] = 0;
     ready = true;
     return true;
@@ -158,17 +190,21 @@ static void start_music(void)
     mode = MUSIC;
 }
 
-/* duel plays its game over sound from an overlay routine that has not been read; here the music
- * player's effect command plays it once, at full volume, on channel 0. */
-static void play_game_over(void)
+/* An 8SVX sound, as duel's overlay routine (overlay code 5178h) plays one: the music player's effect
+ * command on channel 2, volume 64, once, with the music at 69h meanwhile. The music, if it plays, goes
+ * on on the other channels. */
+static void play_form(u32 form)
 {
-    silence();
-    char err[128];
-    if (!game_over || !song_load(song_file, song_len, err, sizeof err)) return;
-    paula_set_servers(song_audio_int, song_tick);
-    song_open();
-    song_play_sfx(game_over, 0, 64, 1, 64);
-    mode = MUSIC;
+    if (!form) return;
+    if (mode != MUSIC) {
+        silence();
+        char err[128];
+        if (!song_load(song_file, song_len, err, sizeof err)) return;
+        paula_set_servers(song_audio_int, song_tick);
+        song_open();
+        mode = MUSIC;
+    }
+    song_play_sfx(form, 2, 64, 1, 0x69);
 }
 
 static void start_race(const char *car)
@@ -200,11 +236,20 @@ static void amiga_reset(int rate)
 
 static void amiga_speaker(u16 divisor, u8 port61_bits) { (void)divisor; (void)port61_bits; }
 
-static void amiga_render(s16 *out, int n) { paula_render(out, n); }
+static void amiga_render(s16 *out, int n)
+{
+    /* The title's second speech sample follows the first (duel draws in between; the wait is a guess). */
+    if (speech_next && mode == MUSIC && !song_sfx_status(2)) {
+        play_form(speech[speech_next]);
+        speech_next = 0;
+    }
+    paula_render(out, n);
+}
 
 static void amiga_event(SoundEvent e, int n, const char *car)
 {
     if (!ready) return;
+    speech_next = 0;
     switch (e) {
     case SOUND_SONG:
         if (n == 1) start_music();                  /* the Amiga game has only its title song */
@@ -219,7 +264,11 @@ static void amiga_event(SoundEvent e, int n, const char *car)
         break;
     case SOUND_BUMP: if (mode == RACE) race_car.bump = true; break;
     case SOUND_CRASH: if (mode == RACE) race_crash(); break;
-    case SOUND_GAME_OVER: play_game_over(); break;
+    case SOUND_GAME_OVER: play_form(game_over); break;
+    case SOUND_TITLE:                               /* "The Duel", then "Test Drive II" */
+        play_form(speech[0]);
+        speech_next = speech[1] ? 1 : 0;
+        break;
     }
 }
 
