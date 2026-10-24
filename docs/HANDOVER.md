@@ -2,7 +2,7 @@
 
 This file replaces `docs/planning/continuation.md` as the place to start. That file, `backlog.json`, `progress.json` and the P-gate structure are kept for history but no longer drive the work.
 
-## 0. Current state (end of session 2, 24 October 2026)
+## 0. Current state (end of session 3, 24 October 2026)
 
 M0 "Adopt" is done except the user's play test. M1 "Verify EGA" has started.
 
@@ -18,15 +18,17 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" has started.
   ```
 
   It rewrites `docs/verification.md`. Its own tests are in `tests/test_diffharness.py`; they check that it catches deliberate register and memory mismatches. First results: rand8, curve_sum, free_rev, drag_apply, brake, update_rpm, overrev_check, rle_decode and huff_decode all match on 200 randomised cases each. The unpacker cases cover every packed PES, PCS and DAT file.
+- **PC speaker sound (session 3).** Synthesis moved from `host.c` to `speaker.c`, which has no SDL dependency. It models PIT channel 2 in mode 3: the speaker follows port 61h bit 1 AND the PIT output, a low gate holds the output high, and raising the gate restarts the wave. The square wave is averaged exactly over each sample on a 4× grid, then passes a 9 kHz two-pole low-pass (the cone) and a 10 Hz DC blocker. Aliasing is 20 to 35 dB lower than before, ultrasonic divisors no longer fold into audible whines, and a stopped note settles to silence. Tests are in `tests/test_speaker.py`. Set `TD2_AUDIO_DUMP=<file>.wav` to record what the speaker plays. Nobody has listened to it yet; the cut-offs are in `speaker.h` if it sounds too dull or too bright.
 - **Adding a function to the harness** takes three steps: add an adapter in `tools/diffharness/adapters.c`, add a `Spec` with an input generator in `tools/diffharness/cases.py`, and rebuild.
 
 ### Next steps (in order)
 
-1. **PC speaker sound** (`host.c`, `audio_for_one_tick`). The port plays a hard-edged square wave, which aliases and sounds harsher than a real speaker. Use a band-limited square (PolyBLEP) and a gentle low-pass for the speaker cone. Every player hears this.
-2. **Billboard collision** (`sim_motion.c:436`). For sign types ≥ 50h the original tests a stale BP. Add the collision function to the harness, feed it BP values from real driving states, and decide from the result whether some billboard hits should not crash.
-3. **Neutral clutch grind** (`sim.c:265`). In neutral the original compares leftover CX/DX (throttle byte or joystick value, and 0100h), which can start the grind tone. Model those leftovers instead of skipping the check, and add a harness case.
+1. **Billboard collision** (`sim_motion.c:436`). For sign types ≥ 50h the original tests a stale BP. Add the collision function to the harness, feed it BP values from real driving states, and decide from the result whether some billboard hits should not crash.
+2. **Neutral clutch grind** (`sim.c:265`). In neutral the original compares leftover CX/DX (throttle byte or joystick value, and 0100h), which can start the grind tone. Model those leftovers instead of skipping the check, and add a harness case.
 
-After those: traffic seeding (`sim_traffic.c:244, 367`), the cockpit marker's CH (`scene_cockpit.c:207`), then whole-tick subsystem tests (run the original sim tick and `sim_tick` on the same state) before CGA.
+3. **Traffic seeding** (`sim_traffic.c:244, 367`). The original leaves DI and CX uninitialised there. Use the harness to check whether the leftovers ever change which car is picked.
+
+After those: the cockpit marker's CH (`scene_cockpit.c:207`), then whole-tick subsystem tests (run the original sim tick and `sim_tick` on the same state) before CGA.
 
 ### Open questions
 
