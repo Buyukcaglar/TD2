@@ -1,4 +1,4 @@
-﻿"""The Amiga music and effect player in C (amiga/song.c) against the original 68000 code in sfx/song.
+"""The Amiga music and effect player in C (amiga/song.c) against the original 68000 code in sfx/song.
 
 Both play the same script: the commands of the player's entry point, CIA timer ticks (SongInt) and the
 audio interrupts (SongIntHandler) a small Paula timing model derives from the original's own register

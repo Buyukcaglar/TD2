@@ -5,6 +5,7 @@
 #include "dh.h"
 #include "mem.h"
 #include "amiga/paula.h"
+#include "amiga/race_sound.h"
 #include "amiga/song.h"
 #include "speaker.h"
 #include "game/game.h"
@@ -206,6 +207,27 @@ DH_EXPORT u32 dh_song_call(int cmd, u32 a0, u16 d1, u16 d2, u16 d3, u16 d4)
     case 12: song_adjust_sfx(d1, d2, d3); break;
     case 100: song_tick(); break;
     case 101: song_audio_int(d1); break;
+    default: break;
+    }
+    return 0;
+}
+
+/* The race sound driver (amiga/race_sound.c), for tests/test_amiga_race_sound.py; its writes go to the
+ * same log. cmd: 0 init, 1 play, 2 play a raw sample file, 3 stop, 4 busy, 5 set, 6 ramp, 100 the
+ * vertical blank server (a = INTENAR), 101 the audio interrupt (a = INTREQR, b = INTENAR). */
+DH_EXPORT u32 dh_race_call(int cmd, u32 a, u32 b, u32 c, u32 d, u32 e, u32 f)
+{
+    amiga_set_reg_hook(song_log_write);
+    switch (cmd) {
+    case 0: race_sound_init(); break;
+    case 1: race_sound_play(a, b, (u16)c, (u16)d, (u16)e, (u16)f); break;
+    case 2: race_sound_play_raw(a, (u16)b, (u16)c); break;
+    case 3: race_sound_stop((u16)a); break;
+    case 4: return race_sound_busy((u16)a) ? 0xFFFF : 0;
+    case 5: race_sound_set((u16)a, (s16)b, (s16)c); break;
+    case 6: race_sound_ramp((u16)a, (u16)b, c); break;
+    case 100: race_sound_vblank((u16)a); break;
+    case 101: race_sound_audio_int((u16)a, (u16)b); break;
     default: break;
     }
     return 0;

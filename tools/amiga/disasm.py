@@ -1,4 +1,4 @@
-﻿"""Disassembles part of an Amiga load file with Capstone's 68000 mode.
+"""Disassembles part of an Amiga load file with Capstone's 68000 mode.
 
 Usage: python tools/amiga/disasm.py runs/amiga/duel 1e600 1e700   (addresses as hunk.load lays them out)
 """
