@@ -13,11 +13,15 @@
 #include "amiga/song.h"
 
 /* Where the files go in amiga_mem: the song file at 10000h (song.c), then the race effects, then the
- * car's two samples. */
+ * car's two samples, then the 8SVX game over sound. */
 #define FX_BASE   0x30000u
 #define FX_END    0x38000u
 #define CAR_BASE  0x38000u
 #define CAR_END   0x48000u
+#define FORM_BASE 0x48000u
+#define FORM_END  0x60000u
+
+static u32 game_over;                               /* sfx/gameover, an 8SVX; 0 if missing */
 
 static char root[1024];
 static u8 *song_file;
@@ -98,6 +102,8 @@ bool audio_amiga_open(const char *dir, char *err, size_t errlen)
         snprintf(err, errlen, "%s is missing race effects in sfx", dir);
         return false;
     }
+    at = FORM_BASE;
+    game_over = load_at("sfx/gameover", &at, FORM_END);
     car_loaded[0] = 0;
     ready = true;
     return true;
@@ -152,6 +158,19 @@ static void start_music(void)
     mode = MUSIC;
 }
 
+/* duel plays its game over sound from an overlay routine that has not been read; here the music
+ * player's effect command plays it once, at full volume, on channel 0. */
+static void play_game_over(void)
+{
+    silence();
+    char err[128];
+    if (!game_over || !song_load(song_file, song_len, err, sizeof err)) return;
+    paula_set_servers(song_audio_int, song_tick);
+    song_open();
+    song_play_sfx(game_over, 0, 64, 1, 64);
+    mode = MUSIC;
+}
+
 static void start_race(const char *car)
 {
     silence();
@@ -200,6 +219,7 @@ static void amiga_event(SoundEvent e, int n, const char *car)
         break;
     case SOUND_BUMP: if (mode == RACE) race_car.bump = true; break;
     case SOUND_CRASH: if (mode == RACE) race_crash(); break;
+    case SOUND_GAME_OVER: play_game_over(); break;
     }
 }
 

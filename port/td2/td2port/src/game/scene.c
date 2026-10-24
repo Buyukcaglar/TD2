@@ -476,6 +476,7 @@ new_life:
             select_screen();
             blit_and_own(hnd(ROAD_H(ROAD_GOVR)));
             blit_or_own(hnd(ROAD_H(ROAD_govr)));
+            host_sound_event(SOUND_GAME_OVER, 0, NULL);   /* PORT: sample-based audio */
             wait_after_message();
             DSB(DS_run_state) = 0;
             goto finish;

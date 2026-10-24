@@ -18,6 +18,7 @@ typedef enum {
     SOUND_RACE_END,         /* the car stops: the stage or the life is over */
     SOUND_BUMP,             /* the car hit the road's edge or another car */
     SOUND_CRASH,            /* a crash or a blown engine */
+    SOUND_GAME_OVER,        /* the last life is lost: the game over screen */
 } SoundEvent;
 
 typedef struct DriveSound { /* the car's state, ten times a second while the race runs */

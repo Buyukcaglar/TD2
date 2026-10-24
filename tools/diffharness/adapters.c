@@ -5,6 +5,7 @@
 #include "dh.h"
 #include "mem.h"
 #include "amiga/paula.h"
+#include "amiga/audio_amiga.h"
 #include "amiga/race_logic.h"
 #include "amiga/race_sound.h"
 #include "amiga/song.h"
@@ -272,6 +273,34 @@ DH_EXPORT void dh_race_logic(int cmd, const s32 *in, s32 *out, u32 a)
     }
     out[0] = c->squeal_volume;
     out[1] = c->shift_squeal;
+}
+
+/* The Amiga audio backend (amiga/audio_amiga.c), for tests/test_amiga_audio.py. cmd: 0 open the Amiga
+ * game folder `text` (returns 1 when it opened), 1 reset at rate a, 2 the event a with n = b and car =
+ * text, 3 the car state from d[] in DriveSound's order, 4 render a samples into out. */
+DH_EXPORT int dh_audio_amiga(int cmd, const char *text, int a, int b, const s32 *d, s16 *out)
+{
+    switch (cmd) {
+    case 0: {
+        char err[256];
+        return audio_amiga_open(text, err, sizeof err);
+    }
+    case 1: audio_amiga.reset(a); break;
+    case 2: audio_amiga.event((SoundEvent)a, b, text); break;
+    case 3: {
+        DriveSound s = {
+            .sound_on = d[0] != 0, .running = d[1] != 0, .rpm = (u16)d[2], .speed = (u16)d[3],
+            .throttle = (s8)d[4], .gear = (u8)d[5], .in_gear = d[6] != 0, .skid = (u16)d[7],
+            .siren = d[8] != 0, .radar = d[9] != 0, .pos = (u32)d[10], .cop_pos = (u32)d[11],
+            .cop_speed = (u16)d[12],
+        };
+        audio_amiga.drive(&s);
+        break;
+    }
+    case 4: audio_amiga.render(out, a); break;
+    default: break;
+    }
+    return 0;
 }
 
 /* Plays the loaded song through the Paula model: reset != 0 starts the title song at rate. */

@@ -79,7 +79,9 @@ The race does not use the song player. `duel` has its own sample driver and the 
 - **Car state.** Ten times a second, at the start of the simulation's 10 Hz step, `sim.c` reports the rev counter's rpm, the speed, throttle, gear and whether it works, the skid (how far the steering is past the grip limit), the siren and radar flags, and both cars' positions and the police car's speed. The backend turns that into duel's variables, starts the gear change squeal as `$1a71e` would from two consecutive states, starts and stops the siren and the radar beep on their flags' changes, and runs duel's physics step `$1d118`. The vertical blank server (the siren sweep, then the driver) runs at the NTSC frame rate inside the Paula model.
 - **Guesses.** duel runs its physics step about as often as the DOS game does (its free-revving adds 700 rpm a step where DOS adds 600 at 10 Hz), so the logic runs at 10 Hz. Road units and the steering scale are taken to be the same in both versions. Neither has been compared with a running Amiga.
 - **Files.** The Amiga game's folder or archive is the `amiga` setting, chosen in the menu (Sound, "Amiga game files…") or when Amiga sound is first picked; `app_data_amiga_dir` finds the folder with `duel` and `sfx` in it, unpacking an archive into the profile first. The backend reads `sfx/song` and the five race effects at start and the car samples at each life's start.
-- **Not played yet.** The 8SVX sounds: `gameover` (duel plays it on its game over screen), the speech `the_duel` and `test_drive_ii`, `accolade` and `starter`.
+- **Game over.** duel plays the 8SVX `sfx/gameover` on its game over screen (`$13bc6`), through a stub into the overlay, which our tools do not load. The backend plays it at the DOS game over screen with the music player's effect command, once, at full volume on channel 0: those three are guesses.
+- **Not played yet.** The other 8SVX sounds: the speech `the_duel` and `test_drive_ii`, `accolade` and `starter` (all but `starter` Rpck-packed). Where duel plays them has not been looked for.
+- **Checked** by `tests/test_amiga_audio.py` through the backend's own interface: nothing sounds before an event; the title song, the race (the engine's pitch follows the rpm), the siren, the crash and the game over sound all sound; the race end fades the car out; the police ending's songs are silent.
 
 ## 3. How the Amiga version fits the port
 
@@ -95,7 +97,7 @@ Everything is read from the user's files at run time and derived files go to the
 
 1. **Formats.** Done: load files, Rpck, ILBM, the sprite archives and sprites. Next: the race screen's palette, the raw sample header, the engine samples.
 2. **Courses.** Map `roaddata`, `slicedata` and `vectorsigns` to the DOS `.DAT` and `.SGN`, using the Master scenery's six stages against `TDS20`–`TDS25`. Then California and Europe against `CCC` and `EC_`, then Northern Germany. Match each Amiga sprite set to its DOS set.
-3. **Amiga audio.** Done: the `song` player, the race driver and the race logic in C, each checked against the original; the Paula model; the game events and car state; the Amiga `AudioBackend`; the live switch (Ctrl+Shift+S and the menu). Next: a listening test by the user, then the 8SVX sounds (game over, speech).
+3. **Amiga audio.** Done: the `song` player, the race driver and the race logic in C, each checked against the original; the Paula model; the game events and car state; the Amiga `AudioBackend`; the live switch (Ctrl+Shift+S and the menu). Next: a listening test by the user, then the speech samples.
 4. **Amiga graphics.** The sprite decoder, the backend, the screens, the switch.
 5. **Data manager.** Done for the sound: the `amiga` setting names the Amiga game's folder or archive, and `app_data_amiga_dir` finds the folder with `duel` and `sfx`. Next: the same source for the Amiga graphics and Northern Germany.
 
