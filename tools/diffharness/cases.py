@@ -358,6 +358,53 @@ def _nearest_ahead(rng, mem, regs):
     regs['dx'] = road_pos(rng, units)                   # DI stays random: the original never sets it
 
 
+# ---------------------------------------------------------------------------------------------- whole sim ticks
+
+STATE_DIR = ROOT / 'runs/states'
+KEYS = (0x39, 0x1C, 0x47, 0x48, 0x49, 0x4B, 0x4D, 0x4F, 0x50, 0x51)   # fire, Enter, the cursor block
+
+
+def recorded_states() -> list[Path]:
+    """Race states saved by the port at sim timer entry (TD2_STATE_DIR, see host.h): 1 MiB of memory,
+    then the leftover BP and CX."""
+    return sorted(STATE_DIR.glob('state*.bin'))
+
+
+def _sim_tick_cases(rng, base):
+    """Each case replays one recorded state for 1000 timer calls (100 sim steps, 10 s of game time). The original gets
+    random registers on every call, as whatever code the timer interrupted would leave; the port
+    carries its own leftover BP and CX. Half the cases take the car out of demo mode and press keys
+    at random, the same on both sides."""
+    files = recorded_states()
+    while files:
+        f = rng.choice(files)
+        data = f.read_bytes()
+        mem = bytearray(data[:MEM])
+        regs = default_regs(rng)
+        regs['bp'] = int.from_bytes(data[MEM:MEM + 2], 'little')
+        regs['cx'] = int.from_bytes(data[MEM + 2:MEM + 4], 'little')
+        ds_put(mem, 'DS_joy_enabled', 0)              # the port's gamepad differs from a real stick by design
+        player = rng.random() < 0.5
+        held = set()
+        if player:
+            ds_put(mem, 'DS_demo_mode', 0, 2)
+
+        def between(step, om, pm, rng=random.Random(rng.random()), player=player, held=held):
+            if not player or rng.random() > 0.08:
+                return
+            held.clear()
+            held.update(k for k in KEYS if rng.random() < (0.6 if k == 0x48 else 0.15))   # mostly throttle
+            for m in (om, pm):
+                for k in KEYS:
+                    m[lin(DGROUP, S['DS_key_down'] + k)] = int(k in held)
+
+        def entry(step, rng=random.Random(rng.random())):
+            return {k: rng.randrange(0x10000) for k in ('ax', 'bx', 'cx', 'dx', 'si', 'di', 'bp')}
+
+        yield Case(mem, regs, label=f'{f.stem} {"keys" if player else "demo"}', steps=1000, between=between,
+                   entry=entry)
+
+
 # ---------------------------------------------------------------------------------------------- unpackers
 
 def game_dir() -> Path:
@@ -474,6 +521,9 @@ SPECS = [
     Spec('traffic_resync', '06c9:5ada', True, [], forever(_traffic_resync), 'lists cleared around the drivers'),
     Spec('nearest_ahead', '06c9:5c30', False, ['si'], forever(_nearest_ahead),
          'real stage traffic, DI random (never used)'),
+    Spec('sim_tick', '06c9:403b', True, [], _sim_tick_cases,
+         'recorded race states, 1000 timer calls each, random keys; random entry registers for the original',
+         max_cases=60),
     Spec('rle_decode', '06c9:6b02', True, ['ax', 'dx'], _rle_cases(HARNESS),
          'EC_ PCS files directly, other files after their original Huffman pass'),
     HUFF,

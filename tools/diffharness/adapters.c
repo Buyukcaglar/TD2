@@ -5,6 +5,7 @@
 #include "dh.h"
 #include "mem.h"
 #include "speaker.h"
+#include "game/game.h"
 #include "game/sim.h"
 #include "platform/res.h"
 
@@ -33,6 +34,14 @@ static void a_traffic(DhRegs *r) { traffic(); r->cx = DSW(DS_same_count8); }
 static void a_pass_collisions(DhRegs *r) { (void)r; pass_collisions(); }
 static void a_traffic_resync(DhRegs *r) { (void)r; traffic_resync(); }
 static void a_nearest_ahead(DhRegs *r) { r->si = nearest_ahead(r->si, r->cx, r->ax, r->dx); }
+
+/* A whole sim timer call (06c9:403b), with the leftover BP and CX carried in and out. */
+static void a_sim_tick(DhRegs *r)
+{
+    sim_stale_cx = r->cx;
+    WITH_BP(sim_timer_routine());
+    r->cx = sim_stale_cx;
+}
 
 static void a_rle_decode(DhRegs *r)
 {
@@ -67,6 +76,7 @@ static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     { "pass_collisions", a_pass_collisions },
     { "traffic_resync", a_traffic_resync },
     { "nearest_ahead", a_nearest_ahead },
+    { "sim_tick", a_sim_tick },
     { "rle_decode", a_rle_decode },
     { "huff_decode", a_huff_decode },
 };

@@ -62,7 +62,8 @@ def write_report(rows, n, seed):
         '',
         'Each case runs the original function under Unicorn and the port\'s C function on the same memory '
         'snapshot. A case matches when the returned registers and every changed memory byte agree. '
-        'The original\'s own stack frame, flags and untouched memory are not compared.',
+        'The original\'s own stack frame, flags and untouched memory are not compared. '
+        'A case with several calls (`sim_tick`) compares after every call and stops at the first one that differs.',
         '',
         '| Function | Original | Inputs | Cases | Match | Differ | Errors | Bytes changed per case | First problem |',
         '|---|---|---|---:|---:|---:|---:|---:|---|',

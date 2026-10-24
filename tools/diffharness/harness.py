@@ -92,11 +92,20 @@ def load_image(path: Path = UNPACKED_EXE) -> bytearray:
 
 @dataclass
 class Case:
-    """One call: register inputs, stack arguments and the memory snapshot."""
+    """One call: register inputs, stack arguments and the memory snapshot.
+
+    With steps > 1 the function is called that many times in a row. The original and the port each
+    carry on from their own memory and registers, and they are compared after every call; the first
+    call that differs ends the case. Before each call, between(step, orig_mem, port_mem) can change
+    both memories the same way (key presses, say), and entry(step) gives register values that
+    replace the original's leftover ones (what interrupted code would leave)."""
     mem: bytearray
     regs: dict[str, int] = field(default_factory=dict)
     args: list[int] = field(default_factory=list)
     label: str = ''
+    steps: int = 1
+    between: Callable[[int, bytearray, bytearray], None] | None = None
+    entry: Callable[[int], dict[str, int]] | None = None
 
 
 @dataclass
@@ -109,6 +118,7 @@ class Spec:
     outputs: list[str]
     cases: Callable[[random.Random, bytes], Iterable[Case]]
     note: str = ''
+    max_cases: int = 0           # caps the run's case count for slow specs (0 = no cap)
 
 
 @dataclass
@@ -163,8 +173,24 @@ class Original:
         self.uc.hook_add(UC_HOOK_INSN, self._on_io, None, 1, 0, UC_X86_INS_OUT)
 
     def _on_interrupt(self, uc, num, _):
-        self.fault = f'interrupt {num:02X}h'
-        uc.emu_stop()
+        """A software interrupt whose vector points into the game's own code (the keyboard handlers
+        it installs) runs that handler, as the CPU would. Anything else (BIOS, DOS) stops the run."""
+        b = self.backing
+        off, seg = b[num * 4] | b[num * 4 + 1] << 8, b[num * 4 + 2] | b[num * 4 + 3] << 8
+        if seg != ASM_SEG:
+            self.fault = f'interrupt {num:02X}h'
+            uc.emu_stop()
+            return
+        ss, sp = uc.reg_read(UC_X86_REG_SS), uc.reg_read(UC_X86_REG_SP)
+        flags = uc.reg_read(UC_X86_REG_EFLAGS)
+        sp = (sp - 6) & 0xFFFF
+        for i, w in enumerate((uc.reg_read(UC_X86_REG_IP), uc.reg_read(UC_X86_REG_CS), flags & 0xFFFF)):
+            a = lin(ss, sp + 2 * i)
+            b[a], b[(a + 1) % MEM] = w & 0xFF, w >> 8
+        uc.reg_write(UC_X86_REG_SP, sp)
+        uc.reg_write(UC_X86_REG_EFLAGS, flags & ~0x0300)       # IF and TF cleared
+        uc.reg_write(UC_X86_REG_CS, seg)
+        uc.reg_write(UC_X86_REG_IP, off)
 
     def _on_io(self, uc, *_):
         self.fault = 'port I/O'
@@ -232,7 +258,7 @@ class Port:
         err = C.create_string_buffer(256)
         if not self.dll.dh_load_exe(str(path).encode(), err, len(err)):
             raise RuntimeError(err.value.decode())
-        return bytes(self.mem[:MEM])
+        return C.string_at(C.addressof(self.mem), MEM)
 
     def run(self, name: str, regs: dict[str, int], mem: bytes) -> Outcome:
         C.memmove(self.mem, bytes(mem), MEM)
@@ -244,9 +270,9 @@ class Port:
             error = f'no adapter named {name}'
         elif rc == 1:
             error = 'port fatal: ' + self.dll.dh_fatal_message().decode(errors='replace')
-        elif any(self.mem[MEM:self.size]):
+        elif C.string_at(C.addressof(self.mem) + MEM, self.size - MEM).strip(b'\0'):
             error = 'port wrote above 1 MiB'
-        return Outcome({k: getattr(r, k) for k in REGS}, bytes(self.mem[:MEM]), error)
+        return Outcome({k: getattr(r, k) for k in REGS}, C.string_at(C.addressof(self.mem), MEM), error)
 
 
 class Harness:
@@ -278,17 +304,47 @@ class Harness:
                 self.port.run(spec.name, regs, case.mem), regs)
 
     def compare(self, spec: Spec, case: Case) -> Result:
+        if case.steps > 1:
+            return self.sequence(spec, case)
         orig, port, regs = self.call(spec, case)
-        before = bytes(case.mem)      # the snapshot, with the pushed arguments and return address
+        return self._diff(spec, case.label, bytes(case.mem), orig, port, lin(regs['ss'], case.regs['sp']))
+
+    def sequence(self, spec: Spec, case: Case) -> Result:
+        seg, _ = parse_addr(spec.addr)
+        mems = [bytearray(case.mem), bytearray(case.mem)]
+        regs = [dict(case.regs), dict(case.regs)]
+        changed = 0
+        for step in range(case.steps):
+            if case.between:
+                case.between(step, mems[0], mems[1])
+            if case.entry:
+                regs[0].update(case.entry(step))
+            calls = [Case(mems[i], dict(regs[i], sp=case.regs['sp'], ss=case.regs['ss'], ds=case.regs['ds'],
+                                        es=case.regs['es']), case.args) for i in (0, 1)]
+            start = [push_call(c, spec.far, seg) for c in calls]
+            before = bytes(mems[0])
+            orig = self.original.run(seg, parse_addr(spec.addr)[1], spec.far, start[0], mems[0])
+            port = self.port.run(spec.name, start[1], mems[1])
+            r = self._diff(spec, case.label, before, orig, port, lin(case.regs['ss'], case.regs['sp']))
+            changed += r.changed
+            if not r.ok:
+                where = f'call {step + 1} of {case.steps}'
+                return Result(case.label, False, [f'{where}: {p}' for p in r.problems], changed,
+                              r.error and f'{where}: {r.error}')
+            mems = [bytearray(orig.mem), bytearray(port.mem)]
+            regs = [orig.regs, port.regs]
+        return Result(case.label, True, [], changed)
+
+    def _diff(self, spec: Spec, label: str, before: bytes, orig: Outcome, port: Outcome, frame_hi: int) -> Result:
+        """before is the snapshot with the pushed arguments and return address."""
         if orig.error or port.error:
-            return Result(case.label, False, [], 0, orig.error and f'original: {orig.error}' or port.error)
+            return Result(label, False, [], 0, orig.error and f'original: {orig.error}' or port.error)
         problems = []
         for r in spec.outputs:
             mask, reg = (0xFF, 'ax') if r == 'al' else (0xFFFF, r)
             o, p = orig.regs[reg] & mask, port.regs[reg] & mask
             if o != p:
                 problems.append(f'{r.upper()}: original {o:04X}, port {p:04X}')
-        frame_hi = lin(regs['ss'], case.regs['sp'])
         frame = range(frame_hi - FRAME, frame_hi)
         changed = 0
         diffs = []
@@ -308,10 +364,11 @@ class Harness:
             first = diffs[0]
             problems.append(f'{len(diffs)} memory bytes differ, first {self.where(first)}: original '
                             f'{orig.mem[first]:02X}, port {port.mem[first]:02X} (was {before[first]:02X})')
-        return Result(case.label, not problems, problems, changed)
+        return Result(label, not problems, problems, changed)
 
     def run(self, spec: Spec, n: int, seed: int) -> list[Result]:
         rng = random.Random(f'{spec.name}/{seed}')
+        n = min(n, spec.max_cases or n)
         results = []
         for case in spec.cases(rng, self.base):
             results.append(self.compare(spec, case))

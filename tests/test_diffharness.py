@@ -141,6 +141,41 @@ class HarnessTest(unittest.TestCase):
         for r in self.h.run(self.spec('traffic'), 8, 21):
             self.assertTrue(r.ok, r)
 
+    def test_game_interrupt_handler_runs(self):
+        """getkey_drive (06c9:6601) reads a key through INT 16h, which the game points at its own
+        handler (06c9:69b7); the harness must run that handler, not stop."""
+        mem = bytearray(self.h.base)
+        mem[0x58:0x5C] = (0x69B7).to_bytes(2, 'little') + (DGROUP - 0x178F + 0x06C9).to_bytes(2, 'little')
+        table = cases.S['DS_hotkey_table']
+        key = next(k for k in range(0x61, 0x7B)
+                   if not int.from_bytes(mem[lin(DGROUP, table + 2 * k):][:2], 'little'))
+        cases.ds_put(mem, 'DS_kbd_last_key', key, 2)
+        cases.ds_put(mem, 'DS_hotkey_busy', 0)
+        orig, _, _ = self.h.call(Spec('rand8', '06c9:6601', True, ['ax'], None), Case(mem, default_regs(random.Random(2))))
+        self.assertEqual(orig.error, '')
+        self.assertEqual(orig.regs['ax'], key)
+        self.assertEqual(orig.mem[lin(DGROUP, cases.S['DS_kbd_last_key'])], 0)
+
+    @unittest.skipUnless(cases.recorded_states(), 'needs recorded race states in runs/states (run.ps1 -RecordStates)')
+    def test_sequence_reports_the_first_call_that_differs(self):
+        """Each side carries on from its own memory: a speed nudged on the port's side only before
+        call 8 shows up at call 8, and the sequence stops there."""
+        data = cases.recorded_states()[0].read_bytes()
+        speed = lin(DGROUP, cases.S['DS_speed'])
+
+        def nudge(step, om, pm):
+            if step == 7:
+                pm[speed] ^= 1
+        r = self.h.compare(self.spec('sim_tick'), Case(bytearray(data[:MEM]), default_regs(random.Random(3)),
+                                                       steps=20, between=nudge))
+        self.assertFalse(r.ok)
+        self.assertTrue(r.problems[0].startswith('call 8 of 20:'), r.problems)
+
+    @unittest.skipUnless(cases.recorded_states(), 'needs recorded race states in runs/states (run.ps1 -RecordStates)')
+    def test_whole_sim_ticks_match(self):
+        for r in self.h.run(self.spec('sim_tick'), 2, 5):
+            self.assertTrue(r.ok, r)
+
     @unittest.skipUnless(GAME_EXE.exists(), 'needs runs/game')
     def test_unpackers_write_their_output(self):
         for name in ('huff_decode', 'rle_decode'):
