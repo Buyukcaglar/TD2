@@ -113,8 +113,10 @@ s16 hisc_insert(void)
  * (40, i * 35 + 50)), with that car's colours 3 to 31 (<car>.rear.p) from two lines above the logo
  * down, a copper split, and "%7ld  %s" (score, name) at (74, i * 35 + 35) in pen 1; the fifth and
  * sixth at (74, i * 10 + 122). Entries without a score are left out. After a race "Your Score : %ld"
- * is centred at line 192 in pen 2. The text is in TD2's font, as topaz is not in the files. False
- * without the Amiga graphics. */
+ * is at line 192 in pen 2. duel centres both lines on x = 170 ($11c8e, the centre set by $11c80). The
+ * text is in TD2's font, as topaz is not in the files. False without the Amiga graphics. */
+#define HISC_CENTRE 170
+
 static bool amiga_hisc_page(s32 timeout)
 {
     static const u16 colours[3] = { 0x000, 0x08E, 0xF66 };
@@ -127,7 +129,7 @@ static bool amiga_hisc_page(s32 timeout)
     for (size_t k = strlen(t); k > 0 && t[k - 1] == ' '; k--) t[k - 1] = 0;
     strncat(t, " Top Scores", sizeof t - strlen(t) - 1);
     gfx_set_text_colours(AMIGA_PEN(2), AMIGA_PEN(0));
-    draw_text_centered_str(t, 1);
+    gfx_draw_text_str(t, (u16)(HISC_CENTRE - (s16)strlen(t) * 4), 1);
     for (s16 i = 0; i < 6; i++) {
         if (DSL(top_rec(i)) == 0) continue;
         const char *pre = amiga_car_prefix(DSTR(top_car(i)));
@@ -143,7 +145,7 @@ static bool amiga_hisc_page(s32 timeout)
     if (timeout == 1500 && DSSL(DS_total_score) > 0) {
         snprintf(t, sizeof t, "Your Score : %ld", (long)DSSL(DS_total_score));
         gfx_set_text_colours(AMIGA_PEN(2), AMIGA_PEN(0));
-        draw_text_centered_str(t, 192);
+        gfx_draw_text_str(t, (u16)(HISC_CENTRE - (s16)strlen(t) * 4), 192);
     }
     return true;
 }
