@@ -6,7 +6,8 @@
  * game reads some of it back (snd_busy, sfx_is_playing). A backend only turns what that code outputs
  * into samples. The PC speaker backend (speaker.c) takes the speaker writes: PIT channel 2 and the two
  * low bits of port 61h. A sample-based backend (Amiga, amiga/audio_amiga.c) takes the game's sound
- * events and, during a race, the car's state instead.
+ * events and, during a race, the car's state instead. The output is stereo: Paula's channels go to the
+ * left or the right, as the Amiga wired them; the PC speaker sounds the same on both sides.
  *
  * The host holds one active backend (host_set_audio_backend) and passes the events on (host_sound_event,
  * host_sound_drive); it can switch backends at any time. */
@@ -21,6 +22,8 @@ typedef enum {
     SOUND_GAME_OVER,        /* the last life is lost: the game over screen */
     SOUND_TITLE,            /* the title picture ("Test Drive II", "The Duel") appears */
     SOUND_ACCOLADE,         /* the "Accolade presents" picture appears */
+    SOUND_SHOWROOM,         /* the intro's first showroom car appears */
+    SOUND_SHOWROOM_END,     /* the showroom intro is over (or skipped) */
 } SoundEvent;
 
 typedef struct DriveSound { /* the car's state, ten times a second while the race runs */
@@ -41,7 +44,7 @@ typedef struct AudioBackend {
     const char *name;
     void (*reset)(int rate);                        /* silence, output at rate samples per second */
     void (*speaker)(u16 divisor, u8 port61_bits);   /* divisor 0 means 65536 */
-    void (*render)(s16 *out, int n);                /* the next n samples */
+    void (*render)(s16 *out, int n);                /* the next n stereo frames: left, right */
     void (*event)(SoundEvent e, int n, const char *car);    /* NULL: not needed */
     void (*drive)(const DriveSound *d);                     /* NULL: not needed */
 } AudioBackend;

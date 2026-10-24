@@ -23,7 +23,7 @@ static struct {
     bool timer_on;
     double timer_left;                              /* clocks of Paula's clock until the next underflow */
     double clocks_per_sample;
-    float lp, lp_k;
+    float lp[2], lp_k;                              /* the low-pass of each side */
     void (*audio_int)(u16);
     void (*timer)(void);
     void (*vblank)(void);
@@ -160,7 +160,7 @@ void paula_write(u32 addr, u16 v, int size)
 void paula_render(s16 *out, int n)
 {
     for (int i = 0; i < n; i++) {
-        double span = p.clocks_per_sample, acc = 0;
+        double span = p.clocks_per_sample, acc[2] = { 0, 0 };
         while (span > 0) {
             double step = span;
             if (p.timer_on && p.timer_left < step) step = p.timer_left > 0 ? p.timer_left : 0;
@@ -170,7 +170,7 @@ void paula_render(s16 *out, int n)
             for (int c = 0; c < 4; c++) {
                 Channel *ch = &p.ch[c];
                 if (!ch->on) continue;
-                acc += (double)ch->out * ch->vol * step;
+                acc[c == 1 || c == 2] += (double)ch->out * ch->vol * step;   /* 0, 3 left; 1, 2 right */
                 ch->left -= step;
                 if (ch->left <= 1e-9) {
                     if (ch->byte == 0) fetch(c);
@@ -194,10 +194,12 @@ void paula_render(s16 *out, int n)
             }
             if (step == 0 && span > 0) continue;
         }
-        /* 4 channels x 127 x 64 at most: scale to about half of full range */
-        float s = (float)(acc / p.clocks_per_sample) * (32767.0f / (4 * 128 * 64)) * 1.6f;
-        p.lp += p.lp_k * (s - p.lp);
-        float o = p.lp;
-        out[i] = (s16)(o > 32767 ? 32767 : o < -32768 ? -32768 : o);
+        /* 2 channels x 127 x 64 at most on a side: scale to about 40% of full range per channel */
+        for (int side = 0; side < 2; side++) {
+            float s = (float)(acc[side] / p.clocks_per_sample) * (32767.0f / (2 * 128 * 64)) * 0.8f;
+            p.lp[side] += p.lp_k * (s - p.lp[side]);
+            float o = p.lp[side];
+            out[2 * i + side] = (s16)(o > 32767 ? 32767 : o < -32768 ? -32768 : o);
+        }
     }
 }

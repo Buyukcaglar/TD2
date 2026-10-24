@@ -24,6 +24,9 @@
 static u32 game_over;                               /* sfx/gameover, an 8SVX; 0 if missing */
 static u32 speech[2];                               /* sfx/the_duel, sfx/test_drive_ii */
 static u32 accolade;                                /* sfx/accolade: "Accolade presents" */
+static u32 starter;                                 /* sfx/starter: the showroom car's engine starting */
+static int starter_wait;                            /* samples until the starter plays; 0 if none waits */
+static int rate_hz;
 static int speech_next;                             /* the speech sample to play when the first ends */
 static u32 form_waiting;                            /* an 8SVX sound waiting for the song's first tick */
 
@@ -139,6 +142,7 @@ bool audio_amiga_open(const char *dir, char *err, size_t errlen)
     speech[0] = load_at("sfx/the_duel", &at, FORM_END);
     speech[1] = load_at("sfx/test_drive_ii", &at, FORM_END);
     accolade = load_at("sfx/accolade", &at, FORM_END);
+    starter = load_at("sfx/starter", &at, FORM_END);
     car_loaded[0] = 0;
     ready = true;
     return true;
@@ -174,6 +178,7 @@ static void race_vblank(void)                       /* $1231c: the siren sweep, 
 static void silence(void)
 {
     form_waiting = 0;
+    starter_wait = 0;
     if (mode == MUSIC) song_stop();
     awr16(0xDFF09A, 0x0780);                        /* audio interrupts and DMA off */
     awr16(0xDFF096, 0x000F);
@@ -246,7 +251,9 @@ static void amiga_reset(int rate)
     paula_set_vblank(NULL);
     paula_reset(rate);
     step_samples = rate / 200 > 0 ? rate / 200 : 1;   /* 5 ms */
+    rate_hz = rate > 0 ? rate : 44100;
     form_waiting = 0;
+    starter_wait = 0;
     speech_next = 0;
     mode = QUIET;
 }
@@ -271,8 +278,12 @@ static void amiga_render(s16 *out, int n)
 {
     for (int done = 0; done < n;) {
         int k = n - done < step_samples ? n - done : step_samples;
+        if (starter_wait > 0 && (starter_wait -= k) <= 0) {
+            starter_wait = 0;
+            play_form(starter);
+        }
         start_waiting_sounds();
-        paula_render(out + done, k);
+        paula_render(out + 2 * done, k);
         done += k;
     }
 }
@@ -297,6 +308,14 @@ static void amiga_event(SoundEvent e, int n, const char *car)
     case SOUND_CRASH: if (mode == RACE) race_crash(); break;
     case SOUND_GAME_OVER: play_form(game_over); break;
     case SOUND_ACCOLADE: play_form(accolade); break;   /* overlay 1204h, with pics/Title2 */
+    /* The showroom intro (overlay 1776h) loads sfx/Starter once the first car is on the screen, waits
+     * 80 frames ($2bb6a) and plays it; the car's window opens and the car drives off 120 frames later.
+     * The effect goes on until it ends or the intro does ($2beae stops channel 2). */
+    case SOUND_SHOWROOM: starter_wait = (int)(80 * (double)rate_hz * PAULA_FRAME / PAULA_CLOCK); break;
+    case SOUND_SHOWROOM_END:
+        starter_wait = 0;
+        if (mode == MUSIC) song_stop_sfx(2);
+        break;
     case SOUND_TITLE:                               /* "The Duel", then "Test Drive II" */
         play_form(speech[0]);
         speech_next = speech[1] ? 1 : 0;

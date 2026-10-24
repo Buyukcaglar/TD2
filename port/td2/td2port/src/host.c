@@ -68,7 +68,7 @@ static Uint32 audio_dump_bytes;
 static void process_events(void);
 
 /* Developer aid: with TD2_AUDIO_DUMP set to a file name, everything the speaker plays is also written
- * there as a 16-bit mono WAV file (works with SDL_AUDIO_DRIVER=dummy). */
+ * there as a 16-bit stereo WAV file (works with SDL_AUDIO_DRIVER=dummy). */
 static void audio_dump_header(void)
 {
     static const char riff[] = "RIFF", wave[] = "WAVEfmt ", data[] = "data";
@@ -78,10 +78,10 @@ static void audio_dump_header(void)
     SDL_WriteIO(audio_dump, wave, 8);
     SDL_WriteU32LE(audio_dump, 16);
     SDL_WriteU16LE(audio_dump, 1);                                  /* PCM */
-    SDL_WriteU16LE(audio_dump, 1);                                  /* mono */
+    SDL_WriteU16LE(audio_dump, 2);                                  /* stereo */
     SDL_WriteU32LE(audio_dump, AUDIO_RATE);
-    SDL_WriteU32LE(audio_dump, AUDIO_RATE * 2);
-    SDL_WriteU16LE(audio_dump, 2);
+    SDL_WriteU32LE(audio_dump, AUDIO_RATE * 4);
+    SDL_WriteU16LE(audio_dump, 4);
     SDL_WriteU16LE(audio_dump, 16);
     SDL_WriteIO(audio_dump, data, 4);
     SDL_WriteU32LE(audio_dump, audio_dump_bytes);
@@ -156,11 +156,11 @@ bool host_init(int window_scale)
 
     audio_be->reset(AUDIO_RATE);
     audio_dump_open();
-    SDL_AudioSpec spec = { SDL_AUDIO_S16, 1, AUDIO_RATE };
+    SDL_AudioSpec spec = { SDL_AUDIO_S16, 2, AUDIO_RATE };
     audio = SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, NULL, NULL);
     if (audio) {
         SDL_ResumeAudioStreamDevice(audio);
-        static s16 silence[AUDIO_RATE / 20];               /* 50 ms of lead-in against underruns */
+        static s16 silence[2 * AUDIO_RATE / 20];           /* 50 ms of lead-in against underruns */
         SDL_PutAudioStreamData(audio, silence, sizeof silence);
     } else {
         fprintf(stderr, "audio unavailable: %s\n", SDL_GetError());
@@ -221,15 +221,16 @@ static void audio_for_one_tick(void)
     samples_per_tick_frac += (double)AUDIO_RATE * PIT_DIV_GAME / PIT_HZ;
     int n = (int)samples_per_tick_frac;
     samples_per_tick_frac -= n;
-    s16 buf[1024];
-    if (n > (int)SDL_arraysize(buf)) n = SDL_arraysize(buf);
+    s16 buf[2 * 1024];                                     /* stereo frames */
+    if (n > (int)SDL_arraysize(buf) / 2) n = SDL_arraysize(buf) / 2;
     audio_be->render(buf, n);
     /* Drop device output if the device is far behind (e.g. after a stall) instead of building latency.
      * The speaker keeps running and the dump still gets every sample. */
-    if (audio && SDL_GetAudioStreamQueued(audio) <= AUDIO_RATE / 4 * (int)sizeof(s16))
-        SDL_PutAudioStreamData(audio, buf, n * (int)sizeof(s16));
-    if (audio_dump && SDL_WriteIO(audio_dump, buf, (size_t)n * sizeof(s16)) == (size_t)n * sizeof(s16)) {
-        audio_dump_bytes += (Uint32)n * (Uint32)sizeof(s16);
+    int bytes = n * 2 * (int)sizeof(s16);
+    if (audio && SDL_GetAudioStreamQueued(audio) <= AUDIO_RATE / 4 * 2 * (int)sizeof(s16))
+        SDL_PutAudioStreamData(audio, buf, bytes);
+    if (audio_dump && SDL_WriteIO(audio_dump, buf, (size_t)bytes) == (size_t)bytes) {
+        audio_dump_bytes += (Uint32)bytes;
         if (ticks_run % 100 == 0) audio_dump_header();      /* about once a second, in case of a kill */
     }
 }

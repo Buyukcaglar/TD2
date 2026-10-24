@@ -105,7 +105,9 @@ s16 intro_sequence(void)
     }
     if ((r = accolade_screen()) != 0) return r;
     if ((r = (s16)getkey_timeout(300)) != 0) return r;
-    if ((r = showroom_intro(100)) != 0) return r;
+    r = showroom_intro(100);
+    host_sound_event(SOUND_SHOWROOM_END, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
+    if (r != 0) return r;
     if ((r = title_screen()) != 0) return r;
     if ((r = credits()) != 0) return r;
     if (DSS(DS_nscenes) == 0) return r;
@@ -287,6 +289,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
             blit_copy_clip_hot(carS, x, y);
             r = screen_reveal(1);
             if (r != 0) goto out;
+            host_sound_event(SOUND_SHOWROOM, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
         } else {
             select_screen();
             blit_copy_clip_hot(carS, x, y);

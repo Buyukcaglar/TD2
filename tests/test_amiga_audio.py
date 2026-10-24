@@ -1,9 +1,10 @@
 """The Amiga audio backend (amiga/audio_amiga.c) as the game drives it: what it plays for each event.
 
-Opens the Amiga game folder, then: the title song, and the two speeches over it; a race on the F40 with the car's state ten times a
-second (revving up, the siren, a bump, a crash and the end); the game over sound; the song again. Each
-part must sound (not be silent), the engine's pitch must follow the rpm, and the end of a race must
-fade the car out.
+Opens the Amiga game folder, then: the title song, and the speeches over it (on Paula's channel 2, so
+on the right only); the showroom's starter, 80 frames after the first car appears; a race on the F40
+with the car's state ten times a second (revving up, the siren, a bump, a crash and the end); the game
+over sound; the song again. Each part must sound (not be silent), the engine's pitch must follow the
+rpm, and the end of a race must fade the car out.
 
 Needs the unpacked Amiga game in runs/amiga and build/td2diff.dll; skipped without them.
 """
@@ -18,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 AMIGA = ROOT / 'runs/amiga'
 DLL = ROOT / 'build/td2diff.dll'
 RATE = 22050
-SONG, RACE_START, RACE_END, BUMP, CRASH, GAME_OVER, TITLE, ACCOLADE = range(8)
+SONG, RACE_START, RACE_END, BUMP, CRASH, GAME_OVER, TITLE, ACCOLADE, SHOWROOM, SHOWROOM_END = range(10)
 
 
 class Backend:
@@ -46,11 +47,17 @@ class Backend:
         arr = (ctypes.c_int32 * len(d))(*[ctypes.c_int32(x & 0xFFFFFFFF).value for x in d])
         self.f(3, None, 0, 0, arr, None)
 
-    def render(self, seconds):
+    def render_lr(self, seconds):
+        """The left and the right side."""
         n = int(RATE * seconds)
-        buf = (ctypes.c_int16 * n)()
+        buf = (ctypes.c_int16 * (2 * n))()
         self.f(4, None, n, 0, None, buf)
-        return list(buf)
+        return list(buf[0::2]), list(buf[1::2])
+
+    def render(self, seconds):
+        """Both sides mixed."""
+        left, right = self.render_lr(seconds)
+        return [(a + b) // 2 for a, b in zip(left, right)]
 
 
 def speech_seconds(name):
@@ -80,22 +87,48 @@ class AmigaAudioTest(unittest.TestCase):
         b.reset()
         self.assertLess(rms(b.render(0.5)), 1)                  # silent until the game says what plays
 
-        def song_with(e=None):
+        def song_with(e=None, seconds=5):
             b.reset()
             b.event(SONG, 1)
             if e is not None:
                 b.event(e)
-            return b.render(5)
+            return b.render_lr(seconds)
 
-        song = song_with()
+        song_l, song = song_with()
         self.assertGreater(rms(song), 300)                      # the title song
+        self.assertGreater(rms(song_l), 300)
         # The speech over the song, right after the song starts as the DOS intro does it: each sample
-        # must sound for its whole length ("The Duel" and "Test Drive II" one after the other).
+        # must sound for its whole length ("The Duel" and "Test Drive II" one after the other), on the
+        # right only.
         for e, names in ((ACCOLADE, ['accolade']), (TITLE, ['the_duel', 'test_drive_ii'])):
-            speech = song_with(e)
+            left, speech = song_with(e)
             differ = [i for i in range(len(song)) if speech[i] != song[i]]
             heard = (differ[-1] - differ[0]) / RATE if differ else 0
             self.assertGreater(heard, 0.9 * sum(speech_seconds(n) for n in names), names)
+            b.reset()                                           # without the music: right only
+            b.event(e)
+            left, right = b.render_lr(1)
+            self.assertLess(rms(left), 1, names)
+            self.assertGreater(rms(right), 300, names)
+
+        # The starter: nothing for 80 frames after the first showroom car appears, then the effect for
+        # its whole length; the end of the showroom stops it.
+        song_l, song = song_with(None, 8)
+        _, starter = song_with(SHOWROOM, 8)
+        differ = [i for i in range(len(song)) if starter[i] != song[i]]
+        self.assertTrue(differ)
+        self.assertAlmostEqual(differ[0] / RATE, 80 / 60.05, delta=0.03)
+        self.assertGreater((differ[-1] - differ[0]) / RATE, 0.9 * speech_seconds('starter'))
+        b.reset()
+        b.event(SONG, 1)
+        b.event(SHOWROOM)
+        b.render_lr(2)
+        b.event(SHOWROOM_END)
+        _, stopped = b.render_lr(3)
+        i, j = int(0.5 * RATE), int(3 * RATE)                   # 2.5 to 5 s
+        tail = song[2 * RATE:]
+        self.assertLess(rms([x - y for x, y in zip(stopped[i:j], tail[i:j])]),
+                        rms([x - y for x, y in zip(starter[2 * RATE:][i:j], tail[i:j])]) / 2)
         b.reset()
 
         b.event(RACE_START, car='F40')

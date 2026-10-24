@@ -277,7 +277,7 @@ DH_EXPORT void dh_race_logic(int cmd, const s32 *in, s32 *out, u32 a)
 
 /* The Amiga audio backend (amiga/audio_amiga.c), for tests/test_amiga_audio.py. cmd: 0 open the Amiga
  * game folder `text` (returns 1 when it opened), 1 reset at rate a, 2 the event a with n = b and car =
- * text, 3 the car state from d[] in DriveSound's order, 4 render a samples into out. */
+ * text, 3 the car state from d[] in DriveSound's order, 4 render a stereo frames into out. */
 DH_EXPORT int dh_audio_amiga(int cmd, const char *text, int a, int b, const s32 *d, s16 *out)
 {
     switch (cmd) {
@@ -303,7 +303,8 @@ DH_EXPORT int dh_audio_amiga(int cmd, const char *text, int a, int b, const s32 
     return 0;
 }
 
-/* Plays the loaded song through the Paula model: reset != 0 starts the title song at rate. */
+/* Plays the loaded song through the Paula model into n stereo frames: reset != 0 starts the title song
+ * at rate. */
 DH_EXPORT void dh_song_render(s16 *out, int n, int rate, int reset)
 {
     if (reset) {
