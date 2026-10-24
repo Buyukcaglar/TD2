@@ -30,6 +30,20 @@ static int frame_w = 320, frame_h = 200;
 static Uint64 clock_start_ns;
 static Uint64 ticks_run;
 
+/* Developer aid: with TD2_VIRTUAL_CLOCK set, time advances only while the host would wait, so a run
+ * depends on nothing but the game (and runs as fast as the machine allows). TD2_RUN_SECONDS ends the
+ * run after that much game time. Together with TD2_SNAPSHOT_DIR this gives repeatable snapshots. */
+static bool virtual_clock;
+static Uint64 virtual_ns;
+static Uint64 run_limit_ns;
+
+static Uint64 now_ns(void) { return virtual_clock ? virtual_ns : SDL_GetTicksNS(); }
+static void wait_ns(Uint64 ns)
+{
+    if (virtual_clock) virtual_ns += ns;
+    else SDL_DelayNS(ns);
+}
+
 /* BIOS keyboard buffer (15 keys, like the real one). */
 #define KBD_SIZE 16
 static u16 kbd_buf[KBD_SIZE];
@@ -139,7 +153,10 @@ bool host_init(const char *dir, int window_scale)
         fprintf(stderr, "audio unavailable: %s\n", SDL_GetError());
     }
 
-    clock_start_ns = SDL_GetTicksNS();
+    const char *v = SDL_getenv("TD2_VIRTUAL_CLOCK"), *limit = SDL_getenv("TD2_RUN_SECONDS");
+    virtual_clock = v && *v && SDL_strcmp(v, "0") != 0;
+    run_limit_ns = limit && SDL_atoi(limit) > 0 ? (Uint64)SDL_atoi(limit) * SDL_NS_PER_SECOND : 0;
+    clock_start_ns = now_ns();
     ticks_run = 0;
     return true;
 }
@@ -228,7 +245,7 @@ static void snapshot(void)
     static int n;
     if (!checked) { dir = SDL_getenv("TD2_SNAPSHOT_DIR"); checked = true; }
     if (!dir) return;
-    Uint64 now = SDL_GetTicksNS();
+    Uint64 now = now_ns();
     if (n && now - last_ns < 2 * SDL_NS_PER_SECOND) return;
     last_ns = now;
     SDL_Surface *s = SDL_CreateSurfaceFrom(frame_w, frame_h, SDL_PIXELFORMAT_XRGB8888, frame, frame_w * 4);
@@ -257,7 +274,7 @@ void host_present_now(void)
 {
     if (frame_source && frame_source(frame)) {
         present();
-        last_present_ns = SDL_GetTicksNS();
+        last_present_ns = now_ns();
     }
 }
 
@@ -266,7 +283,7 @@ void host_pump(void)
     process_events();
 
     bool worked = false;
-    Uint64 now = SDL_GetTicksNS();
+    Uint64 now = now_ns();
     int budget = 50;                                /* at most 0.5 s of catch-up per call */
     while (tick_due_ns(ticks_run + 1) <= now && budget-- > 0) {
         ticks_run++;
@@ -277,19 +294,23 @@ void host_pump(void)
     if (budget < 0) {                               /* fell too far behind: resynchronise the clock */
         clock_start_ns = now - (tick_due_ns(ticks_run) - clock_start_ns);
     }
+    if (run_limit_ns && tick_due_ns(ticks_run) - clock_start_ns >= run_limit_ns) {
+        host_shutdown();
+        exit(0);
+    }
 
     /* Present at most once per ~8 ms; VSync paces it further. */
     if (frame_source && now - last_present_ns >= 8 * SDL_NS_PER_MS) {
         if (frame_source(frame)) {
             present();
-            last_present_ns = SDL_GetTicksNS();
+            last_present_ns = now_ns();
             worked = true;
         }
     }
     if (!worked) {
         Uint64 next = tick_due_ns(ticks_run + 1);
-        now = SDL_GetTicksNS();
-        if (next > now) SDL_DelayNS(SDL_min(next - now, SDL_NS_PER_MS));
+        now = now_ns();
+        if (next > now) wait_ns(SDL_min(next - now, SDL_NS_PER_MS));
     }
 }
 
@@ -304,9 +325,9 @@ void host_frame_begin(void)
     host_pump();
     if (frame_rate <= 0) return;
     Uint64 period = SDL_NS_PER_SECOND / (Uint64)frame_rate;
-    Uint64 now = SDL_GetTicksNS();
+    Uint64 now = now_ns();
     if (next_frame_ns == 0 || now > next_frame_ns + period) next_frame_ns = now;   /* resync after stalls */
-    while (SDL_GetTicksNS() < next_frame_ns) host_pump();
+    while (now_ns() < next_frame_ns) host_pump();
     next_frame_ns += period;
 }
 
