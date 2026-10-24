@@ -33,7 +33,7 @@ Start with `docs/HANDOVER.md` (current state, salvage inventory, plan) and `docs
 - `.\run.ps1` plays on `runs\game`, a copy of `reference\dos`, with scores in `runs\profile`. `.\run.ps1 --check` verifies the EXE. `.\run.ps1 -RecordStates` also saves race states to `runs\states` for the harness's whole-tick cases.
 - `$env:PYTHONPATH = "analysis/tools/python;tools"; python -m diffharness` runs the differential harness and rewrites `docs/verification.md`. Tests: `python -m unittest discover -s tests`.
 - `python tools/snapshots.py` checks the EGA frames and speaker output of the attract loop and a scripted menu run against `tests/ega_snapshots.txt`; `--cga` does the same for CGA against `tests/cga_snapshots.txt` (`--update` rewrites a baseline after an intended change).
-- `.un.ps1 --cga` plays with the CGA backend. Headless runs take `TD2_KEYS` ("30:Return,56:Up/240": key presses at game times, optionally held) and `TD2_SNAPSHOT_MS`.
+- `.\run.ps1 --cga` plays with the CGA backend. Headless runs take `TD2_KEYS` ("30:Return,56:Up/240": key presses at game times, optionally held) and `TD2_SNAPSHOT_MS`.
 - `python tools/cga_compare.py` compares TD2CGA with TD2EGA function by function (`docs/cga.md`); add EGA addresses such as `06c9:3c3a` to print those functions' differences.
 
 Python analysis tools need `PYTHONPATH=analysis/tools/python`, which provides Unicorn 2.1.4 and Capstone 5.0.9. Ghidra 12.1.3 is at `C:\Projects\Civ1RE\tools\ghidra_12.1.3_PUBLIC`; run it through `tools/run_ghidra.ps1`.
