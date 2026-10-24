@@ -1,5 +1,7 @@
 # Test Drive II reconstruction
 
+> **24 October 2026: start with [docs/HANDOVER.md](docs/HANDOVER.md).** The project is moving onto the playable Kylofon SDL3 port as its codebase. The status paragraphs below describe the earlier recovery approach and are kept for history.
+
 This project will recover a portable C game core from the supplied DOS executables, decode the original resources, build a native Windows game that reads user supplied originals, and then add Amiga graphics, animation, music, sound effects and Northern Germany Challenge scenery when its required files are supplied. The main reference is `reference/dos/TD2EGA.EXE`; `TD2CGA.EXE` supplies the CGA implementation evidence.
 
 **Phase 0 is complete and Phase 1 is in progress with TD2EGA.** The EGA image, relocations and bounded startup ABI are reviewed. The current inventory has 440 function candidates, and 215 native C17 exports covering 292 original entries have passed isolated comparisons. State/resource ownership and complete portable code recovery remain open; the game core is not playable. Start with the [current recovery checkpoint](docs/recovery/README.md).
