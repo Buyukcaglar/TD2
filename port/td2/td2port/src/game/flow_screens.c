@@ -7,6 +7,7 @@
 #include "../codeptr.h"
 #include "../host.h"
 #include "../platform/gfx.h"
+#include "../platform/gfx_backend.h"
 #include "../platform/input.h"
 #include "../platform/res.h"
 #include "../platform/timer.h"
@@ -24,50 +25,78 @@ static s16 morph(s16 a, s16 s, s16 b, s16 t)
  * Segment 00c0: title, Accolade, intro sequence
  * ============================================================================================== */
 
-/* 00c0:0004 title_screen — game_flow.md §4.5 (verified against the disassembly) */
-s16 title_screen(void)
+/* Step s of 32 of the title's logo lines, growing from the centre, onto the screen (00c0:0004). */
+static void title_lines(s16 s)
 {
-    s16 start[LOGO_LINES][4];
-    s16 k;
+    s16 t = (s16)(0x20 - s);
+    gfx_select_target(flow_page_desc());
+    gfx_set_clip_current(XBYTES(5), XBYTES(0x23), 0x5E, 0x65);
+    gfx_clear_clip(0);
     for (int i = 0; i < LOGO_LINES; i++) {
-        start[i][0] = 0xA0; start[i][1] = 0x64; start[i][2] = 0xA0; start[i][3] = 0x64;
+        u16 l = (u16)(DS_logo_lines_a + 8 * i);
+        gfx_draw_line(morph(DSS(l),     s, 0xA0, t),
+                      morph(DSS(l + 2), s, 0x64, t),
+                      morph(DSS(l + 4), s, 0xA0, t),
+                      morph(DSS(l + 6), s, 0x64, t), 0xFFFF);
     }
     select_screen();
-    gfx_clear_clip(0);
-    for (s16 s = 0; s <= 0x20; s++) {
-        s16 t = (s16)(0x20 - s);
-        gfx_select_target(flow_page_desc());
-        gfx_set_clip_current(XBYTES(5), XBYTES(0x23), 0x5E, 0x65);
-        gfx_clear_clip(0);
-        for (int i = 0; i < LOGO_LINES; i++) {
-            u16 l = (u16)(DS_logo_lines_a + 8 * i);
-            gfx_draw_line(morph(DSS(l),     s, start[i][0], t),
-                          morph(DSS(l + 2), s, start[i][1], t),
-                          morph(DSS(l + 4), s, start[i][2], t),
-                          morph(DSS(l + 6), s, start[i][3], t), 0xFFFF);
-        }
-        select_screen();
-        gfx_set_clip_current(XBYTES(5), XBYTES(0x23), 0x5E, 0x65);
-        blit_copy_clip_own(flow_page_sprite());
-        flow_pace(3);                                /* PORT: unpaced in the original (§7) */
-        k = (s16)getkey();
-        if (k != 0) return k;
-    }
-    getkey_timeout(100);                             /* result ignored */
+    gfx_set_clip_current(XBYTES(5), XBYTES(0x23), 0x5E, 0x65);
+    blit_copy_clip_own(flow_page_sprite());
+}
+
+static void title_lines_redraw(void *ctx) { (void)ctx; title_lines(0x20); }
+
+/* The title picture into the page. */
+static void title_page(void)
+{
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     FarPtr a = load_shapes(0x71E6);                  /* "testdrv2" */
     blit_copy_own(res_find(a, 0x71EF));              /* "tdri" */
     blit_copy_own(res_find(a, 0x71F4));              /* "duel" */
     mem_release_cache_old(a);
+}
+
+static void title_redraw(void *ctx) { (void)ctx; title_page(); flow_show_page(); }
+
+/* 00c0:0004 title_screen — game_flow.md §4.5 (verified against the disassembly) */
+s16 title_screen(void)
+{
+    s16 k;
+    select_screen();
+    gfx_clear_clip(0);
+    for (s16 s = 0; s <= 0x20; s++) {
+        if (gfx_pending_backend()) flow_switch_redraw(NULL, NULL);   /* PORT: the live switch */
+        title_lines(s);
+        flow_pace(3);                                /* PORT: unpaced in the original (§7) */
+        k = (s16)getkey();
+        if (k != 0) return k;
+    }
+    getkey_timeout_redraw(100, title_lines_redraw, NULL);   /* result ignored */
+    title_page();
     host_sound_event(SOUND_TITLE, 0, NULL);          /* PORT: sample-based audio (the Amiga's speech) */
     k = screen_reveal(1);
     if (k != 0) return k;
     if (host_amiga_pace()) {                         /* PORT: duel's title ends with its speech, then 220 frames */
-        if ((k = (s16)wait_sound_end()) != 0) return k;
-        return (s16)getkey_timeout(amiga_ticks(220));
+        if ((k = (s16)wait_sound_end(title_redraw, NULL)) != 0) return k;
+        return (s16)getkey_timeout_redraw(amiga_ticks(220), title_redraw, NULL);
     }
-    return (s16)getkey_timeout(300);
+    return (s16)getkey_timeout_redraw(300, title_redraw, NULL);
+}
+
+/* PORT: the Accolade picture again after a graphics switch, the bull in its place. */
+static void accolade_redraw(void *ctx)
+{
+    (void)ctx;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    FarPtr a = load_shapes(0x71F9);                  /* "accolade" */
+    blit_copy_own(res_find(a, 0x7202));              /* "acc_" */
+    blit_copy_own(res_find(a, 0x7207));              /* "pres" */
+    blit_copy_own(res_find(a, 0x720C));              /* "copy" */
+    blit_copy_own(res_find(a, 0x7211));              /* "bull" */
+    mem_release_cache_old(a);
+    flow_show_page();
 }
 
 /* 00c0:027a accolade_screen — game_flow.md §4.5 (verified) */
@@ -87,6 +116,11 @@ s16 accolade_screen(void)
     if (r == 0) {
         FarPtr bull = res_find(a, 0x7211);           /* "bull" slides in from the left */
         for (s16 x = 0; spr_x(bull) > x; x = (s16)(x + 2)) {
+            if (gfx_pending_backend()) {             /* PORT: the live switch ends the slide */
+                mem_release_cache_old(a);
+                flow_switch_redraw(accolade_redraw, NULL);
+                return 0;
+            }
             deadline_set(1);
             blit_copy_clip_raw(bull, x, spr_y(bull));
             r = (s16)getkey_until_deadline();
@@ -109,13 +143,14 @@ s16 intro_sequence(void)
     }
     if ((r = accolade_screen()) != 0) return r;
     if (host_amiga_pace()) {                         /* PORT: duel's intro (overlay 1204h) waits for the speech */
-        if ((r = (s16)wait_sound_end()) != 0) return r;
-        if ((r = (s16)getkey_timeout(amiga_ticks(5))) != 0) return r;
-    } else if ((r = (s16)getkey_timeout(300)) != 0) return r;
+        if ((r = (s16)wait_sound_end(accolade_redraw, NULL)) != 0) return r;
+        if ((r = (s16)getkey_timeout_redraw(amiga_ticks(5), accolade_redraw, NULL)) != 0) return r;
+    } else if ((r = (s16)getkey_timeout_redraw(300, accolade_redraw, NULL)) != 0) return r;
     r = showroom_intro(100);
     host_sound_event(SOUND_SHOWROOM_END, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
     if (r != 0) return r;
-    if (host_amiga_pace() && (r = (s16)getkey_timeout(amiga_ticks(5))) != 0) return r;   /* PORT: as duel */
+    if (host_amiga_pace() && (r = (s16)getkey_timeout_redraw(amiga_ticks(5), NULL, NULL)) != 0)
+        return r;                                    /* PORT: as duel */
     if ((r = title_screen()) != 0) return r;
     if ((r = credits()) != 0) return r;
     if (DSS(DS_nscenes) == 0) return r;
@@ -134,6 +169,7 @@ s16 dsi_logo_screen(void)
     gfx_clear_clip(0);
     for (s16 s = 0; s <= 0x20; s++) {
         s16 t = (s16)(0x20 - s);
+        if (gfx_pending_backend()) flow_switch_redraw(NULL, NULL);   /* PORT: the live switch */
         gfx_select_target(flow_page_desc());
         gfx_set_clip_current(XBYTES(2), XBYTES(0x23), 0x5E, 0xBD);
         gfx_clear_clip(0);
@@ -170,11 +206,9 @@ s16 dsi_logo_screen(void)
     return k;
 }
 
-/* 010c:0285 credits — game_flow.md §4.5 (verified) */
-s16 credits(void)
+/* The credits over the DSI logo, onto the screen. */
+static void credits_text(void)
 {
-    s16 r = dsi_logo_screen();
-    if (r != 0) return r;
     gfx_set_text_colours(COL(0x0F, 2), 1);
     draw_text_centered(0x724F, 0x00);                /* " Created by " */
     draw_text_centered(0x725C, 0x20);                /* " Design and Programming " */
@@ -188,7 +222,31 @@ s16 credits(void)
     draw_text_centered(0x72FC, 0x3C);                /* "Brad Gour    Erik Kiss    Kris Hatlelid" */
     draw_text_centered(0x7324, 0x54);                /* "John Boechler  Tony Lee  Theresa Henry" */
     draw_text_centered(0x734B, 0x6C);                /* "Kris Hatlelid" */
-    return (s16)getkey_timeout(500);
+}
+
+/* PORT: the DSI logo and the credits again after a graphics switch. */
+static void credits_redraw(void *ctx)
+{
+    (void)ctx;
+    FarPtr arc = load_shapes(0x7232);                /* "dsititle" */
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    blit_or_own(res_find(arc, 0x723B));              /* "sqar" */
+    blit_or_own(res_find(arc, 0x7240));              /* "text" */
+    blit_or_own(res_find(arc, 0x7245));              /* "arow" */
+    blit_or_own(res_find(arc, 0x724A));              /* "type" */
+    mem_release_cache(arc);
+    flow_show_page();
+    credits_text();
+}
+
+/* 010c:0285 credits — game_flow.md §4.5 (verified) */
+s16 credits(void)
+{
+    s16 r = dsi_logo_screen();
+    if (r != 0) return r;
+    credits_text();
+    return (s16)getkey_timeout_redraw(500, credits_redraw, NULL);
 }
 
 /* ================================================================================================
@@ -266,16 +324,58 @@ static bool buf_scan_cstr(FlowFile *f, char *dst, size_t cap)
 
 #define SS_MAX_FRAMES 64            /* PORT: the original's array holds 25 far pointers (.SS files use <= 15) */
 
+/* The showroom's sprites of one car (its "st" archive), and where the car stands. */
+typedef struct {
+    const char *path, *names;
+    s16 anim, x, y;
+    s16 window;                                     /* PORT: the window's picture shown, -1 for none */
+    FarPtr a, carS, win[SS_MAX_FRAMES], front[3], rear[3];
+    int nwin;
+} Showroom;
+
+static void showroom_sprites(Showroom *v)
+{
+    char name[32];
+    v->a = load_shapes_c(flow_concat(name, sizeof name, v->path, DSTR(0x7371)));     /* "st" */
+    v->nwin = v->anim ? flow_find_list(v->a, v->names, v->win, SS_MAX_FRAMES) : 0;
+    v->carS = res_find(v->a, 0x7374);                /* "carS" */
+    res_find(v->a, 0x7379);                          /* "carM" (unused) */
+    res_find(v->a, 0x737E);                          /* "logo" (unused) */
+    flow_find_list(v->a, DSTR(0x7383), v->front, 3); /* "frm0frm1frm2" */
+    flow_find_list(v->a, DSTR(0x7390), v->rear, 3);  /* "rrm0rrm1rrm2" */
+}
+
+/* PORT: a graphics switch in the showroom: the sprites again in the new mode. */
+static void showroom_switch(Showroom *v)
+{
+    mem_release_cache(v->a);
+    flow_switch_redraw(NULL, NULL);
+    showroom_sprites(v);
+}
+
+/* PORT: the car standing with its window picture, drawn again after a graphics switch. */
+static void showroom_redraw(void *ctx)
+{
+    Showroom *v = ctx;
+    mem_release_cache(v->a);
+    showroom_sprites(v);
+    gfx_select_target(flow_page_desc());
+    gfx_set_clip_current(0, XBYTES(0x28), (s16)(v->y - 0x50), v->y);
+    gfx_clear_clip(0);
+    blit_copy_clip_hot(v->carS, v->x, v->y);
+    if (v->window >= 0 && v->window < v->nwin) blit_copy_clip_hot(v->win[v->window], v->x, v->y);
+    select_screen();
+    gfx_set_clip_current(0, XBYTES(0x28), (s16)(v->y - 0x50), v->y);
+    blit_copy_clip_raw(flow_page_sprite(), 0, 0);
+}
+
 /* 0143:01e1 showroom_drive — game_flow.md §4.6 (verified against the disassembly) */
 s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
 {
     char name[32];
     char buf[257];
     char names[256];
-    FarPtr win[SS_MAX_FRAMES];
-    FarPtr front[3], rear[3];
     s16 count = 0;
-    int nwin = 0;
     s16 r = 0;
     char pathc[32];
     snprintf(pathc, sizeof pathc, "%s", path);       /* path may be DS:8644, which ensure_disk rewrites */
@@ -301,33 +401,30 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
             }
         }
     }
-    FarPtr a = load_shapes_c(flow_concat(name, sizeof name, pathc, DSTR(0x7371)));    /* "st" */
-    if (anim) nwin = flow_find_list(a, names, win, SS_MAX_FRAMES);
-    FarPtr carS = res_find(a, 0x7374);               /* "carS" */
-    res_find(a, 0x7379);                             /* "carM" (unused) */
-    res_find(a, 0x737E);                             /* "logo" (unused) */
-    flow_find_list(a, DSTR(0x7383), front, 3);       /* "frm0frm1frm2" */
-    flow_find_list(a, DSTR(0x7390), rear, 3);        /* "rrm0rrm1rrm2" */
+    Showroom v = { pathc, names, anim, x, y, -1 };
+    showroom_sprites(&v);
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     gfx_set_clip_current(0, XBYTES(0x28), (s16)(y - 0x50), y);
     if (anim) {
         if (reveal) {
-            blit_copy_clip_hot(carS, x, y);
+            blit_copy_clip_hot(v.carS, x, y);
             r = screen_reveal(1);
             if (r != 0) goto out;
             host_sound_event(SOUND_SHOWROOM, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
         } else {
             select_screen();
-            blit_copy_clip_hot(carS, x, y);
+            blit_copy_clip_hot(v.carS, x, y);
         }
-        r = (s16)getkey_timeout(amiga ? amiga_ticks(200) : 0x96);
+        r = (s16)getkey_timeout_redraw(amiga ? amiga_ticks(200) : 0x96, showroom_redraw, &v);
         if (r != 0) goto out;
         for (DSS(DS_ss_frame) = 0; DSS(DS_ss_frame) < count; DSS(DS_ss_frame)++) {   /* window opens */
             u32 f = (u32)DSS(DS_ss_frame);
+            if (gfx_pending_backend()) flow_switch_redraw(showroom_redraw, &v);   /* PORT: the live switch */
             deadline_set(amiga ? amiga_ticks(8 * (f + 1)) - amiga_ticks(8 * f) : (u32)(s32)DSS(DS_ss_frame_ticks));
             s16 fi = DSS(DS_ss_frame);
-            if (fi >= 0 && fi < nwin) blit_copy_clip_hot(win[fi], x, y);   /* PORT: bounded */
+            if (fi >= 0 && fi < v.nwin) blit_copy_clip_hot(v.win[fi], x, y);   /* PORT: bounded */
+            v.window = fi;
             r = (s16)getkey_until_deadline();
             if (r != 0) goto out;
         }
@@ -340,6 +437,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
     s32 amiga_dist = 0;
     u32 frames = 0;
     for (;;) {
+        if (gfx_pending_backend()) showroom_switch(&v);   /* PORT: the live switch */
         if (amiga) {                                 /* PORT: duel's steps, one per frame of the ticks so far */
             u32 due = (u32)(u16)DSS(DS_ss_ticks) * 6005u / 10000u;
             for (; frames < due; frames++) {
@@ -357,13 +455,13 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
         gfx_select_target(flow_page_desc());
         gfx_set_clip_current(0, XBYTES(0x28), (s16)(y - 0x50), y);
         gfx_clear_clip(0);
-        blit_copy_clip_hot(carS, cx, y);
+        blit_copy_clip_hot(v.carS, cx, y);
         if (anim) {
             s16 fi = DSS(DS_ss_frame);
-            if (fi >= 0 && fi < nwin) blit_copy_clip_hot(win[fi], cx, y);  /* PORT: bounded */
+            if (fi >= 0 && fi < v.nwin) blit_copy_clip_hot(v.win[fi], cx, y);  /* PORT: bounded */
         }
-        blit_copy_clip_hot(front[w], cx, y);
-        blit_copy_clip_hot(rear[w], cx, y);
+        blit_copy_clip_hot(v.front[w], cx, y);
+        blit_copy_clip_hot(v.rear[w], cx, y);
         select_screen();
         gfx_set_clip_current(0, XBYTES(0x28), (s16)(y - 0x50), y);
         blit_copy_clip_raw(flow_page_sprite(), 0, 0);
@@ -372,7 +470,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
         if (r != 0) break;
     }
 out:
-    mem_release_cache(a);
+    mem_release_cache(v.a);
     timer_remove_routine(codeptr_far(FN_showroom_tick));
     return r;
 }

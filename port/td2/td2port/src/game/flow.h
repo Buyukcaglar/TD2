@@ -60,9 +60,16 @@ char *flow_concat(char *buf, size_t n, const char *a, const char *b);
 void flow_pace(u32 ticks);
 /* PORT: the Amiga's pace (host_amiga_pace). duel counts NTSC frames (60.05 a second), the DOS game its
  * 100 Hz timer ticks. amiga_ticks: the ticks of that many frames. wait_sound_end: waits while a sample
- * effect plays (at most 10 s); returns the key that ended it, or 0. */
+ * effect plays (at most 10 s), with redraw as for getkey_timeout_redraw; returns the key that ended it,
+ * or 0. */
 u32  amiga_ticks(u32 frames);
-u16  wait_sound_end(void);
+u16  wait_sound_end(void (*redraw)(void *), void *ctx);
+/* PORT: a graphics switch on the intro and attract screens (flow.c): applies it, clears the screen and
+ * calls redraw(ctx) (if not NULL) to draw the screen again; getkey_timeout_redraw is getkey_timeout
+ * doing that for every switch on the way. flow_show_page copies the whole page to the screen. */
+void flow_switch_redraw(void (*redraw)(void *), void *ctx);
+u16  getkey_timeout_redraw(u32 n, void (*redraw)(void *), void *ctx);
+void flow_show_page(void);
 /* PORT: duel's screen changes with the Amiga graphics (amiga_wipe.c; nothing without them): the page
  * grows over a black screen (in) or black eats the screen (out), in duel's shape for that change, with
  * its step a (and cell height b). */

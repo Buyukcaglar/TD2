@@ -26,6 +26,7 @@ A switch request (key combination or context menu) only sets a pending flag. The
 
 - **In a race**, at the top of the drive loop in `run_stage`, between two frames. The switch frees the race buffers and releases the race archives in reverse load order, swaps the backend, loads the same files again with the other extension, and runs the graphics halves of `stage_load`, `main_view_load`, `mirror_load` and `cockpit_load` again: the table lookups, the buffers, the scenery colours, and the cockpit drawn onto the screen. It does not run their resets of positions, fuel and timers. It then sets the HUD, gear gate and instrument redraw flags. The race goes on from the same state on the next frame. During a message, the crash sequence or the stage-end sequence, the switch waits for the drive loop.
 - **On other screens** (menus, car and scenery choice, difficulty) the screen's input wait returns a redraw signal when a switch is pending. The screen releases its archives, applies the switch, then draws again from its top with its current choices kept.
+- **In the intro and the attract screens** (Accolade, showroom, title, DSI logo and credits, high scores) the switch applies at once, and the screen draws itself again as it stands and goes on with the same timing.
 - **Applying the switch** calls the backend's `shutdown`, `gfx_set_backend`, then `reset` and `set_mode`, and re-points the host's frame source, which changes the window's size ratio (Hercules is 640 × 300).
 
 ### Where it stands
@@ -41,7 +42,8 @@ The race switch is built (step 2 below).
 - **In the race.** `run_stage` checks for a pending switch at the top of each frame. `race_switch_graphics` (`scene.c`) frees the four race buffers. `stage_shapes_switch` (`flow_stage.c`) releases the eight sprite archives, applies the switch and loads them again. `race_switch_graphics` then reruns the scenery colours, `main_view_load`, `mirror_load`, the sprite tables (`stage_find_handles`, split out of `stage_load`) and `cockpit_load`, and sets the redraw flags. Archives released by the switch stay in the file cache, so switching back reuses them.
 - **On the menu screens** (step 3 below). The main menu, car select, scenery select and the difficulty screen read keys with `getkey_timeout_switch` (`flow.c`), which returns `KEY_SWITCH` as soon as a switch is pending. The screen releases its sprite archives, and `flow_switch_graphics` applies the switch and makes the page buffer again in the new layout. The screen then draws itself again from its top, keeping the current choice; the attract demo carries on.
 - **Text colours.** The game keeps its text colours in memory as the colour numbers of the mode that set them (`COL`). A switch to the other adapter translates them through the pairs the text uses: EGA 0Fh is CGA 3, EGA 0 is CGA 0, and so on.
-- **Other screens** (titles, credits, showroom, gas station, police stop, results, high scores) show for a few seconds or wait inside the original's own routines. A switch asked for there stays pending until the next menu screen or race frame. This could be extended screen by screen if it matters in play.
+- **On the intro and attract screens.** Their waits use `getkey_timeout_redraw` (`flow.c`), which applies a switch with `flow_switch_redraw` and calls the screen's redraw function (`accolade_redraw`, `title_redraw`, `credits_redraw`, `hisc_redraw`, `showroom_redraw`), which draws the page again in the new mode and shows it. Their animations (the bull's slide, the title and DSI logo lines, the showroom's window and drive) check for a pending switch at each step: the logo lines go on from the same step, the bull's slide ends with the bull in its place, and the showroom loads its car's sprites again and drives on.
+- **Other screens** (gas station, police stop, results, game over) show for a few seconds or wait inside the original's own routines. A switch asked for there stays pending until the next screen that takes it or the next race frame.
 
 ### How it is tested
 
@@ -170,7 +172,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 
 1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. Done; the snapshots, tests and harness are unchanged.
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
-3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run. Other screens leave the switch pending.
+3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run, and for the intro and attract screens. The gas station, police stop, results and game over screens leave the switch pending.
 4. **App UI layer on Windows.** Done: the context menu with the system theme, Ctrl+Shift+M and right click, pausing, and the graphics, monitor, window size, full screen and quit commands. The question windows move to step 5.
 5. **Game data manager.** Done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues, archives (zip, 7z, rar, lha), the question windows, the first-start setup, and the Game files… and About entries.
 6. **macOS** (later): the same `app_ui` interface with AppKit.

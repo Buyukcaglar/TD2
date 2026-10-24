@@ -77,10 +77,10 @@ void flow_pace(u32 ticks)
 
 u32 amiga_ticks(u32 frames) { return (frames * 10000u + 3002u) / 6005u; }
 
-u16 wait_sound_end(void)
+u16 wait_sound_end(void (*redraw)(void *), void *ctx)
 {
     for (u32 t = 0; t < 1000 && host_sound_busy(); t++) {
-        u16 k = getkey_timeout(1);
+        u16 k = getkey_timeout_redraw(1, redraw, ctx);
         if (k) return k;
     }
     return 0;
@@ -101,6 +101,35 @@ u16 getkey_timeout_switch(u32 n)
         if (ticks_get() >= end) return 0;
         host_pump();
     }
+}
+
+/* PORT: the switch on the screens that only wait or animate (the intro and the attract screens): they
+ * apply it at once and draw themselves again in the new mode (redraw, which may be NULL for a blank
+ * screen). getkey_timeout_redraw waits like getkey_timeout and does that for each switch on the way. */
+void flow_switch_redraw(void (*redraw)(void *), void *ctx)
+{
+    flow_switch_graphics();
+    select_screen();
+    gfx_clear_screen(0);
+    if (redraw) redraw(ctx);
+}
+
+u16 getkey_timeout_redraw(u32 n, void (*redraw)(void *), void *ctx)
+{
+    u32 end = ticks_get() + n;
+    for (;;) {
+        u32 now = ticks_get();
+        u16 k = getkey_timeout_switch(end > now ? end - now : 0);
+        if (k != KEY_SWITCH) return k;
+        flow_switch_redraw(redraw, ctx);
+    }
+}
+
+/* PORT: the page, drawn in full, onto the screen. */
+void flow_show_page(void)
+{
+    select_screen();
+    blit_copy_own(flow_page_sprite());
 }
 
 /* Applies a pending switch where only the page buffer exists: recreates it in the new backend. */

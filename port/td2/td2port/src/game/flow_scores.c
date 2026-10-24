@@ -107,8 +107,8 @@ s16 hisc_insert(void)
     return 0;
 }
 
-/* 0645:0470 hisc_show — game_flow.md §4.15 (verified against the disassembly) */
-s16 hisc_show(s32 timeout)
+/* The high scores into the page, as hisc_show draws them; KEY_ESC if a logo is missing. */
+static s16 hisc_page(s32 timeout)
 {
     char t[72], name[26];
     gfx_select_target(flow_page_desc());
@@ -144,9 +144,24 @@ s16 hisc_show(s32 timeout)
         snprintf(t, sizeof t, "Your Score:  %ld", (long)DSSL(DS_total_score));  /* DS:82A7 */
         draw_text_centered_str(t, 0xC0);
     }
-    s16 r = screen_reveal(1);
+    return 0;
+}
+
+/* PORT: the high scores again after a graphics switch. */
+static void hisc_redraw(void *ctx)
+{
+    hisc_page(*(const s32 *)ctx);
+    flow_show_page();
+}
+
+/* 0645:0470 hisc_show — game_flow.md §4.15 (verified against the disassembly) */
+s16 hisc_show(s32 timeout)
+{
+    s16 r = hisc_page(timeout);
     if (r != 0) return r;
-    return (s16)getkey_timeout((u32)timeout);
+    r = screen_reveal(1);
+    if (r != 0) return r;
+    return (s16)getkey_timeout_redraw((u32)timeout, hisc_redraw, &timeout);
 }
 
 /* 0645:06a8 hisc_check — game_flow.md §4.15 (verified) */
