@@ -1,6 +1,7 @@
 """Amiga HUNK load files: parse the sections and relocations, and lay them out in one memory image.
 
-Usage: python tools/amiga/hunk.py runs/amiga/duel   (prints the sections)
+Usage: python tools/amiga/hunk.py runs/amiga/duel [image.bin]   (prints the sections; writes the laid-out
+memory, from address 0, for Ghidra)
 """
 import struct
 import sys
@@ -136,3 +137,5 @@ if __name__ == '__main__':
         print(f'{s.base:06x}', s)
         for name, off in s.symbols[:20]:
             print(f'    {name} {s.base + off:06x}')
+    if len(sys.argv) > 2:
+        open(sys.argv[2], 'wb').write(mem)
