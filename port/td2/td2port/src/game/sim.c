@@ -217,6 +217,7 @@ void decode_controls(void)
     u8 al = DSB(DS_input);
     u16 bp = DSW(DS_rpm);
     u16 bx;
+    sim_stale_bp = bp;                                  /* BP keeps the rpm until motion */
 
     if (DSB(DS_finished) != 0) {                        /* last stage past the line: brake, steer only */
         bx = al & 0x0F;

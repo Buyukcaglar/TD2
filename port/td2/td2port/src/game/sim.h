@@ -55,6 +55,11 @@ void car_edges(void);                           /* 06c9:4afa car edges, station 
 void median_posts(void);                        /* 06c9:4b5d */
 void road_edges(void);                          /* 06c9:4b9a walls, drop-offs, shoulder, zones */
 void roadside_hit(void);                        /* 06c9:4c85 scenery collision */
+/* BP as the original leaves it between sim routines. roadside_hit's crash test reads it for
+ * billboards (types >= 0x50): it is the rpm (decode_controls), a right-side zone bound (road_edges),
+ * the road pointer (motion) or a scenery ring slot (obj_place_roadside). Below 0x14 a billboard only
+ * bumps the car. */
+extern u16 sim_stale_bp;
 bool overlap(s16 ax_centre, s16 bx_half);       /* 06c9:4d26 true = ZF (overlaps the car) */
 
 /* ---- traffic and collisions between drivers (sim_traffic.c)

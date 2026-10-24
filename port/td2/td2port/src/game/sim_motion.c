@@ -6,6 +6,8 @@
 #include "../platform/res.h"
 #include "../platform/sound.h"
 
+u16 sim_stale_bp;
+
 /* Pull-over / roadblock states of the police car restrict the player (cop_state 2..7). */
 static bool pulled_over(void)
 {
@@ -177,6 +179,7 @@ void motion(void)
         u16 pos = (u16)(DSW(DS_player_pos) + 1);
         DSW(DS_player_pos) = pos;
         u16 bp = pos;
+        sim_stale_bp = bp;                              /* 48b7 mov bp,bx */
         u8 b = ROAD(pos);
         DSB(DS_region_flags) = (u8)((DSB(DS_region_flags) & 0xFE) | (b >> 7));
         u16 rec = REC(b);
@@ -229,6 +232,7 @@ void obj_roadblock(u16 bp_pos)                          /* 06c9:495d */
 void obj_place_roadside(u16 bx_code2)                   /* 06c9:499a */
 {
     u16 bp = (u8)(DSB(DS_ring_counter) + 0x45) & 0x7F;
+    sim_stale_bp = bp;                                  /* still in BP at the next unit's roadside_hit */
     u16 code = bx_code2 >> 1;
     u16 t = (u16)((code - 0x16) * 5);
     /* faithful-quirk: the original writes the rings through SS ([bp+368A], [bp+370A]); SS = DGROUP
@@ -382,11 +386,13 @@ void road_edges(void)
         u16 dx = (u16)(DSW(DS_player_pos) - 0x3B33);
         for (u16 si = 0; DSW(DS_right_zones + si) != 0; si = (u16)(si + 8)) {
             u16 end = DSW(DS_right_zones + 2 + si);
+            sim_stale_bp = end;                         /* 4c45 mov bp,[si+37A8] */
             if (dx > end) continue;
             u16 start = DSW(DS_right_zones + si);
             if (dx < start) break;
             dx = (u16)(dx - start);
             u16 len = (u16)(end - start);
+            sim_stale_bp = len;                         /* 4c5a sub bp,ax */
             s16 a = DSS(DS_right_zones + 4 + si), b = DSS(DS_right_zones + 6 + si);
             s16 w = idiv32_16((s32)(s16)(b - a) * (s16)dx, (s16)len, NULL);
             w = (s16)(w + a);
@@ -422,9 +428,9 @@ void roadside_hit(void)
     if ((s8)t < 0) return;
     u16 cx;
     bool big;
+    if (t < 0x50) sim_stale_bp = t;                     /* 4c9c mov bp,ax */
     if (t < 0x50 && DSW(DS_scenery_sprites + ((u16)t << 2)) != 0) {
         cx = DSB(DS_ROADSIDE_HALFWIDTH + (t >> 2));
-        big = t >= 0x14;                                /* BP = type (4c9c) */
     } else {
         if (t < 0x1E) return;
         u16 seg = DSW(DS_sgn_seg);
@@ -433,11 +439,10 @@ void roadside_hit(void)
         u16 off = rd16(seg, (u16)(q << 1));
         if (off == 0) return;
         cx = rd16(seg, off) >> 1;                       /* sign width / 2 */
-        /* PORT: simulation.md §4.11. For t < 0x50 BP holds the type (>= 0x1E); for t >= 0x50 the
-         * original compares a stale BP (rpm, zone length or road position), which is >= 20 in practice.
-         * Billboards always crash the car. */
-        big = true;
     }
+    /* 4d18 cmp bp,14h: big objects crash the car. For a billboard (t >= 0x50) BP is whatever the
+     * sim left there (sim_stale_bp): usually >= 0x14, but a ring slot or a short zone can be below. */
+    big = sim_stale_bp >= 0x14;
     s16 x = (s16)((s8)DSB(DS_roadside_side + bx) * 50);
     x = (s16)(x >= 0 ? x + 500 : x - 500);
     if (DSB(DS_region_flags) & 1) {

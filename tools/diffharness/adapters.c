@@ -19,6 +19,13 @@ static void a_brake(DhRegs *r) { brake(r->dx); }
 static void a_overrev_check(DhRegs *r) { (void)r; overrev_check(); }
 static void a_update_rpm(DhRegs *r) { update_rpm(&r->cx, &r->dx); }         /* CX = old rpm, DX = new */
 
+/* Routines that read or leave the stale BP (sim_stale_bp) take it from and return it in BP. */
+#define WITH_BP(call) do { sim_stale_bp = r->bp; call; r->bp = sim_stale_bp; } while (0)
+static void a_roadside_hit(DhRegs *r) { WITH_BP(roadside_hit()); }
+static void a_road_edges(DhRegs *r) { WITH_BP(road_edges()); }
+static void a_obj_place_roadside(DhRegs *r) { WITH_BP(obj_place_roadside(r->bx)); }
+static void a_decode_controls(DhRegs *r) { WITH_BP(decode_controls()); }
+
 static void a_rle_decode(DhRegs *r)
 {
     FarPtr q = rle_decode(far_make(arg(r, true, 1), arg(r, true, 0)), far_make(arg(r, true, 3), arg(r, true, 2)),
@@ -43,6 +50,10 @@ static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     { "brake", a_brake },
     { "update_rpm", a_update_rpm },
     { "overrev_check", a_overrev_check },
+    { "roadside_hit", a_roadside_hit },
+    { "road_edges", a_road_edges },
+    { "obj_place_roadside", a_obj_place_roadside },
+    { "decode_controls", a_decode_controls },
     { "rle_decode", a_rle_decode },
     { "huff_decode", a_huff_decode },
 };

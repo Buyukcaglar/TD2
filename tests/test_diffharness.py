@@ -75,6 +75,36 @@ class HarnessTest(unittest.TestCase):
         case = Case(bytearray(self.h.base), default_regs(random.Random(5)))
         self.assertTrue(self.h.compare(self.spec('rand8'), case).ok)
 
+    def billboard_case(self, bp):
+        """A billboard (type 55h) right on the car's path, with BP = bp at the crash test."""
+        mem = bytearray(self.h.base)
+        put = cases.ds_put
+        put(mem, 'DS_ring_counter', 0x10, 2)
+        put(mem, cases.S['DS_roadside_type'] + 0x10, 0x55)
+        put(mem, cases.S['DS_roadside_side'] + 0x10, 0)          # x = 500
+        sgn = 0x5000
+        put(mem, 'DS_sgn_seg', sgn, 2)
+        mem[sgn * 16 + 0x16:sgn * 16 + 0x18] = (0x100).to_bytes(2, 'little')   # (55h-1Eh)/5 = 11, rem 0: word 11
+        mem[sgn * 16 + 0x100:sgn * 16 + 0x102] = (80).to_bytes(2, 'little')    # sign width 80
+        put(mem, 'DS_region_flags', 0)
+        put(mem, 'DS_car_left', 450, 2)
+        put(mem, 'DS_car_right', 450 + 0xB4, 2)
+        put(mem, 'DS_run_state', 0)
+        put(mem, 'DS_speed', 0x3000, 2)
+        regs = default_regs(random.Random(9))
+        regs['bp'] = bp
+        return Case(mem, regs)
+
+    def test_billboard_crash_depends_on_stale_bp(self):
+        """Below 14h a stale BP makes a billboard only bump the car (roadside_hit, 06c9:4d18)."""
+        run_state = lin(DGROUP, cases.S['DS_run_state'])
+        for bp, crashes in ((0x05, False), (0x13, False), (0x14, True), (0x3C00, True)):
+            case = self.billboard_case(bp)
+            orig, port, _ = self.h.call(self.spec('roadside_hit'), case)
+            self.assertEqual(orig.mem[run_state] == 2, crashes, f'original, BP={bp:X}')
+            self.assertEqual(port.mem[run_state] == 2, crashes, f'port, BP={bp:X}')
+            self.assertTrue(self.h.compare(self.spec('roadside_hit'), self.billboard_case(bp)).ok, bp)
+
     @unittest.skipUnless(GAME_EXE.exists(), 'needs runs/game')
     def test_unpackers_write_their_output(self):
         for name in ('huff_decode', 'rle_decode'):

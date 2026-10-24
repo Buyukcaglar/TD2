@@ -5,12 +5,24 @@ from __future__ import annotations
 
 import os
 import random
+import re
 from pathlib import Path
 
 from .harness import (DGROUP, HEAP_BOTTOM, HEAP_TOP, MEM, ROOT, Case, Harness, Spec, default_regs, lin,
                       load_symbols)
 
 S = load_symbols()
+
+
+def _sim_aliases():
+    """Names the port's sim.h defines on top of symbols.h, e.g. DS_region_flags = DS_start_flags."""
+    text = (ROOT / 'port/td2/td2port/src/game/sim.h').read_text()
+    for name, base, plus in re.findall(r'^#define\s+(DS_\w+)\s+\(?(DS_\w+)(?:\s*\+\s*(\d+))?\)?', text, re.M):
+        if base in S and name not in S:
+            S[name] = S[base] + int(plus or 0)
+
+
+_sim_aliases()
 GAME_DIRS = [ROOT / 'runs/game', ROOT / 'analysis/inputs/dos']
 
 
@@ -95,6 +107,107 @@ def _overrev_check(rng, mem, regs):
     ds_put(mem, 'DS_rpm', rng.choice((redline + rng.randrange(-200, 1800), edgy16(rng))), 2)
     ds_put(mem, 'DS_overrev_ticks', rng.choice((0x1D, 0x1E, 0, rng.randrange(0x20), edgy8(rng))))
     ds_put(mem, 'DS_run_state', 0)
+
+
+def load_car(rng: random.Random, mem: bytearray):
+    """A real car record: 0x34F bytes of a car .BIN at DS:23A6, as the stage loader copies it."""
+    cars = [p for p in sorted(game_dir().glob('*.BIN')) if p.stat().st_size >= 0x34F and not p.stem.endswith('O')]
+    ds_put_bytes(mem, 'DS_car', rng.choice(cars).read_bytes()[:0x34F])
+
+
+def stale_bp(rng: random.Random) -> int:
+    """BP values the sim leaves behind: ring slots, short zone lengths, rpm, road pointers."""
+    return rng.choice((rng.randrange(0x14), rng.randrange(0x80), 0x13, 0x14,
+                       rng.randrange(800, 8000), 0x3B33 + rng.randrange(4000), rng.randrange(0x10000)))
+
+
+# ---------------------------------------------------------------------------------------------- road edges and roadside
+
+def _roadside_hit(rng, mem, regs):
+    rc = edgy16(rng)
+    ds_put(mem, 'DS_ring_counter', rc, 2)
+    slot = rc & 0x7F
+    t = rng.choice((rng.randrange(0x80, 0x100), rng.randrange(0x50), rng.randrange(0x1E, 0x50),
+                    rng.randrange(0x50, 0x80), rng.randrange(0x50, 0x80)))
+    ds_put(mem, S['DS_roadside_type'] + slot, t)
+    side = rng.choice((rng.randrange(-7, 8), edgy8(rng) - 256 if rng.random() < 0.1 else 3))
+    ds_put(mem, S['DS_roadside_side'] + slot, side & 0xFF)
+    if t < 0x50:
+        ds_put(mem, S['DS_scenery_sprites'] + 4 * t, rng.choice((0, 0, rng.randrange(1, 0x10000))), 2)
+    sgn = rng.choice((0, HEAP_BOTTOM + 0x100))
+    ds_put(mem, 'DS_sgn_seg', sgn, 2)
+    if sgn:
+        a = sgn * 16
+        mem[a:a + 0x10000] = rng.randbytes(0x10000)
+        if rng.random() < 0.2:                           # no such sign
+            q = (t - 0x1E) & 0xFF
+            ix = ((q % 5) << 8 | q // 5) * 2 & 0xFFFF
+            mem[a + ix:a + ix + 2] = b'\0\0'
+    flags = edgy8(rng)
+    ds_put(mem, 'DS_region_flags', flags)
+    ds_put(mem, 'DS_median', rng.choice((0, 1)))
+    x = side * 50 if side < 128 else 0
+    x = x + 500 if x >= 0 else x - 500
+    left = x - rng.randrange(-200, 400)
+    ds_put(mem, 'DS_car_left', left, 2)
+    ds_put(mem, 'DS_car_right', left + 0xB4, 2)
+    ds_put(mem, 'DS_run_state', 0)
+    ds_put(mem, 'DS_speed', edgy16(rng), 2)
+    ds_put(mem, 'DS_gear', gear(rng))
+    regs['bp'] = stale_bp(rng)
+
+
+def _obj_place_roadside(rng, mem, regs):
+    ds_put(mem, 'DS_ring_counter', edgy16(rng), 2)
+    regs['bx'] = rng.randrange(0x1C, 0x30) * 2
+    regs['bp'] = stale_bp(rng)
+
+
+def _road_edges(rng, mem, regs):
+    load_car(rng, mem)
+    flags = rng.choice((0, 0, 1, edgy8(rng)))            # 0 / 1: plain road, the right-side zone path
+    ds_put(mem, 'DS_region_flags', flags)
+    right = rng.random() < 0.8
+    edge = (400 if flags & 0x80 else 900 if flags & 1 else 500) * (1 if right else -1)
+    centre = edge + rng.randrange(-300, 300)
+    ds_put(mem, 'DS_car_centre', centre, 2)
+    ds_put(mem, 'DS_car_left', centre - 0x5A, 2)
+    ds_put(mem, 'DS_car_right', centre + 0x5A, 2)
+    unit = rng.randrange(2000)
+    ds_put(mem, 'DS_player_pos', 0x3B33 + unit, 2)
+    zones, at = [], max(1, unit - rng.randrange(300))
+    for _ in range(rng.randrange(0, 5)):
+        length = rng.choice((rng.randrange(1, 0x14), rng.randrange(1, 400)))
+        zones.append((at, at + length, rng.randrange(-100, 100), rng.randrange(-100, 100)))
+        at += length + rng.randrange(0, 100)
+    data = b''.join(v.to_bytes(2, 'little', signed=v < 0) for z in zones for v in z) + bytes(8)
+    ds_put_bytes(mem, 'DS_right_zones', data)
+    ds_put(mem, 'DS_speed', edgy16(rng), 2)
+    ds_put(mem, 'DS_gear', gear(rng))
+    ds_put(mem, 'DS_gear_ratio', edgy16(rng), 2)
+    ds_put(mem, 'DS_run_state', 0)
+    regs['bp'] = stale_bp(rng)
+
+
+def _decode_controls(rng, mem, regs):
+    load_car(rng, mem)
+    for name in ('DS_knob_anim', 'DS_fire_held', 'DS_shift_latch', 'DS_gearbox_timer', 'DS_engine_damage',
+                 'DS_steer_in', 'DS_throttle', 'DS_grind_timer'):
+        ds_put(mem, name, rng.choice((0, 0, 1, edgy8(rng))))
+    ds_put(mem, 'DS_input', rng.randrange(0x40))         # joystick directions and fire
+    ds_put(mem, 'DS_gear', rng.randrange(0, 7))
+    ds_put(mem, 'DS_finished', rng.choice((0, 0, 0, 1)))
+    ds_put(mem, 'DS_auto_trans', rng.choice((0, 1)))
+    ds_put(mem, 'DS_gate_mode', rng.choice((0, 1)))
+    ds_put(mem, 'DS_clock_started', rng.choice((0, 1)))
+    ds_put(mem, 'DS_demo_mode', rng.choice((0, 0, 1)), 2)
+    ds_put(mem, 'DS_rpm', rng.choice((rng.randrange(800, 8000), edgy16(rng))), 2)
+    ds_put(mem, 'DS_speed', edgy16(rng), 2)
+    ds_put(mem, 'DS_idle_ticks', edgy16(rng), 2)
+    for name in ('DS_knob_x', 'DS_knob_y', 'DS_knob_target_x', 'DS_knob_target_y'):
+        ds_put(mem, name, rng.randrange(-40, 40), 2)
+    ds_put(mem, 'DS_run_state', 0)
+    regs['bp'] = stale_bp(rng)
 
 
 # ---------------------------------------------------------------------------------------------- unpackers
@@ -198,6 +311,13 @@ SPECS = [
     Spec('brake', '06c9:45fc', False, [], forever(_brake), 'amount in DX, then update_rpm'),
     Spec('update_rpm', '06c9:4612', False, ['cx', 'dx'], forever(_update_rpm), 'CX old rpm, DX new rpm'),
     Spec('overrev_check', '06c9:4639', False, [], forever(_overrev_check), 'redline counter, blown engine'),
+    Spec('roadside_hit', '06c9:4c85', False, ['bp'], forever(_roadside_hit),
+         'scenery and billboards, stale BP (crash test)'),
+    Spec('obj_place_roadside', '06c9:499a', False, ['bp'], forever(_obj_place_roadside),
+         'objects 1Ch..2Fh, BP = ring slot'),
+    Spec('road_edges', '06c9:4b9a', False, ['bp'], forever(_road_edges), 'walls, drop-offs, right-side zones'),
+    Spec('decode_controls', '06c9:4281', False, ['bp'], forever(_decode_controls),
+         'real car records, joystick, gears, BP = rpm'),
     Spec('rle_decode', '06c9:6b02', True, ['ax', 'dx'], _rle_cases(HARNESS),
          'EC_ PCS files directly, other files after their original Huffman pass'),
     HUFF,
