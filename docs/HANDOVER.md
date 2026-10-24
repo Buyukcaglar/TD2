@@ -2,7 +2,7 @@
 
 This file replaces `docs/planning/continuation.md` as the place to start. That file, `backlog.json`, `progress.json` and the P-gate structure are kept for history but no longer drive the work.
 
-## 0. Current state (end of session 3, 24 October 2026)
+## 0. Current state (session 3, 24 October 2026)
 
 M0 "Adopt" is done except the user's play test. M1 "Verify EGA" has started.
 
@@ -17,16 +17,15 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" has started.
   $env:PYTHONPATH = "analysis/tools/python;tools"; python -m diffharness
   ```
 
-  It rewrites `docs/verification.md`. Its own tests are in `tests/test_diffharness.py`; they check that it catches deliberate register and memory mismatches. First results: rand8, curve_sum, free_rev, drag_apply, brake, update_rpm, overrev_check, rle_decode and huff_decode all match on 200 randomised cases each. The unpacker cases cover every packed PES, PCS and DAT file.
-- **PC speaker sound (session 3).** Synthesis moved from `host.c` to `speaker.c`, which has no SDL dependency. It models PIT channel 2 in mode 3: the speaker follows port 61h bit 1 AND the PIT output, a low gate holds the output high, and raising the gate restarts the wave. The square wave is averaged exactly over each sample on a 4× grid, then passes a 9 kHz two-pole low-pass (the cone) and a 10 Hz DC blocker. Aliasing is 20 to 35 dB lower than before, ultrasonic divisors no longer fold into audible whines, and a stopped note settles to silence. Tests are in `tests/test_speaker.py`. Set `TD2_AUDIO_DUMP=<file>.wav` to record what the speaker plays. Nobody has listened to it yet; the cut-offs are in `speaker.h` if it sounds too dull or too bright.
+  It rewrites `docs/verification.md`. Its own tests are in `tests/test_diffharness.py`; they check that it catches deliberate register and memory mismatches. Results: 13 functions match on 200 randomised cases each: rand8, curve_sum, free_rev, drag_apply, brake, update_rpm, overrev_check, roadside_hit, obj_place_roadside, road_edges, decode_controls, rle_decode and huff_decode. The unpacker cases cover every packed PES, PCS and DAT file.
+- **PC speaker sound (session 3).** Synthesis moved from `host.c` to `speaker.c`, which has no SDL dependency. It models PIT channel 2 in mode 3: the speaker follows port 61h bit 1 AND the PIT output, a low gate holds the output high, and raising the gate restarts the wave. The square wave is averaged exactly over each sample on a 4× grid, then passes a 9 kHz two-pole low-pass (the cone) and a 10 Hz DC blocker. Aliasing is 20 to 35 dB lower than before, ultrasonic divisors no longer fold into audible whines, and a stopped note settles to silence. Tests are in `tests/test_speaker.py`. Set `TD2_AUDIO_DUMP=<file>.wav` to record what the speaker plays. The user listened and approved it. The cut-offs are in `speaker.h`.
+- **Billboard collision (session 3).** For a billboard (type ≥ 50h) the original's crash test reads a stale BP (`cmp bp,14h` at 06c9:4d18). Below 14h the car only bumps instead of crashing. Tracing BP through the sim tick showed exactly where it is set. `decode_controls` (06c9:4281) loads the rpm, which is never below 800. The motion loop loads the road pointer (≥ 3B33h). `obj_place_roadside` (06c9:499a) loads the ring slot it filled (0–7Fh), and `road_edges` loads each right-side zone's end and then the zone length. So a billboard right after a placed object in the same sim step, or inside a short right-side zone, can bump instead of crash. The port now carries this value as `sim_stale_bp` and uses it for the test. Harness cases for all four routines compare BP as an output. `test_billboard_crash_depends_on_stale_bp` pins the rule down, and restoring the old "always crash" rule makes 10 of 200 random cases differ.
 - **Adding a function to the harness** takes three steps: add an adapter in `tools/diffharness/adapters.c`, add a `Spec` with an input generator in `tools/diffharness/cases.py`, and rebuild.
 
 ### Next steps (in order)
 
-1. **Billboard collision** (`sim_motion.c:436`). For sign types ≥ 50h the original tests a stale BP. Add the collision function to the harness, feed it BP values from real driving states, and decide from the result whether some billboard hits should not crash.
-2. **Neutral clutch grind** (`sim.c:265`). In neutral the original compares leftover CX/DX (throttle byte or joystick value, and 0100h), which can start the grind tone. Model those leftovers instead of skipping the check, and add a harness case.
-
-3. **Traffic seeding** (`sim_traffic.c:244, 367`). The original leaves DI and CX uninitialised there. Use the harness to check whether the leftovers ever change which car is picked.
+1. **Neutral clutch grind** (`sim.c:265`). In neutral the original compares leftover CX/DX (throttle byte or joystick value, and 0100h), which can start the grind tone. Model those leftovers instead of skipping the check. The `decode_controls` harness case already covers that function; make its generator reach "fire released in neutral" and check the grind timer.
+2. **Traffic seeding** (`sim_traffic.c:244, 367`). The original leaves DI and CX uninitialised there. Use the harness to check whether the leftovers ever change which car is picked.
 
 After those: the cockpit marker's CH (`scene_cockpit.c:207`), then whole-tick subsystem tests (run the original sim tick and `sim_tick` on the same state) before CGA.
 
