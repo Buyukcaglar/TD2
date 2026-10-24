@@ -1,6 +1,7 @@
 /* The game data manager and the settings file (app_data.h). */
 #include "app_data.h"
 #include "app_archive.h"
+#include "northern_germany.h"
 
 #include <SDL3/SDL.h>
 #include <stdio.h>
@@ -434,9 +435,42 @@ void app_data_summary(char *buf, size_t size)
 #endif
 }
 
+static char *find_any(const char *name)
+{
+    char *path = NULL;
+    for (int d = 0; d < ndirs && !path; d++) path = find_in(dirs[d], name);
+    return path;
+}
+
+/* The Amiga version's Northern Germany Challenge, built from the Amiga game and the DOS sceneries
+ * into the profile folder, which then counts as one more game folder. It is optional: without the
+ * Amiga game or the DOS California and European Challenges it is left out. */
+static void add_northern_germany(void)
+{
+    static char *built;
+    for (int d = 0; d < ndirs; d++)
+        if (built && SDL_strcmp(dirs[d], built) == 0) return;
+    char *amiga = app_data_amiga_dir(NULL);
+    if (!amiga) return;
+    char *out = NULL, err[256] = "";
+    SDL_asprintf(&out, "%s/Northern Germany", profile_dir);
+    if (out && northern_germany_build(amiga, out, find_any, err, sizeof err) && ndirs < MAX_DIRS) {
+        SDL_free(built);
+        built = SDL_strdup(out);
+        sources[ndirs] = SDL_strdup(out);
+        dirs[ndirs++] = out;
+        out = NULL;
+    } else if (*err) {
+        fprintf(stderr, "%s\n", err);
+    }
+    SDL_free(out);
+    SDL_free(amiga);
+}
+
 bool app_data_write_catalogues(char *err, size_t err_size)
 {
     Entry found[MAX_ENTRIES];
+    add_northern_germany();
     ncars = nscenes = 0;
     for (int d = 0; d < ndirs; d++) {
         int n = read_catalogue(dirs[d], "CARS.DAT", false, found, MAX_ENTRIES);

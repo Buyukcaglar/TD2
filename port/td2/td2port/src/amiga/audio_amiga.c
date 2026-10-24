@@ -10,6 +10,7 @@
 #include "amiga/paula.h"
 #include "amiga/race_logic.h"
 #include "amiga/race_sound.h"
+#include "amiga/rpck.h"
 #include "amiga/song.h"
 
 /* Where the files go in amiga_mem: the song file at 10000h (song.c), then the race effects, then the
@@ -66,27 +67,6 @@ static u8 *read_file(const char *name, u32 *len)
     return buf;
 }
 
-/* duel's Rpck unpacker ($1e518, tools/amiga/rpck.py): 'Rpck', the size, then count bytes n, n >= 0
- * repeating the next byte n + 1 times, n < 0 copying -n bytes. Writes at most max bytes; returns the
- * size, or 0 when the stream does not give it (some streams write one byte more, which is dropped). */
-static u32 unpack_rpck(const u8 *in, u32 len, u8 *out, u32 max)
-{
-    u32 size = (u32)in[4] << 24 | (u32)in[5] << 16 | (u32)in[6] << 8 | in[7];
-    if (size > max) return 0;
-    u32 o = 0;
-    for (u32 i = 8; i < len && o < size;) {
-        u8 n = in[i++];
-        if (n < 0x80) {
-            if (i >= len) break;
-            for (u32 k = 0; k <= n && o < size; k++) out[o++] = in[i];
-            i++;
-        } else {
-            for (u32 k = 0; k < 256u - n && i < len && o < size; k++) out[o++] = in[i++];
-        }
-    }
-    return o == size ? size : 0;
-}
-
 /* Copies a file to amiga_mem at *at (word aligned), unpacked if it is packed, and moves *at past it;
  * 0 if missing or too big. */
 static u32 load_at(const char *name, u32 *at, u32 end)
@@ -96,7 +76,7 @@ static u32 load_at(const char *name, u32 *at, u32 end)
     if (!buf) return 0;
     u32 a = 0;
     if (len >= 8 && memcmp(buf, "Rpck", 4) == 0) {
-        u32 n = unpack_rpck(buf, len, amiga_mem + *at, end - *at);
+        u32 n = rpck_unpack(buf, len, amiga_mem + *at, end - *at);
         if (n) {
             a = *at;
             *at = (a + n + 1) & ~1u;
