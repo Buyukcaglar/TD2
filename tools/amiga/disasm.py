@@ -29,5 +29,10 @@ def disassemble(mem, start, end):
 if __name__ == '__main__':
     mem, sections = hunk.load(open(sys.argv[1], 'rb').read())
     start, end = int(sys.argv[2], 16), int(sys.argv[3], 16)
+    labels = {s.base + off: name for s in sections for name, off in s.symbols}
     for addr, raw, mn, ops in disassemble(mem, start, end):
+        if addr in labels:
+            print(f'{labels[addr]}:')
+        for a, name in labels.items():                 # name the symbols an operand refers to
+            ops = ops.replace(f'${a:x}', f'{name}')
         print(f'{addr:06x}  {raw:<20} {mn:8} {ops}')

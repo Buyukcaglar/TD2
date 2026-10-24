@@ -4,6 +4,8 @@
 
 #include "dh.h"
 #include "mem.h"
+#include "amiga/paula.h"
+#include "amiga/song.h"
 #include "speaker.h"
 #include "game/game.h"
 #include "game/sim.h"
@@ -160,6 +162,80 @@ DH_EXPORT void dh_speaker_play(u16 divisor, u8 port61_bits, s16 *out, int n, int
 {
     speaker_set(&dh_spk, port61_bits);
     speaker_render(&dh_spk, divisor, out, n, amplitude);
+}
+
+/* The Amiga music and effect player (amiga/song.c), for tests/test_amiga_song.py: the same commands as
+ * the original's entry point, and every custom chip and CIA write it makes, in order. */
+#define SONG_LOG_MAX 8192
+static struct { u32 addr; u16 value; u16 size; } song_log[SONG_LOG_MAX];
+static int song_nlog;
+
+static void song_log_write(u32 addr, u16 value, int size)
+{
+    if (song_nlog < SONG_LOG_MAX) {
+        song_log[song_nlog].addr = addr;
+        song_log[song_nlog].value = value;
+        song_log[song_nlog++].size = (u16)size;
+    }
+}
+
+DH_EXPORT u8 *dh_amiga_mem(void) { return amiga_mem; }
+
+DH_EXPORT bool dh_song_load(const u8 *file, u32 len, char *err, size_t errlen)
+{
+    amiga_set_reg_hook(song_log_write);
+    song_nlog = 0;
+    return song_load(file, len, err, errlen);
+}
+
+/* cmd: the original's D0 (0..12), or 100 = SongInt, 101 = SongIntHandler with INTREQR = d1. Returns D0. */
+DH_EXPORT u32 dh_song_call(int cmd, u32 a0, u16 d1, u16 d2, u16 d3, u16 d4)
+{
+    switch (cmd) {
+    case 0: song_open(); break;
+    case 1: song_read_instruments(); break;
+    case 2: song_play(); break;
+    case 3: song_stop(); break;
+    case 5: return song_status();
+    case 6: song_fade(d1); break;
+    case 7: song_play_sfx(a0, d1, d2, d3, d4); break;
+    case 8: song_stop_sfx(d1); break;
+    case 9: return song_sfx_status(d1) ? 0xFFFF : 0;
+    case 10: song_pause(); break;
+    case 11: song_restart(); break;
+    case 12: song_adjust_sfx(d1, d2, d3); break;
+    case 100: song_tick(); break;
+    case 101: song_audio_int(d1); break;
+    default: break;
+    }
+    return 0;
+}
+
+/* Plays the loaded song through the Paula model: reset != 0 starts the title song at rate. */
+DH_EXPORT void dh_song_render(s16 *out, int n, int rate, int reset)
+{
+    if (reset) {
+        amiga_set_reg_hook(paula_write);
+        paula_set_servers(song_audio_int, song_tick);
+        paula_reset(rate);
+        song_open();
+        song_read_instruments();
+        song_play();
+    }
+    paula_render(out, n);
+}
+
+/* Copies the writes since the last call into the arrays and starts a new log. */
+DH_EXPORT int dh_song_log(u32 *addr, u16 *value, u16 *size, int max)
+{
+    int n = song_nlog < max ? song_nlog : max;
+    for (int i = 0; i < n; i++) {
+        addr[i] = song_log[i].addr;
+        value[i] = song_log[i].value;
+        size[i] = song_log[i].size;
+    }
+    song_nlog = 0;
+    return n;
 }
 
 /* 0 = ran, 1 = the port called fatal (message in dh_fatal_message), -1 = no adapter of that name. */

@@ -43,11 +43,19 @@ The catalogue files have the same records as the DOS `CARS.DAT` and `SCENES.DAT`
   - Still to map: the header words and the DOS stage fields (the ratings are there: Amiga 70, 110, 150 mph against DOS 80, 110, 150).
   - **Northern Germany's roads** are, in order: California 6, a new road, Europe 3, California 2, Master 4, Europe 5, Europe 1.
 - **Decompiling.** `tools/amiga/ghidra.ps1` lays out `duel` with `hunk.py`, imports it into Ghidra as 68000 code with A4 = `$2957e` (Lattice small data), marks a function at every `link a5`, and writes all 451 functions to `runs/amiga-ghidra/duel.c`. Global variables come out as their absolute addresses.
-- **Sound.** 
+- **Sound.**
   - Five IFF 8SVX samples: `accolade`, `test_drive_ii`, `the_duel` (speech), `starter`, `gameover`.
-  - Six raw samples with a small header: `Bump`, `crash`, `shortcrash`, `radar`, `siren`, `Squeal`.
+  - Six raw samples with a small header: `Bump`, `crash`, `shortcrash`, `radar`, `siren`, `Squeal`. The race loads them in `$1cd1a` (short crash or crash by a setting); `$1ce50` plays the siren with its pitch swept between 14,000 and 23,000.
   - Each car's `engine` and `turbo` files (Rpck-packed in some cars).
-  - `song`: player code plus data, as above.
+  - `song`: the player and its data (below).
+
+### The music and effect player (`sfx/song`)
+
+- **What it is.** Accolade's player, 3 KB of 68000 code with its symbols, and 21 KB of chip data: one song (`titlesong`, four tracks), four instruments (bass, bass drum, snare, breathy flute, each an 8SVX in the file), the period and note length tables. Its entry point takes a command in D0: 0 open, 1 read the instruments, 2 play the title song, 3 stop, 4 close, 5 status, 6 fade, 7 play an effect (an 8SVX, channel, volume, repeats, music volume while it plays), 8 stop an effect, 9 effect status, 10 pause, 11 resume, 12 change an effect's rate and volume.
+- **How it runs.** `SongInt` is a CIA-B timer A server; the song sets the timer itself (commands DD and DE, `3c00h` for the title song, about 46.6 ticks a second). Each tick reads note and command bytes per track, sets the voice, and starts notes with the period table, octave selection and vibrato or arpeggio. `SongIntHandler`, the audio interrupt, queues each sample's loop part or stops a one-shot. Effects take a channel from the music until they end.
+- **In C** (`src/amiga/song.c`, from the disassembly, routine by routine). The song file is laid out by `amiga_mem.c` at the addresses `hunk.py` uses, and the player finds its variables by the file's symbols. Custom chip and CIA writes go through a hook.
+- **Checked** (`tests/test_amiga_song.py`). The original runs under Unicorn and the C player runs from `td2diff.dll`. Both get the same timer ticks and audio interrupts, and a Paula timing model takes the interrupt times from the original's own register writes. Every custom chip and CIA write is the same, in order: 6,000 ticks of the title song (128.7 s, 1,986 notes, 1,546 interrupts), and a script with effects, rate changes, pause, resume and fade. The original has one oddity the C keeps: when it stops it clears the interrupt requests by writing to INTREQR, a read-only register, so that write does nothing.
+- **Paula** (`src/amiga/paula.c`). Four DMA channels and the timer from the same register writes, mono output with each byte held for its period, and a one-pole 4.4 kHz low-pass like the Amiga 500's fixed filter. It uses the NTSC clocks (3,579,545 Hz, CIA 715,909 Hz), because the player's effect periods are computed for NTSC. `python tools/amiga/play_song.py runs/amiga/sfx/song out.wav 130` renders the title song with it. Nobody has listened to it yet.
 
 ## 3. How the Amiga version fits the port
 
@@ -63,7 +71,7 @@ Everything is read from the user's files at run time and derived files go to the
 
 1. **Formats.** Done: load files, Rpck, ILBM, the sprite archives and sprites. Next: the race screen's palette, the raw sample header, the engine samples.
 2. **Courses.** Map `roaddata`, `slicedata` and `vectorsigns` to the DOS `.DAT` and `.SGN`, using the Master scenery's six stages against `TDS20`–`TDS25`. Then California and Europe against `CCC` and `EC_`, then Northern Germany. Match each Amiga sprite set to its DOS set.
-3. **Amiga audio.** The `song` player in C, the samples, the effect mapping, the live switch.
+3. **Amiga audio.** Done: the `song` player in C, checked against the original, and a Paula model. Next: the samples and the engine sound, the game events the backend needs (song, effects, and per tick the rpm, siren, radar beep, skid and grind that `sound_tick` already keeps), the `AudioBackend`, the live switch.
 4. **Amiga graphics.** The sprite decoder, the backend, the screens, the switch.
 5. **Data manager.** Recognise an Amiga game folder or archive (it has `duel` and `cars.dat0`) as the source of the Amiga sound, graphics and Northern Germany.
 
