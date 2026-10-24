@@ -22,6 +22,7 @@ void project_front(void);               /* 06c9:00aa */
 void draw_front(void);                  /* 06c9:00e7 */
 void snapshot_front(void);              /* 06c9:0201 */
 void stage_load(void);                  /* 06c9:1c8f */
+void stage_find_handles(void);          /* part of stage_load: the scenery, road, traffic and cop tables */
 void life_reset(void);                  /* 06c9:1e31 */
 void prepare_traffic_lists(void);       /* 06c9:1e59 */
 void mirror_load(void);                 /* 06c9:1ee2 */

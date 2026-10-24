@@ -10,6 +10,7 @@
 int  game_main(void);                   /* 0000:07b3 main */
 
 /* ---- scene_render (game/scene*.c) -------------------------------------------------------------- */
+void stage_shapes_switch(void);           /* flow_stage.c: the live graphics switch's archive half */
 s16  run_stage(void);                   /* 06c9:1b2c stage runner: returns DS:5490 sign-extended (-1 = quit) */
 
 /* ---- simulation (game/sim*.c) ------------------------------------------------------------------

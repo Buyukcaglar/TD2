@@ -26,6 +26,13 @@
 
 int game_main(void);   /* game/flow.c: port of main() at 0000:07b3 */
 
+static void app_command(HostCommand cmd)
+{
+    switch (cmd) {
+    case HOST_CMD_NEXT_GRAPHICS: gfx_request_next_backend(); break;
+    }
+}
+
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -80,6 +87,7 @@ int main(int argc, char **argv)
     }
 
     if (!host_init(dir, scale)) return 1;
+    host_set_command_handler(app_command);
     gfx_init();      /* EGA model, frame source */
     timer_init();    /* host tick handler, timer routines */
     input_init();    /* INT 9 handler, getkey code pointers */

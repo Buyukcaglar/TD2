@@ -22,6 +22,12 @@ void host_set_tick_handler(void (*handler)(void));
 void host_set_frame_source(bool (*compose)(u32 *xrgb), int w, int h);
 void host_set_title_mode(const char *mode);   /* "Test Drive II (<mode>)" */
 
+/* App commands: key combinations the app handles itself, which the game never sees. They are the same
+ * on Windows and macOS (Ctrl, not Cmd). Ctrl+Shift+G cycles the graphics mode. The handler runs inside
+ * host_pump(), at any point of the game, so it may only record a request. */
+typedef enum { HOST_CMD_NEXT_GRAPHICS } HostCommand;
+void host_set_command_handler(void (*handler)(HostCommand cmd));
+
 /* Runs due timer ticks, generates speaker audio, handles window events and presents the screen when
  * it changed. Every busy-wait loop of the original (key polls, deadlines, delays) must call this.
  * Sleeps briefly when nothing was due, so tight polling loops do not spin the CPU. */

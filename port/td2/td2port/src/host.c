@@ -40,7 +40,7 @@ static Uint64 run_limit_ns;
  * "20:Return,24.5:Down,30:Up/5" (seconds, an SDL scancode name, and optionally how many seconds to
  * hold it; 0.1 s otherwise). */
 #define KEY_SCRIPT_MAX 64
-static struct { Uint64 at_ns, hold_ns; SDL_Scancode sc; u8 state; } key_script[KEY_SCRIPT_MAX];
+static struct { Uint64 at_ns, hold_ns; SDL_Scancode sc; SDL_Keymod mod; u8 state; } key_script[KEY_SCRIPT_MAX];
 static int key_script_n;
 static void key_script_load(const char *text);
 static void key_script_run(Uint64 game_ns);
@@ -567,6 +567,24 @@ static u8 xt_scan(SDL_Scancode sc)
     }
 }
 
+static void (*command_handler)(HostCommand cmd);
+static bool swallowed[SDL_SCANCODE_COUNT];   /* app combinations whose release the game must not see */
+
+void host_set_command_handler(void (*handler)(HostCommand cmd)) { command_handler = handler; }
+
+/* The app's own key combinations (host.h). Returns true when the key belongs to the app. */
+static bool app_combination(SDL_Keycode key, SDL_Keymod mod, bool repeat)
+{
+    if (!(mod & SDL_KMOD_CTRL) || !(mod & SDL_KMOD_SHIFT) || (mod & (SDL_KMOD_ALT | SDL_KMOD_GUI))) return false;
+    HostCommand cmd;
+    switch (key) {
+    case SDLK_G: cmd = HOST_CMD_NEXT_GRAPHICS; break;
+    default: return false;
+    }
+    if (!repeat && command_handler) command_handler(cmd);
+    return true;
+}
+
 static void key_down(SDL_Keycode key, SDL_Scancode sc, SDL_Keymod mod)
 {
     u16 bios = bios_key(key, sc, mod);
@@ -593,7 +611,15 @@ static void key_script_load(const char *text)
         char *colon = SDL_strchr(item, ':'), *slash = SDL_strchr(item, '/');
         double hold = 0.1;
         if (slash) { *slash = 0; hold = SDL_atof(slash + 1); }
-        SDL_Scancode sc = colon ? SDL_GetScancodeFromName(colon + 1) : SDL_SCANCODE_UNKNOWN;
+        SDL_Keymod mod = SDL_KMOD_NONE;
+        char *name = colon ? colon + 1 : NULL;
+        for (char *plus; name && (plus = SDL_strchr(name, '+')) != NULL; name = plus + 1) {
+            *plus = 0;
+            if (SDL_strcasecmp(name, "Ctrl") == 0) mod |= SDL_KMOD_LCTRL;
+            else if (SDL_strcasecmp(name, "Shift") == 0) mod |= SDL_KMOD_LSHIFT;
+            else if (SDL_strcasecmp(name, "Alt") == 0) mod |= SDL_KMOD_LALT;
+        }
+        SDL_Scancode sc = name ? SDL_GetScancodeFromName(name) : SDL_SCANCODE_UNKNOWN;
         if (sc == SDL_SCANCODE_UNKNOWN) {
             fprintf(stderr, "TD2_KEYS: ignoring \"%s\"\n", item);
             continue;
@@ -601,6 +627,7 @@ static void key_script_load(const char *text)
         key_script[key_script_n].at_ns = (Uint64)(SDL_atof(item) * SDL_NS_PER_SECOND);
         key_script[key_script_n].hold_ns = (Uint64)(hold * SDL_NS_PER_SECOND);
         key_script[key_script_n].sc = sc;
+        key_script[key_script_n].mod = mod;
         key_script[key_script_n].state = 0;
         key_script_n++;
     }
@@ -610,8 +637,12 @@ static void key_script_run(Uint64 game_ns)
 {
     for (int i = 0; i < key_script_n; i++) {
         if (key_script[i].state == 0 && game_ns >= key_script[i].at_ns) {
-            key_down(SDL_GetKeyFromScancode(key_script[i].sc, SDL_KMOD_NONE, false), key_script[i].sc, SDL_KMOD_NONE);
-            key_script[i].state = 1;
+            SDL_Keycode key = SDL_GetKeyFromScancode(key_script[i].sc, SDL_KMOD_NONE, false);
+            if (app_combination(key, key_script[i].mod, false)) key_script[i].state = 3;   /* never released */
+            else {
+                key_down(key, key_script[i].sc, key_script[i].mod);
+                key_script[i].state = 1;
+            }
             fprintf(stderr, "TD2_KEYS: %.2f s %s\n", (double)game_ns / SDL_NS_PER_SECOND,
                     SDL_GetScancodeName(key_script[i].sc));
         } else if (key_script[i].state == 1 && game_ns >= key_script[i].at_ns + key_script[i].hold_ns) {
@@ -630,17 +661,23 @@ static void process_events(void)
             host_shutdown();
             exit(0);
         case SDL_EVENT_KEY_DOWN: {
-            /* Alt+Enter toggles fullscreen; everything else goes to the BIOS buffer, repeats included. */
+            /* Alt+Enter toggles fullscreen and the app combinations go to the app; everything else goes to
+             * the BIOS buffer, repeats included. */
             if (ev.key.key == SDLK_RETURN && (ev.key.mod & SDL_KMOD_ALT)) {
                 if (!ev.key.repeat)
                     SDL_SetWindowFullscreen(window, !(SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN));
+                break;
+            }
+            if (app_combination(ev.key.key, ev.key.mod, ev.key.repeat)) {
+                swallowed[ev.key.scancode] = true;
                 break;
             }
             key_down(ev.key.key, ev.key.scancode, ev.key.mod);
             break;
         }
         case SDL_EVENT_KEY_UP:
-            key_up(ev.key.scancode);
+            if (swallowed[ev.key.scancode]) swallowed[ev.key.scancode] = false;
+            else key_up(ev.key.scancode);
             break;
         case SDL_EVENT_GAMEPAD_ADDED:
             if (!gamepad) gamepad = SDL_OpenGamepad(ev.gdevice.which);

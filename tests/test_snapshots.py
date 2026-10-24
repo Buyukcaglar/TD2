@@ -1,4 +1,5 @@
-"""EGA, CGA and Hercules output against the committed snapshot hashes (tools/snapshots.py). Takes about a minute and a half.
+"""EGA, CGA and Hercules output against the committed snapshot hashes, and the live graphics switch's
+round trip (tools/snapshots.py). Takes about two minutes.
 
 Needs build/td2port.exe (build.ps1) and runs/game (run.ps1 once).
 """
@@ -15,14 +16,19 @@ import snapshots                                                        # noqa: 
 @unittest.skipUnless(snapshots.EXE.exists() and (snapshots.GAME / 'TD2EGA.EXE').exists(),
                      'needs build/td2port.exe and runs/game')
 class SnapshotTest(unittest.TestCase):
+    def check(self, adapter):
+        shots = snapshots.take(adapter)
+        self.assertEqual(snapshots.round_trip(shots, adapter), [])
+        self.assertEqual(snapshots.compare(shots, snapshots.read_baseline(adapter)), [])
+
     def test_ega_frames_match_the_baseline(self):
-        self.assertEqual(snapshots.compare(snapshots.take('ega'), snapshots.read_baseline('ega')), [])
+        self.check('ega')
 
     def test_cga_frames_match_the_baseline(self):
-        self.assertEqual(snapshots.compare(snapshots.take('cga'), snapshots.read_baseline('cga')), [])
+        self.check('cga')
 
     def test_hercules_frames_match_the_baseline(self):
-        self.assertEqual(snapshots.compare(snapshots.take('herc'), snapshots.read_baseline('herc')), [])
+        self.check('herc')
 
 
 if __name__ == '__main__':

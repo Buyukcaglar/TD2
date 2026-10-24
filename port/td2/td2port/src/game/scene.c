@@ -317,13 +317,7 @@ void stage_load(void)
     DSW(DS_opp_pos_lo) = 0;
     main_view_load();
     mirror_load();
-    res_find_list_opt(ds_far(DS_scenery_arc), 0x13DD, DS_scenery_handles);
-    res_find_list(ds_far(DS_road_arc), 0x171E, DS_road_handles);
-    res_find_list(ds_far(DS_scn_car1_arc), 0x135C, DS_traffic1_handles);
-    res_find_list(ds_far(DS_scn_car2_arc), 0x135C, DS_traffic2_handles);
-    res_find_list(ds_far(DS_scn_car3_arc), 0x135C, DS_traffic3_handles);
-    res_find_list(ds_far(DS_cop_arc), 0x135C, DS_cop_car_handles);
-    res_find_list(ds_far(DS_cop_arc), 0x192F, DS_cop_extra_handles);
+    stage_find_handles();
     cockpit_load();
     DSW(DS_opp_lateral) = 0xC8;
     DSW(DS_opp_speed) = 0;
@@ -398,6 +392,38 @@ void prepare_traffic_lists(void)
     }
 }
 
+void stage_find_handles(void)
+{
+    res_find_list_opt(ds_far(DS_scenery_arc), 0x13DD, DS_scenery_handles);
+    res_find_list(ds_far(DS_road_arc), 0x171E, DS_road_handles);
+    res_find_list(ds_far(DS_scn_car1_arc), 0x135C, DS_traffic1_handles);
+    res_find_list(ds_far(DS_scn_car2_arc), 0x135C, DS_traffic2_handles);
+    res_find_list(ds_far(DS_scn_car3_arc), 0x135C, DS_traffic3_handles);
+    res_find_list(ds_far(DS_cop_arc), 0x135C, DS_cop_car_handles);
+    res_find_list(ds_far(DS_cop_arc), 0x192F, DS_cop_extra_handles);
+}
+
+/* PORT: the live graphics switch during a race (docs/native-windows.md section 1), between two
+ * frames. Frees the race's buffers, has the stage's sprite archives loaded again for the new backend,
+ * then runs the graphics halves of stage_load again: the scenery colours, the buffers, the sprite
+ * tables and the cockpit. The race state is untouched, so the race goes on from the same moment. */
+static void race_switch_graphics(void)
+{
+    mirror_free();
+    main_view_free();
+    cockpit_free();
+    stage_shapes_switch();
+    scene_colours_load();
+    main_view_load();
+    mirror_load();
+    stage_find_handles();
+    cockpit_load();
+    gfx_video_hook();
+    DSB(DS_redraw_gate) = 1;
+    DSB(DS_redraw_inst) = 1;
+    DSB(DS_redraw_hud) = 1;
+}
+
 /* ------------------------------------------------------------------------------------------------ */
 /* 06c9:1b2c run_stage — §4.1 */
 s16 run_stage(void)
@@ -411,6 +437,7 @@ new_life:
     sfx_set_loop(ds_ptr(DS_stream_engine));
     do {
         host_frame_begin();                               /* PORT: emulated frame pacing */
+        if (gfx_pending_backend()) race_switch_graphics();
         snapshot_front();
         snapshot_mirror();
         project_front();

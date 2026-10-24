@@ -13,9 +13,40 @@
 #include <string.h>
 
 static const GfxBackend *be = &gfx_ega_backend;
+static const GfxBackend *pending;
+/* The load image's screen descriptor and screen row table, which the EGA backend uses as they are
+ * and the CGA backends overwrite; kept for switching back to EGA. */
+static u16 image_screen_desc[GFX_DESC_WORDS], image_screen_rows[200];
 
 const GfxBackend *gfx_backend(void) { return be; }
 void gfx_set_backend(const GfxBackend *b) { be = b; }
+
+const GfxBackend *gfx_pending_backend(void) { return pending; }
+
+void gfx_request_next_backend(void)
+{
+    const GfxBackend *from = pending ? pending : be;
+    const GfxBackend *next = from == &gfx_ega_backend ? &gfx_cga_backend
+                           : from == &gfx_cga_backend ? &gfx_herc_backend : &gfx_ega_backend;
+    pending = next == be ? NULL : next;
+}
+
+void gfx_apply_pending_backend(void)
+{
+    if (!pending) return;
+    be = pending;
+    pending = NULL;
+    for (u16 i = 0; i < GFX_DESC_WORDS; i++) {
+        CSW((u16)(GFX_SCREEN_DESC_OFF + 2 * i)) = image_screen_desc[i];
+        CSW((u16)(GFX_CUR_OFF + 2 * i)) = image_screen_desc[i];
+    }
+    for (u16 y = 0; y < 200; y++) CSW((u16)(CS_gfx_screen_rows + 2 * y)) = image_screen_rows[y];
+    DSB(DS_herc_mode) = 0;
+    be->reset();
+    be->set_mode();
+    host_set_frame_source(gfx_compose, be->frame_w, be->frame_h);
+    host_set_title_mode(be->name);
+}
 
 /* ------------------------------------------------------------------------------------------------ */
 /* Port setup / presentation                                                                        */
@@ -28,6 +59,8 @@ void gfx_init(void)
     if (CSW(GFX_SCREEN_DESC_OFF + 2) != VRAM_SEG || CSW(GFX_SCREEN_DESC_OFF + 0x0A) != CS_gfx_screen_rows
         || CSW(CS_gfx_screen_rows + 2 * 199) != 199 * 40 || CSW(CS_gfx_rowpool_top) != CS_gfx_rowpool)
         host_fatal("gfx_init: unexpected graphics state in %s", TD_EXE_NAME);
+    for (u16 i = 0; i < GFX_DESC_WORDS; i++) image_screen_desc[i] = CSW((u16)(GFX_SCREEN_DESC_OFF + 2 * i));
+    for (u16 y = 0; y < 200; y++) image_screen_rows[y] = CSW((u16)(CS_gfx_screen_rows + 2 * y));
     be->reset();
     host_set_frame_source(gfx_compose, be->frame_w, be->frame_h);
     host_set_title_mode(be->name);

@@ -28,11 +28,27 @@ A switch request (key combination or context menu) only sets a pending flag. The
 - **On every other screen** (titles, menus, car and scenery choice, difficulty, gas station, police stop, results, high scores) the archives are already released, so the screen has to draw itself again. Each screen's input wait returns a redraw signal when a switch is pending; the screen applies the switch, then draws again from its top with its current choices kept. `main_menu` already reloads and redraws on each loop, so it needs almost nothing. The other screens need a small change each; there are about fifteen.
 - **Applying the switch** calls the backend's `shutdown`, `gfx_set_backend`, then `reset` and `set_mode`, and re-points the host's frame source, which changes the window's size ratio (Hercules is 640 × 300).
 
+### Where it stands
+
+The race switch is built (step 2 below).
+
+- **The key.** `host.c` turns Ctrl+Shift+G into `HOST_CMD_NEXT_GRAPHICS` and keeps the key from the game, including its release. `main.c` passes the command to `gfx_request_next_backend`, which only records the next mode. `TD2_KEYS` scripts accept the combination as `40:Ctrl+Shift+G`.
+- **Applying it.** `gfx_apply_pending_backend` (`gfx.c`) does the work:
+  - it puts back the load image's screen descriptor and row table, which the EGA backend uses and the CGA backends overwrite;
+  - it clears the Hercules flag;
+  - it runs the new backend's `reset` and `set_mode`;
+  - it points the window at the new frame size.
+- **In the race.** `run_stage` checks for a pending switch at the top of each frame. `race_switch_graphics` (`scene.c`) frees the four race buffers. `stage_shapes_switch` (`flow_stage.c`) releases the eight sprite archives, applies the switch and loads them again. `race_switch_graphics` then reruns the scenery colours, `main_view_load`, `mirror_load`, the sprite tables (`stage_find_handles`, split out of `stage_load`) and `cockpit_load`, and sets the redraw flags. Archives released by the switch stay in the file cache, so switching back reuses them.
+- **Elsewhere.** A switch asked for on any other screen waits for the next race's first frame (step 3 below).
+
 ### How it is tested
 
-- Switching EGA → CGA → EGA during a scripted race must give the same frames afterwards as a run that never switched. The same holds for menus.
-- A switch to CGA at a given time must give the same frames, from the next screen or frame on, as a CGA run from the start. This works because EGA and CGA runs reach identical states.
-- Both become snapshot runs in `tools/snapshots.py`.
+`tools/snapshots.py` has a third run for each adapter, `switch`: the attract run with Ctrl+Shift+G at 40, 50 and 60 s, during the demo drive. That run goes round all three modes and back.
+
+- `round_trip()` checks that every frame from 62 s on equals the attract run's frame of the same number, so the switch left the race as it was. It also checks that some earlier frame differs, so a switch did happen.
+- The frames in each mode are also hashed in the baselines.
+- All three adapters pass. From EGA, the drive is shown in CGA, then Hercules, then EGA again, and the rest of the attract loop is identical.
+- Still to come with step 3: the same check on the menus, and a switch at one moment compared with a run that used the other mode from the start.
 
 ### Sound
 
@@ -100,7 +116,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 ## 5. Order of work
 
 1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. Done; the snapshots, tests and harness are unchanged.
-2. **Pending-switch mechanism and the race switch.** Includes the snapshot tests for switching and switching back.
+2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
 3. **Screen redraw on switch** for the other screens.
 4. **App UI layer on Windows.** Context menu with dark mode, the key combination, pausing, question windows. The graphics choice moves into the menu.
 5. **Game data manager.** Base-game check, catalogues built from the files found, expansion folders, first-start setup, settings file.
@@ -108,6 +124,6 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 
 ## Decisions (user, 24 October 2026)
 
-- **Key combination:** Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules). Ctrl+Shift+S will switch the sound in the Amiga phase. Ctrl+Shift+M or a right click opens the context menu. Ctrl means the Control key on macOS too, so the combination is the same on both systems.
+- **Key combination:** Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules). Ctrl+Shift+S will switch the sound in the Amiga phase; it also makes the game's Ctrl-S code (13h, sound on/off), so the app must keep it from the game, as it does with Ctrl+Shift+G (07h, unused by the game). Ctrl+Shift+M or a right click opens the context menu. Ctrl means the Control key on macOS too, so the combination is the same on both systems.
 - **Settings and profile:** next to the exe when that folder is writable, otherwise `%APPDATA%\TestDrive2`.
 - **SDL source:** downloaded; the exe links SDL3 statically (section 4).

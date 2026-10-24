@@ -16,6 +16,7 @@ void host_shutdown(void) {}
 void host_set_tick_handler(void (*handler)(void)) { (void)handler; }
 void host_set_frame_source(bool (*compose)(u32 *), int w, int h) { (void)compose; (void)w; (void)h; }
 void host_set_title_mode(const char *mode) { (void)mode; }
+void host_set_command_handler(void (*handler)(HostCommand cmd)) { (void)handler; }
 void host_pump(void) {}
 void host_set_frame_rate(int fps) { (void)fps; }
 int  host_frame_rate(void) { return 0; }

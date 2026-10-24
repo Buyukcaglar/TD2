@@ -551,6 +551,43 @@ static bool run_game_load_stage(void)
     return true;
 }
 
+/* PORT: the archive half of the live graphics switch in a race (scene.c, race_switch_graphics).
+ * Releases the stage's sprite archives, applies the pending backend, and loads the same files again
+ * with the new backend's extension, in run_game_load_stage's order. The raw files (car data, stage
+ * file, signs, font) do not depend on the graphics and stay. */
+void stage_shapes_switch(void)
+{
+    static const u16 shapes[] = {
+        DS_scenery_arc, DS_scn_car3_arc, DS_scn_car2_arc, DS_scn_car1_arc, DS_opp_road_arc, DS_dash_arc,
+        DS_cop_arc, DS_road_arc,
+    };
+    char name[26];
+
+    for (size_t i = 0; i < sizeof shapes / sizeof shapes[0]; i++) {
+        FarPtr p = ds_far(shapes[i]);
+        if (!far_is_null(p)) mem_release_cache(p);
+    }
+    gfx_apply_pending_backend();
+    ensure_disk(0x7DA1, DSS(DS_data_disk), 0);                                         /* "road" */
+    ds_far_wr(DS_road_arc, load_shapes(DS_disk_path));
+    ensure_disk(0x7DA6, DSS(DS_data_disk), 0);                                         /* "cop" */
+    ds_far_wr(DS_cop_arc, load_shapes(DS_disk_path));
+    ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x7DAA)), DSS(DS_car_disk), 0);
+    ds_far_wr(DS_dash_arc, load_shapes(DS_disk_path));                                  /* "dash" */
+    if (!far_is_null(ds_far(DS_opp_road_arc))) {
+        ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_opp_car_code), DSTR(0x7DB4)), DSS(DS_opp_disk), 0);
+        ds_far_wr(DS_opp_road_arc, load_shapes(DS_disk_path));                          /* "road" */
+    }
+    static const u16 car_names[3] = { 0x7DCB, 0x7DD0, 0x7DD5 };                        /* "car1".."car3" */
+    static const u16 car_arcs[3] = { DS_scn_car1_arc, DS_scn_car2_arc, DS_scn_car3_arc };
+    for (int i = 0; i < 3; i++) {
+        ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_scn_code), DSTR(car_names[i])), DSS(DS_scn_disk), 0);
+        ds_far_wr(car_arcs[i], load_shapes(DS_disk_path));
+    }
+    ensure_disk(DS_stage_dat, DSS(DS_scn_disk), 0);                                    /* name in the .DAT */
+    ds_far_wr(DS_scenery_arc, load_shapes(DS_disk_path));
+}
+
 /* 0267:15e4 run_game — game_flow.md §1.3, §4.11 (verified against the disassembly).
  * Returns 0 to go back to the menu, 1 when a game (or an attract-mode stage) ended. */
 s16 run_game(s16 mode)

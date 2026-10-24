@@ -72,6 +72,14 @@ extern const GfxBackend gfx_herc_backend;       /* gfx_cga.c: TD2CGA's Hercules 
 const GfxBackend *gfx_backend(void);
 void gfx_set_backend(const GfxBackend *b);
 
+/* Live switching (docs/native-windows.md section 1). A request only records the next backend
+ * (EGA -> CGA -> Hercules -> EGA, counted from a request still pending). The game applies it at a
+ * safe point, after freeing every buffer and releasing every sprite archive of the old backend:
+ * gfx_apply_pending_backend() puts the screen into the new backend's mode, cleared. */
+void gfx_request_next_backend(void);
+const GfxBackend *gfx_pending_backend(void);     /* NULL when no switch is pending */
+void gfx_apply_pending_backend(void);
+
 /* Backend internals used by their files. */
 void ega_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip);   /* gfx_ega_blit.c */
 extern const SceneRaster ega_scene_raster;                         /* gfx_ega_scene.c */
