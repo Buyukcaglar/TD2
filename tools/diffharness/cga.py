@@ -2,26 +2,31 @@
 
 The original runs in the TD2CGA image (DGROUP 251Dh, library at 06CFh) and the port in its usual
 TD2EGA one, so the two sides keep their state at different addresses: the current target's
-descriptor is at CS:913Eh in TD2CGA and CS:AF3Ah in TD2EGA, and each side's row table goes where its
-screen row table is. Each case writes the same target buffer (segment 8000h, a 16-byte header, then
-linear rows) and sprite (segment 7000h) into both memories, with the descriptor and row table in
-each side's own place, and compares the buffer and sprite bytes afterwards.
+descriptor is at CS:913Eh in TD2CGA and CS:AF3Ah in TD2EGA, and the buffer's row table goes at the
+start of each side's row-table pool (CS:93D6h and CS:B26Bh). Each case writes the same target
+buffer (segment 8000h, a 16-byte header, then linear rows) and sprite (segment 7000h) into both
+memories, with the descriptor and row table in each side's own place, and compares the buffer and
+sprite bytes afterwards. Cases that use the screen also write the same video memory at B800h and
+the interleaved screen descriptor.
 """
 from __future__ import annotations
 
 import random
 import struct
 
-from .harness import ASM_SEG, LOAD_SEG, MEM, Case, Spec, default_regs, lin
+from .harness import ASM_SEG, DGROUP, LOAD_SEG, MEM, Case, Spec, default_regs, lin
 
 CGA_CS = LOAD_SEG + 0x06CF
 CGA_DGROUP = LOAD_SEG + 0x151D
 BUF, SPR = 0x8000, 0x7000
+SCREEN = 0xB800
 STACK_SEG = 0x9000
+CGA_ENTRY_SP = 0x9E00            # inside TD2CGA's stack (its top is 160h below TD2EGA's A3CEh)
 OBSERVE = [(lin(BUF, 0), 0x10000), (lin(SPR, 0), 0x1000)]
+OBSERVE_SCREEN = OBSERVE + [(lin(SCREEN, 0), 0x4000)]
 
-# (code segment, current descriptor, screen descriptor) per side
-LAYOUT = {'port': (ASM_SEG, 0xAF3A, 0xAF54), 'orig': (CGA_CS, 0x913E, 0x9158)}
+# (code segment, current descriptor, screen descriptor, start of the row-table pool) per side
+LAYOUT = {'port': (ASM_SEG, 0xAF3A, 0xAF54, 0xB26B), 'orig': (CGA_CS, 0x913E, 0x9158, 0x93D6)}
 
 _image: list[bytes] = []
 
@@ -53,14 +58,18 @@ class Scene:
         self.w, self.h, self.clip = w, h, clip
         self.pixels = bytes(rng.randrange(256) for _ in range(w * h))
         self.sprite = b''
+        self.screen = b''
+
+    def set_screen(self, rng: random.Random):
+        """Random video memory, and the interleaved screen descriptor in both layouts."""
+        self.screen = rng.randbytes(0x4000)
 
     def set_sprite(self, rng: random.Random, sw: int, sh: int, hot: tuple[int, int], own: tuple[int, int]):
         hdr = struct.pack('<6H4x', sw, sh, hot[0] & 0xFFFF, hot[1] & 0xFFFF, own[0] & 0xFFFF, own[1] & 0xFFFF)
         self.sprite = hdr + bytes(rng.randrange(256) for _ in range(sw * sh))
 
     def write(self, mem: bytearray, side: str):
-        cs, cur, screen = LAYOUT[side]
-        rows = struct.unpack_from('<H', mem, lin(cs, screen + 0x0A))[0]
+        cs, cur, screen, rows = LAYOUT[side]
         base = lin(BUF, 0)
         mem[base:base + 0x10] = struct.pack('<2H12x', self.w, self.h)
         mem[base + 0x10:base + 0x10 + len(self.pixels)] = self.pixels
@@ -72,14 +81,26 @@ class Scene:
             put16(mem, cs, rows + 2 * y, 0x10 + y * self.w)
         s = lin(SPR, 0)
         mem[s:s + len(self.sprite)] = self.sprite
+        if self.screen:
+            v = lin(SCREEN, 0)
+            mem[v:v + 0x4000] = self.screen
+            srows = screen + 0x1A                  # the screen's row table follows its descriptor
+            for i, val in enumerate([0, SCREEN, 0, 0, 0, srows, 0, 80, 0, 200, 80, 0, 320]):
+                put16(mem, cs, screen + 2 * i, val)
+            for y in range(200):
+                put16(mem, cs, srows + 2 * y, (y & 1) * 0x2000 + (y >> 1) * 80)
 
-    def case(self, rng: random.Random, base: bytes, args: list[int], label: str) -> Case:
+    def case(self, rng: random.Random, base: bytes, args: list[int], label: str, **regs_in: int) -> Case:
         port, orig = bytearray(base), bytearray(cga_image())
         self.write(port, 'port')
         self.write(orig, 'orig')
         regs = default_regs(rng)
         regs.update(ds=CGA_DGROUP, es=CGA_DGROUP, ss=STACK_SEG, sp=0xF000)
-        return Case(port, regs, [a & 0xFFFF for a in args], label, orig_mem=orig)
+        regs.update(regs_in)
+        # The original runs with SS = DS, as in the game (the scene routines index tables with BP);
+        # the port's adapters read their arguments from a stack clear of the TD2EGA image.
+        return Case(port, regs, [a & 0xFFFF for a in args], label, orig_mem=orig,
+                    orig_regs=dict(ss=CGA_DGROUP, sp=CGA_ENTRY_SP))
 
 
 def random_clip(rng: random.Random, w: int, h: int) -> tuple[int, int, int, int]:
@@ -198,6 +219,132 @@ def line_cases(or_mode: bool):
     return cases
 
 
+def clear_screen_cases(rng: random.Random, base: bytes):
+    while True:
+        sc = Scene(rng, 4, 4, (0, 4, 0, 4))
+        sc.set_screen(rng)
+        c = colour(rng)
+        yield sc.case(rng, base, [c], f'colour {c:04X}')
+
+
+def dissolve_cases(rng: random.Random, base: bytes):
+    """A sprite revealed at its own position in one phase; rows are visited 12 apart."""
+    while True:
+        w, h = rng.randint(2, 40), rng.randint(2, 80)
+        sw, sh = rng.randint(1, w - 1), rng.randint(1, h)
+        sc = Scene(rng, w, h, (0, w, 0, h))
+        x, y = rng.randint(0, (w - sw) * 4 + 3), rng.randint(0, h - sh)
+        sc.set_sprite(rng, sw, sh, (0, 0), (x, y))
+        phase = rng.randrange(256)
+        yield sc.case(rng, base, [0, SPR, phase], f'{w}x{h} buffer, {sw}x{sh} sprite at {x},{y}, phase {phase}')
+
+
+def grab_screen_cases(rng: random.Random, base: bytes):
+    """A block of the screen (interleaved rows) copied into the buffer."""
+    while True:
+        w, h = rng.randint(2, 40), rng.randint(2, 60)
+        sc = Scene(rng, w, h, (0, w, 0, h))
+        sc.set_screen(rng)
+        n = rng.randint(1, w)
+        rows = rng.randint(1, h)
+        sx, sy = rng.randint(0, (80 - n) * 4 + 3), rng.randint(0, 200 - rows)
+        dx, dy = rng.randint(0, (w - n) * 4 + 3), rng.randint(0, h - rows)
+        yield sc.case(rng, base, [sx, sy, dx, dy, n * 4, rows],
+                      f'{n * 4}x{rows} from {sx},{sy} to {dx},{dy} of a {w}x{h} buffer')
+
+
+# The text state block (11 words: fg, bg, margin x, x, y, -, glyph height, font far pointer,
+# advance x, advance y, enabled) in each side's DGROUP; TD2CGA's sits 160h lower.
+TEXT = {'port': (DGROUP, 0x6820), 'orig': (CGA_DGROUP, 0x66C0)}
+FONT, STRING = 0xF000, 0xF800        # free DGROUP offsets in both images
+
+
+def text_cases(rng: random.Random, base: bytes):
+    """A string with glyphs, blanks and line breaks in a random font, laid out inside the buffer."""
+    while True:
+        w, h = rng.randint(4, 40), rng.randint(8, 60)
+        gh, adv_x = rng.randint(1, 8), rng.choice([4, 8, 12])
+        adv_y = gh + rng.randint(0, 2)
+        chars = [rng.choice([0x41, 0x42, 0x43, 0x20, 0x0D, 0x0A, 0x7E]) for _ in range(rng.randint(1, 12))]
+        x0, y0 = rng.randint(0, w * 4 - 8), rng.randint(0, h - gh)
+        margin = rng.randint(0, w * 4 - 8)
+        glyphs = {c: rng.random() < 0.8 for c in set(chars) if c not in (0x0D, 0x0A)}
+        x, y, fits = x0, y0, True
+        for c in chars:
+            if glyphs.get(c):
+                fits &= (x >> 2) + 2 <= w and y + gh <= h
+                x += adv_x
+            elif c in (0x0D, 0x0A):
+                x, y = margin, y + adv_y
+        if not fits:
+            continue
+        sc = Scene(rng, w, h, (0, w, 0, h))
+        fg, bg = rng.randrange(4), rng.randrange(4)
+        font = bytearray(512)
+        bitmaps = bytearray()
+        for c, has in glyphs.items():
+            if has:
+                struct.pack_into('<H', font, 2 * c, FONT + 512 + len(bitmaps))
+                bitmaps += rng.randbytes(gh)
+        text = bytes(chars) + b'\0'
+        case = sc.case(rng, base, [STRING, x0, y0], f'{w}x{h} buffer, {bytes(chars)!r} at {x0},{y0}, '
+                                                    f'glyphs {gh} high, colours {fg}/{bg}')
+        for mem, side in ((case.mem, 'port'), (case.orig_mem, 'orig')):
+            ds, block = TEXT[side]
+            for i, v in enumerate([fg, bg, margin, 0, 0, 0, gh, FONT, ds, adv_x, adv_y, 1]):
+                put16(mem, ds, block + 2 * i, v)
+            a = lin(ds, FONT)
+            mem[a:a + 512 + len(bitmaps)] = bytes(font) + bytes(bitmaps)
+            a = lin(ds, STRING)
+            mem[a:a + len(text)] = text
+        yield case
+
+
+# Ground span state: (TD2CGA offset, port offset) of the pixel-in-byte and span x words, and the
+# view width and row-done jump target the span fill reads.
+SPAN_STATE = (0x09BA, 0x09BE)
+VIEW_WIDTH = {'port': 0x5348, 'orig': 0x5244}
+ROW_DONE = 0x0702
+
+
+def span_cases(rng: random.Random, base: bytes):
+    """One ground span from the current x to a random end, on a random row; ends at the view width
+    take the row-done exit (jmp [0702h], pointed back at the call's return)."""
+    while True:
+        w, h = rng.randint(2, 80), rng.randint(1, 8)
+        sc = Scene(rng, w, h, (0, w, 0, h))
+        y = rng.randrange(h)
+        x = rng.randint(0, w * 4 - 1)
+        bit = x & 3 if rng.random() < 0.8 else rng.randrange(4)
+        end = rng.choice([x, w * 4, rng.randint(x, w * 4)])
+        view = w * 4 if rng.random() < 0.7 else rng.randint(1, w * 4)
+        pat, si = rng.randrange(0x10000), rng.randrange(0x10000)
+        di = 0x10 + y * w + (x >> 2)
+        case = sc.case(rng, base, [], f'{w}-byte row {y}, span {x}..{end} (pixel {bit}), view {view}, '
+                                      f'pattern {pat:04X}', ax=end, bx=pat, si=si, di=di, es=BUF)
+        for mem, side in ((case.mem, 'port'), (case.orig_mem, 'orig')):
+            ds = DGROUP if side == 'port' else CGA_DGROUP
+            span = SPAN_STATE[side == 'port']
+            put16(mem, ds, span, bit)
+            put16(mem, ds, span + 2, x)
+            put16(mem, ds, VIEW_WIDTH[side], view)
+        put16(case.orig_mem, CGA_DGROUP, ROW_DONE, 0xFFFE)
+        yield case
+
+
+def hline_cases(rng: random.Random, base: bytes):
+    """The scene's unclipped hline on a random row, including empty and single-byte spans."""
+    while True:
+        w, h = rng.randint(2, 80), rng.randint(1, 8)
+        sc = Scene(rng, w, h, (0, w, 0, h))
+        y = rng.randrange(h)
+        x0 = rng.randint(0, w * 4 - 1)
+        x1 = rng.choice([x0, x0 + 1, rng.randint(x0, min(w * 4, (x0 | 3) + 1)), rng.randint(0, w * 4)])
+        pat = rng.randrange(0x10000)
+        yield sc.case(rng, base, [], f'{w}-byte row {y}, {x0}..{x1}, pattern {pat:04X}',
+                      ax=x1, dx=x0, bx=pat, si=2 * y, di=0x10 + y * w, es=BUF)
+
+
 def _blit_specs():
     specs = []
     entries = {  # name: (hot, raw, own) TD2CGA addresses
@@ -228,4 +375,19 @@ CGA_SPECS = _blit_specs() + [
          observe=OBSERVE),
     Spec('cga_draw_line_or', '06cf:a326', True, [], line_cases(True),
          'TD2CGA: OR lines inside the buffer, except steep ones drawn upwards', observe=OBSERVE),
+    Spec('cga_clear_screen', '06cf:8032', True, [], clear_screen_cases, 'TD2CGA: video memory, pattern words',
+         observe=OBSERVE_SCREEN),
+    Spec('cga_dissolve4', '06cf:86d4', True, [], dissolve_cases, 'TD2CGA: one phase of the 4-step reveal',
+         observe=OBSERVE),
+    Spec('cga_dissolve8', '06cf:879e', True, [], dissolve_cases, 'TD2CGA: one phase of the 8-step reveal',
+         observe=OBSERVE),
+    Spec('cga_grab_screen', '06cf:a208', True, [], grab_screen_cases,
+         'TD2CGA: interleaved screen rows into the buffer', observe=OBSERVE_SCREEN),
+    Spec('cga_draw_text', '06cf:8c2e', True, [], text_cases,
+         'TD2CGA: random font, glyphs, blanks and line breaks, colours 0..3', observe=OBSERVE),
+    Spec('cga_span_to', '06cf:0c1c', False, ['di'], span_cases,
+         'TD2CGA scene: one ground span, odd and even rows, row-done exit; span state compared',
+         observe=OBSERVE + [(lin(CGA_DGROUP, SPAN_STATE[0]), lin(DGROUP, SPAN_STATE[1]), 4)]),
+    Spec('cga_scene_hline', '06cf:0c8e', False, [], hline_cases,
+         'TD2CGA scene: unclipped hline, empty and single-byte spans', observe=OBSERVE),
 ]

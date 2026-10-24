@@ -22,9 +22,9 @@ The backend is built as designed and plays: `.\run.ps1 --cga`.
   - `res_fix_pcs_archive` in `res.c`: the PCS fix-up.
   - `car_slide_cga` in `game/flow_screens.c`.
   - `COL(ega, cga)` and `XBYTES(n)` at the game code's constants.
-- **Checked against TD2CGA's own code** (`tools/diffharness/cga.py`, 200 cases each): the 24 blitters, the three grabs into sprites, `fill_rect`, `fill_rect_clip`, `clear_clip`, `plot`, `draw_line` and `draw_line_or`.
+- **Checked against TD2CGA's own code** (`tools/diffharness/cga.py`, 200 cases each): the 24 blitters, the three grabs into sprites, `grab_screen`, `fill_rect`, `fill_rect_clip`, `clear_clip`, `clear_screen`, `plot`, `draw_line`, `draw_line_or`, `draw_text`, both dissolves, and the scene's span fill and `hline`.
 - **Checked by snapshots and by eye.** `tests/cga_snapshots.txt` holds the attract loop and a scripted menu run. Scripted runs also reached the scenery screens, the exit prompt and player races with crashes.
-- **Still to check against TD2CGA.** `draw_text`, both dissolves, `grab_screen`, `clear_screen` and the four scene hooks. Stage results, high-score entry and the police ending have not been reached in CGA.
+- **Covered only by snapshots.** The road marking pixels and the crash flash. Stage results, high-score entry and the police ending have not been reached in CGA.
 - **Deliberate differences.**
   - For a steep line drawn upwards, TD2CGA's OR line takes its start x from a stale stack word. The port uses x1; the game only draws straight OR lines.
   - A ground span ending before the current x would make TD2CGA's `rep stosb` run through 64K. The port writes nothing; the shipped spans are always ordered.
@@ -97,7 +97,7 @@ Every difference in them was a moved variable, table, jump table or function, or
 - **`gfx_video_hook`.** Empty in EGA. CGA writes the mode-control register (3D8h ← 0Eh) and the colour-select register (3D9h ← 30h).
 - **`gfx_set_mode`.** CGA sets BIOS mode 4 with palette 1 and a black background. The hook's 0Eh then sets the black-and-white bit, which on an RGB monitor gives the third CGA palette: cyan, red and white. Bit 4 of 30h selects the bright versions, so the crash flash is a dim/bright flicker.
 - **Menus and game flow.** Same code with CGA colours (0Fh → 3, 6 → 2, 4 → AAAAh, 0Ah → 5555h) and pixel/byte shifts of 2 instead of 3. `car_slide`, the car-selection slide, builds the picture in an extra 320×176 buffer, where EGA scrolls the screen with write-mode-1 copies, which CGA hardware does not have. `load_shapes` looks for `.PCS`/`.CSH` files and gives the sprite fix-up 3EAh paragraphs of scratch (16,032 bytes) instead of 1F6h (8,032). `car_select` passes `car_slide` its start and end rows the other way round. The prompts (`exit_prompt`, `status_strip`, `pause_prompt`, `joy_calibrate_screen`) use text colour 1 and outline AAAAh for EGA's 15 and 4.
-- **Graphics library.** All of it differs. The pairing there is weaker, because CGA's library has different routines in a different order. Pairs that the scene code calls are reliable, since they come from call-site votes. The harness has since confirmed the pairs of the 33 routines it tests; others may still be wrong.
+- **Graphics library.** All of it differs. The pairing there is weaker, because CGA's library has different routines in a different order. Pairs that the scene code calls are reliable, since they come from call-site votes. The harness has since confirmed the pairs of the 38 library routines it tests; others may still be wrong.
 
 ## Colours
 

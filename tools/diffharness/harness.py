@@ -110,13 +110,15 @@ class Case:
     between: Callable[[int, bytearray, bytearray], None] | None = None
     entry: Callable[[int], dict[str, int]] | None = None
     orig_mem: bytearray | None = None
+    orig_regs: dict[str, int] = field(default_factory=dict)   # with orig_mem: the original's own SS, SP, DS...
 
 
 @dataclass
 class Spec:
     """An original function and how to test it. cases(rng, base) yields Case objects; outputs names
     the registers the function returns in ('al' means the low byte of AX only). observe, when set,
-    lists the linear (start, length) ranges compared instead of every changed byte; cases with
+    lists the linear (start, length) ranges compared instead of every changed byte, or (original
+    start, port start, length) for data the two sides keep at different addresses; cases with
     orig_mem need it, since the rest of their memory differs between the two sides."""
     name: str
     addr: str
@@ -348,9 +350,9 @@ class Harness:
         """One call with separate memories for the original and the port; only spec.observe is compared."""
         seg, off = parse_addr(spec.addr)
         regs = push_call(case, spec.far, seg)
-        push_call(Case(case.orig_mem, case.regs, case.args), spec.far, seg)
+        orig_regs = push_call(Case(case.orig_mem, dict(case.regs, **case.orig_regs), case.args), spec.far, seg)
         before = bytes(case.orig_mem)
-        orig = self.original.run(seg, off, spec.far, regs, case.orig_mem)
+        orig = self.original.run(seg, off, spec.far, orig_regs, case.orig_mem)
         port = self.port.run(spec.name, regs, case.mem)
         if orig.error or port.error:
             return Result(case.label, False, [], 0, orig.error and f'original: {orig.error}' or port.error)
@@ -360,13 +362,14 @@ class Harness:
             if orig.regs[reg] & mask != port.regs[reg] & mask:
                 problems.append(f'{r.upper()}: original {orig.regs[reg] & mask:04X}, port {port.regs[reg] & mask:04X}')
         changed, diffs = 0, []
-        for start, n in spec.observe or []:
-            changed += sum(orig.mem[a] != before[a] for a in range(start, start + n))
-            diffs += [a for a in range(start, start + n) if orig.mem[a] != port.mem[a]]
+        for item in spec.observe or []:
+            o_start, p_start, n = item if len(item) == 3 else (item[0], item[0], item[1])
+            changed += sum(orig.mem[o_start + i] != before[o_start + i] for i in range(n))
+            diffs += [(o_start + i, p_start + i) for i in range(n) if orig.mem[o_start + i] != port.mem[p_start + i]]
         if diffs:
-            first = diffs[0]
-            problems.append(f'{len(diffs)} memory bytes differ, first {self.where(first)}: original '
-                            f'{orig.mem[first]:02X}, port {port.mem[first]:02X} (was {before[first]:02X})')
+            o, p = diffs[0]
+            problems.append(f'{len(diffs)} memory bytes differ, first {self.where(p)}: original '
+                            f'{orig.mem[o]:02X}, port {port.mem[p]:02X} (was {before[o]:02X})')
         return Result(case.label, not problems, problems, changed)
 
     def _diff(self, spec: Spec, label: str, before: bytes, orig: Outcome, port: Outcome, frame_hi: int) -> Result:

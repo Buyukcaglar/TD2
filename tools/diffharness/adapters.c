@@ -85,6 +85,33 @@ static void a_cga_draw_line_or(DhRegs *r)
 {
     ON_CGA(gfx_draw_line_or(sarg(r, 0), sarg(r, 1), sarg(r, 2), sarg(r, 3), arg(r, true, 4)));
 }
+static void a_cga_clear_screen(DhRegs *r) { ON_CGA(gfx_clear_screen(arg(r, true, 0))); }
+static void a_cga_dissolve4(DhRegs *r) { ON_CGA(gfx_dissolve4(arg_far(r, 0), (u8)arg(r, true, 2))); }
+static void a_cga_dissolve8(DhRegs *r) { ON_CGA(gfx_dissolve8(arg_far(r, 0), (u8)arg(r, true, 2))); }
+static void a_cga_grab_screen(DhRegs *r)
+{
+    ON_CGA(gfx_grab_screen(sarg(r, 0), sarg(r, 1), sarg(r, 2), sarg(r, 3), sarg(r, 4), sarg(r, 5)));
+}
+static void a_cga_draw_text(DhRegs *r) { ON_CGA(gfx_draw_text(arg(r, true, 0), arg(r, true, 1), arg(r, true, 2))); }
+/* The scene renderer's own pixel writers (gfx_cga_scene.c) with TD2CGA's register interface: span
+ * fill 06cf:0c1c (AX = end, BX = pattern, DI = byte, SI bit 1 = odd row) and hline 06cf:0c8e
+ * (DX = x0, AX = x1, BH = pattern, SI = 2 * y). Both draw into the current target. */
+static void a_cga_span_to(DhRegs *r)
+{
+    gfx_set_backend(&gfx_cga_backend);
+    gfx_backend()->scene->view_begin();
+    u16 di = r->di;
+    gfx_backend()->scene->span_to(&di, (s16)r->ax, r->bx, (r->si & 2) != 0);
+    r->di = di;
+    gfx_set_backend(&gfx_ega_backend);
+}
+static void a_cga_scene_hline(DhRegs *r)
+{
+    gfx_set_backend(&gfx_cga_backend);
+    gfx_backend()->scene->view_begin();
+    gfx_backend()->scene->hline((s16)r->dx, (s16)r->ax, (s16)(r->si >> 1), r->bx);
+    gfx_set_backend(&gfx_ega_backend);
+}
 #define CGA_ADAPTER(fn) { "cga_" #fn, a_cga_##fn }
 #define CGA_BLIT_ADAPTERS(fn) CGA_ADAPTER(fn##_hot), CGA_ADAPTER(fn##_raw), CGA_ADAPTER(fn##_own)
 
@@ -112,7 +139,9 @@ static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     CGA_BLIT_ADAPTERS(blit_xor_clip), CGA_BLIT_ADAPTERS(blit_copy), CGA_BLIT_ADAPTERS(blit_or),
     CGA_BLIT_ADAPTERS(blit_and), CGA_BLIT_ADAPTERS(blit_xor), CGA_BLIT_ADAPTERS(grab_into_sprite),
     CGA_ADAPTER(fill_rect), CGA_ADAPTER(fill_rect_clip), CGA_ADAPTER(clear_clip), CGA_ADAPTER(plot),
-    CGA_ADAPTER(draw_line), CGA_ADAPTER(draw_line_or),
+    CGA_ADAPTER(draw_line), CGA_ADAPTER(draw_line_or), CGA_ADAPTER(clear_screen), CGA_ADAPTER(dissolve4),
+    CGA_ADAPTER(dissolve8), CGA_ADAPTER(grab_screen), CGA_ADAPTER(draw_text), CGA_ADAPTER(span_to),
+    CGA_ADAPTER(scene_hline),
 };
 
 DH_EXPORT u8 *dh_mem(void) { return mem; }
