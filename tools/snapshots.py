@@ -58,6 +58,8 @@ SWITCH_RUNS = {'switch': ('attract', 62.0, False), 'menuswitch': ('menus', 64.0,
 RUNS = [('attract', SECONDS, None, 2000), ('menus', 72, MENU_KEYS, 500), ('switch', SECONDS, SWITCH_KEYS, 2000),
         ('menuswitch', 72, MENU_SWITCH_KEYS, 500)]
 
+SELECT = '0 0 0 F40 P959 TDS2'        # select.dat: the cars and the scenery the runs start with
+
 # Game time of each frame, from the port's log: {(adapter, run): {file name: seconds}}.
 TIMES: dict[tuple[str, str], dict[str, float]] = {}
 
@@ -83,10 +85,13 @@ def take(adapter: str = 'ega') -> dict[str, str]:
         env.pop('TD2_KEYS', None)
         if keys:
             env['TD2_KEYS'] = keys
-        profile = ROOT / f'runs/snapshot-profile/{adapter}-{name}'   # empty: default scores and selections
+        profile = ROOT / f'runs/snapshot-profile/{adapter}-{name}'   # default scores, cars 0 and 1
         profile.mkdir(parents=True, exist_ok=True)
         for f in profile.iterdir():
             f.unlink()
+        # the intro shows the chosen cars; the game's own select.dat picks the RUF, which the base game
+        # does not have
+        (profile / 'select.dat').write_text(SELECT + chr(10))
         args = [str(EXE), '--game-dir', str(GAME), '--user-dir', str(profile)]
         if adapter in FLAGS:
             args.append(FLAGS[adapter])

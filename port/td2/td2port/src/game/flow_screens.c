@@ -275,13 +275,16 @@ s16 showroom_intro(s16 unused)                      /* PORT: the intro's showroo
 static s16 showroom_intro_dos(s16 unused)
 {
     char name[20];
-    s16 first = 0, second = 1;
+    /* PORT: the player's car, then the computer's, as duel's intro shows them ($2b776 reads the cars the
+     * car choice keeps at $251b0). The original always takes cars 0 and 1, the cars the choice starts
+     * with, and checks their disks; the port has no disk swaps. */
+    s16 first = DSS(DS_car_idx), second = DSS(DS_opp_idx);
     s16 r;
     (void)unused;
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
-    if (car_disk(1) != DSS(DS_data_disk)) first = 0;
-    if (car_disk(second) != DSS(DS_data_disk)) second = (DSS(DS_ncars_main) > 1) ? 1 : 0;
+    if (first < 0 || first >= DSS(DS_ncars)) first = 0;
+    if (second < 0 || second >= DSS(DS_ncars)) second = (DSS(DS_ncars) > 1) ? 1 : 0;
     /* preload the second car so no disk swap happens during the animation */
     ensure_disk_c(flow_concat(name, sizeof name, DSTR(car_rec(second)), DSTR(0x735A)), car_disk(second), 0);  /* "st" */
     mem_release_cache(load_shapes(DS_disk_path));

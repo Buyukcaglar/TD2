@@ -38,6 +38,7 @@ def last_frames(keys, seconds, windows):
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         (tmp / 'settings.ini').write_text(f'amiga={AMIGA.as_posix()}' + chr(10))
+        (tmp / 'select.dat').write_text('0 0 0 F40 P959 TDS2' + chr(10))   # the intro's cars set its length
         shots = tmp / 'shots'
         shots.mkdir()
         env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
