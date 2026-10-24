@@ -183,6 +183,21 @@ class HarnessTest(unittest.TestCase):
                 self.assertTrue(r.ok, r)
                 self.assertGreater(r.changed, 100, r)
 
+    @unittest.skipUnless((ROOT / 'runs/game/TD2CGA.EXE').exists(), 'needs runs/game')
+    def test_cga_cases_draw_and_match(self):
+        """TD2CGA's copy blit and the port's CGA backend agree, and the cases really draw."""
+        results = self.h.run(self.spec('cga_blit_copy_clip_raw'), 20, 5)
+        self.assertTrue(all(r.ok for r in results), [r for r in results if not r.ok][:1])
+        self.assertGreater(sum(r.changed for r in results), 200)
+
+    @unittest.skipUnless((ROOT / 'runs/game/TD2CGA.EXE').exists(), 'needs runs/game')
+    def test_cga_cases_detect_a_different_routine(self):
+        """TD2CGA's copy blit against the port's XOR blit must differ in the buffer."""
+        orig = self.spec('cga_blit_copy_raw')
+        wrong = Spec('cga_blit_xor_raw', orig.addr, orig.far, [], orig.cases, observe=orig.observe)
+        results = self.h.run(wrong, 10, 3)
+        self.assertTrue(any(not r.ok and not r.error and 'memory bytes differ' in r.problems[-1] for r in results))
+
 
 if __name__ == '__main__':
     unittest.main()

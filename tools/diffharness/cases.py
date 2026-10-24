@@ -529,6 +529,10 @@ SPECS = [
     HUFF,
 ]
 
+from .cga import CGA_SPECS                                              # noqa: E402
+
+SPECS += CGA_SPECS
+
 
 def bind(harness: Harness):
     HARNESS[0] = harness

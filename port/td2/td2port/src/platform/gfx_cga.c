@@ -461,8 +461,9 @@ static void cga_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_
         u32 step;
         if (xneg) { step = (u32)(0xFFFF0000u | (u16)-q); xf = 0xFFFF; }
         else step = q;
-        /* PORT: TD2CGA's gfx_draw_line_or stores the start x of a right-to-left x-major line in the
-         * wrong word (bp-04 instead of bp-02); its only caller draws straight lines. */
+        /* PORT: for a y-major line drawn upwards, TD2CGA's gfx_draw_line_or (06cf:a4f8) stores the
+         * start x in the fraction word (bp-04) instead of the integer (bp-02), so the line starts at
+         * whatever x the stack held. Its only caller draws straight lines; the port uses x1. */
         u16 cnt = dyn;
         bool drawing = false;
         do {

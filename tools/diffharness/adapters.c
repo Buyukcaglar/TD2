@@ -7,6 +7,8 @@
 #include "speaker.h"
 #include "game/game.h"
 #include "game/sim.h"
+#include "platform/gfx.h"
+#include "platform/gfx_backend.h"
 #include "platform/res.h"
 
 /* i-th word argument of a cdecl call (far: 4-byte return address, near: 2-byte). */
@@ -59,6 +61,33 @@ static void a_huff_decode(DhRegs *r)
     r->ax = (u16)n;
 }
 
+/* CGA graphics library (tools/diffharness/cga.py): the front routines of gfx.c on the CGA backend,
+ * with far cdecl arguments as TD2CGA's entry points take them. */
+static FarPtr arg_far(const DhRegs *r, int i) { return far_make(arg(r, true, i + 1), arg(r, true, i)); }
+static s16 sarg(const DhRegs *r, int i) { return (s16)arg(r, true, i); }
+#define ON_CGA(call) do { gfx_set_backend(&gfx_cga_backend); call; gfx_set_backend(&gfx_ega_backend); } while (0)
+#define CGA_BLIT(fn)                                                                                     \
+    static void a_cga_##fn##_hot(DhRegs *r) { ON_CGA(fn##_hot(arg_far(r, 0), sarg(r, 2), sarg(r, 3))); } \
+    static void a_cga_##fn##_raw(DhRegs *r) { ON_CGA(fn##_raw(arg_far(r, 0), sarg(r, 2), sarg(r, 3))); } \
+    static void a_cga_##fn##_own(DhRegs *r) { ON_CGA(fn##_own(arg_far(r, 0))); }
+CGA_BLIT(blit_copy_clip) CGA_BLIT(blit_or_clip) CGA_BLIT(blit_and_clip) CGA_BLIT(blit_xor_clip)
+CGA_BLIT(blit_copy) CGA_BLIT(blit_or) CGA_BLIT(blit_and) CGA_BLIT(blit_xor)
+CGA_BLIT(grab_into_sprite)
+static void a_cga_fill_rect(DhRegs *r) { ON_CGA(gfx_fill_rect(sarg(r, 0), sarg(r, 1), sarg(r, 2), sarg(r, 3), arg(r, true, 4))); }
+static void a_cga_fill_rect_clip(DhRegs *r)
+{
+    ON_CGA(gfx_fill_rect_clip(sarg(r, 0), sarg(r, 1), sarg(r, 2), sarg(r, 3), arg(r, true, 4)));
+}
+static void a_cga_clear_clip(DhRegs *r) { ON_CGA(gfx_clear_clip(arg(r, true, 0))); }
+static void a_cga_plot(DhRegs *r) { ON_CGA(gfx_plot(sarg(r, 0), sarg(r, 1), arg(r, true, 2))); }
+static void a_cga_draw_line(DhRegs *r) { ON_CGA(gfx_draw_line(sarg(r, 0), sarg(r, 1), sarg(r, 2), sarg(r, 3), arg(r, true, 4))); }
+static void a_cga_draw_line_or(DhRegs *r)
+{
+    ON_CGA(gfx_draw_line_or(sarg(r, 0), sarg(r, 1), sarg(r, 2), sarg(r, 3), arg(r, true, 4)));
+}
+#define CGA_ADAPTER(fn) { "cga_" #fn, a_cga_##fn }
+#define CGA_BLIT_ADAPTERS(fn) CGA_ADAPTER(fn##_hot), CGA_ADAPTER(fn##_raw), CGA_ADAPTER(fn##_own)
+
 static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     { "rand8", a_rand8 },
     { "curve_sum", a_curve_sum },
@@ -79,6 +108,11 @@ static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     { "sim_tick", a_sim_tick },
     { "rle_decode", a_rle_decode },
     { "huff_decode", a_huff_decode },
+    CGA_BLIT_ADAPTERS(blit_copy_clip), CGA_BLIT_ADAPTERS(blit_or_clip), CGA_BLIT_ADAPTERS(blit_and_clip),
+    CGA_BLIT_ADAPTERS(blit_xor_clip), CGA_BLIT_ADAPTERS(blit_copy), CGA_BLIT_ADAPTERS(blit_or),
+    CGA_BLIT_ADAPTERS(blit_and), CGA_BLIT_ADAPTERS(blit_xor), CGA_BLIT_ADAPTERS(grab_into_sprite),
+    CGA_ADAPTER(fill_rect), CGA_ADAPTER(fill_rect_clip), CGA_ADAPTER(clear_clip), CGA_ADAPTER(plot),
+    CGA_ADAPTER(draw_line), CGA_ADAPTER(draw_line_or),
 };
 
 DH_EXPORT u8 *dh_mem(void) { return mem; }

@@ -98,7 +98,10 @@ class Case:
     carry on from their own memory and registers, and they are compared after every call; the first
     call that differs ends the case. Before each call, between(step, orig_mem, port_mem) can change
     both memories the same way (key presses, say), and entry(step) gives register values that
-    replace the original's leftover ones (what interrupted code would leave)."""
+    replace the original's leftover ones (what interrupted code would leave).
+
+    orig_mem, when set, is the original's own memory: TD2CGA cases run the original in the TD2CGA
+    image and the port in its usual one (cga.py), each with the same buffers and arguments."""
     mem: bytearray
     regs: dict[str, int] = field(default_factory=dict)
     args: list[int] = field(default_factory=list)
@@ -106,12 +109,15 @@ class Case:
     steps: int = 1
     between: Callable[[int, bytearray, bytearray], None] | None = None
     entry: Callable[[int], dict[str, int]] | None = None
+    orig_mem: bytearray | None = None
 
 
 @dataclass
 class Spec:
     """An original function and how to test it. cases(rng, base) yields Case objects; outputs names
-    the registers the function returns in ('al' means the low byte of AX only)."""
+    the registers the function returns in ('al' means the low byte of AX only). observe, when set,
+    lists the linear (start, length) ranges compared instead of every changed byte; cases with
+    orig_mem need it, since the rest of their memory differs between the two sides."""
     name: str
     addr: str
     far: bool
@@ -119,6 +125,7 @@ class Spec:
     cases: Callable[[random.Random, bytes], Iterable[Case]]
     note: str = ''
     max_cases: int = 0           # caps the run's case count for slow specs (0 = no cap)
+    observe: list[tuple[int, int]] | None = None
 
 
 @dataclass
@@ -304,6 +311,8 @@ class Harness:
                 self.port.run(spec.name, regs, case.mem), regs)
 
     def compare(self, spec: Spec, case: Case) -> Result:
+        if case.orig_mem is not None:
+            return self.split(spec, case)
         if case.steps > 1:
             return self.sequence(spec, case)
         orig, port, regs = self.call(spec, case)
@@ -334,6 +343,31 @@ class Harness:
             mems = [bytearray(orig.mem), bytearray(port.mem)]
             regs = [orig.regs, port.regs]
         return Result(case.label, True, [], changed)
+
+    def split(self, spec: Spec, case: Case) -> Result:
+        """One call with separate memories for the original and the port; only spec.observe is compared."""
+        seg, off = parse_addr(spec.addr)
+        regs = push_call(case, spec.far, seg)
+        push_call(Case(case.orig_mem, case.regs, case.args), spec.far, seg)
+        before = bytes(case.orig_mem)
+        orig = self.original.run(seg, off, spec.far, regs, case.orig_mem)
+        port = self.port.run(spec.name, regs, case.mem)
+        if orig.error or port.error:
+            return Result(case.label, False, [], 0, orig.error and f'original: {orig.error}' or port.error)
+        problems = []
+        for r in spec.outputs:
+            mask, reg = (0xFF, 'ax') if r == 'al' else (0xFFFF, r)
+            if orig.regs[reg] & mask != port.regs[reg] & mask:
+                problems.append(f'{r.upper()}: original {orig.regs[reg] & mask:04X}, port {port.regs[reg] & mask:04X}')
+        changed, diffs = 0, []
+        for start, n in spec.observe or []:
+            changed += sum(orig.mem[a] != before[a] for a in range(start, start + n))
+            diffs += [a for a in range(start, start + n) if orig.mem[a] != port.mem[a]]
+        if diffs:
+            first = diffs[0]
+            problems.append(f'{len(diffs)} memory bytes differ, first {self.where(first)}: original '
+                            f'{orig.mem[first]:02X}, port {port.mem[first]:02X} (was {before[first]:02X})')
+        return Result(case.label, not problems, problems, changed)
 
     def _diff(self, spec: Spec, label: str, before: bytes, orig: Outcome, port: Outcome, frame_hi: int) -> Result:
         """before is the snapshot with the pushed arguments and return address."""
