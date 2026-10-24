@@ -65,6 +65,10 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons);
 /* ---- PC speaker: PIT channel 2 divisor and port 61h bits 0 (PIT gate) and 1 (speaker data); it
  * sounds while both are set. divisor 0 means 65536. Changes take effect from the current tick onward. */
 void host_speaker(u16 divisor, u8 port61_bits);
+/* The audio backend the speaker writes go to (audio_backend.h); call before host_init. Default: the
+ * PC speaker. */
+struct AudioBackend;
+void host_set_audio_backend(const struct AudioBackend *b);
 
 /* ---- Developer aid: with TD2_STATE_DIR set, the sim timer routine's entry state (the 1 MiB of memory,
  * then the leftover BP and CX as little-endian words) is saved as stateNNN.bin every TD2_STATE_EVERY

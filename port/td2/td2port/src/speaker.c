@@ -1,4 +1,5 @@
 #include "speaker.h"
+#include "audio_backend.h"
 #include "host.h"
 
 #include <math.h>
@@ -55,3 +56,26 @@ void speaker_render(Speaker *s, u16 divisor, s16 *out, int n, int amplitude)
         out[i] = (s16)(v > 32767.0 ? 32767 : v < -32768.0 ? -32768 : lrint(v));
     }
 }
+
+/* ---- the PC speaker audio backend */
+
+#define SPK_AMPLITUDE 5000
+
+static Speaker pcs;
+static u16 pcs_divisor;
+
+static void pcs_reset(int rate)
+{
+    speaker_init(&pcs, rate);
+    pcs_divisor = 0;
+}
+
+static void pcs_speaker(u16 divisor, u8 port61_bits)
+{
+    pcs_divisor = divisor;
+    speaker_set(&pcs, port61_bits);
+}
+
+static void pcs_render(s16 *out, int n) { speaker_render(&pcs, pcs_divisor, out, n, SPK_AMPLITUDE); }
+
+const AudioBackend audio_pc_speaker = { "PC speaker", pcs_reset, pcs_speaker, pcs_render };

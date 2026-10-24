@@ -1,5 +1,5 @@
 #include "host.h"
-#include "speaker.h"
+#include "audio_backend.h"
 
 #include <SDL3/SDL.h>
 #include <stdarg.h>
@@ -8,7 +8,6 @@
 #include <string.h>
 
 #define AUDIO_RATE 44100
-#define AUDIO_AMPLITUDE 5000
 
 static SDL_Window *window;
 static SDL_Renderer *renderer;
@@ -49,9 +48,8 @@ static void wait_ns(Uint64 ns)
 static u16 kbd_buf[KBD_SIZE];
 static int kbd_head, kbd_tail;
 
-/* Speaker state and synthesis (speaker.c). */
-static Speaker spk;
-static u16 spk_div;
+/* What the player hears (audio_backend.h). */
+static const AudioBackend *audio_be = &audio_pc_speaker;
 static double samples_per_tick_frac;
 static SDL_IOStream *audio_dump;          /* TD2_AUDIO_DUMP: copy of the output as a WAV file */
 static Uint32 audio_dump_bytes;
@@ -141,7 +139,7 @@ bool host_init(const char *dir, int window_scale)
     }
     SDL_SetRenderVSync(renderer, 1);
 
-    speaker_init(&spk, AUDIO_RATE);
+    audio_be->reset(AUDIO_RATE);
     audio_dump_open();
     SDL_AudioSpec spec = { SDL_AUDIO_S16, 1, AUDIO_RATE };
     audio = SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, NULL, NULL);
@@ -202,7 +200,7 @@ static void audio_for_one_tick(void)
     samples_per_tick_frac -= n;
     s16 buf[1024];
     if (n > (int)SDL_arraysize(buf)) n = SDL_arraysize(buf);
-    speaker_render(&spk, spk_div, buf, n, AUDIO_AMPLITUDE);
+    audio_be->render(buf, n);
     /* Drop device output if the device is far behind (e.g. after a stall) instead of building latency.
      * The speaker keeps running and the dump still gets every sample. */
     if (audio && SDL_GetAudioStreamQueued(audio) <= AUDIO_RATE / 4 * (int)sizeof(s16))
@@ -606,10 +604,11 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons)
 
 /* ---------------------------------------------------------------- speaker, files, errors */
 
+void host_set_audio_backend(const AudioBackend *b) { audio_be = b; }
+
 void host_speaker(u16 divisor, u8 port61_bits)
 {
-    spk_div = divisor;
-    speaker_set(&spk, port61_bits);
+    audio_be->speaker(divisor, port61_bits);
 }
 
 /* Case-insensitive lookup of name inside dir; NULL if it does not exist. */
