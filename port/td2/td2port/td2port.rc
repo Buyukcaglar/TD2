@@ -1,5 +1,9 @@
-/* Windows resources: the application manifest and the version information. No original media. */
+/* Windows resources: the app icon, the application manifest and the version information. The icon is
+ * the user's own artwork (td2port.ico), not original game media. SDL gives its window class the first
+ * icon resource, so it is also the window's and the taskbar's icon. */
 #include <winres.h>
+
+1 ICON "td2port.ico"
 
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "td2port.manifest"
 
