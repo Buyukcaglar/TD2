@@ -204,8 +204,11 @@ void draw_steering(void)
     ax = (u16)(s16)(s8)(u8)(ax >> 8);                     /* cwde */
     u16 tip = CARW((u16)(0xD3 + (u16)(ax << 1)));
     u16 dx = (u16)((ax & 0xFF00) | (tip & 0xFF));         /* mov dh,ah */
-    /* TODO(verify): CH is left over from the previous library call (scene_render.md §9 item 1); the
-     * port assumes 0. */
+    /* The original loads only CL here; CH is left over from the last blit routine, and it is always 0.
+     * The routes that reach 3ca2 end in the marker restore (9c90), the wheel XOR blit (c172) or, on the
+     * first frame after cockpit_reset sets redraw_inst, draw_instruments' last call (9cc2), and every
+     * exit of those routines ends in loop or rep. The save sprite's planemap is 01 02 04 08, so the
+     * masked paths that could leave CX non-zero are never taken. */
     u16 cx = (u16)(tip >> 8);
     DSB(DS_marker_saved) = (u8)cx;
     u16 sy = (u16)(cx - 2);
