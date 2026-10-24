@@ -31,9 +31,25 @@ void gfx_request_next_backend(void)
     pending = next == be ? NULL : next;
 }
 
+/* The text colours are colour numbers of the adapter that set them (COL in gfx.h). These are the
+ * (EGA, CGA) pairs the game's text uses; a switch to the other adapter translates by the first match. */
+static const u16 text_colour_pairs[][2] = { { 0x0F, 3 }, { 0x0E, 3 }, { 0x0F, 2 }, { 1, 1 }, { 0, 0 } };
+
+static u16 text_colour_for(u16 c, bool to_cga)
+{
+    for (size_t i = 0; i < sizeof text_colour_pairs / sizeof text_colour_pairs[0]; i++)
+        if (text_colour_pairs[i][to_cga ? 0 : 1] == c) return text_colour_pairs[i][to_cga ? 1 : 0];
+    return c;
+}
+
 void gfx_apply_pending_backend(void)
 {
     if (!pending) return;
+    if (pending->adapter != be->adapter) {
+        bool to_cga = pending->adapter == GFX_CGA;
+        DSW(DS_text_fg) = text_colour_for(DSW(DS_text_fg), to_cga);
+        DSW(DS_text_bg) = text_colour_for(DSW(DS_text_bg), to_cga);
+    }
     be = pending;
     pending = NULL;
     for (u16 i = 0; i < GFX_DESC_WORDS; i++) {

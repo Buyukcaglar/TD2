@@ -25,7 +25,7 @@ The port always runs TD2EGA's game logic. EGA, CGA and Hercules differ only in t
 A switch request (key combination or context menu) only sets a pending flag. The game applies it at a safe point, where nothing is half drawn.
 
 - **In a race**, at the top of the drive loop in `run_stage`, between two frames. The switch frees the race buffers and releases the race archives in reverse load order, swaps the backend, loads the same files again with the other extension, and runs the graphics halves of `stage_load`, `main_view_load`, `mirror_load` and `cockpit_load` again: the table lookups, the buffers, the scenery colours, and the cockpit drawn onto the screen. It does not run their resets of positions, fuel and timers. It then sets the HUD, gear gate and instrument redraw flags. The race goes on from the same state on the next frame. During a message, the crash sequence or the stage-end sequence, the switch waits for the drive loop.
-- **On every other screen** (titles, menus, car and scenery choice, difficulty, gas station, police stop, results, high scores) the archives are already released, so the screen has to draw itself again. Each screen's input wait returns a redraw signal when a switch is pending; the screen applies the switch, then draws again from its top with its current choices kept. `main_menu` already reloads and redraws on each loop, so it needs almost nothing. The other screens need a small change each; there are about fifteen.
+- **On other screens** (menus, car and scenery choice, difficulty) the screen's input wait returns a redraw signal when a switch is pending. The screen releases its archives, applies the switch, then draws again from its top with its current choices kept.
 - **Applying the switch** calls the backend's `shutdown`, `gfx_set_backend`, then `reset` and `set_mode`, and re-points the host's frame source, which changes the window's size ratio (Hercules is 640 × 300).
 
 ### Where it stands
@@ -39,16 +39,24 @@ The race switch is built (step 2 below).
   - it runs the new backend's `reset` and `set_mode`;
   - it points the window at the new frame size.
 - **In the race.** `run_stage` checks for a pending switch at the top of each frame. `race_switch_graphics` (`scene.c`) frees the four race buffers. `stage_shapes_switch` (`flow_stage.c`) releases the eight sprite archives, applies the switch and loads them again. `race_switch_graphics` then reruns the scenery colours, `main_view_load`, `mirror_load`, the sprite tables (`stage_find_handles`, split out of `stage_load`) and `cockpit_load`, and sets the redraw flags. Archives released by the switch stay in the file cache, so switching back reuses them.
-- **Elsewhere.** A switch asked for on any other screen waits for the next race's first frame (step 3 below).
+- **On the menu screens** (step 3 below). The main menu, car select, scenery select and the difficulty screen read keys with `getkey_timeout_switch` (`flow.c`), which returns `KEY_SWITCH` as soon as a switch is pending. The screen releases its sprite archives, and `flow_switch_graphics` applies the switch and makes the page buffer again in the new layout. The screen then draws itself again from its top, keeping the current choice; the attract demo carries on.
+- **Text colours.** The game keeps its text colours in memory as the colour numbers of the mode that set them (`COL`). A switch to the other adapter translates them through the pairs the text uses: EGA 0Fh is CGA 3, EGA 0 is CGA 0, and so on.
+- **Other screens** (titles, credits, showroom, gas station, police stop, results, high scores) show for a few seconds or wait inside the original's own routines. A switch asked for there stays pending until the next menu screen or race frame. This could be extended screen by screen if it matters in play.
 
 ### How it is tested
 
-`tools/snapshots.py` has a third run for each adapter, `switch`: the attract run with Ctrl+Shift+G at 40, 50 and 60 s, during the demo drive. That run goes round all three modes and back.
+`tools/snapshots.py` has two switch runs for each adapter, which go round all three modes and back:
+- `switch` is the attract run with Ctrl+Shift+G at 45, 52 and 60 s, during the demo drive;
+- `menuswitch` is the menu run with Ctrl+Shift+G on the main menu, in car select and in scenery select.
 
-- `round_trip()` checks that every frame from 62 s on equals the attract run's frame of the same number, so the switch left the race as it was. It also checks that some earlier frame differs, so a switch did happen.
+
+- `round_trip()` checks the frames after the last switch against the run without switches:
+  - `switch`, from 62 s on, frame by frame. The race keeps its frame count, and an identical race shows that the switch left it as it was.
+  - `menuswitch`, from 64 s on, by game time. A screen that draws itself again shows a different number of frames.
+- It also checks that some earlier frame differs, so a switch did happen.
 - The frames in each mode are also hashed in the baselines.
 - All three adapters pass. From EGA, the drive is shown in CGA, then Hercules, then EGA again, and the rest of the attract loop is identical.
-- Still to come with step 3: the same check on the menus, and a switch at one moment compared with a run that used the other mode from the start.
+- **Not covered.** A switch at one moment is not compared with a run that used the other mode from the start. The screen redraws change the timing of the attract demo's random menu moves, so such runs part ways.
 
 ### Sound
 
@@ -117,7 +125,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 
 1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. Done; the snapshots, tests and harness are unchanged.
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
-3. **Screen redraw on switch** for the other screens.
+3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run. Other screens leave the switch pending.
 4. **App UI layer on Windows.** Context menu with dark mode, the key combination, pausing, question windows. The graphics choice moves into the menu.
 5. **Game data manager.** Base-game check, catalogues built from the files found, expansion folders, first-start setup, settings file.
 6. **macOS** (later): the same `app_ui` interface with AppKit.

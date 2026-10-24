@@ -8,6 +8,7 @@
 #include "../codeptr.h"
 #include "../host.h"
 #include "../platform/gfx.h"
+#include "../platform/gfx_backend.h"
 #include "../platform/input.h"
 #include "../platform/prompts.h"
 #include "../platform/res.h"
@@ -72,6 +73,33 @@ void flow_pace(u32 ticks)
     host_present_now();
     u32 t0 = ticks_get();
     while (ticks_get() - t0 < ticks) host_pump();
+}
+
+/* PORT: the live graphics switch on the screens outside a race (docs/native-windows.md section 1).
+ * The screens that wait for keys (main menu, car and scenery select, difficulty) read them with
+ * getkey_timeout_switch, which returns KEY_SWITCH as soon as a switch is pending. The screen then
+ * releases its sprite archives, calls flow_switch_graphics and draws itself again from its top.
+ * Other screens leave the switch pending for the next such screen or race. */
+u16 getkey_timeout_switch(u32 n)
+{
+    u32 end = ticks_get() + n;
+    for (;;) {
+        if (gfx_pending_backend()) return KEY_SWITCH;
+        u16 k = getkey();
+        if (k) return k;
+        if (ticks_get() >= end) return 0;
+        host_pump();
+    }
+}
+
+/* Applies a pending switch where only the page buffer exists: recreates it in the new backend. */
+void flow_switch_graphics(void)
+{
+    if (!gfx_pending_backend()) return;
+    gfx_free_buffer(flow_page_desc());
+    gfx_apply_pending_backend();
+    ds_far_wr(DS_page_buf_desc, gfx_create_buffer(0x140, 0xC8, 0x0F));
+    gfx_video_hook();
 }
 
 int flow_find_list(FarPtr arc, const char *names, FarPtr *out, int max)

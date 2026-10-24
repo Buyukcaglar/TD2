@@ -7,6 +7,7 @@
 #include "../codeptr.h"
 #include "../host.h"
 #include "../platform/gfx.h"
+#include "../platform/gfx_backend.h"
 #include "../platform/input.h"
 #include "../platform/res.h"
 #include "../platform/sound.h"
@@ -407,6 +408,7 @@ s16 stage_results(s16 kind)
 /* 0267:139b difficulty_screen — game_flow.md §4.10 (verified) */
 s16 difficulty_screen(void)
 {
+redraw:
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     FarPtr a = load_shapes(0x7D5D);                   /* "gamediff" */
@@ -427,7 +429,12 @@ s16 difficulty_screen(void)
             blit_or_raw(arrw, x, 0x36);
             prev = DSS(DS_difficulty);
         }
-        u16 k = getkey_timeout(DSW(DS_demo_mode) ? 100 : 3000);
+        u16 k = getkey_timeout_switch(DSW(DS_demo_mode) ? 100 : 3000);
+        if (k == KEY_SWITCH) {
+            mem_release_cache(a);
+            flow_switch_graphics();
+            goto redraw;
+        }
         if (k == 0) {
             k = menu_random_key();
             if (k == KEY_ESC) k = 0;

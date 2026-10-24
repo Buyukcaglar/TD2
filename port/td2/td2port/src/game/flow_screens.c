@@ -421,6 +421,7 @@ s16 car_select(s16 car)
 {
     char name[26];
     u16 k;
+redraw:
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     if (ensure_disk(0x73C3, DSS(DS_data_disk), 2) != 0) return car;    /* "testdrv2" */
@@ -437,7 +438,12 @@ s16 car_select(s16 car)
     select_screen();
     blit_copy_own(flow_page_sprite());
     for (;;) {
-        k = getkey_timeout(3000);
+        k = getkey_timeout_switch(3000);
+        if (k == KEY_SWITCH) {
+            if (!far_is_null(a)) mem_release_cache_old(a);
+            flow_switch_graphics();
+            goto redraw;
+        }
         if (k == 0) k = KEY_ESC;
         if (k == KEY_ESC || k == KEY_ENTER || k == KEY_SPACE) break;
         if (k == KEY_UP) {
@@ -492,7 +498,11 @@ void scenery_select(void)
         s16 old;
         do {
             old = DSS(DS_scn_idx);
-            u16 k = getkey_timeout(3000);
+            u16 k = getkey_timeout_switch(3000);
+            if (k == KEY_SWITCH) {
+                flow_switch_graphics();
+                break;
+            }
             if (k == 0) k = KEY_ESC;
             if (k == KEY_ENTER || k == KEY_SPACE || k == 0 || k == KEY_ESC) return;
             if (k == KEY_UP || k == KEY_RIGHT) DSS(DS_scn_idx)++;
@@ -518,6 +528,7 @@ s16 main_menu(void)
     char name[26];
     for (;;) {
         FarPtr a, g;
+        flow_switch_graphics();
         DSS(DS_menu_prev_sel) = (s16)(DSS(DS_menu_sel) + 1);
         gfx_select_target(flow_page_desc());
         gfx_clear_clip(0);
@@ -561,6 +572,7 @@ s16 main_menu(void)
 
         u16 k = 0xFFFF;
         for (;;) {
+            if (k == KEY_SWITCH) break;
             if (k == KEY_ESC) {
                 mem_release_cache(g);
                 return 0;
@@ -578,7 +590,8 @@ s16 main_menu(void)
                 blit_copy_own(flow_page_sprite());   /* erase the old highlight */
                 menu_draw_highlight();
             }
-            k = getkey_timeout(DSW(DS_demo_mode) ? 100 : 3000);
+            k = getkey_timeout_switch(DSW(DS_demo_mode) ? 100 : 3000);
+            if (k == KEY_SWITCH) continue;
             if (k == 0 || k == KEY_F10) {
                 DSW(DS_demo_mode) = 1;
                 k = menu_random_key();
@@ -589,6 +602,7 @@ s16 main_menu(void)
             DSS(DS_menu_prev_sel) = DSS(DS_menu_sel);
         }
         mem_release_cache(g);
+        if (k == KEY_SWITCH) continue;                /* PORT: draw the menu again in the new mode */
         if (DSW(DS_demo_mode) != 0) DSS(DS_menu_sel) = 0;
         if (DSB(DS_protect_sabotage) != 0) return 0;
 

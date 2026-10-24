@@ -14,6 +14,7 @@
 #define KEY_LEFT  0x4B00
 #define KEY_RIGHT 0x4D00
 #define KEY_F10   0x4400
+#define KEY_SWITCH 0xFFFE        /* PORT: getkey_timeout_switch: a live graphics switch is pending */
 
 #define CAR_REC_SIZE   30           /* DS:8D24 records (§5.1) */
 #define SCN_REC_SIZE   32           /* DS:865C records (§5.2) */

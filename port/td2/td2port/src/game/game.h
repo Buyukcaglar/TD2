@@ -11,6 +11,8 @@ int  game_main(void);                   /* 0000:07b3 main */
 
 /* ---- scene_render (game/scene*.c) -------------------------------------------------------------- */
 void stage_shapes_switch(void);           /* flow_stage.c: the live graphics switch's archive half */
+u16  getkey_timeout_switch(u32 n);        /* flow.c: getkey_timeout that returns KEY_SWITCH */
+void flow_switch_graphics(void);          /* flow.c: the live graphics switch on a screen */
 s16  run_stage(void);                   /* 06c9:1b2c stage runner: returns DS:5490 sign-extended (-1 = quit) */
 
 /* ---- simulation (game/sim*.c) ------------------------------------------------------------------
