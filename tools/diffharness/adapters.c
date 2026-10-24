@@ -4,6 +4,7 @@
 
 #include "dh.h"
 #include "mem.h"
+#include "speaker.h"
 #include "game/sim.h"
 #include "platform/res.h"
 
@@ -54,6 +55,15 @@ DH_EXPORT bool dh_load_exe(const char *path, char *err, size_t errlen) { return 
 
 DH_EXPORT int dh_count(void) { return (int)(sizeof adapters / sizeof adapters[0]); }
 DH_EXPORT const char *dh_name(int i) { return i >= 0 && i < dh_count() ? adapters[i].name : NULL; }
+
+/* PC-speaker synthesis (speaker.c), for tests/test_speaker.py. */
+static Speaker dh_spk;
+DH_EXPORT void dh_speaker_reset(int rate) { speaker_init(&dh_spk, rate); }
+DH_EXPORT void dh_speaker_play(u16 divisor, u8 port61_bits, s16 *out, int n, int amplitude)
+{
+    speaker_set(&dh_spk, port61_bits);
+    speaker_render(&dh_spk, divisor, out, n, amplitude);
+}
 
 /* 0 = ran, 1 = the port called fatal (message in dh_fatal_message), -1 = no adapter of that name. */
 DH_EXPORT int dh_call(const char *name, DhRegs *r)

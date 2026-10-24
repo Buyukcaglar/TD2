@@ -29,7 +29,7 @@ void host_set_held_keys(bool on) { (void)on; }
 bool host_held_keys(void) { return false; }
 bool host_xt_key_down(u8 xt_scan) { (void)xt_scan; return false; }
 bool host_joy_read(s16 *x, s16 *y, u8 *buttons) { *x = *y = 0; *buttons = 0; return false; }
-void host_speaker(u16 divisor, bool on) { (void)divisor; (void)on; }
+void host_speaker(u16 divisor, u8 port61_bits) { (void)divisor; (void)port61_bits; }
 void host_set_user_dir(const char *dir) { (void)dir; }
 char *host_game_path(const char *name, bool create) { (void)name; (void)create; return NULL; }
 void host_free(void *p) { free(p); }

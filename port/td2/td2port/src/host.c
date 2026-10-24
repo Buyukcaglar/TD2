@@ -1,4 +1,5 @@
 #include "host.h"
+#include "speaker.h"
 
 #include <SDL3/SDL.h>
 #include <stdarg.h>
@@ -34,13 +35,53 @@ static Uint64 ticks_run;
 static u16 kbd_buf[KBD_SIZE];
 static int kbd_head, kbd_tail;
 
-/* Speaker state and square-wave generator. */
+/* Speaker state and synthesis (speaker.c). */
+static Speaker spk;
 static u16 spk_div;
-static bool spk_on;
-static double spk_phase;
 static double samples_per_tick_frac;
+static SDL_IOStream *audio_dump;          /* TD2_AUDIO_DUMP: copy of the output as a WAV file */
+static Uint32 audio_dump_bytes;
 
 static void process_events(void);
+
+/* Developer aid: with TD2_AUDIO_DUMP set to a file name, everything the speaker plays is also written
+ * there as a 16-bit mono WAV file (works with SDL_AUDIO_DRIVER=dummy). */
+static void audio_dump_header(void)
+{
+    static const char riff[] = "RIFF", wave[] = "WAVEfmt ", data[] = "data";
+    SDL_SeekIO(audio_dump, 0, SDL_IO_SEEK_SET);
+    SDL_WriteIO(audio_dump, riff, 4);
+    SDL_WriteU32LE(audio_dump, 36 + audio_dump_bytes);
+    SDL_WriteIO(audio_dump, wave, 8);
+    SDL_WriteU32LE(audio_dump, 16);
+    SDL_WriteU16LE(audio_dump, 1);                                  /* PCM */
+    SDL_WriteU16LE(audio_dump, 1);                                  /* mono */
+    SDL_WriteU32LE(audio_dump, AUDIO_RATE);
+    SDL_WriteU32LE(audio_dump, AUDIO_RATE * 2);
+    SDL_WriteU16LE(audio_dump, 2);
+    SDL_WriteU16LE(audio_dump, 16);
+    SDL_WriteIO(audio_dump, data, 4);
+    SDL_WriteU32LE(audio_dump, audio_dump_bytes);
+    SDL_SeekIO(audio_dump, 0, SDL_IO_SEEK_END);
+}
+
+static void audio_dump_open(void)
+{
+    const char *path = SDL_getenv("TD2_AUDIO_DUMP");
+    if (!path || !*path) return;
+    audio_dump = SDL_IOFromFile(path, "wb");
+    if (!audio_dump) { fprintf(stderr, "TD2_AUDIO_DUMP: %s\n", SDL_GetError()); return; }
+    audio_dump_bytes = 0;
+    audio_dump_header();
+}
+
+static void audio_dump_close(void)
+{
+    if (!audio_dump) return;
+    audio_dump_header();
+    SDL_CloseIO(audio_dump);
+    audio_dump = NULL;
+}
 
 void host_set_user_dir(const char *dir)
 {
@@ -86,6 +127,8 @@ bool host_init(const char *dir, int window_scale)
     }
     SDL_SetRenderVSync(renderer, 1);
 
+    speaker_init(&spk, AUDIO_RATE);
+    audio_dump_open();
     SDL_AudioSpec spec = { SDL_AUDIO_S16, 1, AUDIO_RATE };
     audio = SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, NULL, NULL);
     if (audio) {
@@ -105,6 +148,7 @@ void host_shutdown(void)
 {
     if (gamepad) SDL_CloseGamepad(gamepad);
     if (audio) SDL_DestroyAudioStream(audio);
+    audio_dump_close();
     if (texture) SDL_DestroyTexture(texture);
     if (renderer) SDL_DestroyRenderer(renderer);
     if (window) SDL_DestroyWindow(window);
@@ -143,18 +187,12 @@ static void audio_for_one_tick(void)
     if (SDL_GetAudioStreamQueued(audio) > AUDIO_RATE / 4 * (int)sizeof(s16)) return;
     s16 buf[1024];
     if (n > (int)SDL_arraysize(buf)) n = SDL_arraysize(buf);
-    double freq = (double)PIT_HZ / (spk_div ? spk_div : 65536);
-    double step = freq / AUDIO_RATE;
-    for (int i = 0; i < n; i++) {
-        if (spk_on) {
-            buf[i] = spk_phase < 0.5 ? AUDIO_AMPLITUDE : -AUDIO_AMPLITUDE;
-            spk_phase += step;
-            spk_phase -= (int)spk_phase;
-        } else {
-            buf[i] = 0;
-        }
-    }
+    speaker_render(&spk, spk_div, buf, n, AUDIO_AMPLITUDE);
     SDL_PutAudioStreamData(audio, buf, n * (int)sizeof(s16));
+    if (audio_dump && SDL_WriteIO(audio_dump, buf, (size_t)n * sizeof(s16)) == (size_t)n * sizeof(s16)) {
+        audio_dump_bytes += (Uint32)n * (Uint32)sizeof(s16);
+        if (ticks_run % 100 == 0) audio_dump_header();      /* about once a second, in case of a kill */
+    }
 }
 
 /* Developer aid: with TD2_SNAPSHOT_DIR set, every presented frame at least 2 s after the previous
@@ -523,10 +561,10 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons)
 
 /* ---------------------------------------------------------------- speaker, files, errors */
 
-void host_speaker(u16 divisor, bool on)
+void host_speaker(u16 divisor, u8 port61_bits)
 {
     spk_div = divisor;
-    spk_on = on;
+    speaker_set(&spk, port61_bits);
 }
 
 /* Case-insensitive lookup of name inside dir; NULL if it does not exist. */

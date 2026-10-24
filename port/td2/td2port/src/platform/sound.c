@@ -21,7 +21,7 @@ static u8  port61;                          /* bits 0 and 1 of port 61h */
 
 static void spk_update(void)
 {
-    host_speaker(pit2_div, (port61 & 3) == 3);
+    host_speaker(pit2_div, port61 & 3);
 }
 
 void spk_port61_and(u8 mask)

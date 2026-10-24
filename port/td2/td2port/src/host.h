@@ -62,9 +62,9 @@ bool host_xt_key_down(u8 xt_scan);
 /* ---- Joystick: first connected gamepad. Axes -32768..32767, buttons bit0 = A, bit1 = B. */
 bool host_joy_read(s16 *x, s16 *y, u8 *buttons);
 
-/* ---- PC speaker: PIT channel 2 divisor and the port 61h gate (bits 0 and 1 both set = sounding).
- * divisor 0 means 65536. Changes take effect from the current tick onward. */
-void host_speaker(u16 divisor, bool on);
+/* ---- PC speaker: PIT channel 2 divisor and port 61h bits 0 (PIT gate) and 1 (speaker data); it
+ * sounds while both are set. divisor 0 means 65536. Changes take effect from the current tick onward. */
+void host_speaker(u16 divisor, u8 port61_bits);
 
 /* ---- Game files: case-insensitive lookup in the profile folder, then the game directory. Returns a
  * malloc'd path (SDL_free it) or NULL if the file does not exist. For files the game writes pass
