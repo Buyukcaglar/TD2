@@ -111,12 +111,26 @@ Each sprite file comes as `.PES` and `.PCS`. The port needs `TD2EGA.EXE`, becaus
 
 A car is its `.BIN`, `O.BIN`, `.SS`, and its `DASH`, `REAR`, `ROAD` and `ST` sprite files. A scenery is its stage `.DAT` and `.SGN` files, its font, its `CAR1`–`CAR3` traffic and its other sprite files.
 
+The DOS version has two scenery expansions, the California Challenge and the European Challenge, both in this game copy. The Amiga version has three more, one of them the fan-made Northern Germany scenery; they belong to the Amiga phase.
+
 ### How the app finds them
 
-The game learns which cars and sceneries exist from `CARS.DAT` and `SCENES.DAT`, which the original expansion installers rewrote. The app does not trust or rewrite them. It builds both catalogues in memory from the files it finds, in the original order (base first). So adding an expansion is: pick its folder, and the next menu lists it. Expansion folders may be separate from the base folder, so the original disks or copies of them can be used as they are.
+Built (`src/app/app_data.c`; step 5 below, first half).
 
-- On first start without a known base folder, a question window explains what is needed and opens the folder picker. A `Game` folder next to the exe is found without asking.
-- The game files are read in place and never changed. High scores and `SELECT.DAT` go to the settings folder, as `--user-dir` does now.
+- **Catalogues.** The original learns which cars and sceneries exist from `CARS.DAT` and `SCENES.DAT`. Each car or scenery disk had its own pair, which the game's INSTALL option read. The app does the same with folders: it reads the `CARS.DAT` and `SCENES.DAT` of every game folder, base first, and merges the entries in that order. It keeps only the cars and sceneries whose files are all there, and writes the result to the profile folder, which the game reads before the game folders.
+  - A car is complete with its `.BIN`, `O.BIN`, `.SS` and its `DASH`, `REAR`, `ROAD` and `ST` sprite files.
+  - A scenery is complete with its `CAR1`–`CAR3` and `ICON` sprite files. Its stage count is the listed one, cut to the stage files present.
+  - Sprite files must be there as both `.PES` and `.PCS`, so that live switching works.
+- **Base-game check.** At start the first game folder must hold the base game (the list in "What the base game is"). Otherwise the app says which file or set is missing and that expansions are optional.
+- **Game folders.** In order, they are `--game-dir`, the settings' `game` and `expansion` folders, `Game` next to the exe, or `Game` in the working directory. They are only read; the game finds each file in the first folder that has it.
+- **Profile folder.** It holds `settings.ini`, the high scores, `SELECT.DAT` and the generated catalogues. It is `--user-dir`, else `Profile` next to the exe when that folder is writable (portable), else `%APPDATA%\TestDrive2`. The settings live there rather than loose beside the exe, so test runs with `--user-dir` never see a player's choices.
+- **Settings.** `settings.ini` holds `game`, `expansion` (any number), `graphics`, `hercules_monitor`, `scale` and `fullscreen`. The menu writes it on each change, and the command line overrides it.
+- **Tested.** A base-only folder (73 files) lists two cars and the Master scenery. Adding a separate Supercars folder with its own `CARS.DAT` lists seven cars. The full game folder gives the same catalogues as its own files, and every snapshot is unchanged.
+
+Still to come:
+
+- **Archives.** Game and expansion files may also come inside zip, 7z, rar or lha archives (the user's requirement, 24 October 2026). The plan is to unpack an archive once into the profile folder (`Profile\Archives\<name>`), find the folder inside that holds the files, and treat it as a game folder. Reading zip, 7z, rar and lha needs libarchive with zlib and xz (liblzma), built statically like SDL3.
+- **Question windows and first start.** Without a base folder, a question window explains what is needed and opens the folder or archive picker. The context menu gets "Game files…" (what is installed, add an expansion folder or archive) and About.
 
 ## 4. Single portable exe
 
@@ -125,8 +139,8 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 - **SDL3 is linked statically.** The SDL 3.4.18 source release (`SDL3-3.4.18.tar.gz`, SHA-256 checked against the release's published digest) is unpacked in `analysis/external/sdl3-3.4.18/source`. The top-level CMake build adds it with `SDL_STATIC=ON` and `SDL_SHARED=OFF`; `build.ps1` passes `TD2_SDL_SOURCE`. SDL's zlib licence allows this without conditions on the binary.
 - **The C runtime is linked statically too** (`CMAKE_MSVC_RUNTIME_LIBRARY` = `MultiThreaded`), so no Visual C++ runtime DLLs are needed.
 - **The exe is a windowed app** (`/SUBSYSTEM:WINDOWS`, still entered at `main`), so no console window opens. Output a caller redirects (the snapshot tool, `run.ps1`'s pipe) works as before. Otherwise the exe writes to the console it was started from. Like any windowed app, it returns to a terminal prompt at once when started directly, so `run.ps1` pipes its output to wait for it.
-- **An embedded manifest** (`td2port.manifest` via `td2port.rc`) gives common controls v6, per-monitor DPI awareness v2 (SDL3's own default anyway), the UTF-8 code page and `asInvoker`. A version resource goes with it. An icon of our own is still to come; no original media is embedded.
-- **Settings** go to a file next to the exe when that folder is writable, which makes the app truly portable. Otherwise they go to the per-user folder (`%APPDATA%\TestDrive2`, the current default). This is the user's decision and comes with the game data manager.
+- **An embedded manifest** (`td2port.manifest` via `td2port.rc`) gives common controls v6, per-monitor DPI awareness v2 (SDL3's own default anyway), the UTF-8 code page and `asInvoker`. A version resource and the app icon go with it. The icon (`td2port.ico`, 16 to 256 pixels) is made from the user's own artwork, not original game media. SDL gives its window class the exe's first icon, so the window and the taskbar show it too.
+- **Settings** go to `Profile\settings.ini` next to the exe when that folder is writable, which makes the app truly portable. Otherwise they go to the per-user folder (`%APPDATA%\TestDrive2`). This is the user's decision (section 3).
 - The command-line options stay for scripts and tests.
 
 ## 5. Order of work
@@ -135,7 +149,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
 3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run. Other screens leave the switch pending.
 4. **App UI layer on Windows.** Done: the context menu with the system theme, Ctrl+Shift+M and right click, pausing, and the graphics, monitor, window size, full screen and quit commands. The question windows move to step 5.
-5. **Game data manager.** Base-game check, catalogues built from the files found, expansion folders, first-start setup, settings file.
+5. **Game data manager.** First half done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues. Still to come: archives (zip, 7z, rar, lha), question windows, first-start setup, the "Game files…" menu entry.
 6. **macOS** (later): the same `app_ui` interface with AppKit.
 
 ## Decisions (user, 24 October 2026)

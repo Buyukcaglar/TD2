@@ -11,7 +11,8 @@
 jmp_buf *dh_fatal_jmp;
 char dh_fatal_msg[256];
 
-bool host_init(const char *game_dir, int window_scale) { (void)game_dir; (void)window_scale; return true; }
+void host_add_game_dir(const char *dir) { (void)dir; }
+bool host_init(int window_scale) { (void)window_scale; return true; }
 void host_shutdown(void) {}
 void host_set_tick_handler(void (*handler)(void)) { (void)handler; }
 void host_set_frame_source(bool (*compose)(u32 *), int w, int h) { (void)compose; (void)w; (void)h; }

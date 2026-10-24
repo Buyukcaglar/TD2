@@ -3,6 +3,7 @@
  * command here is one that is safe at any time: a graphics switch is only requested, and the rest
  * changes the window or the monitor colour. The game is paused while the menu is open. */
 #include "app_menu.h"
+#include "app_data.h"
 #include "app_ui.h"
 #include "../host.h"
 #include "../platform/gfx_backend.h"
@@ -14,9 +15,22 @@ enum {
     CMD_FULLSCREEN, CMD_QUIT,
 };
 
-static const struct { int cmd; u32 rgb; } phosphors[] = {
-    { CMD_PHOSPHOR_WHITE, GFX_HERC_WHITE }, { CMD_PHOSPHOR_GREEN, GFX_HERC_GREEN }, { CMD_PHOSPHOR_AMBER, GFX_HERC_AMBER },
+static const struct { int cmd; u32 rgb; const char *name; } phosphors[] = {
+    { CMD_PHOSPHOR_WHITE, GFX_HERC_WHITE, "white" }, { CMD_PHOSPHOR_GREEN, GFX_HERC_GREEN, "green" },
+    { CMD_PHOSPHOR_AMBER, GFX_HERC_AMBER, "amber" },
 };
+
+/* The mode the game shows or is about to show, saved as the next start's mode. */
+static void save_graphics(void)
+{
+    app_setting_set("graphics", (gfx_pending_backend() ? gfx_pending_backend() : gfx_backend())->name);
+}
+
+void app_next_graphics(void)
+{
+    gfx_request_next_backend();
+    save_graphics();
+}
 
 void app_menu_open(void)
 {
@@ -56,18 +70,28 @@ void app_menu_open(void)
     host_pause_end();
 
     switch (cmd) {
-    case CMD_EGA:  gfx_request_backend(&gfx_ega_backend); break;
-    case CMD_CGA:  gfx_request_backend(&gfx_cga_backend); break;
-    case CMD_HERC: gfx_request_backend(&gfx_herc_backend); break;
-    case CMD_NEXT_GRAPHICS: gfx_request_next_backend(); break;
-    case CMD_SCALE_1: case CMD_SCALE_2: case CMD_SCALE_3: case CMD_SCALE_4:
+    case CMD_EGA:  gfx_request_backend(&gfx_ega_backend); save_graphics(); break;
+    case CMD_CGA:  gfx_request_backend(&gfx_cga_backend); save_graphics(); break;
+    case CMD_HERC: gfx_request_backend(&gfx_herc_backend); save_graphics(); break;
+    case CMD_NEXT_GRAPHICS: app_next_graphics(); break;
+    case CMD_SCALE_1: case CMD_SCALE_2: case CMD_SCALE_3: case CMD_SCALE_4: {
+        char v[2] = { (char)('1' + cmd - CMD_SCALE_1), 0 };
         host_set_window_scale(cmd - CMD_SCALE_1 + 1);
+        app_setting_set("scale", v);
+        app_setting_set("fullscreen", "0");
         break;
-    case CMD_FULLSCREEN: host_set_fullscreen(!host_fullscreen()); break;
+    }
+    case CMD_FULLSCREEN:
+        host_set_fullscreen(!host_fullscreen());
+        app_setting_set("fullscreen", host_fullscreen() ? "1" : "0");
+        break;
     case CMD_QUIT: host_quit();
     default:
         for (size_t i = 0; i < sizeof phosphors / sizeof phosphors[0]; i++)
-            if (phosphors[i].cmd == cmd) gfx_herc_set_phosphor(phosphors[i].rgb);
+            if (phosphors[i].cmd == cmd) {
+                gfx_herc_set_phosphor(phosphors[i].rgb);
+                app_setting_set("hercules_monitor", phosphors[i].name);
+            }
         break;
     }
 }

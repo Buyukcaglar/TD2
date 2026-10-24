@@ -7,7 +7,9 @@
 #define PIT_HZ        1193182u
 #define PIT_DIV_GAME  0x2E9Cu        /* 11932 -> 99.9985 Hz, the game's timer rate (06c9:6059) */
 
-bool host_init(const char *game_dir, int window_scale);
+/* The game folders, searched in the order they were added (app/app_data.h). Call before host_init. */
+void host_add_game_dir(const char *dir);
+bool host_init(int window_scale);
 void host_shutdown(void);
 
 /* Called once per 99.9985 Hz tick from host_pump() (the port's replacement for INT 8).

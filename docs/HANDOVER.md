@@ -15,6 +15,7 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
   - On the main menu, car select, scenery select and the difficulty screen, the screen draws itself again in the new mode.
   - On other screens the switch waits for the next of these screens or race frames.
   - The text colours are translated between the adapters' colour numbers.
+- **Game data.** `src/app/app_data.c` finds the profile folder and the game folders, checks for the base game, and merges the folders' catalogues ([native-windows.md](native-windows.md), section 3). The profile folder holds `settings.ini`: `Profile` next to the exe, `--user-dir`, or `%APPDATA%\TestDrive2`.
 - **App menu.** A right click or Ctrl+Shift+M opens the app's context menu (`src/app/`). It holds the graphics mode, the Hercules monitor colour, the window size, full screen and quit. The menu follows the system's dark or light theme, and the game pauses while it is open.
   - The attract run is 120 s with a frame every 2 s: the Accolade and DSI logos, credits, the high-score table, the race-against and select menus, skill level and the attract-mode drive with cockpit, traffic, scenery and a crash.
   - The menu run (`menus/` in the baseline) presses keys with `TD2_KEYS`: it opens car select (up, down, down, escape) and scenery select, with a frame every 0.5 s.
@@ -82,7 +83,11 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
    - the single exe;
    - the race switch and the menu screens' switch;
    - the context menu (right click or Ctrl+Shift+M: graphics mode, Hercules monitor colour, window size, full screen, quit). It follows the system's dark or light theme and pauses the game while it is open.
-   Next is step 5, the game data manager with its question windows: the base-game check, catalogues built from the files found, expansion folders, first-start setup, and the settings file next to the exe.
+   Step 5's first half is done:
+   - `Profile\settings.ini` next to the exe, which saves the menu's choices;
+   - game and expansion folders, with the base-game check;
+   - catalogues merged from each folder's `CARS.DAT`/`SCENES.DAT`.
+   The app icon is in. Next come archives (zip, 7z, rar, lha, via libarchive; the download needs the user's approval), then the question windows and the first-start setup.
 6. **Snapshot coverage.** Once the play test has recorded states, rendering a frame from a recorded race state would add player-driven scenes.
 
 ### Open questions

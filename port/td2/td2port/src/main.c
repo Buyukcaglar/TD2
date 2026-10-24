@@ -1,10 +1,11 @@
 /* Test Drive II: The Duel SDL3 port — entry point.
  *
  * usage: td2port [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules] [--check]
- *   --game-dir   folder with the original game files (default: "Game" in the working directory)
- *   --user-dir   folder for high scores and SELECT.DAT (default: %APPDATA%\TestDrive2 on Windows,
- *                the SDL preference folder elsewhere)
- *   --scale      initial window scale (default 3)
+ *   --game-dir   folder with the original game files (default: the settings' game folders, else "Game"
+ *                next to the exe or in the working directory; app/app_data.h)
+ *   --user-dir   profile folder for settings, high scores and SELECT.DAT (default: "Profile" next to
+ *                the exe when writable, else %APPDATA%\TestDrive2 on Windows)
+ *   --scale      initial window scale (default: the saved one, else 3)
  *   --frame-rate emulated original drawing speed while driving (default HOST_DEFAULT_FPS; 0 = unpaced)
  *   --cga        draw with the CGA graphics of TD2CGA.EXE instead of EGA
  *   --hercules   TD2CGA.EXE's Hercules mode ("td2cga herc"): the CGA game on a monochrome monitor
@@ -18,6 +19,7 @@
 #include <string.h>
 
 #include "host.h"
+#include "app/app_data.h"
 #include "app/app_menu.h"
 #include "mem.h"
 #include "platform/gfx.h"
@@ -30,9 +32,31 @@ int game_main(void);   /* game/flow.c: port of main() at 0000:07b3 */
 static void app_command(HostCommand cmd)
 {
     switch (cmd) {
-    case HOST_CMD_NEXT_GRAPHICS: gfx_request_next_backend(); break;
+    case HOST_CMD_NEXT_GRAPHICS: app_next_graphics(); break;
     case HOST_CMD_MENU: app_menu_open(); break;
     }
+}
+
+static int startup_error(const char *msg)
+{
+    fprintf(stderr, "%s\n", msg);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Test Drive II", msg, NULL);
+    return 1;
+}
+
+/* The saved settings, where the command line did not choose (app/app_data.h). */
+static void apply_settings(const GfxBackend *backend, int *scale)
+{
+    static const GfxBackend *const backends[] = { &gfx_ega_backend, &gfx_cga_backend, &gfx_herc_backend };
+    const char *g = app_setting("graphics");
+    for (size_t i = 0; !backend && g && i < sizeof backends / sizeof backends[0]; i++)
+        if (!strcmp(g, backends[i]->name)) backend = backends[i];
+    gfx_set_backend(backend ? backend : &gfx_ega_backend);
+    const char *m = app_setting("hercules_monitor");
+    if (m && !strcmp(m, "green")) gfx_herc_set_phosphor(GFX_HERC_GREEN);
+    if (m && !strcmp(m, "amber")) gfx_herc_set_phosphor(GFX_HERC_AMBER);
+    if (*scale < 1) *scale = app_setting("scale") ? atoi(app_setting("scale")) : 3;
+    if (*scale < 1 || *scale > 8) *scale = 3;
 }
 
 #ifdef _WIN32
@@ -57,16 +81,17 @@ static void attach_parent_console(void) {}
 int main(int argc, char **argv)
 {
     attach_parent_console();
-    const char *dir = "Game";
-    int scale = 3;
+    const char *dir = NULL, *user_dir = NULL;
+    int scale = 0;
     bool check = false;
+    const GfxBackend *backend = NULL;
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--game-dir") && i + 1 < argc) dir = argv[++i];
         else if (!strcmp(argv[i], "--scale") && i + 1 < argc) scale = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--check")) check = true;
-        else if (!strcmp(argv[i], "--cga")) gfx_set_backend(&gfx_cga_backend);
-        else if (!strcmp(argv[i], "--hercules")) gfx_set_backend(&gfx_herc_backend);
-        else if (!strcmp(argv[i], "--user-dir") && i + 1 < argc) host_set_user_dir(argv[++i]);
+        else if (!strcmp(argv[i], "--cga")) backend = &gfx_cga_backend;
+        else if (!strcmp(argv[i], "--hercules")) backend = &gfx_herc_backend;
+        else if (!strcmp(argv[i], "--user-dir") && i + 1 < argc) user_dir = argv[++i];
         else if (!strcmp(argv[i], "--frame-rate") && i + 1 < argc) host_set_frame_rate(atoi(argv[++i]));
         else {
             fprintf(stderr, "usage: %s [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules] [--check]\n", argv[0]);
@@ -74,21 +99,24 @@ int main(int argc, char **argv)
         }
     }
 
-    char exe_path[1024];
-    snprintf(exe_path, sizeof exe_path, "%s/%s", dir, TD_EXE_NAME);
-    char err[256];
-    if (!mem_load_exe(exe_path, err, sizeof err)) {
-        fprintf(stderr, "%s\n", err);
-        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Test Drive II", err, NULL);
-        return 1;
-    }
+    char err[512];
+    if (!app_data_init(dir, user_dir, err, sizeof err)) return startup_error(err);
+    char *exe_path = app_data_find(TD_EXE_NAME);
+    bool loaded = exe_path && mem_load_exe(exe_path, err, sizeof err);
+    SDL_free(exe_path);
+    if (!loaded) return startup_error(err);
     if (check) {
         printf("%s ok (%s): image %u bytes at %04X:0000, DGROUP %04X\n", TD_EXE_NAME, TD_VARIANT_NAME,
                mem_image_size, LOAD_SEG, DGROUP);
         return 0;
     }
 
-    if (!host_init(dir, scale)) return 1;
+    if (!app_data_write_catalogues(err, sizeof err)) return startup_error(err);
+    host_set_user_dir(app_data_profile_dir());
+    for (int i = 0; i < app_data_game_dir_count(); i++) host_add_game_dir(app_data_game_dir(i));
+    apply_settings(backend, &scale);
+    if (!host_init(scale)) return 1;
+    if (app_setting("fullscreen") && !strcmp(app_setting("fullscreen"), "1")) host_set_fullscreen(true);
     host_set_command_handler(app_command);
     gfx_init();      /* EGA model, frame source */
     timer_init();    /* host tick handler, timer routines */

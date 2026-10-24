@@ -14,7 +14,9 @@ static SDL_Renderer *renderer;
 static SDL_Texture *texture;
 static SDL_AudioStream *audio;
 static SDL_Gamepad *gamepad;
-static char *game_dir;
+#define MAX_GAME_DIRS 16
+static char *game_dirs[MAX_GAME_DIRS];
+static int ngame_dirs;
 static char *user_dir;        /* profile folder for files the game writes (scores, SELECT.DAT) */
 static char *user_dir_arg;
 
@@ -132,13 +134,17 @@ static bool init_user_dir(void)
     return true;
 }
 
-bool host_init(const char *dir, int window_scale)
+void host_add_game_dir(const char *dir)
+{
+    if (ngame_dirs < MAX_GAME_DIRS && dir) game_dirs[ngame_dirs++] = SDL_strdup(dir);
+}
+
+bool host_init(int window_scale)
 {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMEPAD)) {
         fprintf(stderr, "SDL_Init failed: %s\n", SDL_GetError());
         return false;
     }
-    game_dir = SDL_strdup(dir);
     if (!init_user_dir()) return false;
     if (window_scale < 1) window_scale = 3;
     if (!SDL_CreateWindowAndRenderer("Test Drive II (" TD_VARIANT_NAME ")", 320 * window_scale, 240 * window_scale,
@@ -177,10 +183,11 @@ void host_shutdown(void)
     if (texture) SDL_DestroyTexture(texture);
     if (renderer) SDL_DestroyRenderer(renderer);
     if (window) SDL_DestroyWindow(window);
-    SDL_free(game_dir);
+    for (int i = 0; i < ngame_dirs; i++) SDL_free(game_dirs[i]);
+    ngame_dirs = 0;
     SDL_free(user_dir);
     SDL_free(user_dir_arg);
-    game_dir = user_dir = user_dir_arg = NULL;
+    user_dir = user_dir_arg = NULL;
     SDL_Quit();
 }
 
@@ -795,8 +802,8 @@ static char *find_in_dir(const char *dir, const char *name)
     return found;
 }
 
-/* Files in the profile folder shadow the game folder. Writes always go to the profile folder,
- * so the game folder is only read. */
+/* Files in the profile folder shadow the game folders, which are searched in order. Writes always go
+ * to the profile folder, so the game folders are only read. */
 char *host_game_path(const char *name, bool create)
 {
     if (!name || !*name || SDL_strchr(name, '/') || SDL_strchr(name, '\\') || SDL_strchr(name, ':')) return NULL;
@@ -806,7 +813,8 @@ char *host_game_path(const char *name, bool create)
         SDL_asprintf(&path, "%s/%s", user_dir, name);
         return path;
     }
-    return find_in_dir(game_dir, name);
+    for (int i = 0; i < ngame_dirs && !path; i++) path = find_in_dir(game_dirs[i], name);
+    return path;
 }
 
 void host_free(void *p)
