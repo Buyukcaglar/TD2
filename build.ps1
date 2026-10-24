@@ -19,6 +19,10 @@ foreach ($p in $vcvars, $cmake, $ninja, (Join-Path $sdl 'SDL3Config.cmake')) {
 }
 if ($Clean -and (Test-Path $build)) { Remove-Item -Recurse -Force $build }
 
+# From here on, failures are detected by exit code: CMake prints notes on stderr, which
+# PowerShell 5.1 would otherwise turn into errors when output is redirected.
+$ErrorActionPreference = 'Continue'
+
 # Run vcvars64 and import the environment it sets into this process.
 $envDump = & cmd.exe /c "`"$vcvars`" 10.0.26100.0 -vcvars_ver=14.44 >nul 2>&1 && set"
 if ($LASTEXITCODE -ne 0) { throw 'vcvars64.bat failed' }
