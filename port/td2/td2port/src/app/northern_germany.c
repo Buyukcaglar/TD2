@@ -128,7 +128,8 @@ static u8 *convert_signs(const u8 *a, u32 alen, const int map[SIGNS], size_t *ou
 
 /* The icon: the scenery's Amiga title picture (euro_icon, 320x200 in 32 colours) as the DOS "picl", the
  * picture on the scenery choice screen (320x178 at y 13), and "pics", the main menu's 64x36 icon at
- * (168, 154), cut from its heath picture. Colours are the nearest of the EGA's 16 or the CGA's palette 1. */
+ * (168, 154), cut from its heath picture. Colours are the nearest of the EGA's 16 or of the CGA's four (mode control 0Eh: black, light
+ * cyan, light red, white). */
 typedef struct { u16 w, h; u8 *pix; u8 pal[32][3]; } Picture;
 
 static const u8 ega_rgb[16][3] = {
@@ -136,7 +137,7 @@ static const u8 ega_rgb[16][3] = {
     { 170, 85, 0 }, { 170, 170, 170 }, { 85, 85, 85 }, { 85, 85, 255 }, { 85, 255, 85 }, { 85, 255, 255 },
     { 255, 85, 85 }, { 255, 85, 255 }, { 255, 255, 85 }, { 255, 255, 255 },
 };
-static const u8 cga_rgb[4][3] = { { 0, 0, 0 }, { 85, 255, 255 }, { 255, 85, 255 }, { 255, 255, 255 } };
+static const u8 cga_rgb[4][3] = { { 0, 0, 0 }, { 85, 255, 255 }, { 255, 85, 85 }, { 255, 255, 255 } };
 
 #define ICON_H 178
 #define PICS_W 64
