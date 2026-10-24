@@ -195,6 +195,29 @@ static void audio_for_one_tick(void)
     }
 }
 
+void host_sim_state(const u8 *memory, u32 size, u16 bp, u16 cx)
+{
+    static const char *dir;
+    static bool checked;
+    static int calls, n, max = 40, every = 64;
+    if (!checked) {
+        dir = SDL_getenv("TD2_STATE_DIR");
+        const char *m = SDL_getenv("TD2_STATE_MAX"), *e = SDL_getenv("TD2_STATE_EVERY");
+        if (m && *m) max = SDL_atoi(m);
+        if (e && SDL_atoi(e) > 0) every = SDL_atoi(e);
+        checked = true;
+    }
+    if (!dir || n >= max || calls++ % every != 0) return;
+    char path[512];
+    SDL_snprintf(path, sizeof path, "%s/state%03d.bin", dir, n++);
+    SDL_IOStream *f = SDL_IOFromFile(path, "wb");
+    if (!f) { fprintf(stderr, "TD2_STATE_DIR: %s\n", SDL_GetError()); dir = NULL; return; }
+    SDL_WriteIO(f, memory, size);
+    SDL_WriteU16LE(f, bp);
+    SDL_WriteU16LE(f, cx);
+    SDL_CloseIO(f);
+}
+
 /* Developer aid: with TD2_SNAPSHOT_DIR set, every presented frame at least 2 s after the previous
  * snapshot is saved there as snapNNNN.bmp (works with SDL_VIDEO_DRIVER=dummy). */
 static void snapshot(void)

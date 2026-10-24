@@ -1,8 +1,11 @@
 # Runs the game on a writable copy of the original DOS files.
 #   .\run.ps1               play
 #   .\run.ps1 --check       verify TD2EGA.EXE and exit
+#   .\run.ps1 -RecordStates play and save a race state every 10 s to runs\states (60 at most, 1 MiB
+#                           each, overwriting earlier ones) for the harness's sim_tick cases
 # Extra arguments are passed to td2port.exe. reference\dos is never used directly: the first run
 # copies it to runs\game, and scores and SELECT.DAT go to runs\profile.
+param([switch]$RecordStates, [Parameter(ValueFromRemainingArguments)]$Rest)
 $ErrorActionPreference = 'Stop'
 
 $root = $PSScriptRoot
@@ -19,6 +22,13 @@ if (-not (Test-Path $game)) {
     Get-ChildItem $game -Recurse -File | ForEach-Object { $_.IsReadOnly = $false }
 }
 New-Item -ItemType Directory -Force $profileDir | Out-Null
+if ($RecordStates) {
+    $states = Join-Path $root 'runs\states'
+    New-Item -ItemType Directory -Force $states | Out-Null
+    $env:TD2_STATE_DIR = $states
+    $env:TD2_STATE_EVERY = '1001'
+    $env:TD2_STATE_MAX = '60'
+}
 
-& $exe --game-dir $game --user-dir $profileDir @args
+& $exe --game-dir $game --user-dir $profileDir @Rest
 exit $LASTEXITCODE

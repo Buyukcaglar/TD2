@@ -66,6 +66,11 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons);
  * sounds while both are set. divisor 0 means 65536. Changes take effect from the current tick onward. */
 void host_speaker(u16 divisor, u8 port61_bits);
 
+/* ---- Developer aid: with TD2_STATE_DIR set, the sim timer routine's entry state (the 1 MiB of memory,
+ * then the leftover BP and CX as little-endian words) is saved as stateNNN.bin every TD2_STATE_EVERY
+ * calls (default 64), up to TD2_STATE_MAX files (default 40). The differential harness replays these. */
+void host_sim_state(const u8 *memory, u32 size, u16 bp, u16 cx);
+
 /* ---- Game files: case-insensitive lookup in the profile folder, then the game directory. Returns a
  * malloc'd path (SDL_free it) or NULL if the file does not exist. For files the game writes pass
  * create = true; the path is then always inside the profile folder. */

@@ -5,6 +5,7 @@
 #include "sim.h"
 
 #include "../codeptr.h"
+#include "../host.h"
 #include "../platform/input.h"
 #include "../platform/res.h"
 #include "../platform/timer.h"
@@ -83,6 +84,7 @@ void sim_restart_reset(void)
 /* 06c9:403b sim_timer_routine — simulation.md §4.1. Timer routine (every PIT tick, 99.9985 Hz). */
 void sim_timer_routine(void)
 {
+    host_sim_state(mem, 0x100000, sim_stale_bp, sim_stale_cx);   /* TD2_STATE_DIR developer aid */
     sound_tick();
     if (--DSB(DS_div_100hz) != 0) return;
     DSB(DS_div_100hz) = 10;
