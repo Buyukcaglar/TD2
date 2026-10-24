@@ -9,14 +9,25 @@ if(MSVC)
     add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
 endif()
 
-# Put the executable (and the SDL3 DLL copied next to it) at the top of the build folder.
+# Put the executable at the top of the build folder.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+# A single portable exe: SDL3, built here from its source, and the C runtime are linked statically.
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set(TD2_SDL_SOURCE "" CACHE PATH "SDL3 source tree (the release tarball, unpacked)")
+if(NOT EXISTS "${TD2_SDL_SOURCE}/CMakeLists.txt")
+    message(FATAL_ERROR "TD2_SDL_SOURCE must point at the SDL3 source tree")
+endif()
+set(SDL_SHARED OFF CACHE BOOL "" FORCE)
+set(SDL_STATIC ON CACHE BOOL "" FORCE)
+set(SDL_TEST_LIBRARY OFF CACHE BOOL "" FORCE)
+set(SDL_DISABLE_INSTALL ON CACHE BOOL "" FORCE)
+add_subdirectory(${TD2_SDL_SOURCE} ${CMAKE_BINARY_DIR}/sdl3 EXCLUDE_FROM_ALL SYSTEM)
 
 add_subdirectory(port/td2/td2port)
 
 # td2diff.dll: the port's game and platform code with a stub host, for tools/diffharness.
-find_package(SDL3 REQUIRED CONFIG)
 set(TD2_SRC ${CMAKE_SOURCE_DIR}/port/td2/td2port/src)
 file(GLOB_RECURSE TD2_CORE_SOURCES CONFIGURE_DEPENDS ${TD2_SRC}/*.c)
 list(REMOVE_ITEM TD2_CORE_SOURCES ${TD2_SRC}/main.c ${TD2_SRC}/host.c)

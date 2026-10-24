@@ -88,27 +88,26 @@ The game learns which cars and sceneries exist from `CARS.DAT` and `SCENES.DAT`,
 
 ## 4. Single portable exe
 
-- **SDL3 must be linked statically.** The SDK in `analysis/external/sdl3-3.4.18` has only the DLL build. The static library has to be built from the SDL 3.4.18 source with `SDL_STATIC=ON`.
-- **The C runtime must be linked statically too** (`/MT`, CMake's `MSVC_RUNTIME_LIBRARY`). Otherwise the exe needs the Visual C++ runtime DLLs, which a clean machine may not have.
-- **An embedded manifest** gives common controls v6 (themed controls), per-monitor DPI awareness v2 and the UTF-8 code page. A version resource and our own icon go with it. No original media is embedded.
-- **Settings** go to a file next to the exe when that folder is writable, which makes the app truly portable. Otherwise they go to the per-user folder (`%APPDATA%\TestDrive2`, the current default).
+Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs only Windows system DLLs.
+
+- **SDL3 is linked statically.** The SDL 3.4.18 source release (`SDL3-3.4.18.tar.gz`, SHA-256 checked against the release's published digest) is unpacked in `analysis/external/sdl3-3.4.18/source`. The top-level CMake build adds it with `SDL_STATIC=ON` and `SDL_SHARED=OFF`; `build.ps1` passes `TD2_SDL_SOURCE`. SDL's zlib licence allows this without conditions on the binary.
+- **The C runtime is linked statically too** (`CMAKE_MSVC_RUNTIME_LIBRARY` = `MultiThreaded`), so no Visual C++ runtime DLLs are needed.
+- **The exe is a windowed app** (`/SUBSYSTEM:WINDOWS`, still entered at `main`), so no console window opens. Output a caller redirects (the snapshot tool, `run.ps1`'s pipe) works as before. Otherwise the exe writes to the console it was started from. Like any windowed app, it returns to a terminal prompt at once when started directly, so `run.ps1` pipes its output to wait for it.
+- **An embedded manifest** (`td2port.manifest` via `td2port.rc`) gives common controls v6, per-monitor DPI awareness v2 (SDL3's own default anyway), the UTF-8 code page and `asInvoker`. A version resource goes with it. An icon of our own is still to come; no original media is embedded.
+- **Settings** go to a file next to the exe when that folder is writable, which makes the app truly portable. Otherwise they go to the per-user folder (`%APPDATA%\TestDrive2`, the current default). This is the user's decision and comes with the game data manager.
 - The command-line options stay for scripts and tests.
 
 ## 5. Order of work
 
-1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. The snapshots must stay the same.
+1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. Done; the snapshots, tests and harness are unchanged.
 2. **Pending-switch mechanism and the race switch.** Includes the snapshot tests for switching and switching back.
 3. **Screen redraw on switch** for the other screens.
 4. **App UI layer on Windows.** Context menu with dark mode, the key combination, pausing, question windows. The graphics choice moves into the menu.
 5. **Game data manager.** Base-game check, catalogues built from the files found, expansion folders, first-start setup, settings file.
 6. **macOS** (later): the same `app_ui` interface with AppKit.
 
-## Open decisions for the user
+## Decisions (user, 24 October 2026)
 
-- **The key combination.** The proposal is:
-  - Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules);
-  - Ctrl+Shift+S, later, switches the sound;
-  - Ctrl+Shift+M or a right click opens the menu.
-  Ctrl is the Control key on both Windows and Mac keyboards, so the combination is really the same. On a Mac, though, users expect Cmd.
-- **Where settings live.** Next to the exe when writable (portable), or always in the per-user folder.
-- **Downloading the SDL 3.4.18 source** to build the static library: the 3.4.18 release from the official libsdl-org GitHub, about 15 MB, into `analysis/external/`.
+- **Key combination:** Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules). Ctrl+Shift+S will switch the sound in the Amiga phase. Ctrl+Shift+M or a right click opens the context menu. Ctrl means the Control key on macOS too, so the combination is the same on both systems.
+- **Settings and profile:** next to the exe when that folder is writable, otherwise `%APPDATA%\TestDrive2`.
+- **SDL source:** downloaded; the exe links SDL3 statically (section 4).

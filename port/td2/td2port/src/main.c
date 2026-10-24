@@ -26,8 +26,28 @@
 
 int game_main(void);   /* game/flow.c: port of main() at 0000:07b3 */
 
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
+/* The exe is a windowed app, so it has no console of its own. Output that a caller redirected (the
+ * snapshot tool, a pipe) works as it is; otherwise messages go to the console it was started from. */
+static void attach_parent_console(void)
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE), err = GetStdHandle(STD_ERROR_HANDLE);
+    bool have_out = out != NULL && out != INVALID_HANDLE_VALUE;
+    bool have_err = err != NULL && err != INVALID_HANDLE_VALUE;
+    if ((have_out && have_err) || !AttachConsole(ATTACH_PARENT_PROCESS)) return;
+    if (!have_out) freopen("CONOUT$", "w", stdout);
+    if (!have_err) freopen("CONOUT$", "w", stderr);
+}
+#else
+static void attach_parent_console(void) {}
+#endif
+
 int main(int argc, char **argv)
 {
+    attach_parent_console();
     const char *dir = "Game";
     int scale = 3;
     bool check = false;

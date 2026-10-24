@@ -30,5 +30,6 @@ if ($RecordStates) {
     $env:TD2_STATE_MAX = '60'
 }
 
-& $exe --game-dir $game --user-dir $profileDir @Rest
+# td2port.exe is a windowed app; piping its output makes PowerShell wait for it and set its exit code.
+& $exe --game-dir $game --user-dir $profileDir @Rest | Out-Host
 exit $LASTEXITCODE

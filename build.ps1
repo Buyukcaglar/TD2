@@ -1,5 +1,6 @@
 # Builds the game (Release) into build\ with MSVC 14.44 (VS 2022 BuildTools), the CMake and Ninja
-# that ship with Visual Studio, and SDL3 3.4.18 from analysis\external.
+# that ship with Visual Studio, and SDL3 3.4.18 built from its source in analysis\external and linked
+# statically, so build\td2port.exe is a single portable exe.
 #   .\build.ps1            configure if needed, then build
 #   .\build.ps1 -Clean     delete build\ first
 param([switch]$Clean)
@@ -12,9 +13,9 @@ $vcvars = Join-Path $vs 'VC\Auxiliary\Build\vcvars64.bat'
 $cmakeBin = Join-Path $vs 'Common7\IDE\CommonExtensions\Microsoft\CMake'
 $cmake = Join-Path $cmakeBin 'CMake\bin\cmake.exe'
 $ninja = Join-Path $cmakeBin 'Ninja\ninja.exe'
-$sdl = Join-Path $root 'analysis\external\sdl3-3.4.18\sdk\SDL3-3.4.18\cmake'
+$sdl = Join-Path $root 'analysis\external\sdl3-3.4.18\source'
 
-foreach ($p in $vcvars, $cmake, $ninja, (Join-Path $sdl 'SDL3Config.cmake')) {
+foreach ($p in $vcvars, $cmake, $ninja, (Join-Path $sdl 'CMakeLists.txt')) {
     if (-not (Test-Path $p)) { throw "missing: $p" }
 }
 if ($Clean -and (Test-Path $build)) { Remove-Item -Recurse -Force $build }
@@ -32,7 +33,7 @@ foreach ($line in $envDump) {
 
 if (-not (Test-Path (Join-Path $build 'build.ninja'))) {
     & $cmake -S $root -B $build -G Ninja "-DCMAKE_MAKE_PROGRAM=$ninja" -DCMAKE_BUILD_TYPE=Release `
-        -DCMAKE_C_COMPILER=cl "-DSDL3_DIR=$sdl"
+        -DCMAKE_C_COMPILER=cl "-DTD2_SDL_SOURCE=$sdl"
     if ($LASTEXITCODE -ne 0) { throw 'cmake configure failed' }
 }
 & $cmake --build $build
