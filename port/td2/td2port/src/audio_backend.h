@@ -20,6 +20,7 @@ typedef enum {
     SOUND_CRASH,            /* a crash or a blown engine */
     SOUND_GAME_OVER,        /* the last life is lost: the game over screen */
     SOUND_TITLE,            /* the title picture ("Test Drive II", "The Duel") appears */
+    SOUND_ACCOLADE,         /* the "Accolade presents" picture appears */
 } SoundEvent;
 
 typedef struct DriveSound { /* the car's state, ten times a second while the race runs */

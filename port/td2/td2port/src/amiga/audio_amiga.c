@@ -23,7 +23,9 @@
 
 static u32 game_over;                               /* sfx/gameover, an 8SVX; 0 if missing */
 static u32 speech[2];                               /* sfx/the_duel, sfx/test_drive_ii */
+static u32 accolade;                                /* sfx/accolade: "Accolade presents" */
 static int speech_next;                             /* the speech sample to play when the first ends */
+static u32 form_waiting;                            /* an 8SVX sound waiting for the song's first tick */
 
 static char root[1024];
 static u8 *song_file;
@@ -136,6 +138,7 @@ bool audio_amiga_open(const char *dir, char *err, size_t errlen)
     game_over = load_at("sfx/gameover", &at, FORM_END);
     speech[0] = load_at("sfx/the_duel", &at, FORM_END);
     speech[1] = load_at("sfx/test_drive_ii", &at, FORM_END);
+    accolade = load_at("sfx/accolade", &at, FORM_END);
     car_loaded[0] = 0;
     ready = true;
     return true;
@@ -170,6 +173,7 @@ static void race_vblank(void)                       /* $1231c: the siren sweep, 
 
 static void silence(void)
 {
+    form_waiting = 0;
     if (mode == MUSIC) song_stop();
     awr16(0xDFF09A, 0x0780);                        /* audio interrupts and DMA off */
     awr16(0xDFF096, 0x000F);
@@ -192,7 +196,11 @@ static void start_music(void)
 
 /* An 8SVX sound, as duel's overlay routine (overlay code 5178h) plays one: the music player's effect
  * command on channel 2, volume 64, once, with the music at 69h meanwhile. The music, if it plays, goes
- * on on the other channels. */
+ * on on the other channels.
+ * A song's first tick turns all four channels off (DMACON 000Fh) after starting a pending effect, so an
+ * effect asked for before that tick would be cut at once. duel never meets this: it starts the song
+ * and then loads the intro's speech and pictures from disk. The DOS game shows the Accolade screen
+ * 0.09 s after starting its song, so here such an effect waits for the song's first tick. */
 static void play_form(u32 form)
 {
     if (!form) return;
@@ -203,6 +211,10 @@ static void play_form(u32 form)
         paula_set_servers(song_audio_int, song_tick);
         song_open();
         mode = MUSIC;
+    }
+    if (song_status() == 1) {                       /* PlayState 1: the song starts at the next tick */
+        form_waiting = form;
+        return;
     }
     song_play_sfx(form, 2, 64, 1, 0x69);
 }
@@ -225,25 +237,44 @@ static void start_race(const char *car)
 
 /* ---- the backend */
 
+static int step_samples;                            /* how often render looks at the waiting sounds */
+
 static void amiga_reset(int rate)
 {
     amiga_set_reg_hook(paula_write);
     paula_set_servers(NULL, NULL);
     paula_set_vblank(NULL);
     paula_reset(rate);
+    step_samples = rate / 200 > 0 ? rate / 200 : 1;   /* 5 ms */
+    form_waiting = 0;
+    speech_next = 0;
     mode = QUIET;
 }
 
 static void amiga_speaker(u16 divisor, u8 port61_bits) { (void)divisor; (void)port61_bits; }
 
-static void amiga_render(s16 *out, int n)
+static void start_waiting_sounds(void)
 {
+    if (form_waiting && (mode != MUSIC || song_status() != 1)) {
+        u32 f = form_waiting;
+        form_waiting = 0;
+        if (mode == MUSIC) play_form(f);
+    }
     /* The title's second speech sample follows the first (duel draws in between; the wait is a guess). */
-    if (speech_next && mode == MUSIC && !song_sfx_status(2)) {
+    if (speech_next && !form_waiting && mode == MUSIC && !song_sfx_status(2)) {
         play_form(speech[speech_next]);
         speech_next = 0;
     }
-    paula_render(out, n);
+}
+
+static void amiga_render(s16 *out, int n)
+{
+    for (int done = 0; done < n;) {
+        int k = n - done < step_samples ? n - done : step_samples;
+        start_waiting_sounds();
+        paula_render(out + done, k);
+        done += k;
+    }
 }
 
 static void amiga_event(SoundEvent e, int n, const char *car)
@@ -265,6 +296,7 @@ static void amiga_event(SoundEvent e, int n, const char *car)
     case SOUND_BUMP: if (mode == RACE) race_car.bump = true; break;
     case SOUND_CRASH: if (mode == RACE) race_crash(); break;
     case SOUND_GAME_OVER: play_form(game_over); break;
+    case SOUND_ACCOLADE: play_form(accolade); break;   /* overlay 1204h, with pics/Title2 */
     case SOUND_TITLE:                               /* "The Duel", then "Test Drive II" */
         play_form(speech[0]);
         speech_next = speech[1] ? 1 : 0;

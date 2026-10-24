@@ -78,6 +78,7 @@ s16 accolade_screen(void)
     blit_copy_own(res_find(a, 0x7202));              /* "acc_" */
     blit_copy_own(res_find(a, 0x7207));              /* "pres" */
     blit_copy_own(res_find(a, 0x720C));              /* "copy" */
+    host_sound_event(SOUND_ACCOLADE, 0, NULL);       /* PORT: sample-based audio (the Amiga's speech) */
     r = screen_reveal(1);
     if (r == 0) {
         FarPtr bull = res_find(a, 0x7211);           /* "bull" slides in from the left */

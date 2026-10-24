@@ -1,6 +1,6 @@
 """The Amiga audio backend (amiga/audio_amiga.c) as the game drives it: what it plays for each event.
 
-Opens the Amiga game folder, then: the title song, and the speech over it; a race on the F40 with the car's state ten times a
+Opens the Amiga game folder, then: the title song, and the two speeches over it; a race on the F40 with the car's state ten times a
 second (revving up, the siren, a bump, a crash and the end); the game over sound; the song again. Each
 part must sound (not be silent), the engine's pitch must follow the rpm, and the end of a race must
 fade the car out.
@@ -9,6 +9,8 @@ Needs the unpacked Amiga game in runs/amiga and build/td2diff.dll; skipped witho
 """
 import ctypes
 import math
+import struct
+import sys
 import unittest
 from pathlib import Path
 
@@ -16,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 AMIGA = ROOT / 'runs/amiga'
 DLL = ROOT / 'build/td2diff.dll'
 RATE = 22050
-SONG, RACE_START, RACE_END, BUMP, CRASH, GAME_OVER, TITLE = range(7)
+SONG, RACE_START, RACE_END, BUMP, CRASH, GAME_OVER, TITLE, ACCOLADE = range(8)
 
 
 class Backend:
@@ -51,6 +53,16 @@ class Backend:
         return list(buf)
 
 
+def speech_seconds(name):
+    """The length of an 8SVX sound in sfx: its one-shot bytes over its rate."""
+    sys.path.insert(0, str(ROOT / 'tools/amiga'))
+    import rpck
+    form = rpck.read((AMIGA / 'sfx' / name).read_bytes())
+    i = form.find(b'VHDR')
+    one_shot, _, _, rate = struct.unpack_from('>IIIH', form, i + 8)
+    return one_shot / rate
+
+
 def rms(s):
     return math.sqrt(sum(x * x for x in s) / len(s)) if s else 0.0
 
@@ -68,15 +80,23 @@ class AmigaAudioTest(unittest.TestCase):
         b.reset()
         self.assertLess(rms(b.render(0.5)), 1)                  # silent until the game says what plays
 
-        b.event(SONG, 1)
-        song = b.render(3)
+        def song_with(e=None):
+            b.reset()
+            b.event(SONG, 1)
+            if e is not None:
+                b.event(e)
+            return b.render(5)
+
+        song = song_with()
         self.assertGreater(rms(song), 300)                      # the title song
-        b.event(SONG, 1)
-        b.event(TITLE)
-        speech = b.render(3)
-        self.assertGreater(rms(speech), 300)
-        self.assertNotEqual(speech, song)                       # the speech over the song
-        b.render(3)
+        # The speech over the song, right after the song starts as the DOS intro does it: each sample
+        # must sound for its whole length ("The Duel" and "Test Drive II" one after the other).
+        for e, names in ((ACCOLADE, ['accolade']), (TITLE, ['the_duel', 'test_drive_ii'])):
+            speech = song_with(e)
+            differ = [i for i in range(len(song)) if speech[i] != song[i]]
+            heard = (differ[-1] - differ[0]) / RATE if differ else 0
+            self.assertGreater(heard, 0.9 * sum(speech_seconds(n) for n in names), names)
+        b.reset()
 
         b.event(RACE_START, car='F40')
         b.render(0.3)
