@@ -40,6 +40,19 @@ class CgaCompareTest(unittest.TestCase):
         self.assertIn('-and dx, 0xfff8', diff)
         self.assertIn('+and dx, 0xfffc', diff)
 
+    def test_scenery_colours_come_from_the_cga_words(self):
+        """stage_load reads the stage file's CGA colour words, 2 bytes before EGA's."""
+        ea, ca = self.c.norm_pair('06c9:1c8f')
+        kind, diff = cc.classify(ea, ca, self.c.addr)
+        self.assertIn('-mov ax, word ptr [0x378c]', diff)
+        self.assertIn('+mov ax, word ptr [0x3686]', diff)
+
+    def test_instruments_differ_only_in_the_needle_colour(self):
+        """The digit handle table moved with its base (DS:3010 -> 2F18); only colour 15 -> FFFFh is left."""
+        ea, ca = self.c.norm_pair('06c9:3cef')
+        _, diff = cc.classify(ea, ca, self.c.addr)
+        self.assertEqual([d for d in diff if d[0] in '+-'], ['-mov dx, 0xf', '+mov dx, 0xffff'] * 2)
+
     def test_unrelated_functions_do_not_compare_equal(self):
         ea, _ = self.c.norm_pair('06c9:4d3f')            # traffic
         _, ca = self.c.norm_pair('06c9:4674')            # motion

@@ -340,20 +340,36 @@ class Addresses:
     def learn(self, pairs_of_lines):
         """DGROUP addresses whose data cannot anchor (tables the game fills at run time) are learned
         from the code: CGA value c stands for EGA value e when c always meets e, and another address
-        at least 4 bytes away within 0x40 shows the same shift. One coincidence cannot pass."""
+        at least 4 bytes away within 0x40 shows the same shift. One coincidence cannot pass.
+
+        A buffer whose base the code loads as an immediate (mov reg, base / push base) moves by that
+        base's shift, which overrules the neighbours: CGA reads the scenery file's colour words and the
+        sign record's colours 2 bytes away from EGA's, and those reads would vouch for each other."""
         from collections import defaultdict
-        seen = defaultdict(set)
+        seen, bases = defaultdict(set), defaultdict(set)
         for e_line, c_line in pairs_of_lines:
             for a, b in zip(HEX.findall(e_line), HEX.findall(c_line)):
                 a, b = int(a, 16), int(b, 16)
                 if a != b and 0x100 <= b < self.ds.cga_init and not self.data(b, a) and not self.code(b, a):
                     seen[b].add(a)
+            im = IMMEDIATE.fullmatch(c_line), IMMEDIATE.fullmatch(e_line)
+            if all(im):
+                bases[int(im[0].group(1), 16)].add(int(im[1].group(1), 16))
+        self.bases = sorted((c, next(iter(es))) for c, es in bases.items() if len(es) == 1)
         unique = {c: next(iter(es)) for c, es in seen.items() if len(es) == 1}
         self.learned = {}
         for c, e in unique.items():
             d = e - c
+            base = self.base_below(c)
+            if base and base[1] - base[0] != d:
+                continue
             if any(abs(c2 - c) >= 4 and abs(c2 - c) <= 0x40 and e2 - c2 == d for c2, e2 in unique.items()):
                 self.learned[c] = e
+
+    def base_below(self, c: int, reach: int = 0x400):
+        """The nearest buffer base at most reach bytes below c (CGA, EGA), or None."""
+        i = bisect_right([b[0] for b in self.bases], c) - 1
+        return self.bases[i] if i >= 0 and c - self.bases[i][0] <= reach else None
 
 
 def names_csv() -> dict[str, tuple[str, str]]:
@@ -365,6 +381,7 @@ def names_csv() -> dict[str, tuple[str, str]]:
 
 
 LABEL = re.compile(r'\bL(\d+)\b')
+IMMEDIATE = re.compile(r'(?:mov (?:[a-d]x|[sd]i), |push )(0x[0-9a-f]{3,4})')
 
 
 def shape(line: str) -> str:
