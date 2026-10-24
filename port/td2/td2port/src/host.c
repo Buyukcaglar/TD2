@@ -15,6 +15,8 @@ static SDL_Texture *texture;
 static SDL_AudioStream *audio;
 static SDL_Gamepad *gamepad;
 static char *game_dir;
+static char *user_dir;        /* profile folder for files the game writes (scores, SELECT.DAT) */
+static char *user_dir_arg;
 
 static void (*tick_handler)(void);
 static bool (*frame_source)(u32 *);
@@ -40,6 +42,34 @@ static double samples_per_tick_frac;
 
 static void process_events(void);
 
+void host_set_user_dir(const char *dir)
+{
+    SDL_free(user_dir_arg);
+    user_dir_arg = dir ? SDL_strdup(dir) : NULL;
+}
+
+/* The profile folder is --user-dir, or the per-user application data folder
+ * (%APPDATA%\TestDrive2 on Windows). It is created if missing. */
+static bool init_user_dir(void)
+{
+    if (user_dir_arg) {
+        if (!SDL_CreateDirectory(user_dir_arg)) {
+            fprintf(stderr, "cannot create user dir %s: %s\n", user_dir_arg, SDL_GetError());
+            return false;
+        }
+        user_dir = SDL_strdup(user_dir_arg);
+    } else {
+        user_dir = SDL_GetPrefPath(NULL, "TestDrive2");
+        if (!user_dir) {
+            fprintf(stderr, "no user data folder: %s\n", SDL_GetError());
+            return false;
+        }
+    }
+    size_t n = SDL_strlen(user_dir);
+    while (n > 1 && (user_dir[n - 1] == '/' || user_dir[n - 1] == '\\')) user_dir[--n] = 0;
+    return true;
+}
+
 bool host_init(const char *dir, int window_scale)
 {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMEPAD)) {
@@ -47,6 +77,7 @@ bool host_init(const char *dir, int window_scale)
         return false;
     }
     game_dir = SDL_strdup(dir);
+    if (!init_user_dir()) return false;
     if (window_scale < 1) window_scale = 3;
     if (!SDL_CreateWindowAndRenderer("Test Drive II (" TD_VARIANT_NAME ")", 320 * window_scale, 240 * window_scale,
                                      SDL_WINDOW_RESIZABLE, &window, &renderer)) {
@@ -78,6 +109,9 @@ void host_shutdown(void)
     if (renderer) SDL_DestroyRenderer(renderer);
     if (window) SDL_DestroyWindow(window);
     SDL_free(game_dir);
+    SDL_free(user_dir);
+    SDL_free(user_dir_arg);
+    game_dir = user_dir = user_dir_arg = NULL;
     SDL_Quit();
 }
 
@@ -495,26 +529,39 @@ void host_speaker(u16 divisor, bool on)
     spk_on = on;
 }
 
-char *host_game_path(const char *name, bool create)
+/* Case-insensitive lookup of name inside dir; NULL if it does not exist. */
+static char *find_in_dir(const char *dir, const char *name)
 {
     char *direct = NULL;
-    SDL_asprintf(&direct, "%s/%s", game_dir, name);
+    SDL_asprintf(&direct, "%s/%s", dir, name);
     if (SDL_GetPathInfo(direct, NULL)) return direct;
+    SDL_free(direct);
 
     int count = 0;
-    char **entries = SDL_GlobDirectory(game_dir, NULL, 0, &count);
+    char **entries = SDL_GlobDirectory(dir, NULL, 0, &count);
     char *found = NULL;
     for (int i = 0; entries && i < count; i++) {
         if (SDL_strcasecmp(entries[i], name) == 0) {
-            SDL_asprintf(&found, "%s/%s", game_dir, entries[i]);
+            SDL_asprintf(&found, "%s/%s", dir, entries[i]);
             break;
         }
     }
     SDL_free(entries);
-    if (found) { SDL_free(direct); return found; }
-    if (create) return direct;
-    SDL_free(direct);
-    return NULL;
+    return found;
+}
+
+/* Files in the profile folder shadow the game folder. Writes always go to the profile folder,
+ * so the game folder is only read. */
+char *host_game_path(const char *name, bool create)
+{
+    if (!name || !*name || SDL_strchr(name, '/') || SDL_strchr(name, '\\') || SDL_strchr(name, ':')) return NULL;
+    char *path = user_dir ? find_in_dir(user_dir, name) : NULL;
+    if (path) return path;
+    if (create) {
+        SDL_asprintf(&path, "%s/%s", user_dir, name);
+        return path;
+    }
+    return find_in_dir(game_dir, name);
 }
 
 void host_free(void *p)

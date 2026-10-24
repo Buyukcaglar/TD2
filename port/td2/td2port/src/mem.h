@@ -26,15 +26,27 @@
 
 extern u8 mem[MEM_SIZE];
 
-static inline u32 lin(u16 seg, u16 off) { return ((u32)seg << 4) + off; }
+/* Addresses wrap at 20 bits like the 8086 bus; multi-byte accesses wrap per byte. */
+#define ADDR_MASK 0xFFFFFu
+static inline u32 lin(u16 seg, u16 off) { return (((u32)seg << 4) + off) & ADDR_MASK; }
 static inline u8 *mp(u16 seg, u16 off) { return mem + lin(seg, off); }
 
 static inline u8  rd8 (u16 seg, u16 off) { return mem[lin(seg, off)]; }
-static inline u16 rd16(u16 seg, u16 off) { u8 *p = mp(seg, off); return (u16)(p[0] | p[1] << 8); }
-static inline u32 rd32(u16 seg, u16 off) { u8 *p = mp(seg, off); return p[0] | p[1] << 8 | p[2] << 16 | (u32)p[3] << 24; }
+static inline u16 rd16(u16 seg, u16 off) { u32 a = lin(seg, off); return (u16)(mem[a] | mem[(a + 1) & ADDR_MASK] << 8); }
+static inline u32 rd32(u16 seg, u16 off)
+{
+    u32 a = lin(seg, off);
+    return (u32)mem[a] | (u32)mem[(a + 1) & ADDR_MASK] << 8 | (u32)mem[(a + 2) & ADDR_MASK] << 16 |
+           (u32)mem[(a + 3) & ADDR_MASK] << 24;
+}
 static inline void wr8 (u16 seg, u16 off, u8 v)  { mem[lin(seg, off)] = v; }
-static inline void wr16(u16 seg, u16 off, u16 v) { u8 *p = mp(seg, off); p[0] = (u8)v; p[1] = (u8)(v >> 8); }
-static inline void wr32(u16 seg, u16 off, u32 v) { u8 *p = mp(seg, off); p[0] = (u8)v; p[1] = (u8)(v >> 8); p[2] = (u8)(v >> 16); p[3] = (u8)(v >> 24); }
+static inline void wr16(u16 seg, u16 off, u16 v) { u32 a = lin(seg, off); mem[a] = (u8)v; mem[(a + 1) & ADDR_MASK] = (u8)(v >> 8); }
+static inline void wr32(u16 seg, u16 off, u32 v)
+{
+    u32 a = lin(seg, off);
+    mem[a] = (u8)v; mem[(a + 1) & ADDR_MASK] = (u8)(v >> 8);
+    mem[(a + 2) & ADDR_MASK] = (u8)(v >> 16); mem[(a + 3) & ADDR_MASK] = (u8)(v >> 24);
+}
 
 /* Lvalue accessors for globals (little-endian host). DS offsets come from symbols.h, e.g.
  *   DSW(DS_road_pos) += 1;   if (DSB(DS_run_state) == 3) ...   DSS(DS_car_x) = -0x236;
@@ -81,7 +93,7 @@ static inline u16 div32_16(u32 dxax, u16 divisor, u16 *rem)
 }
 static inline s16 idiv32_16(s32 dxax, s16 divisor, s16 *rem)
 {
-    if (divisor == 0) div_error();
+    if (divisor == 0 || (dxax == INT32_MIN && divisor == -1)) div_error();   /* the quotient overflows */
     s32 q = dxax / divisor;                         /* truncates toward zero, like IDIV */
     if (q > 32767 || q < -32768) div_error();
     if (rem) *rem = (s16)(dxax % divisor);

@@ -50,6 +50,7 @@ static bool exepack_unpack(const u8 *image, size_t image_len, u16 cs,
     for (int seg = 0; seg < 16; seg++) {
         if (p + 2 > stub_len) { set_err(err, errlen, "EXEPACK relocation table truncated"); return false; }
         u16 n = le16(stub + p); p += 2;
+        if ((size_t)n > (stub_len - p) / 2) { set_err(err, errlen, "EXEPACK relocations truncated"); return false; }
         Reloc *grown = SDL_realloc(*relocs, sizeof(Reloc) * (size_t)(*nrel + n + 1));
         if (!grown) { set_err(err, errlen, "out of memory"); return false; }
         *relocs = grown;
@@ -60,6 +61,10 @@ static bool exepack_unpack(const u8 *image, size_t image_len, u16 cs,
         }
     }
 
+    if (skip_len == 0 || (size_t)(skip_len - 1) * 16 > ep || dest_len == 0) {
+        set_err(err, errlen, "invalid EXEPACK span");
+        return false;
+    }
     size_t packed_len = ep - (size_t)(skip_len - 1) * 16;
     size_t unpacked_len = (size_t)dest_len * 16;
     size_t buf_len = packed_len > unpacked_len ? packed_len : unpacked_len;

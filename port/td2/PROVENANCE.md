@@ -17,7 +17,11 @@ Upstream's tools, README, CI files and generated tables were not copied.
 
 ## Local changes
 
-This is a fork. None yet at the import commit.
+This is a fork. Changes made in this repository after the import:
+
+- `mem.h`: addresses wrap at 20 bits, and 16/32-bit reads and writes wrap per byte, as on the 8086 bus. `idiv32_16` treats `INT32_MIN / -1` as a divide error instead of undefined behaviour.
+- `mem.c`: the EXEPACK unpacker checks the relocation count and the packed span before using them.
+- `--user-dir DIR`: high scores and `SELECT.DAT` are written to a profile folder, never the game folder. Files there shadow the game folder's copies. The default is the SDL preference folder (`%APPDATA%\TestDrive2` on Windows).
 
 Git history in this repository records each later change.
 

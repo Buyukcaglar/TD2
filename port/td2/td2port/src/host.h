@@ -66,8 +66,10 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons);
  * divisor 0 means 65536. Changes take effect from the current tick onward. */
 void host_speaker(u16 divisor, bool on);
 
-/* ---- Game files: case-insensitive lookup inside the game directory. Returns a malloc'd path
- * (SDL_free it) or NULL if the file does not exist. For new files (SCORES) pass create = true. */
+/* ---- Game files: case-insensitive lookup in the profile folder, then the game directory. Returns a
+ * malloc'd path (SDL_free it) or NULL if the file does not exist. For files the game writes pass
+ * create = true; the path is then always inside the profile folder. */
+void  host_set_user_dir(const char *dir);   /* before host_init; NULL = per-user app data folder */
 char *host_game_path(const char *name, bool create);
 void  host_free(void *p);        /* frees memory returned by host functions (host_game_path) */
 
