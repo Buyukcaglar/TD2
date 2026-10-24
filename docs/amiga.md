@@ -116,6 +116,16 @@ The race does not use the song player. `duel` has its own sample driver and the 
 - The font and the three traffic cars are the European Challenge's. The Amiga's own traffic sprites are not used yet. The high scores start empty.
 - `tests/test_northern_germany.py` builds it headless and checks the catalogue, each stage against its twin (also through the original game's `rle_decode` under the harness), the signs, and the icon archives. The choice screen and the menu icon were checked by eye in EGA, CGA and Hercules. A demo race on it was checked by eye in EGA, CGA and Hercules.
 
+## The Amiga graphics backend
+
+The design, and what is done.
+
+- **Five planes.** The Amiga backend (`--amiga-graphics`, `platform/gfx_amiga.c`) is the EGA backend's model and code run with a fifth plane, so the screen, every off-screen buffer and every colour have five bits: the Amiga's 32 colours. The EGA backend is a literal transcription whose register quirks shape the frames, so reusing it keeps those frames exactly; a new chunky backend would have had to rebuild every quirk. `gfx_ega.planes` is 4 or 5. The RAM paths loop over the planes, and a buffer's plane 4 is one more block after plane 3 (`ram_plane`). The screen paths take "all planes" (0Fh in the original) as all five.
+- **Colours.** The game passes EGA colour numbers (and FFh or FFFFh for white, which four planes read as 15). With five planes each goes through `gfx_ega.colour_map` (`ega_colour`), the identity for now; that is where the game's own drawing will get the Amiga screen's colours. Colours 0 to 15 show the EGA palette registers and 16 to 31 the Amiga's (`gfx_ega.rgb`). The scene's road and sky writers clear plane 4 where they draw.
+- **Sprites.** The DOS sprites have four stored planes at most and leave plane 4 as it is, as they leave any plane they do not list. A sprite that is a live off-screen buffer (its header is a descriptor's in the row pool, `ega_buffer_sprite`) carries its fifth plane through blits and grabs. The sprite header has no free bits for a marker: every value of the plane map's high nibbles occurs in the DOS files.
+- **Checked.** Without Amiga files the backend shows the EGA frames: `python tools/snapshots.py --amiga` compares its attract and menus runs with the EGA baseline (95 frames, all equal), and the EGA, CGA and Hercules baselines are unchanged.
+- **Next.** The Amiga pictures and sprites in place of the DOS ones by archive and name, each screen's palette, and the colour map from EGA colour numbers to that palette. The backend joins the Ctrl+Shift+G cycle and the menu once it shows Amiga pictures.
+
 ## 3. How the Amiga version fits the port
 
 The port stays one game: the DOS game logic running the TD2EGA image. The Amiga version adds three things to it, each found and checked against the Amiga files and code:
@@ -131,7 +141,7 @@ Everything is read from the user's files at run time and derived files go to the
 1. **Formats.** Done: load files, Rpck, ILBM, the sprite archives and sprites. Next: the race screen's palette, the raw sample header, the engine samples.
 2. **Courses.** Done for Northern Germany: it is built from DOS twin stages, with its own signs (above). A general converter from Amiga road data to DOS stages is not needed for it; it would be for an Amiga scenery without DOS twins, and would need the header words and the Amiga object codes mapped.
 3. **Amiga audio.** Done: the `song` player, the race driver and the race logic in C, each checked against the original; the Paula model; the game events and car state; the Amiga `AudioBackend`; the live switch (Ctrl+Shift+S and the menu). Next: a listening test by the user.
-4. **Amiga graphics.** The sprite decoder, the backend, the screens, the switch.
+4. **Amiga graphics.** Done: the five-plane backend (above). Next: the sprite decoder, the screens, the switch.
 5. **Data manager.** Done for the sound: the `amiga` setting names the Amiga game's folder or archive, and `app_data_amiga_dir` finds the folder with `duel` and `sfx`. Next: the same source for the Amiga graphics and Northern Germany.
 
 ## 5. Open questions

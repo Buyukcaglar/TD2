@@ -34,14 +34,18 @@ static const u8 mode0d_default_palette[17] = {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x00
 };
 
-static void ega_reset(void)
+void gfx_ega_reset(int planes)
 {
     memset(gfx_ega.plane, 0, sizeof gfx_ega.plane);
     memset(gfx_ega.latch, 0, sizeof gfx_ega.latch);
+    gfx_ega.planes = (u8)planes;
+    for (int i = 0; i < 16; i++) gfx_ega.colour_map[i] = (u8)i;
     gfx_ega_reset_registers();
     memcpy(gfx_ega.palette, mode0d_default_palette, sizeof gfx_ega.palette);
     gfx_ega.dirty = true;
 }
+
+static void ega_reset(void) { gfx_ega_reset(4); }
 
 const u8 *gfx_vram_plane(int k) { return gfx_ega.plane[k & 3]; }
 
@@ -54,20 +58,24 @@ static u32 ega_rgb(u8 v)
     return r << 16 | g << 8 | b;
 }
 
-static bool ega_compose(u32 *xrgb)
+/* Colours 0-15 are the palette registers' and, with five planes, 16-31 the Amiga backend's. */
+bool gfx_ega_compose(u32 *xrgb)
 {
     if (!gfx_ega.dirty) return false;
     gfx_ega.dirty = false;
-    u32 pal[16];
+    u32 pal[32];
     for (int i = 0; i < 16; i++) pal[i] = ega_rgb(gfx_ega.palette[i]);
+    for (int i = 16; i < 32; i++) pal[i] = gfx_ega.rgb[i];
+    bool five = gfx_ega.planes == 5;
     for (int y = 0; y < 200; y++) {
         for (int bx = 0; bx < 40; bx++) {
             u32 off = (u32)(y * 40 + bx);
             u8 p0 = gfx_ega.plane[0][off], p1 = gfx_ega.plane[1][off];
-            u8 p2 = gfx_ega.plane[2][off], p3 = gfx_ega.plane[3][off];
+            u8 p2 = gfx_ega.plane[2][off], p3 = gfx_ega.plane[3][off], p4 = five ? gfx_ega.plane[4][off] : 0;
             for (int b = 0; b < 8; b++) {
                 int s = 7 - b;
-                int idx = (p0 >> s & 1) | (p1 >> s & 1) << 1 | (p2 >> s & 1) << 2 | (p3 >> s & 1) << 3;
+                int idx = (p0 >> s & 1) | (p1 >> s & 1) << 1 | (p2 >> s & 1) << 2 | (p3 >> s & 1) << 3
+                        | (p4 >> s & 1) << 4;
                 xrgb[y * 320 + bx * 8 + b] = pal[idx];
             }
         }
@@ -139,6 +147,7 @@ static FarPtr ega_create_buffer(u16 width_px, u16 h, u16 plane_mask)
     u32 total = 0;                                                 /* BH:DX, 24 bits */
     for (int k = 0; k < 4; k++)
         if (plane_mask >> k & 1) total += blk;
+    if (gfx_ega.planes == 5 && (plane_mask & 0x0F) == 0x0F) total += blk;   /* PORT: plane 4 after plane 3 */
     total += 0x10;
     u16 paras = (u16)((u16)(total >> 4) + 1);
     FarPtr blkp = mem_reserve(DS_s_window, paras);                /* "WINDOW"; only DX (segment) is used */
@@ -186,9 +195,9 @@ static FarPtr ega_create_buffer(u16 width_px, u16 h, u16 plane_mask)
 /* 06c9:840a gfx_clear_screen: always A000h, 8000 bytes, write mode 2, map mask 0Fh */
 static void ega_clear_screen(u16 colour16)
 {
-    u8 colour = (u8)colour16;
+    u8 colour = ega_colour(colour16);
     gc_out(5, 2);
-    seq_map_mask(0x0F);
+    seq_map_mask(ega_all_planes());
     for (u16 di = 0; di < 0x1F40; di++) ega_write(di, colour);
     gc_out(5, 0);
 }
@@ -196,7 +205,7 @@ static void ega_clear_screen(u16 colour16)
 /* 06c9:843e gfx_clear_clip */
 static void ega_clear_clip(u16 colour16)
 {
-    u8 colour = (u8)colour16;
+    u8 colour = ega_colour(colour16);
     u16 rows = (u16)(CUR_Y1 - CUR_Y0);                             /* bp-0E */
     u16 cols = (u16)(CUR_X1 - CUR_X0);                             /* bp-08 */
     u16 di0 = (u16)(row_at(CUR_Y0) + CUR_X0);                      /* bp-0A */
@@ -204,7 +213,7 @@ static void ega_clear_clip(u16 colour16)
 
     if (CUR_PLANE(0) == VRAM_SEG) {
         gc_out(5, 2);
-        seq_map_mask(0x0F);
+        seq_map_mask(ega_all_planes());
         u16 di = di0;
         if (cols == 0x28) {
             u16 count = (u16)(0x28 * (u8)rows);                    /* mul dl */
@@ -223,8 +232,8 @@ static void ega_clear_clip(u16 colour16)
         u16 total = (u16)(CUR_STRIDE * rows);                      /* imul dx (low word) */
         u16 words = (u16)(total >> 1);
         u8 c = colour;
-        for (int k = 0; k < 4; k++, c >>= 1) {
-            u16 seg = CUR_PLANE(k);
+        for (int k = 0; k < gfx_ega.planes; k++, c >>= 1) {
+            u16 seg = ram_plane(k);
             if (!seg) continue;
             u8 v = (c & 1) ? 0xFF : 0x00;
             u16 di = di0;
@@ -234,8 +243,8 @@ static void ega_clear_clip(u16 colour16)
         return;
     }
     u16 c = colour;
-    for (int k = 0; k < 4; k++, c >>= 1) {
-        u16 seg = CUR_PLANE(k);
+    for (int k = 0; k < gfx_ega.planes; k++, c >>= 1) {
+        u16 seg = ram_plane(k);
         if (!seg) continue;
         u8 v = (c & 1) ? 0xFF : 0x00;
         u16 di = di0, r = rows;
@@ -249,7 +258,7 @@ static void ega_clear_clip(u16 colour16)
 /* 06c9:8a0c gfx_fill_rect (body shared with 06c9:89a2) */
 static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour16)
 {
-    u8 colour = (u8)colour16;
+    u8 colour = ega_colour(colour16);
     if (w <= 0 || h <= 0) return;
     u16 col = (u16)(x >> 3);                                       /* bp-0C */
     u8 dh = DSB(0x6838 + (x & 7));                                 /* left mask FF 7F .. 01 */
@@ -263,8 +272,8 @@ static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour16)
     if (CUR_PLANE(0) != VRAM_SEG) {
         if ((s16)n > 0) {                                          /* whole middle bytes */
             u8 c = colour;
-            for (int k = 0; k < 4; k++, c >>= 1) {
-                u16 seg = CUR_PLANE(k);
+            for (int k = 0; k < gfx_ega.planes; k++, c >>= 1) {
+                u16 seg = ram_plane(k);
                 if (!seg) continue;
                 u16 di = di0, rows = (u16)h;
                 bool set = c & 1;
@@ -279,8 +288,8 @@ static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour16)
             }
         } else if (n == 0) {                                       /* two partial bytes */
             u8 c = colour;
-            for (int k = 0; k < 4; k++, c >>= 1) {
-                u16 seg = CUR_PLANE(k);
+            for (int k = 0; k < gfx_ega.planes; k++, c >>= 1) {
+                u16 seg = ram_plane(k);
                 if (!seg) continue;
                 u16 di = di0, cnt = (u16)h;
                 bool set = c & 1;
@@ -297,8 +306,8 @@ static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour16)
             }
         } else {                                                   /* single byte */
             u8 m = dh & dl, im = (u8)~m, c = colour;
-            for (int k = 0; k < 4; k++, c >>= 1) {
-                u16 seg = CUR_PLANE(k);
+            for (int k = 0; k < gfx_ega.planes; k++, c >>= 1) {
+                u16 seg = ram_plane(k);
                 if (!seg) continue;
                 u16 di = di0, cnt = (u16)h;
                 do {
@@ -349,7 +358,7 @@ static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour16)
 /* 06c9:ba3c gfx_plot */
 static void ega_plot(s16 x, s16 y, u16 colour16)
 {
-    u8 colour = (u8)colour16;
+    u8 colour = ega_colour(colour16);
     u16 bx = (u16)x & 7;
     u16 di = (u16)(((u16)x >> 3) + row_at((u16)y));
     u8 bit = DSB(DS_plot_bit_tab + bx);
@@ -364,8 +373,8 @@ static void ega_plot(s16 x, s16 y, u16 colour16)
         return;
     }
     u8 nb = (u8)~bit, c = colour;
-    for (int k = 0; k < 4; k++, c >>= 1) {
-        u16 seg = CUR_PLANE(k);
+    for (int k = 0; k < gfx_ega.planes; k++, c >>= 1) {
+        u16 seg = ram_plane(k);
         if (!seg) continue;
         if (c & 1) wr8(seg, di, (u8)(rd8(seg, di) | bit));
         else wr8(seg, di, (u8)(rd8(seg, di) & nb));
@@ -386,11 +395,12 @@ static void line_plot_ram(u16 y, u16 x, u16 colour, bool or_mode)
 {
     u16 di = (u16)(row_at(y) + (x >> 3));
     u8 al = CSB((or_mode ? CS_line_or_bit_tab : CS_line_bit_tab) + (x & 7)), ah = (u8)~al;
-    for (int k = 0; k < 4; k++, colour >>= 1) {
-        u16 seg = CUR_PLANE(k);
+    u8 or_planes = ega_colour(0x0F);                               /* PORT: white's planes */
+    for (int k = 0; k < gfx_ega.planes; k++, colour >>= 1) {
+        u16 seg = ram_plane(k);
         if (!seg) continue;
         if (or_mode) {
-            wr8(seg, di, (u8)(rd8(seg, di) | al));                 /* colour ignored */
+            if (or_planes >> k & 1) wr8(seg, di, (u8)(rd8(seg, di) | al));   /* colour ignored */
         } else {
             wr8(seg, di, (u8)(rd8(seg, di) & ah));
             if (colour & 1) wr8(seg, di, (u8)(rd8(seg, di) | al));
@@ -410,7 +420,7 @@ static void ega_line_begin(bool or_mode)
 {
     gc_out(5, 2);
     if (or_mode) gc_out(3, 0x10);
-    seq_map_mask(0x0F);
+    seq_map_mask(ega_all_planes());
 }
 
 static void ega_line_end(bool or_mode, bool x_major)
@@ -423,7 +433,7 @@ static void ega_line_end(bool or_mode, bool x_major)
 
 static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_mode)
 {
-    u8 colour = (u8)colour16;
+    u8 colour = ega_colour(colour16);
     u16 cx0 = (u16)(CUR_X0 << 3), cx1 = (u16)(CUR_X1 << 3);        /* bp-14, bp-16 */
     u16 cy0 = CUR_Y0, cy1 = CUR_Y1;
     u16 X0 = (u16)x0, Y0 = (u16)y0, X1 = (u16)x1, Y1 = (u16)y1;
@@ -440,7 +450,7 @@ static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_
         }
         if (!slt(bx, cx1)) return;
         if (!sle((u16)(cx + bx), cx1)) cx = (u16)(cx - (u16)(cx + bx - cx1));
-        ega_fill_rect((s16)bx, (s16)Y0, (s16)cx, 1, colour);
+        ega_fill_rect((s16)bx, (s16)Y0, (s16)cx, 1, colour16);
         return;
     }
     if (X0 == X1) {
@@ -455,7 +465,7 @@ static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_
         }
         if (!slt(si, cy1)) return;
         if (!sle((u16)(cx + si), cy1)) cx = (u16)(cx - (u16)(cx + si - cy1));
-        ega_fill_rect((s16)X0, (s16)si, 1, (s16)cx, colour);
+        ega_fill_rect((s16)X0, (s16)si, 1, (s16)cx, colour16);
         return;
     }
 
@@ -551,9 +561,9 @@ static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_
 
 static void ega_draw_text(const u8 *s)
 {
+    u8 fg = ega_colour(DSB(DS_text_fg)), bg = ega_colour(DSB(DS_text_bg));
     u8 eq = 0;                                                     /* bp-10 (screen only) */
     if (CUR_PLANE(0) == VRAM_SEG) {
-        u8 fg = DSB(DS_text_fg), bg = DSB(DS_text_bg);
         eq = (u8)~(fg ^ bg);                                       /* planes where fg == bg */
         gc_out(1, eq);
         gc_out(0, fg & bg);
@@ -574,9 +584,9 @@ static void ega_draw_text(const u8 *s)
             }
             u16 pos = (u16)((DSW(DS_text_x) >> 3) + row_at(DSW(DS_text_y)));
             if (CUR_PLANE(0) != VRAM_SEG) {
-                u16 dx = (u16)(DSB(DS_text_fg) | (u8)(DSB(DS_text_bg) ^ DSB(DS_text_fg)) << 8);
-                for (int k = 0; k < 4; k++, dx >>= 1) {
-                    u16 seg = CUR_PLANE(k);
+                u16 dx = (u16)(fg | (u8)(bg ^ fg) << 8);
+                for (int k = 0; k < gfx_ega.planes; k++, dx >>= 1) {
+                    u16 seg = ram_plane(k);
                     if (!seg) continue;
                     u16 cnt = DSW(DS_text_glyph_h), di = pos, si = glyph;
                     if (dx & 0x100) {
@@ -588,12 +598,12 @@ static void ega_draw_text(const u8 *s)
                     }
                 }
             } else {
-                seq_map_mask((u8)(DSB(DS_text_fg) | eq));
+                seq_map_mask((u8)(fg | eq));
                 u16 di = pos, cnt = DSW(DS_text_glyph_h), si = glyph;
                 do { u8 v = rd8(DGROUP, si++); (void)ega_read(di); ega_write(di, v); di = (u16)(di + stride); } while (--cnt);
-                u8 m = (u8)((DSB(DS_text_fg) ^ DSB(DS_text_bg)) & DSB(DS_text_bg));
+                u8 m = (u8)((fg ^ bg) & bg);
                 if (m) {
-                    seq_map_mask((u8)(DSB(DS_text_bg) | eq));
+                    seq_map_mask((u8)(bg | eq));
                     di = pos; cnt = DSW(DS_text_glyph_h); si = glyph;
                     do { u8 v = (u8)~rd8(DGROUP, si++); (void)ega_read(di); ega_write(di, v); di = (u16)(di + stride); } while (--cnt);
                 }
@@ -724,7 +734,7 @@ static void ega_dissolve(FarPtr spr, u8 phase, int phases) { dissolve(spr, phase
 static void ega_scroll_window(s16 x, s16 y, s16 w, s16 h, s16 step, FarPtr spr, s16 srow)
 {
     gc_out(5, 1);
-    seq_map_mask(0x0F);
+    seq_map_mask(ega_all_planes());
     u16 di = (u16)(row_at((u16)y) + ((u16)x >> 3));
     u16 si = (u16)(di + (u16)step);
     u16 bx = (u16)((u16)step - (u16)w);
@@ -772,9 +782,9 @@ static void ega_grab_screen(s16 sx, s16 sy, s16 dx, s16 dy, s16 w_px, s16 h)
     u16 sskip = (u16)(0x28 - w);                                   /* bp-0C */
     u16 dst0 = (u16)(row_at((u16)dy) + dxb);                       /* bp-0A */
     u16 dskip = (u16)(CUR_STRIDE - w);                             /* bp-0E */
-    for (u16 bx = 0; bx < 8; bx += 2) {
+    for (u16 bx = 0; bx < 2 * gfx_ega.planes; bx += 2) {
         gc_out(4, (u8)(bx >> 1));
-        u16 seg = CSW((u16)(GFX_CUR_PLANE0 + bx));
+        u16 seg = ram_plane(bx >> 1);
         if (!seg) continue;
         u16 si = src0, di = dst0, rows = (u16)h;
         do {
@@ -807,6 +817,25 @@ static void ega_grab_into_sprite(FarPtr spr, u16 px, u16 py)
         }
         di = (u16)(di + pad);
     }
+    if (ega_buffer_sprite(spr)) {                                  /* PORT: plane 4 */
+        gc_out(4, 4);
+        u16 si = src0, rows = h;
+        do {
+            for (u16 c = w; c; c--) wr8(ds, di++, ega_read(si++));
+            si = (u16)(si + sskip);
+        } while (dec_jg(&rows));
+    }
+}
+
+bool ega_buffer_sprite(FarPtr spr)
+{
+    if (gfx_ega.planes != 5 || spr.off != 0) return false;
+    for (u16 bx = CS_gfx_rowpool; bx < CSW(CS_gfx_rowpool_top);) {
+        u16 seg = CSW((u16)(bx + 2)), off = CSW(bx);
+        if (seg == spr.seg && off == spr.off) return true;
+        bx = (u16)(bx + ((u16)(rd16(seg, (u16)(off + 2)) + 0x0D) << 1));
+    }
+    return false;
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -817,34 +846,44 @@ static FarPtr ega_cursor_glyph(u16 idx)
     return far_make(ASM_SEG, CSW((u16)(CS_cursor_glyph_tab + (u16)(idx * 2))));
 }
 
+/* The table of the EGA backend and of the Amiga one, which is this model with five planes. */
+#define EGA_DRAWING                                                                                \
+    .adapter = GFX_EGA,                                                                            \
+    .frame_w = 320,                                                                                \
+    .frame_h = 200,                                                                                \
+    .px_per_byte = 8,                                                                              \
+    .own_x_mask = 0xFFFF,                                                                          \
+    .shape_ext = { ".PES", ".ESH" },                                                               \
+    .fixup_paras = 0x1F6,                                                                          \
+    .fix_sprites = res_unflip_archive,                                                             \
+    .cursor_glyph = ega_cursor_glyph,                                                              \
+    .scene = &ega_scene_raster,                                                                    \
+    .compose = gfx_ega_compose,                                                                    \
+    .video_hook = ega_video_hook,                                                                  \
+    .set_mode = ega_set_mode,                                                                      \
+    .shutdown = ega_shutdown,                                                                      \
+    .set_palette = ega_set_palette,                                                                \
+    .create_buffer = ega_create_buffer,                                                            \
+    .clear_screen = ega_clear_screen,                                                              \
+    .clear_clip = ega_clear_clip,                                                                  \
+    .fill_rect = ega_fill_rect,                                                                    \
+    .plot = ega_plot,                                                                              \
+    .draw_line = ega_draw_line,                                                                    \
+    .draw_text = ega_draw_text,                                                                    \
+    .dissolve = ega_dissolve,                                                                      \
+    .scroll_window = ega_scroll_window,                                                            \
+    .grab_screen = ega_grab_screen,                                                                \
+    .grab_into_sprite = ega_grab_into_sprite,                                                      \
+    .blit = ega_blit
+
 const GfxBackend gfx_ega_backend = {
     .name = "EGA",
-    .adapter = GFX_EGA,
-    .frame_w = 320,
-    .frame_h = 200,
-    .px_per_byte = 8,
-    .own_x_mask = 0xFFFF,
-    .shape_ext = { ".PES", ".ESH" },
-    .fixup_paras = 0x1F6,
-    .fix_sprites = res_unflip_archive,
-    .cursor_glyph = ega_cursor_glyph,
-    .scene = &ega_scene_raster,
     .reset = ega_reset,
-    .compose = ega_compose,
-    .video_hook = ega_video_hook,
-    .set_mode = ega_set_mode,
-    .shutdown = ega_shutdown,
-    .set_palette = ega_set_palette,
-    .create_buffer = ega_create_buffer,
-    .clear_screen = ega_clear_screen,
-    .clear_clip = ega_clear_clip,
-    .fill_rect = ega_fill_rect,
-    .plot = ega_plot,
-    .draw_line = ega_draw_line,
-    .draw_text = ega_draw_text,
-    .dissolve = ega_dissolve,
-    .scroll_window = ega_scroll_window,
-    .grab_screen = ega_grab_screen,
-    .grab_into_sprite = ega_grab_into_sprite,
-    .blit = ega_blit,
+    EGA_DRAWING,
+};
+
+const GfxBackend gfx_amiga_backend = {
+    .name = "Amiga",
+    .reset = gfx_amiga_reset,
+    EGA_DRAWING,
 };

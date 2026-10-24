@@ -6,6 +6,7 @@ tests/herc_snapshots.txt).
     python tools/snapshots.py --cga            # the same with the CGA backend
     python tools/snapshots.py --hercules       # and with TD2CGA's Hercules mode
     python tools/snapshots.py --update [--cga | --hercules]   # run and rewrite the baseline
+    python tools/snapshots.py --amiga          # the Amiga backend without Amiga files, against EGA
 
 Each adapter makes four runs with TD2_VIRTUAL_CLOCK, so time only advances while the host would wait
 and two runs give the same frames:
@@ -43,7 +44,10 @@ MENU_KEYS = ('30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,42:Down,43:Ret
 
 # name, seconds, keys, ms between frames; the attract run's files keep their plain names.
 # The port's command-line option for each adapter but EGA.
-FLAGS = {'cga': '--cga', 'herc': '--hercules'}
+FLAGS = {'cga': '--cga', 'herc': '--hercules', 'amiga': '--amiga-graphics'}
+# The Amiga backend without the Amiga game's files must show the EGA frames: its attract and menus runs
+# are compared with the EGA baseline (its switches go round other modes, so it has no switch runs).
+AMIGA_RUNS = ('attract', 'menus')
 
 SWITCH_KEYS = '45:Ctrl+Shift+G,52:Ctrl+Shift+G,60:Ctrl+Shift+G'   # in the demo race, which starts at 42 s
 MENU_SWITCH_KEYS = ','.join(sorted(MENU_KEYS.split(',') + ['36:Ctrl+Shift+G', '47:Ctrl+Shift+G', '63:Ctrl+Shift+G'],
@@ -66,6 +70,8 @@ def take(adapter: str = 'ega') -> dict[str, str]:
     """Runs the game and returns {file name: sha256}."""
     procs = []
     for name, seconds, keys, every_ms in RUNS:
+        if adapter == 'amiga' and name not in AMIGA_RUNS:
+            continue
         out = OUT / adapter / name
         out.mkdir(parents=True, exist_ok=True)
         for old in [*out.glob('snap*.bmp'), *out.glob('audio.wav')]:
@@ -153,9 +159,18 @@ def main() -> int:
     p.add_argument('--cga', action='store_true', help='run with the CGA backend (tests/cga_snapshots.txt)')
     p.add_argument('--hercules', action='store_true',
                    help="run with TD2CGA's Hercules mode (tests/herc_snapshots.txt)")
+    p.add_argument('--amiga', action='store_true',
+                   help='run with the Amiga backend, without Amiga files (the EGA baseline)')
     a = p.parse_args()
-    adapter = 'cga' if a.cga else 'herc' if a.hercules else 'ega'
+    adapter = 'cga' if a.cga else 'herc' if a.hercules else 'amiga' if a.amiga else 'ega'
     shots = take(adapter)
+    if adapter == 'amiga':
+        base = {n: d for n, d in read_baseline('ega').items() if n.split('/')[0] not in SWITCH_RUNS}
+        problems = compare(shots, base)
+        for line in problems:
+            print(line)
+        print(f'{len(shots)} snapshots against EGA, {len(problems)} problems (images in {(OUT / adapter).relative_to(ROOT)})')
+        return 1 if problems else 0
     if a.update:
         for line in round_trip(shots, adapter):
             print(line)

@@ -1,14 +1,18 @@
 /* EGA backend: the scene renderer's own pixel writers (gfx_backend.h SceneRaster). They are the
  * scene code of TD2EGA.EXE that writes the view buffer's four planes itself, moved here from
  * game/scene*.c unchanged. The view buffers are off-screen, so their planes are RAM in mem[]. */
-#include "gfx.h"
-#include "gfx_backend.h"
+#include "gfx_ega.h"
+
+/* The view buffer's plane 4 with five planes (the Amiga backend), else 0. The game's colours have no
+ * fifth bit, so the scene clears it wherever it draws. */
+static u16 plane4_seg;
 
 /* draw_front / draw_mirror (06c9:00e7 / 1f99): the selected target's plane segments to DS:5420..5426 */
 static void ega_view_begin(void)
 {
     for (int k = 0; k < 4; k++)
         DSW((u16)(DS_plane_seg + 2 * k)) = CSW((u16)(GFX_CUR_PLANE0 + 2 * k));
+    plane4_seg = gfx_ega.planes == 5 ? ram_plane(4) : 0;
 }
 
 /* 06c9:0c17 span_fill_to: fills the current scanline (row offset *di in the cached plane segments
@@ -37,12 +41,15 @@ static bool ega_span_to(u16 *di, s16 end, u16 colour, bool odd_row)
         u8 *b = mp(seg, *di);
         *b = (u8)((*b & (u8)~m) | (p[k] & m));
     }
+    if (plane4_seg) mp(plane4_seg, *di)[0] &= (u8)~m;
     if (cnt != 0) {
         *di = (u16)(*di + 1);
         for (int k = 0; k < 4; k++) {
             u16 seg = DSW((u16)(DS_plane_seg + 2 * k));
             for (u16 n = 0; n < cnt; n++) wr8(seg, (u16)(*di + n), p[k]);
         }
+        if (plane4_seg)
+            for (u16 n = 0; n < cnt; n++) wr8(plane4_seg, (u16)(*di + n), 0);
         *di = (u16)(*di + cnt - 1);
     }
     u16 sb = (u16)(ebit + 1);
@@ -74,6 +81,7 @@ static void ega_marking(u16 di, s16 x, bool centre)
     } else {
         for (int k = 0; k < 4; k++) mp(DSW((u16)(DS_plane_seg + 2 * k)), bx)[0] |= m;
     }
+    if (plane4_seg) mp(plane4_seg, bx)[0] &= (u8)~m;
 }
 
 /* crash_sequence (06c9:3532): the flash palette on even frames, the normal one on odd frames */

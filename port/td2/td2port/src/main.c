@@ -1,6 +1,6 @@
 /* Test Drive II: The Duel SDL3 port — entry point.
  *
- * usage: td2port [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules] [--check]
+ * usage: td2port [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules | --amiga-graphics] [--check]
  *   --game-dir   folder with the original game files (default: the settings' game folders, else "Game"
  *                next to the exe or in the working directory; app/app_data.h)
  *   --user-dir   profile folder for settings, high scores and SELECT.DAT (default: "Profile" next to
@@ -9,6 +9,7 @@
  *   --frame-rate emulated original drawing speed while driving (default HOST_DEFAULT_FPS; 0 = unpaced)
  *   --cga        draw with the CGA graphics of TD2CGA.EXE instead of EGA
  *   --hercules   TD2CGA.EXE's Hercules mode ("td2cga herc"): the CGA game on a monochrome monitor
+ *   --amiga-graphics  the Amiga graphics backend (in progress: the EGA frames on a five-plane screen)
  *   --check      load and verify the original executable, print a summary and exit (no window)
  */
 #define SDL_MAIN_HANDLED
@@ -121,10 +122,11 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[i], "--check")) check = true;
         else if (!strcmp(argv[i], "--cga")) backend = &gfx_cga_backend;
         else if (!strcmp(argv[i], "--hercules")) backend = &gfx_herc_backend;
+        else if (!strcmp(argv[i], "--amiga-graphics")) backend = &gfx_amiga_backend;
         else if (!strcmp(argv[i], "--user-dir") && i + 1 < argc) user_dir = argv[++i];
         else if (!strcmp(argv[i], "--frame-rate") && i + 1 < argc) host_set_frame_rate(atoi(argv[++i]));
         else {
-            fprintf(stderr, "usage: %s [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules] [--check]\n", argv[0]);
+            fprintf(stderr, "usage: %s [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules | --amiga-graphics] [--check]\n", argv[0]);
             return 2;
         }
     }

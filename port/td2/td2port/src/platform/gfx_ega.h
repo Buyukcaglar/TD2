@@ -10,10 +10,13 @@
 #include "gfx_lib.h"
 
 #define EGA_PLANE_BYTES 0x10000u
+/* The Amiga backend runs this model with a fifth plane (gfx_amiga.c): the screen, every off-screen
+ * buffer and the colour numbers then have five bits, and the frame shows 32 colours. */
+#define EGA_MAX_PLANES 5
 
 typedef struct {
-    u8 plane[4][EGA_PLANE_BYTES];
-    u8 latch[4];      /* last CPU read of all planes (write mode 1 source) */
+    u8 plane[EGA_MAX_PLANES][EGA_PLANE_BYTES];
+    u8 latch[EGA_MAX_PLANES];      /* last CPU read of all planes (write mode 1 source) */
     u8 map_mask;      /* sequencer index 2 */
     u8 set_reset;     /* GC index 0 */
     u8 enable_sr;     /* GC index 1 */
@@ -22,12 +25,42 @@ typedef struct {
     u8 mode;          /* GC index 5 (write mode in bits 0-1) */
     u8 bit_mask;      /* GC index 8 */
     u8 palette[17];   /* attribute controller palette registers + overscan (INT 10h AX=1002h) */
+    u8 planes;        /* 4, or 5 for the Amiga backend */
+    u32 rgb[32];      /* five planes: the frame's colours (gfx_amiga.c) */
+    u8 colour_map[16];   /* five planes: the colour each EGA colour number draws (gfx_amiga.c) */
     bool dirty;
 } EgaState;
 
 extern EgaState gfx_ega;
 
 void gfx_ega_reset_registers(void);
+void gfx_ega_reset(int planes);
+void gfx_amiga_reset(void);                                         /* gfx_amiga.c */
+bool gfx_ega_compose(u32 *xrgb);
+
+/* A colour the game passes. With four planes it is used as it is. With five, it is an EGA colour
+ * number (the game also passes FFh or FFFFh for white, which four planes read as 15) and the colour
+ * map says what it draws. */
+static inline u8 ega_colour(u16 c)
+{
+    return gfx_ega.planes == 5 ? gfx_ega.colour_map[c & 0x0F] : (u8)c;
+}
+
+/* Every plane of the model: the map mask the game's "all planes" (0Fh) means. */
+static inline u8 ega_all_planes(void) { return (u8)((1u << gfx_ega.planes) - 1); }
+
+/* The segment of plane k of the selected RAM target. A fifth plane follows the fourth by the same
+ * step (ega_create_buffer). */
+static inline u16 ram_plane(int k)
+{
+    u16 p0 = CSW(GFX_CUR_PLANE0), p3 = CSW(GFX_CUR_PLANE0 + 6);
+    if (k < 4) return CSW((u16)(GFX_CUR_PLANE0 + 2 * k));
+    return p0 && p3 ? (u16)(p3 + (u16)(CSW(GFX_CUR_PLANE0 + 2) - p0)) : 0;
+}
+
+/* Five planes: whether spr is the sprite header of a live off-screen buffer, whose fifth plane block
+ * follows its four (the other sprites have four planes at most). */
+bool ega_buffer_sprite(FarPtr spr);
 
 static inline void gc_out(u8 index, u8 value)      /* out 3CEh,index ; out 3CFh,value */
 {
@@ -46,13 +79,13 @@ static inline void seq_map_mask(u8 value) { gfx_ega.map_mask = value; }   /* out
 
 static inline u8 ega_read(u16 off)
 {
-    for (int k = 0; k < 4; k++) gfx_ega.latch[k] = gfx_ega.plane[k][off];
-    return gfx_ega.plane[gfx_ega.read_map & 3][off];
+    for (int k = 0; k < gfx_ega.planes; k++) gfx_ega.latch[k] = gfx_ega.plane[k][off];
+    return gfx_ega.plane[gfx_ega.read_map == 4 && gfx_ega.planes == 5 ? 4 : gfx_ega.read_map & 3][off];
 }
 
 static inline void ega_write(u16 off, u8 v)
 {
-    for (int k = 0; k < 4; k++) {
+    for (int k = 0; k < gfx_ega.planes; k++) {
         if (!(gfx_ega.map_mask >> k & 1)) continue;
         u8 d = gfx_ega.plane[k][off];
         u8 x;

@@ -265,7 +265,7 @@ static void blit_body(FarPtr spr, u16 px, u16 py, int op, bool clip)
 
     if (CUR_PLANE(0) != VRAM_SEG) {
         /* destination list (plane segment, source) — processed last to first */
-        u16 eseg[4], esrc[4];
+        u16 eseg[5], esrc[5];
         int n = 0;
         u16 p = (u16)(so + 0x0C), dxp = src;
         for (;;) {
@@ -286,6 +286,10 @@ static void blit_body(FarPtr spr, u16 px, u16 py, int op, bool clip)
             dxp = (u16)(dxp + blocksize);
         }
         if (n > 4) n = 4;
+        if (ega_buffer_sprite(spr) && ram_plane(4)) {              /* PORT: a buffer's plane 4 */
+            eseg[n] = ram_plane(4);
+            esrc[n++] = (u16)(src + 4 * blocksize);
+        }
 
         if ((pm0 & 0xF0) && (flags & 1))
             for (int b = 0; b < 4; b++)
@@ -358,8 +362,8 @@ static void blit_body(FarPtr spr, u16 px, u16 py, int op, bool clip)
     u8 gcfunc = op_gcfunc[op];
     gc_out(3, gcfunc);
     u16 adv_last = (u16)(blocksize - vis_w);                       /* bp-30 */
-    u8 emask[4], eidx[4];
-    u16 eadv[4];
+    u8 emask[5], eidx[5];
+    u16 eadv[5];
     int n = 0;
     u16 back = 0;                                                  /* bp-32 */
     u16 p = (u16)(so + 0x0C);
@@ -379,6 +383,12 @@ static void blit_body(FarPtr spr, u16 px, u16 py, int op, bool clip)
         back = (u16)(back + blocksize);
     }
     if (n > 4) n = 4;
+    if (n == 4 && ega_buffer_sprite(spr)) {                        /* PORT: a buffer's plane 4 */
+        emask[n] = 0x10;
+        eidx[n] = 4;
+        eadv[n++] = adv_last;
+        back = (u16)(back + blocksize);
+    }
     back = (u16)(back - w);
 
     if ((pm0 & 0xF0) && (flags & 1))
