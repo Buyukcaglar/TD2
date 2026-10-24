@@ -25,6 +25,8 @@ This is a fork. Changes made in this repository after the import:
 - PC speaker: synthesis moved to `speaker.c` (band-limited PIT mode-3 model with a speaker filter); `host_speaker` takes both port 61h bits. `TD2_AUDIO_DUMP` records the output as WAV.
 - Billboard collision: `roadside_hit` decides crash or bump from the BP value the original leaves behind (`sim_stale_bp`), instead of always crashing.
 - Neutral clutch grind: releasing fire in neutral runs the clutch check on the leftover CX (rpm or gameport count, `sim_stale_cx`) and DX, as the original does, instead of skipping it.
+- Graphics: the library is split into a shared front (`gfx.c`) and an EGA backend (`gfx_ega.c`, `gfx_ega_blit.c`, formerly `gfx.c` and `gfx_blit.c`) behind `GfxBackend` (`gfx_backend.h`). Audio: the host renders through an `AudioBackend` (`audio_backend.h`); the PC speaker backend is in `speaker.c`.
+- `TD2_VIRTUAL_CLOCK` and `TD2_RUN_SECONDS`: developer aids for repeatable headless runs. The `TD2_AUDIO_DUMP` file now gets every sample even when the device falls behind.
 - `TD2_STATE_DIR`: a developer aid (`host_sim_state`, called at the top of `sim_timer_routine`) that saves the sim timer routine's entry state for the differential harness.
 
 Git history in this repository records each later change.
