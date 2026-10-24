@@ -811,12 +811,23 @@ static void ega_grab_into_sprite(FarPtr spr, u16 px, u16 py)
 
 /* ------------------------------------------------------------------------------------------------ */
 
+/* 06c9:c958 draw_cursor_glyph's glyphs: CS:[CS:C8FE + idx*2] */
+static FarPtr ega_cursor_glyph(u16 idx)
+{
+    return far_make(ASM_SEG, CSW((u16)(CS_cursor_glyph_tab + (u16)(idx * 2))));
+}
+
 const GfxBackend gfx_ega_backend = {
     .name = "EGA",
     .adapter = GFX_EGA,
     .frame_w = 320,
     .frame_h = 200,
     .px_per_byte = 8,
+    .own_x_mask = 0xFFFF,
+    .shape_ext = { ".PES", ".ESH" },
+    .fixup_paras = 0x1F6,
+    .fix_sprites = res_unflip_archive,
+    .cursor_glyph = ega_cursor_glyph,
     .scene = &ega_scene_raster,
     .reset = ega_reset,
     .compose = ega_compose,

@@ -22,12 +22,13 @@ void gfx_set_backend(const GfxBackend *b) { be = b; }
 
 void gfx_init(void)
 {
-    be->reset();
     /* CS:AF3A (live copy = screen), CS:AF54 screen descriptor, CS:AF6E row table y*40, CS:B269 = B26B
-     * are statically initialised in the load image; check that the image is the expected one. */
+     * are statically initialised in the load image; check that the image is the expected one. The
+     * CGA backend's reset then writes its own screen descriptor there. */
     if (CSW(GFX_SCREEN_DESC_OFF + 2) != VRAM_SEG || CSW(GFX_SCREEN_DESC_OFF + 0x0A) != CS_gfx_screen_rows
         || CSW(CS_gfx_screen_rows + 2 * 199) != 199 * 40 || CSW(CS_gfx_rowpool_top) != CS_gfx_rowpool)
         host_fatal("gfx_init: unexpected graphics state in %s", TD_EXE_NAME);
+    be->reset();
     host_set_frame_source(gfx_compose, be->frame_w, be->frame_h);
 }
 
@@ -168,18 +169,19 @@ void gfx_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour)
     be->fill_rect(x, y, w, h, colour);
 }
 
-/* 06c9:89a2 gfx_fill_rect_clip: clip to [clip_x0*8, clip_x1*8) x [clip_y0, clip_y1), then 8a0c's body */
+/* 06c9:89a2 gfx_fill_rect_clip: clip to [clip_x0*8, clip_x1*8) x [clip_y0, clip_y1) (CGA 06cf:83d2:
+ * columns of 4 pixels), then 8a0c's body */
 void gfx_fill_rect_clip(s16 x, s16 y, s16 w, s16 h, u16 colour)
 {
     u16 X = (u16)x, Y = (u16)y, W = (u16)w, H = (u16)h;
-    u16 cx0 = (u16)(CUR_X0 << 3);
+    u16 cx0 = (u16)(CUR_X0 * be->px_per_byte);
     if (!sle(cx0, X)) {
         u16 ax = (u16)(cx0 - X);
         X = cx0;
         if (sle(W, ax)) return;
         W = (u16)(W - ax);
     }
-    u16 cx1 = (u16)(CUR_X1 << 3);
+    u16 cx1 = (u16)(CUR_X1 * be->px_per_byte);
     if (!sle((u16)(X + W), cx1)) {
         u16 ax = (u16)(X + W - cx1);
         if (sle(W, ax)) return;
@@ -316,7 +318,7 @@ void grab_into_sprite_raw(FarPtr spr, s16 x, s16 y)
 
 void grab_into_sprite_own(FarPtr spr)
 {
-    be->grab_into_sprite(spr, (u16)(rd16(spr.seg, (u16)(spr.off + 8)) & 0xFFF8),
+    be->grab_into_sprite(spr, (u16)(rd16(spr.seg, (u16)(spr.off + 8)) & (u16)~(be->px_per_byte - 1)),
                          rd16(spr.seg, (u16)(spr.off + 0x0A)));
 }
 
@@ -333,7 +335,8 @@ static inline u16 hdr_own_y(FarPtr s) { return rd16(s.seg, (u16)(s.off + 0x0A));
     void name_hot(FarPtr spr, s16 x, s16 y)                                                              \
     { be->blit(spr, (u16)((u16)x - hdr_hot_x(spr)), (u16)((u16)y - hdr_hot_y(spr)), op, clip); }        \
     void name_raw(FarPtr spr, s16 x, s16 y) { be->blit(spr, (u16)x, (u16)y, op, clip); }                \
-    void name_own(FarPtr spr) { be->blit(spr, hdr_own_x(spr), hdr_own_y(spr), op, clip); }
+    void name_own(FarPtr spr)                                                                            \
+    { be->blit(spr, (u16)(hdr_own_x(spr) & (clip ? 0xFFFF : be->own_x_mask)), hdr_own_y(spr), op, clip); }
 
 /* 06c9:916c/91a4/91d6 */ BLIT_FAMILY(blit_copy_clip_hot, blit_copy_clip_raw, blit_copy_clip_own, BLIT_REPLACE, true)
 /* 06c9:a6d8/a6f8/a718 */ BLIT_FAMILY(blit_or_clip_hot, blit_or_clip_raw, blit_or_clip_own, BLIT_OR, true)
@@ -344,9 +347,8 @@ static inline u16 hdr_own_y(FarPtr s) { return rd16(s.seg, (u16)(s.off + 0x0A));
 /* 06c9:808a/80aa/80ca */ BLIT_FAMILY(blit_and_hot, blit_and_raw, blit_and_own, BLIT_AND, false)
 /* 06c9:c132/c152/c172 */ BLIT_FAMILY(blit_xor_hot, blit_xor_raw, blit_xor_own, BLIT_XOR, false)
 
-/* 06c9:c958 draw_cursor_glyph: XOR hotspot blit of the CS glyph CS:[CS:C8FE + idx*2] at (x & ~7, y) */
+/* 06c9:c958 draw_cursor_glyph: XOR hotspot blit of the backend's glyph idx at (x aligned to a byte, y) */
 void draw_cursor_glyph(s16 x, s16 y, u16 idx)
 {
-    u16 off = CSW((u16)(CS_cursor_glyph_tab + (u16)(idx * 2)));
-    blit_xor_hot(far_make(ASM_SEG, off), (s16)((u16)x & 0xFFF8), y);
+    blit_xor_hot(be->cursor_glyph(idx), (s16)((u16)x & (u16)~(be->px_per_byte - 1)), y);
 }

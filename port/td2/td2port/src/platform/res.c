@@ -16,6 +16,7 @@
 #include "../host.h"
 #include "../symbols.h"
 #include "gfx.h"
+#include "gfx_backend.h"
 #include "input.h"
 #include "timer.h"
 
@@ -662,6 +663,47 @@ void res_unflip_archive(FarPtr arc, FarPtr scratch)
     } while (--left > 0);
 }
 
+/* 06cf:a0ae (TD2CGA) sprite fix-up of a .PCS archive: each sprite is one 2-bit block whose storage
+ * mode is pm[2] >> 4: 1 column-major; 2 column-major with each column's even rows first; 3 the even
+ * rows as one column-major block, then the odd rows as another. A sprite with padding (pm[3] >> 4) or
+ * mode 0 is left alone; mode 4 or more stops the fix-up (its caller ignores the result). */
+void res_fix_pcs_archive(FarPtr arc, FarPtr scratch)
+{
+    s16 left = (s16)rd16(arc.seg, (u16)(arc.off + 4));
+    u16 k = 0;
+    do {
+        FarPtr r = res_ptr(arc, k);
+        u16 rs = r.seg, ro = r.off;
+        if ((rd8(rs, (u16)(ro + 15)) & 0xF0) == 0) {
+            u8 mode = (u8)(rd8(rs, (u16)(ro + 14)) >> 4);
+            if (mode >= 4) return;
+            if (mode) {
+                u16 w = rd16(rs, ro), h = rd16(rs, (u16)(ro + 2));
+                u16 data = (u16)(ro + 16), di = scratch.off;
+                /* PORT: w == 0 or h == 0 makes the original's loops run 65536 times; skipped (no
+                 * shipped sprite has an empty dimension). */
+                if (w != 0 && h != 0) {
+                    for (u16 y = 0; y < h; y++) {
+                        u16 si, step = h;
+                        if (mode == 1) si = y;
+                        else if (mode == 2) si = (y & 1) ? (u16)((y + h) >> 1) : (u16)(y >> 1);
+                        else {
+                            u16 even = (u16)((h >> 1) + (h & 1));
+                            si = (y & 1) ? (u16)(w * even + (y >> 1)) : (u16)(y >> 1);
+                            step = (y & 1) ? (u16)(h >> 1) : even;
+                        }
+                        u16 out = (u16)(di + y * w);
+                        for (u16 x = 0; x < w; x++) wr8(scratch.seg, (u16)(out + x), rd8(rs, (u16)(data + si + x * step)));
+                    }
+                }
+                u16 n = (u16)(w * h);
+                for (u16 i = 0; i < n; i++) wr8(rs, (u16)(data + i), rd8(scratch.seg, (u16)(scratch.off + i)));
+            }
+        }
+        k++;
+    } while (--left > 0);
+}
+
 /* 16eb:000a / 004c / 008e / 00d0 */
 static void res_find_list_core(FarPtr arc, u16 names_ds, u16 out_ds, bool must_exist)
 {
@@ -688,16 +730,14 @@ FarPtr load_shapes_c(const char *name)
     while (*dot && *dot != '.') dot++;
     FarPtr p;
     if (*dot == 0) {
-        for (u16 i = 0;; i++) {
-            const char *ext = ds_str(DSW((u16)(DS_g_shape_ext + (u16)(i << 1))));
-            if (*ext == 0) break;
+        for (u16 i = 0; i < 2; i++) {                     /* DS:68A4: .PES .ESH (CGA .PCS .CSH) */
+            const char *ext = gfx_backend()->shape_ext[i];
             strcpy(dot, ext);
             p = mem_reclaim_cached_c(buf);
             if (p.seg | p.off) return p;
         }
-        for (u16 i = 0;; i++) {
-            const char *ext = ds_str(DSW((u16)(DS_g_shape_ext + (u16)(i << 1))));
-            if (*ext == 0) break;
+        for (u16 i = 0; i < 2; i++) {                     /* DS:68A4: .PES .ESH (CGA .PCS .CSH) */
+            const char *ext = gfx_backend()->shape_ext[i];
             strcpy(dot, ext);
             if (find_first_c(buf)) break;
         }
@@ -705,11 +745,12 @@ FarPtr load_shapes_c(const char *name)
         p = mem_reclaim_cached_c(buf);
         if (p.seg | p.off) return p;
     }
-    /* strcpy(ext, dot) into a 6-byte stack buffer, then stricmp(ext, ".PES") */
-    if (SDL_strcasecmp(dot, ds_str(DS_s_pes_cmp)) == 0) {
+    /* strcpy(ext, dot) into a 6-byte stack buffer, then stricmp(ext, ".PES") (CGA ".PCS") */
+    const GfxBackend *be = gfx_backend();
+    if (SDL_strcasecmp(dot, be->shape_ext[0]) == 0) {
         p = unpack_file_c(buf);
-        FarPtr tmp = mem_reserve(DS_s_unflip, 0x1F6);      /* "UNFLIP", 8032 bytes of scratch */
-        res_unflip_archive(p, tmp);
+        FarPtr tmp = mem_reserve(DS_s_unflip, be->fixup_paras);   /* "UNFLIP": 8032 bytes (CGA 16032) */
+        be->fix_sprites(p, tmp);
         mem_free(tmp);
     } else {
         p = load_raw_c(buf);                              /* .ESH: unpacked and already row-major */
@@ -727,14 +768,13 @@ u16 shapes_paras(u16 name_ds)
     char *dot = buf;
     while (*dot && *dot != '.') dot++;
     if (*dot == 0) {
-        for (u16 i = 0;; i++) {
-            const char *ext = ds_str(DSW((u16)(DS_g_shape_ext + (u16)(i << 1))));
-            if (*ext == 0) break;
+        for (u16 i = 0; i < 2; i++) {                     /* DS:68A4: .PES .ESH (CGA .PCS .CSH) */
+            const char *ext = gfx_backend()->shape_ext[i];
             strcpy(dot, ext);
             if (find_first_c(buf)) break;
         }
     }
-    if (SDL_strcasecmp(dot, ds_str(DS_s_pes_cmp2)) == 0) return unpacked_paras_c(buf);
+    if (SDL_strcasecmp(dot, gfx_backend()->shape_ext[0]) == 0) return unpacked_paras_c(buf);   /* DS:68AA */
     return file_paras_c(buf);
 }
 

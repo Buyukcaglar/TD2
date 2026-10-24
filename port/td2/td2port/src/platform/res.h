@@ -65,6 +65,7 @@ u16    res_count(FarPtr arc);                                 /* 06c9:c6f0 word 
 FarPtr res_ptr(FarPtr arc, u16 index);                        /* 06c9:c701 normalized pointer of resource k (res_by_index) */
 void   res_name(FarPtr arc, u16 index, u16 out_ds);           /* 06c9:c760 4 name bytes -> DS:out */
 void   res_unflip_archive(FarPtr arc, FarPtr scratch);        /* 06c9:c838 column-major blocks -> row-major */
+void   res_fix_pcs_archive(FarPtr arc, FarPtr scratch);       /* 06cf:a0ae TD2CGA: PCS storage modes -> row-major */
 void   res_find_list(FarPtr arc, u16 names_ds, u16 out_ds);   /* 16eb:000a far ptrs to DS:out[i] until a NUL name */
 void   res_find_list_opt(FarPtr arc, u16 names_ds, u16 out_ds);   /* 16eb:004c */
 void   res_find_list_dup(FarPtr arc, u16 names_ds, u16 out_ds);   /* 16eb:008e (copy of 000a, no callers) */

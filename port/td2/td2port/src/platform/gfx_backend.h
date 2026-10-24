@@ -8,7 +8,7 @@
  * the routines in this table are the ones TD2CGA implements differently; the rest of gfx.h is the
  * same code in both.
  *
- * One backend is active at a time (EGA today). gfx_set_backend() must be called before gfx_init();
+ * One backend is active at a time (EGA, or CGA with --cga). gfx_set_backend() must be called before gfx_init();
  * switching during play is a later milestone. */
 #include "gfx.h"
 
@@ -37,6 +37,11 @@ typedef struct GfxBackend {
     GfxAdapter adapter;                         /* which original's game code constants apply */
     int frame_w, frame_h;                       /* host frame size */
     u8 px_per_byte;                             /* pixels in one buffer byte (EGA 8 per plane, CGA 4) */
+    u16 own_x_mask;                             /* unclipped "own" blits: CGA aligns x to a byte (0FFFCh) */
+    const char *shape_ext[2];                   /* sprite files: the packed one (fixed up) and the raw one */
+    u16 fixup_paras;                            /* scratch for the sprite fix-up */
+    void (*fix_sprites)(FarPtr arc, FarPtr scratch);   /* 06c9:c838 / 06cf:a0ae, once per load */
+    FarPtr (*cursor_glyph)(u16 idx);            /* draw_cursor_glyph's sprite */
     const SceneRaster *scene;
     void (*reset)(void);                        /* power-on state of the video model */
     bool (*compose)(u32 *xrgb);                 /* screen -> host frame; true if it changed */
@@ -60,12 +65,13 @@ typedef struct GfxBackend {
     void (*blit)(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip); /* the 24 sprite blitters' body */
 } GfxBackend;
 
-extern const GfxBackend gfx_ega_backend;        /* gfx_ega.c, gfx_ega_blit.c */
+extern const GfxBackend gfx_ega_backend;        /* gfx_ega.c, gfx_ega_blit.c, gfx_ega_scene.c */
+extern const GfxBackend gfx_cga_backend;        /* gfx_cga.c, gfx_cga_blit.c, gfx_cga_scene.c */
 
 const GfxBackend *gfx_backend(void);
 void gfx_set_backend(const GfxBackend *b);
 
-/* EGA backend internals used by its files. */
+/* Backend internals used by their files. */
 void ega_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip);   /* gfx_ega_blit.c */
 extern const SceneRaster ega_scene_raster;                         /* gfx_ega_scene.c */
 /* Read access to the emulated EGA planes (debugging): plane k (0..3), 64 KB each. */
