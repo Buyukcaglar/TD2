@@ -36,22 +36,35 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
 - **CGA against EGA (M3, session 3).** Written up in [cga.md](cga.md); `python tools/cga_compare.py` reproduces it, and `python tools/cga_compare.py <EGA address>` prints one function's differences. `tools/exepack.py` gained `unpack()`, which unpacks TD2EGA, TD2CGA and TD2TDY without the old hash gate (TD2CGA has 11 bytes after its relocation table that are simply ignored).
   - **How it compares.** Disassemblies are compared after normalising the relink. A number that still differs passes only with evidence that it is the moved EGA address: the same bytes at both places, the uninitialised-data shift (CGA's initialised data is 160h shorter), the same offset inside a paired function, a jump table pointing to paired code, the graphics descriptor block, or the same shift shown by two variables in one area.
   - **Simulation.** All 15 simulation functions are the same program in CGA; the port's simulation code serves CGA unchanged.
-  - **Scene renderer.** 13 of the 29 scene-renderer functions are identical; the other 16 differ only in drawing:
+  - **Scene renderer.** 12 of the 29 scene-renderer functions are identical; the other 17 differ only in drawing and colour values:
     - 2-bit pixels instead of four planes, and 4 pixels per byte instead of 8;
     - dither patterns instead of colour numbers;
-    - interleaved rows walked through a row table;
     - the crash flash on port 3D9h instead of the palette;
     - a few coordinates forced odd, probably for the dither phase (unconfirmed).
+  - **Colours.** The stage `.DAT` files and the sign records hold a CGA pattern next to every EGA colour, and each build reads its own words. `stage_load` therefore differs too. An earlier rule of the comparison had hidden this; it now defers to buffer base addresses the code loads. Code constants map per call site (colour 8 becomes 0 or 9966h), so there is no single colour-to-pattern table.
+  - **Backend design.** Written up at the end of [cga.md](cga.md):
+    - a CGA `GfxBackend` with colour parameters widened to 16 bits;
+    - a `SceneRaster` hook table for the four scene routines that write pixels (span fill, scene `hline`, road marking pixel, crash flash) plus pixels per byte;
+    - `COL(ega, cga)` at the colour constants;
+    - one `gfx_is_cga()` test each for the forced coordinates and the dropped cliff masks.
+
+    The mask tables are regular and computed, off-screen buffer rows are linear, only the screen is interleaved, and nothing has to be read from TD2CGA at run time. Three earlier claims were corrected:
+    - `draw_instruments` changes the needle colour, not a plane mask;
+    - the tunnel walls' 80-byte step is a linear row, not interleaving;
+    - the ground constant 7 → 0 is the road turning black.
   - **Index mistakes found.** The Kylofon indexes cut some functions short or split them: EGA 06C9:1A37 is the tail of `draw_front_objects`, and 06C9:AF54 is the screen descriptor, not code. The tool corrects for this.
 - **Adding a function to the harness** takes three steps: add an adapter in `tools/diffharness/adapters.c`, add a `Spec` with an input generator in `tools/diffharness/cases.py`, and rebuild.
 
 ### Next steps (in order)
 
 1. **Play test.** Ask the user for the results of one race on each scenery (CCC, ec_, TDS2), ideally recorded with `.\run.ps1 -RecordStates`. Their states would add player-driven races on every scenery to the `sim_tick` cases.
-2. **M3 CGA, next steps.**
-   - Decide how the 16 drawing scene-renderer functions reach CGA. [cga.md](cga.md) recommends backend hooks (span fill, horizontal line, object pixel, wall rows, crash flash, a colour-to-pattern map, pixels per byte) over CGA copies of the functions.
-   - Then compare the CGA data the backend needs: the pattern and mask tables, the row tables, and the colour select values.
-   - Finally, the PCS sprite format and the CGA graphics library itself. Its pairing with EGA is weak, so map its routines from their callers.
+2. **M3 CGA, build the backend** as designed in [cga.md](cga.md), keeping the EGA snapshots unchanged after each step:
+   - Widen the colour parameters to `u16`.
+   - Move the four scene pixel writers behind `SceneRaster`, and add `COL()` and the record-word choice.
+   - Write the CGA graphics library backend: descriptors and row tables, fill, line, plot, text and clear, the PCS loader and blitters, dissolves, scroll, grabs and `compose`.
+   - Add harness cases against TD2CGA's own routines, then a CGA snapshot baseline.
+
+   The CGA library pairing with EGA is weak, so map its routines from the scene code's calls.
 3. **Snapshot coverage.** The snapshot run covers only attract mode. Once the play test has recorded states, rendering a frame from a recorded race state would add player-driven scenes.
 
 ### Open questions
@@ -344,7 +357,7 @@ The order still follows the user's sequence (EGA → CGA → resources → nativ
 | **M0 Adopt** | Import the Kylofon source into `port/` (or `src/td2/`) with its LICENSE and provenance note. Apply the useful parts of `candidate-fixes-v2.patch`. One CMake build with MSVC and SDL3 3.4.18. A `run.ps1` that copies the data to a scratch folder | The user plays a full race from a clean checkout |
 | **M1 Verify EGA** | One generic Unicorn differential harness (original function vs Kylofon C on the same `mem[]` image), run in bulk with ranked results. Fix clutch, billboard, traffic and cockpit. Better speaker synthesis. Headless snapshot tests via `TD2_SNAPSHOT_DIR` | Harness runs over N functions in one command; fixed deviations have regression tests |
 | **M2 Backend split** | Introduce `gfx_backend` and `audio_backend` interfaces at `platform/gfx.h` and `sound.h`. The EGA backend must stay pixel-identical | EGA snapshots unchanged |
-| **M3 CGA** | Unpack TD2CGA, build the EGA→CGA crosswalk from the function indexes, implement the CGA backend (PCS loader, 2 bpp interleaved, CGA palette and tables read from TD2CGA.EXE). Hotkey switch between EGA and CGA | CGA is playable and switchable live |
+| **M3 CGA** | Unpack TD2CGA, build the EGA→CGA crosswalk from the function indexes, implement the CGA backend (PCS loader, 2 bpp with an interleaved screen, the CGA palette, colours from the data files; design in `docs/cga.md`). Hotkey switch between EGA and CGA | CGA is playable and switchable live |
 | **M4 Resource closure** | `tools/` corpus scan: every one of the 249 DOS files gets a parser or a written disposition | Table generated by script |
 | **M5 Amiga RE** | Extract the LHA to `analysis/amiga/`. Write a hunk parser and Rpck/PowerPacker unpackers. Ghidra 68k on `duel`. Decode ILBM, shapes, samples and `sfx/song` replay. Establish what `scen3` really is | Amiga assets decode to inspectable PNG/WAV files privately |
 | **M6 Amiga providers and switching** | Amiga gfx and audio backends; atomic switch at a frame boundary; independent music and SFX switching | Switch mid-race with no state change |
