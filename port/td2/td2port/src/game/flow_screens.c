@@ -350,6 +350,36 @@ u16 menu_random_key(void)
     }
 }
 
+/* TD2CGA's car_slide (019e:009b) has no scroll routine: it stacks the old and the new picture in a
+ * 320 x 176 buffer (the old one at to + 88, the new one at from + 88) and copies an 88-row window of
+ * it to the screen at y = from, one row further each step. */
+static void car_slide_cga(FarPtr a, FarPtr t, s16 from, s16 to)
+{
+    FarPtr buf = gfx_create_buffer(0x140, 0xB0, 0x0F);
+    gfx_select_target(buf);
+    gfx_set_clip_current(0, 0x50, (s16)(to + 0x58), (s16)(to + 0xB0));
+    blit_copy_clip_raw(flow_page_sprite(), 0, (s16)(to + 0x58));
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    blit_copy_own(res_find(t, 0x73AA));              /* "blue" */
+    blit_and_clip_hot(res_find(a, 0x73AF), 0xA0, 0x50);   /* "carM" */
+    blit_or_clip_hot(res_find(a, 0x73B4), 0xA0, 0x50);    /* "carS" */
+    blit_or_clip_own(res_find(a, 0x73B9));                /* "logo" */
+    gfx_select_target(buf);
+    gfx_set_clip_current(0, 0x50, (s16)(from + 0x58), (s16)(from + 0xB0));
+    blit_copy_clip_raw(flow_page_sprite(), 0, (s16)(from + 0x58));
+    select_screen();
+    gfx_set_clip_current(0, 0x50, 0, 0x58);
+    do {
+        if (from > to) from--;
+        else from++;
+        blit_copy_clip_raw(gfx_desc_sprite(buf), 0, from);
+        flow_pace(1);                                /* PORT: as in EGA */
+    } while (from != to);
+    blit_copy_own(res_find(a, 0x73BE));              /* "stat" */
+    gfx_free_buffer(buf);
+}
+
 /* 019e:009b car_slide — game_flow.md §4.8 (verified against the disassembly) */
 FarPtr car_slide(s16 car, s16 from, s16 to, FarPtr old)
 {
@@ -360,6 +390,11 @@ FarPtr car_slide(s16 car, s16 from, s16 to, FarPtr old)
         return far_make(0, 0);                       /* "st" */
     FarPtr a = load_shapes(DS_disk_path);
     FarPtr t = load_shapes(0x73A1);                  /* "testdrv2" */
+    if (gfx_is_cga()) {
+        car_slide_cga(a, t, from, to);
+        mem_release_cache(t);
+        return a;
+    }
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     blit_copy_own(res_find(t, 0x73AA));              /* "blue" */
@@ -369,7 +404,7 @@ FarPtr car_slide(s16 car, s16 from, s16 to, FarPtr old)
     if (from > to) { y0 = 0x57; delta = -0x28; }     /* Up: new rows enter at the top */
     else           { y0 = 0;    delta = 0x28; }      /* Down: new rows enter at the bottom */
     select_screen();
-    gfx_set_clip_current(0, XBYTES(0x28), 0, 0x58);
+    gfx_set_clip_current(0, 0x28, 0, 0x58);
     do {
         if (from > to) { from--; row = (s16)(from - to); }
         else           { from++; row = (s16)(from - to + 0x57); }
@@ -408,12 +443,12 @@ s16 car_select(s16 car)
         if (k == KEY_UP) {
             car--;
             if (car < 0) car = (s16)(DSS(DS_ncars) - 1);
-            a = car_slide(car, 0, -0x58, a);
+            a = gfx_is_cga() ? car_slide(car, -0x58, 0, a) : car_slide(car, 0, -0x58, a);
         }
         if (k == KEY_DOWN) {
             car++;
             if (car > DSS(DS_ncars) - 1) car = 0;
-            a = car_slide(car, -0x58, 0, a);
+            a = gfx_is_cga() ? car_slide(car, 0, -0x58, a) : car_slide(car, -0x58, 0, a);
         }
     }
     gfx_select_target(flow_page_desc());
