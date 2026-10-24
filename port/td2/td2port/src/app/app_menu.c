@@ -1,14 +1,17 @@
 /* The app's context menu (right click, or Ctrl+Shift+M): graphics mode, Hercules monitor colour,
- * window size, full screen, game files, about, quit. It opens from inside host_pump(), at any point of
- * the game, so every command here is one that is safe at any time: a graphics switch is only
- * requested, the rest changes the window or the monitor colour or the settings, and new game files
- * take effect on a restart. The game is paused until the command is done. */
+ * sound, window size, full screen, game files, about, quit. It opens from inside host_pump(), at any
+ * point of the game, so every command here is one that is safe at any time: a graphics switch is only
+ * requested, a sound switch hands the backends what plays now, the rest changes the window or the
+ * monitor colour or the settings, and new game files take effect on a restart. The game is paused
+ * until the command is done. */
 #include "app_menu.h"
 #include "app_data.h"
 #include "app_ui.h"
 #include "../host.h"
+#include "../amiga/audio_amiga.h"
 #include "../platform/gfx_backend.h"
 
+#include <stdio.h>
 #include <SDL3/SDL.h>
 
 enum {
@@ -16,6 +19,7 @@ enum {
     CMD_PHOSPHOR_WHITE, CMD_PHOSPHOR_GREEN, CMD_PHOSPHOR_AMBER,
     CMD_SCALE_1, CMD_SCALE_2, CMD_SCALE_3, CMD_SCALE_4,
     CMD_FULLSCREEN, CMD_GAME_FILES, CMD_ABOUT, CMD_QUIT,
+    CMD_SOUND_SPEAKER, CMD_SOUND_AMIGA, CMD_NEXT_SOUND, CMD_AMIGA_FILES,
 };
 
 #define VERSION "0.1"
@@ -60,6 +64,56 @@ static void game_files(void)
     if (app_ui_question(win, "Game files", text, restart, 2) == 0 && app_ui_restart()) host_quit();
 }
 
+bool app_amiga_open(const char *path)
+{
+    char *dir = app_data_amiga_dir(path);
+    if (!dir) return false;
+    char err[256];
+    bool ok = audio_amiga_open(dir, err, sizeof err);
+    if (!ok) fprintf(stderr, "Amiga sound: %s\n", err);
+    SDL_free(dir);
+    return ok;
+}
+
+/* Asks for the Amiga game's folder or archive; true when its sound could be opened. */
+static bool amiga_files(void)
+{
+    static const char *const buttons[] = { "Choose folder…", "Choose archive…", "Cancel" };
+    static const char *const ok[] = { "OK" };
+    void *win = host_native_window();
+    int choice = app_ui_question(win, "Amiga sound",
+                                 "The Amiga sound and music come from the Amiga version of Test Drive II.\n\n"
+                                 "Choose the folder, or the archive (zip, 7z, rar, lha), that holds it: the "
+                                 "program \"duel\" and its \"sfx\" folder.", buttons, 3);
+    if (choice != 0 && choice != 1) return false;
+    char *path = app_ui_pick_path(win, choice == 0, choice == 0 ? "The Amiga game folder" : "The Amiga game archive");
+    if (!path) return false;
+    bool opened = app_amiga_open(path);
+    if (opened) {
+        app_setting_set("amiga", path);
+    } else {
+        char text[1200];
+        SDL_snprintf(text, sizeof text, "%s holds no Amiga Test Drive II with its sound files.", path);
+        app_ui_question(win, "Amiga sound", text, ok, 1);
+    }
+    SDL_free(path);
+    return opened;
+}
+
+static void set_sound(const AudioBackend *b)
+{
+    if (b == &audio_amiga && !audio_amiga_ready() && !amiga_files()) return;
+    host_set_audio_backend(b);
+    app_setting_set("sound", b->name);
+}
+
+void app_next_sound(void)
+{
+    host_pause_begin();
+    set_sound(host_audio_backend() == &audio_amiga ? &audio_pc_speaker : &audio_amiga);
+    host_pause_end();
+}
+
 static void about(void)
 {
     static const char *const ok[] = { "OK" };
@@ -69,7 +123,8 @@ static void about(void)
                     "files, which are not included.\n\n"
                     "Port code: the Kylofon Test Drive II port (MIT licence) and this project's work on it.\n"
                     "Libraries: SDL 3 (zlib licence), libarchive (BSD licence), zlib, xz.\n\n"
-                    "Ctrl+Shift+G: next graphics mode\nCtrl+Shift+M or right click: this menu\nAlt+Enter: full screen",
+                    "Ctrl+Shift+G: next graphics mode\nCtrl+Shift+S: PC speaker or Amiga sound\n"
+                    "Ctrl+Shift+M or right click: this menu\nAlt+Enter: full screen",
                     ok, 1);
 }
 
@@ -96,6 +151,14 @@ void app_menu_open(void)
         { "Green", CMD_PHOSPHOR_GREEN, phosphor == GFX_HERC_GREEN },
         { "Amber", CMD_PHOSPHOR_AMBER, phosphor == GFX_HERC_AMBER },
     };
+    bool amiga = host_audio_backend() == &audio_amiga;
+    AppMenuItem sound[] = {
+        { "PC speaker", CMD_SOUND_SPEAKER, !amiga },
+        { "Amiga", CMD_SOUND_AMIGA, amiga },
+        { NULL },
+        { "Next\tCtrl+Shift+S", CMD_NEXT_SOUND },
+        { "Amiga game files…", CMD_AMIGA_FILES },
+    };
     AppMenuItem size[] = {
         { "1×", CMD_SCALE_1, !host_fullscreen() && scale == 1 },
         { "2×", CMD_SCALE_2, !host_fullscreen() && scale == 2 },
@@ -107,6 +170,7 @@ void app_menu_open(void)
     AppMenuItem items[] = {
         { "Graphics", 0, false, graphics, (int)(sizeof graphics / sizeof graphics[0]) },
         { "Hercules monitor", 0, false, monitor, (int)(sizeof monitor / sizeof monitor[0]) },
+        { "Sound", 0, false, sound, (int)(sizeof sound / sizeof sound[0]) },
         { "Window size", 0, false, size, (int)(sizeof size / sizeof size[0]) },
         { NULL },
         { "Game files…", CMD_GAME_FILES },
@@ -135,6 +199,12 @@ void app_menu_open(void)
         app_setting_set("fullscreen", host_fullscreen() ? "1" : "0");
         break;
     case CMD_GAME_FILES: game_files(); break;
+    case CMD_SOUND_SPEAKER: set_sound(&audio_pc_speaker); break;
+    case CMD_SOUND_AMIGA: set_sound(&audio_amiga); break;
+    case CMD_NEXT_SOUND: set_sound(amiga ? &audio_pc_speaker : &audio_amiga); break;
+    case CMD_AMIGA_FILES:
+        if (amiga_files() && amiga) host_set_audio_backend(&audio_amiga);   /* the new files at once */
+        break;
     case CMD_ABOUT: about(); break;
     case CMD_QUIT: host_quit();
     default:

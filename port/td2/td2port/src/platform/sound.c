@@ -228,6 +228,7 @@ void music_off(void)
 void music_play(FarPtr songs, u16 n)
 {
     if (DSB(DS_snd_enable) != 3) return;
+    host_sound_event(SOUND_SONG, n, NULL);              /* PORT: for a sample-based audio backend */
     u16 bx = (u16)(songs.off + (u16)(n << 2));
     DSW(DS_mus_seg) = songs.seg;
     u16 ax = rd16(songs.seg, bx);

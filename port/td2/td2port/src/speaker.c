@@ -78,4 +78,4 @@ static void pcs_speaker(u16 divisor, u8 port61_bits)
 
 static void pcs_render(s16 *out, int n) { speaker_render(&pcs, pcs_divisor, out, n, SPK_AMPLITUDE); }
 
-const AudioBackend audio_pc_speaker = { "PC speaker", pcs_reset, pcs_speaker, pcs_render };
+const AudioBackend audio_pc_speaker = { "PC speaker", pcs_reset, pcs_speaker, pcs_render, NULL, NULL };

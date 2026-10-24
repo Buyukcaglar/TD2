@@ -433,6 +433,7 @@ s16 run_stage(void)
     gfx_video_hook();
 new_life:
     life_reset();
+    host_sound_event(SOUND_RACE_START, 0, (const char *)mp(DGROUP, DS_player_car_code));   /* PORT: audio */
     traffic_resync();                                     /* 06c9:5ada */
     sfx_set_loop(ds_ptr(DS_stream_engine));
     do {
@@ -452,6 +453,8 @@ new_life:
     } while (DSB(DS_run_state) == 0);
     s8 r = (s8)DSB(DS_run_state);
     DSB(DS_clock_started) = 0;
+    if (r == 2 || r == 3) host_sound_event(SOUND_CRASH, 0, NULL);   /* PORT: sample-based audio */
+    host_sound_event(SOUND_RACE_END, 0, NULL);
     if (r > 0) {
         sfx_clear_loop();
         switch (r) {                                      /* jump table DS:2302 */

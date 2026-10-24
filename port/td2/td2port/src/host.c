@@ -636,6 +636,7 @@ static bool app_combination(SDL_Keycode key, SDL_Keymod mod, bool repeat)
     HostCommand cmd;
     switch (key) {
     case SDLK_G: cmd = HOST_CMD_NEXT_GRAPHICS; break;
+    case SDLK_S: cmd = HOST_CMD_NEXT_SOUND; break;
     case SDLK_M: cmd = HOST_CMD_MENU; break;
     default: return false;
     }
@@ -774,11 +775,53 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons)
 
 /* ---------------------------------------------------------------- speaker, files, errors */
 
-void host_set_audio_backend(const AudioBackend *b) { audio_be = b; }
+/* What a backend switch hands over: the speaker's state and what the game plays. */
+static struct {
+    u16 divisor;
+    u8 port61;
+    int song;                                       /* the last song started, 0 during a race */
+    bool race;
+    char car[8];
+} sound_now;
+
+void host_set_audio_backend(const AudioBackend *b)
+{
+    audio_be = b;
+    if (!renderer) return;                          /* before host_init, which resets it */
+    b->reset(AUDIO_RATE);
+    b->speaker(sound_now.divisor, sound_now.port61);
+    if (!b->event) return;
+    if (sound_now.race) b->event(SOUND_RACE_START, 0, sound_now.car);
+    else if (sound_now.song) b->event(SOUND_SONG, sound_now.song, NULL);
+}
+
+const AudioBackend *host_audio_backend(void) { return audio_be; }
 
 void host_speaker(u16 divisor, u8 port61_bits)
 {
+    sound_now.divisor = divisor;
+    sound_now.port61 = port61_bits;
     audio_be->speaker(divisor, port61_bits);
+}
+
+void host_sound_event(SoundEvent e, int n, const char *car)
+{
+    switch (e) {
+    case SOUND_SONG: sound_now.song = n; sound_now.race = false; break;
+    case SOUND_RACE_START:
+        sound_now.song = 0;
+        sound_now.race = true;
+        SDL_strlcpy(sound_now.car, car ? car : "", sizeof sound_now.car);
+        break;
+    case SOUND_RACE_END: sound_now.race = false; break;
+    default: break;
+    }
+    if (audio_be->event) audio_be->event(e, n, car);
+}
+
+void host_sound_drive(const DriveSound *d)
+{
+    if (audio_be->drive) audio_be->drive(d);
 }
 
 /* Case-insensitive lookup of name inside dir; NULL if it does not exist. */

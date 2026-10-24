@@ -19,6 +19,9 @@ const char *app_data_profile_dir(void);
 int  app_data_game_dir_count(void);
 const char *app_data_game_dir(int i);
 char *app_data_find(const char *name);                   /* first game folder's file, or NULL; SDL_free it */
+/* The Amiga game's folder (duel and sfx), from a folder or archive at path (NULL: the "amiga" setting),
+ * searched a few levels down; an archive is unpacked into the profile first. NULL if there is none. */
+char *app_data_amiga_dir(const char *path);
 bool app_data_write_catalogues(char *err, size_t err_size);
 /* How many complete cars and sceneries a folder or archive adds (an archive is unpacked); false if none. */
 bool app_data_probe(const char *path, int *car_count, int *scenery_count);

@@ -80,6 +80,31 @@ void sim_restart_reset(void)
     police_reset();
 }
 
+/* PORT: what a sample-based audio backend needs of the car, as the last simulation tick left it. The
+ * skid is how far the steering is past the grip limit when the tyres slide (motion, 06c9:4674). */
+static void drive_sound(void)
+{
+    u8 gear = DSB(DS_gear);
+    s16 st = DSS(DS_steer_angle), lim = DSS(DS_grip_limit);
+    s16 over = (s16)((st < 0 ? -st : st) - (lim < 0 ? -lim : lim));
+    DriveSound d = {
+        .sound_on = (DSB(DS_snd_enable) & 1) != 0,
+        .running = DSB(DS_run_state) == 0,
+        .rpm = DSW(DS_rpm_display),
+        .speed = DSW(DS_speed),
+        .throttle = DSC(DS_throttle),
+        .gear = gear,
+        .in_gear = gear != 0 && gear < 7 && DSB(DS_gear_broken + gear) == 0,
+        .skid = DSB(DS_skidding) && over > 0 ? (u16)over : 0,
+        .siren = DSB(DS_siren_on) != 0,
+        .radar = DSB(DS_radar_beep) != 0,
+        .pos = (u32)DSW(DS_player_pos) << 16 | (u32)(DSW(DS_player_sub) & 0xFF) << 8,
+        .cop_pos = (u32)DSW(DS_cop_pos) << 16 | (u32)(DSW(DS_cop_sub) & 0xFF) << 8,
+        .cop_speed = DSW(DS_cop_speed),
+    };
+    host_sound_drive(&d);
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 /* 06c9:403b sim_timer_routine — simulation.md §4.1. Timer routine (every PIT tick, 99.9985 Hz). */
 void sim_timer_routine(void)
@@ -89,6 +114,7 @@ void sim_timer_routine(void)
     if (--DSB(DS_div_100hz) != 0) return;
     DSB(DS_div_100hz) = 10;
     DSW(DS_tick_count10)++;
+    drive_sound();                                      /* PORT: the car's state for sample-based audio */
     if (DSB(DS_run_state) >= 2) return;                 /* unsigned: also 0xFF (quit) */
     if (DSB(DS_clock_started) != 0) DSW(DS_race_time)++;
     if (DSB(DS_finished) != 0) DSW(DS_race_time) = DSW(DS_final_time);

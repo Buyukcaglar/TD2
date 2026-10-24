@@ -2,6 +2,7 @@
  * port/spec/simulation.md §4.9–§4.11 (06c9:4674..06c9:4d3e), checked against work/sim/rdis.txt. */
 #define SIM_INTERNAL
 #include "sim.h"
+#include "../host.h"
 
 #include "../platform/res.h"
 #include "../platform/sound.h"
@@ -270,6 +271,7 @@ void hit_object(void)
 {
     brake(0x640);
     sfx_play(ds_ptr(DS_SND_BUMP));                      /* 06c9:7977 */
+    host_sound_event(SOUND_BUMP, 0, NULL);              /* PORT: for a sample-based audio backend */
     u8 al = rand8();
     if ((s8)al <= 0) return;                            /* 0 or >= 0x80: no damage */
     if (DSW(DS_demo_mode) != 0) return;

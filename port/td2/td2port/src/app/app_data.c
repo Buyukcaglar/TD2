@@ -159,10 +159,22 @@ static const char *missing_base_file(const char *dir)
     return NULL;
 }
 
-/* The folder at or below `dir` (shallowest first) that holds a catalogue or the game itself. */
-static char *find_game_folder(const char *dir, int depth)
+/* A folder with a catalogue or the DOS game itself. */
+static bool holds_dos_game(const char *dir)
 {
-    if (has(dir, "CARS.DAT") || has(dir, "SCENES.DAT") || has(dir, "TD2EGA.EXE")) return SDL_strdup(dir);
+    return has(dir, "CARS.DAT") || has(dir, "SCENES.DAT") || has(dir, "TD2EGA.EXE");
+}
+
+/* The Amiga game: its program and its sound folder. */
+static bool holds_amiga_game(const char *dir)
+{
+    return has(dir, "duel") && has(dir, "sfx");
+}
+
+/* The folder at or below `dir` (shallowest first) that holds what `holds` looks for. */
+static char *find_game_folder(const char *dir, int depth, bool (*holds)(const char *))
+{
+    if (holds(dir)) return SDL_strdup(dir);
     if (depth == 0) return NULL;
     int count = 0;
     char **entries = SDL_GlobDirectory(dir, NULL, 0, &count);
@@ -172,7 +184,7 @@ static char *find_game_folder(const char *dir, int depth)
         char *sub = NULL;
         SDL_PathInfo info;
         SDL_asprintf(&sub, "%s/%s", dir, entries[i]);
-        if (SDL_GetPathInfo(sub, &info) && info.type == SDL_PATHTYPE_DIRECTORY) found = find_game_folder(sub, depth - 1);
+        if (SDL_GetPathInfo(sub, &info) && info.type == SDL_PATHTYPE_DIRECTORY) found = find_game_folder(sub, depth - 1, holds);
         SDL_free(sub);
     }
     SDL_free(entries);
@@ -181,7 +193,7 @@ static char *find_game_folder(const char *dir, int depth)
 
 /* A game folder, or an archive (zip, 7z, rar, lha) unpacked once into Profile/Archives/<its name>.
  * The marker file there records the archive's size and time, so a changed archive is unpacked again. */
-static char *resolve_source(const char *dir)
+static char *resolve_source(const char *dir, bool (*holds)(const char *))
 {
     SDL_PathInfo info;
     if (!SDL_GetPathInfo(dir, &info) || info.type != SDL_PATHTYPE_FILE) return SDL_strdup(dir);
@@ -205,7 +217,7 @@ static char *resolve_source(const char *dir)
         SDL_SaveFile(marker_path, stamp, SDL_strlen(stamp));
     }
     SDL_free(marker_path);
-    char *inner = find_game_folder(dest, 4);
+    char *inner = find_game_folder(dest, 4, holds);
     if (!inner) return dest;
     SDL_free(dest);
     return inner;
@@ -215,7 +227,7 @@ static void add_dir(const char *dir)
 {
     if (ndirs == MAX_DIRS || !dir || !*dir) return;
     sources[ndirs] = SDL_strdup(dir);
-    dirs[ndirs++] = resolve_source(dir);
+    dirs[ndirs++] = resolve_source(dir, holds_dos_game);
 }
 
 static bool open_profile(const char *dir)
@@ -299,6 +311,16 @@ int app_data_game_dir_count(void) { return ndirs; }
 const char *app_data_game_dir(int i) { return i >= 0 && i < ndirs ? dirs[i] : NULL; }
 char *app_data_find(const char *name) { return ndirs ? find_in(dirs[0], name) : NULL; }
 
+char *app_data_amiga_dir(const char *path)
+{
+    if (!path) path = app_setting("amiga");
+    if (!path || !*path) return NULL;
+    char *dir = resolve_source(path, holds_amiga_game);
+    char *inner = find_game_folder(dir, 4, holds_amiga_game);
+    SDL_free(dir);
+    return inner;
+}
+
 /* ---------------------------------------------------------------- catalogues */
 
 typedef struct { char code[5]; char name[21]; int stages; } Entry;
@@ -372,7 +394,7 @@ static void count_complete(const char *dir, int *car_count, int *scenery_count)
 
 bool app_data_probe(const char *path, int *car_count, int *scenery_count)
 {
-    char *dir = resolve_source(path);
+    char *dir = resolve_source(path, holds_dos_game);
     count_complete(dir, car_count, scenery_count);
     SDL_free(dir);
     return *car_count > 0 || *scenery_count > 0;

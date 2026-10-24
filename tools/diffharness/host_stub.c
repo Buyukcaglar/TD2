@@ -34,6 +34,8 @@ bool host_xt_key_down(u8 xt_scan) { (void)xt_scan; return false; }
 bool host_joy_read(s16 *x, s16 *y, u8 *buttons) { *x = *y = 0; *buttons = 0; return false; }
 void host_speaker(u16 divisor, u8 port61_bits) { (void)divisor; (void)port61_bits; }
 void host_sim_state(const u8 *memory, u32 size, u16 bp, u16 cx) { (void)memory; (void)size; (void)bp; (void)cx; }
+void host_sound_event(SoundEvent e, int n, const char *car) { (void)e; (void)n; (void)car; }
+void host_sound_drive(const DriveSound *d) { (void)d; }
 void host_set_user_dir(const char *dir) { (void)dir; }
 char *host_game_path(const char *name, bool create) { (void)name; (void)create; return NULL; }
 void host_free(void *p) { free(p); }

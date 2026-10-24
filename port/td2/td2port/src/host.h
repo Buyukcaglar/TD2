@@ -3,6 +3,7 @@
  * for the game's own INT 9 handler, plus a BIOS-style buffer), gamepad, PC speaker audio, game file
  * lookup and fatal errors. No game logic lives here. */
 #include "types.h"
+#include "audio_backend.h"
 
 #define PIT_HZ        1193182u
 #define PIT_DIV_GAME  0x2E9Cu        /* 11932 -> 99.9985 Hz, the game's timer rate (06c9:6059) */
@@ -26,9 +27,9 @@ void host_set_title_mode(const char *mode);   /* "Test Drive II (<mode>)" */
 
 /* App commands: key combinations and mouse clicks the app handles itself, which the game never sees.
  * The keys are the same on Windows and macOS (Ctrl, not Cmd): Ctrl+Shift+G cycles the graphics mode,
- * Ctrl+Shift+M or a right click opens the app's menu. The handler runs inside host_pump(), at any
+ * Ctrl+Shift+S the sound, Ctrl+Shift+M or a right click opens the app's menu. The handler runs inside host_pump(), at any
  * point of the game, so it may only do what is safe at any time (record a switch, change the window). */
-typedef enum { HOST_CMD_NEXT_GRAPHICS, HOST_CMD_MENU } HostCommand;
+typedef enum { HOST_CMD_NEXT_GRAPHICS, HOST_CMD_NEXT_SOUND, HOST_CMD_MENU } HostCommand;
 void host_set_command_handler(void (*handler)(HostCommand cmd));
 
 /* For the app's own UI (app/): the native window (HWND on Windows), and a pause of the game clock and
@@ -86,10 +87,14 @@ bool host_joy_read(s16 *x, s16 *y, u8 *buttons);
 /* ---- PC speaker: PIT channel 2 divisor and port 61h bits 0 (PIT gate) and 1 (speaker data); it
  * sounds while both are set. divisor 0 means 65536. Changes take effect from the current tick onward. */
 void host_speaker(u16 divisor, u8 port61_bits);
-/* The audio backend the speaker writes go to (audio_backend.h); call before host_init. Default: the
- * PC speaker. */
-struct AudioBackend;
-void host_set_audio_backend(const struct AudioBackend *b);
+/* The audio backend the speaker writes and sound events go to (audio_backend.h). Default: the PC
+ * speaker. It can change at any time: the new backend starts with the speaker's last state and with
+ * what the game plays now (the race, or the last song). */
+void host_set_audio_backend(const AudioBackend *b);
+const AudioBackend *host_audio_backend(void);
+/* The game's sound events and, ten times a second during a race, the car's state (audio_backend.h). */
+void host_sound_event(SoundEvent e, int n, const char *car);
+void host_sound_drive(const DriveSound *d);
 
 /* ---- Developer aid: with TD2_STATE_DIR set, the sim timer routine's entry state (the 1 MiB of memory,
  * then the leftover BP and CX as little-endian words) is saved as stateNNN.bin every TD2_STATE_EVERY

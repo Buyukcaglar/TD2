@@ -22,6 +22,7 @@
 #include "app/app_data.h"
 #include "app/app_menu.h"
 #include "app/app_ui.h"
+#include "amiga/audio_amiga.h"
 #include "mem.h"
 #include "platform/gfx.h"
 #include "platform/gfx_backend.h"
@@ -34,6 +35,7 @@ static void app_command(HostCommand cmd)
 {
     switch (cmd) {
     case HOST_CMD_NEXT_GRAPHICS: app_next_graphics(); break;
+    case HOST_CMD_NEXT_SOUND: app_next_sound(); break;
     case HOST_CMD_MENU: app_menu_open(); break;
     }
 }
@@ -80,6 +82,11 @@ static void apply_settings(const GfxBackend *backend, int *scale)
     if (m && !strcmp(m, "amber")) gfx_herc_set_phosphor(GFX_HERC_AMBER);
     if (*scale < 1) *scale = app_setting("scale") ? atoi(app_setting("scale")) : 3;
     if (*scale < 1 || *scale > 8) *scale = 3;
+    /* The Amiga sound, when the settings name the Amiga game's folder or archive. */
+    if (app_amiga_open(NULL)) {
+        const char *s = app_setting("sound");
+        if (s && !strcmp(s, audio_amiga.name)) host_set_audio_backend(&audio_amiga);
+    }
 }
 
 #ifdef _WIN32
