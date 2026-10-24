@@ -27,7 +27,7 @@ def disassemble(mem, start, end):
 
 
 if __name__ == '__main__':
-    mem, sections = hunk.load(open(sys.argv[1], 'rb').read())
+    mem, sections = hunk.load(open(sys.argv[1], "rb").read(), overlays_too=True)
     start, end = int(sys.argv[2], 16), int(sys.argv[3], 16)
     labels = {s.base + off: name for s in sections for name, off in s.symbols}
     for addr, raw, mn, ops in disassemble(mem, start, end):
