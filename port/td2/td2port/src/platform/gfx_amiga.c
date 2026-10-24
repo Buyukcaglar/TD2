@@ -20,8 +20,8 @@ typedef struct {
     u16 seg;            /* the buffer's plane 0 segment */
     bool amiga;         /* an Amiga palette, else the EGA's */
     u32 rgb[32];
-    u16 split;          /* from this line down, rgb2 (0: none) */
-    u32 rgb2[32];
+    u8 splits;          /* from each split's line down, its colours */
+    GfxSplit split[GFX_SPLITS];
     u8 map[16];
 } TargetColours;
 
@@ -41,7 +41,7 @@ static const u8 ega_colours[16][3] = {
 static void ega_colours_of(TargetColours *t)
 {
     t->amiga = false;
-    t->split = 0;
+    t->splits = 0;
     for (int i = 0; i < 16; i++) t->map[i] = (u8)i;
 }
 
@@ -50,8 +50,8 @@ static void show_screen_colours(void)
 {
     gfx_ega.amiga_palette = screen.amiga;
     memcpy(gfx_ega.rgb, screen.rgb, sizeof gfx_ega.rgb);
-    gfx_ega.split = screen.split;
-    memcpy(gfx_ega.rgb2, screen.rgb2, sizeof gfx_ega.rgb2);
+    gfx_ega.splits = screen.splits;
+    memcpy(gfx_ega.split, screen.split, sizeof gfx_ega.split);
     memcpy(gfx_ega.colour_map, screen.map, sizeof gfx_ega.colour_map);
     gfx_ega.dirty = true;
 }
@@ -168,8 +168,9 @@ static void set_target_rgb(const u32 rgb[32], int n, u16 split, const u32 rgb2[3
     if (!t) return;
     t->amiga = true;
     memcpy(t->rgb, rgb, sizeof t->rgb);
-    t->split = split;
-    memcpy(t->rgb2, rgb2, sizeof t->rgb2);
+    t->splits = split ? 1 : 0;
+    t->split[0].line = split;
+    memcpy(t->split[0].rgb, rgb2, sizeof t->split[0].rgb);
     for (int c = 0; c < 16; c++) {
         int best = 0, dist = 0x7FFFFFFF;
         for (int i = 0; i < n && i < 32; i++) {
@@ -191,6 +192,44 @@ static void set_target_palette(const AmigaPicture *p)
     for (int i = 0; i < 32; i++) rgb[i] = amiga_rgb(p->pal[i]);
     for (int i = 0; i < 32; i++) rgb2[i] = amiga_rgb(p->pal2[i]);
     set_target_rgb(rgb, 1 << p->planes, p->split, rgb2);
+}
+
+bool gfx_amiga_split_colours(const char *file, u16 line, int first)
+{
+    TargetColours *t = target_colours();
+    if (!gfx_amiga_screens() || !t || !t->amiga || t->splits >= GFX_SPLITS) return false;
+    if (t->splits && line < t->split[t->splits - 1].line) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaPicture p;
+    bool ok = path && ilbm_load(path, &p);
+    SDL_free(path);
+    if (!ok) return false;
+    GfxSplit *s = &t->split[t->splits];
+    memcpy(s->rgb, gfx_split_row(t->rgb, t->split, t->splits, line), sizeof s->rgb);
+    for (int i = first; i < 32; i++) s->rgb[i] = amiga_rgb(p.pal[i]);
+    s->line = line;
+    t->splits++;
+    ilbm_free(&p);
+    if (t == &screen) show_screen_colours();
+    return true;
+}
+
+bool gfx_amiga_fade_level(int level)
+{
+    if (!screen.amiga) return false;
+    u32 cap = (u32)(level < 0 ? 0 : level > 15 ? 15 : level) * 17u;
+    bool lit = false;
+    for (int s = -1; s < screen.splits; s++) {
+        u32 *rgb = s < 0 ? screen.rgb : screen.split[s].rgb;
+        for (int i = 0; i < 32; i++) {
+            u32 r = rgb[i] >> 16 & 0xFF, g = rgb[i] >> 8 & 0xFF, b = rgb[i] & 0xFF;
+            lit = lit || r || g || b;
+            rgb[i] = (r < cap ? r : cap) << 16 | (g < cap ? g : cap) << 8 | (b < cap ? b : cap);
+        }
+    }
+    show_screen_colours();
+    return lit;
 }
 
 void gfx_amiga_colours(const u16 *colours, int n)
@@ -323,10 +362,25 @@ bool gfx_amiga_sprite_rect(const char *file, const char *name, s16 *x, s16 *y, s
     bool ok = path && shp_load(path, name, &s);
     SDL_free(path);
     if (!ok) return false;
-    *x = s.x;
-    *y = s.y;
+    if (x) *x = s.x;
+    if (y) *y = s.y;
     if (w) *w = (s16)s.w;
     if (h) *h = (s16)s.h;
+    shp_free(&s);
+    return true;
+}
+
+bool gfx_amiga_sprite_hot(const char *file, const char *name, s16 *hot_x, s16 *hot_y)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaSprite s;
+    bool ok = path && shp_load(path, name, &s);
+    SDL_free(path);
+    if (!ok) return false;
+    *hot_x = s.hot_x;
+    *hot_y = s.hot_y;
     shp_free(&s);
     return true;
 }
@@ -502,7 +556,7 @@ bool gfx_amiga_picture_scaled(const char *file, s16 sx, s16 sy, s16 sw, s16 sh, 
     if (!ok) return false;
     for (s16 j = 0; j < h; j++) {
         s16 row = (s16)(y + j);
-        const u32 *pens = t->split && row >= (s16)t->split ? t->rgb2 : t->rgb;
+        const u32 *pens = gfx_split_row(t->rgb, t->split, t->splits, row);
         int y0 = sy + j * sh / h, y1 = sy + (j + 1) * sh / h;
         for (s16 i = 0; i < w; i++) {
             int x0 = sx + i * sw / w, x1 = sx + (i + 1) * sw / w;

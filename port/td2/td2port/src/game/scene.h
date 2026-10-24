@@ -44,7 +44,8 @@ void msg_fill_er_up(void);              /* 06c9:374f */
 void msg_lives_left(void);              /* 06c9:375f */
 void message_box_06C9_3788(void);       /* 06c9:3788 */
 void select_main_view(void);            /* 06c9:3efc */
-void wait_after_message(void);          /* 06c9:3f0d */
+void wait_after_message(void);
+bool amiga_game_over(void);              /* PORT: flow_screens.c, the Amiga form */          /* 06c9:3f0d */
 
 /* ---- scene_cockpit.c */
 void cockpit_load(void);                /* 06c9:37d0 */

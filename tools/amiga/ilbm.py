@@ -45,6 +45,13 @@ def byterun1(src, size):
 
 def parse(data):
     data = rpck.read(data)
+    if data[:4] == b'CMAP':
+        # a palette alone (the .p files of the cars on the data disks): duel takes the 32 colours after
+        # the chunk's header, whatever its length says
+        pic = Picture()
+        pic.planes = 5
+        pic.palette = [tuple(data[i:i + 3]) for i in range(8, min(len(data), 8 + 96) - 2, 3)]
+        return pic
     if data[:4] != b'FORM' or data[8:12] != b'ILBM':
         raise ValueError('not an ILBM')
     end = 8 + struct.unpack_from('>I', data, 4)[0]

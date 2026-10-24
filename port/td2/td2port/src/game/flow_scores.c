@@ -107,10 +107,52 @@ s16 hisc_insert(void)
     return 0;
 }
 
+/* PORT: the high scores in their Amiga form (duel $2a3b0) into the page: black, with colour 1 08Eh and
+ * colour 2 F66h; "<scenery> Top Scores" centred at the top in pen 2 ($2a0b0 makes it from the scenery's
+ * name in scen.dat); for each of the top four its car's logo ("logo" of <car>logo.shp, its hot point at
+ * (40, i * 35 + 50)), with that car's colours 3 to 31 (<car>.rear.p) from two lines above the logo
+ * down, a copper split, and "%7ld  %s" (score, name) at (74, i * 35 + 35) in pen 1; the fifth and
+ * sixth at (74, i * 10 + 122). Entries without a score are left out. After a race "Your Score : %ld"
+ * is centred at line 192 in pen 2. The text is in TD2's font, as topaz is not in the files. False
+ * without the Amiga graphics. */
+static bool amiga_hisc_page(s32 timeout)
+{
+    static const u16 colours[3] = { 0x000, 0x08E, 0xF66 };
+    char t[72], file[48];
+    if (!gfx_amiga_screens()) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    gfx_amiga_colours(colours, 3);
+    snprintf(t, sizeof t, "%s", DSTR(scn_name(DSS(DS_scn_idx))));
+    for (size_t k = strlen(t); k > 0 && t[k - 1] == ' '; k--) t[k - 1] = 0;
+    strncat(t, " Top Scores", sizeof t - strlen(t) - 1);
+    gfx_set_text_colours(AMIGA_PEN(2), AMIGA_PEN(0));
+    draw_text_centered_str(t, 1);
+    for (s16 i = 0; i < 6; i++) {
+        if (DSL(top_rec(i)) == 0) continue;
+        const char *pre = amiga_car_prefix(DSTR(top_car(i)));
+        s16 hx, hy;
+        if (i < 4 && pre && gfx_amiga_sprite_hot(flow_concat(file, sizeof file, pre, "logo.shp"), "logo", &hx, &hy)) {
+            gfx_amiga_sprite(file, "logo", 40, (s16)(i * 35 + 50), AMIGA_AT_HOT);
+            gfx_amiga_split_colours(flow_concat(file, sizeof file, pre, ".rear.p"), (u16)(i * 35 + 48 - hy), 3);
+        }
+        snprintf(t, sizeof t, "%7ld  %s", (long)(s32)DSL(top_rec(i)), DSTR(top_name(i)));
+        gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
+        gfx_draw_text_str(t, 74, (u16)(i < 4 ? i * 35 + 35 : i * 10 + 122));
+    }
+    if (timeout == 1500 && DSSL(DS_total_score) > 0) {
+        snprintf(t, sizeof t, "Your Score : %ld", (long)DSSL(DS_total_score));
+        gfx_set_text_colours(AMIGA_PEN(2), AMIGA_PEN(0));
+        draw_text_centered_str(t, 192);
+    }
+    return true;
+}
+
 /* The high scores into the page, as hisc_show draws them; KEY_ESC if a logo is missing. */
 static s16 hisc_page(s32 timeout)
 {
     char t[72], name[26];
+    if (amiga_hisc_page(timeout)) return 0;      /* PORT */
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     gfx_set_text_colours(COL(0x0F, 3), 0);
@@ -161,7 +203,9 @@ s16 hisc_show(s32 timeout)
     if (r != 0) return r;
     r = screen_reveal(1);
     if (r != 0) return r;
-    return (s16)getkey_timeout_redraw((u32)timeout, hisc_redraw, &timeout);
+    r = (s16)getkey_timeout_redraw((u32)timeout, hisc_redraw, &timeout);
+    amiga_fade_out();                              /* PORT: as duel */
+    return r;
 }
 
 /* 0645:06a8 hisc_check — game_flow.md §4.15 (verified) */

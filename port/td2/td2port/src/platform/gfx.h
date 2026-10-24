@@ -135,14 +135,23 @@ bool gfx_amiga_picture(const char *file, s16 x, s16 y);
 typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X, AMIGA_BOX_AT_X, AMIGA_BOX_AT_OWN } AmigaPlace;
 /* Draws sprite name of an Amiga sprite archive into the selected target. False if it is not there. */
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at);
-/* A sprite's own position and its size (w and h may be NULL). False if it is not there. */
+/* A sprite's own position and its size (any may be NULL). False if it is not there. */
 bool gfx_amiga_sprite_rect(const char *file, const char *name, s16 *x, s16 *y, s16 *w, s16 *h);
+/* A sprite's hot point. False if it is not there. */
+bool gfx_amiga_sprite_hot(const char *file, const char *name, s16 *hot_x, s16 *hot_y);
 /* A file of the Amiga game, unpacked if Rpck-packed (SDL_free), or NULL. */
 void *gfx_amiga_file(const char *file, u32 *len);
 /* Draws the part (sx, sy, sw, sh) of an Amiga picture scaled to w x h at (x, y) of the selected target,
  * each pixel the mean colour of its part of the picture, as the nearest of the target's colours for that
  * row. For an icon on a screen that already has its colours. False if the picture is not there. */
 bool gfx_amiga_picture_scaled(const char *file, s16 sx, s16 sy, s16 sw, s16 sh, s16 x, s16 y, s16 w, s16 h);
+/* From line down the selected target shows colours first to 31 of an Amiga picture instead (a copper
+ * list's colour moves, as on duel's high scores); splits go in line order. False if the target has no
+ * Amiga colours, the picture is not there, or there are too many splits. */
+bool gfx_amiga_split_colours(const char *file, u16 line, int first);
+/* One step of duel's fade out ($1a0a8): every colour component of the screen, with its splits, at most
+ * level (0 to 15, the Amiga's 4 bits). False if the screen was black already, or has no Amiga colours. */
+bool gfx_amiga_fade_level(int level);
 /* Gives the selected target n colours as Amiga colour words (0RGB, 4 bits each). */
 void gfx_amiga_colours(const u16 *colours, int n);
 /* Clears plane k of the selected target, or sets plane k along a line; duel draws in one plane by

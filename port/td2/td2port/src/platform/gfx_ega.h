@@ -14,6 +14,21 @@
  * buffer and the colour numbers then have five bits, and the frame shows 32 colours. */
 #define EGA_MAX_PLANES 5
 
+/* A palette split of an Amiga screen (a copper list's colour moves): from line down, these colours. */
+#define GFX_SPLITS 6
+typedef struct {
+    u16 line;
+    u32 rgb[32];
+} GfxSplit;
+
+/* The colours of row y: rgb, or those of the last split at or above it (splits in line order). */
+static inline const u32 *gfx_split_row(const u32 *rgb, const GfxSplit *split, int splits, int y)
+{
+    for (int i = splits - 1; i >= 0; i--)
+        if (y >= split[i].line) return split[i].rgb;
+    return rgb;
+}
+
 typedef struct {
     u8 plane[EGA_MAX_PLANES][EGA_PLANE_BYTES];
     u8 latch[EGA_MAX_PLANES];      /* last CPU read of all planes (write mode 1 source) */
@@ -30,8 +45,8 @@ typedef struct {
      * without, 0-15 are the palette registers' and colour_map is the identity. */
     bool amiga_palette;
     u32 rgb[32];
-    u16 split;           /* an Amiga palette: from this line down the screen shows rgb2 (0: none) */
-    u32 rgb2[32];
+    u8 splits;           /* an Amiga palette: from each split's line down the screen shows its colours */
+    GfxSplit split[GFX_SPLITS];
     u8 colour_map[16];   /* the colour each EGA colour number draws on the screen */
     bool dirty;
 } EgaState;

@@ -3,8 +3,9 @@
 Runs the port headless with --amiga-graphics and the amiga setting, through the menus to the scenery
 choice and to the difficulty screen, and checks the option screen's title, the difficulty screen and the
 scenery choice against their Amiga pictures (pics/gameoptionscreen, pics/gamedifficulty and the Master
-scenery's scen/sc1_icon), the intro's showroom against the F40's side view and the car choice against
-its pictures, in their own colours, as the Amiga shows them (the top 4 bits of each component).
+scenery's scen/sc1_icon), the intro's showroom against the F40's side view, the car choice against
+its pictures and the high scores against the cars' logos, in their own colours, as the Amiga shows them
+(the top 4 bits of each component).
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -42,13 +43,16 @@ def frames_after(keys, seconds, t0):
     return run(keys, seconds, lambda times: [n for t, n in times if t >= t0])
 
 
-def run(keys, seconds, pick):
-    """Runs the port headless with the Amiga graphics; the frames pick chooses from (time, file name)."""
+def run(keys, seconds, pick, files=None):
+    """Runs the port headless with the Amiga graphics; the frames pick chooses from (time, file name).
+    files: more files for the profile, {name: bytes}."""
     from PIL import Image
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         (tmp / 'settings.ini').write_text(f'amiga={AMIGA.as_posix()}' + chr(10))
         (tmp / 'select.dat').write_text('0 0 0 F40 P959 TDS2' + chr(10))   # the intro's cars set its length
+        for name, data in (files or {}).items():
+            (tmp / name).write_bytes(data)
         shots = tmp / 'shots'
         shots.mkdir()
         env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
@@ -146,6 +150,38 @@ class AmigaGraphicsTest(unittest.TestCase):
         diff = [(x, y) for y in range(84, 200) for x in range(640)
                 if frame.getpixel((x, y)) != sb_pal[sb.pixels[y * 640 + x]]]
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the data')
+
+    def test_high_scores(self):
+        # the attract loop's table after the credits (the last frame before 31 s): five entries, the
+        # F40's logo first and the Camaro's third (a data disk's car, its colours a CMAP alone), each in
+        # its car's colours 3 to 31 from two lines above the logo, colours 0 to 2 the screen's; no
+        # sixth line
+        import ilbm
+        import shp
+        import struct
+        table = bytearray((GAME / 'TDS2HISC.DAT').read_bytes())
+        entries = [(912345, 'F40'), (654321, 'P959'), (500000, 'CAMA'), (400000, 'F40'), (300000, 'P959')]
+        for i, (score, car) in enumerate(entries):
+            struct.pack_into('<l5s17s', table, 26 * i, score, car.encode(), b'Driver')
+        sum_ = struct.unpack_from('<L', table, 0x150)[0] + sum(s for s, _ in entries)
+        struct.pack_into('<L', table, 0x150, sum_ & 0xFFFFFFFF)
+        frame, = run('1000:Escape', 31, lambda times: [max(times)[1]],
+                     {'TDS2HISC.DAT': bytes(table)})
+        screen = [(0, 0, 0), (0, 136, 238), (255, 102, 102)]
+        for i, car in [(0, 'cars/f40'), (2, 'cars1/cars/camo')]:
+            rear = amiga_colours(ilbm.parse((AMIGA / f'{car}.rear.p').read_bytes()))
+            logo = {s.name: s for s in shp.read((AMIGA / f'{car}logo.shp').read_bytes())}['logo']
+            x0, y0 = 40 - logo.hot_x, i * 35 + 50 - logo.hot_y
+            diff = [(x, y) for y in range(logo.height) for x in range(logo.width) if logo.mask[y * logo.width + x]
+                    and frame.getpixel((x0 + x, y0 + y)) != (lambda c: screen[c] if c < 3 else rear[c])(
+                        logo.pixels[y * logo.width + x])]
+            self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the logo of {car}')
+        self.assertIn(screen[2], {frame.getpixel((x, y)) for y in range(1, 9) for x in range(320)})
+        for i in range(4):
+            self.assertIn(screen[1], {frame.getpixel((x, y)) for y in range(i * 35 + 35, i * 35 + 43)
+                                      for x in range(74, 320)}, f'entry {i}')
+        self.assertIn(screen[1], {frame.getpixel((x, y)) for y in range(162, 170) for x in range(74, 320)})
+        self.assertEqual({frame.getpixel((x, y)) for y in range(172, 180) for x in range(320)}, {(0, 0, 0)})
 
     def test_scenery_choice_picture(self):
         # below the disk name

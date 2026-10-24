@@ -473,6 +473,10 @@ new_life:
             fatal("run_stage: bad drive result %d", r);
         }
         if (--DSW(DS_lives) == 0) {
+            if (amiga_game_over()) {                      /* PORT: the Amiga form */
+                DSB(DS_run_state) = 0;
+                goto finish;
+            }
             select_screen();
             blit_and_own(hnd(ROAD_H(ROAD_GOVR)));
             blit_or_own(hnd(ROAD_H(ROAD_govr)));

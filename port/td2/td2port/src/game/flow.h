@@ -63,6 +63,10 @@ void flow_pace(u32 ticks);
  * effect plays (at most 10 s), with redraw as for getkey_timeout_redraw; returns the key that ended it,
  * or 0. */
 u32  amiga_ticks(u32 frames);
+/* The Amiga game's file prefix of a car ("cars/f40" for F40), or NULL. */
+const char *amiga_car_prefix(const char *code);
+/* duel's fade out of an Amiga screen ($1a0a8); nothing without the Amiga graphics. */
+void amiga_fade_out(void);
 u16  wait_sound_end(void (*redraw)(void *), void *ctx);
 /* PORT: a graphics switch on the intro and attract screens (flow.c): applies it, clears the screen and
  * calls redraw(ctx) (if not NULL) to draw the screen again; getkey_timeout_redraw is getkey_timeout

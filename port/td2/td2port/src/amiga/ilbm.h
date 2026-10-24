@@ -1,6 +1,7 @@
 #pragma once
 /* IFF ILBM pictures of the Amiga game (tools/amiga/ilbm.py): BMHD, CMAP and a BODY in ByteRun1 or
- * plain, after Rpck, and duel's own CMP2. The full screens are 320 x 200 in 5 bitplanes. */
+ * plain, after Rpck, and duel's own CMP2. The full screens are 320 x 200 in 5 bitplanes. A file that is
+ * a CMAP chunk alone reads as a picture of no pixels with those 32 colours. */
 #include "../types.h"
 
 typedef struct {

@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "flow.h"
+#include "scene.h"
 #include "../codeptr.h"
 #include "../host.h"
 #include "../platform/gfx.h"
@@ -389,7 +390,53 @@ s16 credits(void)
 static bool amiga_showroom;
 static s32 amiga_speed;                             /* pixels a frame, 16.16 */
 static s16 showroom_intro_dos(s16 unused);
-static const char *amiga_car_prefix(const char *code);
+
+/* Waits until ticks reach t: a key, KEY_SWITCH for a pending graphics switch, or 0. */
+static u16 wait_ticks(u32 t);
+
+/* PORT: duel's fade out ($1a0a8): 16 steps, each caps every colour component of the screen's copper
+ * list at one level less, from 15 to 0, then waits Delay(1), a 50 Hz tick; it stops once all are black. */
+void amiga_fade_out(void)
+{
+    if (!gfx_amiga_screens()) return;
+    for (int level = 15; level >= 0; level--) {
+        if (!gfx_amiga_fade_level(level)) break;
+        u32 t = ticks_get() + 2;
+        while (ticks_get() < t) host_pump();
+    }
+}
+
+/* PORT: game over in its Amiga form (duel $13b88), in place of TD2's words over the road: the picture
+ * pics/gameover, its sample, and then the red letters drip, the sprites dr00 to dr36 of
+ * pics/gameover.shp (the stage, then the drip) one a frame at their own places, each over the last.
+ * Then 180 frames or a key, and the fade out. At the DOS pace TD2's wait follows the drips. False without
+ * the Amiga graphics. */
+bool amiga_game_over(void)
+{
+    if (!gfx_amiga_screens()) return false;
+    select_screen();
+    if (!gfx_amiga_picture("pics/gameover", 0, 0)) return false;
+    host_sound_event(SOUND_GAME_OVER, 0, NULL);
+    u32 t0 = ticks_get(), n = 0;
+    u16 k = 0;
+    for (int a = 0; a < 4 && k != KEY_SWITCH; a++)
+        for (int b = 0; b < 7 && k != KEY_SWITCH; b++) {
+            char name[5] = { 'd', 'r', (char)('0' + a), (char)('0' + b), 0 };
+            gfx_amiga_sprite("pics/gameover.shp", name, 0, 0, AMIGA_AT_OWN);
+            k = wait_ticks(t0 + amiga_ticks(++n));
+            if (k != KEY_SWITCH) k = 0;              /* duel reads no keys while they drip */
+        }
+    if (k != KEY_SWITCH) {
+        if (host_amiga_pace()) {
+            kbd_flush();
+            wait_ticks(ticks_get() + amiga_ticks(180));
+        } else {
+            wait_after_message();
+        }
+    }
+    amiga_fade_out();
+    return true;
+}
 
 /* PORT: the intro's showroom in its Amiga form (duel $2b776). The showroom is a viewport of 84 lines at
  * line 116 with the car's colours (<car>.st.p). duel draws the side view ("gcar" of <car>.sideview.shp)
@@ -406,7 +453,6 @@ static const char *amiga_car_prefix(const char *code);
 #define SHOW_Y 116
 #define SHOW_H 84
 
-/* Waits until ticks reach t: a key, KEY_SWITCH for a pending graphics switch, or 0. */
 static u16 wait_ticks(u32 t)
 {
     for (;;) {
@@ -1084,7 +1130,7 @@ void scenery_select(void)
 }
 
 /* PORT: the Amiga game's file prefix of each car, by its DOS code, for the Amiga graphics. */
-static const char *amiga_car_prefix(const char *code)
+const char *amiga_car_prefix(const char *code)
 {
     static const struct { const char *code, *prefix; } cars[] = {
         { "F40", "cars/f40" }, { "P959", "cars/p959" }, { "CAMA", "cars1/cars/camo" },

@@ -11,6 +11,13 @@ static u32 be32(const u8 *p) { return (u32)p[0] << 24 | (u32)p[1] << 16 | (u32)p
 bool ilbm_read(const u8 *f, u32 len, AmigaPicture *p)
 {
     memset(p, 0, sizeof *p);
+    if (len >= 8 && memcmp(f, "CMAP", 4) == 0) {
+        /* a palette alone (the .p files of the cars on the data disks): duel's $108a4 finds the CMAP and
+         * takes the 32 colours after its header, whatever its length says */
+        memcpy(p->pal, f + 8, len - 8 < sizeof p->pal ? len - 8 : sizeof p->pal);
+        p->planes = 5;
+        return true;
+    }
     if (len < 12 || memcmp(f, "FORM", 4) != 0 || memcmp(f + 8, "ILBM", 4) != 0) return false;
     int masking = 0, packed = 0;
     const u8 *body = NULL;
