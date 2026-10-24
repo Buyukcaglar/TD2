@@ -94,7 +94,7 @@ static void ega_set_palette(u16 ds_table)
     gfx_ega.dirty = true;
 }
 
-static void ega_clear_screen(u8 colour);
+static void ega_clear_screen(u16 colour16);
 
 /* 06c9:90e8 gfx_init_ega */
 static void ega_set_mode(void)
@@ -184,8 +184,9 @@ static FarPtr ega_create_buffer(u16 width_px, u16 h, u16 plane_mask)
 }
 
 /* 06c9:840a gfx_clear_screen: always A000h, 8000 bytes, write mode 2, map mask 0Fh */
-static void ega_clear_screen(u8 colour)
+static void ega_clear_screen(u16 colour16)
 {
+    u8 colour = (u8)colour16;
     gc_out(5, 2);
     seq_map_mask(0x0F);
     for (u16 di = 0; di < 0x1F40; di++) ega_write(di, colour);
@@ -193,8 +194,9 @@ static void ega_clear_screen(u8 colour)
 }
 
 /* 06c9:843e gfx_clear_clip */
-static void ega_clear_clip(u8 colour)
+static void ega_clear_clip(u16 colour16)
 {
+    u8 colour = (u8)colour16;
     u16 rows = (u16)(CUR_Y1 - CUR_Y0);                             /* bp-0E */
     u16 cols = (u16)(CUR_X1 - CUR_X0);                             /* bp-08 */
     u16 di0 = (u16)(row_at(CUR_Y0) + CUR_X0);                      /* bp-0A */
@@ -245,8 +247,9 @@ static void ega_clear_clip(u8 colour)
 }
 
 /* 06c9:8a0c gfx_fill_rect (body shared with 06c9:89a2) */
-static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u8 colour)
+static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour16)
 {
+    u8 colour = (u8)colour16;
     if (w <= 0 || h <= 0) return;
     u16 col = (u16)(x >> 3);                                       /* bp-0C */
     u8 dh = DSB(0x6838 + (x & 7));                                 /* left mask FF 7F .. 01 */
@@ -344,8 +347,9 @@ static void ega_fill_rect(s16 x, s16 y, s16 w, s16 h, u8 colour)
 }
 
 /* 06c9:ba3c gfx_plot */
-static void ega_plot(s16 x, s16 y, u8 colour)
+static void ega_plot(s16 x, s16 y, u16 colour16)
 {
+    u8 colour = (u8)colour16;
     u16 bx = (u16)x & 7;
     u16 di = (u16)(((u16)x >> 3) + row_at((u16)y));
     u8 bit = DSB(DS_plot_bit_tab + bx);
@@ -417,8 +421,9 @@ static void ega_line_end(bool or_mode, bool x_major)
     if (or_mode) gc_out(3, 0);
 }
 
-static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 colour, bool or_mode)
+static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_mode)
 {
+    u8 colour = (u8)colour16;
     u16 cx0 = (u16)(CUR_X0 << 3), cx1 = (u16)(CUR_X1 << 3);        /* bp-14, bp-16 */
     u16 cy0 = CUR_Y0, cy1 = CUR_Y1;
     u16 X0 = (u16)x0, Y0 = (u16)y0, X1 = (u16)x1, Y1 = (u16)y1;
@@ -810,6 +815,8 @@ const GfxBackend gfx_ega_backend = {
     .name = "EGA",
     .frame_w = 320,
     .frame_h = 200,
+    .px_per_byte = 8,
+    .scene = &ega_scene_raster,
     .reset = ega_reset,
     .compose = ega_compose,
     .video_hook = ega_video_hook,

@@ -136,7 +136,7 @@ FarPtr gfx_create_buffer(u16 width_px, u16 h, u16 plane_mask) { return be->creat
 FarPtr create_buffer_like(FarPtr spr, FarPtr *sprite_out)
 {
     u16 w = rd16(spr.seg, spr.off);
-    FarPtr desc = gfx_create_buffer((u16)(w << 3), rd16(spr.seg, (u16)(spr.off + 2)), 0x0F);
+    FarPtr desc = gfx_create_buffer((u16)(w * be->px_per_byte), rd16(spr.seg, (u16)(spr.off + 2)), 0x0F);
     FarPtr hdr = gfx_desc_sprite(desc);
     wr16(hdr.seg, (u16)(hdr.off + 8), rd16(spr.seg, (u16)(spr.off + 8)));
     wr16(hdr.seg, (u16)(hdr.off + 0x0A), rd16(spr.seg, (u16)(spr.off + 0x0A)));
@@ -156,17 +156,17 @@ void gfx_free_buffer(FarPtr desc)
 /* ------------------------------------------------------------------------------------------------ */
 /* Clears, fills, lines, plot                                                                       */
 
-void gfx_clear_screen(u8 colour) { be->clear_screen(colour); }   /* 06c9:840a */
-void gfx_clear_clip(u8 colour) { be->clear_clip(colour); }       /* 06c9:843e */
+void gfx_clear_screen(u16 colour) { be->clear_screen(colour); }   /* 06c9:840a */
+void gfx_clear_clip(u16 colour) { be->clear_clip(colour); }       /* 06c9:843e */
 
 /* 06c9:8a0c gfx_fill_rect */
-void gfx_fill_rect(s16 x, s16 y, s16 w, s16 h, u8 colour)
+void gfx_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour)
 {
     be->fill_rect(x, y, w, h, colour);
 }
 
 /* 06c9:89a2 gfx_fill_rect_clip: clip to [clip_x0*8, clip_x1*8) x [clip_y0, clip_y1), then 8a0c's body */
-void gfx_fill_rect_clip(s16 x, s16 y, s16 w, s16 h, u8 colour)
+void gfx_fill_rect_clip(s16 x, s16 y, s16 w, s16 h, u16 colour)
 {
     u16 X = (u16)x, Y = (u16)y, W = (u16)w, H = (u16)h;
     u16 cx0 = (u16)(CUR_X0 << 3);
@@ -201,24 +201,24 @@ void draw_rect_outline(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour)
 {
     s16 w = (s16)(x1 - x0 + 1), h = (s16)(y1 - y0);
     if (w > 0) {
-        gfx_fill_rect(x0, y0, w, 1, (u8)colour);
-        gfx_fill_rect(x0, y1, w, 1, (u8)colour);
+        gfx_fill_rect(x0, y0, w, 1, colour);
+        gfx_fill_rect(x0, y1, w, 1, colour);
     }
     if (h > 0) {
-        gfx_fill_rect(x0, y0, 1, h, (u8)colour);
-        gfx_fill_rect(x1, y0, 1, h, (u8)colour);
+        gfx_fill_rect(x0, y0, 1, h, colour);
+        gfx_fill_rect(x1, y0, 1, h, colour);
     }
 }
 
-void gfx_plot(s16 x, s16 y, u8 colour) { be->plot(x, y, colour); }   /* 06c9:ba3c */
+void gfx_plot(s16 x, s16 y, u16 colour) { be->plot(x, y, colour); }   /* 06c9:ba3c */
 
 /* 06c9:8582 gfx_draw_line (pixel = colour) and 06c9:c984 gfx_draw_line_or (TD1 behaviour) */
-void gfx_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 colour)
+void gfx_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour)
 {
     be->draw_line(x0, y0, x1, y1, colour, false);
 }
 
-void gfx_draw_line_or(s16 x0, s16 y0, s16 x1, s16 y1, u8 colour)
+void gfx_draw_line_or(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour)
 {
     be->draw_line(x0, y0, x1, y1, colour, true);
 }

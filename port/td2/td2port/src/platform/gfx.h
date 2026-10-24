@@ -76,13 +76,13 @@ void   gfx_targets_save(u16 dst_ds);                                    /* 06c9:
 void   gfx_targets_restore(u16 src_ds);                                 /* 06c9:7918 */
 
 /* ---- fills, clears, lines, plot */
-void gfx_clear_screen(u8 colour);                                       /* 06c9:840a (always A000h) */
-void gfx_clear_clip(u8 colour);                                         /* 06c9:843e */
-void gfx_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 colour);          /* 06c9:8582 pixel = colour */
-void gfx_fill_rect_clip(s16 x, s16 y, s16 w, s16 h, u8 colour);         /* 06c9:89a2 */
-void gfx_fill_rect(s16 x, s16 y, s16 w, s16 h, u8 colour);              /* 06c9:8a0c */
-void gfx_plot(s16 x, s16 y, u8 colour);                                 /* 06c9:ba3c */
-void gfx_draw_line_or(s16 x0, s16 y0, s16 x1, s16 y1, u8 colour);       /* 06c9:c984 pixel |= colour */
+void gfx_clear_screen(u16 colour);                                      /* 06c9:840a (always A000h) */
+void gfx_clear_clip(u16 colour);                                        /* 06c9:843e */
+void gfx_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour);         /* 06c9:8582 pixel = colour */
+void gfx_fill_rect_clip(s16 x, s16 y, s16 w, s16 h, u16 colour);        /* 06c9:89a2 */
+void gfx_fill_rect(s16 x, s16 y, s16 w, s16 h, u16 colour);             /* 06c9:8a0c */
+void gfx_plot(s16 x, s16 y, u16 colour);                                /* 06c9:ba3c */
+void gfx_draw_line_or(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour);      /* 06c9:c984 pixel |= colour */
 
 /* ---- screen effects, grabs */
 void gfx_dissolve4(FarPtr spr, u8 phase);                               /* 06c9:8cd8 */

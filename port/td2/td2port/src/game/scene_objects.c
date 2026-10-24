@@ -6,7 +6,7 @@
 
 static void fill(s16 x, s16 y, s16 w, s16 h, u16 colour)       /* 06c9:89a2 */
 {
-    gfx_fill_rect_clip(x, y, w, h, (u8)colour);
+    gfx_fill_rect_clip(x, y, w, h, colour);
 }
 
 static void and_ch(u16 h, s16 x, s16 y) { blit_and_clip_hot(hnd(h), x, y); }
@@ -27,12 +27,7 @@ static void markings(const SceneView *v, u16 si, s16 y, u8 fl)
     u16 di = CSW((u16)(DSW(v->rowtab) + (u16)(y << 1)));
     s16 x = RW(v, row_cx, si);
     if ((u16)x < wd) {
-        u16 bx = (u16)(di + (u16)(x >> 3));
-        u8 m = DSB((u16)(DS_pixel_mask + (x & 7)));
-        mp(DSW(DS_plane_seg), bx)[0] &= (u8)~m;
-        mp(DSW(DS_plane_seg + 2), bx)[0] |= m;
-        mp(DSW(DS_plane_seg + 4), bx)[0] |= m;
-        mp(DSW(DS_plane_seg + 6), bx)[0] |= m;
+        raster()->marking(di, x, true);
     }
     if (!(fl & 1) || (VB(v, dash_phase) & 4)) return;
     for (int side = 0; side < 2; side++) {
@@ -40,9 +35,7 @@ static void markings(const SceneView *v, u16 si, s16 y, u8 fl)
         u16 W = RU(v, w, si);
         x = side == 0 ? (s16)(RW(v, row_cx, si) + (s16)W) : (s16)(RW(v, row_cx, si) - (s16)W);
         if ((u16)x >= wd) continue;
-        u16 bx = (u16)(di + (u16)(x >> 3));
-        u8 m = DSB((u16)(DS_pixel_mask + (x & 7)));
-        for (int k = 0; k < 4; k++) mp(DSW((u16)(DS_plane_seg + 2 * k)), bx)[0] |= m;
+        raster()->marking(di, x, false);
     }
 }
 
@@ -361,7 +354,7 @@ static void scenery(const SceneView *v, u16 si)
                 DSW(0x52FC) = (u16)(DSW(0x52FC) + sx);
                 bp = (u16)(bp + DSW(0x52E6));
                 ax = (u16)(ax + DSW(0x52E6));
-                gfx_draw_line((s16)DSW(0x52FC), (s16)bp, (s16)cx, (s16)ax, (u8)DSW(0x52EC));
+                gfx_draw_line((s16)DSW(0x52FC), (s16)bp, (s16)cx, (s16)ax, DSW(0x52EC));
             }
         }
         DSW(0x52F8) = (u16)(DSW(0x52F8) + DSW(0x52E8));

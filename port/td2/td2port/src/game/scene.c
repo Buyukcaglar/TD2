@@ -13,7 +13,7 @@
 
 static void fill(s16 x, s16 y, s16 w, s16 h, u16 colour)       /* 06c9:89a2 */
 {
-    gfx_fill_rect_clip(x, y, w, h, (u8)colour);
+    gfx_fill_rect_clip(x, y, w, h, colour);
 }
 
 /* Road position of a 32-bit pointer pair relative to `me` (sub / sbb): high word, and whether the
@@ -82,19 +82,13 @@ void project_mirror(void)
     clamp_spans(VW(&scene_mirror_view, top_sy), 0x11);
 }
 
-static void cache_plane_segs(void)
-{
-    for (int k = 0; k < 4; k++)
-        DSW((u16)(DS_plane_seg + 2 * k)) = CSW((u16)(GFX_CUR_PLANE0 + 2 * k));
-}
-
 /* 06c9:00e7 draw_front — §4.7 */
 void draw_front(void)
 {
     const SceneView *v = &scene_front_view;
     DSW(DS_row_skip_target) = v->skip_target;
     gfx_select_target(ds_far(DS_drive_buf_desc));
-    cache_plane_segs();
+    raster()->view_begin();
     u8 mode = DSB(DS_fall_mode);
     if (mode == 0 || DSW(DS_fall_scroll) < 0x5C) {
         draw_sky(v);
@@ -132,7 +126,7 @@ void draw_mirror(void)
     const SceneView *v = &scene_mirror_view;
     DSW(DS_row_skip_target) = v->skip_target;
     gfx_select_target(ds_far(DS_mirror_desc));
-    cache_plane_segs();
+    raster()->view_begin();
     if (DSB(DS_fall_mode) == 0 || DSW(DS_fall_scroll) == 0) {
         draw_sky(v);
         draw_ground(v);
@@ -504,13 +498,13 @@ void crash_sequence(void)
             gfx_draw_line(x0, y0, x1, y1, 0xFF);
             si = (u16)(si + 4);
         } while (--DSB(DS_seq_counter) != 0);
-        gfx_set_palette((di & 1) ? DS_pal_normal : DS_pal_flash);
+        raster()->crash_flash((di & 1) == 0);
         deadline_wait();
         draw_mirror();
         draw_hud();
         present_main_view();
     }
-    gfx_set_palette(DS_pal_normal);
+    raster()->crash_flash(false);
     gfx_video_hook();
     DSW(DS_crashes)++;
     delay_ticks(60);

@@ -212,7 +212,7 @@ void draw_steering(void)
     u16 cx = (u16)(tip >> 8);
     DSB(DS_marker_saved) = (u8)cx;
     u16 sy = (u16)(cx - 2);
-    u16 sx = (u16)((dx - 2) & 0xFFF8);
+    u16 sx = (u16)((dx - 2) & ~(gfx_backend()->px_per_byte - 1));   /* 0FFF8h, CGA 0FFFCh */
     DSW(DS_marker_save_y) = sy;
     DSW(DS_marker_save_x) = sx;
     grab_into_sprite_raw(save, (s16)sx, (s16)sy);

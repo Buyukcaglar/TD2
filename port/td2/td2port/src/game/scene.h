@@ -9,6 +9,10 @@
  *        scene_objects.c (per-row objects), scene_cockpit.c (cockpit and HUD). */
 #include "game.h"
 #include "../platform/gfx.h"
+#include "../platform/gfx_backend.h"
+
+/* The active backend's scene pixel writers (span fill, hline, road markings, crash flash). */
+static inline const SceneRaster *raster(void) { return gfx_backend()->scene; }
 
 /* ---- scene.c */
 void main_view_load(void);              /* 06c9:0002 */
