@@ -1062,7 +1062,7 @@ redraw:
 }
 
 /* PORT: the Amiga game's folder of each scenery, by its DOS code, for the Amiga graphics. */
-static const char *amiga_scenery_prefix(const char *code)
+const char *amiga_scenery_prefix(const char *code)
 {
     static const struct { const char *code, *prefix; } sceneries[] = {
         { "TDS2", "scen/sc1_" }, { "CCC", "scen1/scen/rock_" }, { "ec_", "scen2/scen/euro_" },

@@ -194,6 +194,29 @@ static void set_target_palette(const AmigaPicture *p)
     set_target_rgb(rgb, 1 << p->planes, p->split, rgb2);
 }
 
+void gfx_amiga_colours_from(FarPtr from, FarPtr to)
+{
+    gfx_select_target(from);
+    const TargetColours *f = target_colours();
+    TargetColours copy;
+    bool ok = f != NULL;
+    if (ok) copy = *f;
+    gfx_select_target(to);
+    TargetColours *t = target_colours();
+    if (!ok || !t) return;
+    u16 seg = t->seg;
+    *t = copy;
+    t->seg = seg;
+    if (t == &screen) show_screen_colours();
+}
+
+bool gfx_amiga_second_colours(const char *file)
+{
+    TargetColours *t = target_colours();
+    if (!gfx_amiga_screens() || !t || !t->amiga || t->splits == 0) return false;
+    return gfx_amiga_split_colours(file, t->split[t->splits - 1].line, 0);
+}
+
 bool gfx_amiga_split_colours(const char *file, u16 line, int first)
 {
     TargetColours *t = target_colours();

@@ -65,6 +65,8 @@ void flow_pace(u32 ticks);
 u32  amiga_ticks(u32 frames);
 /* The Amiga game's file prefix of a car ("cars/f40" for F40), or NULL. */
 const char *amiga_car_prefix(const char *code);
+/* The Amiga game's file prefix of a scenery ("scen/sc1_" for TDS2), or NULL. */
+const char *amiga_scenery_prefix(const char *code);
 /* duel's fade out of an Amiga screen ($1a0a8), delay 50 Hz ticks a step; nothing without the Amiga
  * graphics. */
 void amiga_fade_out(int delay);

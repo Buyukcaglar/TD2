@@ -4,8 +4,9 @@ Runs the port headless with --amiga-graphics and the amiga setting, through the 
 choice and to the difficulty screen, and checks the option screen's title, the difficulty screen and the
 scenery choice against their Amiga pictures (pics/gameoptionscreen, pics/gamedifficulty and the Master
 scenery's scen/sc1_icon), the intro's showroom against the F40's side view, the car choice against
-its pictures and the high scores against the cars' logos, in their own colours, as the Amiga shows them
-(the top 4 bits of each component).
+its pictures, the high scores against the cars' logos and the gas station against its picture and
+the car, in their own colours, as the Amiga shows them (the top 4 bits of each component). The gas
+station's run takes about two minutes.
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -182,6 +183,31 @@ class AmigaGraphicsTest(unittest.TestCase):
                                       for x in range(74, 320)}, f'entry {i}')
         self.assertIn(screen[1], {frame.getpixel((x, y)) for y in range(162, 170) for x in range(74, 320)})
         self.assertEqual({frame.getpixel((x, y)) for y in range(172, 180) for x in range(320)}, {(0, 0, 0)})
+
+    def test_gas_station(self):
+        # a race against the clock with Up held from 48 s ends its first section at the gas station
+        # (about 324 s): scen/sc1_gasstation above its split at line 103 (but for the section's sign),
+        # and the F40 (gcar of cars/f40.sideview.shp, its bottom on line 180) in cars/f40.gas.p's colours
+        import ilbm
+        import shp
+        keys = ['30:Return', '35:Return', '38:Return', '48:Up/400', '52:Left/0.5']
+        keys += [f'{t}:Return' for t in range(70, 331, 12)]
+        frame, = run(','.join(keys), 334, lambda times: [max(n for t, n in times if 326 <= t < 334)])
+        pic = ilbm.parse((AMIGA / 'scen/sc1_gasstation').read_bytes())
+        pal = amiga_colours(pic)
+        sign = {s.name: s for s in shp.read((AMIGA / 'scen/sc1_gasstation.shp').read_bytes())}['bruc']
+        diff = [(x, y) for y in range(103) for x in range(320)
+                if not (sign.x <= x < sign.x + sign.width and sign.y <= y < sign.y + sign.height)
+                and frame.getpixel((x, y)) != pal[pic.pixels[y * 320 + x]]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the station')
+        gas = amiga_colours(ilbm.parse((AMIGA / 'cars/f40.gas.p').read_bytes()))
+        cars = {s.name: s for s in shp.read((AMIGA / 'cars/f40.sideview.shp').read_bytes())}
+        car, shade = cars['gcar'], cars['care']
+        top = 180 - car.height
+        diff = [(x, y) for y in range(car.height) for x in range(car.width)
+                if car.mask[y * car.width + x] and not shade.mask[y * car.width + x]
+                and frame.getpixel((car.x + x, top + y)) != gas[car.pixels[y * car.width + x]]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the car')
 
     def test_scenery_choice_picture(self):
         # below the disk name

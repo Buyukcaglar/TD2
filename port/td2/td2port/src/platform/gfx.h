@@ -149,6 +149,12 @@ bool gfx_amiga_picture_scaled(const char *file, s16 sx, s16 sy, s16 sw, s16 sh, 
  * list's colour moves, as on duel's high scores); splits go in line order. False if the target has no
  * Amiga colours, the picture is not there, or there are too many splits. */
 bool gfx_amiga_split_colours(const char *file, u16 line, int first);
+/* The selected target's colours below its last split (a picture's CMP2) become an Amiga picture's (duel
+ * loads a viewport's second palette, +9Ch, so: the car's colours on the gas station). */
+bool gfx_amiga_second_colours(const char *file);
+/* Target to gets target from's colours and stays selected (a buffer blitted onto the screen brings its
+ * colours, so a buffer of text for an Amiga screen takes that screen's). */
+void gfx_amiga_colours_from(FarPtr from, FarPtr to);
 /* One step of duel's fade out ($1a0a8): every colour component of the screen, with its splits, at most
  * level (0 to 15, the Amiga's 4 bits). False if the screen was black already, or has no Amiga colours. */
 bool gfx_amiga_fade_level(int level);

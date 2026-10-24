@@ -142,6 +142,77 @@ static void gas_station_picture(FarPtr gs, FarPtr st, u16 gast_ds, u16 carm_ds, 
     mem_release_cache_old(st);
 }
 
+/* PORT: the gas station in its Amiga form (duel $13758) into the page: the scenery's picture
+ * <scenery>gasstation, which splits its colours at line 103 (its CMP2), the section's sign over the
+ * picture's (the sprite of <scenery>gasstation.shp named by the table at -$75ec: bruc, brad, john, tres,
+ * rand ...), and the player's car, "gcar" of <car>.sideview.shp with its shadow "care" drawn over it,
+ * at its own x with its bottom on line 180, below the split in the car's colours (<car>.gas.p). False
+ * without the Amiga files. */
+static bool amiga_gas_station_page(void)
+{
+    const char *scn = amiga_scenery_prefix(DSTR(DS_scn_code));
+    const char *car = amiga_car_prefix(DSTR(DS_player_car_code));
+    char file[48], sign[5] = { 0 };
+    if (!gfx_amiga_screens() || !scn || !car) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    if (!gfx_amiga_picture(flow_concat(file, sizeof file, scn, "gasstation"), 0, 0)) return false;
+    s16 i = (s16)(DSS(DS_stage) - 1);
+    if (i >= 0 && i < 8 && gfx_amiga_duel_data(0x2957Eu - 0x75ECu + 4u * (u32)i, sign, 4))
+        gfx_amiga_sprite(flow_concat(file, sizeof file, scn, "gasstation.shp"), sign, 0, 0, AMIGA_AT_OWN);
+    flow_concat(file, sizeof file, car, ".sideview.shp");
+    s16 x, h, hx, hy;
+    if (gfx_amiga_sprite_rect(file, "gcar", &x, NULL, NULL, &h) && gfx_amiga_sprite_hot(file, "gcar", &hx, &hy)) {
+        s16 top = (s16)(180 - h);
+        gfx_amiga_sprite(file, "gcar", (s16)(x + hx), (s16)(top + hy), AMIGA_AT_HOT);
+        if (gfx_amiga_sprite_hot(file, "care", &hx, &hy))
+            gfx_amiga_sprite(file, "care", (s16)(x + hx), (s16)(top + hy), AMIGA_AT_HOT);
+    }
+    gfx_amiga_second_colours(flow_concat(file, sizeof file, car, ".gas.p"));
+    return true;
+}
+
+/* PORT: a line of the gas station's text in its Amiga form ($1290a): x = 16, 9 lines apart. */
+static void amiga_gas_line(const char *s)
+{
+    gfx_draw_text_str(s, 16, DSW(DS_results_y));
+    DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 9);
+}
+
+/* PORT: the text scrolls in duel's window under the gas station ($12ac8): rows 183 to 199 show the
+ * text from row k / 4 for frame k, with a stop of 23 Delay(1) (50 Hz ticks) each time a line has come
+ * in (k mod 36 = 0), from the top again once the text's height is through. A step is an NTSC frame at
+ * either pace. Ends with a key, then the fade. */
+static s16 amiga_gas_scroll(FarPtr text, s16 height)
+{
+    s16 key = 0;
+    select_screen();
+    gfx_set_clip_current(0, XBYTES(0x28), 183, 200);
+    kbd_flush();
+    u32 t = ticks_get();
+    for (s16 k = 0; key == 0;) {
+        gfx_clear_clip(AMIGA_PEN(0));
+        blit_copy_clip_raw(gfx_desc_sprite(text), 0, (s16)(183 - k / 4));
+        if (k % 36 == 0) {
+            u32 until = ticks_get() + 46;
+            while (key == 0 && ticks_get() < until) {
+                key = (s16)getkey();
+                host_pump();
+            }
+            t = ticks_get();
+        }
+        if (++k >= (height - 1) * 4) k = 0;
+        t += amiga_ticks(1);
+        while (key == 0 && ticks_get() < t) {
+            key = (s16)getkey();
+            host_pump();
+        }
+    }
+    gfx_set_clip_current(0, XBYTES(0x28), 0, 0xC8);
+    amiga_fade_out(2);
+    return key;
+}
+
 /* Police ending — inline in stage_results (0267:0cc0-117e), game_flow.md §4.14 (verified).
  * Returns non-zero when a load failed (stage_results then returns 0x1B). */
 static s16 police_ending(void)
@@ -234,38 +305,53 @@ s16 stage_results(s16 kind)
             return KEY_ESC;
         }
         FarPtr gs = load_shapes(DS_disk_path);
-        gas_station_picture(gs, st, 0x7747, 0x774C, 0x7751);
+        bool amiga = amiga_gas_station_page();                       /* PORT: the Amiga form */
+        if (amiga) {
+            mem_release_cache_old(gs);
+            mem_release_cache_old(st);
+        } else {
+            gas_station_picture(gs, st, 0x7747, 0x774C, 0x7751);
+        }
         screen_reveal(2);
-        FarPtr text = gfx_create_buffer(0x140, 0x38, 0x0F);
+        FarPtr text = gfx_create_buffer(0x140, amiga ? 0x51 : 0x38, 0x0F);
         kbd_flush();
         if (getkey_timeout(200) == KEY_ESC) return KEY_ESC;          /* the text buffer leaks (original) */
         gfx_select_target(text);
         gfx_clear_clip(0);
-        gfx_set_text_colours(COL(0x0F, 3), 0);
-        DSW(DS_results_y) = 0;
+        if (amiga) gfx_amiga_colours_from(flow_page_desc(), text);   /* PORT: the blits keep the station's */
+        gfx_set_text_colours(amiga ? AMIGA_PEN(24) : COL(0x0F, 3), amiga ? AMIGA_PEN(0) : 0);
+        DSW(DS_results_y) = amiga ? 18 : 0;
+#define GAS_LINE(s) (amiga ? amiga_gas_line(s) : results_line((s), 0))
         if (DSS(DS_crashes) != 0) {
             snprintf(buf, sizeof buf, "You crashed %d time%s.", DSS(DS_crashes),
                      DSTR(plural_s(DSS(DS_crashes))));                               /* DS:7756 */
-            results_line(buf, 0);
+            GAS_LINE(buf);
         }
         if (DSS(DS_engines_blown) != 0) {
             snprintf(buf, sizeof buf, "You blew your engine %d time%s.", DSS(DS_engines_blown),
                      DSTR(plural_s(DSS(DS_engines_blown))));                         /* DS:776D */
-            results_line(buf, 0);
+            GAS_LINE(buf);
         }
         if (DSS(DS_tickets) != 0) {
             snprintf(buf, sizeof buf, "You were given %d speeding ticket%s.", DSS(DS_tickets),
                      DSTR(plural_s(DSS(DS_tickets))));                               /* DS:778D */
-            results_line(buf, 0);
+            GAS_LINE(buf);
         }
         if (DSS(DS_out_of_gas) != 0) {
             snprintf(buf, sizeof buf, "%s", DSTR(0x77B2));           /* sprintf(buf, "You ran out of gas once.") */
-            results_line(buf, 0);
+            GAS_LINE(buf);
         }
-        if ((s16)(DSS(DS_penalties) + DSS(DS_tickets)) == 0) results_line_ds(0x77CB, 0);  /* "A clean run!" */
+        if ((s16)(DSS(DS_penalties) + DSS(DS_tickets)) == 0) GAS_LINE(DSTR(0x77CB));  /* "A clean run!" */
         snprintf(buf, sizeof buf, "You have %d lives left.", DSS(DS_lives));             /* DS:77D8 */
-        results_line(buf, 0);
-        results_line_ds(0x77F0, 0);                                  /* "Press key or joystick to continue..." */
+        GAS_LINE(buf);
+        if (amiga) DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 9);   /* PORT: duel's gap */
+        GAS_LINE(DSTR(0x77F0));                                      /* "Press key or joystick to continue..." */
+#undef GAS_LINE
+        if (amiga) {
+            key = amiga_gas_scroll(text, (s16)DSW(DS_results_y));
+            if (key == KEY_ESC) return key;
+            goto gas_done;
+        }
         select_screen();
         gfx_set_clip_current(0, XBYTES(0x28), 0xB0, 0xC8);
         gfx_clear_clip(0);
@@ -281,6 +367,7 @@ s16 stage_results(s16 kind)
             if (key == KEY_ESC) return key;
             if (key != 0) break;
         }
+    gas_done:
         gfx_free_buffer(text);
     }
 
