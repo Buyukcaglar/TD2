@@ -36,6 +36,14 @@ static bool virtual_clock;
 static Uint64 virtual_ns;
 static Uint64 run_limit_ns;
 
+/* TD2_KEYS presses keys at given game times, for headless runs of the menus: "20:Return,24.5:Down"
+ * (seconds, then an SDL scancode name). Each key is held for 0.1 s. */
+#define KEY_SCRIPT_MAX 64
+static struct { Uint64 at_ns; SDL_Scancode sc; u8 state; } key_script[KEY_SCRIPT_MAX];
+static int key_script_n;
+static void key_script_load(const char *text);
+static void key_script_run(Uint64 game_ns);
+
 static Uint64 now_ns(void) { return virtual_clock ? virtual_ns : SDL_GetTicksNS(); }
 static void wait_ns(Uint64 ns)
 {
@@ -154,6 +162,7 @@ bool host_init(const char *dir, int window_scale)
     const char *v = SDL_getenv("TD2_VIRTUAL_CLOCK"), *limit = SDL_getenv("TD2_RUN_SECONDS");
     virtual_clock = v && *v && SDL_strcmp(v, "0") != 0;
     run_limit_ns = limit && SDL_atoi(limit) > 0 ? (Uint64)SDL_atoi(limit) * SDL_NS_PER_SECOND : 0;
+    key_script_load(SDL_getenv("TD2_KEYS"));
     clock_start_ns = now_ns();
     ticks_run = 0;
     return true;
@@ -234,18 +243,23 @@ void host_sim_state(const u8 *memory, u32 size, u16 bp, u16 cx)
     SDL_CloseIO(f);
 }
 
-/* Developer aid: with TD2_SNAPSHOT_DIR set, every presented frame at least 2 s after the previous
- * snapshot is saved there as snapNNNN.bmp (works with SDL_VIDEO_DRIVER=dummy). */
+/* Developer aid: with TD2_SNAPSHOT_DIR set, every presented frame at least 2 s (or TD2_SNAPSHOT_MS)
+ * after the previous snapshot is saved there as snapNNNN.bmp (works with SDL_VIDEO_DRIVER=dummy). */
 static void snapshot(void)
 {
     static const char *dir;
     static bool checked;
-    static Uint64 last_ns;
+    static Uint64 last_ns, every_ns = 2 * SDL_NS_PER_SECOND;
     static int n;
-    if (!checked) { dir = SDL_getenv("TD2_SNAPSHOT_DIR"); checked = true; }
+    if (!checked) {
+        dir = SDL_getenv("TD2_SNAPSHOT_DIR");
+        const char *ms = SDL_getenv("TD2_SNAPSHOT_MS");
+        if (ms && SDL_atoi(ms) > 0) every_ns = (Uint64)SDL_atoi(ms) * SDL_NS_PER_MS;
+        checked = true;
+    }
     if (!dir) return;
     Uint64 now = now_ns();
-    if (n && now - last_ns < 2 * SDL_NS_PER_SECOND) return;
+    if (n && now - last_ns < every_ns) return;
     last_ns = now;
     SDL_Surface *s = SDL_CreateSurfaceFrom(frame_w, frame_h, SDL_PIXELFORMAT_XRGB8888, frame, frame_w * 4);
     if (!s) return;
@@ -293,6 +307,7 @@ void host_pump(void)
     if (budget < 0) {                               /* fell too far behind: resynchronise the clock */
         clock_start_ns = now - (tick_due_ns(ticks_run) - clock_start_ns);
     }
+    key_script_run(tick_due_ns(ticks_run) - clock_start_ns);
     if (run_limit_ns && tick_due_ns(ticks_run) - clock_start_ns >= run_limit_ns) {
         host_shutdown();
         exit(0);
@@ -543,6 +558,55 @@ static u8 xt_scan(SDL_Scancode sc)
     }
 }
 
+static void key_down(SDL_Keycode key, SDL_Scancode sc, SDL_Keymod mod)
+{
+    u16 bios = bios_key(key, sc, mod);
+    if (bios) kbd_push(bios);
+    u8 xt = xt_scan(sc);
+    if (xt && scan_handler) scan_handler(xt);
+}
+
+static void key_up(SDL_Scancode sc)
+{
+    u8 xt = xt_scan(sc);
+    if (xt && scan_handler) scan_handler((u8)(xt | 0x80));
+}
+
+static void key_script_load(const char *text)
+{
+    key_script_n = 0;
+    if (!text) return;
+    char item[48];
+    while (*text && key_script_n < KEY_SCRIPT_MAX) {
+        size_t n = strcspn(text, ",");
+        SDL_snprintf(item, sizeof item, "%.*s", (int)SDL_min(n, sizeof item - 1), text);
+        text += n + (text[n] == ',');
+        char *colon = SDL_strchr(item, ':');
+        SDL_Scancode sc = colon ? SDL_GetScancodeFromName(colon + 1) : SDL_SCANCODE_UNKNOWN;
+        if (sc == SDL_SCANCODE_UNKNOWN) {
+            fprintf(stderr, "TD2_KEYS: ignoring \"%s\"\n", item);
+            continue;
+        }
+        key_script[key_script_n].at_ns = (Uint64)(SDL_atof(item) * SDL_NS_PER_SECOND);
+        key_script[key_script_n].sc = sc;
+        key_script[key_script_n].state = 0;
+        key_script_n++;
+    }
+}
+
+static void key_script_run(Uint64 game_ns)
+{
+    for (int i = 0; i < key_script_n; i++) {
+        if (key_script[i].state == 0 && game_ns >= key_script[i].at_ns) {
+            key_down(SDL_GetKeyFromScancode(key_script[i].sc, SDL_KMOD_NONE, false), key_script[i].sc, SDL_KMOD_NONE);
+            key_script[i].state = 1;
+        } else if (key_script[i].state == 1 && game_ns >= key_script[i].at_ns + SDL_NS_PER_SECOND / 10) {
+            key_up(key_script[i].sc);
+            key_script[i].state = 2;
+        }
+    }
+}
+
 static void process_events(void)
 {
     SDL_Event ev;
@@ -558,17 +622,12 @@ static void process_events(void)
                     SDL_SetWindowFullscreen(window, !(SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN));
                 break;
             }
-            u16 key = bios_key(ev.key.key, ev.key.scancode, ev.key.mod);
-            if (key) kbd_push(key);
-            u8 xt = xt_scan(ev.key.scancode);
-            if (xt && scan_handler) scan_handler(xt);
+            key_down(ev.key.key, ev.key.scancode, ev.key.mod);
             break;
         }
-        case SDL_EVENT_KEY_UP: {
-            u8 xt = xt_scan(ev.key.scancode);
-            if (xt && scan_handler) scan_handler((u8)(xt | 0x80));
+        case SDL_EVENT_KEY_UP:
+            key_up(ev.key.scancode);
             break;
-        }
         case SDL_EVENT_GAMEPAD_ADDED:
             if (!gamepad) gamepad = SDL_OpenGamepad(ev.gdevice.which);
             break;
