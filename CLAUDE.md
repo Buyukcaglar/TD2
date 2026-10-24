@@ -29,7 +29,9 @@ Start with `docs/HANDOVER.md` (current state, salvage inventory, plan) and `docs
 
 ## Build and run
 
-Build and run commands are being set up (milestone M0). The proven compiler is MSVC 19.44 (VS 2022 BuildTools, `vcvars64.bat -vcvars_ver=14.44`) with SDL3 3.4.18 at `analysis/external/sdl3-3.4.18/sdk/SDL3-3.4.18`.
+- `.\build.ps1` builds `build\td2port.exe` and the harness DLL `build\td2diff.dll` (MSVC 19.44 via `vcvars64.bat -vcvars_ver=14.44`, VS-bundled CMake and Ninja, SDL3 3.4.18 from `analysis/external/sdl3-3.4.18/sdk/SDL3-3.4.18`).
+- `.\run.ps1` plays on `runs\game`, a copy of `reference\dos`, with scores in `runs\profile`. `.\run.ps1 --check` verifies the EXE.
+- `$env:PYTHONPATH = "analysis/tools/python;tools"; python -m diffharness` runs the differential harness and rewrites `docs/verification.md`. Tests: `python -m unittest discover -s tests`.
 
 Python analysis tools need `PYTHONPATH=analysis/tools/python`, which provides Unicorn 2.1.4 and Capstone 5.0.9. Ghidra 12.1.3 is at `C:\Projects\Civ1RE\tools\ghidra_12.1.3_PUBLIC`; run it through `tools/run_ghidra.ps1`.
 

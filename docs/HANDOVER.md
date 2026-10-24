@@ -2,6 +2,37 @@
 
 This file replaces `docs/planning/continuation.md` as the place to start. That file, `backlog.json`, `progress.json` and the P-gate structure are kept for history but no longer drive the work.
 
+## 0. Current state (end of session 2, 24 October 2026)
+
+M0 "Adopt" is done except the user's play test. M1 "Verify EGA" has started.
+
+- **Code.** The Kylofon port is vendored in `port/td2/` (provenance and local changes in `port/td2/PROVENANCE.md`). Local fixes: 20-bit address wrap, the `INT32_MIN / -1` division guard, EXEPACK bounds checks, and `--user-dir` so scores and `SELECT.DAT` never go to the game folder.
+- **Build.** `.\build.ps1` (add `-Clean` for a fresh build) builds `build\td2port.exe` and `build\td2diff.dll` with MSVC 14.44, the VS-bundled CMake and Ninja, and SDL3 3.4.18. It builds with no warnings at `/W3`.
+- **Run.** `.\run.ps1` copies `reference\dos` to `runs\game` on first use and plays with `--user-dir runs\profile`. `.\run.ps1 --check` prints `TD2EGA.EXE ok (EGA): image 130240 bytes at 1000:0000, DGROUP 278F`.
+- **Headless check.** With `SDL_VIDEO_DRIVER=dummy` and `TD2_SNAPSHOT_DIR` set, the game ran 90 s without errors. The snapshots show the Accolade and DSI logos, credits, the high-score table, the race-against and select menus, skill level and the attract-mode drive with cockpit, traffic and scenery.
+- **Not yet done.** Nobody has played a race. The user has been asked to play one race on each scenery (CCC, ec_, TDS2) and report problems. Without `--user-dir` the game creates `%APPDATA%\TestDrive2` as its profile folder. No run has saved a score or `SELECT.DAT` yet, so the write path is untested.
+- **Differential harness.** `tools/diffharness/` runs an original function under Unicorn and the port's C function from `build\td2diff.dll` on the same memory snapshot. It compares the returned registers and every changed memory byte, excluding the original's own stack frame. Run it with:
+
+  ```
+  $env:PYTHONPATH = "analysis/tools/python;tools"; python -m diffharness
+  ```
+
+  It rewrites `docs/verification.md`. Its own tests are in `tests/test_diffharness.py`; they check that it catches deliberate register and memory mismatches. First results: rand8, curve_sum, free_rev, drag_apply, brake, update_rpm, overrev_check, rle_decode and huff_decode all match on 200 randomised cases each. The unpacker cases cover every packed PES, PCS and DAT file.
+- **Adding a function to the harness** takes three steps: add an adapter in `tools/diffharness/adapters.c`, add a `Spec` with an input generator in `tools/diffharness/cases.py`, and rebuild.
+
+### Next steps (in order)
+
+1. **PC speaker sound** (`host.c`, `audio_for_one_tick`). The port plays a hard-edged square wave, which aliases and sounds harsher than a real speaker. Use a band-limited square (PolyBLEP) and a gentle low-pass for the speaker cone. Every player hears this.
+2. **Billboard collision** (`sim_motion.c:436`). For sign types ≥ 50h the original tests a stale BP. Add the collision function to the harness, feed it BP values from real driving states, and decide from the result whether some billboard hits should not crash.
+3. **Neutral clutch grind** (`sim.c:265`). In neutral the original compares leftover CX/DX (throttle byte or joystick value, and 0100h), which can start the grind tone. Model those leftovers instead of skipping the check, and add a harness case.
+
+After those: traffic seeding (`sim_traffic.c:244, 367`), the cockpit marker's CH (`scene_cockpit.c:207`), then whole-tick subsystem tests (run the original sim tick and `sim_tick` on the same state) before CGA.
+
+### Open questions
+
+- Is the playable game correct over a full race? Waiting on the user's play test.
+- Harness speed is about 50 ms per case, mostly 1 MiB snapshot copies. That is fine for hundreds of cases. For whole-tick tests with many cases, copy only the changed pages.
+
 ## 1. TL;DR
 
 - **Goal (unchanged).** A native Windows Test Drive II built on portable C. It reads the user's original DOS files and supports EGA, then CGA. Later it adds Amiga graphics, music and sound effects, plus the Amiga "Northern Germany Challenge" scenery, all switchable live during play.
