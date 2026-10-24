@@ -564,7 +564,9 @@ void scenery_select(void)
             mem_release_cache(a);
             draw_text_centered(0x7422, 0xBE);        /* "Use Keyboard/Joystick to change scenery." */
         }
-        screen_reveal(3);
+        /* PORT: duel wipes the scenery's picture in with a box from the centre ($2d938) */
+        if (amiga) amiga_wipe(WIPE_BOX, true, 10, 0);
+        else screen_reveal(3);
         s16 old;
         do {
             old = DSS(DS_scn_idx);
@@ -578,6 +580,7 @@ void scenery_select(void)
             if (k == KEY_UP || k == KEY_RIGHT) DSS(DS_scn_idx)++;
             if (k == KEY_DOWN || k == KEY_LEFT) DSS(DS_scn_idx)--;
         } while (DSS(DS_scn_idx) == old);
+        if (amiga) amiga_wipe(WIPE_BARS, false, 10, 0);   /* PORT: and out with bars ($2d874) */
     }
 }
 
@@ -685,6 +688,7 @@ static void dos_menu_icons(void)
 s16 main_menu(void)
 {
     char name[26];
+    bool from_box = false;                            /* PORT: back from a box of the bottom row */
     for (;;) {
         FarPtr g;
         flow_switch_graphics();
@@ -705,7 +709,19 @@ s16 main_menu(void)
         }
         if (!amiga)
             for (int i = 0; i < 9; i++) blit_or_own(ds_far((u16)(DS_gameopt_spr + 4 * i)));
-        screen_reveal(3);
+        if (amiga) {
+            /* PORT: duel draws the highlight into the page and wipes it in, with bands when it comes back
+             * from a box of the bottom row ($2e47a), else with a circle ($2e326) */
+            amiga_menu_highlight();
+            if (from_box) amiga_wipe(WIPE_BANDS, true, 40, 40);
+            else amiga_wipe(WIPE_CIRCLE, true, 6, 0);
+            gfx_select_target(flow_page_desc());
+            amiga_menu_page();                        /* the page again, without the highlight */
+            select_screen();
+            DSS(DS_menu_prev_sel) = DSS(DS_menu_sel);
+        } else {
+            screen_reveal(3);
+        }
         kbd_flush();
 
         u16 k = 0xFFFF;
@@ -744,6 +760,8 @@ s16 main_menu(void)
         if (k == KEY_SWITCH) continue;                /* PORT: draw the menu again in the new mode */
         if (DSW(DS_demo_mode) != 0) DSS(DS_menu_sel) = 0;
         if (DSB(DS_protect_sabotage) != 0) return 0;
+        from_box = DSS(DS_menu_sel) >= 2;
+        if (amiga && from_box) amiga_wipe(WIPE_SWEEP, false, 40, 0);   /* PORT: duel $2e37e */
 
         s16 r = 0;
         switch (DSS(DS_menu_sel)) {

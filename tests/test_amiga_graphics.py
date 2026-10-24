@@ -21,9 +21,11 @@ sys.path[:0] = [str(ROOT / 'tools/amiga'), str(ROOT / 'tools')]
 EXE = ROOT / 'build/td2port.exe'
 GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
-# tools/snapshots.py's menu keys up to the scenery choice, which opens at 61 s
+# tools/snapshots.py's menu keys up to the scenery choice, the last ones later: duel's wipes take their
+# time (the option screen comes back from the car choice with bands until 61 s), and keys pressed
+# during a wipe are flushed as after a dissolve. The scenery choice opens at 63 s.
 KEYS = ('30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,42:Down,43:Return,46:Up,49:Down,52:Down,'
-        '55:Escape,60:Right,60.5:Right,61:Return')
+        '55:Escape,62:Right,62.5:Right,63:Return')
 
 
 def amiga_colours(pic):
@@ -54,9 +56,10 @@ def last_frames(keys, seconds, windows):
 class AmigaGraphicsTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # the option screen before the first key there, and the last frame of the dissolve that opens
-        # the scenery choice
-        cls.option_screen, cls.scenery_choice = last_frames(KEYS, 64, [(30, 39), (61, 63)])
+        # the option screen part way through the circle that brings it in, the option screen before the
+        # first key there, and the scenery choice once its box has grown
+        cls.option_circle, cls.option_screen, cls.scenery_choice = last_frames(
+            KEYS, 66, [(30, 30.35), (30.35, 39), (63, 66)])
         # Return on the clock opens the difficulty screen
         cls.difficulty, = last_frames('30:Return,35:Return', 38, [(35, 38)])
 
@@ -67,6 +70,16 @@ class AmigaGraphicsTest(unittest.TestCase):
         diff = [(x, y) for y in rows for x in range(320)
                 if frame.getpixel((x, y)) != pal[pic.pixels[y * 320 + x]]]
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ from {file}')
+
+    def test_option_screen_circle(self):
+        # duel's circle (step 6, two frames a step): black in the corners, the picture in the middle
+        import ilbm
+        pic = ilbm.parse((AMIGA / 'pics/gameoptionscreen').read_bytes())
+        pal = amiga_colours(pic)
+        for x, y in [(0, 0), (319, 0), (0, 199), (319, 199)]:
+            self.assertEqual(self.option_circle.getpixel((x, y)), (0, 0, 0), (x, y))
+        self.assertEqual([(x, y) for y in range(95, 106) for x in range(154, 163)
+                          if self.option_circle.getpixel((x, y)) != pal[pic.pixels[y * 320 + x]]], [])
 
     def test_option_screen_picture(self):
         # the title above the boxes, in the picture's colours above its split line

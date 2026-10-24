@@ -230,3 +230,68 @@ bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPla
     shp_free(&s);
     return true;
 }
+
+/* ---- the Amiga screen changes (gfx.h) */
+
+static u8 wipe_from[5][200 * 40];      /* what the mask lets through: the page's planes, or black */
+static u8 wipe_mask[200][320];
+
+void gfx_amiga_wipe_begin(FarPtr page, bool in)
+{
+    memset(wipe_mask, 0, sizeof wipe_mask);
+    memset(wipe_from, 0, sizeof wipe_from);
+    if (in) {
+        gfx_select_target(page);
+        for (u16 y = 0; y < 200; y++)
+            for (int k = 0; k < 5; k++)
+                if (ram_plane(k)) memcpy(&wipe_from[k][y * 40], mp(ram_plane(k), row_at(y)), 40);
+        const TargetColours *t = buffer_colours(CSW(GFX_CUR_PLANE0));
+        select_screen();
+        /* duel clears the screen and gives it the new picture's colours, and the picture grows over it */
+        for (int k = 0; k < 5; k++) memset(gfx_ega.plane[k], 0, 200 * 40);
+        if (t && t->amiga) {
+            screen = *t;
+            screen.seg = 0;
+        } else {
+            ega_colours_of(&screen);
+        }
+        show_screen_colours();
+    }
+}
+
+void gfx_amiga_wipe_rect(s16 x0, s16 y0, s16 x1, s16 y1)
+{
+    if (x0 < 0) x0 = 0;
+    if (y0 < 0) y0 = 0;
+    if (x1 > 319) x1 = 319;
+    if (y1 > 199) y1 = 199;
+    for (s16 y = y0; y <= y1; y++)
+        if (x0 <= x1) memset(&wipe_mask[y][x0], 1, (size_t)(x1 - x0 + 1));
+}
+
+void gfx_amiga_wipe_line(s16 x0, s16 y0, s16 x1, s16 y1)
+{
+    int dx = SDL_abs(x1 - x0), dy = -SDL_abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    int err = dx + dy;
+    for (;;) {
+        if (x0 >= 0 && x0 < 320 && y0 >= 0 && y0 < 200) wipe_mask[y0][x0] = 1;
+        if (x0 == x1 && y0 == y1) return;
+        int e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x0 = (s16)(x0 + sx); }
+        if (e2 <= dx) { err += dx; y0 = (s16)(y0 + sy); }
+    }
+}
+
+void gfx_amiga_wipe_show(void)
+{
+    for (int y = 0; y < 200; y++)
+        for (int bx = 0; bx < 40; bx++) {
+            u8 m = 0;
+            for (int i = 0; i < 8; i++) m = (u8)(m << 1 | wipe_mask[y][bx * 8 + i]);
+            if (!m) continue;
+            int off = y * 40 + bx;
+            for (int k = 0; k < 5; k++)
+                gfx_ega.plane[k][off] = (u8)((gfx_ega.plane[k][off] & ~m) | (wipe_from[k][off] & m));
+        }
+    gfx_ega.dirty = true;
+}

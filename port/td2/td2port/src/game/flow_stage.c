@@ -431,7 +431,8 @@ redraw:
     FarPtr arrw = res_find(a, 0x7D7A);                /* "arrw" */
     FarPtr ARRW = res_find(a, 0x7D7F);                /* "ARRW" (mask) */
     s16 prev = (s16)(DSS(DS_difficulty) + 1);
-    screen_reveal(2);
+    if (amiga) amiga_wipe(WIPE_CHECKS, true, 80, 50); /* PORT: duel $2dfa8 */
+    else screen_reveal(2);
     kbd_flush();
     for (;;) {
         if (prev != DSS(DS_difficulty)) {
@@ -458,6 +459,8 @@ redraw:
         } else {
             DSW(DS_demo_mode) = 0;
         }
+        if (amiga && (k == KEY_ESC || k == KEY_ENTER || k == KEY_SPACE))
+            amiga_wipe(WIPE_CIRCLE, false, 10, 0);    /* PORT: duel $2e062 */
         if (k == KEY_ESC) {
             mem_release_cache(a);
             return KEY_ESC;

@@ -63,6 +63,13 @@ void flow_pace(u32 ticks);
  * effect plays (at most 10 s); returns the key that ended it, or 0. */
 u32  amiga_ticks(u32 frames);
 u16  wait_sound_end(void);
+/* PORT: duel's screen changes with the Amiga graphics (amiga_wipe.c; nothing without them): the page
+ * grows over a black screen (in) or black eats the screen (out), in duel's shape for that change, with
+ * its step a (and cell height b). */
+typedef enum {
+    WIPE_BOX, WIPE_BARS, WIPE_CIRCLE, WIPE_SWEEP, WIPE_BANDS, WIPE_CHECKS, WIPE_RIGHT, WIPE_DOWN, WIPE_BLINDS,
+} AmigaWipe;
+void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b);
 /* 16bb/0x94C7-style lookup of concatenated 4-character names into a C array (at most max entries). */
 int  flow_find_list(FarPtr arc, const char *names, FarPtr *out, int max);
 

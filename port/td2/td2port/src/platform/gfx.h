@@ -134,6 +134,13 @@ typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X } AmigaPlace;
 /* Draws sprite name of an Amiga sprite archive into the selected target. False if it is not there. */
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at);
 #define AMIGA_PEN(n) ((u16)(0x20 + (n)))        /* a colour argument: pen n of the target's Amiga colours */
+/* The Amiga screen changes (duel $10bf6-$10d4c; game/amiga_wipe.c draws duel's shapes): a mask that
+ * grows step by step, through which the screen shows the page (in), or black (out). An in change
+ * clears the screen and gives it the page's colours first. Each show copies through the whole mask. */
+void gfx_amiga_wipe_begin(FarPtr page, bool in);
+void gfx_amiga_wipe_rect(s16 x0, s16 y0, s16 x1, s16 y1);        /* corners included */
+void gfx_amiga_wipe_line(s16 x0, s16 y0, s16 x1, s16 y1);
+void gfx_amiga_wipe_show(void);
 
 /* ---- sprite blitters (platform.md §4.2)
  * hot = at (x - hot_x, y - hot_y), raw = at (x, y), own = at the header's (x, y) (not masked in TD2).
