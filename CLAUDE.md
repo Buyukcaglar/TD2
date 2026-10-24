@@ -36,6 +36,8 @@ Start with `docs/HANDOVER.md` (current state, salvage inventory, plan) and `docs
 - `.\run.ps1 --cga` plays with the CGA backend, `.\run.ps1 --hercules` with TD2CGA's Hercules mode. Ctrl+Shift+G switches the graphics mode live; a right click or Ctrl+Shift+M opens the app's menu (`src/app/`). Headless runs take `TD2_KEYS` ("30:Return,56:Up/240,60:Ctrl+Shift+G": key presses at game times, optionally held) and `TD2_SNAPSHOT_MS`.
 - `python tools/cga_compare.py` compares TD2CGA with TD2EGA function by function (`docs/cga.md`); add EGA addresses such as `06c9:3c3a` to print those functions' differences.
 
+- `tools/amiga/` reads the Amiga files in `runs/amiga` (a copy of the unpacked Amiga archive): `hunk.py`, `disasm.py <file> <start> <end>`, `rpck.py`, `ilbm.py`. `tools/dos_unpack.py` unpacks a DOS PES/PCS/DAT file. See `docs/amiga.md`.
+
 Python analysis tools need `PYTHONPATH=analysis/tools/python`, which provides Unicorn 2.1.4 and Capstone 5.0.9. Ghidra 12.1.3 is at `C:\Projects\Civ1RE\tools\ghidra_12.1.3_PUBLIC`; run it through `tools/run_ghidra.ps1`.
 
 ## Phase order (user requirement)
