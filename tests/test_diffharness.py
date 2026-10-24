@@ -105,6 +105,35 @@ class HarnessTest(unittest.TestCase):
             self.assertEqual(port.mem[run_state] == 2, crashes, f'port, BP={bp:X}')
             self.assertTrue(self.h.compare(self.spec('roadside_hit'), self.billboard_case(bp)).ok, bp)
 
+    def neutral_tap_case(self, cx):
+        """Fire released in neutral without a shift, with CX = cx left by sound_tick (the rpm)."""
+        mem = bytearray(self.h.base)
+        put = cases.ds_put
+        put(mem, 'DS_gear', 0)
+        put(mem, 'DS_knob_anim', 0)
+        put(mem, 'DS_fire_held', 1)
+        put(mem, 'DS_input', 0)
+        put(mem, 'DS_finished', 0)
+        put(mem, 'DS_demo_mode', 0, 2)
+        put(mem, 'DS_auto_trans', 0)
+        put(mem, 'DS_rpm', cx, 2)
+        put(mem, 'DS_car_engine_strength', 0x80)
+        put(mem, 'DS_engine_damage', 0)
+        put(mem, 'DS_gear_ratio', 0x8000, 2)              # still the last gear's ratio
+        put(mem, 'DS_grind_timer', 0)
+        regs = default_regs(random.Random(4))
+        regs['cx'] = cx
+        return Case(mem, regs)
+
+    def test_neutral_fire_tap_grinds_at_high_rpm(self):
+        """In neutral the clutch check compares the leftover CX (rpm, CL replaced) with DX = 0100h."""
+        grind = lin(DGROUP, cases.S['DS_grind_timer'])
+        throttle_dir_0 = self.h.base[lin(DGROUP, cases.S['DS_THROTTLE_DIR'])]
+        for cx, expect in ((0x1800, (0x1800 & 0xFF00 | throttle_dir_0) - 0x100 >> 8), (0x0300, 0)):
+            orig, port, _ = self.h.call(self.spec('decode_controls'), self.neutral_tap_case(cx))
+            self.assertEqual(orig.mem[grind], expect, f'original, CX={cx:X}')
+            self.assertEqual(port.mem[grind], expect, f'port, CX={cx:X}')
+
     @unittest.skipUnless(GAME_EXE.exists(), 'needs runs/game')
     def test_unpackers_write_their_output(self):
         for name in ('huff_decode', 'rle_decode'):

@@ -130,12 +130,15 @@ void sim_timer_routine(void)
     fall_anim();
 }
 
+u16 sim_stale_cx;
+
 /* 06c9:412c sound_tick — simulation.md §4.2 */
 void sound_tick(void)
 {
     DSB(DS_sound_frame)++;
     DSW(DS_tone_rumble) = DSW(DS_RUMBLE + ((DSB(DS_sound_frame) & 0x1F) << 1));
     s16 r = DSS(DS_rpm_display), t = DSS(DS_rpm);
+    sim_stale_cx = (u16)t;                              /* 4146 mov cx,[332C] */
     if (r <= t) {
         r = (s16)(r + 0x60);
         if (r >= t) r = t;
@@ -184,6 +187,8 @@ void read_input(void)
 {
     if (DSB(DS_fall_mode) == 0) {
         u16 bits = input_drive_bits();                  /* 06c9:6620 */
+        u16 joy_cx;
+        if (input_leftover_cx(&joy_cx)) sim_stale_cx = joy_cx;
         DSB(DS_input_bits) = (u8)bits;
         u16 ax = joy_dir_index(bits);                   /* 06c9:6828 */
         bits &= 0x30;
@@ -217,11 +222,13 @@ void decode_controls(void)
     u8 al = DSB(DS_input);
     u16 bp = DSW(DS_rpm);
     u16 bx;
+    u16 cx = sim_stale_cx;                              /* CH survives to the neutral clutch check */
     sim_stale_bp = bp;                                  /* BP keeps the rpm until motion */
 
     if (DSB(DS_finished) != 0) {                        /* last stage past the line: brake, steer only */
         bx = al & 0x0F;
         DSB(DS_steer_in) = DSB(DS_STEER_DIR + bx);
+        cx = (u16)((cx & 0xFF00) | DSB(DS_STEER_DIR + bx));
         al = 5;
         goto automatic;                                 /* also with the manual gearbox */
     }
@@ -245,6 +252,7 @@ void decode_controls(void)
     DSB(DS_steer_in) = DSB(DS_STEER_DIR + bx);
     {
         s8 cl = DSC(DS_THROTTLE_DIR + bx);
+        cx = (u16)((cx & 0xFF00) | (u8)cl);
         if (cl < 0) DSC(DS_throttle) = cl;              /* brake at once */
     }
     if (DSB(DS_auto_trans) == 0) goto fire;
@@ -263,14 +271,12 @@ automatic:
 fire:
     if (!(al & 0x30) && dh != 0 && dl == 0) {           /* fire released after the knob arrived */
         DSB(DS_fire_held) = dl;                         /* = 0 */
-        u16 cx, dx;
-        if (update_rpm(&cx, &dx)) {
-            clutch_check(cx, dx);
-        } else {
-            /* PORT: simulation.md Q3. In neutral 06c9:4612 leaves CX / DX unchanged and 4441 compares
-             * register leftovers (CX = throttle byte / joystick garbage, DX = 0x0100), which can only
-             * start the grind tone. The check is skipped in neutral. */
-        }
+        /* In neutral 06c9:4612 leaves CX and DX alone, so 4441 compares the leftovers: CX = rpm (or the
+         * gameport count) with CL replaced, DX = DH:DL = fire_held:0. A revving engine can start the
+         * grind tone. */
+        u16 dx = (u16)((u16)dh << 8 | dl);
+        update_rpm(&cx, &dx);
+        clutch_check(cx, dx);
         return;
     }
     if (!(al & 0x30)) {

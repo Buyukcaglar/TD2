@@ -373,10 +373,20 @@ u16 wait_key_slow(u32 n)
 
 /* ================================================================================ driving input, joystick */
 
+static bool joy_timed;                      /* joy_read ran the gameport loop (06c9:66b1..66e8) */
+static u16 joy_loop_cx;                     /* the loop counter it exits with */
+
+bool input_leftover_cx(u16 *cx)
+{
+    if (joy_timed) *cx = joy_loop_cx;
+    return joy_timed;
+}
+
 /* 06c9:6620 input_drive_bits */
 u16 input_drive_bits(void)
 {
     u16 r = 0;
+    joy_timed = false;
     if (DSB(DS_key_down + 0x39)) r |= 0x10;    /* Space -> button A */
     if (DSB(DS_key_down + 0x1C)) r |= 0x20;    /* Enter -> button B */
     if (DSB(DS_key_down + 0x47)) r |= 0x09;    /* Home  -> up + left */
@@ -404,6 +414,10 @@ u16 joy_read(void)
      * analog helpers. No gamepad: no bits, like a missing stick. */
     s16 x, y;
     u8 buttons;
+    /* The original's loop exits when the slower axis times out, leaving its count in CX (0FA0h when
+     * no stick answers). The port uses the synthetic counts below. */
+    joy_timed = true;
+    joy_loop_cx = 0xFA0;
     if (host_joy_read(&x, &y, &buttons)) {
         u8 r = 0;
         if (x < -16384) r |= 8;
@@ -415,6 +429,7 @@ u16 joy_read(void)
         DSB(DS_joy_result) = r;
         DSW(DS_joy_x) = (u16)(0x50 + (x >> 10));
         DSW(DS_joy_y) = (u16)(0x50 + (y >> 10));
+        joy_loop_cx = DSW(DS_joy_x) > DSW(DS_joy_y) ? DSW(DS_joy_x) : DSW(DS_joy_y);
     } else {
         DSW(DS_joy_x) = 0x50;
         DSW(DS_joy_y) = 0x50;

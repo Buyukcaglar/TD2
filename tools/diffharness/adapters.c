@@ -24,7 +24,9 @@ static void a_update_rpm(DhRegs *r) { update_rpm(&r->cx, &r->dx); }         /* C
 static void a_roadside_hit(DhRegs *r) { WITH_BP(roadside_hit()); }
 static void a_road_edges(DhRegs *r) { WITH_BP(road_edges()); }
 static void a_obj_place_roadside(DhRegs *r) { WITH_BP(obj_place_roadside(r->bx)); }
-static void a_decode_controls(DhRegs *r) { WITH_BP(decode_controls()); }
+/* decode_controls reads the leftover CX too (sim_stale_cx); sound_tick leaves it. */
+static void a_decode_controls(DhRegs *r) { sim_stale_cx = r->cx; WITH_BP(decode_controls()); }
+static void a_sound_tick(DhRegs *r) { sim_stale_cx = r->cx; sound_tick(); r->cx = sim_stale_cx; }
 
 static void a_rle_decode(DhRegs *r)
 {
@@ -54,6 +56,7 @@ static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     { "road_edges", a_road_edges },
     { "obj_place_roadside", a_obj_place_roadside },
     { "decode_controls", a_decode_controls },
+    { "sound_tick", a_sound_tick },
     { "rle_decode", a_rle_decode },
     { "huff_decode", a_huff_decode },
 };

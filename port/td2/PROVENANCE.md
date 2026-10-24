@@ -24,6 +24,7 @@ This is a fork. Changes made in this repository after the import:
 - `--user-dir DIR`: high scores and `SELECT.DAT` are written to a profile folder, never the game folder. Files there shadow the game folder's copies. The default is the SDL preference folder (`%APPDATA%\TestDrive2` on Windows).
 - PC speaker: synthesis moved to `speaker.c` (band-limited PIT mode-3 model with a speaker filter); `host_speaker` takes both port 61h bits. `TD2_AUDIO_DUMP` records the output as WAV.
 - Billboard collision: `roadside_hit` decides crash or bump from the BP value the original leaves behind (`sim_stale_bp`), instead of always crashing.
+- Neutral clutch grind: releasing fire in neutral runs the clutch check on the leftover CX (rpm or gameport count, `sim_stale_cx`) and DX, as the original does, instead of skipping it.
 
 Git history in this repository records each later change.
 

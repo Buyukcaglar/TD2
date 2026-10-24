@@ -191,6 +191,7 @@ def _road_edges(rng, mem, regs):
 
 def _decode_controls(rng, mem, regs):
     load_car(rng, mem)
+    neutral_tap = rng.random() < 0.4
     for name in ('DS_knob_anim', 'DS_fire_held', 'DS_shift_latch', 'DS_gearbox_timer', 'DS_engine_damage',
                  'DS_steer_in', 'DS_throttle', 'DS_grind_timer'):
         ds_put(mem, name, rng.choice((0, 0, 1, edgy8(rng))))
@@ -207,7 +208,25 @@ def _decode_controls(rng, mem, regs):
     for name in ('DS_knob_x', 'DS_knob_y', 'DS_knob_target_x', 'DS_knob_target_y'):
         ds_put(mem, name, rng.randrange(-40, 40), 2)
     ds_put(mem, 'DS_run_state', 0)
+    ds_put(mem, 'DS_gear_ratio', rng.choice((edgy16(rng), rng.randrange(0x4000, 0x10000))), 2)
     regs['bp'] = stale_bp(rng)
+    regs['cx'] = rng.choice((rng.randrange(800, 8000), rng.randrange(0x30, 0x70), 0xFA0, edgy16(rng)))
+    if neutral_tap:                                      # fire released in neutral without a shift
+        ds_put(mem, 'DS_gear', 0)
+        ds_put(mem, 'DS_knob_anim', 0)
+        ds_put(mem, 'DS_fire_held', rng.choice((1, 1, edgy8(rng) or 1)))
+        ds_put(mem, 'DS_input', rng.randrange(0x10))
+        ds_put(mem, 'DS_engine_damage', rng.choice((0, 0, edgy8(rng))))
+        ds_put(mem, 'DS_grind_timer', 0)
+
+
+def _sound_tick(rng, mem, regs):
+    for name in ('DS_rpm', 'DS_rpm_display', 'DS_siren_pitch', 'DS_clock_seconds', 'DS_tick_count10'):
+        ds_put(mem, name, edgy16(rng), 2)
+    for name in ('DS_sound_frame', 'DS_siren_on', 'DS_siren_dir', 'DS_radar_beep', 'DS_grind_timer',
+                 'DS_skidding'):
+        ds_put(mem, name, rng.choice((0, 0, 1, edgy8(rng))))
+    ds_put(mem, 'DS_div_100hz', rng.choice((1, 1, rng.randrange(256))))
 
 
 # ---------------------------------------------------------------------------------------------- unpackers
@@ -317,7 +336,8 @@ SPECS = [
          'objects 1Ch..2Fh, BP = ring slot'),
     Spec('road_edges', '06c9:4b9a', False, ['bp'], forever(_road_edges), 'walls, drop-offs, right-side zones'),
     Spec('decode_controls', '06c9:4281', False, ['bp'], forever(_decode_controls),
-         'real car records, joystick, gears, BP = rpm'),
+         'real car records, joystick, gears, fire tapped in neutral; BP = rpm'),
+    Spec('sound_tick', '06c9:412c', False, ['cx'], forever(_sound_tick), 'engine, siren, grind tones; CX = rpm'),
     Spec('rle_decode', '06c9:6b02', True, ['ax', 'dx'], _rle_cases(HARNESS),
          'EC_ PCS files directly, other files after their original Huffman pass'),
     HUFF,

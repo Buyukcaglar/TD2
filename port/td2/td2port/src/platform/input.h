@@ -51,6 +51,9 @@ u16    wait_key_slow(u32 n);                /* 06c9:c65c (no callers) */
 /* ---- driving input and joystick */
 u16  input_drive_bits(void);                /* 06c9:6620 held keys -> 1 up 2 down 4 right 8 left 10 A 20 B, else joy */
 u16  joy_read(void);                        /* 06c9:6686 */
+/* CX the last input_drive_bits() call left behind: true with the gameport loop count when joy_read
+ * timed the stick, false when CX was not touched (a key was down, or the stick is off). */
+bool input_leftover_cx(u16 *cx);
 void joy_calib_reset(void);                 /* 06c9:680a */
 u16  joy_dir_index(u16 bits);               /* 06c9:6828 DS:629E[bits & 15] */
 s16  joy_analog_x(void);                    /* 06c9:6839 (no callers) */

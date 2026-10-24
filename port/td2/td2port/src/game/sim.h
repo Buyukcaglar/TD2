@@ -60,6 +60,10 @@ void roadside_hit(void);                        /* 06c9:4c85 scenery collision *
  * the road pointer (motion) or a scenery ring slot (obj_place_roadside). Below 0x14 a billboard only
  * bumps the car. */
 extern u16 sim_stale_bp;
+/* CX as the original leaves it for decode_controls: the rpm (sound_tick, 06c9:4146) or the gameport
+ * loop count when joy_read timed the stick. decode_controls replaces CL; in neutral the clutch check
+ * then compares this leftover with DX = fire_held << 8, which can start the grind tone. */
+extern u16 sim_stale_cx;
 bool overlap(s16 ax_centre, s16 bx_half);       /* 06c9:4d26 true = ZF (overlaps the car) */
 
 /* ---- traffic and collisions between drivers (sim_traffic.c)
