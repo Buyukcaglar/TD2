@@ -1,5 +1,6 @@
 # EGA snapshot hashes: python tools/snapshots.py --update rewrites this file.
-# 120 s of attract mode on the virtual clock, one frame every 2 s of game time.
+# 120 s of attract mode on the virtual clock, one frame every 2 s of game time, and the
+# speaker output (audio.wav).
 ca108f482583bfd3090064d7062bb8553c73fa818000bae89e14a1e36022b477  snap0000.bmp
 067de63f4d23566fd8211667324dfe5ac1f1ffc01c74fbcb2032747ea0c85052  snap0001.bmp
 7821a044dcfa5e8e957ce3c49948a71f95a30769b409e593693341dcf11674d6  snap0002.bmp
@@ -48,3 +49,4 @@ c8ecd867de32189eb3ca298ef32b56cbd639046c4bad0d840efaa16a0360fd43  snap0039.bmp
 2d7874595130021149dd8fb8b6bd8e4d944eb7c24605265c4060d482d8e8e950  snap0045.bmp
 b23179944e390cf63f09260b16344159bd61e514d979a5d22d9569c574c3f4ba  snap0046.bmp
 8287aa8ac7a4f5669358eb626cd02023de5d6436f67db51716a213aa64a399fc  snap0047.bmp
+f2860b89708b110e753b055c478771ecb522c396307dc96ae237a6b1b8751ebb  audio.wav

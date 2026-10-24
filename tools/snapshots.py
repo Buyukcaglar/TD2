@@ -1,13 +1,14 @@
-"""Repeatable EGA snapshots: runs the game headless on a virtual clock and compares the frames with
-the baseline hashes in tests/ega_snapshots.txt.
+"""Repeatable EGA snapshots: runs the game headless on a virtual clock and compares the frames and the
+speaker output with the baseline hashes in tests/ega_snapshots.txt.
 
     python tools/snapshots.py            # run and compare
     python tools/snapshots.py --update   # run and rewrite the baseline
 
 The game runs 120 s of attract mode (logos, credits, scores, menus, the demo drive) with
 TD2_VIRTUAL_CLOCK, so time only advances while the host would wait and two runs give the same frames.
-A frame is saved every 2 s of game time. The images go to runs/snapshots/ (they show original art, so
-they stay out of the repository); only their SHA-256 hashes are committed.
+A frame is saved every 2 s of game time, and everything the PC speaker plays goes to audio.wav. The
+files go to runs/snapshots/ (they show original art and play original music, so they stay out of the
+repository); only their SHA-256 hashes are committed.
 """
 from __future__ import annotations
 
@@ -27,14 +28,13 @@ SECONDS = 120
 
 
 def take() -> dict[str, str]:
-    """Runs the game and returns {snapshot name: sha256}."""
+    """Runs the game and returns {file name: sha256}."""
     OUT.mkdir(parents=True, exist_ok=True)
-    for old in OUT.glob('snap*.bmp'):
+    for old in [*OUT.glob('snap*.bmp'), *OUT.glob('audio.wav')]:
         old.unlink()
     env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
-               TD2_RUN_SECONDS=str(SECONDS), TD2_SNAPSHOT_DIR=str(OUT))
-    for k in ('TD2_STATE_DIR', 'TD2_AUDIO_DUMP'):
-        env.pop(k, None)
+               TD2_RUN_SECONDS=str(SECONDS), TD2_SNAPSHOT_DIR=str(OUT), TD2_AUDIO_DUMP=str(OUT / 'audio.wav'))
+    env.pop('TD2_STATE_DIR', None)
     profile = ROOT / 'runs/snapshot-profile'       # empty profile: default scores and selections
     profile.mkdir(parents=True, exist_ok=True)
     for f in profile.iterdir():
@@ -43,7 +43,8 @@ def take() -> dict[str, str]:
                        capture_output=True, text=True, timeout=600)
     if r.returncode != 0:
         raise RuntimeError(f'td2port.exe exited with {r.returncode}: {r.stderr.strip()}')
-    return {f.name: hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(OUT.glob('snap*.bmp'))}
+    files = sorted(OUT.glob('snap*.bmp')) + sorted(OUT.glob('audio.wav'))
+    return {f.name: hashlib.sha256(f.read_bytes()).hexdigest() for f in files}
 
 
 def read_baseline() -> dict[str, str]:
@@ -53,7 +54,8 @@ def read_baseline() -> dict[str, str]:
 
 def write_baseline(shots: dict[str, str]):
     head = ['# EGA snapshot hashes: python tools/snapshots.py --update rewrites this file.',
-            f'# {SECONDS} s of attract mode on the virtual clock, one frame every 2 s of game time.']
+            f'# {SECONDS} s of attract mode on the virtual clock, one frame every 2 s of game time, and the',
+            '# speaker output (audio.wav).']
     BASELINE.write_text('\n'.join(head + [f'{d}  {n}' for n, d in shots.items()]) + '\n', newline='\n')
 
 

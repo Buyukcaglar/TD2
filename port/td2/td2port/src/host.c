@@ -196,16 +196,17 @@ static Uint64 tick_due_ns(Uint64 n)
 
 static void audio_for_one_tick(void)
 {
-    if (!audio) return;
+    if (!audio && !audio_dump) return;
     samples_per_tick_frac += (double)AUDIO_RATE * PIT_DIV_GAME / PIT_HZ;
     int n = (int)samples_per_tick_frac;
     samples_per_tick_frac -= n;
-    /* Drop output if the device is far behind (e.g. after a stall) instead of building latency. */
-    if (SDL_GetAudioStreamQueued(audio) > AUDIO_RATE / 4 * (int)sizeof(s16)) return;
     s16 buf[1024];
     if (n > (int)SDL_arraysize(buf)) n = SDL_arraysize(buf);
     speaker_render(&spk, spk_div, buf, n, AUDIO_AMPLITUDE);
-    SDL_PutAudioStreamData(audio, buf, n * (int)sizeof(s16));
+    /* Drop device output if the device is far behind (e.g. after a stall) instead of building latency.
+     * The speaker keeps running and the dump still gets every sample. */
+    if (audio && SDL_GetAudioStreamQueued(audio) <= AUDIO_RATE / 4 * (int)sizeof(s16))
+        SDL_PutAudioStreamData(audio, buf, n * (int)sizeof(s16));
     if (audio_dump && SDL_WriteIO(audio_dump, buf, (size_t)n * sizeof(s16)) == (size_t)n * sizeof(s16)) {
         audio_dump_bytes += (Uint32)n * (Uint32)sizeof(s16);
         if (ticks_run % 100 == 0) audio_dump_header();      /* about once a second, in case of a kill */
