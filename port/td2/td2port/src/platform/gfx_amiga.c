@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "gfx_ega.h"
+#include "../host.h"
 #include "../amiga/hunk.h"
 #include "../amiga/ilbm.h"
 #include "../amiga/rpck.h"
@@ -55,8 +56,24 @@ static void show_screen_colours(void)
     gfx_ega.dirty = true;
 }
 
+/* A high-resolution band at the bottom of the screen (gfx.h): 640 pixels a row, 4 colours. */
+static struct {
+    bool on, dirty;
+    s16 y0, dx;
+    u8 pix[200][640];
+    u32 rgb[4];
+} hires;
+
+static void hires_frame(bool on)
+{
+    hires.on = on;
+    hires.dirty = true;
+    host_set_frame_source(gfx_compose, on ? 640 : 320, 200);
+}
+
 void gfx_amiga_reset(void)
 {
+    if (hires.on) hires_frame(false);
     gfx_ega_reset(5);
     memset(&screen, 0, sizeof screen);
     memset(buffers, 0, sizeof buffers);
@@ -389,7 +406,9 @@ void gfx_amiga_wipe_show(void)
     gfx_ega.dirty = true;
 }
 
-void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx)
+void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx) { gfx_amiga_show_view(page, y0, h, dx, 0); }
+
+void gfx_amiga_show_view(FarPtr page, s16 y0, s16 h, s16 dx, s16 dy)
 {
     static u8 rows[5][200 * 40];
     gfx_select_target(page);
@@ -399,20 +418,76 @@ void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx)
             if (y >= 0 && ram_plane(k)) memcpy(&rows[k][y * 40], mp(ram_plane(k), row_at((u16)y)), 40);
     select_screen();
     for (int k = 0; k < 5; k++) memset(gfx_ega.plane[k], 0, 200 * 40);
-    for (s16 y = y0 < 0 ? 0 : y0; y < y0 + h && y < 200; y++)
+    for (s16 y = y0 < 0 ? 0 : y0; y < y0 + h && y < 200; y++) {
+        s16 sy = (s16)(y - dy);
+        if (sy < y0 || sy >= y0 + h) continue;
         for (int x = 0; x < 320; x++) {
             int src = x - dx;
             if (src < 0 || src >= 320) continue;
             u8 from = (u8)(0x80 >> (src & 7)), to = (u8)(0x80 >> (x & 7));
             for (int k = 0; k < 5; k++)
-                if (rows[k][y * 40 + (src >> 3)] & from) gfx_ega.plane[k][y * 40 + (x >> 3)] |= to;
+                if (rows[k][sy * 40 + (src >> 3)] & from) gfx_ega.plane[k][y * 40 + (x >> 3)] |= to;
         }
+    }
     if (t && t->amiga) {
         screen = *t;
         screen.seg = 0;
         show_screen_colours();
     }
     gfx_ega.dirty = true;
+}
+
+bool gfx_amiga_hires_band(const char *file, s16 y0)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaPicture p;
+    bool ok = path && ilbm_load(path, &p);
+    SDL_free(path);
+    if (!ok) return false;
+    memset(hires.pix, 0, sizeof hires.pix);
+    for (int y = y0; y < 200 && y < p.h; y++)
+        for (int x = 0; x < 640 && x < p.w; x++) hires.pix[y][x] = (u8)(p.pix[y * p.w + x] & 3);
+    for (int i = 0; i < 4; i++) hires.rgb[i] = amiga_rgb(p.pal[i]);
+    ilbm_free(&p);
+    hires.y0 = y0;
+    hires.dx = 0;
+    hires_frame(true);
+    return true;
+}
+
+void gfx_amiga_hires_scroll(s16 dx)
+{
+    hires.dx = dx;
+    hires.dirty = true;
+}
+
+void gfx_amiga_hires_off(void)
+{
+    if (hires.on) hires_frame(false);
+}
+
+/* With a high-resolution band the frame is 640 wide: the rows above it show each pixel twice. */
+bool gfx_amiga_compose(u32 *xrgb)
+{
+    static u32 lores[320 * 200];
+    if (!hires.on) return gfx_ega_compose(xrgb);
+    bool changed = gfx_ega_compose(lores);
+    if (!changed && !hires.dirty) return false;
+    hires.dirty = false;
+    for (int y = 0; y < 200; y++) {
+        u32 *row = xrgb + y * 640;
+        if (y < hires.y0) {
+            for (int x = 0; x < 640; x++) row[x] = lores[y * 320 + x / 2];
+            continue;
+        }
+        for (int x = 0; x < 640; x++) {
+            int src = x - hires.dx;
+            row[x] = src >= 0 && src < 640 ? hires.rgb[hires.pix[y][src]] : hires.rgb[0];
+        }
+    }
+    return true;
 }
 
 bool gfx_amiga_picture_scaled(const char *file, s16 sx, s16 sy, s16 sw, s16 sh, s16 x, s16 y, s16 w, s16 h)

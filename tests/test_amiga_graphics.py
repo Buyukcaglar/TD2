@@ -3,8 +3,8 @@
 Runs the port headless with --amiga-graphics and the amiga setting, through the menus to the scenery
 choice and to the difficulty screen, and checks the option screen's title, the difficulty screen and the
 scenery choice against their Amiga pictures (pics/gameoptionscreen, pics/gamedifficulty and the Master
-scenery's scen/sc1_icon), and the intro's showroom against the F40's side view, in their own colours,
-as the Amiga shows them (the top 4 bits of each component).
+scenery's scen/sc1_icon), the intro's showroom against the F40's side view and the car choice against
+its pictures, in their own colours, as the Amiga shows them (the top 4 bits of each component).
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -123,6 +123,29 @@ class AmigaGraphicsTest(unittest.TestCase):
                 if not (144 <= car.x + x < 208 and 21 <= car.y + y < 36)}
         best = min(sum(f.getpixel(xy) != c for xy, c in want.items()) for f in frames_after('60:Return', 12, 3))
         self.assertEqual(best, 0)
+
+    def test_car_choice(self):
+        # YOUR CAR: the F40 on pics/bluestat in its colours in the top 84 lines (each pixel twice, the
+        # frame being 640 wide), and its data, rows 84 on of cars/f40.sb, in high resolution under them
+        import ilbm
+        import shp
+        frame, = last_frames('30:Return,33:Down,35:Return', 40, [(35, 40)])   # the last, once in
+        self.assertEqual(frame.size, (640, 200))
+        pal = amiga_colours(ilbm.parse((AMIGA / 'cars/f40.st.p').read_bytes()))
+        top = list(ilbm.parse((AMIGA / 'pics/bluestat').read_bytes()).pixels[:84 * 320])
+        for s in shp.read((AMIGA / 'cars/f40.sideview.shp').read_bytes()):
+            if s.name in ('gcar', 'logo'):
+                for y in range(s.height):
+                    for x in range(s.width):
+                        if s.mask[y * s.width + x] and 0 <= s.y + y < 84 and 0 <= s.x + x < 320:
+                            top[(s.y + y) * 320 + s.x + x] = s.pixels[y * s.width + x]
+        diff = [(x, y) for y in range(84) for x in range(640) if frame.getpixel((x, y)) != pal[top[y * 320 + x // 2]]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the car')
+        sb = ilbm.parse((AMIGA / 'cars/f40.sb').read_bytes())
+        sb_pal = amiga_colours(sb)
+        diff = [(x, y) for y in range(84, 200) for x in range(640)
+                if frame.getpixel((x, y)) != sb_pal[sb.pixels[y * 640 + x]]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the data')
 
     def test_scenery_choice_picture(self):
         # below the disk name

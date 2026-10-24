@@ -452,7 +452,7 @@ static s16 amiga_showroom_intro(s16 first, s16 second)
     gfx_amiga_sprite(side[0], "gcar", 0, dy[0], AMIGA_BOX_AT_OWN);
     gfx_amiga_sprite(anim[0], names[0], 0, dy[0], AMIGA_BOX_AT_OWN);
     amiga_wipe(WIPE_BLINDS, true, 20, 0);
-    host_sound_event(SOUND_SHOWROOM, 0, NULL);       /* the backend plays the starter 80 frames on */
+    host_sound_event(SOUND_SHOWROOM, 80, NULL);      /* the backend plays the starter 80 frames on */
     u32 t0 = ticks_get() + (host_amiga_pace() ? amiga_ticks(200) : 150), g = 0;
     u16 k = wait_ticks(t0);
     s32 speed = 0;
@@ -653,7 +653,7 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
             blit_copy_clip_hot(v.carS, x, y);
             r = screen_reveal(1);
             if (r != 0) goto out;
-            host_sound_event(SOUND_SHOWROOM, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
+            host_sound_event(SOUND_SHOWROOM, 80, NULL);  /* PORT: sample-based audio (the Amiga's starter) */
         } else {
             select_screen();
             blit_copy_clip_hot(v.carS, x, y);
@@ -802,12 +802,171 @@ FarPtr car_slide(s16 car, s16 from, s16 to, FarPtr old)
     return a;
 }
 
+/* PORT: the car choice in its Amiga form (duel $2dd30). The screen is two viewports: 84 lines at the
+ * top with pics/bluestat, the car's side view ("gcar" of <car>.sideview.shp) and its "logo", in the
+ * car's colours (<car>.st.p); under them 116 lines in high resolution with the car's data, rows 84 on
+ * of <car>.sb (640 x 200, 4 colours). duel moves the viewports to change the car ($2e682): the first
+ * comes in from the left (car 4, data 16 pixels a step, 115 steps, $2f064); the next car pushes the
+ * old one down and comes down from above ($2ef1c, $2f006), the previous one the other way ($2efbc,
+ * $2ef62), 2 lines a step, while the data goes out to the left and comes in from the left, 8 pixels
+ * a step for each line. A step is a frame (a tick at the DOS pace). On the way out the data goes
+ * ($2eab2). Not done: the fade of three colours before the pick's drive ($2ea12). */
+#define CAR_H 84                                    /* the car viewport */
+
+static bool amiga_car_page(s16 car, char *sb, size_t n)
+{
+    const char *pre = amiga_car_prefix(DSTR(car_rec(car)));
+    char f[48];
+    if (!pre || !gfx_amiga_screens()) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    if (!gfx_amiga_picture("pics/bluestat", 0, 0)) return false;
+    gfx_amiga_picture(flow_concat(f, sizeof f, pre, ".st.p"), 0, 0);
+    if (!gfx_amiga_sprite(flow_concat(f, sizeof f, pre, ".sideview.shp"), "gcar", 0, 0, AMIGA_AT_OWN)) return false;
+    gfx_amiga_sprite(f, "logo", 0, 0, AMIGA_AT_OWN);
+    flow_concat(sb, n, pre, ".sb");
+    return true;
+}
+
+/* Waits until ticks reach t, leaving keys for later; false for a pending graphics switch. */
+static bool pace_until(u32 t)
+{
+    while (ticks_get() < t) {
+        if (gfx_pending_backend()) return false;
+        host_pump();
+    }
+    return true;
+}
+
+/* One slide: d from d0 to d1 by dd; the car viewport moved (cx * d, cy * d), the data dx * d. */
+static bool amiga_car_slide(s16 d0, s16 d1, s16 dd, s16 cx, s16 cy, s16 dx)
+{
+    bool amiga = host_amiga_pace();
+    u32 t0 = ticks_get(), n = 0;
+    for (s16 d = d0; dd > 0 ? d <= d1 : d >= d1; d = (s16)(d + dd)) {
+        gfx_amiga_show_view(flow_page_desc(), 0, CAR_H, (s16)(cx * d), (s16)(cy * d));
+        gfx_amiga_hires_scroll((s16)(dx * d));
+        n++;
+        if (!pace_until(t0 + (amiga ? amiga_ticks(n) : n))) return false;
+    }
+    return true;
+}
+
+typedef enum { AMIGA_CHOICE_DONE, AMIGA_CHOICE_SWITCHED, AMIGA_CHOICE_DOS } AmigaChoice;
+
+/* The car choice in *car: done, ended by a graphics switch (to go on in the new mode), or TD2's to do
+ * (a car without its Amiga files). */
+static AmigaChoice amiga_car_select(s16 *pcar)
+{
+    char sb[48];
+    s16 car = *pcar;
+    if (!amiga_car_page(car, sb, sizeof sb) || !gfx_amiga_hires_band(sb, CAR_H)) return AMIGA_CHOICE_DOS;
+    bool ok = amiga_car_slide(114, 0, -1, -4, 0, -16);
+    for (;;) {
+        u16 k = ok ? getkey_timeout_switch(3000) : KEY_SWITCH;
+        if (k == KEY_SWITCH) {
+            gfx_amiga_hires_off();
+            flow_switch_graphics();
+            *pcar = car;
+            return AMIGA_CHOICE_SWITCHED;
+        }
+        if (k == 0) k = KEY_ESC;
+        if (k == KEY_ESC || k == KEY_ENTER || k == KEY_SPACE) break;
+        if (k != KEY_UP && k != KEY_DOWN) continue;
+        bool next = k == KEY_DOWN;
+        ok = next ? amiga_car_slide(0, 92, 2, 0, 1, -8) : amiga_car_slide(0, 112, 2, 0, -1, -8);
+        if (!ok) continue;
+        car = (s16)(next ? car + 1 : car - 1);
+        if (car < 0) car = (s16)(DSS(DS_ncars) - 1);
+        if (car > DSS(DS_ncars) - 1) car = 0;
+        if (!amiga_car_page(car, sb, sizeof sb) || !gfx_amiga_hires_band(sb, CAR_H)) {
+            gfx_amiga_hires_off();
+            *pcar = car;
+            return AMIGA_CHOICE_DOS;
+        }
+        ok = next ? amiga_car_slide(114, 0, -2, 0, -1, -8) : amiga_car_slide(94, 0, -2, 0, 1, -8);
+    }
+    gfx_amiga_hires_off();
+    gfx_amiga_show_view(flow_page_desc(), 0, CAR_H, 0, 0);
+    *pcar = car;
+    return AMIGA_CHOICE_DONE;
+}
+
+/* PORT: the player's car leaves the Amiga car choice (duel $2eb10): the starter at once, 120 frames,
+ * then one window picture every 9 frames as the car's .ss lists them; from the drive-off picture on a
+ * step is a frame, the car viewport moves left 2710h/10000h pixels more each step and the wheels turn
+ * (picture (x + 7) / 5 mod 3), until it has moved 350 pixels. At the DOS pace the car stands 150
+ * ticks, as TD2's. False without the Amiga files. */
+static bool amiga_pick_drive(s16 car)
+{
+    const char *pre = amiga_car_prefix(DSTR(car_rec(car)));
+    char anim[48], file[48];
+    if (!pre || !gfx_amiga_screens()) return false;
+    u32 len;
+    u8 *ss = gfx_amiga_file(flow_concat(file, sizeof file, pre, ".ss"), &len);
+    char names[32][5];
+    int frames = 0, drive = 0;
+    if (ss && len >= 2) {
+        drive = ss[1];
+        for (u32 p = 2; frames < ss[0] && frames < 32 && p + 4 <= len; p += 5, frames++) {
+            memcpy(names[frames], ss + p, 4);
+            names[frames][4] = 0;
+        }
+    }
+    SDL_free(ss);
+    if (frames == 0) return false;
+    flow_concat(anim, sizeof anim, pre, ".anim.shp");
+    host_sound_event(SOUND_SHOWROOM, 0, NULL);
+    bool amiga = host_amiga_pace();
+    u32 t0 = ticks_get() + (amiga ? amiga_ticks(120) : 150), g = 0;
+    u16 k = wait_ticks(t0);
+    s32 speed = 0;
+    s16 x = 0, pic = 0, step = 9;
+    bool moving = false, done = false;
+    while (k == 0 && !done) {
+        gfx_select_target(flow_page_desc());
+        if (moving) {
+            char wheel[5] = "frm0";
+            wheel[3] = (char)('0' + (x + 7) / 5 % 3);
+            gfx_amiga_sprite(anim, wheel, 0, 0, AMIGA_BOX_AT_OWN);
+            wheel[0] = 'r';
+            gfx_amiga_sprite(anim, wheel, 0, 0, AMIGA_BOX_AT_OWN);
+        }
+        s16 shown = (s16)-x;
+        if (moving) {
+            x = (s16)(x + (speed >> 16));
+            speed += 0x2710;
+            done = x >= 350;
+            step = 1;
+        }
+        if (pic < frames) {
+            gfx_amiga_sprite(anim, names[pic], 0, 0, AMIGA_BOX_AT_OWN);
+            if (pic < frames - 1) pic++;
+            if (pic >= drive) moving = true;
+        }
+        gfx_amiga_show_view(flow_page_desc(), 0, CAR_H, shown, 0);
+        g += (u32)step;
+        k = wait_ticks(t0 + amiga_ticks(g));
+    }
+    if (k == KEY_SWITCH) flow_switch_redraw(NULL, NULL);
+    select_screen();
+    gfx_clear_screen(0);
+    return true;
+}
+
 /* 019e:027d car_select — game_flow.md §4.8 (verified against the disassembly) */
 s16 car_select(s16 car)
 {
     char name[26];
     u16 k;
+    bool amiga = true;
 redraw:
+    if (amiga && gfx_amiga_screens()) {              /* PORT */
+        AmigaChoice c = amiga_car_select(&car);
+        if (c == AMIGA_CHOICE_DONE) return car;
+        if (c == AMIGA_CHOICE_DOS) amiga = false;
+        goto redraw;
+    }
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     if (ensure_disk(0x73C3, DSS(DS_data_disk), 2) != 0) return car;    /* "testdrv2" */
@@ -1123,7 +1282,8 @@ s16 main_menu(void)
             ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x74AB)),
                           DSS(DS_car_disk), 0);                                      /* ".ss" */
             mem_release_cache(load_raw(DS_disk_path));
-            showroom_drive(DSTR(DS_player_car_code), 0xA0, 0x50, 1, 0);
+            if (!amiga_pick_drive(DSS(DS_car_idx)))   /* PORT: the Amiga form */
+                showroom_drive(DSTR(DS_player_car_code), 0xA0, 0x50, 1, 0);
             break;
         case 3:
             DSS(DS_opp_idx) = car_select(DSS(DS_opp_idx));

@@ -47,6 +47,7 @@ void gfx_amiga_buffer_created(u16 seg);         /* a new off-screen buffer, plan
 void gfx_amiga_cleared(bool screen);            /* the screen, or the selected target, was cleared */
 void gfx_amiga_shown(FarPtr spr);               /* a buffer sprite is drawn onto the screen */
 bool gfx_ega_compose(u32 *xrgb);
+bool gfx_amiga_compose(u32 *xrgb);             /* the model, and a high-resolution band if on */
 
 /* A colour the game passes. With four planes it is used as it is. With five, it is an EGA colour
  * number (the game also passes FFh or FFFFh for white, which four planes read as 15) and the colour

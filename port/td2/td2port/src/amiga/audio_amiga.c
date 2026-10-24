@@ -292,7 +292,13 @@ static void amiga_event(SoundEvent e, int n, const char *car)
     /* The showroom intro (overlay 1776h) loads sfx/Starter once the first car is on the screen, waits
      * 80 frames ($2bb6a) and plays it; the car's window opens and the car drives off 120 frames later.
      * The effect goes on until it ends or the intro does ($2beae stops channel 2). */
-    case SOUND_SHOWROOM: starter_wait = (int)(80 * (double)rate_hz * PAULA_FRAME / PAULA_CLOCK); break;
+    case SOUND_SHOWROOM:
+        starter_wait = (int)(n * (double)rate_hz * PAULA_FRAME / PAULA_CLOCK);
+        if (starter_wait <= 0) {                    /* the car choice's pick plays it at once ($2ed24) */
+            starter_wait = 0;
+            play_form(starter);
+        }
+        break;
     case SOUND_SHOWROOM_END:
         starter_wait = 0;
         if (mode == MUSIC) song_stop_sfx(2);

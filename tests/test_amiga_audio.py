@@ -87,11 +87,11 @@ class AmigaAudioTest(unittest.TestCase):
         b.reset()
         self.assertLess(rms(b.render(0.5)), 1)                  # silent until the game says what plays
 
-        def song_with(e=None, seconds=5):
+        def song_with(e=None, seconds=5, n=0):
             b.reset()
             b.event(SONG, 1)
             if e is not None:
-                b.event(e)
+                b.event(e, n)
             return b.render_lr(seconds)
 
         song_l, song = song_with()
@@ -111,17 +111,24 @@ class AmigaAudioTest(unittest.TestCase):
             self.assertLess(rms(left), 1, names)
             self.assertGreater(rms(right), 300, names)
 
-        # The starter: nothing for 80 frames after the first showroom car appears, then the effect for
-        # its whole length; the end of the showroom stops it.
+        # The starter: nothing for the frames the event gives (80 when the intro's first showroom car
+        # appears), then the effect for its whole length; with 0 (the car choice's pick) at once; the end
+        # of the showroom stops it.
         song_l, song = song_with(None, 8)
-        _, starter = song_with(SHOWROOM, 8)
+        _, starter = song_with(SHOWROOM, 8, 80)
+        b.reset()                                               # 0, a second into the song
+        b.event(SONG, 1)
+        b.render_lr(1)
+        b.event(SHOWROOM, 0)
+        _, at_once = b.render_lr(1)
+        self.assertLess([i for i in range(RATE) if at_once[i] != song[RATE + i]][0] / RATE, 0.02)
         differ = [i for i in range(len(song)) if starter[i] != song[i]]
         self.assertTrue(differ)
         self.assertAlmostEqual(differ[0] / RATE, 80 / 60.05, delta=0.03)
         self.assertGreater((differ[-1] - differ[0]) / RATE, 0.9 * speech_seconds('starter'))
         b.reset()
         b.event(SONG, 1)
-        b.event(SHOWROOM)
+        b.event(SHOWROOM, 80)
         b.render_lr(2)
         b.event(SHOWROOM_END)
         _, stopped = b.render_lr(3)

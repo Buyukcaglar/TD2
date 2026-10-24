@@ -22,7 +22,7 @@ typedef enum {
     SOUND_GAME_OVER,        /* the last life is lost: the game over screen */
     SOUND_TITLE,            /* the title picture ("Test Drive II", "The Duel") appears */
     SOUND_ACCOLADE,         /* the "Accolade presents" picture appears */
-    SOUND_SHOWROOM,         /* the intro's first showroom car appears */
+    SOUND_SHOWROOM,         /* a showroom car appears; n: NTSC frames before the starter (0: now) */
     SOUND_SHOWROOM_END,     /* the showroom intro is over (or skipped) */
 } SoundEvent;
 

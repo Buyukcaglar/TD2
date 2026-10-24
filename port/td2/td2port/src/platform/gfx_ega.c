@@ -874,7 +874,6 @@ static FarPtr ega_cursor_glyph(u16 idx)
     .fix_sprites = res_unflip_archive,                                                             \
     .cursor_glyph = ega_cursor_glyph,                                                              \
     .scene = &ega_scene_raster,                                                                    \
-    .compose = gfx_ega_compose,                                                                    \
     .video_hook = ega_video_hook,                                                                  \
     .set_mode = ega_set_mode,                                                                      \
     .shutdown = ega_shutdown,                                                                      \
@@ -895,11 +894,13 @@ static FarPtr ega_cursor_glyph(u16 idx)
 const GfxBackend gfx_ega_backend = {
     .name = "EGA",
     .reset = ega_reset,
+    .compose = gfx_ega_compose,
     EGA_DRAWING,
 };
 
 const GfxBackend gfx_amiga_backend = {
     .name = "Amiga",
     .reset = gfx_amiga_reset,
+    .compose = gfx_amiga_compose,
     EGA_DRAWING,
 };

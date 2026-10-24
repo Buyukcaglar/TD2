@@ -162,6 +162,13 @@ void gfx_amiga_wipe_show(void);
 /* Shows rows y0 to y0 + h - 1 of a page moved dx pixels to the right, black elsewhere, in the page's
  * colours: an Amiga viewport of that size scrolled sideways (duel's showroom). */
 void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx);
+void gfx_amiga_show_view(FarPtr page, s16 y0, s16 h, s16 dx, s16 dy);   /* and moved dy pixels down */
+/* A high-resolution viewport under the screen's rows from y0 (duel's car choice): rows y0 to 199 of a
+ * 640-pixel, 4-colour Amiga picture, in its colours, moved dx of its pixels to the right. While it is on
+ * the frame is 640 wide. */
+bool gfx_amiga_hires_band(const char *file, s16 y0);
+void gfx_amiga_hires_scroll(s16 dx);
+void gfx_amiga_hires_off(void);
 
 /* ---- sprite blitters (platform.md §4.2)
  * hot = at (x - hot_x, y - hot_y), raw = at (x, y), own = at the header's (x, y) (not masked in TD2).
