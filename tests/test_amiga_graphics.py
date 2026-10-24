@@ -3,8 +3,8 @@
 Runs the port headless with --amiga-graphics and the amiga setting, through the menus to the scenery
 choice and to the difficulty screen, and checks the option screen's title, the difficulty screen and the
 scenery choice against their Amiga pictures (pics/gameoptionscreen, pics/gamedifficulty and the Master
-scenery's scen/sc1_icon), in their own colours, as the Amiga shows them (the top 4 bits of each
-component).
+scenery's scen/sc1_icon), and the intro's showroom against the F40's side view, in their own colours,
+as the Amiga shows them (the top 4 bits of each component).
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -34,6 +34,16 @@ def amiga_colours(pic):
 
 def last_frames(keys, seconds, windows):
     """Runs the port headless with the Amiga graphics; the last frame shown in each (t0, t1) window."""
+    return run(keys, seconds, lambda times: [max(n for t, n in times if t0 <= t < t1) for t0, t1 in windows])
+
+
+def frames_after(keys, seconds, t0):
+    """Runs the port headless with the Amiga graphics; every frame shown from t0 s on."""
+    return run(keys, seconds, lambda times: [n for t, n in times if t >= t0])
+
+
+def run(keys, seconds, pick):
+    """Runs the port headless with the Amiga graphics; the frames pick chooses from (time, file name)."""
     from PIL import Image
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
@@ -48,8 +58,7 @@ def last_frames(keys, seconds, windows):
         assert p.returncode == 0, p.stderr
         times = [(float(w[2]), w[0]) for w in (ln.split() for ln in p.stderr.splitlines())
                  if len(w) == 4 and w[0].startswith('snap') and w[1] == 'at']
-        return [Image.open(shots / max(n for t, n in times if t0 <= t < t1)).convert('RGB')
-                for t0, t1 in windows]
+        return [Image.open(shots / n).convert('RGB') for n in pick(times)]
 
 
 @unittest.skipUnless(EXE.exists() and GAME.exists() and (AMIGA / 'scen/sc1_icon').exists(),
@@ -99,6 +108,21 @@ class AmigaGraphicsTest(unittest.TestCase):
     def test_difficulty_picture(self):
         # above and below the arrow (rows 53 to 103)
         self.assert_picture(self.difficulty, 'pics/gamedifficulty', [*range(0, 53), *range(104, 200)])
+
+    def test_showroom_side_view(self):
+        # the intro's showroom: the F40's side view (gcar of cars/f40.sideview.shp) in its own colours
+        # (cars/f40.st.p), its bottom on the bottom line, the window box (wnd0, 64 x 15 at 144, 21 of the
+        # sprite's place) left out because it opens
+        import ilbm
+        import shp
+        pal = amiga_colours(ilbm.parse((AMIGA / 'cars/f40.st.p').read_bytes()))
+        car = {s.name: s for s in shp.read((AMIGA / 'cars/f40.sideview.shp').read_bytes())}['gcar']
+        top = 200 - car.height
+        want = {(car.x + x, top + y): pal[car.pixels[y * car.width + x]]
+                for y in range(car.height) for x in range(car.width)
+                if not (144 <= car.x + x < 208 and 21 <= car.y + y < 36)}
+        best = min(sum(f.getpixel(xy) != c for xy, c in want.items()) for f in frames_after('60:Return', 12, 3))
+        self.assertEqual(best, 0)
 
     def test_scenery_choice_picture(self):
         # below the disk name

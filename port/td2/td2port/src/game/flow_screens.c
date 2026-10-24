@@ -209,7 +209,7 @@ static s16 amiga_accolade(void)
     host_sound_event(SOUND_ACCOLADE, 0, NULL);
     s16 r = screen_reveal(1);
     s16 end, row;
-    if (r != 0 || !gfx_amiga_sprite_own("pics/titlecar.shp", "bull", &end, &row)) return r;
+    if (r != 0 || !gfx_amiga_sprite_rect("pics/titlecar.shp", "bull", &end, &row, NULL, NULL)) return r;
     bool amiga = host_amiga_pace();
     u32 t0 = ticks_get();
     for (s16 x = 0, n = 1;; x = (s16)(x + (amiga ? 4 : 2)), n++) {
@@ -389,6 +389,116 @@ s16 credits(void)
 static bool amiga_showroom;
 static s32 amiga_speed;                             /* pixels a frame, 16.16 */
 static s16 showroom_intro_dos(s16 unused);
+static const char *amiga_car_prefix(const char *code);
+
+/* PORT: the intro's showroom in its Amiga form (duel $2b776). The showroom is a viewport of 84 lines at
+ * line 116 with the car's colours (<car>.st.p). duel draws the side view ("gcar" of <car>.sideview.shp)
+ * as a whole box, its bottom on the viewport's, and moves the car by scrolling the viewport: the car
+ * stands still in the bitmap. It brings the first car in with blinds (step 20), keeps it 200 frames,
+ * then every 4 frames shows the next picture of its window ("wnd0" ... of <car>.anim.shp, as the first
+ * car's .ss lists them: their count, the picture at which the car drives off, the names) for two steps.
+ * From the drive-off picture on a step is a frame, the viewport moves left 15E0h/10000h pixels more a
+ * step each step, and the wheels turn (frm0-2 and rrm0-2, picture (1050 - x) / 7 mod 3), while the
+ * window goes on to its last picture. The second car enters from x = 350 with the speed the first had;
+ * each leaves at x = -360. At the DOS pace the first car stands 150 ticks, as TD2's; a step is still an
+ * NTSC frame. */
+#define AMIGA_SHOWROOM_NONE ((s16)0x7FFF)            /* no Amiga showroom: TD2's */
+#define SHOW_Y 116
+#define SHOW_H 84
+
+/* Waits until ticks reach t: a key, KEY_SWITCH for a pending graphics switch, or 0. */
+static u16 wait_ticks(u32 t)
+{
+    for (;;) {
+        if (gfx_pending_backend()) return KEY_SWITCH;
+        u16 k = getkey();
+        if (k) return k;
+        if (ticks_get() >= t) return 0;
+        host_pump();
+    }
+}
+
+static s16 amiga_showroom_intro(s16 first, s16 second)
+{
+    char side[2][48], anim[2][48], pal[2][48], file[48];
+    s16 dy[2], cars[2] = { first, second };
+    for (int i = 0; i < 2; i++) {
+        const char *pre = amiga_car_prefix(DSTR(car_rec(cars[i])));
+        s16 x, y, h;
+        if (!pre || !gfx_amiga_sprite_rect(flow_concat(side[i], sizeof side[i], pre, ".sideview.shp"), "gcar",
+                                           &x, &y, NULL, &h))
+            return AMIGA_SHOWROOM_NONE;
+        flow_concat(anim[i], sizeof anim[i], pre, ".anim.shp");
+        flow_concat(pal[i], sizeof pal[i], pre, ".st.p");
+        dy[i] = (s16)(SHOW_Y + SHOW_H - h - y);
+    }
+    u32 len;
+    u8 *ss = gfx_amiga_file(flow_concat(file, sizeof file, amiga_car_prefix(DSTR(car_rec(first))), ".ss"), &len);
+    char names[32][5];
+    int frames = 0, drive = 0;
+    if (ss && len >= 2) {
+        drive = ss[1];
+        for (u32 p = 2; frames < ss[0] && frames < 32 && p + 4 <= len; p += 5, frames++) {
+            memcpy(names[frames], ss + p, 4);
+            names[frames][4] = 0;
+        }
+    }
+    SDL_free(ss);
+    if (frames == 0) return AMIGA_SHOWROOM_NONE;
+
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    gfx_amiga_picture(pal[0], 0, 0);
+    gfx_amiga_sprite(side[0], "gcar", 0, dy[0], AMIGA_BOX_AT_OWN);
+    gfx_amiga_sprite(anim[0], names[0], 0, dy[0], AMIGA_BOX_AT_OWN);
+    amiga_wipe(WIPE_BLINDS, true, 20, 0);
+    host_sound_event(SOUND_SHOWROOM, 0, NULL);       /* the backend plays the starter 80 frames on */
+    u32 t0 = ticks_get() + (host_amiga_pace() ? amiga_ticks(200) : 150), g = 0;
+    u16 k = wait_ticks(t0);
+    s32 speed = 0;
+    s16 step = 4, pic = 0;
+    for (int i = 0; i < 2 && k == 0; i++) {
+        s16 x = (s16)(i ? 350 : 0);
+        bool moving = i != 0, done = false;
+        if (i) {
+            gfx_select_target(flow_page_desc());
+            gfx_amiga_picture(pal[1], 0, 0);
+            gfx_fill_rect(0, SHOW_Y, 0x140, SHOW_H, AMIGA_PEN(0));
+            gfx_amiga_sprite(side[1], "gcar", 0, dy[1], AMIGA_BOX_AT_OWN);
+        }
+        while (k == 0 && !done) {
+            gfx_select_target(flow_page_desc());
+            if (moving) {
+                x = (s16)(x - (speed >> 16));
+                speed += 0x15E0;
+                done = x <= -360;
+                char wheel[5] = "frm0";
+                wheel[3] = (char)('0' + (1050 - x) / 7 % 3);
+                gfx_amiga_sprite(anim[i], wheel, 0, dy[i], AMIGA_BOX_AT_OWN);
+                wheel[0] = 'r';
+                gfx_amiga_sprite(anim[i], wheel, 0, dy[i], AMIGA_BOX_AT_OWN);
+            }
+            if (i == 0) {
+                gfx_amiga_sprite(anim[0], names[pic / 2], 0, dy[0], AMIGA_BOX_AT_OWN);
+                if (pic / 2 < frames - 1) pic++;
+                if (pic / 2 >= drive) {
+                    moving = true;
+                    step = 1;
+                }
+            }
+            gfx_amiga_show_scrolled(flow_page_desc(), SHOW_Y, SHOW_H, x);
+            g += (u32)step;
+            k = wait_ticks(t0 + amiga_ticks(g));
+        }
+    }
+    if (k == KEY_SWITCH) {                           /* the live switch ends the showroom */
+        flow_switch_redraw(NULL, NULL);
+        return 0;
+    }
+    select_screen();
+    gfx_clear_screen(0);
+    return (s16)k;
+}
 
 s16 showroom_intro(s16 unused)                      /* PORT: the intro's showroom drives may take the Amiga's pace */
 {
@@ -413,6 +523,7 @@ static s16 showroom_intro_dos(s16 unused)
     gfx_clear_clip(0);
     if (first < 0 || first >= DSS(DS_ncars)) first = 0;
     if (second < 0 || second >= DSS(DS_ncars)) second = (DSS(DS_ncars) > 1) ? 1 : 0;
+    if ((r = amiga_showroom_intro(first, second)) != AMIGA_SHOWROOM_NONE) return r;   /* PORT */
     /* preload the second car so no disk swap happens during the animation */
     ensure_disk_c(flow_concat(name, sizeof name, DSTR(car_rec(second)), DSTR(0x735A)), car_disk(second), 0);  /* "st" */
     mem_release_cache(load_shapes(DS_disk_path));

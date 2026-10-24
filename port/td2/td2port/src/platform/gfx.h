@@ -129,12 +129,16 @@ bool gfx_amiga_screens(void);                   /* the Amiga backend is on and h
  * at (x, y), x a multiple of 8, and gives the target its colours. False if it is not there. */
 bool gfx_amiga_picture(const char *file, s16 x, s16 y);
 /* Where gfx_amiga_sprite puts a sprite: its hot spot at (x, y), its own position, its hot spot at x and
- * its own top row (duel's difficulty arrow), or its top left corner at x and its own top row as a whole
- * box, with no mask (the bar that slides in on "Accolade presents"). */
-typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X, AMIGA_BOX_AT_X } AmigaPlace;
+ * its own top row (duel's difficulty arrow); or as a whole box, with no mask: its top left corner at x
+ * and its own top row (the bar that slides in on "Accolade presents"), or its own position moved by
+ * (x, y) (the showroom's car). */
+typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X, AMIGA_BOX_AT_X, AMIGA_BOX_AT_OWN } AmigaPlace;
 /* Draws sprite name of an Amiga sprite archive into the selected target. False if it is not there. */
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at);
-bool gfx_amiga_sprite_own(const char *file, const char *name, s16 *x, s16 *y);   /* its own position */
+/* A sprite's own position and its size (w and h may be NULL). False if it is not there. */
+bool gfx_amiga_sprite_rect(const char *file, const char *name, s16 *x, s16 *y, s16 *w, s16 *h);
+/* A file of the Amiga game, unpacked if Rpck-packed (SDL_free), or NULL. */
+void *gfx_amiga_file(const char *file, u32 *len);
 /* Draws the part (sx, sy, sw, sh) of an Amiga picture scaled to w x h at (x, y) of the selected target,
  * each pixel the mean colour of its part of the picture, as the nearest of the target's colours for that
  * row. For an icon on a screen that already has its colours. False if the picture is not there. */
@@ -155,6 +159,9 @@ void gfx_amiga_wipe_begin(FarPtr page, bool in);
 void gfx_amiga_wipe_rect(s16 x0, s16 y0, s16 x1, s16 y1);        /* corners included */
 void gfx_amiga_wipe_line(s16 x0, s16 y0, s16 x1, s16 y1);
 void gfx_amiga_wipe_show(void);
+/* Shows rows y0 to y0 + h - 1 of a page moved dx pixels to the right, black elsewhere, in the page's
+ * colours: an Amiga viewport of that size scrolled sideways (duel's showroom). */
+void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx);
 
 /* ---- sprite blitters (platform.md §4.2)
  * hot = at (x - hot_x, y - hot_y), raw = at (x, y), own = at the header's (x, y) (not masked in TD2).

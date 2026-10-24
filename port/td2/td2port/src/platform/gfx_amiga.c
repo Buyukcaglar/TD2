@@ -12,6 +12,7 @@
 #include "gfx_ega.h"
 #include "../amiga/hunk.h"
 #include "../amiga/ilbm.h"
+#include "../amiga/rpck.h"
 #include "../amiga/shp.h"
 
 typedef struct {
@@ -285,9 +286,9 @@ bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPla
     bool ok = path && shp_load(path, name, &s);
     SDL_free(path);
     if (!ok) return false;
-    bool box = at == AMIGA_BOX_AT_X;
-    x = at == AMIGA_AT_OWN ? s.x : box ? x : (s16)(x - s.hot_x);
-    y = at == AMIGA_AT_HOT ? (s16)(y - s.hot_y) : s.y;
+    bool box = at == AMIGA_BOX_AT_X || at == AMIGA_BOX_AT_OWN;
+    x = at == AMIGA_AT_OWN ? s.x : at == AMIGA_BOX_AT_OWN ? (s16)(s.x + x) : box ? x : (s16)(x - s.hot_x);
+    y = at == AMIGA_AT_HOT ? (s16)(y - s.hot_y) : at == AMIGA_BOX_AT_OWN ? (s16)(s.y + y) : s.y;
     for (int r = 0; r < s.h; r++)
         for (int c = 0; c < s.w; c++)
             if (s.mask[r * s.w + c]) put_pixel((s16)(x + c), (s16)(y + r), s.pix[r * s.w + c]);
@@ -296,7 +297,7 @@ bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPla
     return true;
 }
 
-bool gfx_amiga_sprite_own(const char *file, const char *name, s16 *x, s16 *y)
+bool gfx_amiga_sprite_rect(const char *file, const char *name, s16 *x, s16 *y, s16 *w, s16 *h)
 {
     if (!gfx_amiga_screens()) return false;
     char *path = NULL;
@@ -307,8 +308,20 @@ bool gfx_amiga_sprite_own(const char *file, const char *name, s16 *x, s16 *y)
     if (!ok) return false;
     *x = s.x;
     *y = s.y;
+    if (w) *w = (s16)s.w;
+    if (h) *h = (s16)s.h;
     shp_free(&s);
     return true;
+}
+
+void *gfx_amiga_file(const char *file, u32 *len)
+{
+    if (!gfx_amiga_screens()) return NULL;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    u8 *f = path ? rpck_load(path, len) : NULL;
+    SDL_free(path);
+    return f;
 }
 
 /* ---- the Amiga screen changes (gfx.h) */
@@ -373,6 +386,32 @@ void gfx_amiga_wipe_show(void)
             for (int k = 0; k < 5; k++)
                 gfx_ega.plane[k][off] = (u8)((gfx_ega.plane[k][off] & ~m) | (wipe_from[k][off] & m));
         }
+    gfx_ega.dirty = true;
+}
+
+void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx)
+{
+    static u8 rows[5][200 * 40];
+    gfx_select_target(page);
+    const TargetColours *t = buffer_colours(CSW(GFX_CUR_PLANE0));
+    for (s16 y = y0; y < y0 + h && y < 200; y++)
+        for (int k = 0; k < 5; k++)
+            if (y >= 0 && ram_plane(k)) memcpy(&rows[k][y * 40], mp(ram_plane(k), row_at((u16)y)), 40);
+    select_screen();
+    for (int k = 0; k < 5; k++) memset(gfx_ega.plane[k], 0, 200 * 40);
+    for (s16 y = y0 < 0 ? 0 : y0; y < y0 + h && y < 200; y++)
+        for (int x = 0; x < 320; x++) {
+            int src = x - dx;
+            if (src < 0 || src >= 320) continue;
+            u8 from = (u8)(0x80 >> (src & 7)), to = (u8)(0x80 >> (x & 7));
+            for (int k = 0; k < 5; k++)
+                if (rows[k][y * 40 + (src >> 3)] & from) gfx_ega.plane[k][y * 40 + (x >> 3)] |= to;
+        }
+    if (t && t->amiga) {
+        screen = *t;
+        screen.seg = 0;
+        show_screen_colours();
+    }
     gfx_ega.dirty = true;
 }
 
