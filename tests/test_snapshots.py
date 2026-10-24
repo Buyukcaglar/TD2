@@ -1,4 +1,4 @@
-"""EGA output against the committed snapshot hashes (tools/snapshots.py). Takes about 30 s.
+"""EGA and CGA output against the committed snapshot hashes (tools/snapshots.py). Takes about a minute.
 
 Needs build/td2port.exe (build.ps1) and runs/game (run.ps1 once).
 """
@@ -16,7 +16,10 @@ import snapshots                                                        # noqa: 
                      'needs build/td2port.exe and runs/game')
 class SnapshotTest(unittest.TestCase):
     def test_ega_frames_match_the_baseline(self):
-        self.assertEqual(snapshots.compare(snapshots.take(), snapshots.read_baseline()), [])
+        self.assertEqual(snapshots.compare(snapshots.take('ega'), snapshots.read_baseline('ega')), [])
+
+    def test_cga_frames_match_the_baseline(self):
+        self.assertEqual(snapshots.compare(snapshots.take('cga'), snapshots.read_baseline('cga')), [])
 
 
 if __name__ == '__main__':
