@@ -65,12 +65,31 @@ void hisc_save(void)
         write_file_or_die(DS_disk_path, ds_ptr(DS_hisc_block), HISC_SIZE);  /* "hisc.dat", 06c9:7866 */
 }
 
+/* PORT: the name entry in its Amiga form (duel $2a000): the player's car from behind, the picture
+ * <car>.rear, fills the screen, and a box in pen 15 from (69, 183) to (249, 194) holds the name field,
+ * pen 1 on pen 0 from (71, 185), 22 letters wide. duel writes no words there. It fades the picture in
+ * and out ($10fde, $11062), which the port leaves out; TD2's 15 letters and wait stay. False without the
+ * Amiga files. */
+static bool amiga_name_entry(void)
+{
+    const char *car = amiga_car_prefix(DSTR(DS_player_car_code));
+    char file[48];
+    if (!car || !gfx_amiga_screens()) return false;
+    if (!gfx_amiga_picture(flow_concat(file, sizeof file, car, ".rear"), 0, 0)) return false;
+    gfx_fill_rect(0x45, 0xB7, 0xF9 - 0x45 + 1, 0xC2 - 0xB7 + 1, AMIGA_PEN(15));
+    gfx_fill_rect(0x47, 0xB9, 22 * 8, 8, AMIGA_PEN(0));
+    gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
+    input_text_line(DS_player_name, 15, 0x47, 0xB9, 12000);
+    return true;
+}
+
 /* 0645:0271 name_entry_screen — game_flow.md §4.15 (verified) */
 s16 name_entry_screen(void)
 {
     char name[26];
     select_screen();
     gfx_clear_clip(0);
+    if (amiga_name_entry()) return 0;                /* PORT */
     if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x8214)),
                       DSS(DS_car_disk), 0) != 0)
         return KEY_ESC;                                                     /* "rear" */
