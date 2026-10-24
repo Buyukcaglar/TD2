@@ -49,6 +49,15 @@ The catalogue files have the same records as the DOS `CARS.DAT` and `SCENES.DAT`
   - Each car's `engine` and `turbo` files (Rpck-packed in some cars).
   - `song`: the player and its data (below).
 
+### The race sounds (in `duel`)
+
+The race does not use the song player. `duel` has its own sample driver and the logic that feeds it from the car's state:
+
+- **Driver.** Four channel records of 1Eh bytes at `$264a0` (A4 − 30DEh). `$11f96` sets it up: it takes the level 4 audio interrupt (`$1226e`) and adds a vertical blank server (`$1231c`). `$120cc` plays a sample on a channel (address, length, channel, period, volume, repeats; FFFFh loops), `$12072` plays a raw sample file at period 3,579,545 / its rate, `$1218a` stops a channel, `$121ea` tells whether a channel plays, `$12202` sets a channel's period and volume, `$12250` sets a channel's volume ramp (target and step, read by the server).
+- **Raw samples.** `Bump`, `crash`, `shortcrash`, `radar`, `siren` and `Squeal` are a length (long), a rate in Hz (word) and signed 8-bit data. Their rates: bump 9,400, crash and short crash 5,326, radar 20,000, siren 7,202, squeal 10,000.
+- **Logic.** `$1cd1a` loads the five race effects (crash or short crash by a setting). `$1d044` starts the looping sounds at the start of a race: the squeal and the car's engine and turbo samples. `$1d118` runs each frame: the engine's period is 2,398,600 / rpm (rpm at least 800, the period kept between 82h and 708h), and its volume comes from the gear and the speed. `$1d210` and `$1d2cc` play the gear change and the bump. `$1cde4` plays the radar beep, `$1ce10` the crash, `$1ce50` starts the siren and `$1cedc` sweeps its pitch between 14,000 and 23,000 (up by 1/50 or 1/100 a frame, down by 1/100).
+- **Next.** Translate the driver and this logic, map their inputs to the DOS game's state (`sound_tick` already keeps the rpm, siren, radar beep, grind and skid), and check the driver against the original under Unicorn as with the song player.
+
 ### The music and effect player (`sfx/song`)
 
 - **What it is.** Accolade's player, 3 KB of 68000 code with its symbols, and 21 KB of chip data: one song (`titlesong`, four tracks), four instruments (bass, bass drum, snare, breathy flute, each an 8SVX in the file), the period and note length tables. Its entry point takes a command in D0: 0 open, 1 read the instruments, 2 play the title song, 3 stop, 4 close, 5 status, 6 fade, 7 play an effect (an 8SVX, channel, volume, repeats, music volume while it plays), 8 stop an effect, 9 effect status, 10 pause, 11 resume, 12 change an effect's rate and volume.
