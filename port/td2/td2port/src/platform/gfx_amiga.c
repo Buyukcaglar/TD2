@@ -295,3 +295,44 @@ void gfx_amiga_wipe_show(void)
         }
     gfx_ega.dirty = true;
 }
+
+bool gfx_amiga_picture_scaled(const char *file, s16 sx, s16 sy, s16 sw, s16 sh, s16 x, s16 y, s16 w, s16 h)
+{
+    TargetColours *t = target_colours();
+    if (!gfx_amiga_screens() || !t || !t->amiga || w <= 0 || h <= 0) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaPicture p;
+    bool ok = path && ilbm_load(path, &p);
+    SDL_free(path);
+    if (!ok) return false;
+    for (s16 j = 0; j < h; j++) {
+        s16 row = (s16)(y + j);
+        const u32 *pens = t->split && row >= (s16)t->split ? t->rgb2 : t->rgb;
+        int y0 = sy + j * sh / h, y1 = sy + (j + 1) * sh / h;
+        for (s16 i = 0; i < w; i++) {
+            int x0 = sx + i * sw / w, x1 = sx + (i + 1) * sw / w;
+            int sum[3] = { 0, 0, 0 }, n = 0;
+            for (int yy = y0; yy < y1 && yy < p.h; yy++)
+                for (int xx = x0; xx < x1 && xx < p.w; xx++) {
+                    const u8 (*pal)[3] = p.split && yy >= p.split ? p.pal2 : p.pal;
+                    u32 c = amiga_rgb(pal[p.pix[yy * p.w + xx] & 31]);
+                    sum[0] += (int)(c >> 16);
+                    sum[1] += (int)(c >> 8 & 0xFF);
+                    sum[2] += (int)(c & 0xFF);
+                    n++;
+                }
+            if (!n) continue;
+            int best = 0, dist = 0x7FFFFFFF;
+            for (int k = 0; k < 32; k++) {
+                int dr = (int)(pens[k] >> 16) - sum[0] / n, dg = (int)(pens[k] >> 8 & 0xFF) - sum[1] / n;
+                int db = (int)(pens[k] & 0xFF) - sum[2] / n;
+                int d = 3 * dr * dr + 4 * dg * dg + 2 * db * db;
+                if (d < dist) { dist = d; best = k; }
+            }
+            put_pixel((s16)(x + i), row, (u8)best);
+        }
+    }
+    ilbm_free(&p);
+    return true;
+}

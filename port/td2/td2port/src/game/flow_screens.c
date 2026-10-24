@@ -715,8 +715,13 @@ static bool amiga_menu_page(void)
             gfx_draw_text(i ? 0x7463 : 0x7455, i ? 0x6C : 0x1C, 0xAA);              /* "N/A" */
     }
     const char *scn = amiga_scenery_prefix(DSTR(DS_scn_code));
-    if (!scn || !gfx_amiga_sprite(flow_concat(file, sizeof file, scn, "gameoption.shp"), "scn0", 0, 0, AMIGA_AT_OWN))
-        gfx_draw_text(0x7471, 0xBC, 0xAA);                                          /* "N/A" */
+    bool icon = scn && gfx_amiga_sprite(flow_concat(file, sizeof file, scn, "gameoption.shp"), "scn0", 0, 0,
+                                        AMIGA_AT_OWN);
+    /* Northern Germany has no gameoption.shp: as for its DOS icons, the middle of the heath photo of
+     * its title picture, in the 62 x 35 the other sceneries' icons fill at (167, 155) */
+    if (!icon && scn && strcmp(scn, "scen3/scen/euro_") == 0)
+        icon = gfx_amiga_picture_scaled(flow_concat(file, sizeof file, scn, "icon"), 126, 15, 75, 42, 167, 155, 62, 35);
+    if (!icon) gfx_draw_text(0x7471, 0xBC, 0xAA);                                   /* "N/A" */
     gfx_set_text_colours(COL(0x0F, 3), 0);
     return true;
 }

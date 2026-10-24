@@ -62,6 +62,9 @@ class AmigaGraphicsTest(unittest.TestCase):
             KEYS, 66, [(30, 30.35), (30.35, 39), (63, 66)])
         # Return on the clock opens the difficulty screen
         cls.difficulty, = last_frames('30:Return,35:Return', 38, [(35, 38)])
+        # the scenery box, Up to Northern Germany, and back to the option screen
+        cls.option_ngc, = last_frames('30:Return,33:Down,33.5:Right,34:Right,35:Return,40:Up,44:Return', 50,
+                                      [(45.2, 50)])
 
     def assert_picture(self, frame, file, rows):
         import ilbm
@@ -80,6 +83,13 @@ class AmigaGraphicsTest(unittest.TestCase):
             self.assertEqual(self.option_circle.getpixel((x, y)), (0, 0, 0), (x, y))
         self.assertEqual([(x, y) for y in range(95, 106) for x in range(154, 163)
                           if self.option_circle.getpixel((x, y)) != pal[pic.pixels[y * 320 + x]]], [])
+
+    def test_northern_germany_icon(self):
+        # Northern Germany has no gameoption.shp: the middle of its title picture's heath photo fills the
+        # 62 x 35 the other sceneries' icons fill, in the screen's colours, instead of "N/A"
+        box = [self.option_ngc.getpixel((x, y)) for y in range(155, 190) for x in range(167, 229)]
+        self.assertLess(sum(c == (0, 0, 0) for c in box), len(box) // 20)
+        self.assertTrue(any(c[2] > 200 and c[0] < 100 for c in box[:62 * 5]), 'no sky at the top')
 
     def test_option_screen_picture(self):
         # the title above the boxes, in the picture's colours above its split line
