@@ -79,7 +79,7 @@ The context menu, the pause, the theme and the question windows are built (steps
   - Graphics: EGA, CGA, Hercules, and "Next mode" (Ctrl+Shift+G). The current or pending mode has the radio mark.
   - Hercules monitor: white, green or amber, which changes the picture at once. This answers the phosphor question without a decision now. The choice is saved in the settings.
   - Sound: PC speaker or Amiga, "Next" (Ctrl+Shift+S), and "Amiga game files…".
-  - Window size: 1× to 4×, and full screen (Alt+Enter).
+  - Window size: 1× to 4×, and full screen (Alt+Enter). The picture is fitted again whenever the window changes size, goes to or from full screen or is uncovered, also while the game draws nothing new: an SDL event watch (`window_watch` in `host.c`) draws the last frame again at once, also during Windows' live resize, which runs its own message loop.
   - Game files…: what is installed, and adding an expansion folder or archive (section 3).
   - About Test Drive II: the version, where the game files come from, the licences and the key combinations.
   - Quit.

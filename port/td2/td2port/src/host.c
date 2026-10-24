@@ -139,6 +139,8 @@ void host_add_game_dir(const char *dir)
     if (ngame_dirs < MAX_GAME_DIRS && dir) game_dirs[ngame_dirs++] = SDL_strdup(dir);
 }
 
+static bool SDLCALL window_watch(void *data, SDL_Event *ev);
+
 bool host_init(int window_scale)
 {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMEPAD)) {
@@ -153,6 +155,7 @@ bool host_init(int window_scale)
         return false;
     }
     SDL_SetRenderVSync(renderer, 1);
+    SDL_AddEventWatch(window_watch, NULL);
 
     audio_be->reset(AUDIO_RATE);
     audio_dump_open();
@@ -286,9 +289,9 @@ static void snapshot(void)
     SDL_DestroySurface(s);
 }
 
-static void present(void)
+/* The current frame in the window, letterboxed to the window's size. */
+static void show_frame(void)
 {
-    snapshot();
     if (!texture) return;
     SDL_UpdateTexture(texture, NULL, frame, frame_w * 4);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -296,6 +299,35 @@ static void present(void)
     SDL_FRect dst = { 0, 0, (float)VIEW_W(frame_w), (float)VIEW_H(frame_w) };
     SDL_RenderTexture(renderer, texture, NULL, &dst);
     SDL_RenderPresent(renderer);
+}
+
+static void present(void)
+{
+    snapshot();
+    show_frame();
+}
+
+/* The frame drawn again when the window changes size, goes to or from fullscreen (Alt+Enter) or is
+ * uncovered, also while the game draws nothing new (a menu waiting for a key). An event watch sees
+ * these events at once, also during Windows' live resize, which runs its own message loop until the
+ * mouse button is released. */
+static bool SDLCALL window_watch(void *data, SDL_Event *ev)
+{
+    (void)data;
+    switch (ev->type) {
+    case SDL_EVENT_WINDOW_EXPOSED:
+    case SDL_EVENT_WINDOW_RESIZED:
+    case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+    case SDL_EVENT_WINDOW_ENTER_FULLSCREEN:
+    case SDL_EVENT_WINDOW_LEAVE_FULLSCREEN:
+    case SDL_EVENT_WINDOW_RESTORED:
+    case SDL_EVENT_WINDOW_MAXIMIZED:
+        show_frame();
+        break;
+    default:
+        break;
+    }
+    return true;
 }
 
 static Uint64 last_present_ns;
