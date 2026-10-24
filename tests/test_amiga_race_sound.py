@@ -28,13 +28,13 @@ SAMPLES = {'Squeal': 0x40000, 'crash': 0x44000, 'siren': 0x4C000}
 
 
 class Original:
-    def __init__(self):
+    def __init__(self, stubs=STUBS_TO_RTS):
         import unicorn
         from unicorn import m68k_const as m
         self.m = m
         mem, _ = hunk.load((AMIGA / 'duel').read_bytes())
         mem = bytearray(mem) + bytearray(0x80000 - len(mem))
-        for stub in STUBS_TO_RTS:
+        for stub in stubs:
             mem[stub:stub + 2] = b'\x4e\x75'
         for name, at in SAMPLES.items():
             data = (AMIGA / 'sfx' / name).read_bytes()
@@ -53,6 +53,12 @@ class Original:
                 self.log.append((addr, value & 0xFFFF, size))
         uc.hook_add(unicorn.UC_HOOK_MEM_WRITE, on_write, begin=0xDFF000, end=0xDFFFFF)
         self.uc = uc
+
+    def wr(self, addr, value, size):
+        self.uc.mem_write(addr, (value & ((1 << 8 * size) - 1)).to_bytes(size, 'big'))
+
+    def rd(self, addr, size):
+        return int.from_bytes(self.uc.mem_read(addr, size), 'big')
 
     def call(self, pc, args=b'', until=STOP_AT):
         uc, m = self.uc, self.m

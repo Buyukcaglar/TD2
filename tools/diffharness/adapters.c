@@ -5,6 +5,7 @@
 #include "dh.h"
 #include "mem.h"
 #include "amiga/paula.h"
+#include "amiga/race_logic.h"
 #include "amiga/race_sound.h"
 #include "amiga/song.h"
 #include "speaker.h"
@@ -231,6 +232,46 @@ DH_EXPORT u32 dh_race_call(int cmd, u32 a, u32 b, u32 c, u32 d, u32 e, u32 f)
     default: break;
     }
     return 0;
+}
+
+/* The race sound logic (amiga/race_logic.c), for tests/test_amiga_race_logic.py. in[] holds the inputs
+ * in RaceCar's order (rpm, speed, throttle, in_gear, engine_on, squeal_held, squeal_volume, pos, cop_pos,
+ * cop_speed, bump, bump2, low_rev_turbo, shift_squeal; a value of 0x7FFFFFFF leaves that field), then the
+ * seven sample addresses for cmd 0. out[] gets squeal_volume and shift_squeal back, as the logic leaves
+ * them. cmd: 0 reset and samples, 1 start the loops, 2 fade out, 3 step, 4 squeal off, 5 radar, 6 crash,
+ * 7 siren start, 8 siren stop, 100 the vertical blank (the siren sweep, then the driver's server; a =
+ * INTENAR). */
+DH_EXPORT void dh_race_logic(int cmd, const s32 *in, s32 *out, u32 a)
+{
+    amiga_set_reg_hook(song_log_write);
+    RaceCar *c = &race_car;
+#define IN(i, field, type) if (in[i] != 0x7FFFFFFF) c->field = (type)in[i]
+    IN(0, rpm, u16); IN(1, speed, s32); IN(2, throttle, s16); IN(3, in_gear, bool); IN(4, engine_on, bool);
+    IN(5, squeal_held, bool); IN(6, squeal_volume, u16); IN(7, pos, s32); IN(8, cop_pos, s32);
+    IN(9, cop_speed, s32); IN(10, bump, bool); IN(11, bump2, bool); IN(12, low_rev_turbo, bool);
+    IN(13, shift_squeal, s16);
+#undef IN
+    switch (cmd) {
+    case 0: {
+        race_logic_reset();
+        RaceSamples *s = &race_samples;
+        u32 *addr[] = { &s->radar, &s->squeal, &s->bump, &s->crash, &s->siren, &s->engine, &s->turbo };
+        for (int i = 0; i < 7; i++) *addr[i] = (u32)in[14 + i];
+        break;
+    }
+    case 1: race_start_loops(); break;
+    case 2: race_fade_out(); break;
+    case 3: race_step(); break;
+    case 4: race_squeal_off(); break;
+    case 5: race_radar(); break;
+    case 6: race_crash(); break;
+    case 7: race_siren_start(); break;
+    case 8: race_siren_stop(); break;
+    case 100: race_siren_sweep(); race_sound_vblank((u16)a); break;
+    default: break;
+    }
+    out[0] = c->squeal_volume;
+    out[1] = c->shift_squeal;
 }
 
 /* Plays the loaded song through the Paula model: reset != 0 starts the title song at rate. */

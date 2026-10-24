@@ -8,8 +8,11 @@
 
 #define PAULA_CLOCK 3579545.0                       /* NTSC; the player's effect periods assume it */
 #define CIA_ECLOCK  715909.0
+#define PAULA_FRAME (227.5 * 262)                  /* Paula clocks per NTSC frame, about 60.05 Hz */
 
 void paula_reset(int rate);
 void paula_write(u32 addr, u16 value, int size);    /* amiga_set_reg_hook(paula_write) */
 void paula_set_servers(void (*audio_int)(u16 intreqr), void (*timer)(void));
+void paula_set_vblank(void (*server)(void));        /* each NTSC frame (262 lines of 227.5 clocks), or NULL */
+u16  paula_intena(void);                            /* INTENAR */
 void paula_render(s16 *out, int n);

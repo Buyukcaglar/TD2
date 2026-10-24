@@ -26,6 +26,8 @@ static struct {
     float lp, lp_k;
     void (*audio_int)(u16);
     void (*timer)(void);
+    void (*vblank)(void);
+    double vblank_left;
 } p;
 
 void paula_set_servers(void (*audio_int)(u16), void (*timer)(void))
@@ -34,13 +36,19 @@ void paula_set_servers(void (*audio_int)(u16), void (*timer)(void))
     p.timer = timer;
 }
 
+void paula_set_vblank(void (*server)(void)) { p.vblank = server; }
+u16 paula_intena(void) { return p.intena; }
+
 void paula_reset(int rate)
 {
     void (*a)(u16) = p.audio_int;
     void (*t)(void) = p.timer;
+    void (*vb)(void) = p.vblank;
     memset(&p, 0, sizeof p);
     p.audio_int = a;
     p.timer = t;
+    p.vblank = vb;
+    p.vblank_left = PAULA_FRAME;
     for (int i = 0; i < 4; i++) p.ch[i].per = 0x7C;
     p.latch = 0xFFFF;
     p.clocks_per_sample = PAULA_CLOCK / (rate > 0 ? rate : 44100);
@@ -156,6 +164,7 @@ void paula_render(s16 *out, int n)
         while (span > 0) {
             double step = span;
             if (p.timer_on && p.timer_left < step) step = p.timer_left > 0 ? p.timer_left : 0;
+            if (p.vblank && p.vblank_left < step) step = p.vblank_left > 0 ? p.vblank_left : 0;
             for (int c = 0; c < 4; c++)
                 if (p.ch[c].on && p.ch[c].left < step) step = p.ch[c].left > 0 ? p.ch[c].left : 0;
             for (int c = 0; c < 4; c++) {
@@ -174,6 +183,13 @@ void paula_render(s16 *out, int n)
                 if (p.timer_left <= 1e-9) {
                     p.timer_left += (p.latch + 1.0) * (PAULA_CLOCK / CIA_ECLOCK);
                     if (p.timer) p.timer();
+                }
+            }
+            if (p.vblank) {
+                p.vblank_left -= step;
+                if (p.vblank_left <= 1e-9) {
+                    p.vblank_left += PAULA_FRAME;
+                    p.vblank();
                 }
             }
             if (step == 0 && span > 0) continue;
