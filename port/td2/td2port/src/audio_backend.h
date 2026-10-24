@@ -49,6 +49,9 @@ typedef struct AudioBackend {
     void (*drive)(const DriveSound *d);                     /* NULL: not needed */
     bool (*busy)(void);     /* a sample effect plays or waits to play; NULL: never */
     bool amiga_pace;        /* the intro waits as long as the Amiga game's (its samples belong to them) */
+    /* After a switch to this backend: song n as if it had played for ms already. NULL: SOUND_SONG,
+     * from its start. */
+    void (*song_at)(int n, u32 ms);
 } AudioBackend;
 
 extern const AudioBackend audio_pc_speaker;         /* speaker.c */

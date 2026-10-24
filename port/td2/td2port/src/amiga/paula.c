@@ -157,43 +157,57 @@ void paula_write(u32 addr, u16 v, int size)
     }
 }
 
+/* Runs the channels, the timer and the vertical blank for span Paula clocks, adding each side's output
+ * times its duration to acc. */
+static void advance(double span, double acc[2])
+{
+    while (span > 0) {
+        double step = span;
+        if (p.timer_on && p.timer_left < step) step = p.timer_left > 0 ? p.timer_left : 0;
+        if (p.vblank && p.vblank_left < step) step = p.vblank_left > 0 ? p.vblank_left : 0;
+        for (int c = 0; c < 4; c++)
+            if (p.ch[c].on && p.ch[c].left < step) step = p.ch[c].left > 0 ? p.ch[c].left : 0;
+        for (int c = 0; c < 4; c++) {
+            Channel *ch = &p.ch[c];
+            if (!ch->on) continue;
+            acc[c == 1 || c == 2] += (double)ch->out * ch->vol * step;   /* 0, 3 left; 1, 2 right */
+            ch->left -= step;
+            if (ch->left <= 1e-9) {
+                if (ch->byte == 0) fetch(c);
+                if (ch->on) next_byte(c);
+            }
+        }
+        span -= step;
+        if (p.timer_on) {
+            p.timer_left -= step;
+            if (p.timer_left <= 1e-9) {
+                p.timer_left += (p.latch + 1.0) * (PAULA_CLOCK / CIA_ECLOCK);
+                if (p.timer) p.timer();
+            }
+        }
+        if (p.vblank) {
+            p.vblank_left -= step;
+            if (p.vblank_left <= 1e-9) {
+                p.vblank_left += PAULA_FRAME;
+                p.vblank();
+            }
+        }
+        if (step == 0 && span > 0) continue;
+    }
+}
+
+void paula_skip(double seconds)
+{
+    double acc[2];
+    for (double left = seconds * PAULA_CLOCK; left > 0; left -= PAULA_FRAME)
+        advance(left < PAULA_FRAME ? left : PAULA_FRAME, acc);
+}
+
 void paula_render(s16 *out, int n)
 {
     for (int i = 0; i < n; i++) {
-        double span = p.clocks_per_sample, acc[2] = { 0, 0 };
-        while (span > 0) {
-            double step = span;
-            if (p.timer_on && p.timer_left < step) step = p.timer_left > 0 ? p.timer_left : 0;
-            if (p.vblank && p.vblank_left < step) step = p.vblank_left > 0 ? p.vblank_left : 0;
-            for (int c = 0; c < 4; c++)
-                if (p.ch[c].on && p.ch[c].left < step) step = p.ch[c].left > 0 ? p.ch[c].left : 0;
-            for (int c = 0; c < 4; c++) {
-                Channel *ch = &p.ch[c];
-                if (!ch->on) continue;
-                acc[c == 1 || c == 2] += (double)ch->out * ch->vol * step;   /* 0, 3 left; 1, 2 right */
-                ch->left -= step;
-                if (ch->left <= 1e-9) {
-                    if (ch->byte == 0) fetch(c);
-                    if (ch->on) next_byte(c);
-                }
-            }
-            span -= step;
-            if (p.timer_on) {
-                p.timer_left -= step;
-                if (p.timer_left <= 1e-9) {
-                    p.timer_left += (p.latch + 1.0) * (PAULA_CLOCK / CIA_ECLOCK);
-                    if (p.timer) p.timer();
-                }
-            }
-            if (p.vblank) {
-                p.vblank_left -= step;
-                if (p.vblank_left <= 1e-9) {
-                    p.vblank_left += PAULA_FRAME;
-                    p.vblank();
-                }
-            }
-            if (step == 0 && span > 0) continue;
-        }
+        double acc[2] = { 0, 0 };
+        advance(p.clocks_per_sample, acc);
         /* 2 channels x 127 x 64 at most on a side: scale to about 40% of full range per channel */
         for (int side = 0; side < 2; side++) {
             float s = (float)(acc[side] / p.clocks_per_sample) * (32767.0f / (2 * 128 * 64)) * 0.8f;

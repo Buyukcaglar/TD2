@@ -17,3 +17,4 @@ void paula_set_servers(void (*audio_int)(u16 intreqr), void (*timer)(void));
 void paula_set_vblank(void (*server)(void));        /* each NTSC frame (262 lines of 227.5 clocks), or NULL */
 u16  paula_intena(void);                            /* INTENAR */
 void paula_render(s16 *out, int n);                 /* n frames: left, right */
+void paula_skip(double seconds);                    /* runs that long without output */

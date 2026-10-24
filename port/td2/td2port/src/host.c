@@ -781,6 +781,7 @@ static struct {
     u16 divisor;
     u8 port61;
     int song;                                       /* the last song started, 0 during a race */
+    Uint64 song_tick;                               /* when it started (ticks_run) */
     bool race;
     char car[8];
 } sound_now;
@@ -793,6 +794,7 @@ void host_set_audio_backend(const AudioBackend *b)
     b->speaker(sound_now.divisor, sound_now.port61);
     if (!b->event) return;
     if (sound_now.race) b->event(SOUND_RACE_START, 0, sound_now.car);
+    else if (sound_now.song && b->song_at) b->song_at(sound_now.song, (u32)((ticks_run - sound_now.song_tick) * 10));
     else if (sound_now.song) b->event(SOUND_SONG, sound_now.song, NULL);
 }
 
@@ -810,7 +812,11 @@ void host_speaker(u16 divisor, u8 port61_bits)
 void host_sound_event(SoundEvent e, int n, const char *car)
 {
     switch (e) {
-    case SOUND_SONG: sound_now.song = n; sound_now.race = false; break;
+    case SOUND_SONG:
+        sound_now.song = n;
+        sound_now.song_tick = ticks_run;
+        sound_now.race = false;
+        break;
     case SOUND_RACE_START:
         sound_now.song = 0;
         sound_now.race = true;

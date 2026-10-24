@@ -1,6 +1,7 @@
 /* The Amiga audio backend (audio_amiga.h). What the DOS game reports becomes what duel does at the same
  * moment: the title song when the game starts its menu song, the race loops at the start of a life, the
  * logic's physics step on each of the game's ten steps a second, the effects at their events. */
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -340,10 +341,28 @@ static void amiga_drive(const DriveSound *d)
     race_step();
 }
 
+/* After a switch from the PC speaker the title song goes on from the same point of its loop. The DOS
+ * song loops every 6049 ticks (60.49 s), duel's every 70.13 s (both measured, all four of its tracks
+ * together): duel's arrangement of the tune is slower, so the place is the same fraction of the loop. */
+#define DOS_SONG_LOOP   60.49
+#define AMIGA_SONG_LOOP 70.13
+
+static void amiga_song_at(int n, u32 ms)
+{
+    if (!ready) return;
+    speech_next = 0;
+    if (n != 1) {
+        silence();
+        return;
+    }
+    start_music();
+    if (mode == MUSIC) paula_skip(fmod(ms / 1000.0, DOS_SONG_LOOP) / DOS_SONG_LOOP * AMIGA_SONG_LOOP);
+}
+
 static bool amiga_busy(void)
 {
     return mode == MUSIC && (form_waiting || speech_next || starter_wait > 0 || song_sfx_status(2));
 }
 
 const AudioBackend audio_amiga = { "Amiga", amiga_reset, amiga_speaker, amiga_render, amiga_event, amiga_drive,
-                                   amiga_busy, true };
+                                   amiga_busy, true, amiga_song_at };
