@@ -29,7 +29,7 @@ Start with `docs/HANDOVER.md` (current state, salvage inventory, plan) and `docs
 
 ## Build and run
 
-- `.\build.ps1` builds `build\td2port.exe` and the harness DLL `build\td2diff.dll` (MSVC 19.44 via `vcvars64.bat -vcvars_ver=14.44`, VS-bundled CMake and Ninja, SDL3 3.4.18 built from `analysis/external/sdl3-3.4.18/source` and linked statically with the C runtime, so the exe is a single portable windowed app).
+- `.\build.ps1` builds `build\td2port.exe` and the harness DLL `build\td2diff.dll` (MSVC 19.44 via `vcvars64.bat -vcvars_ver=14.44`, VS-bundled CMake and Ninja, SDL3 3.4.18 built from `analysis/external/sdl3-3.4.18/source`, and libarchive 3.8.1 with zlib and xz built once from `analysis/external/archive-libs`, all linked statically with the C runtime, so the exe is a single portable windowed app).
 - `.\run.ps1` plays on `runs\game`, a copy of `reference\dos`, with scores and `settings.ini` in `runs\profile`. `.\run.ps1 --check` verifies the EXE. `.\run.ps1 -RecordStates` also saves race states to `runs\states` for the harness's whole-tick cases.
 - `$env:PYTHONPATH = "analysis/tools/python;tools"; python -m diffharness` runs the differential harness and rewrites `docs/verification.md`. Tests: `python -m unittest discover -s tests`.
 - `python tools/snapshots.py` checks the EGA frames and speaker output of the attract loop, a scripted menu run and a run with live graphics switches against `tests/ega_snapshots.txt`; `--cga` and `--hercules` do the same against `tests/cga_snapshots.txt` and `tests/herc_snapshots.txt` (`--update` rewrites a baseline after an intended change).

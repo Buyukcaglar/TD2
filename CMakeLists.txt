@@ -25,6 +25,19 @@ set(SDL_TEST_LIBRARY OFF CACHE BOOL "" FORCE)
 set(SDL_DISABLE_INSTALL ON CACHE BOOL "" FORCE)
 add_subdirectory(${TD2_SDL_SOURCE} ${CMAKE_BINARY_DIR}/sdl3 EXCLUDE_FROM_ALL SYSTEM)
 
+# Reading game files from zip, 7z, rar and lha archives: libarchive with zlib and liblzma, built static
+# by build.ps1 into TD2_ARCHIVE_PREFIX (bcrypt is the Windows crypto libarchive uses for zip checks).
+set(TD2_ARCHIVE_PREFIX "" CACHE PATH "install prefix of the static libarchive, zlib and liblzma")
+if(NOT EXISTS "${TD2_ARCHIVE_PREFIX}/lib/archive.lib")
+    message(FATAL_ERROR "TD2_ARCHIVE_PREFIX must hold the static archive libraries (build.ps1 builds them)")
+endif()
+add_library(td2_archive INTERFACE)
+target_include_directories(td2_archive SYSTEM INTERFACE ${TD2_ARCHIVE_PREFIX}/include)
+target_compile_definitions(td2_archive INTERFACE LIBARCHIVE_STATIC)
+target_link_libraries(td2_archive INTERFACE ${TD2_ARCHIVE_PREFIX}/lib/archive.lib
+    ${TD2_ARCHIVE_PREFIX}/lib/lzma.lib ${TD2_ARCHIVE_PREFIX}/lib/zlibstatic.lib bcrypt)
+add_library(LibArchive::LibArchive ALIAS td2_archive)
+
 add_subdirectory(port/td2/td2port)
 
 # td2diff.dll: the port's game and platform code with a stub host, for tools/diffharness.

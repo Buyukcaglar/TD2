@@ -15,7 +15,7 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
   - On the main menu, car select, scenery select and the difficulty screen, the screen draws itself again in the new mode.
   - On other screens the switch waits for the next of these screens or race frames.
   - The text colours are translated between the adapters' colour numbers.
-- **Game data.** `src/app/app_data.c` finds the profile folder and the game folders, checks for the base game, and merges the folders' catalogues ([native-windows.md](native-windows.md), section 3). The profile folder holds `settings.ini`: `Profile` next to the exe, `--user-dir`, or `%APPDATA%\TestDrive2`.
+- **Game data.** `src/app/app_data.c` finds the profile folder and the game folders, unpacks game archives (zip, 7z, rar, lha) into `Profile\Archives`, checks for the base game, and merges the folders' catalogues ([native-windows.md](native-windows.md), section 3). The profile folder holds `settings.ini`: `Profile` next to the exe, `--user-dir`, or `%APPDATA%\TestDrive2`.
 - **App menu.** A right click or Ctrl+Shift+M opens the app's context menu (`src/app/`). It holds the graphics mode, the Hercules monitor colour, the window size, full screen and quit. The menu follows the system's dark or light theme, and the game pauses while it is open.
   - The attract run is 120 s with a frame every 2 s: the Accolade and DSI logos, credits, the high-score table, the race-against and select menus, skill level and the attract-mode drive with cockpit, traffic, scenery and a crash.
   - The menu run (`menus/` in the baseline) presses keys with `TD2_KEYS`: it opens car select (up, down, down, escape) and scenery select, with a frame every 0.5 s.
@@ -87,7 +87,7 @@ M0 "Adopt" is done except the user's play test. M1 "Verify EGA" is done apart fr
    - `Profile\settings.ini` next to the exe, which saves the menu's choices;
    - game and expansion folders, with the base-game check;
    - catalogues merged from each folder's `CARS.DAT`/`SCENES.DAT`.
-   The app icon is in. Next come archives (zip, 7z, rar, lha, via libarchive; the download needs the user's approval), then the question windows and the first-start setup.
+   The app icon is in. Game and expansion files can also be zip, 7z, rar or lha archives: libarchive is built static by `build.ps1`, with a one-line patch so Amiga LhA archives are recognised. Next come the question windows and the first-start setup.
 6. **Snapshot coverage.** Once the play test has recorded states, rendering a frame from a recorded race state would add player-driven scenes.
 
 ### Open questions

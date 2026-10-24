@@ -10,12 +10,16 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 if(NOT TARGET SDL3::SDL3)
     find_package(SDL3 REQUIRED CONFIG)
 endif()
+# The same for libarchive, which reads game files from zip, 7z, rar and lha archives.
+if(NOT TARGET LibArchive::LibArchive)
+    find_package(LibArchive REQUIRED)
+endif()
 
 file(GLOB_RECURSE TD_SOURCES CONFIGURE_DEPENDS src/*.c)
 
 add_executable(td2port WIN32 ${TD_SOURCES} td2port.rc)
 target_include_directories(td2port PRIVATE src)
-target_link_libraries(td2port PRIVATE SDL3::SDL3)
+target_link_libraries(td2port PRIVATE SDL3::SDL3 LibArchive::LibArchive)
 if(MSVC)
     target_compile_options(td2port PRIVATE /W3)
 else()

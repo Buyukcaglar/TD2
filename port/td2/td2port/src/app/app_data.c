@@ -1,5 +1,6 @@
 /* The game data manager and the settings file (app_data.h). */
 #include "app_data.h"
+#include "app_archive.h"
 
 #include <SDL3/SDL.h>
 #include <stdio.h>
@@ -148,9 +149,60 @@ static const char *missing_base_file(const char *dir)
     return NULL;
 }
 
+/* The folder at or below `dir` (shallowest first) that holds a catalogue or the game itself. */
+static char *find_game_folder(const char *dir, int depth)
+{
+    if (has(dir, "CARS.DAT") || has(dir, "SCENES.DAT") || has(dir, "TD2EGA.EXE")) return SDL_strdup(dir);
+    if (depth == 0) return NULL;
+    int count = 0;
+    char **entries = SDL_GlobDirectory(dir, NULL, 0, &count);
+    char *found = NULL;
+    for (int i = 0; entries && i < count && !found; i++) {
+        if (SDL_strchr(entries[i], '/') || SDL_strchr(entries[i], '\\')) continue;
+        char *sub = NULL;
+        SDL_PathInfo info;
+        SDL_asprintf(&sub, "%s/%s", dir, entries[i]);
+        if (SDL_GetPathInfo(sub, &info) && info.type == SDL_PATHTYPE_DIRECTORY) found = find_game_folder(sub, depth - 1);
+        SDL_free(sub);
+    }
+    SDL_free(entries);
+    return found;
+}
+
+/* A game folder, or an archive (zip, 7z, rar, lha) unpacked once into Profile/Archives/<its name>.
+ * The marker file there records the archive's size and time, so a changed archive is unpacked again. */
 static void add_dir(const char *dir)
 {
-    if (ndirs < MAX_DIRS && dir && *dir) dirs[ndirs++] = SDL_strdup(dir);
+    SDL_PathInfo info;
+    if (ndirs == MAX_DIRS || !dir || !*dir) return;
+    if (!SDL_GetPathInfo(dir, &info) || info.type != SDL_PATHTYPE_FILE) {
+        dirs[ndirs++] = SDL_strdup(dir);
+        return;
+    }
+    const char *base = dir + SDL_strlen(dir);
+    while (base > dir && base[-1] != '/' && base[-1] != '\\') base--;
+    char *dest = NULL, *marker_path = NULL, stamp[64];
+    SDL_asprintf(&dest, "%s/Archives/%s", profile_dir, base);
+    SDL_asprintf(&marker_path, "%s/.unpacked", dest);
+    SDL_snprintf(stamp, sizeof stamp, "%llu %lld", (unsigned long long)info.size, (long long)info.modify_time);
+    size_t len = 0;
+    char *marker = SDL_LoadFile(marker_path, &len);
+    bool current = marker && SDL_strcmp(marker, stamp) == 0;
+    SDL_free(marker);
+    char err[512];
+    if (!current) {
+        if (!app_archive_unpack(dir, dest, err, sizeof err)) {
+            fprintf(stderr, "%s\n", err);
+            dirs[ndirs++] = dest;                      /* the base check then reports what is missing */
+            SDL_free(marker_path);
+            return;
+        }
+        SDL_SaveFile(marker_path, stamp, SDL_strlen(stamp));
+    }
+    SDL_free(marker_path);
+    char *inner = find_game_folder(dest, 4);
+    dirs[ndirs++] = inner ? inner : SDL_strdup(dest);
+    SDL_free(dest);
 }
 
 static bool open_profile(const char *dir)

@@ -125,11 +125,22 @@ Built (`src/app/app_data.c`; step 5 below, first half).
 - **Game folders.** In order, they are `--game-dir`, the settings' `game` and `expansion` folders, `Game` next to the exe, or `Game` in the working directory. They are only read; the game finds each file in the first folder that has it.
 - **Profile folder.** It holds `settings.ini`, the high scores, `SELECT.DAT` and the generated catalogues. It is `--user-dir`, else `Profile` next to the exe when that folder is writable (portable), else `%APPDATA%\TestDrive2`. The settings live there rather than loose beside the exe, so test runs with `--user-dir` never see a player's choices.
 - **Settings.** `settings.ini` holds `game`, `expansion` (any number), `graphics`, `hercules_monitor`, `scale` and `fullscreen`. The menu writes it on each change, and the command line overrides it.
-- **Tested.** A base-only folder (73 files) lists two cars and the Master scenery. Adding a separate Supercars folder with its own `CARS.DAT` lists seven cars. The full game folder gives the same catalogues as its own files, and every snapshot is unchanged.
+- **Archives.** The game and expansion files may also come inside zip, 7z, rar (4 and 5) or lha/lzh archives (the user's requirement, 24 October 2026).
+  - A `game` or `expansion` entry that names a file is unpacked once into `Profile\Archives\<archive name>` (`src/app/app_archive.c`, libarchive). A `.unpacked` marker records the archive's size and time, so a changed archive is unpacked again.
+  - The game folder used is the shallowest folder inside that holds `CARS.DAT`, `SCENES.DAT` or `TD2EGA.EXE`.
+  - Paths that would leave the destination are skipped.
+- **Archive libraries.** libarchive 3.8.1 with zlib 1.3.1 and xz 5.8.1 (liblzma) are built static with the static C runtime by `build.ps1`, once, into `analysis/external/archive-libs/install`. Each comes from its official GitHub release.
+  - The libarchive and zlib downloads match their published SHA-256.
+  - xz publishes no checksum on GitHub, only a signature, which was not checked.
+  - `build.ps1` patches one line of libarchive. Its LHA reader took a level 1–3 header only with the MS-DOS attribute 20h, but Amiga LhA writes protection bits there (00h, 02h). The user's Amiga archive was therefore "Unrecognized archive format". libarchive reads the attributes it uses from the extended headers, so the patch accepts any value in that byte.
+- **Tested archives.**
+  - The base game zipped with an extra folder level, plus the Supercars expansion as a 7z, play like the folders: seven cars.
+  - libarchive's own RAR 4, RAR 5 and LHA (lh7) test archives unpack.
+  - The user's Amiga archive (`TestDrive2&DataDisks_v1.1_HD_JOTD.lha`, 352 files, lh5) unpacks with every file's checksum passing.
+- **Tested folders.** A base-only folder (73 files) lists two cars and the Master scenery. Adding a separate Supercars folder with its own `CARS.DAT` lists seven cars. The full game folder gives the same catalogues as its own files, and every snapshot is unchanged.
 
 Still to come:
 
-- **Archives.** Game and expansion files may also come inside zip, 7z, rar or lha archives (the user's requirement, 24 October 2026). The plan is to unpack an archive once into the profile folder (`Profile\Archives\<name>`), find the folder inside that holds the files, and treat it as a game folder. Reading zip, 7z, rar and lha needs libarchive with zlib and xz (liblzma), built statically like SDL3.
 - **Question windows and first start.** Without a base folder, a question window explains what is needed and opens the folder or archive picker. The context menu gets "Game files…" (what is installed, add an expansion folder or archive) and About.
 
 ## 4. Single portable exe
@@ -140,6 +151,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 - **The C runtime is linked statically too** (`CMAKE_MSVC_RUNTIME_LIBRARY` = `MultiThreaded`), so no Visual C++ runtime DLLs are needed.
 - **The exe is a windowed app** (`/SUBSYSTEM:WINDOWS`, still entered at `main`), so no console window opens. Output a caller redirects (the snapshot tool, `run.ps1`'s pipe) works as before. Otherwise the exe writes to the console it was started from. Like any windowed app, it returns to a terminal prompt at once when started directly, so `run.ps1` pipes its output to wait for it.
 - **An embedded manifest** (`td2port.manifest` via `td2port.rc`) gives common controls v6, per-monitor DPI awareness v2 (SDL3's own default anyway), the UTF-8 code page and `asInvoker`. A version resource and the app icon go with it. The icon (`td2port.ico`, 16 to 256 pixels) is made from the user's own artwork, not original game media. SDL gives its window class the exe's first icon, so the window and the taskbar show it too.
+- **Archive libraries** (libarchive, zlib, liblzma) are linked statically as well (section 3).
 - **Settings** go to `Profile\settings.ini` next to the exe when that folder is writable, which makes the app truly portable. Otherwise they go to the per-user folder (`%APPDATA%\TestDrive2`). This is the user's decision (section 3).
 - The command-line options stay for scripts and tests.
 
@@ -149,7 +161,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
 3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run. Other screens leave the switch pending.
 4. **App UI layer on Windows.** Done: the context menu with the system theme, Ctrl+Shift+M and right click, pausing, and the graphics, monitor, window size, full screen and quit commands. The question windows move to step 5.
-5. **Game data manager.** First half done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues. Still to come: archives (zip, 7z, rar, lha), question windows, first-start setup, the "Game files…" menu entry.
+5. **Game data manager.** First half done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues. Archives (zip, 7z, rar, lha) done too. Still to come: question windows, first-start setup, the "Game files…" menu entry.
 6. **macOS** (later): the same `app_ui` interface with AppKit.
 
 ## Decisions (user, 24 October 2026)

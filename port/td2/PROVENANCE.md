@@ -30,6 +30,7 @@ This is a fork. Changes made in this repository after the import:
 - Packaging: the exe is a windowed app with an embedded manifest and version resource (`td2port.rc`), linked statically with SDL3 (built from source by the top-level build) and the C runtime. `main` attaches to the parent console for its messages. The port's `CMakeLists.txt` still falls back to an installed SDL3 when built on its own.
 - Live graphics switching (Ctrl+Shift+G, `gfx_apply_pending_backend`, the race and menu-screen switch points) and the app's context menu in `src/app/` (docs/native-windows.md).
 - Game data (`src/app/app_data.c`): several game folders, the base-game check, catalogues merged from each folder, `settings.ini` in the profile folder ("Profile" next to the exe by default). `host_init` no longer takes the game folder; `host_add_game_dir` adds each one.
+- Game archives (`src/app/app_archive.c`): zip, 7z, rar and lha game files, unpacked with libarchive (static, built by `build.ps1`, with a one-line patch that lets its LHA reader take Amiga LhA headers).
 - `TD2_STATE_DIR`: a developer aid (`host_sim_state`, called at the top of `sim_timer_routine`) that saves the sim timer routine's entry state for the differential harness.
 
 Git history in this repository records each later change.
