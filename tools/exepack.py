@@ -196,6 +196,48 @@ def recover(data: bytes) -> tuple[bytes, bytes, dict, list[dict]]:
     return image, normalized, record, relocations
 
 
+def unpack(data: bytes) -> tuple[bytes, list[dict], dict]:
+    """Any TD2 executable packed with this EXEPACK variant (TD2EGA, TD2CGA, TD2TDY): returns the
+    unpacked load image, its relocations and the loader metadata. Unlike recover() it accepts any
+    input that passes the structural checks, and it ignores bytes after the relocation table (TD2CGA
+    has 11)."""
+    mz = read_mz(data)
+    if mz["relocation_count"] or mz["ip"] != 0x12:
+        raise ValueError("Unsupported outer loader header")
+    start = mz["load_image_file_offset"]
+    base = start + mz["cs"] * 16
+    if base + 0x12D > len(data):
+        raise ValueError("Truncated EXEPACK stub")
+    meta = dict(zip(("original_ip", "original_cs", "load_segment_scratch",
+                     "tail_bytes", "original_sp", "original_ss", "destination_paragraphs",
+                     "skip_paragraphs", "signature"), struct.unpack_from("<9H", data, base)))
+    if meta["signature"] != 0x4252 or meta["skip_paragraphs"] != 1:
+        raise ValueError("Unsupported EXEPACK metadata variant")
+    if sha256(data[base + 0x12:base + 0x12D]) != STUB_SHA256:
+        raise ValueError("Unrecognized EXEPACK loader stub")
+    tail_end = base + meta["tail_bytes"]
+    if tail_end > len(data):
+        raise ValueError("EXEPACK tail exceeds file")
+    size = meta["destination_paragraphs"] * 16
+    image, _ = decode_backwards(data[start:base], size)
+    relocations = read_relocations(data, base + 0x12D, tail_end, size)
+    meta["trailing_bytes"] = len(data) - tail_end
+    return image, relocations, meta
+
+
+def write_unpacked_mz(image: bytes, relocations: list[dict], meta: dict) -> bytes:
+    """A plain MZ file around an unpacked image (allocation fields zero, checksum zero)."""
+    header_bytes = (28 + 4 * len(relocations) + 15) // 16 * 16
+    total = header_bytes + len(image)
+    header = bytearray(header_bytes)
+    struct.pack_into("<14H", header, 0, 0x5A4D, total % 512, (total + 511) // 512, len(relocations),
+                     header_bytes // 16, 0, 0xFFFF, meta["original_ss"], meta["original_sp"], 0,
+                     meta["original_ip"], meta["original_cs"], 28, 0)
+    for index, relocation in enumerate(relocations):
+        struct.pack_into("<HH", header, 28 + index * 4, relocation["offset"], relocation["segment"])
+    return bytes(header) + image
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
