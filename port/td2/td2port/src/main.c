@@ -1,11 +1,12 @@
 /* Test Drive II: The Duel SDL3 port — entry point.
  *
- * usage: td2port [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--check]
+ * usage: td2port [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga] [--check]
  *   --game-dir   folder with the original game files (default: "Game" in the working directory)
  *   --user-dir   folder for high scores and SELECT.DAT (default: %APPDATA%\TestDrive2 on Windows,
  *                the SDL preference folder elsewhere)
  *   --scale      initial window scale (default 3)
  *   --frame-rate emulated original drawing speed while driving (default HOST_DEFAULT_FPS; 0 = unpaced)
+ *   --cga        draw with the CGA graphics of TD2CGA.EXE instead of EGA
  *   --check      load and verify the original executable, print a summary and exit (no window)
  */
 #define SDL_MAIN_HANDLED
@@ -18,6 +19,7 @@
 #include "host.h"
 #include "mem.h"
 #include "platform/gfx.h"
+#include "platform/gfx_backend.h"
 #include "platform/input.h"
 #include "platform/timer.h"
 
@@ -32,6 +34,7 @@ int main(int argc, char **argv)
         if (!strcmp(argv[i], "--game-dir") && i + 1 < argc) dir = argv[++i];
         else if (!strcmp(argv[i], "--scale") && i + 1 < argc) scale = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--check")) check = true;
+        else if (!strcmp(argv[i], "--cga")) gfx_set_backend(&gfx_cga_backend);
         else if (!strcmp(argv[i], "--user-dir") && i + 1 < argc) host_set_user_dir(argv[++i]);
         else if (!strcmp(argv[i], "--frame-rate") && i + 1 < argc) host_set_frame_rate(atoi(argv[++i]));
         else {
