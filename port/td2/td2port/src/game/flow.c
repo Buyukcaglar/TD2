@@ -317,7 +317,7 @@ int game_main(void)
     flow_register_code();                            /* PORT: code pointers stored by this module */
     mem_init_default();                              /* 06c9:6f86 */
     /* PORT: bios_ticks() for the protection timing check dropped (§9.2).
-     * PORT: argv[1] == "herc" is not supported: always the EGA branch. */
+     * argv[1] == "herc" (TD2CGA) is the --hercules backend, whose set_mode is herc_init. */
     gfx_init_ega();                                  /* 06c9:90e8 */
     kbd_set_getkey_fn(codeptr_far(FN_getkey_menu));  /* 06c9:6a17(06c9:65c5) */
     hotkeys_install();                               /* 16fc:0002 */

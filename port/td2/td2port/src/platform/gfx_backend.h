@@ -8,7 +8,7 @@
  * the routines in this table are the ones TD2CGA implements differently; the rest of gfx.h is the
  * same code in both.
  *
- * One backend is active at a time (EGA, or CGA with --cga). gfx_set_backend() must be called before gfx_init();
+ * One backend is active at a time (EGA, CGA with --cga, Hercules with --hercules). gfx_set_backend() must be called before gfx_init();
  * switching during play is a later milestone. */
 #include "gfx.h"
 
@@ -67,6 +67,7 @@ typedef struct GfxBackend {
 
 extern const GfxBackend gfx_ega_backend;        /* gfx_ega.c, gfx_ega_blit.c, gfx_ega_scene.c */
 extern const GfxBackend gfx_cga_backend;        /* gfx_cga.c, gfx_cga_blit.c, gfx_cga_scene.c */
+extern const GfxBackend gfx_herc_backend;       /* gfx_cga.c: TD2CGA's Hercules mode */
 
 const GfxBackend *gfx_backend(void);
 void gfx_set_backend(const GfxBackend *b);

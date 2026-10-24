@@ -5,7 +5,10 @@
  * build keeps its target state at its own code-segment addresses (live copy CS:913E, screen descriptor
  * CS:9158, row pool CS:93D6); the port keeps the same 13-word layout at the EGA build's addresses
  * (gfx.h), so the game code reads and pokes it in one place. The sprite blitters are in gfx_cga_blit.c,
- * the scene renderer's own pixel writers in gfx_cga_scene.c. */
+ * the scene renderer's own pixel writers in gfx_cga_scene.c.
+ *
+ * The same file has TD2CGA's Hercules mode ("td2cga herc", option 4 of DUEL.EXE): the game draws
+ * exactly as on CGA; only the mode setup, the shutdown and what the monitor shows differ. */
 #include "gfx_cga.h"
 #include "res.h"
 #include "../host.h"
@@ -615,8 +618,8 @@ static void cga_grab_into_sprite(FarPtr spr, u16 px, u16 py)
 }
 
 /* draw_cursor_glyph's glyphs (TD2CGA CS:A280): sprites of 2 bytes by 8 rows whose last 1, 2 or 6
- * rows are white, built in a spare segment above video memory. */
-#define CGA_GLYPH_SEG 0xBC00
+ * rows are white, built in a spare segment above video memory (clear of Hercules page 1, B800h-BFFFh). */
+#define CGA_GLYPH_SEG 0xC000
 
 static FarPtr cga_cursor_glyph(u16 idx)
 {
@@ -637,34 +640,116 @@ static FarPtr cga_cursor_glyph(u16 idx)
     return far_make(CGA_GLYPH_SEG, (u16)(which[idx < 9 ? idx : 8] * 0x20));
 }
 
+/* The drawing half of the table, the same in CGA and Hercules mode. */
+#define CGA_DRAWING                                                                                \
+    .adapter = GFX_CGA,                                                                            \
+    .px_per_byte = 4,                                                                              \
+    .own_x_mask = 0xFFFC,                                                                          \
+    .shape_ext = { ".PCS", ".CSH" },                                                               \
+    .fixup_paras = 0x3EA,                                                                          \
+    .fix_sprites = res_fix_pcs_archive,                                                            \
+    .cursor_glyph = cga_cursor_glyph,                                                              \
+    .scene = &cga_scene_raster,                                                                    \
+    .video_hook = cga_video_hook,                                                                  \
+    .set_palette = cga_set_palette,                                                                \
+    .create_buffer = cga_create_buffer,                                                            \
+    .clear_screen = cga_clear_screen,                                                              \
+    .clear_clip = cga_clear_clip,                                                                  \
+    .fill_rect = cga_fill_rect,                                                                    \
+    .plot = cga_plot,                                                                              \
+    .draw_line = cga_draw_line,                                                                    \
+    .draw_text = cga_draw_text,                                                                    \
+    .dissolve = cga_dissolve,                                                                      \
+    .scroll_window = cga_scroll_window,                                                            \
+    .grab_screen = cga_grab_screen,                                                                \
+    .grab_into_sprite = cga_grab_into_sprite,                                                      \
+    .blit = cga_blit
+
 const GfxBackend gfx_cga_backend = {
     .name = "CGA",
-    .adapter = GFX_CGA,
     .frame_w = 320,
     .frame_h = 200,
-    .px_per_byte = 4,
-    .own_x_mask = 0xFFFC,
-    .shape_ext = { ".PCS", ".CSH" },
-    .fixup_paras = 0x3EA,
-    .fix_sprites = res_fix_pcs_archive,
-    .cursor_glyph = cga_cursor_glyph,
-    .scene = &cga_scene_raster,
     .reset = cga_reset,
     .compose = cga_compose,
-    .video_hook = cga_video_hook,
     .set_mode = cga_set_mode,
     .shutdown = cga_shutdown,
-    .set_palette = cga_set_palette,
-    .create_buffer = cga_create_buffer,
-    .clear_screen = cga_clear_screen,
-    .clear_clip = cga_clear_clip,
-    .fill_rect = cga_fill_rect,
-    .plot = cga_plot,
-    .draw_line = cga_draw_line,
-    .draw_text = cga_draw_text,
-    .dissolve = cga_dissolve,
-    .scroll_window = cga_scroll_window,
-    .grab_screen = cga_grab_screen,
-    .grab_into_sprite = cga_grab_into_sprite,
-    .blit = cga_blit,
+    CGA_DRAWING,
+};
+
+/* ------------------------------------------------------------------------------------------------ */
+/* Hercules mode. herc_init (06cf:5e86) programs the Hercules card instead of setting a CGA mode: page 1
+ * at B800h in graphics mode, and the 6845 from DS:5D10 (TD2CGA): 40 character columns of 16 pixels and
+ * 100 character rows of 3 scan lines (R1 = 28h, R6 = 64h, R9 = 2). Scan line k of a row reads bank k
+ * (offset k * 2000h), so each row shows the CGA layout's even game row, its odd game row, and a line
+ * from bank 2, which herc_init clears and the game never draws. The monitor therefore shows the 2-bit
+ * picture as 640 x 300 one-bit pixels: colour 1 lights the right pixel of its pair, 2 the left one, 3
+ * both, with every third line dark. The game's CGA register writes (video_hook, the crash flash) reach
+ * no Hercules hardware, so they change nothing. */
+
+#define HERC_BYTES    0x8000u
+#define HERC_PHOSPHOR 0xE6E6E6u       /* PORT: a white monochrome monitor */
+
+static struct {
+    u8 mode_ctrl;                     /* 3B8h: bit 1 graphics, bit 3 video on, bit 7 page 1 */
+    u8 shown[HERC_BYTES];
+    bool dirty;
+} herc;
+
+static void herc_reset(void)
+{
+    memset(mp(CGA_SEG, 0), 0, HERC_BYTES);
+    herc.mode_ctrl = 0x20;                                         /* text mode: a dark screen */
+    herc.dirty = true;
+    cga_screen_desc();
+}
+
+static bool herc_compose(u32 *xrgb)
+{
+    const u8 *page = mp(CGA_SEG, 0);                               /* page 1 is all of B800h */
+    if (!herc.dirty && memcmp(page, herc.shown, HERC_BYTES) == 0) return false;
+    memcpy(herc.shown, page, HERC_BYTES);
+    herc.dirty = false;
+    bool on = (herc.mode_ctrl & 0x0A) == 0x0A;                     /* graphics and video on */
+    for (int line = 0; line < 300; line++) {
+        const u8 *row = page + (line % 3) * 0x2000 + (line / 3) * 80;
+        u32 *out = xrgb + line * 640;
+        for (int bx = 0; bx < 80; bx++) {
+            u8 b = on ? row[bx] : 0;
+            for (int k = 0; k < 8; k++) out[bx * 8 + k] = (b >> (7 - k) & 1) ? HERC_PHOSPHOR : 0;
+        }
+    }
+    return true;
+}
+
+/* 06cf:5e86 herc_init */
+static void herc_set_mode(void)
+{
+    DSB(DS_herc_mode) = 1;
+    bios_equipment(0x20);
+    /* INT 10h AX=0004h programs the CGA card, which a Hercules machine lacks. Then 3BFh <- 3 (graphics
+     * and page 1 allowed), 3B8h <- 2, the 6845 registers (the geometry above), page 1 cleared, and
+     * 3B8h <- 8Ah: graphics, video on, page 1. */
+    memset(mp(CGA_SEG, 0), 0, HERC_BYTES);
+    herc.mode_ctrl = 0x8A;
+    herc.dirty = true;
+}
+
+/* 06cf:5ede video_shutdown, Hercules branch: page 1 cleared and text mode again (3B8h <- 28h). */
+static void herc_shutdown(void)
+{
+    bios_equipment(0x30);
+    memset(mp(CGA_SEG, 0), 0, HERC_BYTES);
+    herc.mode_ctrl = 0x28;
+    herc.dirty = true;
+}
+
+const GfxBackend gfx_herc_backend = {
+    .name = "Hercules",
+    .frame_w = 640,
+    .frame_h = 300,
+    .reset = herc_reset,
+    .compose = herc_compose,
+    .set_mode = herc_set_mode,
+    .shutdown = herc_shutdown,
+    CGA_DRAWING,
 };

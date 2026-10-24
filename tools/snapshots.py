@@ -1,9 +1,11 @@
 """Repeatable snapshots: runs the game headless on a virtual clock and compares the frames and the
-speaker output with the baseline hashes in tests/ega_snapshots.txt (or tests/cga_snapshots.txt).
+speaker output with the baseline hashes in tests/ega_snapshots.txt (tests/cga_snapshots.txt,
+tests/herc_snapshots.txt).
 
     python tools/snapshots.py                  # EGA: run and compare
     python tools/snapshots.py --cga            # the same with the CGA backend
-    python tools/snapshots.py --update [--cga] # run and rewrite the baseline
+    python tools/snapshots.py --hercules       # and with TD2CGA's Hercules mode
+    python tools/snapshots.py --update [--cga | --hercules]   # run and rewrite the baseline
 
 Each adapter makes two runs with TD2_VIRTUAL_CLOCK, so time only advances while the host would wait
 and two runs give the same frames:
@@ -35,6 +37,9 @@ MENU_KEYS = ('30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,42:Down,43:Ret
              '46:Up,49:Down,52:Down,55:Escape,60:Right,60.5:Right,61:Return,65:Up,68:Return')
 
 # name, seconds, keys, ms between frames; the attract run's files keep their plain names.
+# The port's command-line option for each adapter but EGA.
+FLAGS = {'cga': '--cga', 'herc': '--hercules'}
+
 RUNS = [('attract', SECONDS, None, 2000), ('menus', 72, MENU_KEYS, 500)]
 
 
@@ -62,8 +67,8 @@ def take(adapter: str = 'ega') -> dict[str, str]:
         for f in profile.iterdir():
             f.unlink()
         args = [str(EXE), '--game-dir', str(GAME), '--user-dir', str(profile)]
-        if adapter == 'cga':
-            args.append('--cga')
+        if adapter in FLAGS:
+            args.append(FLAGS[adapter])
         procs.append((name, out, subprocess.Popen(args, env=env, stdout=subprocess.DEVNULL,
                                                   stderr=subprocess.PIPE, text=True)))
     shots = {}
@@ -84,7 +89,7 @@ def read_baseline(adapter: str = 'ega') -> dict[str, str]:
 
 def write_baseline(shots: dict[str, str], adapter: str = 'ega'):
     head = [f'# {adapter.upper()} snapshot hashes: python tools/snapshots.py --update'
-            f'{" --cga" if adapter == "cga" else ""} rewrites this file.',
+            f'{" " + FLAGS[adapter] if adapter in FLAGS else ""} rewrites this file.',
             f'# {SECONDS} s of attract mode on the virtual clock, one frame every 2 s of game time, the',
             '# scripted menu run (menus/), and the speaker output of each (audio.wav).']
     baseline_path(adapter).write_text('\n'.join(head + [f'{d}  {n}' for n, d in shots.items()]) + '\n', newline='\n')
@@ -102,8 +107,10 @@ def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('--update', action='store_true', help='rewrite the baseline from this run')
     p.add_argument('--cga', action='store_true', help='run with the CGA backend (tests/cga_snapshots.txt)')
+    p.add_argument('--hercules', action='store_true',
+                   help="run with TD2CGA's Hercules mode (tests/herc_snapshots.txt)")
     a = p.parse_args()
-    adapter = 'cga' if a.cga else 'ega'
+    adapter = 'cga' if a.cga else 'herc' if a.hercules else 'ega'
     shots = take(adapter)
     if a.update:
         write_baseline(shots, adapter)

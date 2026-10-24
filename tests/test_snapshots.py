@@ -1,4 +1,4 @@
-"""EGA and CGA output against the committed snapshot hashes (tools/snapshots.py). Takes about a minute.
+"""EGA, CGA and Hercules output against the committed snapshot hashes (tools/snapshots.py). Takes about a minute and a half.
 
 Needs build/td2port.exe (build.ps1) and runs/game (run.ps1 once).
 """
@@ -20,6 +20,9 @@ class SnapshotTest(unittest.TestCase):
 
     def test_cga_frames_match_the_baseline(self):
         self.assertEqual(snapshots.compare(snapshots.take('cga'), snapshots.read_baseline('cga')), [])
+
+    def test_hercules_frames_match_the_baseline(self):
+        self.assertEqual(snapshots.compare(snapshots.take('herc'), snapshots.read_baseline('herc')), [])
 
 
 if __name__ == '__main__':
