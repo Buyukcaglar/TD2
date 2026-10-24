@@ -395,13 +395,14 @@ static s16 showroom_intro_dos(s16 unused);
 static u16 wait_ticks(u32 t);
 
 /* PORT: duel's fade out ($1a0a8): 16 steps, each caps every colour component of the screen's copper
- * list at one level less, from 15 to 0, then waits Delay(1), a 50 Hz tick; it stops once all are black. */
-void amiga_fade_out(void)
+ * list at one level less, from 15 to 0, then waits Delay(delay) in 50 Hz ticks; it stops once all are
+ * black. */
+void amiga_fade_out(int delay)
 {
     if (!gfx_amiga_screens()) return;
     for (int level = 15; level >= 0; level--) {
         if (!gfx_amiga_fade_level(level)) break;
-        u32 t = ticks_get() + 2;
+        u32 t = ticks_get() + 2u * (u32)delay;
         while (ticks_get() < t) host_pump();
     }
 }
@@ -434,7 +435,7 @@ bool amiga_game_over(void)
             wait_after_message();
         }
     }
-    amiga_fade_out();
+    amiga_fade_out(1);
     return true;
 }
 

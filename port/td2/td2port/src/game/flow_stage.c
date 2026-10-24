@@ -28,6 +28,32 @@ u16 plural_s(s16 n)
     return (n == 1) ? 0x7738 : 0x7739;
 }
 
+/* PORT: the results pages in their Amiga form (duel $12dfa, its boxes $12c04): a black page in four
+ * colours (-$75cc: black, BBBh for the text, 800h and 08Eh), the boxes filled, red on the section page
+ * and blue on the duel page, whose top box is 8 lines lower; the titles 8 pixels further left; a
+ * penalty only when there is one; the remarks on the driving at the top left (lines 0 and 9). TD2's
+ * figures and words stay (duel's differ a little: "Press joystick button to continue...", "You got %d
+ * speeding tickets", and its record and end-of-game sentences). Each page waits 600 frames or a key at
+ * the Amiga pace ($12bb4) and fades out (Delay(2) a step). */
+static bool results_amiga(void) { return gfx_amiga_screens(); }
+
+static void results_amiga_colours(void)
+{
+    static const u16 colours[4] = { 0x000, 0xBBB, 0x800, 0x08E };
+    gfx_amiga_colours(colours, 4);
+    gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
+}
+
+/* A results page's wait: a key, or 0 after 600 frames at the Amiga pace; then the Amiga fade. */
+static u16 results_wait(void)
+{
+    u16 k = results_amiga() && host_amiga_pace() ? getkey_timeout(amiga_ticks(600)) : getkey_wait();
+    amiga_fade_out(2);
+    return k;
+}
+
+static void results_section_page_in(bool duel);
+
 /* 0267:0017 results_line — game_flow.md §4.12 (verified) */
 void results_line(const char *s, s16 x)
 {
@@ -60,24 +86,42 @@ void results_overall(void)
 /* 0267:1224 results_section_page — game_flow.md §4.12 (verified; the caller's stack arguments are unused) */
 void results_section_page(void)
 {
+    results_section_page_in(false);
+}
+
+/* PORT: the page, for the duel page or the section page (in the Amiga form they differ). */
+static void results_section_page_in(bool duel)
+{
     char buf[84];
     s16 m, s, d;
+    bool amiga = results_amiga();
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     DSW(DS_results_y) = 0x20;
-    draw_rect_outline(0, 0x24, 0x137, 0x6C, COL(4, 0x5555));
-    draw_rect_outline(0, 0x7C, 0x137, 0xBC, COL(4, 0x5555));
+    if (amiga) {                                                     /* PORT: duel $12c04 */
+        s16 y = duel ? 8 : 0;
+        results_amiga_colours();
+        gfx_fill_rect(0, (s16)(y + 0x1B), 0x138, 0x49, AMIGA_PEN(duel ? 3 : 2));
+        gfx_fill_rect(0, 0x7B, 0x138, 0x39, AMIGA_PEN(duel ? 3 : 2));
+        DSW(DS_results_y) = (u16)(y + 0x18);
+    } else {
+        draw_rect_outline(0, 0x24, 0x137, 0x6C, COL(4, 0x5555));
+        draw_rect_outline(0, 0x7C, 0x137, 0xBC, COL(4, 0x5555));
+    }
     snprintf(buf, sizeof buf, " Section %d ", DSS(DS_stage));                            /* DS:7CE2 */
-    results_line(buf, 0x40);
+    results_line(buf, amiga ? 0x38 : 0x40);
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) - 8);
     snprintf(buf, sizeof buf, " %d.%d miles ", flow_idiv(DSS(DS_stage_length), 0x1A4),
              flow_imod(flow_idiv(DSS(DS_stage_length), 0x2A), 10));                      /* DS:7CEF */
-    results_line(buf, 0xB0);
+    results_line(buf, amiga ? 0xA8 : 0xB0);
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 8);
     time_parts(DSS(DS_stage_time), &m, &s, &d);
     s16 pen = DSS(DS_penalties);
-    snprintf(buf, sizeof buf, "Your time:      %d:%02d.%d + %d:%02d penalty", m, s, d,
-             flow_idiv(pen, 3), flow_imod((s16)(20 * pen), 60));                         /* DS:7CFD */
+    if (amiga && pen == 0)
+        snprintf(buf, sizeof buf, "Your time:      %d:%02d.%d", m, s, d);
+    else
+        snprintf(buf, sizeof buf, "Your time:      %d:%02d.%d + %d:%02d penalty", m, s, d,
+                 flow_idiv(pen, 3), flow_imod((s16)(20 * pen), 60));                     /* DS:7CFD */
     results_line(buf, 8);
     snprintf(buf, sizeof buf, "Your avg speed: %ld mph", (long)DSSL(DS_avg_speed));      /* DS:7D2A */
     results_line(buf, 8);
@@ -289,8 +333,10 @@ s16 stage_results(s16 kind)
         hisc_save();
         select_screen();
         gfx_clear_clip(0);
+        if (results_amiga()) results_amiga_colours();               /* PORT */
         draw_text_centered(0x7815, 0x32);                           /* "Congratulations!!!" */
         draw_text_centered(0x7828, 0x3A);                           /* "on making the record books" */
+        if (results_amiga()) gfx_set_text_colours(AMIGA_PEN(3), AMIGA_PEN(0));   /* PORT: as duel */
         if (rec & 1) {
             draw_text_centered(0x7843, 0x5A);                       /* "You beat the fastest time for this" */
             draw_text_centered(0x7866, 0x62);                       /* "road section and had the highest" */
@@ -303,12 +349,12 @@ s16 stage_results(s16 kind)
             draw_text_centered(0x78CE, 0x82);                       /* "You got the highest score for this" */
             draw_text_centered(0x78F1, 0x8A);                       /* "road section." */
         }
-        getkey_wait();
+        results_wait();                                             /* PORT: getkey_wait, and duel's */
     }
 
     /* ---- duel page (0267:070a) ---- */
     if (DSS(DS_game_mode) != 0) {
-        results_section_page();
+        results_section_page_in(true);
         s32 T2 = (s32)DSS(DS_opp_penalties) * 200 + (s32)DSS(DS_opp_time);
         T2 = flow_aldiv(T2 * (s32)DSS(DS_stage_length), (s32)DSS(DS_opp_dist));   /* always extrapolated */
         DSSL(DS_opp_avg_speed) = flow_aldiv(flow_aldiv((s32)DSS(DS_stage_length) * 3600, 42), T2);
@@ -328,7 +374,9 @@ s16 stage_results(s16 kind)
         if (DSS(DS_lives) == 0)                                         msg = 0x7932;   /* "You are dead!!!" */
         else if (DSSL(DS_opp_stage_score) > DSSL(DS_stage_score))       msg = 0x78FF;   /* "The computer won this round." */
         else                                                            msg = 0x791C;   /* "You won this round!!!" */
+        if (results_amiga() && msg == 0x791C) gfx_set_text_colours(AMIGA_PEN(3), AMIGA_PEN(0));   /* PORT */
         draw_text_centered(msg, 0);
+        if (results_amiga()) gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
         if (DSS(DS_last_stage) != 0 || DSS(DS_lives) == 0) {
             if (DSSL(DS_opp_total_score) > DSSL(DS_total_score))
                 msg = DSS(DS_lives) ? 0x7942 : 0x7964;  /* "Sorry, the computer won the game." / "And you lost the game." */
@@ -343,8 +391,11 @@ s16 stage_results(s16 kind)
         DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 8);
         s16 op = DSS(DS_opp_penalties);
         time_parts(DSS(DS_opp_time), &m, &s, &d);
-        snprintf(buf, sizeof buf, "Other's time:   %d:%02d.%d + %d:%02d penalty", m, s, d,
-                 flow_idiv(op, 3), flow_imod((s16)(20 * op), 60));                        /* DS:79FF */
+        if (results_amiga() && op == 0)
+            snprintf(buf, sizeof buf, "Other's time:   %d:%02d.%d", m, s, d);
+        else
+            snprintf(buf, sizeof buf, "Other's time:   %d:%02d.%d + %d:%02d penalty", m, s, d,
+                     flow_idiv(op, 3), flow_imod((s16)(20 * op), 60));                    /* DS:79FF */
         results_line(buf, 8);
         snprintf(buf, sizeof buf, "Average speed:  %ld mph", (long)DSSL(DS_opp_avg_speed));    /* DS:7A2C */
         results_line(buf, 8);
@@ -360,11 +411,11 @@ s16 stage_results(s16 kind)
         results_line_ds(0x7A95, 0);                   /* "Press key or joystick to continue..." */
         screen_reveal(2);
         kbd_flush();
-        if (getkey_wait() == KEY_ESC) return KEY_ESC;
+        if (results_wait() == KEY_ESC) return KEY_ESC;
     }
 
     /* ---- section page (0267:0a50) ---- */
-    results_section_page();
+    results_section_page_in(false);
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 8);
     s16 variant = (s16)rand8();
     variant = (variant < 0x55) ? 0 : (variant < 0xAB) ? 1 : 2;
@@ -374,8 +425,13 @@ s16 stage_results(s16 kind)
                : ((s32)DSS(DS_rating_speed3) < avg) ? 2 : 3;
     /* DS:02FA is indexed in bytes: 12 per rating (3 variants x 2 lines), 4 per variant */
     u16 moff = (u16)(12 * rating + 4 * variant);
-    draw_text_centered(DSW(DS_rating_msgs + moff), 0);
-    draw_text_centered(DSW(DS_rating_msgs + moff + 2), 8);
+    if (results_amiga()) {                            /* PORT: duel's place for them */
+        gfx_draw_text(DSW(DS_rating_msgs + moff), 0, 0);
+        gfx_draw_text(DSW(DS_rating_msgs + moff + 2), 0, 9);
+    } else {
+        draw_text_centered(DSW(DS_rating_msgs + moff), 0);
+        draw_text_centered(DSW(DS_rating_msgs + moff + 2), 8);
+    }
     time_parts(DSS(bt), &m, &s, &d);
     snprintf(buf, sizeof buf, "Best time:      %d:%02d.%d", m, s, d);                        /* DS:7ABA */
     results_line(buf, 8);
@@ -383,6 +439,7 @@ s16 stage_results(s16 kind)
     results_line(buf, 8);
     snprintf(buf, sizeof buf, "Best score:     %ld points", (long)DSSL(bs));                 /* DS:7AED */
     results_line(buf, 8);
+    if (results_amiga()) DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 8);   /* PORT: the box below stays */
     results_overall();
     snprintf(buf, sizeof buf, "Best time:      %ld:%02ld.%ld",                               /* DS:7B08 */
              (long)flow_aldiv(show_cum_time, 600),
@@ -395,7 +452,7 @@ s16 stage_results(s16 kind)
     results_line_ds(0x7B41, 0);                       /* "Press key or joystick to continue..." */
     screen_reveal(2);
     kbd_flush();
-    key = (s16)getkey_wait();
+    key = (s16)results_wait();
 
     if (kind == 1 && DSW(DS_outran_police) != 0) {    /* ---- police ending (0267:0cc0) ---- */
         if (police_ending() != 0) return KEY_ESC;
