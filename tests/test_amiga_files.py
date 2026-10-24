@@ -51,5 +51,22 @@ class RpckTest(unittest.TestCase):
             self.assertEqual(rpck.read(data), got, p.relative_to(AMIGA))
 
 
+@unittest.skipUnless((AMIGA / 'duel').exists(), 'no Amiga game in runs/amiga')
+class PictureTest(unittest.TestCase):
+    def test_dashboard_sprites_match_the_dashboard_picture(self):
+        import ilbm
+        import shp
+        pic = ilbm.parse((AMIGA / 'cars/f40dash').read_bytes())
+        self.assertEqual((pic.width, pic.height, pic.planes), (320, 200, 5))
+        sprites = {s.name: s for s in shp.read(str(AMIGA / 'cars/f40dash.shp'))}
+        for name in ('trb0', 'fuel', 'oilp', 'oilt'):    # drawn in the picture where the sprite says
+            s = sprites[name]
+            for y in range(s.height):
+                for x in range(s.width):
+                    if s.mask[y * s.width + x]:
+                        self.assertEqual(s.pixels[y * s.width + x], pic.pixels[(s.y + y) * 320 + s.x + x],
+                                         (name, x, y))
+
+
 if __name__ == '__main__':
     unittest.main()
