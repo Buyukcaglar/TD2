@@ -213,6 +213,105 @@ static s16 amiga_gas_scroll(FarPtr text, s16 height)
     return key;
 }
 
+/* The gas station's text into the buffer text (0267:0230-0313): what went wrong, the lives left and
+ * "Press key or joystick to continue...", in the Amiga form 9 lines apart from row 18 at x = 16 ($1290a).
+ * PORT: taken out of stage_results for the Amiga ending, which shows it too. */
+static void gas_station_text(FarPtr text, bool amiga)
+{
+    char buf[96];
+    gfx_select_target(text);
+    gfx_clear_clip(0);
+    if (amiga) gfx_amiga_colours_from(flow_page_desc(), text);   /* PORT: the blits keep the station's */
+    gfx_set_text_colours(amiga ? AMIGA_PEN(24) : COL(0x0F, 3), amiga ? AMIGA_PEN(0) : 0);
+    DSW(DS_results_y) = amiga ? 18 : 0;
+#define GAS_LINE(s) (amiga ? amiga_gas_line(s) : results_line((s), 0))
+    if (DSS(DS_crashes) != 0) {
+        snprintf(buf, sizeof buf, "You crashed %d time%s.", DSS(DS_crashes),
+                 DSTR(plural_s(DSS(DS_crashes))));                               /* DS:7756 */
+        GAS_LINE(buf);
+    }
+    if (DSS(DS_engines_blown) != 0) {
+        snprintf(buf, sizeof buf, "You blew your engine %d time%s.", DSS(DS_engines_blown),
+                 DSTR(plural_s(DSS(DS_engines_blown))));                         /* DS:776D */
+        GAS_LINE(buf);
+    }
+    if (DSS(DS_tickets) != 0) {
+        snprintf(buf, sizeof buf, "You were given %d speeding ticket%s.", DSS(DS_tickets),
+                 DSTR(plural_s(DSS(DS_tickets))));                               /* DS:778D */
+        GAS_LINE(buf);
+    }
+    if (DSS(DS_out_of_gas) != 0) {
+        snprintf(buf, sizeof buf, "%s", DSTR(0x77B2));           /* sprintf(buf, "You ran out of gas once.") */
+        GAS_LINE(buf);
+    }
+    if ((s16)(DSS(DS_penalties) + DSS(DS_tickets)) == 0) GAS_LINE(DSTR(0x77CB));  /* "A clean run!" */
+    snprintf(buf, sizeof buf, "You have %d lives left.", DSS(DS_lives));             /* DS:77D8 */
+    GAS_LINE(buf);
+    if (amiga) DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 9);   /* PORT: duel's gap */
+    GAS_LINE(DSTR(0x77F0));                                      /* "Press key or joystick to continue..." */
+#undef GAS_LINE
+}
+
+/* PORT: the end of the game at the gas station in its Amiga form (duel $13930), in place of TD2's
+ * police ending: the gas station with the attendant and a police officer ("guy0" and "gal0" of
+ * pics/endgame.shp at their own places); 65 Delay ticks; then for each pair of names in duel's table (-$700e, or the longer one at
+ * -$6f76 when the player outran the police) the background again and the two pictures, three frames a
+ * step. When the player outran the police, the message at -$6da5 (licence revoked,
+ * thirty days in jail) in duel's message box at line 2 ($1686e: a black box, pen 24 inside it, the
+ * lines in pen 24 on pen 0 ten apart). Then the gas station's text scrolls under it. The tables and the
+ * message are read from duel. -1 without the Amiga files, else the key. */
+static s16 amiga_end_station(bool busted)
+{
+    if (!amiga_gas_station_page()) return -1;
+    gfx_amiga_sprite("pics/endgame.shp", "guy0", 0, 0, AMIGA_AT_OWN);
+    gfx_amiga_sprite("pics/endgame.shp", "gal0", 0, 0, AMIGA_AT_OWN);
+    screen_reveal(2);
+    u32 t = ticks_get() + 130;
+    while (ticks_get() < t) host_pump();
+    static char names[100][5];
+    int n = 0;
+    u8 entry[4];
+    for (u32 a = 0x2957Eu - (busted ? 0x6F76u : 0x700Eu); n < 100 && gfx_amiga_duel_data(a, entry, 4); a += 4) {
+        if (entry[0] == 0xFF && entry[1] == 0xFF && entry[2] == 0xFF && entry[3] == 0xFF) break;
+        memcpy(names[n], entry, 4);
+        names[n++][4] = 0;
+    }
+    t = ticks_get();
+    for (int i = 0; i < n; i += 2) {
+        select_screen();
+        blit_copy_own(flow_page_sprite());
+        for (int k = i; k < i + 2 && k < n; k++)
+            if (names[k][0] != ' ') gfx_amiga_sprite("pics/endgame.shp", names[k], 0, 0, AMIGA_AT_OWN);
+        t += amiga_ticks(3);
+        while (ticks_get() < t) host_pump();
+    }
+    char msg[200];
+    if (busted && gfx_amiga_duel_data(0x2957Eu - 0x6DA5u, msg, sizeof msg - 1)) {
+        msg[sizeof msg - 1] = 0;
+        int lines = 1, width = 0, w = 0;
+        for (const char *c = msg; *c; c++) {
+            if (*c == '\n') { lines++; w = 0; } else if (++w > width) width = w;
+        }
+        s16 y = 2, x0 = (s16)((320 - (width * 8 + 12)) / 2);
+        select_screen();
+        gfx_fill_rect(x0, y, (s16)(width * 8 + 13), (s16)(lines * 10 + 12), AMIGA_PEN(0));
+        gfx_fill_rect((s16)(x0 + 3), (s16)(y + 3), (s16)(width * 8 + 7), (s16)(lines * 10 + 6), AMIGA_PEN(24));
+        gfx_set_text_colours(AMIGA_PEN(24), AMIGA_PEN(0));
+        char *line = msg;
+        for (int i = 0; i < lines; i++) {
+            char *nl = strchr(line, '\n');
+            if (nl) *nl = 0;
+            gfx_draw_text_str(line, (u16)(x0 + 7), (u16)(y + 7 + 10 * i));
+            line = nl ? nl + 1 : line + strlen(line);
+        }
+    }
+    FarPtr text = gfx_create_buffer(0x140, 0x51, 0x0F);
+    gas_station_text(text, true);
+    s16 key = amiga_gas_scroll(text, (s16)DSW(DS_results_y));
+    gfx_free_buffer(text);
+    return key;
+}
+
 /* Police ending — inline in stage_results (0267:0cc0-117e), game_flow.md §4.14 (verified).
  * Returns non-zero when a load failed (stage_results then returns 0x1B). */
 static s16 police_ending(void)
@@ -316,37 +415,7 @@ s16 stage_results(s16 kind)
         FarPtr text = gfx_create_buffer(0x140, amiga ? 0x51 : 0x38, 0x0F);
         kbd_flush();
         if (getkey_timeout(200) == KEY_ESC) return KEY_ESC;          /* the text buffer leaks (original) */
-        gfx_select_target(text);
-        gfx_clear_clip(0);
-        if (amiga) gfx_amiga_colours_from(flow_page_desc(), text);   /* PORT: the blits keep the station's */
-        gfx_set_text_colours(amiga ? AMIGA_PEN(24) : COL(0x0F, 3), amiga ? AMIGA_PEN(0) : 0);
-        DSW(DS_results_y) = amiga ? 18 : 0;
-#define GAS_LINE(s) (amiga ? amiga_gas_line(s) : results_line((s), 0))
-        if (DSS(DS_crashes) != 0) {
-            snprintf(buf, sizeof buf, "You crashed %d time%s.", DSS(DS_crashes),
-                     DSTR(plural_s(DSS(DS_crashes))));                               /* DS:7756 */
-            GAS_LINE(buf);
-        }
-        if (DSS(DS_engines_blown) != 0) {
-            snprintf(buf, sizeof buf, "You blew your engine %d time%s.", DSS(DS_engines_blown),
-                     DSTR(plural_s(DSS(DS_engines_blown))));                         /* DS:776D */
-            GAS_LINE(buf);
-        }
-        if (DSS(DS_tickets) != 0) {
-            snprintf(buf, sizeof buf, "You were given %d speeding ticket%s.", DSS(DS_tickets),
-                     DSTR(plural_s(DSS(DS_tickets))));                               /* DS:778D */
-            GAS_LINE(buf);
-        }
-        if (DSS(DS_out_of_gas) != 0) {
-            snprintf(buf, sizeof buf, "%s", DSTR(0x77B2));           /* sprintf(buf, "You ran out of gas once.") */
-            GAS_LINE(buf);
-        }
-        if ((s16)(DSS(DS_penalties) + DSS(DS_tickets)) == 0) GAS_LINE(DSTR(0x77CB));  /* "A clean run!" */
-        snprintf(buf, sizeof buf, "You have %d lives left.", DSS(DS_lives));             /* DS:77D8 */
-        GAS_LINE(buf);
-        if (amiga) DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 9);   /* PORT: duel's gap */
-        GAS_LINE(DSTR(0x77F0));                                      /* "Press key or joystick to continue..." */
-#undef GAS_LINE
+        gas_station_text(text, amiga);
         if (amiga) {
             key = amiga_gas_scroll(text, (s16)DSW(DS_results_y));
             if (key == KEY_ESC) return key;
@@ -541,7 +610,11 @@ s16 stage_results(s16 kind)
     kbd_flush();
     key = (s16)results_wait();
 
-    if (kind == 1 && DSW(DS_outran_police) != 0) {    /* ---- police ending (0267:0cc0) ---- */
+    s16 amiga_end = kind == 1 && results_amiga() ? amiga_end_station(DSW(DS_outran_police) != 0) : -1;   /* PORT */
+    if (amiga_end == KEY_ESC) return KEY_ESC;
+    if (amiga_end != -1) {
+        key = 0;
+    } else if (kind == 1 && DSW(DS_outran_police) != 0) {   /* ---- police ending (0267:0cc0) ---- */
         if (police_ending() != 0) return KEY_ESC;
         key = 0;
     }
