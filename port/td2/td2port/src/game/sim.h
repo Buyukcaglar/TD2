@@ -4,7 +4,8 @@
  * The far entry points (sim_stage_start, sim_restart_reset, sim_timer_routine, traffic_resync,
  * police_reset, steer_update) are declared in game.h. This header lists the near routines of the
  * hand-written assembly as C functions (register arguments become parameters / results, named after the
- * registers they model). All state is in mem[] (symbols.h offsets); nothing here keeps C state.
+ * registers they model). All game state is in mem[] (symbols.h offsets). The only C state is
+ * sim_stale_bp and sim_stale_cx: register values the original leaves between routines and later reads.
  *
  * Timing: sim_timer_routine is a timer routine (registered with codeptr and added to the routine list
  * DS:5F12 by sim_stage_start, after sfx_tick). It runs sound_tick on every 99.9985 Hz call and the

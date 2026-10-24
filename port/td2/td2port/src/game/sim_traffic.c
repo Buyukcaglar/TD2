@@ -241,8 +241,10 @@ bool pass_check(u16 si_a, u16 di_b, s16 bx_old, s16 dx_ax, u16 *cx)
 /* 06c9:595f pass_collisions — simulation.md §4.16 */
 void pass_collisions(void)
 {
-    /* CX on entry: traffic()'s last meet_check leaves CX = same_count8 on every path (simulation.md Q6;
-     * it is only stored back when a position is 0, which the state handling never produces). */
+    /* CX on entry is what traffic() (called just before, 06c9:4117) leaves: on every exit path its last
+     * CX write is mov cx,[5356] before a meet_check, which does not change CX. So CX = same_count8. It is
+     * stored into a relation when a driver's position is 0 (pass_check returns early), e.g. while the
+     * police are off the road. The diffharness traffic case checks the CX it leaves. */
     u16 cx = DSW(DS_same_count8);
     s16 bx = DSS(DS_rel_player_opp);
     s16 dx = DSS(DS_car_centre);
@@ -364,7 +366,10 @@ u16 nearest_ahead(u16 si_list, u16 cx_n8, u16 ax_sub, u16 dx_pos)
     u32 n = (u16)(cx_n8 >> 3);
     if (n == 0) n = 0x10000;                            /* `loop` with CX = 0 (simulation.md Q11) */
     u16 bp = len;
-    u16 di = si_list;                                   /* PORT: DI is not initialised by the original */
+    /* The original never sets DI here; it keeps the caller's DI only if no entry is picked. With every
+     * car inside the stage the first entry is always picked (its distance mod LEN is <= LEN), and all
+     * shipped stages have 6 or more cars per list, all with raw positions below 1000 (the stage end). */
+    u16 di = si_list;
     u16 si = si_list;
     while (n--) {
         SimDiff d = sim_diff(DSW((u16)(si + CAR_POS)), DSW((u16)(si + CAR_SUB)), dx_pos, ax_sub);

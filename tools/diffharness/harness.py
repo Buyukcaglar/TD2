@@ -184,6 +184,13 @@ class Original:
             self.uc.emu_start(lin(seg, off), lin(ret_cs, ret_ip), count=MAX_INSNS)
         except UcError as e:
             error = f'cpu fault: {e}'
+        except OSError as e:
+            # Unicorn itself can crash when wild code rewrites the code it is running (seen when a
+            # traffic list count was 0). Report it and start a fresh emulator for the next case.
+            out = {k: 0 for k in REGS}
+            mem_after = bytes(self.backing)
+            self.__init__()
+            return Outcome(out, mem_after, f'emulator crashed: {e}')
         cs, ip = self.uc.reg_read(UC_X86_REG_CS), self.uc.reg_read(UC_X86_REG_IP)
         out = {k: self.uc.reg_read(UC_REGS[k]) for k in REGS}
         if not error:

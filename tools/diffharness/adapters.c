@@ -28,6 +28,12 @@ static void a_obj_place_roadside(DhRegs *r) { WITH_BP(obj_place_roadside(r->bx))
 static void a_decode_controls(DhRegs *r) { sim_stale_cx = r->cx; WITH_BP(decode_controls()); }
 static void a_sound_tick(DhRegs *r) { sim_stale_cx = r->cx; sound_tick(); r->cx = sim_stale_cx; }
 
+/* Traffic. traffic() reports the CX the port assumes it leaves for pass_collisions (same_count8). */
+static void a_traffic(DhRegs *r) { traffic(); r->cx = DSW(DS_same_count8); }
+static void a_pass_collisions(DhRegs *r) { (void)r; pass_collisions(); }
+static void a_traffic_resync(DhRegs *r) { (void)r; traffic_resync(); }
+static void a_nearest_ahead(DhRegs *r) { r->si = nearest_ahead(r->si, r->cx, r->ax, r->dx); }
+
 static void a_rle_decode(DhRegs *r)
 {
     FarPtr q = rle_decode(far_make(arg(r, true, 1), arg(r, true, 0)), far_make(arg(r, true, 3), arg(r, true, 2)),
@@ -57,6 +63,10 @@ static const struct { const char *name; void (*fn)(DhRegs *); } adapters[] = {
     { "obj_place_roadside", a_obj_place_roadside },
     { "decode_controls", a_decode_controls },
     { "sound_tick", a_sound_tick },
+    { "traffic", a_traffic },
+    { "pass_collisions", a_pass_collisions },
+    { "traffic_resync", a_traffic_resync },
+    { "nearest_ahead", a_nearest_ahead },
     { "rle_decode", a_rle_decode },
     { "huff_decode", a_huff_decode },
 };

@@ -229,6 +229,135 @@ def _sound_tick(rng, mem, regs):
     ds_put(mem, 'DS_div_100hz', rng.choice((1, 1, rng.randrange(256))))
 
 
+# ---------------------------------------------------------------------------------------------- traffic
+
+DAT_BASE, DAT_SIZE = 0x346A, 0x1E5E          # a stage .DAT unpacks to an image of DS:346A..52C7
+ROAD0 = 0x3B51
+_stages: dict = {}
+
+
+def stage_image(name: str) -> bytes:
+    """A stage .DAT unpacked by the original's own Huffman and RLE passes (cached)."""
+    if name not in _stages:
+        h, rng = HARNESS[0], random.Random(name)
+        data = (game_dir() / name).read_bytes()
+        mem = bytearray(h.base)
+        blk, total, in_seg = place_packed(rng, mem, data)
+        orig, _, _ = h.call(HUFF, Case(mem, default_regs(rng), [4, in_seg, 0, blk, total]))
+        n = paras(orig.regs['dx'] << 16 | orig.regs['ax'])
+        nseg = blk + total - n
+        mem = bytearray(orig.mem)
+        mem[nseg * 16:(nseg + n) * 16] = mem[blk * 16:(blk + n) * 16]
+        rle = next(sp for sp in SPECS if sp.name == 'rle_decode')
+        orig, _, _ = h.call(rle, Case(mem, default_regs(rng), [0, nseg, 0, blk, total]))
+        if orig.error:
+            raise RuntimeError(f'{name}: {orig.error}')
+        _stages[name] = orig.mem[blk * 16:blk * 16 + DAT_SIZE]
+    return _stages[name]
+
+
+def load_stage(rng: random.Random, mem: bytearray) -> tuple[int, int, int]:
+    """A real stage with its traffic lists set up as at the start of a stage (prepare_traffic_lists
+    without the random drops, sim_stage_start's stage end). Returns (units, n_onc8, n_same8)."""
+    name = rng.choice(sorted(p.name for p in game_dir().glob('*.DAT') if p.read_bytes()[:1] == b'\x82'))
+    a = lin(DGROUP, DAT_BASE)
+    mem[a:a + DAT_SIZE] = stage_image(name)
+    units = int.from_bytes(mem[lin(DGROUP, S['DS_dat_road_units']):][:2], 'little')
+    counts = []
+    for base, oncoming in ((S['DS_oncoming'], True), (S['DS_same_dir'], False)):
+        si = 0
+        while mem[lin(DGROUP, base + si)] != 0 and si < 0x190:
+            e = lin(DGROUP, base + si)
+            raw = int.from_bytes(mem[e + 2:e + 4], 'little')
+            mem[e + 2:e + 4] = (raw * units // 1000 + ROAD0).to_bytes(2, 'little')
+            if not oncoming:
+                mem[e] = (mem[e] + 4) & 0xFF
+            mem[e + 6:e + 8] = (0xFF38 if oncoming else 0xC8).to_bytes(2, 'little')
+            si += 8
+        counts.append(si)
+    ds_put(mem, 'DS_oncoming_count8', counts[0], 2)
+    ds_put(mem, 'DS_same_count8', counts[1], 2)
+    end = lin(DGROUP, S['DS_stage_end'])
+    mem[end:end + 2] = ((int.from_bytes(mem[end:end + 2], 'little') + 0x3B33) & 0xFFFF).to_bytes(2, 'little')
+    return units, counts[0], counts[1]
+
+
+def road_pos(rng, units):
+    return ROAD0 + rng.randrange(units)
+
+
+def _traffic_state(rng, mem, scatter: bool):
+    """Stage, lists, drivers. scatter moves the cars to random places, as after a while of driving."""
+    units, n_onc, n_same = load_stage(rng, mem)
+    if scatter:
+        for base, n in ((S['DS_oncoming'], n_onc), (S['DS_same_dir'], n_same)):
+            for si in range(0, n, 8):
+                ds_put(mem, base + si + 2, road_pos(rng, units), 2)
+                ds_put(mem, base + si + 4, rng.randrange(0x10000), 2)
+                ds_put(mem, base + si + 6, rng.randrange(-700, 700), 2)
+    for drv in ('player', 'opp', 'cop'):
+        ds_put(mem, f'DS_{drv}_sub', rng.randrange(0x10000), 2)
+        ds_put(mem, f'DS_{drv}_pos', road_pos(rng, units), 2)
+    ds_put(mem, 'DS_cop_pos', rng.choice((0, road_pos(rng, units))), 2)
+    ds_put(mem, 'DS_car_centre', rng.randrange(-700, 700), 2)
+    ds_put(mem, 'DS_opp_x', rng.randrange(-700, 700), 2)
+    ds_put(mem, 'DS_cop_x', rng.randrange(-700, 700), 2)
+    for name, n in (('DS_onc_next', n_onc), ('DS_same_next', n_same), ('DS_opp_onc_next', n_onc),
+                    ('DS_opp_same_next', n_same), ('DS_cop_onc_next', n_onc), ('DS_cop_same_next', n_same)):
+        ds_put(mem, name, 8 * rng.randrange(n // 8), 2)
+    ds_put(mem, 'DS_opp_enabled', rng.choice((0, 1, 1)))
+    ds_put(mem, 'DS_cop_active', rng.choice((0, 0, 1)))
+    ds_put(mem, 'DS_cop_state', rng.choice((0, 0, 1, 7, 8, rng.randrange(9))))
+    ds_put(mem, 'DS_traffic_speed', rng.choice((0x60, 0x80, 0xA0, rng.randrange(0x200))), 2)
+    ds_put(mem, 'DS_median', rng.choice((0, 1)))
+    for name in ('DS_opp_pass_mode', 'DS_cop_force_meet', 'DS_opp_crash_timer'):
+        ds_put(mem, name, rng.choice((0, 0, 1, edgy8(rng))))
+    for name in ('DS_speed', 'DS_opp_speed', 'DS_cop_speed'):
+        ds_put(mem, name, edgy16(rng), 2)
+    for name in ('DS_rel_player_opp', 'DS_rel_player_cop', 'DS_rel_opp_cop'):
+        ds_put(mem, name, rng.choice((0xFFFF, 0, 1, edgy16(rng))), 2)
+    ds_put(mem, 'DS_run_state', 0)
+    return units, n_onc, n_same
+
+
+def _traffic(rng, mem, regs):
+    _traffic_state(rng, mem, rng.random() < 0.7)
+    # Often put the next car right at a driver, so meetings, crashes and police starts happen.
+    for drv, x_name, lists in (('player', 'DS_car_centre', (('DS_onc_next', 'DS_oncoming'), ('DS_same_next', 'DS_same_dir'))),
+                               ('opp', 'DS_opp_x', (('DS_opp_onc_next', 'DS_oncoming'), ('DS_opp_same_next', 'DS_same_dir')))):
+        for next_name, base_name in lists:
+            if rng.random() < 0.5:
+                continue
+            e = S[base_name] + int.from_bytes(mem[lin(DGROUP, S[next_name]):][:2], 'little')
+            pos = int.from_bytes(mem[lin(DGROUP, S[f'DS_{drv}_pos']):][:2], 'little')
+            ds_put(mem, e + 2, pos - rng.randrange(0, 5), 2)
+            ds_put(mem, e + 4, rng.randrange(0x10000), 2)
+            x = int.from_bytes(mem[lin(DGROUP, S[x_name]):][:2], 'little', signed=True)
+            ds_put(mem, e + 6, x + rng.randrange(-250, 250), 2)
+            if drv == 'player' and base_name == 'DS_oncoming' and rng.random() < 0.5:
+                ds_put(mem, e, 4)                         # a police car
+                ds_put(mem, 'DS_cop_pos', 0, 2)
+                ds_put(mem, 'DS_speed', rng.randrange(0x3000, 0x8000), 2)
+
+
+def _pass_collisions(rng, mem, regs):
+    _, _, n_same = _traffic_state(rng, mem, True)
+    regs['cx'] = n_same                                  # what traffic() leaves (see the traffic case)
+
+
+def _traffic_resync(rng, mem, regs):
+    _traffic_state(rng, mem, rng.random() < 0.7)
+
+
+def _nearest_ahead(rng, mem, regs):
+    units, n_onc, n_same = _traffic_state(rng, mem, rng.random() < 0.7)
+    oncoming = rng.random() < 0.5
+    regs['si'] = S['DS_oncoming'] if oncoming else S['DS_same_dir']
+    regs['cx'] = n_onc if oncoming else n_same
+    regs['ax'] = rng.randrange(0x10000)
+    regs['dx'] = road_pos(rng, units)                   # DI stays random: the original never sets it
+
+
 # ---------------------------------------------------------------------------------------------- unpackers
 
 def game_dir() -> Path:
@@ -338,6 +467,13 @@ SPECS = [
     Spec('decode_controls', '06c9:4281', False, ['bp'], forever(_decode_controls),
          'real car records, joystick, gears, fire tapped in neutral; BP = rpm'),
     Spec('sound_tick', '06c9:412c', False, ['cx'], forever(_sound_tick), 'engine, siren, grind tones; CX = rpm'),
+    Spec('traffic', '06c9:4d3f', False, ['cx'], forever(_traffic),
+         'real stage traffic; CX left for pass_collisions = same_count8'),
+    Spec('pass_collisions', '06c9:595f', False, [], forever(_pass_collisions),
+         'player, opponent and police passing each other'),
+    Spec('traffic_resync', '06c9:5ada', True, [], forever(_traffic_resync), 'lists cleared around the drivers'),
+    Spec('nearest_ahead', '06c9:5c30', False, ['si'], forever(_nearest_ahead),
+         'real stage traffic, DI random (never used)'),
     Spec('rle_decode', '06c9:6b02', True, ['ax', 'dx'], _rle_cases(HARNESS),
          'EC_ PCS files directly, other files after their original Huffman pass'),
     HUFF,

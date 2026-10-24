@@ -135,6 +135,13 @@ class HarnessTest(unittest.TestCase):
             self.assertEqual(port.mem[grind], expect, f'port, CX={cx:X}')
 
     @unittest.skipUnless(GAME_EXE.exists(), 'needs runs/game')
+    def test_traffic_leaves_same_count8_for_pass_collisions(self):
+        """pass_collisions relies on traffic() leaving CX = same_count8 (sim_traffic.c); the traffic
+        adapter reports exactly that, so a match on CX proves it for these states."""
+        for r in self.h.run(self.spec('traffic'), 8, 21):
+            self.assertTrue(r.ok, r)
+
+    @unittest.skipUnless(GAME_EXE.exists(), 'needs runs/game')
     def test_unpackers_write_their_output(self):
         for name in ('huff_decode', 'rle_decode'):
             for r in self.h.run(self.spec(name), 3, 11):
