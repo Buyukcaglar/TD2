@@ -31,6 +31,7 @@ add_subdirectory(port/td2/td2port)
 set(TD2_SRC ${CMAKE_SOURCE_DIR}/port/td2/td2port/src)
 file(GLOB_RECURSE TD2_CORE_SOURCES CONFIGURE_DEPENDS ${TD2_SRC}/*.c)
 list(REMOVE_ITEM TD2_CORE_SOURCES ${TD2_SRC}/main.c ${TD2_SRC}/host.c)
+list(FILTER TD2_CORE_SOURCES EXCLUDE REGEX "/src/app/")      # the app's own UI around the game
 add_library(td2diff SHARED ${TD2_CORE_SOURCES} tools/diffharness/host_stub.c tools/diffharness/adapters.c)
 target_include_directories(td2diff PRIVATE ${TD2_SRC} tools/diffharness)
 target_link_libraries(td2diff PRIVATE SDL3::SDL3)

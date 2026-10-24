@@ -64,20 +64,28 @@ DOS sound is PC Speaker only, so there is nothing to switch until the Amiga phas
 
 ## 2. App UI: context menu and question windows
 
-The game picture stays the original game. App features live in a small platform layer, `platform/app_ui.h`, with one implementation per operating system: `app_ui_win32.c` now, `app_ui_macos.m` later.
+The game picture stays the original game. App features live in `src/app/`:
+- `app_ui.h` is the operating-system layer, with one implementation per system: `app_ui_win32.c` now, `app_ui_macos.m` later.
+- `app_menu.c` builds the menu and carries out the choice, the same on every system.
 
-- **Context menu.** It opens with a right click on the window and with the key combination. It lists:
-  - Graphics: EGA, CGA, Hercules.
-  - Hercules monitor colour: white, green or amber. This answers the open phosphor question without a decision now.
-  - Window size, full screen.
-  - Game files: show what is installed, add an expansion folder.
-  - About, and Quit.
-  On Windows it is a Win32 popup menu (`TrackPopupMenuEx`) on the SDL window's handle. On macOS it is an `NSMenu`.
+The context menu, the pause and the theme are built (step 4 below). The question windows come with the game data manager, which is their first user.
+
+- **Context menu.** It opens with a right click on the window or with Ctrl+Shift+M. It lists:
+  - Graphics: EGA, CGA, Hercules, and "Next mode" (Ctrl+Shift+G). The current or pending mode has the radio mark.
+  - Hercules monitor: white, green or amber, which changes the picture at once. This answers the phosphor question without a decision now; the choice is not saved yet (the settings file comes with step 5).
+  - Window size: 1× to 4×, and full screen (Alt+Enter).
+  - Quit.
+  - Still to come: Game files (what is installed, add an expansion folder) and About.
+  On Windows it is a Win32 popup menu (`TrackPopupMenuEx`) on the SDL window's handle. On macOS it will be an `NSMenu`.
+  The menu opens inside `host_pump`, at any point of the game, so every command is one that is safe at any time. A graphics choice is only a request, applied at the next safe point (section 1).
 - **Question windows.** Used for errors, confirmations and the first-start setup. On Windows, the standard message box and task dialog do not follow dark mode. So the layer draws its own small dialogs with Win32 controls themed for dark mode, or with standard ones in light mode. The folder picker is `SDL_ShowOpenFolderDialog` (the Windows file dialog, which follows the theme). On macOS, `NSAlert` and `NSOpenPanel` follow the theme by themselves.
-- **Theme.** `SDL_GetSystemTheme` and `SDL_EVENT_SYSTEM_THEME_CHANGED` say which theme is active.
-  - The title bar uses `DwmSetWindowAttribute(DWMWA_USE_IMMERSIVE_DARK_MODE)`, which is documented.
-  - Popup menus need uxtheme's `SetPreferredAppMode`, which is undocumented (ordinal 135, Windows 10 1903 and later). It is the common way, used by Notepad++ and others. Without it, menus stay light.
-- **Pausing.** While a menu or dialog is open the game stops: the emulated timer, the frame pacing and the speaker. A Win32 popup menu runs its own message loop, so the game must not count that time.
+- **Theme.** SDL3 does this already for its windows: on creation and on every theme change, `WIN_UpdateDarkModeForHWND` does three things.
+  - It calls uxtheme's undocumented `SetPreferredAppMode(AllowDark)` (ordinal 135, Windows 10 1903 and later) and `AllowDarkModeForWindow`.
+  - It sets the title bar's dark mode.
+  - So a popup menu owned by the window follows the system's app theme with no code of ours: dark title bar and dark menu, checked on Windows 11.
+- **Pausing.** While a menu or dialog is open the game stops. A Win32 popup menu runs its own message loop, and the game must not count that time.
+  - `host_pause_begin` pauses the sound device.
+  - `host_pause_end` moves the tick clock and the frame pacing on by the paused time, so no ticks are owed, and resumes the sound.
 - **Keys.** The app swallows its own combinations before the game's keyboard handler sees them. The game reads raw scan codes, so the combinations must avoid every key it uses. Ctrl+Alt is not usable: on many European layouts, Turkish included, it is AltGr.
 
 ## 3. Game files
@@ -126,7 +134,7 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. Done; the snapshots, tests and harness are unchanged.
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
 3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run. Other screens leave the switch pending.
-4. **App UI layer on Windows.** Context menu with dark mode, the key combination, pausing, question windows. The graphics choice moves into the menu.
+4. **App UI layer on Windows.** Done: the context menu with the system theme, Ctrl+Shift+M and right click, pausing, and the graphics, monitor, window size, full screen and quit commands. The question windows move to step 5.
 5. **Game data manager.** Base-game check, catalogues built from the files found, expansion folders, first-start setup, settings file.
 6. **macOS** (later): the same `app_ui` interface with AppKit.
 

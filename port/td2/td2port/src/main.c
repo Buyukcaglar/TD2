@@ -18,6 +18,7 @@
 #include <string.h>
 
 #include "host.h"
+#include "app/app_menu.h"
 #include "mem.h"
 #include "platform/gfx.h"
 #include "platform/gfx_backend.h"
@@ -30,6 +31,7 @@ static void app_command(HostCommand cmd)
 {
     switch (cmd) {
     case HOST_CMD_NEXT_GRAPHICS: gfx_request_next_backend(); break;
+    case HOST_CMD_MENU: app_menu_open(); break;
     }
 }
 

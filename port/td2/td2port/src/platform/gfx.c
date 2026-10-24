@@ -23,12 +23,13 @@ void gfx_set_backend(const GfxBackend *b) { be = b; }
 
 const GfxBackend *gfx_pending_backend(void) { return pending; }
 
+void gfx_request_backend(const GfxBackend *b) { pending = b == be ? NULL : b; }
+
 void gfx_request_next_backend(void)
 {
     const GfxBackend *from = pending ? pending : be;
-    const GfxBackend *next = from == &gfx_ega_backend ? &gfx_cga_backend
-                           : from == &gfx_cga_backend ? &gfx_herc_backend : &gfx_ega_backend;
-    pending = next == be ? NULL : next;
+    gfx_request_backend(from == &gfx_ega_backend ? &gfx_cga_backend
+                        : from == &gfx_cga_backend ? &gfx_herc_backend : &gfx_ega_backend);
 }
 
 /* The text colours are colour numbers of the adapter that set them (COL in gfx.h). These are the

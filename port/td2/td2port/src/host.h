@@ -22,11 +22,23 @@ void host_set_tick_handler(void (*handler)(void));
 void host_set_frame_source(bool (*compose)(u32 *xrgb), int w, int h);
 void host_set_title_mode(const char *mode);   /* "Test Drive II (<mode>)" */
 
-/* App commands: key combinations the app handles itself, which the game never sees. They are the same
- * on Windows and macOS (Ctrl, not Cmd). Ctrl+Shift+G cycles the graphics mode. The handler runs inside
- * host_pump(), at any point of the game, so it may only record a request. */
-typedef enum { HOST_CMD_NEXT_GRAPHICS } HostCommand;
+/* App commands: key combinations and mouse clicks the app handles itself, which the game never sees.
+ * The keys are the same on Windows and macOS (Ctrl, not Cmd): Ctrl+Shift+G cycles the graphics mode,
+ * Ctrl+Shift+M or a right click opens the app's menu. The handler runs inside host_pump(), at any
+ * point of the game, so it may only do what is safe at any time (record a switch, change the window). */
+typedef enum { HOST_CMD_NEXT_GRAPHICS, HOST_CMD_MENU } HostCommand;
 void host_set_command_handler(void (*handler)(HostCommand cmd));
+
+/* For the app's own UI (app/): the native window (HWND on Windows), and a pause of the game clock and
+ * the sound while a menu or question window is open, so the game does not run on behind it. */
+void *host_native_window(void);
+void host_pause_begin(void);
+void host_pause_end(void);
+int  host_window_scale(void);                 /* the window's width over 320, rounded */
+void host_set_window_scale(int scale);         /* leaves full screen; 320 x 240 times scale */
+bool host_fullscreen(void);
+void host_set_fullscreen(bool on);
+_Noreturn void host_quit(void);
 
 /* Runs due timer ticks, generates speaker audio, handles window events and presents the screen when
  * it changed. Every busy-wait loop of the original (key polls, deadlines, delays) must call this.

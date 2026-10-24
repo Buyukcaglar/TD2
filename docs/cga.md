@@ -38,7 +38,7 @@ The backend is built as designed and plays: `.\run.ps1 --cga`.
   - each 2-bit pixel becomes two 1-bit pixels (colour 1 lights the right one, 2 the left one, 3 both);
   - every third line is dark, which stretches the 200 game rows over the taller Hercules raster.
 - **What has no effect.** The game's CGA register writes (`gfx_video_hook`, the crash flash on 3D9h) go to ports that a Hercules machine does not have, so there is no flash.
-- **Port.** `gfx_herc_backend` in `gfx_cga.c` (`--hercules`) shares the whole CGA drawing table and has its own reset, compose (640 × 300), `set_mode` (`herc_init`) and shutdown. The monitor colour is a white phosphor, a port choice; the original card shows whatever the monochrome monitor's phosphor was. The CGA cursor glyphs moved from BC00h, inside Hercules page 1, to C000h. `tests/herc_snapshots.txt` holds the same two runs as the EGA and CGA baselines.
+- **Port.** `gfx_herc_backend` in `gfx_cga.c` (`--hercules`) shares the whole CGA drawing table and has its own reset, compose (640 × 300), `set_mode` (`herc_init`) and shutdown. The monitor colour is a port choice, white by default and green or amber from the app's context menu; the original card shows whatever the monochrome monitor's phosphor was. The CGA cursor glyphs moved from BC00h, inside Hercules page 1, to C000h. `tests/herc_snapshots.txt` holds the same two runs as the EGA and CGA baselines.
 
 ## Layout of the two executables
 

@@ -687,13 +687,22 @@ const GfxBackend gfx_cga_backend = {
  * no Hercules hardware, so they change nothing. */
 
 #define HERC_BYTES    0x8000u
-#define HERC_PHOSPHOR 0xE6E6E6u       /* PORT: a white monochrome monitor */
 
 static struct {
     u8 mode_ctrl;                     /* 3B8h: bit 1 graphics, bit 3 video on, bit 7 page 1 */
     u8 shown[HERC_BYTES];
     bool dirty;
 } herc;
+
+static u32 herc_phosphor = GFX_HERC_WHITE;   /* PORT: the monitor's colour, from the app menu */
+
+u32 gfx_herc_phosphor(void) { return herc_phosphor; }
+
+void gfx_herc_set_phosphor(u32 rgb)
+{
+    herc_phosphor = rgb;
+    herc.dirty = true;
+}
 
 static void herc_reset(void)
 {
@@ -715,7 +724,7 @@ static bool herc_compose(u32 *xrgb)
         u32 *out = xrgb + line * 640;
         for (int bx = 0; bx < 80; bx++) {
             u8 b = on ? row[bx] : 0;
-            for (int k = 0; k < 8; k++) out[bx * 8 + k] = (b >> (7 - k) & 1) ? HERC_PHOSPHOR : 0;
+            for (int k = 0; k < 8; k++) out[bx * 8 + k] = (b >> (7 - k) & 1) ? herc_phosphor : 0;
         }
     }
     return true;

@@ -340,6 +340,56 @@ void host_pump(void)
 static int frame_rate = HOST_DEFAULT_FPS;
 static Uint64 next_frame_ns;
 
+/* ---------------------------------------------------------------- the app UI's window services */
+
+static Uint64 pause_start_ns;
+
+void *host_native_window(void)
+{
+#ifdef _WIN32
+    return SDL_GetPointerProperty(SDL_GetWindowProperties(window), SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
+#else
+    return NULL;
+#endif
+}
+
+void host_pause_begin(void)
+{
+    pause_start_ns = now_ns();
+    if (audio) SDL_PauseAudioStreamDevice(audio);
+}
+
+/* The clock moves on by the time the pause took, so no ticks are owed for it. */
+void host_pause_end(void)
+{
+    Uint64 paused = now_ns() - pause_start_ns;
+    clock_start_ns += paused;
+    if (next_frame_ns) next_frame_ns += paused;
+    if (audio) SDL_ResumeAudioStreamDevice(audio);
+}
+
+int host_window_scale(void)
+{
+    int w = 0, h = 0;
+    SDL_GetWindowSize(window, &w, &h);
+    return (w + 160) / 320;
+}
+
+void host_set_window_scale(int scale)
+{
+    if (host_fullscreen()) SDL_SetWindowFullscreen(window, false);
+    SDL_SetWindowSize(window, 320 * scale, 240 * scale);
+}
+
+bool host_fullscreen(void) { return (SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN) != 0; }
+void host_set_fullscreen(bool on) { SDL_SetWindowFullscreen(window, on); }
+
+_Noreturn void host_quit(void)
+{
+    host_shutdown();
+    exit(0);
+}
+
 void host_set_frame_rate(int fps) { frame_rate = fps < 0 ? 0 : fps; }
 int  host_frame_rate(void) { return frame_rate; }
 
@@ -579,6 +629,7 @@ static bool app_combination(SDL_Keycode key, SDL_Keymod mod, bool repeat)
     HostCommand cmd;
     switch (key) {
     case SDLK_G: cmd = HOST_CMD_NEXT_GRAPHICS; break;
+    case SDLK_M: cmd = HOST_CMD_MENU; break;
     default: return false;
     }
     if (!repeat && command_handler) command_handler(cmd);
@@ -658,8 +709,10 @@ static void process_events(void)
     while (SDL_PollEvent(&ev)) {
         switch (ev.type) {
         case SDL_EVENT_QUIT:
-            host_shutdown();
-            exit(0);
+            host_quit();
+        case SDL_EVENT_MOUSE_BUTTON_UP:
+            if (ev.button.button == SDL_BUTTON_RIGHT && command_handler) command_handler(HOST_CMD_MENU);
+            break;
         case SDL_EVENT_KEY_DOWN: {
             /* Alt+Enter toggles fullscreen and the app combinations go to the app; everything else goes to
              * the BIOS buffer, repeats included. */

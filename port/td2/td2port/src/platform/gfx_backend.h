@@ -77,8 +77,16 @@ void gfx_set_backend(const GfxBackend *b);
  * safe point, after freeing every buffer and releasing every sprite archive of the old backend:
  * gfx_apply_pending_backend() puts the screen into the new backend's mode, cleared. */
 void gfx_request_next_backend(void);
+void gfx_request_backend(const GfxBackend *b);
 const GfxBackend *gfx_pending_backend(void);     /* NULL when no switch is pending */
 void gfx_apply_pending_backend(void);
+
+/* The Hercules monitor's phosphor colour (a port choice; the card had no colour of its own). */
+#define GFX_HERC_WHITE 0xE6E6E6u
+#define GFX_HERC_GREEN 0x41FF00u
+#define GFX_HERC_AMBER 0xFFB000u
+u32  gfx_herc_phosphor(void);
+void gfx_herc_set_phosphor(u32 rgb);
 
 /* Backend internals used by their files. */
 void ega_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip);   /* gfx_ega_blit.c */
