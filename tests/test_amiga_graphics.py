@@ -1,9 +1,10 @@
 """The Amiga graphics backend with the Amiga game's files (platform/gfx_amiga.c).
 
 Runs the port headless with --amiga-graphics and the amiga setting, through the menus to the scenery
-choice, and checks the option screen's title against its Amiga picture (pics/gameoptionscreen) and the
-scenery choice against the Master scenery's Amiga picture (scen/sc1_icon), in their own colours, as the
-Amiga shows them (the top 4 bits of each component).
+choice and to the difficulty screen, and checks the option screen's title, the difficulty screen and the
+scenery choice against their Amiga pictures (pics/gameoptionscreen, pics/gamedifficulty and the Master
+scenery's scen/sc1_icon), in their own colours, as the Amiga shows them (the top 4 bits of each
+component).
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -29,29 +30,35 @@ def amiga_colours(pic):
     return [tuple((c >> 4) * 17 for c in rgb) for rgb in pic.palette]
 
 
+def last_frames(keys, seconds, windows):
+    """Runs the port headless with the Amiga graphics; the last frame shown in each (t0, t1) window."""
+    from PIL import Image
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        (tmp / 'settings.ini').write_text(f'amiga={AMIGA.as_posix()}' + chr(10))
+        shots = tmp / 'shots'
+        shots.mkdir()
+        env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
+                   TD2_RUN_SECONDS=str(seconds), TD2_SNAPSHOT_DIR=str(shots), TD2_SNAPSHOT_MS='20', TD2_KEYS=keys)
+        p = subprocess.run([str(EXE), '--amiga-graphics', '--game-dir', str(GAME), '--user-dir', str(tmp)],
+                           env=env, capture_output=True, text=True, timeout=300)
+        assert p.returncode == 0, p.stderr
+        times = [(float(w[2]), w[0]) for w in (ln.split() for ln in p.stderr.splitlines())
+                 if len(w) == 4 and w[0].startswith('snap') and w[1] == 'at']
+        return [Image.open(shots / max(n for t, n in times if t0 <= t < t1)).convert('RGB')
+                for t0, t1 in windows]
+
+
 @unittest.skipUnless(EXE.exists() and GAME.exists() and (AMIGA / 'scen/sc1_icon').exists(),
                      'needs build/td2port.exe, runs/game and runs/amiga')
 class AmigaGraphicsTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        from PIL import Image
-        with tempfile.TemporaryDirectory() as tmp:
-            tmp = Path(tmp)
-            (tmp / 'settings.ini').write_text(f'amiga={AMIGA.as_posix()}\n')
-            shots = tmp / 'shots'
-            shots.mkdir()
-            env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
-                       TD2_RUN_SECONDS='64', TD2_SNAPSHOT_DIR=str(shots), TD2_SNAPSHOT_MS='20', TD2_KEYS=KEYS)
-            p = subprocess.run([str(EXE), '--amiga-graphics', '--game-dir', str(GAME), '--user-dir', str(tmp)],
-                               env=env, capture_output=True, text=True, timeout=300)
-            assert p.returncode == 0, p.stderr
-            times = [(float(w[2]), w[0]) for w in (ln.split() for ln in p.stderr.splitlines())
-                     if len(w) == 4 and w[0].startswith('snap') and w[1] == 'at']
-
-            def last(t0, t1):
-                return Image.open(shots / max(n for t, n in times if t0 <= t < t1)).convert('RGB')
-            cls.option_screen = last(30, 39)       # the option screen, before the first key there
-            cls.scenery_choice = last(61, 63)      # the last frame of the dissolve that opens the scenery choice
+        # the option screen before the first key there, and the last frame of the dissolve that opens
+        # the scenery choice
+        cls.option_screen, cls.scenery_choice = last_frames(KEYS, 64, [(30, 39), (61, 63)])
+        # Return on the clock opens the difficulty screen
+        cls.difficulty, = last_frames('30:Return,35:Return', 38, [(35, 38)])
 
     def assert_picture(self, frame, file, rows):
         import ilbm
@@ -64,6 +71,10 @@ class AmigaGraphicsTest(unittest.TestCase):
     def test_option_screen_picture(self):
         # the title above the boxes, in the picture's colours above its split line
         self.assert_picture(self.option_screen, 'pics/gameoptionscreen', range(0, 27))
+
+    def test_difficulty_picture(self):
+        # above and below the arrow (rows 53 to 103)
+        self.assert_picture(self.difficulty, 'pics/gamedifficulty', [*range(0, 53), *range(104, 200)])
 
     def test_scenery_choice_picture(self):
         # below the disk name

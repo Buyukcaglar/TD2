@@ -213,7 +213,7 @@ static void put_pixel(s16 x, s16 y, u8 v)
     if (on_screen) gfx_ega.dirty = true;
 }
 
-bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, bool own)
+bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at)
 {
     if (!gfx_amiga_screens()) return false;
     char *path = NULL;
@@ -222,13 +222,8 @@ bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, bool own
     bool ok = path && shp_load(path, name, &s);
     SDL_free(path);
     if (!ok) return false;
-    if (own) {
-        x = s.x;
-        y = s.y;
-    } else {
-        x = (s16)(x - s.hot_x);
-        y = (s16)(y - s.hot_y);
-    }
+    x = at == AMIGA_AT_OWN ? s.x : (s16)(x - s.hot_x);
+    y = at == AMIGA_AT_HOT ? (s16)(y - s.hot_y) : s.y;
     for (int r = 0; r < s.h; r++)
         for (int c = 0; c < s.w; c++)
             if (s.mask[r * s.w + c]) put_pixel((s16)(x + c), (s16)(y + r), s.pix[r * s.w + c]);

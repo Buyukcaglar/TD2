@@ -610,11 +610,11 @@ static bool amiga_menu_page(void)
         const char *car = amiga_car_prefix(cars[i]);
         s16 x = (s16)(i * 0x4E + 7);
         if (!car || !gfx_amiga_sprite(flow_concat(file, sizeof file, car, "logo.shp"), "rcar",
-                                      (s16)(x + 0x22), 0xBE, false))
+                                      (s16)(x + 0x22), 0xBE, AMIGA_AT_HOT))
             gfx_draw_text(i ? 0x7463 : 0x7455, i ? 0x6C : 0x1C, 0xAA);              /* "N/A" */
     }
     const char *scn = amiga_scenery_prefix(DSTR(DS_scn_code));
-    if (!scn || !gfx_amiga_sprite(flow_concat(file, sizeof file, scn, "gameoption.shp"), "scn0", 0, 0, true))
+    if (!scn || !gfx_amiga_sprite(flow_concat(file, sizeof file, scn, "gameoption.shp"), "scn0", 0, 0, AMIGA_AT_OWN))
         gfx_draw_text(0x7471, 0xBC, 0xAA);                                          /* "N/A" */
     gfx_set_text_colours(COL(0x0F, 3), 0);
     return true;

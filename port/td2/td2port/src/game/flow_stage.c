@@ -405,6 +405,15 @@ s16 stage_results(s16 kind)
     return key;
 }
 
+/* PORT: the difficulty arrow in its Amiga form (duel $2df46): the sprite "arow" over the picture, its
+ * hot spot at the level's place on the scale ($24be4). */
+static void amiga_difficulty_arrow(void)
+{
+    static const s16 places[12] = { 74, 89, 105, 120, 136, 151, 166, 181, 197, 212, 228, 243 };
+    blit_copy_own(flow_page_sprite());                /* the picture without the arrow */
+    gfx_amiga_sprite("pics/gamedifficulty.shp", "arow", places[DSS(DS_difficulty)], 0, AMIGA_AT_HOT_X);
+}
+
 /* 0267:139b difficulty_screen — game_flow.md §4.10 (verified) */
 s16 difficulty_screen(void)
 {
@@ -412,9 +421,12 @@ redraw:
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     FarPtr a = load_shapes(0x7D5D);                   /* "gamediff" */
-    blit_copy_own(res_find(a, 0x7D66));               /* "tex0" */
-    blit_copy_own(res_find(a, 0x7D6B));               /* "tex1" */
-    blit_copy_own(res_find(a, 0x7D70));               /* "scal" */
+    bool amiga = gfx_amiga_screens() && gfx_amiga_picture("pics/gamedifficulty", 0, 0);
+    if (!amiga) {
+        blit_copy_own(res_find(a, 0x7D66));           /* "tex0" */
+        blit_copy_own(res_find(a, 0x7D6B));           /* "tex1" */
+        blit_copy_own(res_find(a, 0x7D70));           /* "scal" */
+    }
     FarPtr sca2 = res_find(a, 0x7D75);                /* "sca2" */
     FarPtr arrw = res_find(a, 0x7D7A);                /* "arrw" */
     FarPtr ARRW = res_find(a, 0x7D7F);                /* "ARRW" (mask) */
@@ -424,9 +436,13 @@ redraw:
     for (;;) {
         if (prev != DSS(DS_difficulty)) {
             s16 x = (s16)(DSS(DS_difficulty) * 15 + 0x42);
-            blit_copy_own(sca2);
-            blit_and_raw(ARRW, x, 0x36);
-            blit_or_raw(arrw, x, 0x36);
+            if (amiga) {
+                amiga_difficulty_arrow();
+            } else {
+                blit_copy_own(sca2);
+                blit_and_raw(ARRW, x, 0x36);
+                blit_or_raw(arrw, x, 0x36);
+            }
             prev = DSS(DS_difficulty);
         }
         u16 k = getkey_timeout_switch(DSW(DS_demo_mode) ? 100 : 3000);
