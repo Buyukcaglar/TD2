@@ -426,6 +426,8 @@ static void race_switch_graphics(void)
     DSB(DS_redraw_hud) = 1;
 }
 
+static void game_over(s8 r);
+
 /* ------------------------------------------------------------------------------------------------ */
 /* 06c9:1b2c run_stage — §4.1 */
 s16 run_stage(void)
@@ -475,15 +477,7 @@ new_life:
             fatal("run_stage: bad drive result %d", r);
         }
         if (--DSW(DS_lives) == 0) {
-            if (amiga_game_over()) {                      /* PORT: the Amiga form */
-                DSB(DS_run_state) = 0;
-                goto finish;
-            }
-            select_screen();
-            blit_and_own(hnd(ROAD_H(ROAD_GOVR)));
-            blit_or_own(hnd(ROAD_H(ROAD_govr)));
-            host_sound_event(SOUND_GAME_OVER, 0, NULL);   /* PORT: sample-based audio */
-            wait_after_message();
+            game_over(r);
             DSB(DS_run_state) = 0;
             goto finish;
         }
@@ -509,6 +503,87 @@ finish:
     return (s16)(s8)DSB(DS_run_state);
 }
 
+/* The cracks of the crash's step di, into the main view (crash_sequence). */
+static void crack_lines(u16 di)
+{
+    DSB(DS_seq_counter) = DSB((u16)(DS_crack_line_counts + di));
+    u16 bp = DSW((u16)(DS_crack_line_ptrs + 2 * di));
+    u16 si = 0;
+    do {
+        /* point word: low byte x/2, high byte screen y. AH of the second point's CWDE is reused
+         * for the first point (no CWDE there). */
+        u16 pb = DSW((u16)(bp + si + 2));
+        u16 ax = (u16)(s16)(s8)(u8)((pb >> 8) - 0x13);
+        u8 ah = (u8)(ax >> 8);
+        s16 x1 = (s16)(u16)((((u16)ah << 8) | (pb & 0xFF)) << 1);
+        s16 y1 = (s16)ax;
+        u16 pa = DSW((u16)(bp + si));
+        s16 y0 = (s16)(u16)(((u16)ah << 8) | (u8)((pa >> 8) - 0x13));
+        s16 x0 = (s16)(u16)((((u16)ah << 8) | (pa & 0xFF)) << 1);
+        gfx_draw_line(x0, y0, x1, y1, 0xFF);
+        si = (u16)(si + 4);
+    } while (--DSB(DS_seq_counter) != 0);
+}
+
+/* PORT: the race's last picture again after a live switch at game over, from the race's state (the
+ * switch has rebuilt its graphics): the view, then the crash's hood and cracks or the blown engine's
+ * last smoke, at once. A message's box under game over is not drawn again. */
+static void race_end_redraw(s8 r)
+{
+    snapshot_front();
+    snapshot_mirror();
+    project_front();
+    draw_front();
+    project_mirror();
+    draw_mirror();
+    draw_hud();
+    present_main_view();
+    draw_gear_gate();
+    draw_instruments();
+    draw_steering();
+    if (r == 2) {
+        select_main_view();
+        if (amiga_cockpit_on()) {
+            amiga_cockpit_crashed(true);
+        } else {
+            blit_and_clip_own(hnd(DASH_H(DASH_hdcM)));
+            blit_or_clip_own(hnd(DASH_H(DASH_hdcr)));
+        }
+        for (u16 di = 0; di != 7; di++) {
+            select_main_view();
+            if (!amiga_cockpit_crash_step(di)) crack_lines(di);
+        }
+        amiga_cockpit_crash_tint(false);
+        draw_mirror();
+        draw_hud();
+        present_main_view();
+    } else if (r == 3) {
+        select_screen();
+        blit_copy_own(hnd((u16)(ROAD_H(ROAD_smk0) + 0x0C)));
+        blit_and_hot(hnd(DASH_H(DASH_mirr)), 0xF0, 0x1B);
+    }
+}
+
+/* Game over (in run_stage): TD2's words over the road, or duel's painted letters (amiga_game_over).
+ * PORT: a live switch on the way rebuilds the race's graphics, draws its last picture again and shows
+ * game over again in the new mode at once; the wait starts again. */
+static void game_over(s8 r)
+{
+    for (bool again = false;; again = true) {
+        int k = amiga_game_over(again);
+        if (k < 0) {
+            select_screen();
+            blit_and_own(hnd(ROAD_H(ROAD_GOVR)));
+            blit_or_own(hnd(ROAD_H(ROAD_govr)));
+            if (!again) host_sound_event(SOUND_GAME_OVER, 0, NULL);   /* PORT: sample-based audio */
+            k = wait_after_message_switch();
+        }
+        if (k != KEY_SWITCH) return;
+        race_switch_graphics();
+        race_end_redraw(r);
+    }
+}
+
 /* ------------------------------------------------------------------------------------------------ */
 /* 06c9:3532 crash_sequence — §4.13 */
 void crash_sequence(void)
@@ -531,23 +606,7 @@ void crash_sequence(void)
         deadline_set(10);
         select_main_view();
         if (amiga_cockpit_crash_step(di)) goto shown;     /* PORT: duel's cracks and tint */
-        DSB(DS_seq_counter) = DSB((u16)(DS_crack_line_counts + di));
-        u16 bp = DSW((u16)(DS_crack_line_ptrs + 2 * di));
-        u16 si = 0;
-        do {
-            /* point word: low byte x/2, high byte screen y. AH of the second point's CWDE is reused
-             * for the first point (no CWDE there). */
-            u16 pb = DSW((u16)(bp + si + 2));
-            u16 ax = (u16)(s16)(s8)(u8)((pb >> 8) - 0x13);
-            u8 ah = (u8)(ax >> 8);
-            s16 x1 = (s16)(u16)((((u16)ah << 8) | (pb & 0xFF)) << 1);
-            s16 y1 = (s16)ax;
-            u16 pa = DSW((u16)(bp + si));
-            s16 y0 = (s16)(u16)(((u16)ah << 8) | (u8)((pa >> 8) - 0x13));
-            s16 x0 = (s16)(u16)((((u16)ah << 8) | (pa & 0xFF)) << 1);
-            gfx_draw_line(x0, y0, x1, y1, 0xFF);
-            si = (u16)(si + 4);
-        } while (--DSB(DS_seq_counter) != 0);
+        crack_lines(di);
         raster()->crash_flash((di & 1) == 0);
     shown:
         deadline_wait();
@@ -720,4 +779,21 @@ void wait_after_message(void)
         kbd_flush();
         getkey_timeout(1800);
     }
+}
+
+/* PORT: wait_after_message with the same timing that returns KEY_SWITCH as soon as a live graphics
+ * switch is pending, else 0 (game over). */
+u16 wait_after_message_switch(void)
+{
+    while (getkey() != 0) {
+        if (gfx_pending_backend()) return KEY_SWITCH;
+        host_pump();
+    }
+    for (u32 end = ticks_get() + 40; ticks_get() < end; host_pump())
+        if (gfx_pending_backend()) return KEY_SWITCH;
+    if (DSW(DS_demo_mode) == 0) {
+        kbd_flush();
+        if (getkey_timeout_switch(1800) == KEY_SWITCH) return KEY_SWITCH;
+    }
+    return 0;
 }

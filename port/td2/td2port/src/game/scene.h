@@ -45,7 +45,8 @@ void msg_lives_left(void);              /* 06c9:375f */
 void message_box_06C9_3788(void);       /* 06c9:3788 */
 void select_main_view(void);            /* 06c9:3efc */
 void wait_after_message(void);
-bool amiga_game_over(void);              /* PORT: flow_screens.c, the Amiga form */
+u16  wait_after_message_switch(void);   /* PORT: KEY_SWITCH when a live switch comes on the way, else 0 */
+int  amiga_game_over(bool again);       /* PORT: flow_screens.c, the Amiga form */
 
 /* ---- scene_amiga.c (PORT: the race's cockpit in its Amiga form) */
 bool amiga_cockpit_load(void);          /* the dashboard and its colours; false without the Amiga files */
@@ -58,6 +59,7 @@ void amiga_cockpit_crashed(bool crashed);
  * times and puts the colours back. False without the Amiga form. */
 bool amiga_cockpit_crash_step(int step);
 void amiga_cockpit_crash_end(void);
+void amiga_cockpit_crash_tint(bool tinted);   /* the red tint above the dashboard on or off */
 void amiga_cockpit_gate(bool open);     /* the gear gate is shown, with the knob in it */
 /* duel's pens, as colour words, for the road, the left and the right shoulder and the road in a
  * tunnel, two each, which it alternates in bands along the road; false without the Amiga form. */

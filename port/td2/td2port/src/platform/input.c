@@ -12,6 +12,7 @@
 #include "../host.h"
 #include "../symbols.h"
 #include "gfx.h"
+#include "gfx_backend.h"
 #include "prompts.h"
 #include "timer.h"
 
@@ -487,8 +488,20 @@ void edit_cursor_xor(void)
                       DSW(DS_g_edit_cursor_h));
 }
 
+static s16 edit_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout, s16 pos0, bool stop_on_switch);
+
 /* 16bb:000a edit_text_line */
 s16 edit_text_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout)
+{
+    return edit_line(buf_ds, maxlen, x, y, timeout, 0, false);
+}
+
+s16 edit_text_line_switch(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout, s16 pos)
+{
+    return edit_line(buf_ds, maxlen, x, y, timeout, pos, true);
+}
+
+static s16 edit_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout, s16 pos0, bool stop_on_switch)
 {
     DSW(DS_g_edit_x) = (u16)x;
     DSW(DS_g_edit_y) = (u16)y;
@@ -497,10 +510,10 @@ s16 edit_text_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout)
     while (DSB((u16)(buf_ds + i)) != 0) i++;
     for (; i < maxlen; i++) DSB((u16)(buf_ds + i)) = ' ';
     gfx_draw_text(buf_ds, (u16)x, (u16)y);
-    DSW(DS_g_edit_pos) = 0;
+    DSW(DS_g_edit_pos) = (u16)pos0;
     DSW(DS_g_edit_cursor_h) = 1;
     s16 insert = 0;
-    draw_cursor_glyph(x, y, 1);
+    draw_cursor_glyph((s16)(x + (pos0 << 3)), y, 1);
     DSW(DS_g_edit_cursor_on) = 1;
     deadline_set(timeout);
     slow_deadline_set(4);
@@ -508,6 +521,10 @@ s16 edit_text_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout)
     s16 key;
     for (;;) {
         key = (s16)getkey_until_slow_deadline();
+        if (stop_on_switch && gfx_pending_backend()) {      /* PORT: the caller draws it again */
+            key = (s16)KEY_EDIT_SWITCH;
+            break;
+        }
         if (key == 0) {                                     /* blink every 4 slow ticks */
             slow_deadline_set(4);
             draw_cursor_glyph((s16)(x + (s16)(DSW(DS_g_edit_pos) << 3)), y, DSW(DS_g_edit_cursor_h));

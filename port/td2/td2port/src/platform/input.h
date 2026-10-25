@@ -65,5 +65,10 @@ s16  toupper_c(s16 c);                      /* 16aa:0002 low byte, a-z -> A-Z, s
 /* ---- 16bb: one-line text editor (high-score name). buf is a DGROUP buffer of maxlen + 1 bytes.
  * Returns the exit key (0x0D, 0x1B, 0x09, 0x4800, 0x5000) or 0 on timeout (timeout 0 = none). */
 s16  edit_text_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout);    /* 16bb:000a */
+/* PORT: edit_text_line from the cursor place pos that ends with KEY_EDIT_SWITCH as soon as a live
+ * graphics switch is pending (the cursor's place stays in DS_g_edit_pos), so the screen can be drawn
+ * again in the new mode and the editing go on. */
+#define KEY_EDIT_SWITCH 0xFFFE  /* = KEY_SWITCH (game/flow.h) */
+s16  edit_text_line_switch(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout, s16 pos);
 s16  input_text_line(u16 buf_ds, s16 maxlen, s16 x, s16 y, u32 timeout);   /* 16bb:02a8 */
 void edit_cursor_xor(void);                 /* 16bb:02e6 */

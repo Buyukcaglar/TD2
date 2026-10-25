@@ -593,36 +593,53 @@ void amiga_message_box(const char *text, s16 y, u8 pen)
  * pics/gameover painted over the race by a round brush along duel's strokes ($10ef0, the screen taking
  * the picture's colours), its sample, and then the red letters drip, the sprites dr00 to dr36 of
  * pics/gameover.shp (the stage, then the drip) one a frame at their own places, each over the last.
- * Then 180 frames or a key, and the fade out. At the DOS pace TD2's wait follows the drips. False without
- * the Amiga graphics. */
-bool amiga_game_over(void)
+ * Then 180 frames or a key, and the fade out. At the DOS pace TD2's wait follows the drips. -1 without
+ * the Amiga graphics, KEY_SWITCH when a live switch comes on the way (game_over in scene.c draws the race
+ * again in the new mode), else 0. again: after such a switch, the letters and the drips at once, no
+ * sample, then the wait. */
+static int amiga_game_over_page(bool again);
+
+int amiga_game_over(bool again)
 {
-    if (!gfx_amiga_screens()) return false;
+    if (!gfx_amiga_screens()) return -1;
+    FarPtr freed = flow_page_desc();                 /* run_game freed the page for the race: a page of */
+    ds_far_wr(DS_page_buf_desc, gfx_create_buffer(0x140, 0xC8, 0x0F));   /* its own while it shows */
+    int r = amiga_game_over_page(again);
+    gfx_free_buffer(flow_page_desc());               /* freed before the race's buffers */
+    ds_far_wr(DS_page_buf_desc, freed);
+    return r;
+}
+
+static int amiga_game_over_page(bool again)
+{
     gfx_select_target(flow_page_desc());
     gfx_set_clip_current(0, XBYTES(0x28), 0, 0xC8);  /* the race left a smaller one */
-    if (!gfx_amiga_picture("pics/gameover", 0, 0)) return false;
-    amiga_wipe_over(WIPE_GAME_OVER, 0, 0);          /* duel $13c0e: the letters painted over the race */
+    if (!gfx_amiga_picture("pics/gameover", 0, 0)) return -1;
+    if (again) amiga_wipe_over_now(WIPE_GAME_OVER, 0, 0);
+    else amiga_wipe_over(WIPE_GAME_OVER, 0, 0);     /* duel $13c0e: the letters painted over the race */
     select_screen();
-    host_sound_event(SOUND_GAME_OVER, 0, NULL);     /* once they are in ($13c26) */
+    if (!again) host_sound_event(SOUND_GAME_OVER, 0, NULL);   /* once they are in ($13c26) */
     u32 t0 = ticks_get(), n = 0;
     u16 k = 0;
     for (int a = 0; a < 4 && k != KEY_SWITCH; a++)
         for (int b = 0; b < 7 && k != KEY_SWITCH; b++) {
             char name[5] = { 'd', 'r', (char)('0' + a), (char)('0' + b), 0 };
             gfx_amiga_sprite("pics/gameover.shp", name, 0, 0, AMIGA_AT_OWN);
+            if (again) continue;
             k = wait_ticks(t0 + amiga_ticks(++n));
             if (k != KEY_SWITCH) k = 0;              /* duel reads no keys while they drip */
         }
     if (k != KEY_SWITCH) {
         if (host_amiga_pace()) {
             kbd_flush();
-            wait_ticks(ticks_get() + amiga_ticks(180));
+            k = wait_ticks(ticks_get() + amiga_ticks(180));
         } else {
-            wait_after_message();
+            k = wait_after_message_switch();
         }
     }
+    if (k == KEY_SWITCH) return KEY_SWITCH;
     amiga_fade_out(1);
-    return true;
+    return 0;
 }
 
 /* PORT: the intro's showroom in its Amiga form (duel $2b776). The showroom is a viewport of 84 lines at

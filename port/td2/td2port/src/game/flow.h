@@ -90,6 +90,7 @@ typedef enum {
 } AmigaWipe;
 void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b);
 void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b);
+void amiga_wipe_over_now(AmigaWipe kind, s16 a, s16 b);   /* all its steps at once, shown at the end */
 /* PORT: duel's dissolve ($155a4): the page into the screen (in; the screen takes the page's colours
  * first), or the screen to black (out), one pixel column in eight a pass, in eight passes. */
 void amiga_dissolve(bool in);

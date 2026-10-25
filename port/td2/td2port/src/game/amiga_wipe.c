@@ -50,14 +50,14 @@ static void disk(s16 cx, s16 cy, s16 r)
     }
 }
 
-static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
+static void wipe(AmigaWipe kind, bool in, bool clear, bool now, s16 a, s16 b)
 {
     if (!gfx_amiga_screens()) return;
     gfx_amiga_wipe_begin(flow_page_desc(), in, clear);
     select_screen();
     wipe_t0 = ticks_get();
     wipe_frames = 0;
-    wipe_skip = false;
+    wipe_skip = now;
     switch (kind) {
     case WIPE_BOX:                                      /* $10fde: a box from the centre */
         for (s16 r = a; r <= CX + a; r = (s16)(r + a)) {
@@ -160,7 +160,7 @@ static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
         break;
     }
     if (wipe_skip) {                                    /* PORT: the switch does not wait for the wipe */
-        gfx_amiga_wipe_rect(0, 0, W - 1, H - 1);
+        if (kind != WIPE_GAME_OVER) gfx_amiga_wipe_rect(0, 0, W - 1, H - 1);   /* its strokes are all in */
         gfx_amiga_wipe_show();
         host_present_now();
     }
@@ -193,5 +193,6 @@ void amiga_dissolve(bool in)
     }
 }
 
-void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b) { wipe(kind, in, true, a, b); }
-void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b) { wipe(kind, true, false, a, b); }
+void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b) { wipe(kind, in, true, false, a, b); }
+void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b) { wipe(kind, true, false, false, a, b); }
+void amiga_wipe_over_now(AmigaWipe kind, s16 a, s16 b) { wipe(kind, true, false, true, a, b); }

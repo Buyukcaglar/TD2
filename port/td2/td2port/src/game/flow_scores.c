@@ -65,53 +65,72 @@ void hisc_save(void)
         write_file_or_die(DS_disk_path, ds_ptr(DS_hisc_block), HISC_SIZE);  /* "hisc.dat", 06c9:7866 */
 }
 
+static s16 name_edit(s16 x, s16 y, bool again);
+
 /* PORT: the name entry in its Amiga form (duel $2a000): the player's car from behind, the picture
  * <car>.rear, fills the screen, and a box in pen 15 from (69, 183) to (249, 194) holds the name field,
  * pen 1 on pen 0 from (71, 185), 22 letters wide. duel writes no words there. It draws them into the
  * page and brings it in with a box from the centre ($10fde, step 8), and when the name is in, closes
- * the screen with the frame from the edges ($11062, step 6); TD2's 15 letters and wait stay. False
- * without the Amiga files. */
-static bool amiga_name_entry(void)
+ * the screen with the frame from the edges ($11062, step 6); TD2's 15 letters and wait stay. -1 without
+ * the Amiga files, else the edit's key. again: after a live switch, the page at once and the name as far
+ * as it was typed. */
+static s16 amiga_name_entry(bool again)
 {
     const char *car = amiga_car_prefix(DSTR(DS_player_car_code));
     char file[48];
-    if (!car || !gfx_amiga_screens()) return false;
+    if (!car || !gfx_amiga_screens()) return -1;
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     if (!gfx_amiga_picture(flow_concat(file, sizeof file, car, ".rear"), 0, 0)) {
         select_screen();
-        return false;
+        return -1;
     }
     gfx_fill_rect(0x45, 0xB7, 0xF9 - 0x45 + 1, 0xC2 - 0xB7 + 1, AMIGA_PEN(15));
     gfx_fill_rect(0x47, 0xB9, 22 * 8, 8, AMIGA_PEN(0));
-    amiga_wipe(WIPE_BOX, true, 8, 0);
+    if (again) flow_show_page();
+    else amiga_wipe(WIPE_BOX, true, 8, 0);
     select_screen();
     gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
-    input_text_line(DS_player_name, 15, 0x47, 0xB9, 12000);
-    amiga_wipe(WIPE_BARS, false, 6, 0);
-    return true;
+    s16 k = name_edit(0x47, 0xB9, again);
+    if (k != (s16)KEY_SWITCH) amiga_wipe(WIPE_BARS, false, 6, 0);
+    return k;
 }
 
-/* 0645:0271 name_entry_screen — game_flow.md §4.15 (verified) */
+/* PORT: the name's edit, from the start or, after a live switch (again), from where it was: it ends with
+ * KEY_SWITCH when a switch comes. */
+static s16 name_edit(s16 x, s16 y, bool again)
+{
+    s16 pos = again ? (s16)DSW(DS_g_edit_pos) : 0;
+    if (!again) for (s16 i = 0; i < 15; i++) DSB((u16)(DS_player_name + i)) = ' ';   /* input_text_line */
+    return edit_text_line_switch(DS_player_name, 15, x, y, 12000, pos);
+}
+
+/* 0645:0271 name_entry_screen — game_flow.md §4.15 (verified). PORT: a live switch draws the screen again
+ * in the new mode, and the name goes on from where it was. */
 s16 name_entry_screen(void)
 {
     char name[26];
-    select_screen();
-    gfx_clear_clip(0);
-    if (amiga_name_entry()) return 0;                /* PORT */
-    if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x8214)),
-                      DSS(DS_car_disk), 0) != 0)
-        return KEY_ESC;                                                     /* "rear" */
-    FarPtr a = load_shapes(DS_disk_path);
-    blit_copy_own(res_find(a, 0x8219));                                     /* "logL" */
-    mem_release_cache(a);
-    gfx_set_text_colours(COL(0x0F, 3), 0);
-    draw_text_centered(0x821E, 0x96);              /* "You have qualified as one of" */
-    draw_text_centered(0x823B, 0xA0);              /* "THE DUEL: Test Drive II's best drivers." */
-    gfx_draw_text(0x8263, 0x14, 0xB4);             /* "Enter your name:" */
-    draw_rect_outline(0xB2, 0xAF, 0x13C, 0xBE, 0xFFFF);
-    input_text_line(DS_player_name, 15, 0xB8, 0xB4, 12000);   /* result ignored */
-    return 0;
+    for (bool again = false;; again = true) {
+        select_screen();
+        gfx_clear_clip(0);
+        s16 k = amiga_name_entry(again);             /* PORT */
+        if (k == -1) {
+            if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x8214)),
+                              DSS(DS_car_disk), 0) != 0)
+                return KEY_ESC;                                             /* "rear" */
+            FarPtr a = load_shapes(DS_disk_path);
+            blit_copy_own(res_find(a, 0x8219));                             /* "logL" */
+            mem_release_cache(a);
+            gfx_set_text_colours(COL(0x0F, 3), 0);
+            draw_text_centered(0x821E, 0x96);      /* "You have qualified as one of" */
+            draw_text_centered(0x823B, 0xA0);      /* "THE DUEL: Test Drive II's best drivers." */
+            gfx_draw_text(0x8263, 0x14, 0xB4);     /* "Enter your name:" */
+            draw_rect_outline(0xB2, 0xAF, 0x13C, 0xBE, 0xFFFF);
+            k = name_edit(0xB8, 0xB4, again);      /* input_text_line; the result is ignored */
+        }
+        if (k != (s16)KEY_SWITCH) return 0;
+        flow_switch_graphics();
+    }
 }
 
 /* 0645:0389 hisc_insert — game_flow.md §4.15 (verified) */

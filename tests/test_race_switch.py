@@ -1,5 +1,5 @@
 """The live graphics switch during a race keeps the memory it frees (game/flow_stage.c, stage_shapes_switch),
-and at a section's end it draws the gas station and the results page again in the new mode.
+and at a section's end, at game over and in the name entry it draws the screen again in the new mode.
 
 Starts a European Challenge race (the largest scenery files), switches the graphics every two seconds
 through two full rounds of the modes (EGA, CGA, Hercules and, with runs/amiga, the Amiga form), and
@@ -9,7 +9,10 @@ out of memory ("reservememory - OUT OF MEMORY LOADING"). Takes about a minute.
 
 The section end's test drives tools/snapshots.py's race run to the first section's end (about 300 s of
 game time, half a minute) and switches EGA to CGA on the gas station and CGA to Hercules on the record
-book's page: each must show at once in the new mode, not wait for the next race frame.
+book's page: each must show at once in the new mode, not wait for the next race frame. The game's end
+test drives that run on to game over (about 438 s, a minute and a half) and switches EGA to CGA there
+and CGA to Hercules in the name entry after the first letter: game over shows the crashed race again in
+CGA, the name entry goes on in Hercules, and both letters reach the score table.
 
 Needs build/TD2.exe and runs/game with the European Challenge files; skipped without them.
 """
@@ -52,12 +55,13 @@ class RaceSwitchTest(unittest.TestCase):
 
 @unittest.skipUnless(EXE.exists() and (GAME / 'TDS2HISC.DAT').exists(), 'needs build/TD2.exe and runs/game')
 class SectionEndSwitchTest(unittest.TestCase):
-    def test_gas_station_and_results_page(self):
+    def race(self, until, switches, seconds, windows):
+        """tools/snapshots.py's race run with its keys before `until` and the switches; the last frame in
+        each (t0, t1) window and the score table it saved."""
         from PIL import Image
         from snapshots import RACE_KEYS
-        # the gas station shows from 307 s, the record book's page from 310 s until Return at 316 s
-        keys = [k for k in RACE_KEYS.split(',') if float(k.split(':')[0]) < 317]
-        keys += ['308.5:Ctrl+Shift+G', '313:Ctrl+Shift+G']
+        keys = [k for k in RACE_KEYS.split(',') if float(k.split(':')[0]) < until]
+        keys += [f'{t}:Ctrl+Shift+G' for t in switches]
         with tempfile.TemporaryDirectory() as tmp:
             tmp = Path(tmp)
             (tmp / 'select.dat').write_text('0 0 0 F40 P959 TDS2' + chr(10))
@@ -65,7 +69,7 @@ class SectionEndSwitchTest(unittest.TestCase):
             shots = tmp / 'shots'
             shots.mkdir()
             env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
-                       TD2_RUN_SECONDS='315.5', TD2_SNAPSHOT_DIR=str(shots), TD2_SNAPSHOT_MS='500',
+                       TD2_RUN_SECONDS=str(seconds), TD2_SNAPSHOT_DIR=str(shots), TD2_SNAPSHOT_MS='500',
                        TD2_KEYS=','.join(sorted(keys, key=lambda k: float(k.split(':')[0]))))
             env.pop('TD2_STATE_DIR', None)
             p = subprocess.run([str(EXE), '--game-dir', str(GAME), '--user-dir', str(tmp)],
@@ -74,17 +78,35 @@ class SectionEndSwitchTest(unittest.TestCase):
             times = [(float(w[2]), w[0]) for w in (ln.split() for ln in p.stderr.splitlines())
                      if len(w) == 4 and w[0].startswith('snap') and w[1] == 'at']
 
-            def last(t0, t1):
+            frames = []
+            for t0, t1 in windows:
                 names = [n for t, n in times if t0 <= t < t1]
                 self.assertTrue(names, f'no frame between {t0} and {t1} s')
-                return Image.open(shots / names[-1]).convert('RGB')
-            gas = last(308.5, 310)                  # the gas station in CGA: four colours, mostly not black
-            self.assertEqual(gas.size, (320, 200))
-            self.assertLessEqual(len(gas.getcolors(1 << 16)), 4)
-            self.assertGreater(sum(1 for px in gas.crop((0, 0, 320, 160)).getdata() if px != (0, 0, 0)), 30000)
-            page = last(313, 316)                   # the record book in Hercules
-            self.assertEqual(page.size, (640, 300))
-            self.assertEqual(len(page.getcolors(1 << 16)), 2)
+                frames.append(Image.open(shots / names[-1]).convert('RGB'))
+            scores = (tmp / 'TDS2HISC.DAT').read_bytes()
+        return frames, scores
+
+    def assert_cga_picture(self, frame):
+        """CGA's four colours, and mostly not black above the bottom rows."""
+        self.assertEqual(frame.size, (320, 200))
+        self.assertLessEqual(len(frame.getcolors(1 << 16)), 4)
+        self.assertGreater(sum(1 for px in frame.crop((0, 0, 320, 160)).getdata() if px != (0, 0, 0)), 30000)
+
+    def test_gas_station_and_results_page(self):
+        # the gas station shows from 307 s, the record book's page from 310 s until Return at 316 s
+        (gas, page), _ = self.race(317, [308.5, 313], 315.5, [(308.5, 310), (313, 316)])
+        self.assert_cga_picture(gas)
+        self.assertEqual(page.size, (640, 300))     # the record book in Hercules
+        self.assertEqual(len(page.getcolors(1 << 16)), 2)
+
+    def test_game_over_and_name_entry(self):
+        # game over from 438 s until Return at 442 s; the name entry from 466 s, T at 470 s, D at 470.5 s
+        # and Return at 471 s
+        (over, entry), scores = self.race(472, [439, 470.2], 472, [(439, 442), (470.6, 471)])
+        self.assert_cga_picture(over)               # the crashed race again, in CGA
+        self.assertEqual(entry.size, (640, 300))    # the name entry in Hercules
+        self.assertEqual(len(entry.getcolors(1 << 16)), 2)
+        self.assertIn(b'td', scores)
 
 
 if __name__ == '__main__':

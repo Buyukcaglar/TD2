@@ -296,6 +296,22 @@ static void gas_station_text(FarPtr text, bool amiga)
 #undef GAS_LINE
 }
 
+/* PORT: how far the end of the game got when a live switch came (police_ending, amiga_end_station): the
+ * next of TD2's 19 frames, the hold after them and the message. */
+#define END_STEPS 19
+#define END_HOLD 19
+#define END_MESSAGE 20
+
+/* PORT: wait until the tick; true as soon as a live graphics switch is pending. */
+static bool wait_switch(u32 until)
+{
+    while (ticks_get() < until) {
+        if (gfx_pending_backend()) return true;
+        host_pump();
+    }
+    return false;
+}
+
 /* PORT: the end of the game at the gas station in its Amiga form (duel $13930), in place of TD2's
  * police ending: the gas station with the attendant and a police officer ("guy0" and "gal0" of
  * pics/endgame.shp at their own places); 65 Delay ticks; then for each pair of names in duel's table (-$700e, or the longer one at
@@ -303,15 +319,19 @@ static void gas_station_text(FarPtr text, bool amiga)
  * step. When the player outran the police, the message at -$6da5 (licence revoked,
  * thirty days in jail) in duel's message box at line 2 ($1686e: a black box, pen 24 inside it, the
  * lines in pen 24 on pen 0 ten apart). Then the gas station's text scrolls under it. The tables and the
- * message are read from duel. -1 without the Amiga files, else the key. */
-static s16 amiga_end_station(bool busted)
+ * message are read from duel. -1 without the Amiga files, KEY_SWITCH when a live switch comes (*from then
+ * says how far it got, on police_ending's scale), else the key. From a switch (*from > 0) it goes on at
+ * the matching pair, at once. */
+static s16 amiga_end_station(bool busted, s16 *from)
 {
     if (!amiga_gas_station_page()) return -1;
     gfx_amiga_sprite("pics/endgame.shp", "guy0", 0, 0, AMIGA_AT_OWN);
     gfx_amiga_sprite("pics/endgame.shp", "gal0", 0, 0, AMIGA_AT_OWN);
-    screen_reveal(2);
-    u32 t = ticks_get() + 130;
-    while (ticks_get() < t) host_pump();
+    s16 i0 = *from;
+    if (i0 == 0) {
+        screen_reveal(2);
+        if (wait_switch(ticks_get() + 130)) return (s16)KEY_SWITCH;
+    }
     static char names[100][5];
     int n = 0;
     u8 entry[4];
@@ -320,15 +340,22 @@ static s16 amiga_end_station(bool busted)
         memcpy(names[n], entry, 4);
         names[n++][4] = 0;
     }
-    t = ticks_get();
-    for (int i = 0; i < n; i += 2) {
+    int start = i0 == 0 ? 0 : (i0 >= END_STEPS ? n - 1 : i0 * n / END_STEPS) & ~1;   /* PORT */
+    u32 t = ticks_get();
+    for (int i = start; i < n; i += 2) {
         select_screen();
         blit_copy_own(flow_page_sprite());
         for (int k = i; k < i + 2 && k < n; k++)
             if (names[k][0] != ' ') gfx_amiga_sprite("pics/endgame.shp", names[k], 0, 0, AMIGA_AT_OWN);
+        if (i0 > 0 && i == start) continue;          /* PORT: after a switch, at once */
         t += amiga_ticks(3);
-        while (ticks_get() < t) host_pump();
+        if (wait_switch(t)) {
+            int next = (i + 2) * END_STEPS / n;
+            *from = (s16)(next < END_STEPS - 1 ? next : END_STEPS - 1);
+            return (s16)KEY_SWITCH;
+        }
     }
+    *from = END_MESSAGE;
     char msg[200];
     if (busted && gfx_amiga_duel_data(0x2957Eu - 0x6DA5u, msg, sizeof msg - 1)) {
         msg[sizeof msg - 1] = 0;
@@ -343,13 +370,17 @@ static s16 amiga_end_station(bool busted)
 }
 
 /* Police ending — inline in stage_results (0267:0cc0-117e), game_flow.md §4.14 (verified).
- * Returns non-zero when a load failed (stage_results then returns 0x1B). */
-static s16 police_ending(void)
+ * Returns 1 when a load failed (stage_results then returns 0x1B), else 0. PORT: KEY_SWITCH when a live
+ * switch comes, with *from saying how far it got: the next of its 19 frames, then END_HOLD and
+ * END_MESSAGE. From there (*from > 0) it goes on in the new mode: the frames shown so far at once (the
+ * masks accumulate), then the rest; a wait that a switch cut starts again. */
+static s16 police_ending(s16 *from)
 {
     char name[26];
     FarPtr xcop[2], guy[14], cop[18];
+    s16 i0 = *from;
 
-    music_play(ds_far(DS_songs), 3);
+    if (i0 == 0) music_play(ds_far(DS_songs), 3);
     if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_player_car_code), DSTR(0x7B66)),
                       DSS(DS_car_disk), 0) != 0)
         return 1;                                                              /* "st" */
@@ -372,45 +403,62 @@ static s16 police_ending(void)
     flow_find_list(e, DSTR(0x7B92), guy, 14);       /* "guy0gu0M...guy6gu6M" */
     flow_find_list(e, DSTR(0x7BCB), cop, 18);       /* "cop0co0M...copCcoCM" */
     blit_and_hot(xcop[1], 0xB0, 0xAF);
-    for (s16 i = 0; i < 19; i++) {
+    s16 r = 0;
+    for (s16 i = 0; i < END_STEPS; i++) {
         s16 g = DSS(DS_end_guy_frame2 + 2 * i);
         s16 c = DSS(DS_end_cop_frame2 + 2 * i);
-        if (i == 7) music_play(ds_far(DS_songs), 2);
+        if (i == 7 && i >= i0) music_play(ds_far(DS_songs), 2);
         deadline_set((u32)(s32)DSS(DS_end_frame_ticks + 2 * i));
         gfx_select_target(work);
         blit_copy_hot(guy[g + 1], 0xB0, 0xAF);      /* masks accumulate on the white page */
         blit_copy_hot(cop[c + 1], 0xB0, 0xAF);
+        if (i < i0 - 1 && i < END_STEPS - 1) continue;   /* PORT: shown before a switch */
         gfx_select_target(flow_page_desc());
         blit_copy_own(gfx_desc_sprite(work));
         blit_and_own(gfx_desc_sprite(bg));           /* background through the mask */
         blit_or_hot(xcop[0], 0xB0, 0xAF);
         blit_or_hot(guy[g], 0xB0, 0xAF);
         blit_or_hot(cop[c], 0xB0, 0xAF);
-        if (i == 0) {
+        if (i == 0 && i0 == 0) {
             screen_reveal(2);
         } else {
             select_screen();
             blit_copy_own(flow_page_sprite());
         }
-        deadline_wait();
+        if (i < i0) continue;                        /* PORT: the last one shown before, at once */
+        if (wait_switch(DSL(DS_deadline))) {         /* deadline_wait */
+            *from = (s16)(i + 1);
+            r = (s16)KEY_SWITCH;
+            break;
+        }
     }
-    delay_ticks(700);
-    gfx_fill_rect(10, 10, 300, 0x46, 0);                                       /* on the screen */
-    draw_rect_outline(11, 11, 0x134, 0x4E, 0xFFFF);
-    gfx_set_text_colours(COL(0x0F, 3), 0);
-    draw_text_centered(0x7C14, 0x12);               /* "License revoked and a 30" */
-    draw_text_centered(0x7C2D, 0x1A);               /* "day jail sentence for the" */
-    draw_text_centered(0x7C47, 0x22);               /* "following infractions:" */
-    draw_text_centered(0x7C5E, 0x30);               /* "Excessive speed" */
-    draw_text_centered(0x7C6E, 0x38);               /* "Reckless driving" */
-    draw_text_centered(0x7C7F, 0x40);               /* "Evading highway patrol" */
-    delay_ticks(1200);
-    music_play(ds_far(DS_songs), 1);
-    kbd_flush();
+    if (r == 0 && i0 <= END_HOLD && wait_switch(ticks_get() + 700)) {   /* delay_ticks(700) */
+        *from = END_HOLD;
+        r = (s16)KEY_SWITCH;
+    }
+    if (r == 0) {
+        gfx_fill_rect(10, 10, 300, 0x46, 0);                                   /* on the screen */
+        draw_rect_outline(11, 11, 0x134, 0x4E, 0xFFFF);
+        gfx_set_text_colours(COL(0x0F, 3), 0);
+        draw_text_centered(0x7C14, 0x12);           /* "License revoked and a 30" */
+        draw_text_centered(0x7C2D, 0x1A);           /* "day jail sentence for the" */
+        draw_text_centered(0x7C47, 0x22);           /* "following infractions:" */
+        draw_text_centered(0x7C5E, 0x30);           /* "Excessive speed" */
+        draw_text_centered(0x7C6E, 0x38);           /* "Reckless driving" */
+        draw_text_centered(0x7C7F, 0x40);           /* "Evading highway patrol" */
+        if (wait_switch(ticks_get() + 1200)) {      /* delay_ticks(1200) */
+            *from = END_MESSAGE;
+            r = (s16)KEY_SWITCH;
+        }
+    }
+    if (r == 0) {
+        music_play(ds_far(DS_songs), 1);
+        kbd_flush();
+    }
     gfx_free_buffer(bg);
     gfx_free_buffer(work);
     mem_release_cache_old(e);
-    return 0;
+    return r;
 }
 
 /* PORT: the results pages drawn into the page from their figures, so that a graphics switch can draw
@@ -680,13 +728,18 @@ s16 stage_results(s16 kind)
     kbd_flush();
     key = (s16)results_wait(results_section_page_figures, &page);
 
-    s16 amiga_end = kind == 1 && results_amiga() ? amiga_end_station(DSW(DS_outran_police) != 0) : -1;   /* PORT */
-    if (amiga_end == KEY_ESC) return KEY_ESC;
-    if (amiga_end != -1) {
+    bool busted = DSW(DS_outran_police) != 0;
+    for (s16 from = 0; kind == 1;) {                 /* PORT: from: how far a live switch left the ending */
+        s16 r = results_amiga() ? amiga_end_station(busted, &from) : -1;   /* PORT: the Amiga form */
+        if (r == -1 && busted) {                     /* ---- police ending (0267:0cc0) ---- */
+            r = police_ending(&from);
+            if (r == 1) return KEY_ESC;
+        }
+        if (r == KEY_ESC) return KEY_ESC;
+        if (r == -1) break;
         key = 0;
-    } else if (kind == 1 && DSW(DS_outran_police) != 0) {   /* ---- police ending (0267:0cc0) ---- */
-        if (police_ending() != 0) return KEY_ESC;
-        key = 0;
+        if (r != (s16)KEY_SWITCH) break;
+        flow_switch_graphics();                      /* PORT: the ending again in the new mode */
     }
     kbd_flush();
     return key;

@@ -195,6 +195,11 @@ bool amiga_cockpit_crash_step(int step)
     return true;
 }
 
+void amiga_cockpit_crash_tint(bool tinted)
+{
+    if (ac.on) crash_tint(tinted);
+}
+
 void amiga_cockpit_crash_end(void)
 {
     if (!ac.on) return;
