@@ -3,8 +3,9 @@
 Runs the game headless twice, with the PC speaker and with the Amiga sound, takes a frame every 50 ms
 and finds the spans of time in which the picture changes. With the PC speaker the first showroom car
 waits 150 ticks (1.5 s) before its window opens, as the DOS game does. With the Amiga sound:
-"Accolade presents" ends with its speech, the car's reveal follows at once, the car waits 200 frames
-(80 to the starter, 120 more) and the title stays until both speeches end and 220 frames more.
+"Accolade presents" plays its speech once the bar has slid in and ends with it, the car's reveal
+follows 5 frames later, the car waits 200 frames (80 to the starter, 120 more) and the title stays
+until both speeches end and 220 frames more.
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -61,12 +62,13 @@ class IntroPaceTest(unittest.TestCase):
         self.assertAlmostEqual(s[2][0] - s[1][1], 1.5, delta=0.15)
 
     def test_amiga_pace(self):
-        s = spans('amiga', 19.5)
+        s = spans('amiga', 21.5)
         sys.path.insert(0, str(ROOT / 'tests'))
         from test_amiga_audio import speech_seconds
-        # the car's reveal follows the Accolade speech at once (within the first span), then 200 frames
-        self.assertLess(s[0][1], speech_seconds('accolade') + 0.6)
-        self.assertAlmostEqual(s[1][0] - s[0][1], 200 * FRAME, delta=0.15)
+        # the Accolade picture and its bar (the first span), the speech after them, 5 frames, the car's
+        # reveal, then 200 frames
+        self.assertAlmostEqual(s[1][0] - s[0][1], speech_seconds('accolade') + 5 * FRAME, delta=0.15)
+        self.assertAlmostEqual(s[2][0] - s[1][1], 200 * FRAME, delta=0.15)
         # the title picture stays for both speeches and 220 frames; the credits come next
         title, credits = s[-2], s[-1]
         hold = speech_seconds('the_duel') + speech_seconds('test_drive_ii') + 220 * FRAME

@@ -204,24 +204,32 @@ static void accolade_redraw(void *ctx)
 /* PORT: the rest of the Amiga's "Accolade presents", the picture in the page: it dissolves in, then the
  * bar "bull" (pics/titlecar.shp, a black box with the bar at its right end) slides in at its own row
  * from the left edge to its own x, drawn whole so that it cuts a black line through the letters
- * ($2becc). At the Amiga's pace 4 pixels a frame, as duel; at the DOS pace 2 pixels a tick, as TD2. */
+ * ($2becc). At the Amiga's pace 4 pixels a frame, as duel; at the DOS pace 2 pixels a tick, as TD2.
+ * duel plays the speech once the bar is in (overlay 1204h at $2b2b8), and not after a key. */
 static s16 amiga_accolade(void)
 {
-    host_sound_event(SOUND_ACCOLADE, 0, NULL);
     s16 r = screen_reveal(1);
     s16 end, row;
-    if (r != 0 || !gfx_amiga_sprite_rect("pics/titlecar.shp", "bull", &end, &row, NULL, NULL)) return r;
+    if (r != 0) return r;
+    if (!gfx_amiga_sprite_rect("pics/titlecar.shp", "bull", &end, &row, NULL, NULL)) {
+        host_sound_event(SOUND_ACCOLADE, 0, NULL);
+        return 0;
+    }
     bool amiga = host_amiga_pace();
     u32 t0 = ticks_get();
     for (s16 x = 0, n = 1;; x = (s16)(x + (amiga ? 4 : 2)), n++) {
         if (gfx_pending_backend()) {                 /* the live switch ends the slide */
             flow_switch_redraw(accolade_redraw, NULL);
+            host_sound_event(SOUND_ACCOLADE, 0, NULL);
             return 0;
         }
         DSL(DS_deadline) = t0 + (amiga ? amiga_ticks((u32)n) : (u32)n);
         select_screen();
         gfx_amiga_sprite("pics/titlecar.shp", "bull", x, 0, AMIGA_BOX_AT_X);
-        if (x >= end) return 0;
+        if (x >= end) {
+            host_sound_event(SOUND_ACCOLADE, 0, NULL);
+            return 0;
+        }
         if ((r = (s16)getkey_until_deadline()) != 0) return r;
     }
 }
@@ -239,7 +247,6 @@ s16 accolade_screen(void)
     blit_copy_own(res_find(a, 0x7202));              /* "acc_" */
     blit_copy_own(res_find(a, 0x7207));              /* "pres" */
     blit_copy_own(res_find(a, 0x720C));              /* "copy" */
-    host_sound_event(SOUND_ACCOLADE, 0, NULL);       /* PORT: sample-based audio (the Amiga's speech) */
     r = screen_reveal(1);
     if (r == 0) {
         FarPtr bull = res_find(a, 0x7211);           /* "bull" slides in from the left */
@@ -247,6 +254,7 @@ s16 accolade_screen(void)
             if (gfx_pending_backend()) {             /* PORT: the live switch ends the slide */
                 mem_release_cache_old(a);
                 flow_switch_redraw(accolade_redraw, NULL);
+                host_sound_event(SOUND_ACCOLADE, 0, NULL);
                 return 0;
             }
             deadline_set(1);
@@ -255,6 +263,8 @@ s16 accolade_screen(void)
             if (r != 0) break;
         }
     }
+    /* PORT: sample-based audio, the Amiga's speech once the bar is in, as duel plays it */
+    if (r == 0) host_sound_event(SOUND_ACCOLADE, 0, NULL);
     mem_release_cache_old(a);
     return r;
 }
@@ -280,9 +290,8 @@ s16 intro_sequence(void)
     if (host_amiga_pace() && (r = (s16)getkey_timeout_redraw(amiga_ticks(5), NULL, NULL)) != 0)
         return r;                                    /* PORT: as duel */
     if ((r = title_screen()) != 0) return r;
-    bool amiga = gfx_amiga_screens() && amiga_title_data();
-    if (amiga) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
-    if (!amiga && (r = credits()) != 0) return r;    /* PORT: duel's intro has no DSI logo or credits */
+    if (gfx_amiga_screens() && amiga_title_data()) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
+    if ((r = credits()) != 0) return r;
     if (DSS(DS_nscenes) == 0) return r;
     return hisc_show(700);
 }
@@ -354,10 +363,108 @@ static void credits_text(void)
     draw_text_centered(0x734B, 0x6C);                /* "Kris Hatlelid" */
 }
 
+/* PORT: duel's DSI logo and credits ($2a714, overlay 714h, which duel's main loop runs after the intro
+ * unless a key was pressed). In duel's own 32 colours (A4-5188h) the square "sqar" of pics/dsititle.shp
+ * falls in from the top at x 0, the arrow "arow" comes in from the right at the square's height and
+ * the letters "text" along the bottom line, 3 pixels every 2 frames, until they meet at line 199 in
+ * their own places (the square is drawn over its last place, the other two are moved). Then the whole
+ * "logo", and 30 frames later the credits come in with the left-to-right wipe: duel's lines (A4-52F6h)
+ * in their pens (A4-531Eh), centred on x 160 ($11c80) from line 0, 8 lines apart and 6 for a blank.
+ * They stay 480 frames (at the DOS pace TD2's 5 s), then the bands wipe ends the screen. The text is in
+ * TD2's font, as topaz is not in the files. */
+#define DSI_FILE "pics/dsititle.shp"
+
+static bool amiga_credits_colours(void)
+{
+    u8 b[64];
+    u16 c[32];
+    if (!gfx_amiga_duel_data(0x2957Eu - 0x5188u, b, sizeof b)) return false;
+    for (int i = 0; i < 32; i++) c[i] = (u16)(b[2 * i] << 8 | b[2 * i + 1]);
+    gfx_amiga_colours(c, 32);
+    return true;
+}
+
+/* The logo, and with text the credits, into the page; false without the Amiga graphics. */
+static bool amiga_credits_page(bool text)
+{
+    if (!gfx_amiga_screens()) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    if (!amiga_credits_colours() || !gfx_amiga_sprite(DSI_FILE, "logo", 0, 0, AMIGA_AT_OWN)) return false;
+    s16 y = 0;
+    u8 p[4], pen[2];
+    char line[48];
+    for (u32 i = 0; text && i < 40 && gfx_amiga_duel_data(0x2957Eu - 0x52F6u + 4 * i, p, 4); i++) {
+        u32 at = (u32)p[0] << 24 | (u32)p[1] << 16 | (u32)p[2] << 8 | p[3];
+        if (at == 0 || !gfx_amiga_duel_data(at, line, sizeof line - 1)
+            || !gfx_amiga_duel_data(0x2957Eu - 0x531Eu + 2 * i, pen, 2)) break;
+        line[sizeof line - 1] = 0;
+        if (line[0] == 0) {
+            y = (s16)(y + 6);
+            continue;
+        }
+        gfx_set_text_colours(AMIGA_PEN(pen[1]), AMIGA_PEN(0));
+        gfx_draw_text_str(line, (u16)(160 - (s16)strlen(line) * 4), (u16)y);
+        y = (s16)(y + 8);
+    }
+    return true;
+}
+
+static void credits_redraw(void *ctx);
+
+/* duel's DSI logo and credits; false without the Amiga graphics (*r then unset). */
+static bool amiga_credits(s16 *r)
+{
+    if (!amiga_credits_page(false)) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    amiga_credits_colours();                         /* a clear leaves the target without them */
+    select_screen();
+    gfx_clear_clip(0);
+    amiga_credits_colours();
+    s16 hx, hy, w, h;                                /* duel copies the square's whole box: its 6 blank */
+    bool box = gfx_amiga_sprite_hot(DSI_FILE, "sqar", &hx, &hy)   /* top rows clear its last place */
+               && gfx_amiga_sprite_rect(DSI_FILE, "sqar", NULL, NULL, &w, &h);
+    u32 t0 = ticks_get();
+    for (s16 y = 3, x = 196, n = 1;; y = (s16)(y + 3), x = (s16)(x - 3), n++) {
+        if (y >= 199) { y = 199; x = 0; }
+        if (gfx_pending_backend()) {                 /* the live switch ends the animation */
+            flow_switch_redraw(credits_redraw, NULL);
+            break;
+        }
+        gfx_select_target(flow_page_desc());
+        if (box) gfx_fill_rect_clip((s16)-hx, (s16)(y - hy), w, h, AMIGA_PEN(0));
+        gfx_amiga_sprite(DSI_FILE, "sqar", 0, y, AMIGA_AT_HOT);
+        flow_show_page();
+        select_screen();
+        gfx_amiga_sprite(DSI_FILE, "arow", x, y, AMIGA_AT_HOT);
+        gfx_amiga_sprite(DSI_FILE, "text", x, 199, AMIGA_AT_HOT);
+        DSL(DS_deadline) = t0 + amiga_ticks(2u * (u32)n);
+        if ((*r = (s16)getkey_until_deadline()) != 0) return true;
+        if (y >= 199) break;
+    }
+    if (!gfx_amiga_screens()) {                      /* switched to a DOS mode: TD2's credits from here */
+        *r = (s16)getkey_timeout_redraw(500, credits_redraw, NULL);
+        return true;
+    }
+    amiga_credits_page(false);
+    flow_show_page();
+    if ((*r = (s16)getkey_timeout_redraw(amiga_ticks(30), credits_redraw, NULL)) != 0) return true;
+    amiga_credits_page(true);
+    amiga_wipe(WIPE_RIGHT, true, 6, 0);
+    *r = (s16)getkey_timeout_redraw(host_amiga_pace() ? amiga_ticks(480) : 500, credits_redraw, NULL);
+    if (*r == 0) amiga_wipe(WIPE_BANDS, false, 40, 40);
+    return true;
+}
+
 /* PORT: the DSI logo and the credits again after a graphics switch. */
 static void credits_redraw(void *ctx)
 {
     (void)ctx;
+    if (amiga_credits_page(true)) {
+        flow_show_page();
+        return;
+    }
     FarPtr arc = load_shapes(0x7232);                /* "dsititle" */
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
@@ -373,7 +480,9 @@ static void credits_redraw(void *ctx)
 /* 010c:0285 credits — game_flow.md §4.5 (verified) */
 s16 credits(void)
 {
-    s16 r = dsi_logo_screen();
+    s16 r;
+    if (amiga_credits(&r)) return r;                 /* PORT */
+    r = dsi_logo_screen();
     if (r != 0) return r;
     credits_text();
     return (s16)getkey_timeout_redraw(500, credits_redraw, NULL);
