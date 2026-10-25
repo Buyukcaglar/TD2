@@ -235,6 +235,27 @@ class AmigaGraphicsTest(unittest.TestCase):
                 if (page.getpixel((8 * i + x, 0xC0 + y)) != black) != bool(topaz[ord(ch)][y] & 0x80 >> x)]
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ from Topaz in the last line')
 
+    def test_credits_wipe_and_menu_fade(self):
+        # the credits wipe in left to right over the DSI logo, which stays (duel $2ab10: the wipe grows
+        # over the picture shown); the option screen fades out before the difficulty screen ($2e530)
+        split = []
+        def pick(times):
+            credits = [n for t, n in times if 19.7 <= t < 21.0]
+            split.append(len(credits))
+            return credits + [n for t, n in times if 39.9 <= t < 40.7]
+        frames = run('35:Return,40:Return', 41, pick)
+        credits, menu = frames[:split[0]], frames[split[0]:]
+        logo = credits[0].crop((0, 150, 160, 200)).tobytes()
+        wipe = [f for f in credits if f.crop((0, 0, 320, 120)).getbbox()]
+        self.assertTrue(wipe, 'no frame of the credits wipe')
+        for f in wipe:
+            self.assertEqual(f.crop((0, 150, 160, 200)).tobytes(), logo, 'the logo changed during the wipe')
+        light = [sum(sum(p) for p in f.getdata()) for f in menu]
+        self.assertIn(0, light, 'the menu does not end black')
+        light = light[:light.index(0) + 1]
+        steps = sum(1 for a, b in zip(light, light[1:]) if b < a)
+        self.assertGreaterEqual(steps, 10, f'the menu does not fade: {light}')
+
     def test_car_choice_switch_back(self):
         # the car choice, then four graphics switches round to the Amiga form again: the car is shown in
         # its place at once, as before the switches, not slid in again (the user's report)

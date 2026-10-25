@@ -370,8 +370,8 @@ static void credits_text(void)
  * their own places (the square is drawn over its last place, the other two are moved). Then the whole
  * "logo", and 30 frames later the credits come in with the left-to-right wipe: duel's lines (A4-52F6h)
  * in their pens (A4-531Eh), centred on x 160 ($11c80) from line 0, 8 lines apart and 6 for a blank.
- * They stay 480 frames (at the DOS pace TD2's 5 s), then the bands wipe ends the screen. The text is in
- * TD2's font, as topaz is not in the files. */
+ * The wipe grows over the logo shown, which stays. They stay 480 frames (at the DOS pace TD2's 5 s),
+ * then the bands wipe ends the screen. The text is in Topaz (platform/topaz.c). */
 #define DSI_FILE "pics/dsititle.shp"
 
 static bool amiga_credits_colours(void)
@@ -451,7 +451,7 @@ static bool amiga_credits(s16 *r)
     flow_show_page();
     if ((*r = (s16)getkey_timeout_redraw(amiga_ticks(30), credits_redraw, NULL)) != 0) return true;
     amiga_credits_page(true);
-    amiga_wipe(WIPE_RIGHT, true, 6, 0);
+    amiga_wipe_over(WIPE_RIGHT, 6, 0);              /* over the logo, which stays ($2ab10) */
     *r = (s16)getkey_timeout_redraw(host_amiga_pace() ? amiga_ticks(480) : 500, credits_redraw, NULL);
     if (*r == 0) amiga_wipe(WIPE_BANDS, false, 40, 40);
     return true;
@@ -1036,6 +1036,9 @@ static bool amiga_car_slide(s16 d0, s16 d1, s16 dd, s16 cx, s16 cy, s16 dx)
 
 typedef enum { AMIGA_CHOICE_DONE, AMIGA_CHOICE_SWITCHED, AMIGA_CHOICE_DOS } AmigaChoice;
 
+/* How the last Amiga car choice ended: the key, 0 for the timeout. */
+static u16 amiga_choice_key;
+
 /* The car choice in *car: done, ended by a graphics switch (to go on in the new mode), or TD2's to do
  * (a car without its Amiga files). The car slides in on the way in; after a live switch it is shown in
  * its place at once (slide_in false). */
@@ -1053,6 +1056,7 @@ static AmigaChoice amiga_car_select(s16 *pcar, bool slide_in)
             *pcar = car;
             return AMIGA_CHOICE_SWITCHED;
         }
+        amiga_choice_key = k;
         if (k == 0) k = KEY_ESC;
         if (k == KEY_ESC || k == KEY_ENTER || k == KEY_SPACE) break;
         if (k != KEY_UP && k != KEY_DOWN) continue;
@@ -1143,6 +1147,7 @@ s16 car_select(s16 car)
     char name[26];
     u16 k;
     bool amiga = true, switched = false;
+    amiga_choice_key = KEY_ESC;
 redraw:
     if (amiga && gfx_amiga_screens()) {              /* PORT */
         AmigaChoice c = amiga_car_select(&car, !switched);
@@ -1260,7 +1265,10 @@ void scenery_select(void)
                 break;
             }
             if (k == 0) k = KEY_ESC;
-            if (k == KEY_ENTER || k == KEY_SPACE || k == 0 || k == KEY_ESC) return;
+            if (k == KEY_ENTER || k == KEY_SPACE || k == 0 || k == KEY_ESC) {
+                if (amiga) amiga_fade_out(2);        /* PORT: duel fades every way out ($2da1c) */
+                return;
+            }
             if (k == KEY_UP || k == KEY_RIGHT) DSS(DS_scn_idx)++;
             if (k == KEY_DOWN || k == KEY_LEFT) DSS(DS_scn_idx)--;
         } while (DSS(DS_scn_idx) == old);
@@ -1451,6 +1459,7 @@ s16 main_menu(void)
         if (DSB(DS_protect_sabotage) != 0) return 0;
         from_box = DSS(DS_menu_sel) >= 2;
         if (amiga && from_box) amiga_wipe(WIPE_SWEEP, false, 40, 0);   /* PORT: duel $2e37e */
+        if (amiga && !from_box) amiga_fade_out(2);    /* PORT: duel fades to the race's screens ($2e530) */
 
         s16 r = 0;
         switch (DSS(DS_menu_sel)) {
@@ -1469,11 +1478,15 @@ s16 main_menu(void)
             mem_release_cache(load_raw(DS_disk_path));
             if (!amiga_pick_drive(DSS(DS_car_idx)))   /* PORT: the Amiga form */
                 showroom_drive(DSTR(DS_player_car_code), 0xA0, 0x50, 1, 0);
+            else if (amiga_choice_key == 0) amiga_fade_out(2);   /* PORT: duel's timeout ($2de26) */
             break;
         case 3:
             DSS(DS_opp_idx) = car_select(DSS(DS_opp_idx));
             strcpy(DSTR(DS_opp_car_code), DSTR(car_rec(DSS(DS_opp_idx))));
             DSS(DS_opp_disk) = car_disk(DSS(DS_opp_idx));
+            /* PORT: duel fades the other car's choice out when one is picked ($2eb8a) or at the timeout
+             * ($2de26); Escape leaves without */
+            if (amiga && amiga_choice_key != KEY_ESC) amiga_fade_out(2);
             break;
         case 4:
             scenery_select();

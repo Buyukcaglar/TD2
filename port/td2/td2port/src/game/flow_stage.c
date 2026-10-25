@@ -878,6 +878,7 @@ s16 run_game(s16 mode)
         DSS(DS_last_stage) = (scn_stages(DSS(DS_scn_idx)) == DSS(DS_stage) + 1) ? 1 : 0;
         if (run_game_load_stage()) {
             r = run_stage();                          /* 06c9:1b2c */
+            amiga_fade_out(2);                        /* PORT: duel's race ends with its fade ($1bf18) */
             timer_install_div((s16)PIT_DIV_GAME);     /* 06c9:6059(0x2E9C) */
             timer_add_routine(codeptr_far(FN_music_tick));
         } else {
