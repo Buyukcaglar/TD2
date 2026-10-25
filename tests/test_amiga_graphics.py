@@ -252,6 +252,17 @@ class AmigaGraphicsTest(unittest.TestCase):
         sky = top[struct.unpack_from('>H', road, 0x1A)[0]]
         self.assertEqual({frame.getpixel((x, y)) for y in range(22, 28) for x in range(100, 220)}, {sky})
 
+    def test_race_view_moves(self):
+        # driving off, TD2's view in the cockpit changes on most frames shown (the car moves on two of
+        # three): the small gauges' needles once left TD2's line routine's bit mask at 0, so the next
+        # copy of the view onto the screen kept the old road
+        from PIL import ImageChops
+        frames = frames_after('35:Return,40:Return,43:Return,50:Up/8000', 58, 53)
+        views = [f.crop((40, 30, 300, 100)) for f in frames]
+        moved = sum(ImageChops.difference(a, b).getbbox() is not None for a, b in zip(views, views[1:]))
+        self.assertGreater(len(views), 40)
+        self.assertGreater(moved, len(views) // 2, f'the view changed on {moved} of {len(views) - 1} frames')
+
     def test_scenery_choice_picture(self):
         # below the disk name
         self.assert_picture(self.scenery_choice, 'scen/sc1_icon', range(8, 200))

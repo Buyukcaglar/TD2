@@ -89,9 +89,10 @@ u16 row_unit(const SceneView *v, u16 si)
 }
 
 /* PORT: duel's road bands in the Amiga form ($185b4): duel fills each line's road and both shoulders
- * in one of two pens each by bit 3 of the line's distance along the road. Here the lines between two
- * rows take the band of that row's road unit, alternating every two units. The colours: road, left and
- * right shoulder, and the road in a tunnel ($184b2). */
+ * in one of two pens each by bit 3 of the line's distance along the road. That distance counts TD2's
+ * road units (duel indexes its road bytes by it, $1739c), so a band is eight units long. Here the lines
+ * between two rows take the band of that row's road unit. The colours: road, left and right shoulder,
+ * and the road in a tunnel ($184b2). */
 typedef struct { u16 road, left, right, tunnel; } GroundBand;
 
 static void road_bands(const SceneView *v, GroundBand band[], int lines)
@@ -102,11 +103,11 @@ static void road_bands(const SceneView *v, GroundBand band[], int lines)
     if (!amiga_cockpit_road_bands(pens)) return;
     int n = v->nrows2 / 2;
     bool done[128] = { false };
-    u16 b = (u16)(v->front ? row_unit(v, 0) - 1 : row_unit(v, 0) + 1) >> 1 & 1;
+    u16 b = (u16)(v->front ? row_unit(v, 0) - 1 : row_unit(v, 0) + 1) >> 3 & 1;
     for (int y = 0; y < lines; y++) band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b], pens[6 + b] };
     for (int k = 0; k < n; k++) {
         s16 top = k + 1 < n ? (s16)(RW(v, row_sy, 2 * k + 2) + 1) : 0, bottom = RW(v, row_sy, 2 * k);
-        b = row_unit(v, (u16)(2 * k)) >> 1 & 1;
+        b = row_unit(v, (u16)(2 * k)) >> 3 & 1;
         for (s16 y = top < 0 ? 0 : top; y <= bottom && y < lines; y++)
             if (!done[y]) {
                 done[y] = true;

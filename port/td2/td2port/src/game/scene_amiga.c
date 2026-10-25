@@ -188,8 +188,8 @@ bool amiga_cockpit_crash_step(int step)
         && gfx_amiga_duel_data(0x2957Eu - 0x62E6u + 4u * (u32)step, p, 4)) {
         u32 at = (u32)p[0] << 24 | (u32)p[1] << 16 | (u32)p[2] << 8 | p[3];
         for (u8 i = 0; i < count && gfx_amiga_duel_data(at + 4u * i, line, 4); i++)
-            gfx_draw_line((s16)(line[0] * 2), (s16)(line[1] - VIEW_TOP), (s16)(line[2] * 2),
-                          (s16)(line[3] - VIEW_TOP), AMIGA_PEN(28));
+            gfx_amiga_line((s16)(line[0] * 2), (s16)(line[1] - VIEW_TOP), (s16)(line[2] * 2),
+                           (s16)(line[3] - VIEW_TOP), 28);
     }
     crash_tint(step == 0 || step >= 4);
     return true;
@@ -376,7 +376,7 @@ static void small_gauge(int i, int v)
         return;
     }
     gfx_amiga_sprite(ac.dash, faces[i], 0, 0, AMIGA_AT_OWN);
-    gfx_draw_line((s16)be16(g + 4 + 4 * v), (s16)be16(g + 6 + 4 * v), x, y, AMIGA_PEN(16));
+    gfx_amiga_line((s16)be16(g + 4 + 4 * v), (s16)be16(g + 6 + 4 * v), x, y, 16);
     char part[5] = { parts[i][0], parts[i][1], parts[i][2], "021"[ac.pose], 0 };   /* duel's order */
     gfx_amiga_sprite(ac.dash, part, 0, 0, AMIGA_AT_OWN);
 }

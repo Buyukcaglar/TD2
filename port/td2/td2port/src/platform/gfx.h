@@ -151,6 +151,11 @@ void gfx_amiga_restore_rect(s16 x0, s16 y0, s16 x1, s16 y1);
  * own position, is drawn (a gauge's needle, inside the part the steering wheel leaves visible). False if
  * the sprite is not there. */
 bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x1, s16 y1, u8 pen);
+/* A line in pen on the selected target, written into its planes, within the clip. TD2's line routine
+ * (gfx_draw_line) leaves the EGA bit mask at 0, which TD2's own code resets before its next blit; the
+ * Amiga form's lines (the small gauges, the crash's cracks) are drawn where that code does not run, so
+ * they use this, or the race's next copy of the view would change nothing. */
+void gfx_amiga_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 pen);
 /* TD2's sprites on a target with Amiga colours: those of DOS archive arc are drawn as the sprites of
  * the same names (as they are, in capitals or in small letters) of the Amiga sprite archive file, their
  * hot spots at the DOS sprites' and their masks their own (the DOS masks, AND blits, are left out); the

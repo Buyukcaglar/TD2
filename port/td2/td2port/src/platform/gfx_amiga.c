@@ -486,6 +486,22 @@ void gfx_amiga_restore_rect(s16 x0, s16 y0, s16 x1, s16 y1)
     gfx_ega.dirty = true;
 }
 
+/* A line in pen into the target's planes, where mask (if any) is drawn. */
+static void pen_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 pen, const AmigaSprite *mask)
+{
+    int dx = SDL_abs(x1 - x0), dy = -SDL_abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    int err = dx + dy;
+    for (;;) {
+        int c = mask ? x0 - mask->x : 0, r = mask ? y0 - mask->y : 0;
+        if (!mask || (c >= 0 && c < mask->w && r >= 0 && r < mask->h && mask->mask[r * mask->w + c]))
+            put_pixel(x0, y0, pen);
+        if (x0 == x1 && y0 == y1) break;
+        int e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x0 = (s16)(x0 + sx); }
+        if (e2 <= dx) { err += dx; y0 = (s16)(y0 + sy); }
+    }
+}
+
 bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x1, s16 y1, u8 pen)
 {
     if (!gfx_amiga_screens()) return false;
@@ -495,19 +511,12 @@ bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x
     bool ok = path && shp_load(path, mask, &s);
     SDL_free(path);
     if (!ok) return false;
-    int dx = SDL_abs(x1 - x0), dy = -SDL_abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
-    int err = dx + dy;
-    for (;;) {
-        int c = x0 - s.x, r = y0 - s.y;
-        if (c >= 0 && c < s.w && r >= 0 && r < s.h && s.mask[r * s.w + c]) put_pixel(x0, y0, pen);
-        if (x0 == x1 && y0 == y1) break;
-        int e2 = 2 * err;
-        if (e2 >= dy) { err += dy; x0 = (s16)(x0 + sx); }
-        if (e2 <= dx) { err += dx; y0 = (s16)(y0 + sy); }
-    }
+    pen_line(x0, y0, x1, y1, pen, &s);
     shp_free(&s);
     return true;
 }
+
+void gfx_amiga_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 pen) { pen_line(x0, y0, x1, y1, pen, NULL); }
 
 /* ---- TD2's sprites on Amiga targets (gfx.h) */
 
