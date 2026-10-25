@@ -67,19 +67,28 @@ void hisc_save(void)
 
 /* PORT: the name entry in its Amiga form (duel $2a000): the player's car from behind, the picture
  * <car>.rear, fills the screen, and a box in pen 15 from (69, 183) to (249, 194) holds the name field,
- * pen 1 on pen 0 from (71, 185), 22 letters wide. duel writes no words there. It fades the picture in
- * and out ($10fde, $11062), which the port leaves out; TD2's 15 letters and wait stay. False without the
- * Amiga files. */
+ * pen 1 on pen 0 from (71, 185), 22 letters wide. duel writes no words there. It draws them into the
+ * page and brings it in with a box from the centre ($10fde, step 8), and when the name is in, closes
+ * the screen with the frame from the edges ($11062, step 6); TD2's 15 letters and wait stay. False
+ * without the Amiga files. */
 static bool amiga_name_entry(void)
 {
     const char *car = amiga_car_prefix(DSTR(DS_player_car_code));
     char file[48];
     if (!car || !gfx_amiga_screens()) return false;
-    if (!gfx_amiga_picture(flow_concat(file, sizeof file, car, ".rear"), 0, 0)) return false;
+    gfx_select_target(flow_page_desc());
+    gfx_clear_clip(0);
+    if (!gfx_amiga_picture(flow_concat(file, sizeof file, car, ".rear"), 0, 0)) {
+        select_screen();
+        return false;
+    }
     gfx_fill_rect(0x45, 0xB7, 0xF9 - 0x45 + 1, 0xC2 - 0xB7 + 1, AMIGA_PEN(15));
     gfx_fill_rect(0x47, 0xB9, 22 * 8, 8, AMIGA_PEN(0));
+    amiga_wipe(WIPE_BOX, true, 8, 0);
+    select_screen();
     gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
     input_text_line(DS_player_name, 15, 0x47, 0xB9, 12000);
+    amiga_wipe(WIPE_BARS, false, 6, 0);
     return true;
 }
 
