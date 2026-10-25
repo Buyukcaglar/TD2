@@ -201,6 +201,10 @@ void gfx_amiga_colours_from(FarPtr from, FarPtr to);
 /* One step of duel's fade out ($1a0a8): every colour component of the screen, with its splits, at most
  * level (0 to 15, the Amiga's 4 bits). False if the screen was black already, or has no Amiga colours. */
 bool gfx_amiga_fade_level(int level);
+/* One step of duel's fade of colours first to first + n - 1 before the car choice's drive ($2ea12), in
+ * page's colours and the screen's (above their splits): each colour with some blue becomes its blue one
+ * level less, without red or green. False if none had blue (duel stops then). */
+bool gfx_amiga_fade_blue(FarPtr page, int first, int n);
 /* Gives the selected target n colours as Amiga colour words (0RGB, 4 bits each). */
 void gfx_amiga_colours(const u16 *colours, int n);
 /* Clears plane k of the selected target, or sets plane k along a line; duel draws in one plane by

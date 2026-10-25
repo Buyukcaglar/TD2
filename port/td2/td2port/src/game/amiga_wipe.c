@@ -28,13 +28,13 @@ static void step(u32 frames)
     while (ticks_get() - wipe_t0 < amiga_ticks(wipe_frames)) host_pump();
 }
 
-/* $10e46: a filled circle, as horizontal spans from the midpoint walk (transcribed). */
-static void disk(s16 r)
+/* $10e46: a filled circle round (cx, cy), as horizontal spans from the midpoint walk (transcribed). */
+static void disk(s16 cx, s16 cy, s16 r)
 {
     s16 x = 0, y = r, d = (s16)((1 - r) * 2);
     for (;;) {
-        gfx_amiga_wipe_rect((s16)(CX - x), (s16)(CY - y), (s16)(CX + x), (s16)(CY - y));
-        gfx_amiga_wipe_rect((s16)(CX - x), (s16)(CY + y), (s16)(CX + x), (s16)(CY + y));
+        gfx_amiga_wipe_rect((s16)(cx - x), (s16)(cy - y), (s16)(cx + x), (s16)(cy - y));
+        gfx_amiga_wipe_rect((s16)(cx - x), (s16)(cy + y), (s16)(cx + x), (s16)(cy + y));
         if (y < 0) return;
         if (d < 0 && 2 * (d + y) - 1 <= 0) {           /* across */
             x++;
@@ -82,7 +82,7 @@ static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
     }
     case WIPE_CIRCLE:                                   /* $1115e: a circle from the centre */
         for (s16 r = a; (s32)(r - a) * (r - a) <= (s32)CX * CX + (s32)CY * CY; r = (s16)(r + a)) {
-            disk(r);
+            disk(CX, CY, r);
             step(STEP_FRAMES);
         }
         break;
@@ -134,6 +134,24 @@ static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
             step(STEP_FRAMES);
         }
         break;
+    case WIPE_GAME_OVER: {                              /* $10ef0: a round brush along duel's strokes */
+        u8 t[12 * 40];                                  /* ($21afc: x0, y0, x1, y1, radius, circles; */
+        if (!gfx_amiga_duel_data(0x21AFC, t, sizeof t)) break;   /* x0 <= 0 ends) */
+        s16 px = -1, py = -1;
+        for (int e = 0; e < 40; e++) {
+            s16 w[6];
+            for (int k = 0; k < 6; k++) w[k] = (s16)(t[12 * e + 2 * k] << 8 | t[12 * e + 2 * k + 1]);
+            if (w[0] <= 0) break;
+            for (s16 i = px == w[0] && py == w[1] ? 1 : 0; i < w[5]; i++) {   /* the joint once */
+                s16 n = w[5] > 1 ? (s16)(w[5] - 1) : 1;
+                disk((s16)(w[0] + (w[2] - w[0]) * i / n), (s16)(w[1] + (w[3] - w[1]) * i / n), w[4]);
+                step(STEP_FRAMES);
+            }
+            px = w[2];
+            py = w[3];
+        }
+        break;
+    }
     case WIPE_BLINDS:                                   /* $11618: every a-th column, one more a step */
         for (s16 j = 0; j < a; j++) {
             for (s16 x = 0; x < W; x = (s16)(x + a)) gfx_amiga_wipe_line((s16)(x + j), 0, (s16)(x + j), H - 1);

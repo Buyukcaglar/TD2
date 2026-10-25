@@ -86,6 +86,7 @@ void flow_show_page(void);
  * colours: duel's wipe in itself does not clear (the credits wipe in over the DSI logo that stays). */
 typedef enum {
     WIPE_BOX, WIPE_BARS, WIPE_CIRCLE, WIPE_SWEEP, WIPE_BANDS, WIPE_CHECKS, WIPE_RIGHT, WIPE_DOWN, WIPE_BLINDS,
+    WIPE_GAME_OVER,                     /* duel's strokes of "GAME OVER" with a round brush; a and b unused */
 } AmigaWipe;
 void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b);
 void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b);

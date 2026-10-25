@@ -298,6 +298,24 @@ bool gfx_amiga_fade_level(int level)
     return lit;
 }
 
+bool gfx_amiga_fade_blue(FarPtr page, int first, int n)
+{
+    gfx_select_target(page);
+    TargetColours *ts[2] = { target_colours(), &screen };
+    bool lit = false;
+    for (int j = 0; j < 2; j++) {
+        TargetColours *t = ts[j];
+        if (!t || !t->amiga || (j == 1 && t == ts[0])) continue;
+        for (int i = first; i < first + n && i < 32; i++) {
+            u32 b = (t->rgb[i] & 0xFF) / 17;
+            if (j == 0) lit = lit || b;
+            if (b) t->rgb[i] = (b - 1) * 17;
+        }
+    }
+    show_screen_colours();
+    return lit;
+}
+
 void gfx_amiga_colours(const u16 *colours, int n)
 {
     u32 rgb[32] = { 0 };

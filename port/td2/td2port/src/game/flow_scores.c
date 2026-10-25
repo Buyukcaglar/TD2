@@ -231,8 +231,12 @@ s16 hisc_show(s32 timeout)
 {
     s16 r = hisc_page(timeout);
     if (r != 0) return r;
-    r = screen_reveal(1);
-    if (r != 0) return r;
+    if (gfx_amiga_screens()) {
+        flow_show_page();                          /* PORT: duel swaps its screens: at once ($2a6de) */
+    } else {
+        r = screen_reveal(1);
+        if (r != 0) return r;
+    }
     r = (s16)getkey_timeout_redraw((u32)timeout, hisc_redraw, &timeout);
     amiga_fade_out(1);                             /* PORT: as duel */
     return r;

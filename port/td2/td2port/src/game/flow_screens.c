@@ -589,17 +589,21 @@ void amiga_message_box(const char *text, s16 y, u8 pen)
     }
 }
 
-/* PORT: game over in its Amiga form (duel $13b88), in place of TD2's words over the road: the picture
- * pics/gameover, its sample, and then the red letters drip, the sprites dr00 to dr36 of
+/* PORT: game over in its Amiga form (duel $13b88), in place of TD2's words over the road: the letters of
+ * pics/gameover painted over the race by a round brush along duel's strokes ($10ef0, the screen taking
+ * the picture's colours), its sample, and then the red letters drip, the sprites dr00 to dr36 of
  * pics/gameover.shp (the stage, then the drip) one a frame at their own places, each over the last.
  * Then 180 frames or a key, and the fade out. At the DOS pace TD2's wait follows the drips. False without
  * the Amiga graphics. */
 bool amiga_game_over(void)
 {
     if (!gfx_amiga_screens()) return false;
-    select_screen();
+    gfx_select_target(flow_page_desc());
+    gfx_set_clip_current(0, XBYTES(0x28), 0, 0xC8);  /* the race left a smaller one */
     if (!gfx_amiga_picture("pics/gameover", 0, 0)) return false;
-    host_sound_event(SOUND_GAME_OVER, 0, NULL);
+    amiga_wipe_over(WIPE_GAME_OVER, 0, 0);          /* duel $13c0e: the letters painted over the race */
+    select_screen();
+    host_sound_event(SOUND_GAME_OVER, 0, NULL);     /* once they are in ($13c26) */
     u32 t0 = ticks_get(), n = 0;
     u16 k = 0;
     for (int a = 0; a < 4 && k != KEY_SWITCH; a++)
@@ -1130,7 +1134,7 @@ FarPtr car_slide(s16 car, s16 from, s16 to, FarPtr old)
  * old one down and comes down from above ($2ef1c, $2f006), the previous one the other way ($2efbc,
  * $2ef62), 2 lines a step, while the data goes out to the left and comes in from the left, 8 pixels
  * a step for each line. A step is a frame (a tick at the DOS pace). On the way out the data goes
- * ($2eab2). Not done: the fade of three colours before the pick's drive ($2ea12). */
+ * ($2eab2), and the background's three blues (colours 29 to 31 of pics/bluestat) fade out ($2ea12). */
 #define CAR_H 84                                    /* the car viewport */
 
 static bool amiga_car_page(s16 car, char *sb, size_t n)
@@ -1241,6 +1245,11 @@ static bool amiga_pick_drive(s16 car)
     SDL_free(ss);
     if (frames == 0) return false;
     flow_concat(anim, sizeof anim, pre, ".anim.shp");
+    for (bool lit = true; lit;) {                    /* duel $2ea12: the blues out, a step and Delay(6) */
+        lit = gfx_amiga_fade_blue(flow_page_desc(), 29, 3);
+        host_present_now();
+        if (!pace_until(ticks_get() + 12)) break;
+    }
     host_sound_event(SOUND_SHOWROOM, 0, NULL);
     bool amiga = host_amiga_pace();
     u32 t0 = ticks_get() + (amiga ? amiga_ticks(120) : 150), g = 0;
