@@ -48,7 +48,8 @@ static struct {
     bool gate, gate_drawn;              /* the gear gate is shown, and as drawn */
     s16 knob_x, knob_y;                 /* the knob's hot spot on it */
     u16 top[32];                        /* the colours above the dashboard (the section's road colours) */
-    u16 bands[6];                       /* road, left and right shoulder, two pens each (roaddata 22h on) */
+    u16 bands[8];                       /* road, left and right shoulder, tunnel road, two pens each */
+    u16 tunnel_wall;                    /* the tunnel's walls */
     char scenery[64];                   /* the section's sprite file: the mountains and clouds */
     bool clouds_drift, mountains;
     u32 cloud_x[4];                     /* the clouds' drift, 16.16 pixels */
@@ -69,8 +70,10 @@ static struct {
 #define ROAD_FAR        (0x1C / 2)      /* the band beyond the right ground */
 #define ROAD_LEFT_EDGE  (0x10 / 2)      /* the left shoulder, in bands with 12h */
 #define ROAD_RIGHT_EDGE (0x14 / 2)      /* the right shoulder, in bands with 16h */
-#define ROAD_SURFACE    (0x22 / 2)      /* the road, in bands with 24h ($185b4; 26h, 28h and the edges 1Eh
-                                         * and 20h are for a marked stretch of lines, $184b2) */
+#define ROAD_SURFACE    (0x22 / 2)      /* the road, in bands with 24h ($185b4) */
+#define ROAD_TUNNEL     (0x26 / 2)      /* the road in a tunnel, in bands with 28h ($184b2) */
+#define ROAD_TUNNEL_WALL (0x1E / 2)     /* and the tunnel's walls */
+#define TUNNEL_RIB      22              /* the pen of the tunnel's ribs ($17b88) */
 
 #define CAR_MIN_SPEED   0x018           /* <car>.b: the speed of the speedometer's first table entry */
 #define CAR_SPEED_HUB   0x2EE           /* the speedometer's centre, x and y bytes */
@@ -92,11 +95,42 @@ void amiga_cockpit_crashed(bool crashed) { ac.crashed = crashed; }
 
 void amiga_cockpit_gate(bool open) { ac.gate = open; }
 
-bool amiga_cockpit_road_bands(u16 pens[6])
+bool amiga_cockpit_road_bands(u16 pens[8])
 {
     if (!ac.on) return false;
     memcpy(pens, ac.bands, sizeof ac.bands);
     return true;
+}
+
+u16 amiga_cockpit_tunnel_colour(u16 colour)
+{
+    if (!ac.on) return colour;
+    return colour == 0xFF ? AMIGA_PEN(TUNNEL_RIB) : ac.tunnel_wall;
+}
+
+/* duel's marks along the road ($17b10). Outside a tunnel a post at every 16th unit, on the left at
+ * units 0 mod 32 and on the right at 16 mod 32, a quarter of the road's width out from its edge with its
+ * top an eighth of the width above the row, and none on a side that drops off. duel picks pst4 for rows
+ * at least 92 wide, pst3 from 52, pst2 from 36, else pst1 (its row tables at A4-6842h and A4-6580h).
+ * In a tunnel a lamp at units 8 mod 16, between the ribs, in the middle under the ceiling half the
+ * width above the row: lit4 from 133 wide, lit3 from 71, lit2 from 46, lit1 from 34, else lit0
+ * (A4-654Eh). */
+void amiga_cockpit_road_mark(u16 unit, s16 l, s16 r, s16 y, bool tunnel, bool left_post, bool right_post)
+{
+    if (!ac.on) return;
+    s16 w = (s16)(r - l);
+    char name[5];
+    if (tunnel) {
+        if ((unit & 0x0F) != 8 || !ac.scenery[0]) return;
+        snprintf(name, sizeof name, "lit%d", w >= 133 ? 4 : w >= 71 ? 3 : w >= 46 ? 2 : w >= 34 ? 1 : 0);
+        gfx_amiga_sprite(ac.scenery, name, (s16)((l + r) / 2), (s16)(y - w / 2 + 1), AMIGA_AT_HOT);
+        return;
+    }
+    u16 u = unit & 0x1F;
+    if (u == 0 ? !left_post : u == 0x10 ? !right_post : true) return;
+    snprintf(name, sizeof name, "pst%d", w >= 92 ? 4 : w >= 52 ? 3 : w >= 36 ? 2 : 1);
+    gfx_amiga_sprite("pics/road.shp", name, u == 0 ? (s16)(l - w / 4) : (s16)(r + w / 4), (s16)(y - w / 8),
+                     AMIGA_AT_HOT);
 }
 
 /* duel's horizon ($18c82): the mountains mtn0, mtn1 and mtn2 of the section's sprite file at x = 120,
@@ -238,7 +272,9 @@ bool amiga_cockpit_load(void)
         ac.bands[i] = AMIGA_PEN(pens[ROAD_SURFACE + i]);
         ac.bands[2 + i] = AMIGA_PEN(pens[ROAD_LEFT_EDGE + i]);
         ac.bands[4 + i] = AMIGA_PEN(pens[ROAD_RIGHT_EDGE + i]);
+        ac.bands[6 + i] = AMIGA_PEN(pens[ROAD_TUNNEL + i]);
     }
+    ac.tunnel_wall = AMIGA_PEN(pens[ROAD_TUNNEL_WALL]);
     gfx_amiga_keep_screen_colours(ds_far(DS_drive_buf_desc));
     gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_mirror_desc));
     gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);

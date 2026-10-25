@@ -39,6 +39,19 @@ static void markings(const SceneView *v, u16 si, s16 y, u8 fl)
     }
 }
 
+/* PORT: the Amiga form has no painted lines: duel marks the road with its posts, and in a tunnel with
+ * lamps (amiga_cockpit_road_mark). A row is in the tunnel between its far and near ends' lines; TD2's
+ * open form of a tunnel (walls without a roof, DS_toggle_37f7) gets neither. A side that drops off at the
+ * row's line gets no post. */
+static void amiga_marks(const SceneView *v, u16 si, s16 y)
+{
+    bool tunnel = (VB(v, r0_any) & 0x80) && y >= VS(v, tunnel_out_sy) && y < VS(v, tunnel_in_sy);
+    if (tunnel && DSB(DS_toggle_37f7) != 0) return;
+    u16 f = DSW((u16)(DS_span_flags + (u16)(y << 1)));
+    amiga_cockpit_road_mark(row_unit(v, si), RW(v, row_l, si), RW(v, row_r, si), y, tunnel,
+                            !(f & 0x20), !(f & 0x04));
+}
+
 /* cliff wall at its cut row (0e7e / 0f71; mirror 2ac3 / 2b43) */
 static void cliff_wall(const SceneView *v, u16 si, bool left)
 {
@@ -111,6 +124,7 @@ static void tunnel_mouths(const SceneView *v, u16 si)
             if (di2 <= ax2) { s16 t = di2; di2 = ax2; ax2 = t; }
         }
         di2 = (s16)(di2 - ax2);
+        dx = amiga_cockpit_tunnel_colour(dx);             /* PORT: duel's walls in the Amiga form */
         fill(ax2, bx, di2, cx, dx);
         fill(ax, bx, di, cx, dx);
         if (style) tunnel_rib(v, si);
@@ -118,25 +132,26 @@ static void tunnel_mouths(const SceneView *v, u16 si)
         if (si == VW(v, right_cut_row)) {
             s16 bx = VS(v, tunnel_in_top);
             s16 ax = VS(v, right_cut_x);
-            fill(ax, bx, (s16)(VS(v, tunnel_in_r) - ax), (s16)(RW(v, row_clip, si) - bx), 0);
+            fill(ax, bx, (s16)(VS(v, tunnel_in_r) - ax), (s16)(RW(v, row_clip, si) - bx), amiga_cockpit_tunnel_colour(0));
         }
         if (si == VW(v, left_cut_row)) {
             s16 bx = VS(v, tunnel_in_top);
             s16 dx = VS(v, tunnel_in_l);
-            fill(dx, bx, (s16)(VS(v, left_cut_x) - dx), (s16)(RW(v, row_clip, si) - bx), 0);
+            fill(dx, bx, (s16)(VS(v, left_cut_x) - dx), (s16)(RW(v, row_clip, si) - bx), amiga_cockpit_tunnel_colour(0));
         }
     }
     if (si != VW(v, tunnel_in_row)) return;               /* near end (entrance) */
     s16 clip = RW(v, row_clip, si);
     s16 in_l = VS(v, tunnel_in_l), in_r = VS(v, tunnel_in_r), in_top = VS(v, tunnel_in_top);
     if (DSB(DS_start_flags) & 0x80) {                     /* car already inside */
+        u16 c = amiga_cockpit_tunnel_colour(style ? COL(8, 0) : 0);   /* PORT: duel's walls */
         if (!style) {
-            fill(0, 0, in_l, clip, 0);
-            fill(in_r, 0, (s16)(wd - in_r), clip, 0);
+            fill(0, 0, in_l, clip, c);
+            fill(in_r, 0, (s16)(wd - in_r), clip, c);
         } else {
             s16 t = (s16)(VS(v, top_sy) - 5), h = (s16)(clip - t);
-            fill(in_r, t, (s16)(wd - in_r), h, COL(8, 0));
-            fill(0, t, in_l, h, COL(8, 0));
+            fill(in_r, t, (s16)(wd - in_r), h, c);
+            fill(0, t, in_l, h, c);
         }
         return;
     }
@@ -482,8 +497,11 @@ static void draw_objects(const SceneView *v)
         /* 1. road markings */
         s16 y = RW(v, row_sy, si);
         u8 fl = RB(v, row_flags, si);
-        if (!(y > RW(v, row_clip, si) || y == v->height) && ((fl & 1) || !(VB(v, dash_phase) & 4)))
+        if (amiga_cockpit_on()) {                         /* PORT: duel's posts and lamps instead */
+            if (!(y > RW(v, row_clip, si) || y == v->height)) amiga_marks(v, si, y);
+        } else if (!(y > RW(v, row_clip, si) || y == v->height) && ((fl & 1) || !(VB(v, dash_phase) & 4))) {
             markings(v, si, y, fl);
+        }
 
         /* 2. left cliff, 3. right cliff */
         if (VB(v, r0_state) & 0x40) {

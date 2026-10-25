@@ -59,9 +59,15 @@ void amiga_cockpit_crashed(bool crashed);
 bool amiga_cockpit_crash_step(int step);
 void amiga_cockpit_crash_end(void);
 void amiga_cockpit_gate(bool open);     /* the gear gate is shown, with the knob in it */
-/* duel's pens, as colour words, for the road, the left and the right shoulder, two each, which it
- * alternates in bands along the road; false without the Amiga form. */
-bool amiga_cockpit_road_bands(u16 pens[6]);
+/* duel's pens, as colour words, for the road, the left and the right shoulder and the road in a
+ * tunnel, two each, which it alternates in bands along the road; false without the Amiga form. */
+bool amiga_cockpit_road_bands(u16 pens[8]);
+/* A tunnel's colour in duel's pens: its ribs (TD2's 0FFh) in pen 22, the rest dark (TD2's black and
+ * grey) in the walls' pen; the colour as it is without the Amiga form. */
+u16 amiga_cockpit_tunnel_colour(u16 colour);
+/* duel's post or tunnel lamp, if any, at road unit `unit` on a row from x l to r at line y; the sides
+ * with a post allowed (no drop-off). Nothing without the Amiga form. */
+void amiga_cockpit_road_mark(u16 unit, s16 l, s16 r, s16 y, bool tunnel, bool left_post, bool right_post);
 /* duel's mountains and clouds over the front view's sky, horizon its line and scroll TD2's mountain
  * scroll; false without the Amiga form (TD2 draws its own). */
 bool amiga_cockpit_backdrop(s16 horizon, u16 scroll);          /* 06c9:3f0d */
@@ -128,6 +134,7 @@ void draw_ground(const SceneView *v);           /* 06c9:0b0d / 06c9:284f */
 void draw_tunnel_walls(const SceneView *v);     /* 06c9:0bb8 / 06c9:28f9 */
 void hline(s16 dx, s16 ax, s16 di, u16 bx);     /* 06c9:0d01 */
 void tunnel_rib(const SceneView *v, u16 si);    /* 06c9:1ad6 / 06c9:34dc */
+u16 row_unit(const SceneView *v, u16 si);       /* PORT: the road unit of row si, for duel's bands and marks */
 
 void draw_front_objects(void);                  /* 06c9:0d13 */
 void draw_mirror_objects(void);                 /* 06c9:2958 */

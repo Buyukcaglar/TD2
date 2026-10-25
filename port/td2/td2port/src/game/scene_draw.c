@@ -20,7 +20,7 @@ void draw_sky(const SceneView *v)
             s16 di = VS(v, tunnel_out_l), bp = VS(v, tunnel_out_r);
             if (VB(v, r0_state) & 0x80) {
                 fill(di, VS(v, tunnel_in_top), (s16)(bp - di),
-                     (s16)(VS(v, tunnel_out_top) - VS(v, tunnel_in_top)), 0);
+                     (s16)(VS(v, tunnel_out_top) - VS(v, tunnel_in_top)), amiga_cockpit_tunnel_colour(0));
                 return;
             }
             s16 top = VS(v, tunnel_in_top), ceil = VS(v, tunnel_ceiling);
@@ -30,7 +30,7 @@ void draw_sky(const SceneView *v)
             } else {
                 fill(di, ceil, (s16)(VS(v, right_cut_x) - di), (s16)(VS(v, top_sy) - ceil), sky);
             }
-            fill(di, top, (s16)(bp - di), (s16)(ceil - top), 0);
+            fill(di, top, (s16)(bp - di), (s16)(ceil - top), amiga_cockpit_tunnel_colour(0));
             return;
         }
         if (bl & 0x40) {
@@ -80,29 +80,37 @@ void draw_sky(const SceneView *v)
     }
 }
 
+/* PORT: the road unit of row si: the front view's row k is unit player_pos + 1 + k, the mirror's
+ * player_pos - k. */
+u16 row_unit(const SceneView *v, u16 si)
+{
+    int n = v->nrows2 / 2, k = si / 2;
+    return v->front ? (u16)(VW(v, walk_ptr) - n + k) : (u16)(VW(v, walk_ptr) + n - k);
+}
+
 /* PORT: duel's road bands in the Amiga form ($185b4): duel fills each line's road and both shoulders
  * in one of two pens each by bit 3 of the line's distance along the road. Here the lines between two
- * rows take the band of that row's road unit, alternating every two units (the front view's row k is
- * unit player_pos + 1 + k, the mirror's player_pos - k). The colours: road, left and right shoulder. */
-typedef struct { u16 road, left, right; } GroundBand;
+ * rows take the band of that row's road unit, alternating every two units. The colours: road, left and
+ * right shoulder, and the road in a tunnel ($184b2). */
+typedef struct { u16 road, left, right, tunnel; } GroundBand;
 
 static void road_bands(const SceneView *v, GroundBand band[], int lines)
 {
-    u16 pens[6];
-    for (int y = 0; y < lines; y++) band[y] = (GroundBand){ COL(7, 0), DSW(DS_col_shoulder), DSW(DS_col_shoulder) };
+    u16 pens[8];
+    for (int y = 0; y < lines; y++)
+        band[y] = (GroundBand){ COL(7, 0), DSW(DS_col_shoulder), DSW(DS_col_shoulder), COL(8, 0x9966) };
     if (!amiga_cockpit_road_bands(pens)) return;
     int n = v->nrows2 / 2;
-    u16 start = v->front ? (u16)(VW(v, walk_ptr) - n) : (u16)(VW(v, walk_ptr) + n);
     bool done[128] = { false };
-    u16 b = (u16)(v->front ? start - 1 : start + 1) >> 1 & 1;
-    for (int y = 0; y < lines; y++) band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b] };
+    u16 b = (u16)(v->front ? row_unit(v, 0) - 1 : row_unit(v, 0) + 1) >> 1 & 1;
+    for (int y = 0; y < lines; y++) band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b], pens[6 + b] };
     for (int k = 0; k < n; k++) {
         s16 top = k + 1 < n ? (s16)(RW(v, row_sy, 2 * k + 2) + 1) : 0, bottom = RW(v, row_sy, 2 * k);
-        b = (u16)(v->front ? start + k : start - k) >> 1 & 1;
+        b = row_unit(v, (u16)(2 * k)) >> 1 & 1;
         for (s16 y = top < 0 ? 0 : top; y <= bottom && y < lines; y++)
             if (!done[y]) {
                 done[y] = true;
-                band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b] };
+                band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b], pens[6 + b] };
             }
     }
 }
@@ -169,16 +177,20 @@ void draw_tunnel_walls(const SceneView *v)
     s16 di = VS(v, tunnel_out_sy);
     s16 si = (s16)(di << 1);
     if (si >= end2) return;
+    GroundBand band[128];                                 /* PORT: duel's pens in the Amiga form */
+    road_bands(v, band, v->height < 128 ? v->height : 128);
     do {
         s16 l = SPAN(span_l, (u16)si);
         u16 bx;
         if (DSB(DS_toggle_37f7) == 0) {
-            hline(VS(v, tunnel_in_l), l, di, 0);
-            hline(SPAN(span_l, (u16)si), SPAN(span_r, (u16)si), di, COL(8, 0x9966));
-            bx = 0;
-        } else {
-            bx = COL(8, 0);
+            bx = amiga_cockpit_tunnel_colour(0);
             hline(VS(v, tunnel_in_l), l, di, bx);
+            hline(SPAN(span_l, (u16)si), SPAN(span_r, (u16)si), di, band[di & 127].tunnel);
+        } else {
+            bx = amiga_cockpit_tunnel_colour(COL(8, 0));
+            hline(VS(v, tunnel_in_l), l, di, bx);
+            if (amiga_cockpit_on())                       /* PORT: duel draws the road in its tunnel pens */
+                hline(SPAN(span_l, (u16)si), SPAN(span_r, (u16)si), di, band[di & 127].tunnel);
         }
         hline(SPAN(span_r, (u16)si), VS(v, tunnel_in_r), di, bx);
         di++;
@@ -193,7 +205,8 @@ void tunnel_rib(const SceneView *v, u16 si)
     s16 cx = (s16)(bx - (s16)(RU(v, w, si) >> 1));
     if (DSB(DS_toggle_37f7) != 0) cx = (s16)(VS(v, top_sy) - 5);
     s16 ax = RW(v, row_l, si), di = RW(v, row_r, si);
-    if (DSB(DS_toggle_37f7) == 0) gfx_draw_line(ax, cx, di, cx, 0xFF);
-    gfx_draw_line(di, cx, di, bx, 0xFF);
-    gfx_draw_line(ax, cx, ax, bx, 0xFF);
+    u16 c = amiga_cockpit_tunnel_colour(0xFF);           /* PORT: duel's pen 22 in the Amiga form */
+    if (DSB(DS_toggle_37f7) == 0) gfx_draw_line(ax, cx, di, cx, c);
+    gfx_draw_line(di, cx, di, bx, c);
+    gfx_draw_line(ax, cx, ax, bx, c);
 }
