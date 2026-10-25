@@ -1037,13 +1037,14 @@ static bool amiga_car_slide(s16 d0, s16 d1, s16 dd, s16 cx, s16 cy, s16 dx)
 typedef enum { AMIGA_CHOICE_DONE, AMIGA_CHOICE_SWITCHED, AMIGA_CHOICE_DOS } AmigaChoice;
 
 /* The car choice in *car: done, ended by a graphics switch (to go on in the new mode), or TD2's to do
- * (a car without its Amiga files). */
-static AmigaChoice amiga_car_select(s16 *pcar)
+ * (a car without its Amiga files). The car slides in on the way in; after a live switch it is shown in
+ * its place at once (slide_in false). */
+static AmigaChoice amiga_car_select(s16 *pcar, bool slide_in)
 {
     char sb[48];
     s16 car = *pcar;
     if (!amiga_car_page(car, sb, sizeof sb) || !gfx_amiga_hires_band(sb, CAR_H)) return AMIGA_CHOICE_DOS;
-    bool ok = amiga_car_slide(114, 0, -1, -4, 0, -16);
+    bool ok = amiga_car_slide(slide_in ? 114 : 0, 0, -1, -4, 0, -16);
     for (;;) {
         u16 k = ok ? getkey_timeout_switch(3000) : KEY_SWITCH;
         if (k == KEY_SWITCH) {
@@ -1141,12 +1142,13 @@ s16 car_select(s16 car)
 {
     char name[26];
     u16 k;
-    bool amiga = true;
+    bool amiga = true, switched = false;
 redraw:
     if (amiga && gfx_amiga_screens()) {              /* PORT */
-        AmigaChoice c = amiga_car_select(&car);
+        AmigaChoice c = amiga_car_select(&car, !switched);
         if (c == AMIGA_CHOICE_DONE) return car;
         if (c == AMIGA_CHOICE_DOS) amiga = false;
+        switched = c == AMIGA_CHOICE_SWITCHED;
         goto redraw;
     }
     gfx_select_target(flow_page_desc());
@@ -1169,6 +1171,7 @@ redraw:
         if (k == KEY_SWITCH) {
             if (!far_is_null(a)) mem_release_cache_old(a);
             flow_switch_graphics();
+            switched = true;
             goto redraw;
         }
         if (k == 0) k = KEY_ESC;

@@ -29,8 +29,8 @@ u16 plural_s(s16 n)
 }
 
 /* PORT: the results pages in their Amiga form (duel $12dfa, its boxes $12c04): a black page in four
- * colours (-$75cc: black, BBBh for the text, 800h and 08Eh), the boxes filled, red on the section page
- * and blue on the duel page, whose top box is 8 lines lower; the titles 8 pixels further left; a
+ * colours (-$75cc: black, BBBh for the text, 800h and 08Eh), the boxes' outlines, red on the section
+ * page and blue on the duel page, whose top box is 8 lines lower; the titles 8 pixels further left; a
  * penalty only when there is one; the remarks on the driving at the top left (lines 0 and 9). TD2's
  * figures and words stay (duel's differ a little: "Press joystick button to continue...", "You got %d
  * speeding tickets", and its record and end-of-game sentences). Each page waits 600 frames or a key at
@@ -42,6 +42,34 @@ static void results_amiga_colours(void)
     static const u16 colours[4] = { 0x000, 0xBBB, 0x800, 0x08E };
     gfx_amiga_colours(colours, 4);
     gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
+}
+
+/* duel's words at A4 - off in the Amiga form, else NULL. */
+static const char *results_duel_text(u16 off, char *buf, size_t n)
+{
+    if (!results_amiga() || !gfx_amiga_duel_data(0x2957Eu - off, buf, (u32)(n - 1))) return NULL;
+    buf[n - 1] = 0;
+    return buf;
+}
+
+/* The pages' last line: in the Amiga form duel's "Press joystick button to continue..." (-$73ea) at
+ * line C0h ($12c04), else TD2's at the next line. */
+static void results_continue(u16 td2_ds)
+{
+    char buf[48];
+    const char *s = results_duel_text(0x73EA, buf, sizeof buf);
+    if (s) DSW(DS_results_y) = 0xC0;
+    results_line(s ? s : DSTR(td2_ds), 0);
+}
+
+/* A box's outline in pen (-$7f98: Move, then Draw round the corners); the titles' black backgrounds
+ * cut its top line. */
+static void results_amiga_box(s16 x0, s16 y0, s16 x1, s16 y1, u8 pen)
+{
+    gfx_amiga_line(x0, y0, x1, y0, pen);
+    gfx_amiga_line(x1, y0, x1, y1, pen);
+    gfx_amiga_line(x1, y1, x0, y1, pen);
+    gfx_amiga_line(x0, y1, x0, y0, pen);
 }
 
 /* A results page's wait: a key, or 0 after 600 frames at the Amiga pace; then the Amiga fade. */
@@ -73,7 +101,9 @@ void results_overall(void)
     char buf[80];
     s16 m, s, d;
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 0x10);
-    results_line_ds(0x7C96, 0x48);                                   /* " Overall Performance " */
+    char title[32];
+    const char *t = results_duel_text(0x743A, title, sizeof title);  /* PORT: duel's " Overall Performance: " */
+    results_line(t ? t : DSTR(0x7C96), 0x48);                        /* " Overall Performance " */
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 8);
     time_parts(DSS(DS_total_time), &m, &s, &d);
     snprintf(buf, sizeof buf, "Your time:      %d:%02d.%d", m, s, d);                  /* DS:7CAC */
@@ -101,8 +131,8 @@ static void results_section_page_in(bool duel)
     if (amiga) {                                                     /* PORT: duel $12c04 */
         s16 y = duel ? 8 : 0;
         results_amiga_colours();
-        gfx_fill_rect(0, (s16)(y + 0x1B), 0x138, 0x49, AMIGA_PEN(duel ? 3 : 2));
-        gfx_fill_rect(0, 0x7B, 0x138, 0x39, AMIGA_PEN(duel ? 3 : 2));
+        results_amiga_box(0, (s16)(y + 0x1B), 0x137, (s16)(y + 0x63), duel ? 3 : 2);
+        results_amiga_box(0, 0x7B, 0x137, 0xB3, duel ? 3 : 2);
         DSW(DS_results_y) = (u16)(y + 0x18);
     } else {
         draw_rect_outline(0, 0x24, 0x137, 0x6C, COL(4, 0x5555));
@@ -548,7 +578,7 @@ s16 stage_results(s16 kind)
         snprintf(buf, sizeof buf, "Other's score:  %ld points", (long)DSSL(DS_opp_total_score)); /* DS:7A7A */
         results_line(buf, 8);
         DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 0x10);
-        results_line_ds(0x7A95, 0);                   /* "Press key or joystick to continue..." */
+        results_continue(0x7A95);                     /* "Press key or joystick to continue..." */
         screen_reveal(2);
         kbd_flush();
         if (results_wait() == KEY_ESC) return KEY_ESC;
@@ -589,7 +619,7 @@ s16 stage_results(s16 kind)
     snprintf(buf, sizeof buf, "Best score:     %ld points", (long)show_cum_score);           /* DS:7B26 */
     results_line(buf, 8);
     DSW(DS_results_y) = (u16)(DSW(DS_results_y) + 0x10);
-    results_line_ds(0x7B41, 0);                       /* "Press key or joystick to continue..." */
+    results_continue(0x7B41);                         /* "Press key or joystick to continue..." */
     screen_reveal(2);
     kbd_flush();
     key = (s16)results_wait();

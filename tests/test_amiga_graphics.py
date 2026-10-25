@@ -193,8 +193,9 @@ class AmigaGraphicsTest(unittest.TestCase):
         import ilbm
         import shp
         keys = ['35:Return', '40:Return', '43:Return', '53:Up/400', '57:Left/0.5']
-        keys += [f'{t}:Return' for t in range(75, 336, 12)]
-        frame, = run(','.join(keys), 339, lambda times: [max(n for t, n in times if 331 <= t < 339)])
+        keys += [f'{t}:Return' for t in range(75, 336, 12)] + ['346:Return']
+        frame, page = run(','.join(keys), 352, lambda times: [max(n for t, n in times if 331 <= t < 339),
+                                                             max(n for t, n in times if t < 352)])
         pic = ilbm.parse((AMIGA / 'scen/sc1_gasstation').read_bytes())
         pal = amiga_colours(pic)
         sign = {s.name: s for s in shp.read((AMIGA / 'scen/sc1_gasstation.shp').read_bytes())}['bruc']
@@ -211,6 +212,24 @@ class AmigaGraphicsTest(unittest.TestCase):
                 for y in range(car.height) for x in range(car.width) for i in [y * car.width + x]}
         diff = [(x, y) for (x, y), v in want.items() if v and frame.getpixel((car.x + x, top + y)) != gas[v]]
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the car and its shadow')
+        # then the section's results page (duel $12dfa): the boxes are red outlines from x = 0 to 137h
+        # ($12c04: -$7f98 draws a rectangle), the box titles' black background cutting the top line
+        red, black = (136, 0, 0), (0, 0, 0)
+        for y0, y1, title in ((0x1B, 0x63, 0x38), (0x7B, 0xB3, 0x48)):
+            self.assertEqual([page.getpixel(p) for p in ((0, y0 + 20), (0x137, y0 + 20), (150, y1), (4, y0))],
+                             [red] * 4, f'box at line {y0}')
+            self.assertEqual(page.getpixel((300, y0 + 4)), black, f'inside the box at line {y0}')
+            self.assertEqual(page.getpixel((title + 4, y0)), black, f'the title on the box at line {y0}')
+
+    def test_car_choice_switch_back(self):
+        # the car choice, then four graphics switches round to the Amiga form again: the car is shown in
+        # its place at once, as before the switches, not slid in again (the user's report)
+        from PIL import ImageChops
+        before, *after = run('35:Return,38:Down,40:Return,46:Ctrl+Shift+G,47:Ctrl+Shift+G,48:Ctrl+Shift+G,'
+                             '49:Ctrl+Shift+G', 52,
+                             lambda times: [max(n for t, n in times if t < 46)] + [n for t, n in times if t >= 49])
+        self.assertLessEqual(len(after), 2, 'frames after the switch back')
+        self.assertIsNone(ImageChops.difference(before, after[-1]).getbbox())
 
     def test_race_cockpit(self):
         # a race against the clock, standing at the start: the F40's dashboard picture (cars/f40dash)
