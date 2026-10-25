@@ -731,6 +731,23 @@ static const u16 stage_handles[] = {
     DS_opp_road_arc, DS_dash_arc, DS_cop_arc, DS_road_arc,
 };
 
+/* Loads the stage's optional signs and their font, the last of run_game_load_stage's files. */
+static bool stage_load_signs(void)
+{
+    char name[26];
+
+    snprintf(name, sizeof name, "%s%c%s", DSTR(DS_scn_code), (char)('0' + DSS(DS_stage)), DSTR(0x7DDA));  /* ".sgn" */
+    if (ensure_disk_c(name, DSS(DS_scn_disk), 0) != 0) return false;
+    if (mem_is_cached_c(name) != 0 || find_first(DS_disk_path) != 0) {                 /* optional */
+        ds_far_wr(DS_scn_signs, load_raw(DS_disk_path));
+        if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_scn_code), DSTR(0x7DE6)),
+                          DSS(DS_scn_disk), 0) != 0)
+            return false;                                                                /* ".fnt" */
+        ds_far_wr(DS_scn_font, load_raw(DS_disk_path));
+    }
+    return true;
+}
+
 /* Loads one stage's files (0267:16c1-1c2e). Returns false when a load failed (never in the port). */
 static bool run_game_load_stage(void)
 {
@@ -796,32 +813,22 @@ static bool run_game_load_stage(void)
     }
     if (ensure_disk(DS_stage_dat, DSS(DS_scn_disk), 0) != 0) return false;             /* name in the .DAT */
     ds_far_wr(DS_scenery_arc, load_shapes(DS_disk_path));
-    snprintf(name, sizeof name, "%s%c%s", DSTR(DS_scn_code), (char)('0' + DSS(DS_stage)), DSTR(0x7DDA));  /* ".sgn" */
-    if (ensure_disk_c(name, DSS(DS_scn_disk), 0) != 0) return false;
-    if (mem_is_cached_c(name) != 0 || find_first(DS_disk_path) != 0) {                 /* optional */
-        ds_far_wr(DS_scn_signs, load_raw(DS_disk_path));
-        if (ensure_disk_c(flow_concat(name, sizeof name, DSTR(DS_scn_code), DSTR(0x7DE6)),
-                          DSS(DS_scn_disk), 0) != 0)
-            return false;                                                                /* ".fnt" */
-        ds_far_wr(DS_scn_font, load_raw(DS_disk_path));
-    }
-    return true;
+    return stage_load_signs();
 }
 
 /* PORT: the archive half of the live graphics switch in a race (scene.c, race_switch_graphics).
  * Releases the stage's sprite archives, applies the pending backend, and loads the same files again
- * with the new backend's extension, in run_game_load_stage's order. The raw files (car data, stage
- * file, signs, font) do not depend on the graphics and stay. */
+ * with the new backend's extension, in run_game_load_stage's order. The signs and their font do not
+ * depend on the graphics, but they sit above the archives on the low memory stack: released with
+ * them and loaded again (from the cache), so the archives' memory comes free instead of staying as
+ * holes under them. Each switch used to lose the old archives' memory that way, and the third one
+ * in a European race ran out of memory. */
 void stage_shapes_switch(void)
 {
-    static const u16 shapes[] = {
-        DS_scenery_arc, DS_scn_car3_arc, DS_scn_car2_arc, DS_scn_car1_arc, DS_opp_road_arc, DS_dash_arc,
-        DS_cop_arc, DS_road_arc,
-    };
     char name[26];
 
-    for (size_t i = 0; i < sizeof shapes / sizeof shapes[0]; i++) {
-        FarPtr p = ds_far(shapes[i]);
+    for (size_t i = 0; i < sizeof stage_handles / sizeof stage_handles[0]; i++) {
+        FarPtr p = ds_far(stage_handles[i]);
         if (!far_is_null(p)) mem_release_cache(p);
     }
     gfx_apply_pending_backend();
@@ -843,6 +850,7 @@ void stage_shapes_switch(void)
     }
     ensure_disk(DS_stage_dat, DSS(DS_scn_disk), 0);                                    /* name in the .DAT */
     ds_far_wr(DS_scenery_arc, load_shapes(DS_disk_path));
+    stage_load_signs();
 }
 
 /* 0267:15e4 run_game — game_flow.md §1.3, §4.11 (verified against the disassembly).
