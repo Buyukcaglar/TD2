@@ -6,7 +6,7 @@ checks the game neither stops nor reports a fatal error. The signs and their fon
 the reloaded archives, so each switch left the old archives' memory as holes and the third switch ran
 out of memory ("reservememory - OUT OF MEMORY LOADING"). Takes about a minute.
 
-Needs build/td2port.exe and runs/game with the European Challenge files; skipped without them.
+Needs build/TD2.exe and runs/game with the European Challenge files; skipped without them.
 """
 import os
 import subprocess
@@ -15,12 +15,12 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXE = ROOT / 'build/td2port.exe'
+EXE = ROOT / 'build/TD2.exe'
 GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
 
 
-@unittest.skipUnless(EXE.exists() and (GAME / 'EC_0.PES').exists(), 'needs build/td2port.exe and runs/game')
+@unittest.skipUnless(EXE.exists() and (GAME / 'EC_0.PES').exists(), 'needs build/TD2.exe and runs/game')
 class RaceSwitchTest(unittest.TestCase):
     def test_switches_in_a_european_race(self):
         amiga = (AMIGA / 'duel').exists()

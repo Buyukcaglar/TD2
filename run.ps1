@@ -3,13 +3,13 @@
 #   .\run.ps1 --check       verify TD2EGA.EXE and exit
 #   .\run.ps1 -RecordStates play and save a race state every 10 s to runs\states (60 at most, 1 MiB
 #                           each, overwriting earlier ones) for the harness's sim_tick cases
-# Extra arguments are passed to td2port.exe. reference\dos is never used directly: the first run
+# Extra arguments are passed to TD2.exe. reference\dos is never used directly: the first run
 # copies it to runs\game, and scores and SELECT.DAT go to runs\profile.
 param([switch]$RecordStates, [Parameter(ValueFromRemainingArguments)]$Rest)
 $ErrorActionPreference = 'Stop'
 
 $root = $PSScriptRoot
-$exe = Join-Path $root 'build\td2port.exe'
+$exe = Join-Path $root 'build\TD2.exe'
 $source = Join-Path $root 'reference\dos'
 $game = Join-Path $root 'runs\game'
 $profileDir = Join-Path $root 'runs\profile'
@@ -30,6 +30,6 @@ if ($RecordStates) {
     $env:TD2_STATE_MAX = '60'
 }
 
-# td2port.exe is a windowed app; piping its output makes PowerShell wait for it and set its exit code.
+# TD2.exe is a windowed app; piping its output makes PowerShell wait for it and set its exit code.
 & $exe --game-dir $game --user-dir $profileDir @Rest | Out-Host
 exit $LASTEXITCODE

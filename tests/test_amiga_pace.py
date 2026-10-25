@@ -7,7 +7,7 @@ waits 150 ticks (1.5 s) before its window opens, as the DOS game does. With the 
 follows 5 frames later, the car waits 200 frames (80 to the starter, 120 more) and the title stays
 until both speeches end and 220 frames more.
 
-Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
+Needs build/TD2.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
 import os
 import subprocess
@@ -17,7 +17,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXE = ROOT / 'build/td2port.exe'
+EXE = ROOT / 'build/TD2.exe'
 AMIGA = ROOT / 'runs/amiga'
 FRAME = 1 / 60.05                                           # an NTSC frame
 
@@ -53,7 +53,7 @@ def spans(sound, seconds):
 
 
 @unittest.skipUnless(EXE.exists() and (ROOT / 'runs/game').exists() and (AMIGA / 'duel').exists(),
-                     'needs build/td2port.exe, runs/game and runs/amiga')
+                     'needs build/TD2.exe, runs/game and runs/amiga')
 class IntroPaceTest(unittest.TestCase):
     def test_dos_pace(self):
         s = spans('pcs', 8)

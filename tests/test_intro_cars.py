@@ -4,7 +4,7 @@ does (duel $2b776); TD2's own intro always shows cars 0 and 1.
 Runs the port headless twice, with the player's car the F40 and the Camaro in select.dat, and checks that
 the car standing in the showroom differs and is the Camaro's red in the second run.
 
-Needs build/td2port.exe and runs/game with the Camaro (CAMA); skipped without them.
+Needs build/TD2.exe and runs/game with the Camaro (CAMA); skipped without them.
 """
 import os
 import subprocess
@@ -13,7 +13,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXE = ROOT / 'build/td2port.exe'
+EXE = ROOT / 'build/TD2.exe'
 GAME = ROOT / 'runs/game'
 
 
@@ -36,7 +36,7 @@ def showroom_frame(select):
         return Image.open(shots / max(n for t, n in times if t < 7)).convert('RGB')
 
 
-@unittest.skipUnless(EXE.exists() and (GAME / 'CAMAST.PES').exists(), 'needs build/td2port.exe and runs/game')
+@unittest.skipUnless(EXE.exists() and (GAME / 'CAMAST.PES').exists(), 'needs build/TD2.exe and runs/game')
 class IntroCarsTest(unittest.TestCase):
     def test_the_intro_shows_the_players_car(self):
         f40 = showroom_frame('0 0 0 F40 P959 TDS2')

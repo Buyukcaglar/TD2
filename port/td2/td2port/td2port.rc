@@ -22,9 +22,9 @@ BEGIN
         BEGIN
             VALUE "FileDescription", "Test Drive II port (needs the original DOS game files)"
             VALUE "FileVersion", "0.1.0.0"
-            VALUE "InternalName", "td2port"
+            VALUE "InternalName", "TD2"
             VALUE "LegalCopyright", "Port code: MIT licence. Game files are not included."
-            VALUE "OriginalFilename", "td2port.exe"
+            VALUE "OriginalFilename", "TD2.exe"
             VALUE "ProductName", "Test Drive II port"
             VALUE "ProductVersion", "0.1.0.0"
         END

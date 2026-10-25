@@ -1,7 +1,7 @@
 # Builds the game (Release) into build\ with MSVC 14.44 (VS 2022 BuildTools), the CMake and Ninja
 # that ship with Visual Studio, SDL3 3.4.18 and the archive libraries (libarchive 3.8.1, zlib 1.3.1,
 # xz 5.8.1), all built from their sources in analysis\external and linked statically, so
-# build\td2port.exe is a single portable exe.
+# build\TD2.exe is a single portable exe.
 #   .\build.ps1            configure if needed, then build
 #   .\build.ps1 -Clean     delete build\ first (the archive libraries stay built)
 param([switch]$Clean)
@@ -78,4 +78,4 @@ if (-not (Test-Path (Join-Path $build 'build.ninja'))) {
 }
 & $cmake --build $build
 if ($LASTEXITCODE -ne 0) { throw 'build failed' }
-Write-Host "built $(Join-Path $build 'td2port.exe')"
+Write-Host "built $(Join-Path $build 'TD2.exe')"

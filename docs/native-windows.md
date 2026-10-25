@@ -159,7 +159,7 @@ Built (`src/app/app_data.c`; step 5 below, first half).
 
 ## 4. Single portable exe
 
-Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs only Windows system DLLs.
+Done for the build (step 1 below). `build\TD2.exe` is about 3 MB and needs only Windows system DLLs.
 
 - **SDL3 is linked statically.** The SDL 3.4.18 source release (`SDL3-3.4.18.tar.gz`, SHA-256 checked against the release's published digest) is unpacked in `analysis/external/sdl3-3.4.18/source`. The top-level CMake build adds it with `SDL_STATIC=ON` and `SDL_SHARED=OFF`; `build.ps1` passes `TD2_SDL_SOURCE`. SDL's zlib licence allows this without conditions on the binary.
 - **The C runtime is linked statically too** (`CMAKE_MSVC_RUNTIME_LIBRARY` = `MultiThreaded`), so no Visual C++ runtime DLLs are needed.

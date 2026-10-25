@@ -18,6 +18,7 @@ endif()
 file(GLOB_RECURSE TD_SOURCES CONFIGURE_DEPENDS src/*.c)
 
 add_executable(td2port WIN32 ${TD_SOURCES} td2port.rc)
+set_target_properties(td2port PROPERTIES OUTPUT_NAME TD2)   # build\TD2.exe
 target_include_directories(td2port PRIVATE src)
 target_link_libraries(td2port PRIVATE SDL3::SDL3 LibArchive::LibArchive)
 if(MSVC)

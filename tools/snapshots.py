@@ -32,7 +32,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXE = ROOT / 'build/td2port.exe'
+EXE = ROOT / 'build/TD2.exe'
 GAME = ROOT / 'runs/game'
 OUT = ROOT / 'runs/snapshots'
 SECONDS = 120
@@ -101,7 +101,7 @@ def take(adapter: str = 'ega') -> dict[str, str]:
     for name, out, p in procs:
         _, err = p.communicate(timeout=600)
         if p.returncode != 0:
-            raise RuntimeError(f'td2port.exe ({adapter} {name}) exited with {p.returncode}: {err.strip()}')
+            raise RuntimeError(f'TD2.exe ({adapter} {name}) exited with {p.returncode}: {err.strip()}')
         TIMES[(adapter, name)] = {w[0]: float(w[2]) for w in (ln.split() for ln in err.splitlines())
                                   if len(w) == 4 and w[0].startswith('snap') and w[1] == 'at'}
         prefix = '' if name == 'attract' else f'{name}/'

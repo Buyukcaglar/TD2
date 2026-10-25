@@ -9,7 +9,7 @@ the car, and the race's cockpit against the F40's dashboard and the road colours
 colours, as the Amiga shows them (the top 4 bits of each component). The gas station's run takes about
 two minutes.
 
-Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
+Needs build/TD2.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
 import os
 import subprocess
@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'tools/amiga'), str(ROOT / 'tools')]
 
-EXE = ROOT / 'build/td2port.exe'
+EXE = ROOT / 'build/TD2.exe'
 GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
 # tools/snapshots.py's menu keys up to the scenery choice, 5 s later (the Amiga form's DSI logo,
@@ -77,7 +77,7 @@ def run(keys, seconds, pick, files=None):
 
 
 @unittest.skipUnless(EXE.exists() and GAME.exists() and (AMIGA / 'scen/sc1_icon').exists(),
-                     'needs build/td2port.exe, runs/game and runs/amiga')
+                     'needs build/TD2.exe, runs/game and runs/amiga')
 class AmigaGraphicsTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

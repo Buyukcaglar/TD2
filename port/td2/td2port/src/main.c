@@ -1,6 +1,6 @@
 /* Test Drive II: The Duel SDL3 port — entry point.
  *
- * usage: td2port [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules | --amiga-graphics] [--check]
+ * usage: TD2 [--game-dir DIR] [--user-dir DIR] [--scale N] [--frame-rate FPS] [--cga | --hercules | --amiga-graphics] [--check]
  *   --game-dir   folder with the original game files (default: the settings' game folders, else "Game"
  *                next to the exe or in the working directory; app/app_data.h)
  *   --user-dir   profile folder for settings, high scores and SELECT.DAT (default: "Profile" next to

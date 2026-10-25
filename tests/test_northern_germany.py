@@ -7,7 +7,7 @@ Starts the port headless with the Amiga setting, which builds the scenery into t
 - the signs are Northern Germany's own, each in the DOS slot its Amiga sign has on the road;
 - the traffic cars are the DOS twins of Northern Germany's Amiga copies.
 
-Needs build/td2port.exe, build/td2diff.dll, the unpacked image, runs/game with the California and European
+Needs build/TD2.exe, build/td2diff.dll, the unpacked image, runs/game with the California and European
 Challenges, and the unpacked Amiga game in runs/amiga; skipped without them.
 """
 import os
@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'tools'), str(ROOT / 'analysis/tools/python')]
 import dos_unpack                                                       # noqa: E402
 
-EXE = ROOT / 'build/td2port.exe'
+EXE = ROOT / 'build/TD2.exe'
 GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
 TWINS = [('CCC6', 'TDS2TRES'), ('TDS22', 'EC_1'), ('EC_3', 'EC_1'), ('CCC2', 'TDS2TRES'), ('TDS24', 'EC_2'),
@@ -36,7 +36,7 @@ def signs(path):
 
 
 @unittest.skipUnless(EXE.exists() and (GAME / 'CCC6.DAT').exists() and (GAME / 'EC_1.DAT').exists()
-                     and (AMIGA / 'scen3').exists(), 'needs build/td2port.exe, runs/game with expansions, runs/amiga')
+                     and (AMIGA / 'scen3').exists(), 'needs build/TD2.exe, runs/game with expansions, runs/amiga')
 class NorthernGermanyTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

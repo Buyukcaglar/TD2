@@ -1,7 +1,7 @@
 """EGA, CGA and Hercules output against the committed snapshot hashes, and the live graphics switch's
 round trip (tools/snapshots.py). Takes about two minutes.
 
-Needs build/td2port.exe (build.ps1) and runs/game (run.ps1 once).
+Needs build/TD2.exe (build.ps1) and runs/game (run.ps1 once).
 """
 import sys
 import unittest
@@ -14,7 +14,7 @@ import snapshots                                                        # noqa: 
 
 
 @unittest.skipUnless(snapshots.EXE.exists() and (snapshots.GAME / 'TD2EGA.EXE').exists(),
-                     'needs build/td2port.exe and runs/game')
+                     'needs build/TD2.exe and runs/game')
 class SnapshotTest(unittest.TestCase):
     def check(self, adapter):
         shots = snapshots.take(adapter)

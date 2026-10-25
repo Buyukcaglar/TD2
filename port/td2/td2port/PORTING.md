@@ -112,7 +112,7 @@ From `td2port/` with MinGW on PATH (`export PATH="/c/msys64/mingw64/bin:$PATH"`)
 ```
 cmake -S . -B build -G Ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
-./build/td2port.exe --game-dir ../Game --check
+./build/TD2.exe --game-dir ../Game --check
 ```
 
 While other modules are unfinished the link may fail with undefined references to their functions;
