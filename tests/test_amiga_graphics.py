@@ -26,10 +26,11 @@ GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
 # tools/snapshots.py's menu keys up to the scenery choice, 5 s later (the Amiga form's DSI logo,
 # credits and dissolves are duel's; Return at 35 s ends the credits), the last ones later still: duel's
-# wipes take their time (the option screen comes back from the car choice with bands until 66 s), and
-# keys pressed during a wipe are flushed as after a dissolve. The scenery choice opens at 68 s.
+# wipes take their time (the option screen comes back from the car choice, after its blue fade and the
+# car's drive, with bands until 68 s), and keys pressed during a wipe are flushed as after a dissolve.
+# The scenery choice opens at 70 s.
 KEYS = ('35:Return,44:Up,44.5:Right,45:Down,45.5:Right,46:Up,47:Down,48:Return,51:Up,54:Down,57:Down,'
-        '60:Escape,67:Right,67.5:Right,68:Return')
+        '60:Escape,69:Right,69.5:Right,70:Return')
 
 
 def amiga_colours(pic):
@@ -85,7 +86,7 @@ class AmigaGraphicsTest(unittest.TestCase):
         # the option screen part way through the circle that brings it in, the option screen before the
         # first key there, and the scenery choice once its box has grown
         cls.option_circle, cls.option_screen, cls.scenery_choice = last_frames(
-            KEYS, 71, [(35, 35.35), (35.35, 44), (68, 71)])
+            KEYS, 73, [(35, 35.35), (35.35, 44), (70, 73)])
         # Return on the clock opens the difficulty screen
         cls.difficulty, = last_frames('35:Return,40:Return', 43, [(40, 43)])
         # the scenery box, Up to Northern Germany, and back to the option screen

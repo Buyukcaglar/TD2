@@ -195,7 +195,9 @@ static FarPtr ega_create_buffer(u16 width_px, u16 h, u16 plane_mask)
         b = (u16)(b + 2);
         off = (u16)(off + w);
     } while (--cnt);
-    if (gfx_ega.planes == 5) gfx_amiga_buffer_created(seg);
+    if (gfx_ega.planes == 5 && (plane_mask & 0x0F) == 0x0F)       /* PORT: plane 4 (at ax) starts clear: */
+        for (u16 i = 0; i < blk; i++) wr8(ax, (u16)(0x10 + i), 0);  /* DOS drawing never writes it, and the */
+    if (gfx_ega.planes == 5) gfx_amiga_buffer_created(seg);       /* block may hold an old screen's bytes */
     return far_make(ASM_SEG, bx);
 }
 
