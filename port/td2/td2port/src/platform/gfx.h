@@ -150,6 +150,17 @@ void gfx_amiga_restore_rect(s16 x0, s16 y0, s16 x1, s16 y1);
  * own position, is drawn (a gauge's needle, inside the part the steering wheel leaves visible). False if
  * the sprite is not there. */
 bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x1, s16 y1, u8 pen);
+/* TD2's sprites on a target with Amiga colours: those of DOS archive arc are drawn as the sprites of
+ * the same names (as they are, in capitals or in small letters) of the Amiga sprite archive file, their
+ * hot spots at the DOS sprites' and their masks their own (the DOS masks, AND blits, are left out); the
+ * others with each colour the nearest of the target's, by way of the scratch buffer desc (320 wide, as
+ * high as the tallest sprite). A NULL file forgets the archives, a null desc the buffer. */
+void gfx_amiga_substitute(FarPtr arc, const char *file);
+void gfx_amiga_scratch(FarPtr desc);
+/* Of the Amiga sprite archives files names (paths in the Amiga folder, the file name part may hold * and
+ * ?), the one with most of DOS archive arc's sprites, by name and size, stands in for it; the file, or
+ * NULL if none has enough of them. */
+const char *gfx_amiga_substitute_best(FarPtr arc, const char *const *files, int n);
 /* A file of the Amiga game, unpacked if Rpck-packed (SDL_free), or NULL. */
 void *gfx_amiga_file(const char *file, u32 *len);
 /* Draws the part (sx, sy, sw, sh) of an Amiga picture scaled to w x h at (x, y) of the selected target,
@@ -167,12 +178,12 @@ bool gfx_amiga_second_colours(const char *file);
  * n colours given (Amiga colour words) take the lines above it: duel's race screen, the section's road
  * colours over the dashboard's. False if the target has no Amiga colours or too many splits. */
 bool gfx_amiga_colours_above(const u16 *colours, int n, u16 line);
+/* The game's colour number colour draws pen of the selected target's Amiga colours (TD2's road grey as
+ * duel's road). */
+void gfx_amiga_map_colour(u8 colour, u8 pen);
 /* Blits of buffer desc onto the screen leave the screen's colours as they are, until the buffer is made
- * again; desc stays selected. For the race's view, which TD2 draws in the EGA colours. */
+ * again; desc stays selected. For the race's view, which has the screen's colours above the dashboard. */
 void gfx_amiga_keep_screen_colours(FarPtr desc);
-/* The screen's pixels of rows y0 to y1 - 1 in the EGA colours 0 to 15 take the nearest of the screen's
- * Amiga colours for their row, as the game's colour numbers draw: TD2's race view under duel's cockpit. */
-void gfx_amiga_translate(s16 y0, s16 y1);
 /* Target to gets target from's colours and stays selected (a buffer blitted onto the screen brings its
  * colours, so a buffer of text for an Amiga screen takes that screen's). */
 void gfx_amiga_colours_from(FarPtr from, FarPtr to);

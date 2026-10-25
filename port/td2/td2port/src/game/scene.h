@@ -49,6 +49,7 @@ bool amiga_game_over(void);              /* PORT: flow_screens.c, the Amiga form
 
 /* ---- scene_amiga.c (PORT: the race's cockpit in its Amiga form) */
 bool amiga_cockpit_load(void);          /* the dashboard and its colours; false without the Amiga files */
+void amiga_cockpit_free(void);
 bool amiga_cockpit_on(void);            /* the race screen is in its Amiga form */
 void amiga_cockpit_frame(void);         /* after the view is shown: the cockpit over it */
 void amiga_cockpit_crashed(bool crashed);

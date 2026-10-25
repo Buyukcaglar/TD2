@@ -85,6 +85,24 @@ bool shp_load(const char *path, const char *name, AmigaSprite *s)
     return ok;
 }
 
+bool shp_size(const char *path, const char *name, u16 *w, u16 *h)
+{
+    u32 len;
+    const u8 *arc = archive(path, &len);
+    if (!arc || len < 6) return false;
+    u16 count = be16(arc + 4);
+    u32 base = 6 + 8u * count;
+    for (u16 i = 0; i < count && base <= len; i++) {
+        if (memcmp(arc + 6 + 4 * i, name, 4) != 0) continue;
+        u32 at = base + be32(arc + 6 + 4 * count + 4 * i);
+        if (at + 4 > len) return false;
+        *w = (u16)(be16(arc + at) * 8);
+        *h = be16(arc + at + 2);
+        return true;
+    }
+    return false;
+}
+
 void shp_free(AmigaSprite *s)
 {
     SDL_free(s->pix);

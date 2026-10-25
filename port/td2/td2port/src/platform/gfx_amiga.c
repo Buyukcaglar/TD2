@@ -235,38 +235,17 @@ bool gfx_amiga_colours_above(const u16 *colours, int n, u16 line)
     return true;
 }
 
+void gfx_amiga_map_colour(u8 colour, u8 pen)
+{
+    TargetColours *t = target_colours();
+    if (t && t->amiga) t->map[colour & 15] = (u8)(pen & 31);
+}
+
 void gfx_amiga_keep_screen_colours(FarPtr desc)
 {
     gfx_select_target(desc);
     TargetColours *t = target_colours();
     if (t && t != &screen) t->keep_screen = true;
-}
-
-void gfx_amiga_translate(s16 y0, s16 y1)
-{
-    if (!screen.amiga) return;
-    const u32 *last = NULL;
-    u8 map[16];
-    for (s16 y = y0 < 0 ? 0 : y0; y < y1 && y < 200; y++) {
-        const u32 *pens = gfx_split_row(screen.rgb, screen.split, screen.splits, y);
-        if (pens != last) {
-            nearest_map(pens, 32, map);
-            last = pens;
-        }
-        u8 *p[5];
-        for (int k = 0; k < 5; k++) p[k] = &gfx_ega.plane[k][y * 40];
-        for (int bx = 0; bx < 40; bx++) {
-            u8 out[5] = { 0 };
-            for (int i = 0; i < 8; i++) {
-                u8 bit = (u8)(0x80 >> i), v = 0;
-                for (int k = 0; k < 5; k++) v |= (u8)((p[k][bx] & bit ? 1 : 0) << k);
-                if (v < 16) v = map[v];
-                for (int k = 0; k < 5; k++) if (v >> k & 1) out[k] |= bit;
-            }
-            for (int k = 0; k < 5; k++) p[k][bx] = out[k];
-        }
-    }
-    gfx_ega.dirty = true;
 }
 
 bool gfx_amiga_second_colours(const char *file)
@@ -523,6 +502,169 @@ bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x
     }
     shp_free(&s);
     return true;
+}
+
+/* ---- TD2's sprites on Amiga targets (gfx.h) */
+
+#define MAX_SUBSTITUTES 12
+static struct { FarPtr arc; char file[48]; } substitutes[MAX_SUBSTITUTES];
+static int substitute_count;
+static FarPtr scratch;                  /* a buffer TD2's sprites are drawn into to be translated */
+
+void gfx_amiga_substitute(FarPtr arc, const char *file)
+{
+    if (!file) {
+        substitute_count = 0;
+        return;
+    }
+    if (substitute_count < MAX_SUBSTITUTES && (arc.seg || arc.off)) {
+        substitutes[substitute_count].arc = arc;
+        SDL_strlcpy(substitutes[substitute_count].file, file, sizeof substitutes[0].file);
+        substitute_count++;
+    }
+}
+
+void gfx_amiga_scratch(FarPtr desc) { scratch = desc; }
+
+/* How many of DOS archive arc's sprites the Amiga archive path has, by name in any case and size. */
+static int match_score(FarPtr arc, const char *path)
+{
+    u16 count = rd16(arc.seg, (u16)(arc.off + 4));
+    u32 base = ((u32)arc.seg << 4) + (u16)((count << 3) + 6);
+    int score = 0;
+    for (u16 k = 0; k < count; k++) {
+        char n[5];
+        for (int j = 0; j < 4; j++) n[j] = (char)rd8(arc.seg, (u16)(arc.off + 6 + 4 * k + j));
+        n[4] = 0;
+        u32 lin = base + rd32(arc.seg, (u16)(arc.off + 6 + 4 * count + 4 * k));
+        FarPtr spr = far_make((u16)(lin >> 4), (u16)(lin & 15));
+        u16 dw = (u16)(rd16(spr.seg, spr.off) * 8), dh = rd16(spr.seg, (u16)(spr.off + 2)), w, h;
+        for (int pass = 0; pass < 3; pass++) {
+            char c[5];
+            for (int j = 0; j < 5; j++)
+                c[j] = pass == 0 ? n[j] : pass == 1 ? (char)SDL_toupper(n[j]) : (char)SDL_tolower(n[j]);
+            if (shp_size(path, c, &w, &h)) {
+                score += w == dw && h == dh ? 2 : 1;
+                break;
+            }
+        }
+    }
+    return score;
+}
+
+const char *gfx_amiga_substitute_best(FarPtr arc, const char *const *files, int n)
+{
+    static char best[48];
+    int best_score = 0;
+    if (!gfx_amiga_screens() || !(arc.seg || arc.off)) return NULL;
+    for (int i = 0; i < n; i++) {
+        if (!files[i]) continue;
+        char *pattern = NULL, *dir = NULL;
+        const char *slash = SDL_strrchr(files[i], '/');
+        SDL_asprintf(&dir, "%s/%.*s", amiga_dir, slash ? (int)(slash - files[i]) : 0, files[i]);
+        SDL_asprintf(&pattern, "%s", slash ? slash + 1 : files[i]);
+        int found = 0;
+        char **names = dir && pattern ? SDL_GlobDirectory(dir, pattern, SDL_GLOB_CASEINSENSITIVE, &found) : NULL;
+        for (int k = 0; k < found; k++) {
+            char rel[48], *path = NULL;
+            SDL_snprintf(rel, sizeof rel, "%.*s%s", slash ? (int)(slash - files[i] + 1) : 0, files[i], names[k]);
+            SDL_asprintf(&path, "%s/%s", amiga_dir, rel);
+            int s = path ? match_score(arc, path) : 0;
+            SDL_free(path);
+            if (s > best_score) {
+                best_score = s;
+                SDL_strlcpy(best, rel, sizeof best);
+            }
+        }
+        SDL_free(names);
+        SDL_free(dir);
+        SDL_free(pattern);
+    }
+    if (best_score < 4) return NULL;
+    gfx_amiga_substitute(arc, best);
+    return best;
+}
+
+/* The Amiga file standing in for the archive spr is an entry of, and the entry's name. */
+static const char *substitute_of(FarPtr spr, char name[5])
+{
+    u32 lin = ((u32)spr.seg << 4) + spr.off;
+    for (int i = 0; i < substitute_count; i++) {
+        FarPtr a = substitutes[i].arc;
+        u16 count = rd16(a.seg, (u16)(a.off + 4));
+        u32 base = ((u32)a.seg << 4) + (u16)((count << 3) + 6);   /* as res_find_core adds it */
+        for (u16 k = 0; k < count; k++)
+            if (base + rd32(a.seg, (u16)(a.off + 6 + 4 * count + 4 * k)) == lin) {
+                for (int j = 0; j < 4; j++) name[j] = (char)rd8(a.seg, (u16)(a.off + 6 + 4 * k + j));
+                name[4] = 0;
+                return substitutes[i].file;
+            }
+    }
+    return NULL;
+}
+
+/* The Amiga sprite of a DOS name: as it is, in capitals, or in small letters. */
+static bool sprite_any_case(const char *file, const char *name, s16 x, s16 y, AmigaPlace at)
+{
+    char n[5];
+    for (int pass = 0; pass < 3; pass++) {
+        for (int j = 0; j < 5; j++)
+            n[j] = pass == 0 ? name[j] : pass == 1 ? (char)SDL_toupper(name[j]) : (char)SDL_tolower(name[j]);
+        if ((pass == 0 || SDL_strcmp(n, name) != 0) && gfx_amiga_sprite(file, n, x, y, at)) return true;
+    }
+    return false;
+}
+
+/* A DOS sprite on the selected target, each colour the nearest of the target's: drawn as it is into the
+ * scratch buffer, then pixel by pixel as the operation would leave it (AND with a mask clears where the
+ * mask is 0, OR and XOR set where the sprite is not 0, a copy sets the whole box). */
+static bool blit_translated(const TargetColours *t, FarPtr spr, u16 px, u16 py, BlitOp op)
+{
+    static u8 pix[320 * 200];
+    u16 w = (u16)(rd16(spr.seg, spr.off) * 8), h = rd16(spr.seg, (u16)(spr.off + 2));
+    if (!scratch.seg || w == 0 || w > 320 || h == 0) return false;
+    u16 cur[GFX_DESC_WORDS];
+    for (int i = 0; i < GFX_DESC_WORDS; i++) cur[i] = CSW((u16)(GFX_CUR_OFF + 2 * i));
+    gfx_select_target(scratch);
+    u16 rows = CSW(GFX_CUR_CLIP_Y1);
+    if (h > rows) h = rows;
+    for (u16 y = 0; y < h; y++)
+        for (int k = 0; k < 5; k++)
+            if (ram_plane(k)) for (u16 b = 0; b < w / 8 && b < 40; b++) wr8(ram_plane(k), (u16)(row_at(y) + b), 0);
+    ega_blit(spr, 0, 0, BLIT_REPLACE, true);
+    for (u16 y = 0; y < h; y++)
+        for (u16 x = 0; x < w; x++) {
+            u8 v = 0;
+            for (int k = 0; k < 4; k++)
+                if (ram_plane(k) && rd8(ram_plane(k), (u16)(row_at(y) + (x >> 3))) & (0x80 >> (x & 7))) v |= (u8)(1 << k);
+            pix[y * w + x] = v;
+        }
+    for (int i = 0; i < GFX_DESC_WORDS; i++) CSW((u16)(GFX_CUR_OFF + 2 * i)) = cur[i];
+    for (u16 y = 0; y < h; y++)
+        for (u16 x = 0; x < w; x++) {
+            u8 v = pix[y * w + x];
+            s16 dx = (s16)(px + x), dy = (s16)(py + y);
+            if (op == BLIT_AND) { if (v == 0) put_pixel(dx, dy, t->map[0]); }
+            else if (op == BLIT_REPLACE || v) put_pixel(dx, dy, t->map[v]);
+        }
+    return true;
+}
+
+void gfx_amiga_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip)
+{
+    const TargetColours *t = target_colours();
+    if (!amiga_dir || gfx_backend() != &gfx_amiga_backend || !t || !t->amiga || ega_buffer_sprite(spr)) {
+        ega_blit(spr, px, py, op, clip);
+        return;
+    }
+    char name[5];
+    const char *file = substitute_of(spr, name);
+    if (file) {
+        if (op == BLIT_AND) return;                     /* duel's sprites carry their masks */
+        s16 hx = (s16)(px + rd16(spr.seg, (u16)(spr.off + 4))), hy = (s16)(py + rd16(spr.seg, (u16)(spr.off + 6)));
+        if (sprite_any_case(file, name, hx, hy, AMIGA_AT_HOT)) return;
+    }
+    if (!blit_translated(t, spr, px, py, op)) ega_blit(spr, px, py, op, clip);
 }
 
 void *gfx_amiga_file(const char *file, u32 *len)

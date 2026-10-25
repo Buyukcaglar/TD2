@@ -238,6 +238,9 @@ class AmigaGraphicsTest(unittest.TestCase):
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the roof')
         view = {frame.getpixel((x, y)) for y in range(40, 100) for x in range(40, 320)}
         self.assertLessEqual(view, set(top))
+        # the sky in duel's pen for it (the road data's word 1Ah)
+        sky = top[struct.unpack_from('>H', road, 0x1A)[0]]
+        self.assertEqual({frame.getpixel((x, y)) for y in range(22, 28) for x in range(100, 220)}, {sky})
 
     def test_scenery_choice_picture(self):
         # below the disk name

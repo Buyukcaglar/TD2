@@ -37,6 +37,7 @@ void cockpit_load(void)
 /* 06c9:38d4 cockpit_free */
 void cockpit_free(void)
 {
+    amiga_cockpit_free();                                 /* PORT */
     gfx_free_buffer(ds_far(DS_gbox_desc));
     gfx_free_buffer(ds_far(DS_inst_desc));
 }

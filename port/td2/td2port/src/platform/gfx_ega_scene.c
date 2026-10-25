@@ -4,8 +4,22 @@
 #include "gfx_ega.h"
 
 /* The view buffer's plane 4 with five planes (the Amiga backend), else 0. The game's colours have no
- * fifth bit, so the scene clears it wherever it draws. */
+ * fifth bit, so the scene clears it wherever it draws. With Amiga colours (the race in its Amiga form)
+ * each colour draws the pen the view's colour map gives it instead. */
 static u16 plane4_seg;
+static bool mapped;
+static u8 pen_of[16];
+
+/* Writes pen into plane byte b of the five planes, under mask m. */
+static void put_pen(u16 b, u8 m, u8 pen)
+{
+    for (int k = 0; k < 4; k++) {
+        u8 *p = mp(DSW((u16)(DS_plane_seg + 2 * k)), b);
+        *p = (u8)(pen >> k & 1 ? *p | m : *p & ~m);
+    }
+    u8 *p = mp(plane4_seg, b);
+    *p = (u8)(pen >> 4 & 1 ? *p | m : *p & ~m);
+}
 
 /* draw_front / draw_mirror (06c9:00e7 / 1f99): the selected target's plane segments to DS:5420..5426 */
 static void ega_view_begin(void)
@@ -13,6 +27,11 @@ static void ega_view_begin(void)
     for (int k = 0; k < 4; k++)
         DSW((u16)(DS_plane_seg + 2 * k)) = CSW((u16)(GFX_CUR_PLANE0 + 2 * k));
     plane4_seg = gfx_ega.planes == 5 ? ram_plane(4) : 0;
+    mapped = false;
+    for (u16 c = 0; plane4_seg && c < 16; c++) {
+        pen_of[c] = gfx_amiga_colour(c);
+        mapped = mapped || pen_of[c] != c;
+    }
 }
 
 /* 06c9:0c17 span_fill_to: fills the current scanline (row offset *di in the cached plane segments
@@ -36,6 +55,13 @@ static bool ega_span_to(u16 *di, s16 end, u16 colour, bool odd_row)
     s16 eb = (s16)(e >> 3);
     u8 cnt = (u8)(eb - dx);                                /* xor ch,ch */
     u8 m = DSB((u16)(DS_mask_from_bit + DSW(DS_span_bit)));
+    if (mapped) {                                          /* PORT: the Amiga colours */
+        u8 pen = colour >= AMIGA_PEN(0) && colour < AMIGA_PEN(32) ? (u8)(colour - AMIGA_PEN(0)) : pen_of[c];
+        put_pen(*di, m, pen);
+        for (u16 n = 1; n <= cnt; n++) put_pen((u16)(*di + n), 0xFF, pen);
+        *di = (u16)(*di + cnt);
+        goto end;
+    }
     for (int k = 0; k < 4; k++) {
         u16 seg = DSW((u16)(DS_plane_seg + 2 * k));
         u8 *b = mp(seg, *di);
@@ -52,6 +78,7 @@ static bool ega_span_to(u16 *di, s16 end, u16 colour, bool odd_row)
             for (u16 n = 0; n < cnt; n++) wr8(plane4_seg, (u16)(*di + n), 0);
         *di = (u16)(*di + cnt - 1);
     }
+end:;
     u16 sb = (u16)(ebit + 1);
     DSW(DS_span_bit) = sb;
     if (sb == 8) {
@@ -73,6 +100,10 @@ static void ega_marking(u16 di, s16 x, bool centre)
 {
     u16 bx = (u16)(di + (u16)(x >> 3));
     u8 m = DSB((u16)(DS_pixel_mask + (x & 7)));
+    if (mapped) {                                          /* PORT: the Amiga colours */
+        put_pen(bx, m, pen_of[centre ? 14 : 15]);
+        return;
+    }
     if (centre) {
         mp(DSW(DS_plane_seg), bx)[0] &= (u8)~m;
         mp(DSW(DS_plane_seg + 2), bx)[0] |= m;

@@ -17,3 +17,5 @@ typedef struct {
 /* Sprite name (4 characters) of the archive in a file of the Amiga game. */
 bool shp_load(const char *path, const char *name, AmigaSprite *s);
 void shp_free(AmigaSprite *s);
+/* A sprite's size in pixels, from its header alone. */
+bool shp_size(const char *path, const char *name, u16 *w, u16 *h);

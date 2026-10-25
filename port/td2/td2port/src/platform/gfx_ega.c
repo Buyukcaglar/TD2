@@ -886,13 +886,13 @@ static FarPtr ega_cursor_glyph(u16 idx)
     .dissolve = ega_dissolve,                                                                      \
     .scroll_window = ega_scroll_window,                                                            \
     .grab_screen = ega_grab_screen,                                                                \
-    .grab_into_sprite = ega_grab_into_sprite,                                                      \
-    .blit = ega_blit
+    .grab_into_sprite = ega_grab_into_sprite
 
 const GfxBackend gfx_ega_backend = {
     .name = "EGA",
     .reset = ega_reset,
     .compose = gfx_ega_compose,
+    .blit = ega_blit,
     EGA_DRAWING,
 };
 
@@ -900,5 +900,6 @@ const GfxBackend gfx_amiga_backend = {
     .name = "Amiga",
     .reset = gfx_amiga_reset,
     .compose = gfx_amiga_compose,
+    .blit = gfx_amiga_blit,                     /* TD2's sprites on Amiga targets */
     EGA_DRAWING,
 };

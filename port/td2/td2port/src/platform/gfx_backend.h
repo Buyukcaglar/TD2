@@ -92,6 +92,7 @@ void gfx_herc_set_phosphor(u32 rgb);
 
 /* Backend internals used by their files. */
 void ega_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip);   /* gfx_ega_blit.c */
+void gfx_amiga_blit(FarPtr spr, u16 px, u16 py, BlitOp op, bool clip);   /* gfx_amiga.c: TD2's sprites */
 extern const SceneRaster ega_scene_raster;                         /* gfx_ega_scene.c */
 /* Read access to the emulated EGA planes (debugging): plane k (0..3), 64 KB each. */
 const u8 *gfx_vram_plane(int k);

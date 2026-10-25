@@ -13,9 +13,11 @@
  * when TD2 shows its gate, with the knob ("gnob", a hardware sprite in duel) at TD2's knob position
  * carried over to duel's gate: <car>.b's table at 28h has each gear's place, neutral first.
  *
- * TD2's view (320 x 92 at line 19) stays as TD2 draws it, in the EGA colours, and is translated to the
- * nearest road colours on the screen; the mirror's picture moves into duel's mirror frame. The road
- * itself in its Amiga form comes later. */
+ * TD2's view (320 x 92 at line 19) and mirror are drawn by TD2 in the road colours: its colour numbers
+ * draw the nearest of them, its sprites are duel's sprites of the same names from the Amiga archive
+ * that has most of each DOS archive's (the scenery's, the traffic's, the police's, the opponent's and
+ * ROAD's), and the rest are drawn with the nearest colours (gfx_amiga_substitute). The mirror's
+ * picture moves into duel's mirror frame. */
 #include "scene.h"
 #include "flow.h"
 
@@ -37,9 +39,19 @@ static struct {
     int pose;                           /* the steering wheel: whl0, whl1, or 2 straight */
     int speed_tip, tach_tip;            /* the needles' table entries drawn, -1 for none */
     s16 marker_x, marker_y;             /* the wheel's marker */
+    FarPtr scratch;                     /* for TD2's sprites drawn with the road colours */
     bool gate, gate_drawn;              /* the gear gate is shown, and as drawn */
     s16 knob_x, knob_y;                 /* the knob's hot spot on it */
 } ac;
+
+/* <scenery>roaddata<n>: the pens duel draws the scenery's parts in ($1678e, $1844e, $1876a), words */
+#define ROAD_PENS       0x17
+#define ROAD_LEFT       (0x0E / 2)      /* the ground left of the road */
+#define ROAD_RIGHT      (0x18 / 2)      /* and right of it */
+#define ROAD_SKY        (0x1A / 2)
+#define ROAD_FAR        (0x1C / 2)      /* the band beyond the right ground */
+#define ROAD_EDGE       (0x1E / 2)      /* the road's edges */
+#define ROAD_SURFACE    (0x26 / 2)      /* the road (duel alternates it with 28h in bands) */
 
 #define CAR_MIN_SPEED   0x018           /* <car>.b: the speed of the speedometer's first table entry */
 #define CAR_SPEED_HUB   0x2EE           /* the speedometer's centre, x and y bytes */
@@ -76,9 +88,10 @@ bool amiga_cockpit_load(void)
     snprintf(file, sizeof file, "%sroaddata%d", scn, section < 0 ? 0 : section > 5 ? 5 : section);
     u32 len;
     u8 *road = gfx_amiga_file(file, &len);
-    u16 top[32];
+    u16 top[32], pens[ROAD_PENS];
     bool ok = road && len >= 0xA6 + 64;
     for (int i = 0; ok && i < 32; i++) top[i] = be16(road + 0xA6 + 2 * i);
+    for (int i = 0; ok && i < ROAD_PENS; i++) pens[i] = be16(road + 2 * i);
     SDL_free(road);
     snprintf(file, sizeof file, "%s.b", car);
     u8 *b = gfx_amiga_file(file, &len);
@@ -94,12 +107,32 @@ bool amiga_cockpit_load(void)
     gfx_clear_clip(0);
     if (!gfx_amiga_picture(flow_concat(file, sizeof file, car, "dash"), 0, 0)) return false;
     gfx_amiga_colours_above(top, 32, DASH_LINE);
+    DSW(DS_scene_words) = AMIGA_PEN(pens[ROAD_LEFT]);   /* TD2's colour words for the scenery's parts */
+    DSW(DS_col_right) = AMIGA_PEN(pens[ROAD_RIGHT]);
+    DSW(DS_col_sky) = AMIGA_PEN(pens[ROAD_SKY]);
+    DSW(DS_col_far) = AMIGA_PEN(pens[ROAD_FAR]);
+    DSW(DS_col_shoulder) = AMIGA_PEN(pens[ROAD_EDGE]);
     gfx_amiga_keep_lines(DASH_LINE, 200);
     ac.pose = -1;
     ac.gate = ac.gate_drawn = false;
     gfx_fill_rect_clip(0, 0, 0x140, VIEW_TOP, DSW(DS_col_sky));   /* behind the roof's open edge */
     flow_concat(ac.dash, sizeof ac.dash, car, "dash.shp");
+    gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_drive_buf_desc));
+    gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);    /* the road, COL(7, 0) in draw_ground */
     gfx_amiga_keep_screen_colours(ds_far(DS_drive_buf_desc));
+    gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_mirror_desc));
+    gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);
+    ac.scratch = gfx_create_buffer(0x140, 100, 0x0F);
+    gfx_amiga_scratch(ac.scratch);
+    gfx_amiga_substitute(far_make(0, 0), NULL);
+    char scenery[48], opponent[48];
+    const char *opp = amiga_car_prefix(DSTR(DS_opp_car_code));
+    const char *files[] = { flow_concat(scenery, sizeof scenery, scn, "*.shp"), "pics/road.shp",
+                            opp ? flow_concat(opponent, sizeof opponent, opp, "road.shp") : NULL };
+    static const u16 archives[] = { DS_scenery_arc, DS_road_arc, DS_scn_car1_arc, DS_scn_car2_arc,
+                                    DS_scn_car3_arc, DS_cop_arc, DS_opp_road_arc };
+    for (int i = 0; i < (int)(sizeof archives / sizeof archives[0]); i++)
+        gfx_amiga_substitute_best(ds_far(archives[i]), files, 3);
     FarPtr mirror = ds_far(DS_mirror_sprite);
     wr16(mirror.seg, (u16)(mirror.off + 0x0A), 1);     /* into duel's mirror frame, line 20 */
     select_screen();
@@ -185,15 +218,23 @@ static void dashboard(void)
     }
 }
 
+void amiga_cockpit_free(void)
+{
+    if (!ac.scratch.seg) return;
+    gfx_amiga_substitute(far_make(0, 0), NULL);
+    gfx_amiga_scratch(far_make(0, 0));
+    gfx_free_buffer(ac.scratch);
+    ac.scratch = far_make(0, 0);
+    ac.on = false;
+}
+
 void amiga_cockpit_frame(void)
 {
     if (!ac.on) return;
     select_screen();
-    gfx_amiga_translate(VIEW_TOP, VIEW_END);
     gfx_set_clip_current(0, XBYTES(0x28), VIEW_END, HOOD_END);
     blit_copy_clip_raw(ds_far(DS_main_sprite), 0, (s16)(VIEW_TOP + HOOD_END - VIEW_END));
     gfx_set_clip_current(0, XBYTES(0x28), 0, 0xC8);
-    gfx_amiga_translate(VIEW_END, HOOD_END);
     gfx_amiga_sprite(ac.dash, ac.crashed ? "hdcr" : "hood", 0, 0, AMIGA_AT_OWN);
     gfx_amiga_sprite(ac.dash, "roof", 0, 0, AMIGA_AT_OWN);
     gfx_amiga_sprite(ac.dash, "post", 0, 0, AMIGA_AT_OWN);
