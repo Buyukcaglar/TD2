@@ -9,7 +9,8 @@
  *   --frame-rate emulated original drawing speed while driving (default HOST_DEFAULT_FPS; 0 = unpaced)
  *   --cga        draw with the CGA graphics of TD2CGA.EXE instead of EGA
  *   --hercules   TD2CGA.EXE's Hercules mode ("td2cga herc"): the CGA game on a monochrome monitor
- *   --amiga-graphics  the Amiga graphics backend (in progress: the EGA frames on a five-plane screen)
+ *   --amiga-graphics  the Amiga graphics: the screens of the Amiga game, from its files (the "amiga"
+ *                setting); without them the EGA frames on a five-plane screen
  *   --check      load and verify the original executable, print a summary and exit (no window)
  */
 #define SDL_MAIN_HANDLED
@@ -73,18 +74,21 @@ static bool ask_for_game(const char *user_dir, char *err, size_t err_size)
 /* The saved settings, where the command line did not choose (app/app_data.h). */
 static void apply_settings(const GfxBackend *backend, int *scale)
 {
-    static const GfxBackend *const backends[] = { &gfx_ega_backend, &gfx_cga_backend, &gfx_herc_backend };
+    /* The Amiga game's graphics and sound, when the settings name its folder or archive. */
+    bool amiga = app_amiga_open(NULL);
+    static const GfxBackend *const backends[] = { &gfx_ega_backend, &gfx_cga_backend, &gfx_herc_backend,
+                                                  &gfx_amiga_backend };
     const char *g = app_setting("graphics");
     for (size_t i = 0; !backend && g && i < sizeof backends / sizeof backends[0]; i++)
-        if (!strcmp(g, backends[i]->name)) backend = backends[i];
+        if (!strcmp(g, backends[i]->name) && (backends[i] != &gfx_amiga_backend || gfx_amiga_ready()))
+            backend = backends[i];
     gfx_set_backend(backend ? backend : &gfx_ega_backend);
     const char *m = app_setting("hercules_monitor");
     if (m && !strcmp(m, "green")) gfx_herc_set_phosphor(GFX_HERC_GREEN);
     if (m && !strcmp(m, "amber")) gfx_herc_set_phosphor(GFX_HERC_AMBER);
     if (*scale < 1) *scale = app_setting("scale") ? atoi(app_setting("scale")) : 3;
     if (*scale < 1 || *scale > 8) *scale = 3;
-    /* The Amiga sound, when the settings name the Amiga game's folder or archive. */
-    if (app_amiga_open(NULL)) {
+    if (amiga) {
         const char *s = app_setting("sound");
         if (s && !strcmp(s, audio_amiga.name)) host_set_audio_backend(&audio_amiga);
     }

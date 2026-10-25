@@ -125,6 +125,7 @@ void draw_rect_outline(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour);     /* 16af:
 /* ---- the Amiga graphics (gfx_amiga.c; docs/amiga.md, "The Amiga graphics backend") */
 void gfx_amiga_open(const char *dir);                                   /* the Amiga game's folder, or NULL */
 bool gfx_amiga_screens(void);                   /* the Amiga backend is on and has the Amiga game's files */
+bool gfx_amiga_ready(void);                     /* the Amiga game's files are known */
 /* Draws a picture of the Amiga game (an ILBM, by its path in the Amiga folder) into the selected target
  * at (x, y), x a multiple of 8, and gives the target its colours. False if it is not there. */
 bool gfx_amiga_picture(const char *file, s16 x, s16 y);

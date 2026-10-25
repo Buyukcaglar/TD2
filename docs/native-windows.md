@@ -76,7 +76,7 @@ The game picture stays the original game. App features live in `src/app/`:
 The context menu, the pause, the theme and the question windows are built (steps 4 and 5 below).
 
 - **Context menu.** It opens with a right click on the window or with Ctrl+Shift+M. It lists:
-  - Graphics: EGA, CGA, Hercules, and "Next mode" (Ctrl+Shift+G). The current or pending mode has the radio mark.
+  - Graphics: EGA, CGA, Hercules, Amiga, and "Next mode" (Ctrl+Shift+G). The current or pending mode has the radio mark. Amiga asks for the Amiga game's folder or archive first when it is not set (the same window as for the Amiga sound, now titled "Amiga game").
   - Hercules monitor: white, green or amber, which changes the picture at once. This answers the phosphor question without a decision now. The choice is saved in the settings.
   - Sound: PC speaker or Amiga, "Next" (Ctrl+Shift+S), and "Amiga game files…".
   - Window size: 1× to 4×, and full screen (Alt+Enter). The picture is fitted again whenever the window changes size, goes to or from full screen or is uncovered, also while the game draws nothing new: an SDL event watch (`window_watch` in `host.c`) draws the last frame again at once, also during Windows' live resize, which runs its own message loop.
@@ -179,6 +179,6 @@ Done for the build (step 1 below). `build\td2port.exe` is about 3 MB and needs o
 
 ## Decisions (user, 24 October 2026)
 
-- **Key combination:** Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules). Ctrl+Shift+S switches the sound (PC speaker or Amiga); it would also make the game's Ctrl-S code (13h, sound on/off), so the app keeps it from the game, as it does with Ctrl+Shift+G (07h, unused by the game). Ctrl+Shift+M or a right click opens the context menu. Ctrl means the Control key on macOS too, so the combination is the same on both systems.
+- **Key combination:** Ctrl+Shift+G cycles the graphics mode (EGA → CGA → Hercules, then Amiga when the Amiga game's files are set). Ctrl+Shift+S switches the sound (PC speaker or Amiga); it would also make the game's Ctrl-S code (13h, sound on/off), so the app keeps it from the game, as it does with Ctrl+Shift+G (07h, unused by the game). Ctrl+Shift+M or a right click opens the context menu. Ctrl means the Control key on macOS too, so the combination is the same on both systems.
 - **Settings and profile:** next to the exe when that folder is writable, otherwise `%APPDATA%\TestDrive2`.
 - **SDL source:** downloaded; the exe links SDL3 statically (section 4).

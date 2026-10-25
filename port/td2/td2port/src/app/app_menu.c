@@ -15,7 +15,7 @@
 #include <SDL3/SDL.h>
 
 enum {
-    CMD_EGA = 1, CMD_CGA, CMD_HERC, CMD_NEXT_GRAPHICS,
+    CMD_EGA = 1, CMD_CGA, CMD_HERC, CMD_AMIGA_GRAPHICS, CMD_NEXT_GRAPHICS,
     CMD_PHOSPHOR_WHITE, CMD_PHOSPHOR_GREEN, CMD_PHOSPHOR_AMBER,
     CMD_SCALE_1, CMD_SCALE_2, CMD_SCALE_3, CMD_SCALE_4,
     CMD_FULLSCREEN, CMD_GAME_FILES, CMD_ABOUT, CMD_QUIT,
@@ -82,8 +82,9 @@ static bool amiga_files(void)
     static const char *const buttons[] = { "Choose folder…", "Choose archive…", "Cancel" };
     static const char *const ok[] = { "OK" };
     void *win = host_native_window();
-    int choice = app_ui_question(win, "Amiga sound",
-                                 "The Amiga sound and music come from the Amiga version of Test Drive II.\n\n"
+    int choice = app_ui_question(win, "Amiga game",
+                                 "The Amiga graphics, sound and music come from the Amiga version of Test "
+                                 "Drive II.\n\n"
                                  "Choose the folder, or the archive (zip, 7z, rar, lha), that holds it: the "
                                  "program \"duel\" and its \"sfx\" folder.", buttons, 3);
     if (choice != 0 && choice != 1) return false;
@@ -95,7 +96,7 @@ static bool amiga_files(void)
     } else {
         char text[1200];
         SDL_snprintf(text, sizeof text, "%s holds no Amiga Test Drive II with its sound files.", path);
-        app_ui_question(win, "Amiga sound", text, ok, 1);
+        app_ui_question(win, "Amiga game", text, ok, 1);
     }
     SDL_free(path);
     return opened;
@@ -144,6 +145,7 @@ void app_menu_open(void)
         { "EGA", CMD_EGA, shown == &gfx_ega_backend },
         { "CGA", CMD_CGA, shown == &gfx_cga_backend },
         { "Hercules", CMD_HERC, shown == &gfx_herc_backend },
+        { "Amiga", CMD_AMIGA_GRAPHICS, shown == &gfx_amiga_backend },
         { NULL },
         { "Next mode\tCtrl+Shift+G", CMD_NEXT_GRAPHICS },
     };
@@ -187,6 +189,11 @@ void app_menu_open(void)
     case CMD_EGA:  gfx_request_backend(&gfx_ega_backend); save_graphics(); break;
     case CMD_CGA:  gfx_request_backend(&gfx_cga_backend); save_graphics(); break;
     case CMD_HERC: gfx_request_backend(&gfx_herc_backend); save_graphics(); break;
+    case CMD_AMIGA_GRAPHICS:
+        if (!gfx_amiga_ready() && !amiga_files()) break;
+        gfx_request_backend(&gfx_amiga_backend);
+        save_graphics();
+        break;
     case CMD_NEXT_GRAPHICS: app_next_graphics(); break;
     case CMD_SCALE_1: case CMD_SCALE_2: case CMD_SCALE_3: case CMD_SCALE_4: {
         char v[2] = { (char)('1' + cmd - CMD_SCALE_1), 0 };

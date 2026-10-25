@@ -29,7 +29,9 @@ void gfx_request_next_backend(void)
 {
     const GfxBackend *from = pending ? pending : be;
     gfx_request_backend(from == &gfx_ega_backend ? &gfx_cga_backend
-                        : from == &gfx_cga_backend ? &gfx_herc_backend : &gfx_ega_backend);
+                        : from == &gfx_cga_backend ? &gfx_herc_backend
+                        : from == &gfx_herc_backend && gfx_amiga_ready() ? &gfx_amiga_backend
+                        : &gfx_ega_backend);
 }
 
 /* The text colours are colour numbers of the adapter that set them (COL in gfx.h). These are the

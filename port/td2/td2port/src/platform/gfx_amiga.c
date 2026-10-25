@@ -151,6 +151,8 @@ void gfx_amiga_open(const char *dir)
     amiga_dir = dir ? SDL_strdup(dir) : NULL;
 }
 
+bool gfx_amiga_ready(void) { return amiga_dir != NULL; }
+
 bool gfx_amiga_screens(void)
 {
     return gfx_backend() == &gfx_amiga_backend && amiga_dir;
