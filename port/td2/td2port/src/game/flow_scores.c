@@ -234,7 +234,7 @@ s16 hisc_show(s32 timeout)
     r = screen_reveal(1);
     if (r != 0) return r;
     r = (s16)getkey_timeout_redraw((u32)timeout, hisc_redraw, &timeout);
-    if (r != (s16)KEY_FORM) amiga_fade_out(1);     /* PORT: as duel (not after a switch to its form) */
+    amiga_fade_out(1);                             /* PORT: as duel */
     return r;
 }
 

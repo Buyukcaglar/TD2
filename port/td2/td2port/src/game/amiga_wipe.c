@@ -5,6 +5,7 @@
 #include "flow.h"
 #include "../host.h"
 #include "../platform/gfx.h"
+#include "../platform/gfx_backend.h"
 #include "../platform/timer.h"
 
 #define W 320
@@ -16,9 +17,11 @@
 #define STEP_FRAMES 2
 
 static u32 wipe_t0, wipe_frames;
+static bool wipe_skip;                                 /* PORT: a graphics switch is pending */
 
 static void step(u32 frames)
 {
+    if (wipe_skip || (wipe_skip = gfx_pending_backend() != NULL)) return;   /* the rest at once, below */
     gfx_amiga_wipe_show();
     host_present_now();
     wipe_frames += frames;
@@ -54,6 +57,7 @@ static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
     select_screen();
     wipe_t0 = ticks_get();
     wipe_frames = 0;
+    wipe_skip = false;
     switch (kind) {
     case WIPE_BOX:                                      /* $10fde: a box from the centre */
         for (s16 r = a; r <= CX + a; r = (s16)(r + a)) {
@@ -137,6 +141,11 @@ static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
         }
         break;
     }
+    if (wipe_skip) {                                    /* PORT: the switch does not wait for the wipe */
+        gfx_amiga_wipe_rect(0, 0, W - 1, H - 1);
+        gfx_amiga_wipe_show();
+        host_present_now();
+    }
 }
 
 /* duel runs its passes as fast as the 68000 does them, with no frame wait: in the user's recording of the
@@ -153,7 +162,8 @@ void amiga_dissolve(bool in)
     int done = 0;
     for (;;) {
         u32 t = ticks_get() - t0;
-        int due = t >= total ? 1600 : (int)(1600u * t / total);
+        int due = t >= total || gfx_pending_backend() ? 1600 : (int)(1600u * t / total);   /* PORT: a switch
+                                                           does not wait for it */
         while (done < due) {                            /* the rows due, pass by pass */
             int pass_end = (done / 200 + 1) * 200, end = due < pass_end ? due : pass_end;
             gfx_amiga_dissolve_rows(7 - done / 200, done % 200, end - (pass_end - 200));

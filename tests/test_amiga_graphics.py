@@ -144,18 +144,25 @@ class AmigaGraphicsTest(unittest.TestCase):
 
     def test_showroom_switch_to_amiga(self):
         # started in EGA, switched to the Amiga mode (EGA, CGA, Hercules, Amiga) while TD2's first car
-        # stands in the intro's showroom (5 to 10 s): the showroom starts again in duel's form (the user's
-        # report: TD2's car went on in the Amiga mode)
+        # stands in the intro's showroom (5 to 10 s): the showroom goes on in duel's form, the car standing
+        # (the user's reports: TD2's car went on in the Amiga mode; it should not start again)
         frames = run('6:Ctrl+Shift+G,6.1:Ctrl+Shift+G,6.2:Ctrl+Shift+G', 10,
                      lambda times: [n for t, n in times if t >= 7.5], args=())
         self.assertEqual(self.showroom_misses(frames), 0)
 
     def test_accolade_switch_to_amiga(self):
-        # started in EGA, switched to the Amiga mode on TD2's "Accolade presents" (2 s): the intro starts
-        # the screen again in duel's form, pics/title2 dissolving in (about 3.2 s) and the bar sliding in
-        # on its own row (80 to 82 of pics/titlecar.shp's bull), so pics/title2 above and below the bar
-        frame, = last_frames('2:Ctrl+Shift+G,2.1:Ctrl+Shift+G,2.2:Ctrl+Shift+G', 9.5, [(2.5, 9.5)], args=())
+        # started in EGA, switched to the Amiga mode on TD2's "Accolade presents" (2 s): the screen goes on
+        # in duel's form, finished at once: pics/title2 with the bar in its place on its own row (80 to 82
+        # of pics/titlecar.shp's bull), so pics/title2 above and below the bar, until the showroom (4.7 s)
+        frame, = last_frames('2:Ctrl+Shift+G,2.1:Ctrl+Shift+G,2.2:Ctrl+Shift+G', 4.5, [(2.2, 4.5)], args=())
         self.assert_picture(frame, 'pics/title2', [*range(0, 80), *range(83, 200)])
+
+    def test_switch_during_dissolve(self):
+        # a switch to EGA while duel's dissolve brings "Accolade presents" in (0 to 3.2 s): the dissolve
+        # ends at once and TD2's screen is shown, which stays, so hardly a frame after the switch (the
+        # user's report: no switch while the Amiga screen effects ran)
+        frames = run('1.5:Ctrl+Shift+G', 3.2, lambda times: [n for t, n in times if 1.6 <= t < 3.2])
+        self.assertLessEqual(len(frames), 2)
 
     def test_car_choice(self):
         # YOUR CAR: the F40 on pics/bluestat in its colours in the top 84 lines (each pixel twice, the

@@ -106,21 +106,12 @@ u16 getkey_timeout_switch(u32 n)
 /* PORT: the switch on the screens that only wait or animate (the intro and the attract screens): they
  * apply it at once and draw themselves again in the new mode (redraw, which may be NULL for a blank
  * screen). getkey_timeout_redraw waits like getkey_timeout and does that for each switch on the way. */
-static bool form_watch;
-
-void flow_form_watch(bool on)
-{
-    form_watch = on;
-    if (!on) kbd_force_key(0);
-}
-
 void flow_switch_redraw(void (*redraw)(void *), void *ctx)
 {
-    bool amiga = gfx_amiga_screens();
     flow_switch_graphics();
     select_screen();
     gfx_clear_screen(0);
-    if (redraw && !(form_watch && gfx_amiga_screens() != amiga)) redraw(ctx);
+    if (redraw) redraw(ctx);
 }
 
 u16 getkey_timeout_redraw(u32 n, void (*redraw)(void *), void *ctx)
@@ -145,12 +136,10 @@ void flow_show_page(void)
 void flow_switch_graphics(void)
 {
     if (!gfx_pending_backend()) return;
-    bool amiga = gfx_amiga_screens();
     gfx_free_buffer(flow_page_desc());
     gfx_apply_pending_backend();
     ds_far_wr(DS_page_buf_desc, gfx_create_buffer(0x140, 0xC8, 0x0F));
     gfx_video_hook();
-    if (form_watch && gfx_amiga_screens() != amiga) kbd_force_key(KEY_FORM);   /* PORT: the intro again */
 }
 
 int flow_find_list(FarPtr arc, const char *names, FarPtr *out, int max)
@@ -277,7 +266,7 @@ s16 screen_reveal(s16 mode)
     }
     for (u8 i = 0; i < 8; i++) {
         gfx_dissolve8(flow_page_sprite(), i);
-        flow_pace(REVEAL_STEP_TICKS);                /* PORT */
+        if (!gfx_pending_backend()) flow_pace(REVEAL_STEP_TICKS);   /* PORT; a switch does not wait */
         if (mode == 1 || mode == 0) {
             s16 k = (s16)getkey();
             if (k != 0) return k;
