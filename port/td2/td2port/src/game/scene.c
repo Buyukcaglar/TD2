@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "scene.h"
+#include "flow.h"
 #include "../host.h"
 #include "../platform/input.h"
 #include "../platform/res.h"
@@ -558,6 +559,8 @@ void crash_sequence(void)
     delay_ticks(60);
 }
 
+static bool amiga_msg(s16 y, u16 duel_off, const char *td2_text, int fmt_n);
+
 /* 06c9:3643 engine_smoke_sequence — §4.13 */
 void engine_smoke_sequence(void)
 {
@@ -580,11 +583,13 @@ void engine_smoke_sequence(void)
         deadline_wait();
     } while (--DSB(DS_seq_counter) != 0);
     DSW(DS_engines_blown)++;
+    amiga_msg(45, 0x69CA, NULL, 0);                     /* PORT: duel's "You blew your engine!" ($16500) */
 }
 
 /* 06c9:3788 message_box */
 void message_box_06C9_3788(void)
 {
+    if (amiga_cockpit_on()) return;                       /* PORT: msg_one draws duel's box */
     select_screen();
     gfx_set_text_colours(COL(15, 3), 0);
     gfx_fill_rect(30, 30, 0x105, 0x33, 0);
@@ -598,8 +603,29 @@ void message_wait_tail(void)
     wait_after_message();
 }
 
+/* PORT: a race message in its Amiga form: duel's message box ($1686e) at line 20 for the lives left and
+ * 45 for the others, in pen 28 on pen 0 as duel's race leaves them ($15e74, $164ba). duel_text is
+ * duel's own words at A4 - off (NULL: TD2's text), fmt_n fills a %d in them. False without the Amiga
+ * form. */
+static bool amiga_msg(s16 y, u16 duel_off, const char *td2_text, int fmt_n)
+{
+    if (!amiga_cockpit_on()) return false;
+    char words[160], text[160];
+    if (duel_off && gfx_amiga_duel_data(0x2957Eu - duel_off, words, sizeof words - 1)) {
+        words[sizeof words - 1] = 0;
+        snprintf(text, sizeof text, words, fmt_n);
+    } else {
+        snprintf(text, sizeof text, "%s", td2_text ? td2_text : "");
+    }
+    select_screen();
+    amiga_message_box(text, y, 28);
+    message_wait_tail();
+    return true;
+}
+
 static void msg_one(u16 text_ds)                          /* 06c9:3703 */
 {
+    if (amiga_msg(45, 0, DSTR(text_ds), 0)) return;
     draw_text_centered(text_ds, 0x32);
     message_wait_tail();
 }
@@ -607,6 +633,8 @@ static void msg_one(u16 text_ds)                          /* 06c9:3703 */
 /* 06c9:36e0 msg_missed_gas */
 void msg_missed_gas(void)
 {
+    /* duel: out of gas past the station, or past the finish on the last stage ($164c2) */
+    if (amiga_msg(45, DSW(DS_last_stage) ? 0x6A12 : 0x6A5A, NULL, 0)) return;
     message_box_06C9_3788();
     draw_text_centered(0x2E2A, 0x2A);                     /* "You missed the gas station" */
     draw_text_centered(0x2E5C, 0x3A);                     /* "Hope you enjoy the walk." */
@@ -618,6 +646,7 @@ void msg_too_far_left(void)
 {
     message_box_06C9_3788();
     DSW(DS_out_of_gas)++;
+    if (amiga_msg(45, 0x6A90, DSTR(0x2E75), 0)) return;  /* duel: "The pump won't reach to that lane." */
     msg_one(0x2E75);                                      /* "Too far left to reach pump." */
 }
 
@@ -657,6 +686,7 @@ void msg_too_much_damage(void)
 void msg_fill_er_up(void)
 {
     if (DSW(DS_last_stage) != 0) return;
+    if (amiga_cockpit_on()) return;                       /* PORT: duel says nothing at the pump */
     message_box_06C9_3788();
     msg_one(0x2F04);                                      /* "Fill 'er up..." */
 }
@@ -666,6 +696,7 @@ void msg_lives_left(void)
 {
     message_box_06C9_3788();
     if (DSW(DS_lives) == 1) {
+        if (amiga_msg(20, 0x6AA8, DSTR(0x2F27), 0)) return;   /* "This is your last life." */
         msg_one(0x2F27);                                  /* "Careful, it's your last life!" */
         return;
     }
@@ -673,6 +704,7 @@ void msg_lives_left(void)
     char buf[8];
     int n = snprintf(buf, sizeof buf, "%d", (int)DSS(DS_lives));
     memcpy(mp(DGROUP, 0x2F20), buf, (size_t)n + 1);
+    if (amiga_msg(20, 0x6AC0, DSTR(0x2F13), DSS(DS_lives))) return;   /* "You have %d lives left." */
     msg_one(0x2F13);
 }
 

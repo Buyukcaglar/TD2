@@ -70,6 +70,9 @@ const char *amiga_scenery_prefix(const char *code);
 /* duel's fade out of an Amiga screen ($1a0a8), delay 50 Hz ticks a step; nothing without the Amiga
  * graphics. */
 void amiga_fade_out(int delay);
+/* duel's message box ($1686e) on the selected target: the lines of text (split at \n) centred, a black
+ * box with a rectangle in pen inside it, the lines in pen on pen 0, 10 apart from y + 7. */
+void amiga_message_box(const char *text, s16 y, u8 pen);
 u16  wait_sound_end(void (*redraw)(void *), void *ctx);
 /* PORT: a graphics switch on the intro and attract screens (flow.c): applies it, clears the screen and
  * calls redraw(ctx) (if not NULL) to draw the screen again; getkey_timeout_redraw is getkey_timeout

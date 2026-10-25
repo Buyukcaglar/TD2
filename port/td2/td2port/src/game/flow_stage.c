@@ -288,22 +288,8 @@ static s16 amiga_end_station(bool busted)
     char msg[200];
     if (busted && gfx_amiga_duel_data(0x2957Eu - 0x6DA5u, msg, sizeof msg - 1)) {
         msg[sizeof msg - 1] = 0;
-        int lines = 1, width = 0, w = 0;
-        for (const char *c = msg; *c; c++) {
-            if (*c == '\n') { lines++; w = 0; } else if (++w > width) width = w;
-        }
-        s16 y = 2, x0 = (s16)((320 - (width * 8 + 12)) / 2);
         select_screen();
-        gfx_fill_rect(x0, y, (s16)(width * 8 + 13), (s16)(lines * 10 + 12), AMIGA_PEN(0));
-        gfx_fill_rect((s16)(x0 + 3), (s16)(y + 3), (s16)(width * 8 + 7), (s16)(lines * 10 + 6), AMIGA_PEN(24));
-        gfx_set_text_colours(AMIGA_PEN(24), AMIGA_PEN(0));
-        char *line = msg;
-        for (int i = 0; i < lines; i++) {
-            char *nl = strchr(line, '\n');
-            if (nl) *nl = 0;
-            gfx_draw_text_str(line, (u16)(x0 + 7), (u16)(y + 7 + 10 * i));
-            line = nl ? nl + 1 : line + strlen(line);
-        }
+        amiga_message_box(msg, 2, 24);
     }
     FarPtr text = gfx_create_buffer(0x140, 0x51, 0x0F);
     gas_station_text(text, true);

@@ -407,6 +407,31 @@ void amiga_fade_out(int delay)
     }
 }
 
+/* PORT: duel's message box ($1686e): as wide as the longest line, centred; the box from y, 3 lines of
+ * black round the rectangle in pen; each line at x0 + 7, 10 lines apart. */
+void amiga_message_box(const char *text, s16 y, u8 pen)
+{
+    int lines = 1, width = 0, w = 0;
+    for (const char *c = text; *c; c++) {
+        if (*c == '\n') { lines++; w = 0; } else if (++w > width) width = w;
+    }
+    s16 x0 = (s16)((320 - (width * 8 + 12)) / 2);
+    gfx_fill_rect(x0, y, (s16)(width * 8 + 13), (s16)(lines * 10 + 12), AMIGA_PEN(0));
+    gfx_fill_rect((s16)(x0 + 3), (s16)(y + 3), (s16)(width * 8 + 7), (s16)(lines * 10 + 6), AMIGA_PEN(pen));
+    gfx_set_text_colours(AMIGA_PEN(pen), AMIGA_PEN(0));
+    const char *line = text;
+    for (int i = 0; i < lines; i++) {
+        const char *nl = strchr(line, '\n');
+        size_t n = nl ? (size_t)(nl - line) : strlen(line);
+        char buf[64];
+        if (n >= sizeof buf) n = sizeof buf - 1;
+        memcpy(buf, line, n);
+        buf[n] = 0;
+        gfx_draw_text_str(buf, (u16)(x0 + 7), (u16)(y + 7 + 10 * i));
+        line = nl ? nl + 1 : line + strlen(line);
+    }
+}
+
 /* PORT: game over in its Amiga form (duel $13b88), in place of TD2's words over the road: the picture
  * pics/gameover, its sample, and then the red letters drip, the sprites dr00 to dr36 of
  * pics/gameover.shp (the stage, then the drip) one a frame at their own places, each over the last.
