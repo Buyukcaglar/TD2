@@ -131,14 +131,25 @@ bool gfx_amiga_picture(const char *file, s16 x, s16 y);
 /* Where gfx_amiga_sprite puts a sprite: its hot spot at (x, y), its own position, its hot spot at x and
  * its own top row (duel's difficulty arrow); or as a whole box, with no mask: its top left corner at x
  * and its own top row (the bar that slides in on "Accolade presents"), or its own position moved by
- * (x, y) (the showroom's car). */
-typedef enum { AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X, AMIGA_BOX_AT_X, AMIGA_BOX_AT_OWN } AmigaPlace;
+ * (x, y) (the showroom's car); or XORed onto the target (duel's blit $1f426) with its top left corner at
+ * (x, y) or at its own position (the race's roof digits and radar lights). */
+typedef enum {
+    AMIGA_AT_HOT, AMIGA_AT_OWN, AMIGA_AT_HOT_X, AMIGA_BOX_AT_X, AMIGA_BOX_AT_OWN, AMIGA_XOR_AT, AMIGA_XOR_OWN
+} AmigaPlace;
 /* Draws sprite name of an Amiga sprite archive into the selected target. False if it is not there. */
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at);
 /* A sprite's own position and its size (any may be NULL). False if it is not there. */
 bool gfx_amiga_sprite_rect(const char *file, const char *name, s16 *x, s16 *y, s16 *w, s16 *h);
 /* A sprite's hot point. False if it is not there. */
 bool gfx_amiga_sprite_hot(const char *file, const char *name, s16 *hot_x, s16 *hot_y);
+/* Keeps the screen's lines y0 to y1 - 1 as they are now; puts the rectangle (x0, y0)-(x1, y1), corners
+ * x1 and y1 excluded, of what was kept back on the screen (the race's dashboard under its needles). */
+void gfx_amiga_keep_lines(s16 y0, s16 y1);
+void gfx_amiga_restore_rect(s16 x0, s16 y0, s16 x1, s16 y1);
+/* A line in pen on the selected target, drawn only where sprite mask of an Amiga sprite archive, at its
+ * own position, is drawn (a gauge's needle, inside the part the steering wheel leaves visible). False if
+ * the sprite is not there. */
+bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x1, s16 y1, u8 pen);
 /* A file of the Amiga game, unpacked if Rpck-packed (SDL_free), or NULL. */
 void *gfx_amiga_file(const char *file, u32 *len);
 /* Draws the part (sx, sy, sw, sh) of an Amiga picture scaled to w x h at (x, y) of the selected target,
@@ -152,6 +163,16 @@ bool gfx_amiga_split_colours(const char *file, u16 line, int first);
 /* The selected target's colours below its last split (a picture's CMP2) become an Amiga picture's (duel
  * loads a viewport's second palette, +9Ch, so: the car's colours on the gas station). */
 bool gfx_amiga_second_colours(const char *file);
+/* The selected target's colours (an Amiga picture's) move below line, a split before the others, and the
+ * n colours given (Amiga colour words) take the lines above it: duel's race screen, the section's road
+ * colours over the dashboard's. False if the target has no Amiga colours or too many splits. */
+bool gfx_amiga_colours_above(const u16 *colours, int n, u16 line);
+/* Blits of buffer desc onto the screen leave the screen's colours as they are, until the buffer is made
+ * again; desc stays selected. For the race's view, which TD2 draws in the EGA colours. */
+void gfx_amiga_keep_screen_colours(FarPtr desc);
+/* The screen's pixels of rows y0 to y1 - 1 in the EGA colours 0 to 15 take the nearest of the screen's
+ * Amiga colours for their row, as the game's colour numbers draw: TD2's race view under duel's cockpit. */
+void gfx_amiga_translate(s16 y0, s16 y1);
 /* Target to gets target from's colours and stays selected (a buffer blitted onto the screen brings its
  * colours, so a buffer of text for an Amiga screen takes that screen's). */
 void gfx_amiga_colours_from(FarPtr from, FarPtr to);

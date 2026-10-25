@@ -41,11 +41,35 @@ static bool decode(const u8 *d, u32 len, AmigaSprite *s)
     return true;
 }
 
+/* The last few archives unpacked, as the race draws its cockpit's sprites every frame. */
+#define CACHED 4
+static struct { char *path; u8 *arc; u32 len; } cache[CACHED];
+static int cache_next;
+
+static const u8 *archive(const char *path, u32 *len)
+{
+    for (int i = 0; i < CACHED; i++)
+        if (cache[i].path && SDL_strcmp(cache[i].path, path) == 0) {
+            *len = cache[i].len;
+            return cache[i].arc;
+        }
+    u8 *arc = rpck_load(path, len);
+    if (!arc) return NULL;
+    int i = cache_next;
+    cache_next = (cache_next + 1) % CACHED;
+    SDL_free(cache[i].path);
+    SDL_free(cache[i].arc);
+    cache[i].path = SDL_strdup(path);
+    cache[i].arc = arc;
+    cache[i].len = *len;
+    return arc;
+}
+
 bool shp_load(const char *path, const char *name, AmigaSprite *s)
 {
     memset(s, 0, sizeof *s);
     u32 len;
-    u8 *arc = rpck_load(path, &len);
+    const u8 *arc = archive(path, &len);
     bool ok = false;
     if (arc && len >= 6) {
         u16 count = be16(arc + 4);
@@ -57,7 +81,6 @@ bool shp_load(const char *path, const char *name, AmigaSprite *s)
             break;
         }
     }
-    SDL_free(arc);
     if (!ok) shp_free(s);
     return ok;
 }

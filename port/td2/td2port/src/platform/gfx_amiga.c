@@ -23,6 +23,7 @@ typedef struct {
     u8 splits;          /* from each split's line down, its colours */
     GfxSplit split[GFX_SPLITS];
     u8 map[16];
+    bool keep_screen;   /* a buffer whose blits onto the screen leave the screen's colours */
 } TargetColours;
 
 #define MAX_BUFFERS 8
@@ -132,6 +133,7 @@ void gfx_amiga_cleared(bool whole_screen)
 void gfx_amiga_shown(FarPtr spr)
 {
     const TargetColours *t = buffer_colours(spr.seg);
+    if (t && t->keep_screen) return;
     if (t && t->amiga) {
         screen = *t;
         screen.seg = 0;
@@ -160,6 +162,22 @@ static u32 amiga_rgb(const u8 c[3])
     return (c[0] >> 4) * 17u << 16 | (c[1] >> 4) * 17u << 8 | (c[2] >> 4) * 17u;
 }
 
+/* For each EGA colour, the nearest of the first n colours rgb. */
+static void nearest_map(const u32 *rgb, int n, u8 map[16])
+{
+    for (int c = 0; c < 16; c++) {
+        int best = 0, dist = 0x7FFFFFFF;
+        for (int i = 0; i < n && i < 32; i++) {
+            int dr = (int)(rgb[i] >> 16) - ega_colours[c][0];
+            int dg = (int)(rgb[i] >> 8 & 0xFF) - ega_colours[c][1];
+            int db = (int)(rgb[i] & 0xFF) - ega_colours[c][2];
+            int d = 3 * dr * dr + 4 * dg * dg + 2 * db * db;
+            if (d < dist) { dist = d; best = i; }
+        }
+        map[c] = (u8)best;
+    }
+}
+
 /* Colours for the selected target: rgb (n of them used by the game's colour numbers), from line split
  * down rgb2. */
 static void set_target_rgb(const u32 rgb[32], int n, u16 split, const u32 rgb2[32])
@@ -171,17 +189,7 @@ static void set_target_rgb(const u32 rgb[32], int n, u16 split, const u32 rgb2[3
     t->splits = split ? 1 : 0;
     t->split[0].line = split;
     memcpy(t->split[0].rgb, rgb2, sizeof t->split[0].rgb);
-    for (int c = 0; c < 16; c++) {
-        int best = 0, dist = 0x7FFFFFFF;
-        for (int i = 0; i < n && i < 32; i++) {
-            int dr = (int)(t->rgb[i] >> 16) - ega_colours[c][0];
-            int dg = (int)(t->rgb[i] >> 8 & 0xFF) - ega_colours[c][1];
-            int db = (int)(t->rgb[i] & 0xFF) - ega_colours[c][2];
-            int d = 3 * dr * dr + 4 * dg * dg + 2 * db * db;
-            if (d < dist) { dist = d; best = i; }
-        }
-        t->map[c] = (u8)best;
-    }
+    nearest_map(t->rgb, n, t->map);
     if (t == &screen) show_screen_colours();
 }
 
@@ -208,6 +216,57 @@ void gfx_amiga_colours_from(FarPtr from, FarPtr to)
     *t = copy;
     t->seg = seg;
     if (t == &screen) show_screen_colours();
+}
+
+bool gfx_amiga_colours_above(const u16 *colours, int n, u16 line)
+{
+    TargetColours *t = target_colours();
+    if (!gfx_amiga_screens() || !t || !t->amiga || t->splits >= GFX_SPLITS || line == 0) return false;
+    memmove(&t->split[1], &t->split[0], t->splits * sizeof t->split[0]);
+    t->splits++;
+    t->split[0].line = line;
+    memcpy(t->split[0].rgb, t->rgb, sizeof t->rgb);
+    for (int i = 0; i < 32; i++) {
+        u16 c = i < n ? colours[i] : 0;
+        t->rgb[i] = (c >> 8 & 15) * 17u << 16 | (c >> 4 & 15) * 17u << 8 | (c & 15) * 17u;
+    }
+    nearest_map(t->rgb, 32, t->map);
+    if (t == &screen) show_screen_colours();
+    return true;
+}
+
+void gfx_amiga_keep_screen_colours(FarPtr desc)
+{
+    gfx_select_target(desc);
+    TargetColours *t = target_colours();
+    if (t && t != &screen) t->keep_screen = true;
+}
+
+void gfx_amiga_translate(s16 y0, s16 y1)
+{
+    if (!screen.amiga) return;
+    const u32 *last = NULL;
+    u8 map[16];
+    for (s16 y = y0 < 0 ? 0 : y0; y < y1 && y < 200; y++) {
+        const u32 *pens = gfx_split_row(screen.rgb, screen.split, screen.splits, y);
+        if (pens != last) {
+            nearest_map(pens, 32, map);
+            last = pens;
+        }
+        u8 *p[5];
+        for (int k = 0; k < 5; k++) p[k] = &gfx_ega.plane[k][y * 40];
+        for (int bx = 0; bx < 40; bx++) {
+            u8 out[5] = { 0 };
+            for (int i = 0; i < 8; i++) {
+                u8 bit = (u8)(0x80 >> i), v = 0;
+                for (int k = 0; k < 5; k++) v |= (u8)((p[k][bx] & bit ? 1 : 0) << k);
+                if (v < 16) v = map[v];
+                for (int k = 0; k < 5; k++) if (v >> k & 1) out[k] |= bit;
+            }
+            for (int k = 0; k < 5; k++) p[k][bx] = out[k];
+        }
+    }
+    gfx_ega.dirty = true;
 }
 
 bool gfx_amiga_second_colours(const char *file)
@@ -341,8 +400,8 @@ bool gfx_amiga_picture(const char *file, s16 x, s16 y)
     return true;
 }
 
-/* One pixel of the selected target, within its clip. */
-static void put_pixel(s16 x, s16 y, u8 v)
+/* One pixel of the selected target, within its clip: colour v, or XORed with v. */
+static void draw_pixel(s16 x, s16 y, u8 v, bool xor)
 {
     if (x < (s16)(CSW(GFX_CUR_CLIP_X0) * 8) || x >= (s16)(CSW(GFX_CUR_CLIP_X1) * 8)) return;
     if (y < (s16)CSW(GFX_CUR_CLIP_Y0) || y >= (s16)CSW(GFX_CUR_CLIP_Y1)) return;
@@ -351,10 +410,13 @@ static void put_pixel(s16 x, s16 y, u8 v)
     bool on_screen = CSW(GFX_CUR_PLANE0) == VRAM_SEG;
     for (int k = 0; k < 5; k++) {
         u8 *b = on_screen ? &gfx_ega.plane[k][off] : ram_plane(k) ? mp(ram_plane(k), off) : NULL;
-        if (b) *b = (u8)(v >> k & 1 ? *b | bit : *b & ~bit);
+        if (b && xor) *b = (u8)(v >> k & 1 ? *b ^ bit : *b);
+        else if (b) *b = (u8)(v >> k & 1 ? *b | bit : *b & ~bit);
     }
     if (on_screen) gfx_ega.dirty = true;
 }
+
+static void put_pixel(s16 x, s16 y, u8 v) { draw_pixel(x, y, v, false); }
 
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at)
 {
@@ -365,12 +427,18 @@ bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPla
     bool ok = path && shp_load(path, name, &s);
     SDL_free(path);
     if (!ok) return false;
-    bool box = at == AMIGA_BOX_AT_X || at == AMIGA_BOX_AT_OWN;
-    x = at == AMIGA_AT_OWN ? s.x : at == AMIGA_BOX_AT_OWN ? (s16)(s.x + x) : box ? x : (s16)(x - s.hot_x);
-    y = at == AMIGA_AT_HOT ? (s16)(y - s.hot_y) : at == AMIGA_BOX_AT_OWN ? (s16)(s.y + y) : s.y;
+    bool box = at == AMIGA_BOX_AT_X || at == AMIGA_BOX_AT_OWN, xor = at == AMIGA_XOR_AT || at == AMIGA_XOR_OWN;
+    if (at == AMIGA_XOR_AT) {
+    } else if (at == AMIGA_XOR_OWN) {
+        x = s.x;
+        y = s.y;
+    } else {
+        x = at == AMIGA_AT_OWN ? s.x : at == AMIGA_BOX_AT_OWN ? (s16)(s.x + x) : box ? x : (s16)(x - s.hot_x);
+        y = at == AMIGA_AT_HOT ? (s16)(y - s.hot_y) : at == AMIGA_BOX_AT_OWN ? (s16)(s.y + y) : s.y;
+    }
     for (int r = 0; r < s.h; r++)
         for (int c = 0; c < s.w; c++)
-            if (s.mask[r * s.w + c]) put_pixel((s16)(x + c), (s16)(y + r), s.pix[r * s.w + c]);
+            if (s.mask[r * s.w + c]) draw_pixel((s16)(x + c), (s16)(y + r), s.pix[r * s.w + c], xor);
             else if (box) put_pixel((s16)(x + c), (s16)(y + r), s.set);
     shp_free(&s);
     return true;
@@ -404,6 +472,55 @@ bool gfx_amiga_sprite_hot(const char *file, const char *name, s16 *hot_x, s16 *h
     if (!ok) return false;
     *hot_x = s.hot_x;
     *hot_y = s.hot_y;
+    shp_free(&s);
+    return true;
+}
+
+static u8 kept[5][200 * 40];           /* the screen's lines as gfx_amiga_keep_lines took them */
+
+void gfx_amiga_keep_lines(s16 y0, s16 y1)
+{
+    for (s16 y = y0 < 0 ? 0 : y0; y < y1 && y < 200; y++)
+        for (int k = 0; k < 5; k++) memcpy(&kept[k][y * 40], &gfx_ega.plane[k][y * 40], 40);
+}
+
+void gfx_amiga_restore_rect(s16 x0, s16 y0, s16 x1, s16 y1)
+{
+    if (x0 < 0) x0 = 0;
+    if (x1 > 320) x1 = 320;
+    if (x0 >= x1) return;
+    for (s16 y = y0 < 0 ? 0 : y0; y < y1 && y < 200; y++)
+        if (!(x0 & 7) && !(x1 & 7)) {
+            for (int k = 0; k < 5; k++)
+                memcpy(&gfx_ega.plane[k][y * 40 + (x0 >> 3)], &kept[k][y * 40 + (x0 >> 3)], (size_t)((x1 - x0) >> 3));
+        } else for (s16 x = x0; x < x1; x++) {
+            u16 off = (u16)(y * 40 + (x >> 3));
+            u8 bit = (u8)(0x80 >> (x & 7));
+            for (int k = 0; k < 5; k++)
+                gfx_ega.plane[k][off] = (u8)((gfx_ega.plane[k][off] & ~bit) | (kept[k][off] & bit));
+        }
+    gfx_ega.dirty = true;
+}
+
+bool gfx_amiga_line_in(const char *file, const char *mask, s16 x0, s16 y0, s16 x1, s16 y1, u8 pen)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaSprite s;
+    bool ok = path && shp_load(path, mask, &s);
+    SDL_free(path);
+    if (!ok) return false;
+    int dx = SDL_abs(x1 - x0), dy = -SDL_abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    int err = dx + dy;
+    for (;;) {
+        int c = x0 - s.x, r = y0 - s.y;
+        if (c >= 0 && c < s.w && r >= 0 && r < s.h && s.mask[r * s.w + c]) put_pixel(x0, y0, pen);
+        if (x0 == x1 && y0 == y1) break;
+        int e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x0 = (s16)(x0 + sx); }
+        if (e2 <= dx) { err += dx; y0 = (s16)(y0 + sy); }
+    }
     shp_free(&s);
     return true;
 }
