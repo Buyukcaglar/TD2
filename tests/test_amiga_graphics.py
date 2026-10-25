@@ -54,9 +54,9 @@ def frames_after(keys, seconds, t0):
     return run(keys, seconds, lambda times: [n for t, n in times if t >= t0])
 
 
-def run(keys, seconds, pick, files=None):
+def run(keys, seconds, pick, files=None, args=('--amiga-graphics',)):
     """Runs the port headless with the Amiga graphics; the frames pick chooses from (time, file name).
-    files: more files for the profile, {name: bytes}."""
+    files: more files for the profile, {name: bytes}; args: the graphics option (none starts in EGA)."""
     from PIL import Image
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
@@ -68,7 +68,7 @@ def run(keys, seconds, pick, files=None):
         shots.mkdir()
         env = dict(os.environ, SDL_VIDEO_DRIVER='dummy', SDL_AUDIO_DRIVER='dummy', TD2_VIRTUAL_CLOCK='1',
                    TD2_RUN_SECONDS=str(seconds), TD2_SNAPSHOT_DIR=str(shots), TD2_SNAPSHOT_MS='20', TD2_KEYS=keys)
-        p = subprocess.run([str(EXE), '--amiga-graphics', '--game-dir', str(GAME), '--user-dir', str(tmp)],
+        p = subprocess.run([str(EXE), *args, '--game-dir', str(GAME), '--user-dir', str(tmp)],
                            env=env, capture_output=True, text=True, timeout=300)
         assert p.returncode == 0, p.stderr
         times = [(float(w[2]), w[0]) for w in (ln.split() for ln in p.stderr.splitlines())
@@ -124,10 +124,10 @@ class AmigaGraphicsTest(unittest.TestCase):
         # above and below the arrow (rows 53 to 103)
         self.assert_picture(self.difficulty, 'pics/gamedifficulty', [*range(0, 53), *range(104, 200)])
 
-    def test_showroom_side_view(self):
-        # the intro's showroom: the F40's side view (gcar of cars/f40.sideview.shp) in its own colours
-        # (cars/f40.st.p), its bottom on the bottom line, the window box (wnd0, 64 x 15 at 144, 21 of the
-        # sprite's place) left out because it opens
+    def showroom_misses(self, frames):
+        # the fewest pixels of the frames that differ from the F40's side view in the intro's showroom (gcar
+        # of cars/f40.sideview.shp) in its own colours (cars/f40.st.p), its bottom on the bottom line, the
+        # window box (wnd0, 64 x 15 at 144, 21 of the sprite's place) left out because it opens
         import ilbm
         import shp
         pal = amiga_colours(ilbm.parse((AMIGA / 'cars/f40.st.p').read_bytes()))
@@ -136,8 +136,18 @@ class AmigaGraphicsTest(unittest.TestCase):
         want = {(car.x + x, top + y): pal[car.pixels[y * car.width + x]]
                 for y in range(car.height) for x in range(car.width)
                 if not (144 <= car.x + x < 208 and 21 <= car.y + y < 36)}
-        best = min(sum(f.getpixel(xy) != c for xy, c in want.items()) for f in frames_after('60:Return', 12, 3))
-        self.assertEqual(best, 0)
+        return min(sum(f.getpixel(xy) != c for xy, c in want.items()) for f in frames)
+
+    def test_showroom_side_view(self):
+        self.assertEqual(self.showroom_misses(frames_after('60:Return', 12, 3)), 0)
+
+    def test_showroom_switch_to_amiga(self):
+        # started in EGA, switched to the Amiga mode (EGA, CGA, Hercules, Amiga) while TD2's first car
+        # stands in the intro's showroom (5 to 10 s): the showroom starts again in duel's form (the user's
+        # report: TD2's car went on in the Amiga mode)
+        frames = run('6:Ctrl+Shift+G,6.1:Ctrl+Shift+G,6.2:Ctrl+Shift+G', 10,
+                     lambda times: [n for t, n in times if t >= 7.5], args=())
+        self.assertEqual(self.showroom_misses(frames), 0)
 
     def test_car_choice(self):
         # YOUR CAR: the F40 on pics/bluestat in its colours in the top 84 lines (each pixel twice, the
