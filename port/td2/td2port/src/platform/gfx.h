@@ -177,7 +177,8 @@ bool gfx_amiga_split_colours(const char *file, u16 line, int first);
 bool gfx_amiga_second_colours(const char *file);
 /* The selected target's colours (an Amiga picture's) move below line, a split before the others, and the
  * n colours given (Amiga colour words) take the lines above it: duel's race screen, the section's road
- * colours over the dashboard's. False if the target has no Amiga colours or too many splits. */
+ * colours over the dashboard's. When the first split is already at line, only the colours above it
+ * change (the crash's tint). False if the target has no Amiga colours or too many splits. */
 bool gfx_amiga_colours_above(const u16 *colours, int n, u16 line);
 /* The game's colour number colour draws pen of the selected target's Amiga colours (TD2's road grey as
  * duel's road). */

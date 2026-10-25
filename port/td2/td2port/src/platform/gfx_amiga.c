@@ -223,11 +223,14 @@ void gfx_amiga_colours_from(FarPtr from, FarPtr to)
 bool gfx_amiga_colours_above(const u16 *colours, int n, u16 line)
 {
     TargetColours *t = target_colours();
-    if (!gfx_amiga_screens() || !t || !t->amiga || t->splits >= GFX_SPLITS || line == 0) return false;
-    memmove(&t->split[1], &t->split[0], t->splits * sizeof t->split[0]);
-    t->splits++;
-    t->split[0].line = line;
-    memcpy(t->split[0].rgb, t->rgb, sizeof t->rgb);
+    if (!gfx_amiga_screens() || !t || !t->amiga || line == 0) return false;
+    if (t->splits == 0 || t->split[0].line != line) {   /* a split there already: only the colours change */
+        if (t->splits >= GFX_SPLITS) return false;
+        memmove(&t->split[1], &t->split[0], t->splits * sizeof t->split[0]);
+        t->splits++;
+        t->split[0].line = line;
+        memcpy(t->split[0].rgb, t->rgb, sizeof t->rgb);
+    }
     for (int i = 0; i < 32; i++) {
         u16 c = i < n ? colours[i] : 0;
         t->rgb[i] = (c >> 8 & 15) * 17u << 16 | (c >> 4 & 15) * 17u << 8 | (c & 15) * 17u;
