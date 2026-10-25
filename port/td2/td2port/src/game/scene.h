@@ -53,6 +53,11 @@ void amiga_cockpit_free(void);
 bool amiga_cockpit_on(void);            /* the race screen is in its Amiga form */
 void amiga_cockpit_frame(void);         /* after the view is shown: the cockpit over it */
 void amiga_cockpit_crashed(bool crashed);
+/* duel's crash ($19da0): step 0 to 6 draws duel's cracks of that step (pen 28, into the selected main
+ * view) and tints the colours above the dashboard red at steps 0 and 4 to 6; crash_end flickers five
+ * times and puts the colours back. False without the Amiga form. */
+bool amiga_cockpit_crash_step(int step);
+void amiga_cockpit_crash_end(void);
 void amiga_cockpit_gate(bool open);     /* the gear gate is shown, with the knob in it */
 /* duel's pens, as colour words, for the road, the left and the right shoulder, two each, which it
  * alternates in bands along the road; false without the Amiga form. */

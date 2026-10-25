@@ -530,6 +530,7 @@ void crash_sequence(void)
     for (u16 di = 0; di != 7; di++) {
         deadline_set(10);
         select_main_view();
+        if (amiga_cockpit_crash_step(di)) goto shown;     /* PORT: duel's cracks and tint */
         DSB(DS_seq_counter) = DSB((u16)(DS_crack_line_counts + di));
         u16 bp = DSW((u16)(DS_crack_line_ptrs + 2 * di));
         u16 si = 0;
@@ -548,12 +549,14 @@ void crash_sequence(void)
             si = (u16)(si + 4);
         } while (--DSB(DS_seq_counter) != 0);
         raster()->crash_flash((di & 1) == 0);
+    shown:
         deadline_wait();
         draw_mirror();
         draw_hud();
         present_main_view();
     }
     raster()->crash_flash(false);
+    amiga_cockpit_crash_end();                            /* PORT: duel's flicker */
     gfx_video_hook();
     DSW(DS_crashes)++;
     delay_ticks(60);

@@ -23,6 +23,7 @@
 #include "flow.h"
 
 #include "../amiga/race_logic.h"
+#include "../platform/input.h"
 #include "../platform/timer.h"
 
 #include <SDL3/SDL.h>
@@ -46,6 +47,7 @@ static struct {
     FarPtr scratch;                     /* for TD2's sprites drawn with the road colours */
     bool gate, gate_drawn;              /* the gear gate is shown, and as drawn */
     s16 knob_x, knob_y;                 /* the knob's hot spot on it */
+    u16 top[32];                        /* the colours above the dashboard (the section's road colours) */
     u16 bands[6];                       /* road, left and right shoulder, two pens each (roaddata 22h on) */
     char scenery[64];                   /* the section's sprite file: the mountains and clouds */
     bool clouds_drift, mountains;
@@ -130,6 +132,48 @@ bool amiga_cockpit_backdrop(s16 horizon, u16 scroll)
     return true;
 }
 
+/* duel's crash ($19da0): the colours above the dashboard with their green and blue at 11/15 ($19cbc),
+ * or as they are. */
+static void crash_tint(bool tinted)
+{
+    u16 c[32];
+    for (int i = 0; i < 32; i++) {
+        u16 v = ac.top[i];
+        c[i] = tinted ? (u16)((v & 0xF00) | (((v & 0xF0) * 11 / 15) & 0xF0) | (((v & 0x0F) * 11 / 15) & 0x0F)) : v;
+    }
+    select_screen();
+    gfx_amiga_colours_above(c, 32, DASH_LINE);
+}
+
+bool amiga_cockpit_crash_step(int step)
+{
+    if (!ac.on || step < 0 || step > 6) return false;
+    u8 count = 0, line[4];
+    u8 p[4];
+    if (gfx_amiga_duel_data(0x2957Eu - 0x616Eu + (u32)step, &count, 1)
+        && gfx_amiga_duel_data(0x2957Eu - 0x62E6u + 4u * (u32)step, p, 4)) {
+        u32 at = (u32)p[0] << 24 | (u32)p[1] << 16 | (u32)p[2] << 8 | p[3];
+        for (u8 i = 0; i < count && gfx_amiga_duel_data(at + 4u * i, line, 4); i++)
+            gfx_draw_line((s16)(line[0] * 2), (s16)(line[1] - VIEW_TOP), (s16)(line[2] * 2),
+                          (s16)(line[3] - VIEW_TOP), AMIGA_PEN(28));
+    }
+    crash_tint(step == 0 || step >= 4);
+    return true;
+}
+
+void amiga_cockpit_crash_end(void)
+{
+    if (!ac.on) return;
+    u16 key;
+    for (int i = 0; i < 5 && !kbd_peek(&key); i++) {    /* Delay(5) each, 50 Hz ticks; a key ends it */
+        crash_tint(false);
+        delay_ticks(10);
+        crash_tint(true);
+        delay_ticks(10);
+    }
+    crash_tint(false);
+}
+
 /* v on TD2's gate, between its places d0 and d1, carried to duel's a0 and a1. */
 static s16 knob_map(s16 v, s16 d0, s16 d1, s16 a0, s16 a1)
 {
@@ -175,6 +219,7 @@ bool amiga_cockpit_load(void)
     gfx_clear_clip(0);
     if (!gfx_amiga_picture(flow_concat(file, sizeof file, car, "dash"), 0, 0)) return false;
     gfx_amiga_colours_above(top, 32, DASH_LINE);
+    memcpy(ac.top, top, sizeof ac.top);
     DSW(DS_scene_words) = AMIGA_PEN(pens[ROAD_LEFT]);   /* TD2's colour words for the scenery's parts */
     DSW(DS_col_right) = AMIGA_PEN(pens[ROAD_RIGHT]);
     DSW(DS_col_sky) = AMIGA_PEN(pens[ROAD_SKY]);

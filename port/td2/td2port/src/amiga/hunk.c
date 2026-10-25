@@ -19,6 +19,16 @@
 
 static u32 be32(const u8 *p) { return (u32)p[0] << 24 | (u32)p[1] << 16 | (u32)p[2] << 8 | p[3]; }
 
+/* Adds the base of hunk `target` to each relocated long at `offset` of hunk `index` that lies within
+ * the bytes copied out. */
+static void relocate(u8 *out, u32 from, u32 n, u32 offset, u32 target_base)
+{
+    if (offset < from || offset + 4 > from + n) return;
+    u8 *p = out + (offset - from);
+    u32 v = be32(p) + target_base;
+    p[0] = (u8)(v >> 24); p[1] = (u8)(v >> 16); p[2] = (u8)(v >> 8); p[3] = (u8)v;
+}
+
 static bool read_hunks(const u8 *f, size_t len, u32 addr, u8 *out, u32 n)
 {
     size_t pos = 0;
@@ -32,14 +42,16 @@ static bool read_hunks(const u8 *f, size_t len, u32 addr, u8 *out, u32 n)
     LONG(last);
     (void)count;
     if (last < first || last - first >= MAX_HUNKS) return false;
-    u32 base[MAX_HUNKS], at = 0x10000;
-    for (u32 i = 0; i <= last - first; i++) {
+    u32 base[MAX_HUNKS], at = 0x10000, hunks = last - first + 1;
+    for (u32 i = 0; i < hunks; i++) {
         LONG(v);
         if (v >> 30 == 3) pos += 4;
         base[i] = at;
         at = (at + (v & 0x3FFFFFFF) * 4 + 8 + 15) & ~15u;
     }
-    for (u32 index = 0; index <= last - first && pos + 4 <= len;) {
+    bool found = false;                         /* copied out of this hunk; now its relocations */
+    u32 from = 0;
+    for (u32 index = 0; index < hunks && pos + 4 <= len;) {
         LONG(v);
         switch (v & 0x3FFFFFFF) {
         case HUNK_CODE:
@@ -49,8 +61,9 @@ static bool read_hunks(const u8 *f, size_t len, u32 addr, u8 *out, u32 n)
             u32 size = (words & 0x3FFFFFFF) * 4;
             if (pos + size > len) return false;
             if (addr >= base[index] && addr - base[index] + n <= size) {
-                memcpy(out, f + pos + (addr - base[index]), n);
-                return true;
+                from = addr - base[index];
+                memcpy(out, f + pos + from, n);
+                found = true;
             }
             pos += size;
             break;
@@ -60,20 +73,30 @@ static bool read_hunks(const u8 *f, size_t len, u32 addr, u8 *out, u32 n)
             break;
         case HUNK_RELOC32:
             for (;;) {
-                u32 k;
+                u32 k, target;
                 LONG(k);
                 if (!k) break;
-                pos += 4 + 4 * (size_t)k;
+                LONG(target);
+                if (found && target >= hunks) return false;
+                for (u32 j = 0; j < k; j++) {
+                    LONG(v);
+                    if (found) relocate(out, from, n, v, base[target]);
+                }
             }
             break;
         case HUNK_RELOC32SHORT:
         case HUNK_DREL32:
             for (;;) {
-                if (pos + 2 > len) return false;
-                u32 k = (u32)(f[pos] << 8 | f[pos + 1]);
-                pos += 2;
-                if (!k) break;
-                pos += 2 + 2 * (size_t)k;
+                if (pos + 4 > len) return false;
+                u32 k = (u32)(f[pos] << 8 | f[pos + 1]), target = (u32)(f[pos + 2] << 8 | f[pos + 3]);
+                if (!k) { pos += 2; break; }
+                pos += 4;
+                if (found && target >= hunks) return false;
+                for (u32 j = 0; j < k; j++) {
+                    if (pos + 2 > len) return false;
+                    if (found) relocate(out, from, n, (u32)(f[pos] << 8 | f[pos + 1]), base[target]);
+                    pos += 2;
+                }
             }
             pos = (pos + 3) & ~(size_t)3;
             break;
@@ -91,14 +114,15 @@ static bool read_hunks(const u8 *f, size_t len, u32 addr, u8 *out, u32 n)
             pos += 4 * (size_t)v;
             break;
         case HUNK_END:
+            if (found) return true;
             index++;
             break;
         default:                                /* the overlay table, or a hunk this reader does not know */
-            return false;
+            return found;
         }
     }
 #undef LONG
-    return false;
+    return found;
 }
 
 bool hunk_read(const char *path, u32 addr, void *out, u32 n)
