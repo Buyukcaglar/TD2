@@ -36,6 +36,14 @@ def amiga_colours(pic):
     return [tuple((c >> 4) * 17 for c in rgb) for rgb in pic.palette]
 
 
+def topaz_glyphs():
+    """The port's embedded Topaz (src/platform/topaz.c): 256 glyphs of 8 rows."""
+    import re
+    src = (ROOT / 'port/td2/td2port/src/platform/topaz.c').read_text()
+    rows = [int(v, 16) for v in re.findall(r'0x([0-9A-F]{2})', src.split('topaz_glyphs[256][8] = {')[1])]
+    return [rows[8 * g:8 * g + 8] for g in range(256)]
+
+
 def last_frames(keys, seconds, windows):
     """Runs the port headless with the Amiga graphics; the last frame shown in each (t0, t1) window."""
     return run(keys, seconds, lambda times: [max(n for t, n in times if t0 <= t < t1) for t0, t1 in windows])
@@ -220,6 +228,12 @@ class AmigaGraphicsTest(unittest.TestCase):
                              [red] * 4, f'box at line {y0}')
             self.assertEqual(page.getpixel((300, y0 + 4)), black, f'inside the box at line {y0}')
             self.assertEqual(page.getpixel((title + 4, y0)), black, f'the title on the box at line {y0}')
+        # in duel's font, Topaz: "Press joystick button to continue..." from (0, C0h)
+        topaz = topaz_glyphs()
+        line = 'Press joystick button to continue...'
+        diff = [(x, y) for i, ch in enumerate(line) for y in range(8) for x in range(8)
+                if (page.getpixel((8 * i + x, 0xC0 + y)) != black) != bool(topaz[ord(ch)][y] & 0x80 >> x)]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ from Topaz in the last line')
 
     def test_car_choice_switch_back(self):
         # the car choice, then four graphics switches round to the Amiga form again: the car is shown in

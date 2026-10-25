@@ -9,6 +9,7 @@
  * statically initialised in the load image. The sprite blitters are in gfx_ega_blit.c. */
 #include "gfx_ega.h"
 #include "res.h"
+#include "topaz.h"
 #include "../host.h"
 
 #include <string.h>
@@ -567,8 +568,12 @@ static void ega_draw_line(s16 x0, s16 y0, s16 x1, s16 y1, u16 colour16, bool or_
 /* ------------------------------------------------------------------------------------------------ */
 /* 8x8 text: 06c9:a530 / a547 (body a54f), state block DS:6820                                     */
 
+/* PORT: the Amiga form writes its text in duel's font, the ROM's Topaz (topaz.c), in TD2's places. A
+ * character without a glyph in TD2's font is skipped as before (the line breaks still go by TD2's
+ * table); one that has a glyph takes Topaz's. */
 static void ega_draw_text(const u8 *s)
 {
+    bool topaz = gfx_ega.planes == 5 && gfx_amiga_screens();
     u8 fg = ega_colour(DSB(DS_text_fg)), bg = ega_colour(DSB(DS_text_bg));
     u8 eq = 0;                                                     /* bp-10 (screen only) */
     if (CUR_PLANE(0) == VRAM_SEG) {
@@ -591,15 +596,20 @@ static void ega_draw_text(const u8 *s)
                 continue;
             }
             u16 pos = (u16)((DSW(DS_text_x) >> 3) + row_at(DSW(DS_text_y)));
+            u16 h = DSW(DS_text_glyph_h);
+            u8 rows[256];
+            for (u16 i = 0; i < h && i < sizeof rows; i++)
+                rows[i] = topaz ? (i < 8 ? topaz_glyphs[ch][i] : 0) : rd8(DGROUP, (u16)(glyph + i));
             if (CUR_PLANE(0) != VRAM_SEG) {
                 u16 dx = (u16)(fg | (u8)(bg ^ fg) << 8);
                 for (int k = 0; k < gfx_ega.planes; k++, dx >>= 1) {
                     u16 seg = ram_plane(k);
                     if (!seg) continue;
-                    u16 cnt = DSW(DS_text_glyph_h), di = pos, si = glyph;
+                    u16 cnt = h, di = pos;
+                    const u8 *si = rows;
                     if (dx & 0x100) {
-                        if (dx & 1) do { wr8(seg, di, rd8(DGROUP, si++)); di = (u16)(di + stride); } while (--cnt);
-                        else do { wr8(seg, di, (u8)~rd8(DGROUP, si++)); di = (u16)(di + stride); } while (--cnt);
+                        if (dx & 1) do { wr8(seg, di, *si++); di = (u16)(di + stride); } while (--cnt);
+                        else do { wr8(seg, di, (u8)~*si++); di = (u16)(di + stride); } while (--cnt);
                     } else {
                         u8 v = (dx & 1) ? 0xFF : 0x00;
                         do { wr8(seg, di, v); di = (u16)(di + stride); } while (--cnt);
@@ -607,13 +617,14 @@ static void ega_draw_text(const u8 *s)
                 }
             } else {
                 seq_map_mask((u8)(fg | eq));
-                u16 di = pos, cnt = DSW(DS_text_glyph_h), si = glyph;
-                do { u8 v = rd8(DGROUP, si++); (void)ega_read(di); ega_write(di, v); di = (u16)(di + stride); } while (--cnt);
+                u16 di = pos, cnt = h;
+                const u8 *si = rows;
+                do { u8 v = *si++; (void)ega_read(di); ega_write(di, v); di = (u16)(di + stride); } while (--cnt);
                 u8 m = (u8)((fg ^ bg) & bg);
                 if (m) {
                     seq_map_mask((u8)(bg | eq));
-                    di = pos; cnt = DSW(DS_text_glyph_h); si = glyph;
-                    do { u8 v = (u8)~rd8(DGROUP, si++); (void)ega_read(di); ega_write(di, v); di = (u16)(di + stride); } while (--cnt);
+                    di = pos; cnt = h; si = rows;
+                    do { u8 v = (u8)~*si++; (void)ega_read(di); ega_write(di, v); di = (u16)(di + stride); } while (--cnt);
                 }
             }
             DSW(DS_text_x) = (u16)(DSW(DS_text_x) + DSW(DS_text_adv_x));

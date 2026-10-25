@@ -124,7 +124,9 @@ static void about(void)
                     "Plays the original 1989 DOS game by Distinctive Software and Accolade from its own "
                     "files, which are not included.\n\n"
                     "Port code: the Kylofon Test Drive II port (MIT licence) and this project's work on it.\n"
-                    "Libraries: SDL 3 (zlib licence), libarchive (BSD licence), zlib, xz.\n\n"
+                    "Libraries: SDL 3 (zlib licence), libarchive (BSD licence), zlib, xz.\n"
+                    "Amiga text: Topaz (c) Amiga Inc., raw version (c) dMG/t!s^dS!, from the amigafonts "
+                    "collection (GPL with font exception).\n\n"
                     "Ctrl+Shift+G: next graphics mode\nCtrl+Shift+S: PC speaker or Amiga sound\n"
                     "Ctrl+Shift+M or right click: this menu\nAlt+Enter: full screen",
                     ok, 1);
