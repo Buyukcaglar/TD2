@@ -42,6 +42,6 @@ Git history in this repository records each later change.
   - Source: `raw/Topaz_a500_v1.0.raw` from the amigafonts collection, https://github.com/rewtnull/amigafonts, commit `d42987535d94ebbfb51e64fee76f9974c6ae145a` (17 January 2020), SHA-256 `a2eb9796b82bcad885211e14684960352aaaca559ea82cb3cbd7dec3fdbaafb0`. Downloaded 25 October 2026.
   - Change: the file is 8x16 with every row twice; the table keeps one row of each pair (8x8).
   - Copyright: Topaz is (c) Amiga Inc. The raw version of Topaz is (c) dMG/t!s^dS! (dMG of TrueSchool and Divine Stylers, who pixeled, vectorised and converted the collection).
-  - Licence: the collection's README releases its fonts "under the GPL-FE license", the GNU General Public License with the font exception (https://www.gnu.org/licenses/gpl-faq.html#FontException). It names no GPL version. This licence differs from the MIT licence of the code around it.
+  - Licence: the collection's README releases its fonts "under the GPL-FE license", the GNU General Public License with the font exception (https://www.gnu.org/licenses/gpl-faq.html#FontException). It names no GPL version. This licence differs from the MIT licence of the code around it; the font ships inside the exe under its own licence, the user's choice (25 October 2026).
 
 The original game and its data are (c) 1987 Accolade / Distinctive Software Inc. and are not part of this code.

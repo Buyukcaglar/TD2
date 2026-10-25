@@ -91,7 +91,7 @@ The context menu, the pause, the theme and the question windows are built (steps
   - In dark mode it has a dark background and text, the dark title bar (`DWMWA_USE_IMMERSIVE_DARK_MODE`) and the dark Explorer theme on its buttons. In light mode it uses the standard colours.
   - It is modal: the owner window is disabled while it is open, and the game is paused.
   - The folder and archive pickers are the Windows file dialog (`IFileOpenDialog`), which follows the theme. The archive picker filters zip, 7z, rar, lha and lzh.
-  - Checked in dark mode only: the machine here is set to dark. Light mode is still to be looked at.
+  - Checked in dark mode here, and in light mode by the user, who passed it on 25 October 2026.
   - On macOS, `NSAlert` and `NSOpenPanel` will follow the theme by themselves.
 - **Theme.** SDL3 does this already for its windows: on creation and on every theme change, `WIN_UpdateDarkModeForHWND` does three things.
   - It calls uxtheme's undocumented `SetPreferredAppMode(AllowDark)` (ordinal 135, Windows 10 1903 and later) and `AllowDarkModeForWindow`.
