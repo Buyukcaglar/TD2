@@ -54,6 +54,7 @@ void present_main_view(void)
 {
     select_screen();
     blit_copy_own(ds_far(DS_main_sprite));
+    amiga_cockpit_frame();                                /* PORT: the Amiga form's cockpit over it */
 }
 
 /* 06c9:3efc select_main_view */
@@ -519,8 +520,12 @@ void crash_sequence(void)
     project_mirror();
     draw_mirror();
     select_main_view();
-    blit_and_clip_own(hnd(DASH_H(DASH_hdcM)));
-    blit_or_clip_own(hnd(DASH_H(DASH_hdcr)));
+    if (amiga_cockpit_on()) {                             /* PORT: duel's crumpled hood */
+        amiga_cockpit_crashed(true);
+    } else {
+        blit_and_clip_own(hnd(DASH_H(DASH_hdcM)));
+        blit_or_clip_own(hnd(DASH_H(DASH_hdcr)));
+    }
     for (u16 di = 0; di != 7; di++) {
         deadline_set(10);
         select_main_view();

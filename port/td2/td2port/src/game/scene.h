@@ -45,7 +45,14 @@ void msg_lives_left(void);              /* 06c9:375f */
 void message_box_06C9_3788(void);       /* 06c9:3788 */
 void select_main_view(void);            /* 06c9:3efc */
 void wait_after_message(void);
-bool amiga_game_over(void);              /* PORT: flow_screens.c, the Amiga form */          /* 06c9:3f0d */
+bool amiga_game_over(void);              /* PORT: flow_screens.c, the Amiga form */
+
+/* ---- scene_amiga.c (PORT: the race's cockpit in its Amiga form) */
+bool amiga_cockpit_load(void);          /* the dashboard and its colours; false without the Amiga files */
+bool amiga_cockpit_on(void);            /* the race screen is in its Amiga form */
+void amiga_cockpit_frame(void);         /* after the view is shown: the cockpit over it */
+void amiga_cockpit_crashed(bool crashed);
+void amiga_cockpit_gate(bool open);     /* the gear gate is shown, with the knob in it */          /* 06c9:3f0d */
 
 /* ---- scene_cockpit.c */
 void cockpit_load(void);                /* 06c9:37d0 */

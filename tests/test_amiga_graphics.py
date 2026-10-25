@@ -5,8 +5,9 @@ choice and to the difficulty screen, and checks the option screen's title, the d
 scenery choice against their Amiga pictures (pics/gameoptionscreen, pics/gamedifficulty and the Master
 scenery's scen/sc1_icon), the intro's showroom against the F40's side view, the car choice against
 its pictures, the high scores against the cars' logos and the gas station against its picture and
-the car, in their own colours, as the Amiga shows them (the top 4 bits of each component). The gas
-station's run takes about two minutes.
+the car, and the race's cockpit against the F40's dashboard and the road colours, in their own
+colours, as the Amiga shows them (the top 4 bits of each component). The gas station's run takes about
+two minutes.
 
 Needs build/td2port.exe, runs/game and the unpacked Amiga game in runs/amiga; skipped without them.
 """
@@ -208,6 +209,35 @@ class AmigaGraphicsTest(unittest.TestCase):
                 if car.mask[y * car.width + x] and not shade.mask[y * car.width + x]
                 and frame.getpixel((car.x + x, top + y)) != gas[car.pixels[y * car.width + x]]]
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the car')
+
+    def test_race_cockpit(self):
+        # a race against the clock, standing at the start: the F40's dashboard picture (cars/f40dash)
+        # from line 118 in its own colours where nothing moves; the roof (roof of cars/f40dash.shp) in
+        # the section's road colours (32 words at 0A6h of scen/sc1_roaddata0) left of its digits, below
+        # the progress dots and but for the radar detector's lights; and TD2's view, between the windscreen pillar and the mirror, in
+        # those colours only
+        import ilbm
+        import rpck
+        import shp
+        import struct
+        frame, = last_frames('30:Return,35:Return,38:Return', 46, [(44, 46)])
+        dash = ilbm.parse((AMIGA / 'cars/f40dash').read_bytes())
+        pal = amiga_colours(dash)
+        still = [(x, y) for y in range(118, 131) for x in range(176, 250)]
+        still += [(x, y) for y in range(190, 200) for x in range(200, 320)]
+        diff = [(x, y) for x, y in still if frame.getpixel((x, y)) != pal[dash.pixels[y * 320 + x]]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the dashboard')
+        road = rpck.read((AMIGA / 'scen/sc1_roaddata0').read_bytes())
+        top = [struct.unpack_from('>H', road, 0xA6 + 2 * i)[0] for i in range(32)]
+        top = [((c >> 8 & 15) * 17, (c >> 4 & 15) * 17, (c & 15) * 17) for c in top]
+        sprites = {s.name: s for s in shp.read((AMIGA / 'cars/f40dash.shp').read_bytes())}
+        roof, lights = sprites['roof'], sprites['rad5']          # the radar detector's lights blink
+        diff = [(x, y) for y in range(1, roof.height) for x in range(240) if roof.mask[y * roof.width + x]
+                and not (lights.x <= x < lights.x + lights.width and lights.y <= y < lights.y + lights.height)
+                and frame.getpixel((x, y)) != top[roof.pixels[y * roof.width + x]]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the roof')
+        view = {frame.getpixel((x, y)) for y in range(40, 100) for x in range(40, 320)}
+        self.assertLessEqual(view, set(top))
 
     def test_scenery_choice_picture(self):
         # below the disk name

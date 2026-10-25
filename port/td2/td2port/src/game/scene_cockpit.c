@@ -23,6 +23,7 @@ void cockpit_load(void)
     DSW(0x2F72) = rd16(spr.seg, (u16)(spr.off + 0x0A));
     ds_far_wr(DS_gbox_desc, create_buffer_like(spr, &sp));
     ds_far_wr(DS_gbox_sprite, sp);
+    if (amiga_cockpit_load()) return;                     /* PORT: the Amiga form */
     select_screen();
     blit_copy_own(hnd(DASH_H(DASH_dash)));
     blit_copy_own(hnd(DASH_H(DASH_roof)));
@@ -54,6 +55,7 @@ void cockpit_reset(void)
     DSB(DS_gate_close_delay) = 10;
     DSW(DS_knob_x) = CARW(0x20);
     DSW(DS_knob_y) = CARW(0x22);
+    amiga_cockpit_crashed(false);                         /* PORT */
 }
 
 /* 06c9:3af9 draw_ticket (target: main view) */
@@ -112,6 +114,13 @@ static FarPtr road_digit(u16 k) { return hnd((u16)(ROAD_H(ROAD_dgt0) + (u16)(k <
 /* 06c9:391f draw_hud — §4.12 */
 void draw_hud(void)
 {
+    if (amiga_cockpit_on()) {                             /* PORT: the rest is drawn with the cockpit */
+        select_main_view();
+        draw_ticket();
+        select_screen();
+        DSB(DS_redraw_hud) = 0;
+        return;
+    }
     select_main_view();
     blit_and_own(hnd(DASH_H(DASH_mirr)));
     draw_ticket();
@@ -169,6 +178,10 @@ void draw_gear_gate(void)
     if (DSB(DS_gate_close_delay) == 0) return;
     if (--DSB(DS_gate_close_delay) != 0) goto check;
 closed:
+    if (amiga_cockpit_on()) {                             /* PORT: the Amiga form draws its own */
+        amiga_cockpit_gate(false);
+        return;
+    }
     select_screen();
     blit_copy_own(hnd(DASH_H(DASH_gbo0)));
     return;
@@ -176,6 +189,10 @@ check:
     if (DSB(DS_redraw_gate) != 1) return;
 redraw:
     DSB(DS_redraw_gate) = 0;
+    if (amiga_cockpit_on()) {
+        amiga_cockpit_gate(true);
+        return;
+    }
     gfx_select_target(far_make(ASM_SEG, DSW(DS_gbox_desc)));     /* push cs ; push [2F60] */
     blit_copy_raw(hnd(DASH_H(DASH_gbox)), 0, 0);
     blit_and_clip_hot(hnd(DASH_H(DASH_gnab)), DSS(DS_knob_x), DSS(DS_knob_y));
@@ -187,6 +204,7 @@ redraw:
 /* 06c9:3c3a draw_steering — §4.12 */
 void draw_steering(void)
 {
+    if (amiga_cockpit_on()) return;                       /* PORT: not yet in the Amiga form */
     FarPtr save = ds_ptr(DS_marker_save_sprite);
     if (DSB(DS_marker_saved) != 0)
         blit_copy_raw(save, DSS(DS_marker_save_x), DSS(DS_marker_save_y));
@@ -255,6 +273,7 @@ void draw_instruments(void)
 {
     if (DSB(DS_redraw_inst) != 1) return;
     DSB(DS_redraw_inst) = 0;
+    if (amiga_cockpit_on()) return;                       /* PORT: not yet in the Amiga form */
     gfx_select_target(far_make(ASM_SEG, DSW(DS_inst_desc)));     /* push cs ; push [2F68] */
     gfx_clear_clip(0);
     /* TODO(verify): SI is the stage runner's SI when the speed is not shown with digits; only reached
