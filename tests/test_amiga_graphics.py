@@ -24,11 +24,12 @@ sys.path[:0] = [str(ROOT / 'tools/amiga'), str(ROOT / 'tools')]
 EXE = ROOT / 'build/td2port.exe'
 GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
-# tools/snapshots.py's menu keys up to the scenery choice, the last ones later: duel's wipes take their
-# time (the option screen comes back from the car choice with bands until 61 s), and keys pressed
-# during a wipe are flushed as after a dissolve. The scenery choice opens at 63 s.
-KEYS = ('30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,42:Down,43:Return,46:Up,49:Down,52:Down,'
-        '55:Escape,62:Right,62.5:Right,63:Return')
+# tools/snapshots.py's menu keys up to the scenery choice, 7 s earlier (the Amiga form's intro has no DSI
+# logo and credits, so its high scores show from 17 s), the last ones later: duel's wipes take their
+# time (the option screen comes back from the car choice with bands until 54 s), and keys pressed
+# during a wipe are flushed as after a dissolve. The scenery choice opens at 56 s.
+KEYS = ('23:Return,32:Up,32.5:Right,33:Down,33.5:Right,34:Up,35:Down,36:Return,39:Up,42:Down,45:Down,'
+        '48:Escape,55:Right,55.5:Right,56:Return')
 
 
 def amiga_colours(pic):
@@ -75,12 +76,12 @@ class AmigaGraphicsTest(unittest.TestCase):
         # the option screen part way through the circle that brings it in, the option screen before the
         # first key there, and the scenery choice once its box has grown
         cls.option_circle, cls.option_screen, cls.scenery_choice = last_frames(
-            KEYS, 66, [(30, 30.35), (30.35, 39), (63, 66)])
+            KEYS, 59, [(23, 23.35), (23.35, 32), (56, 59)])
         # Return on the clock opens the difficulty screen
-        cls.difficulty, = last_frames('30:Return,35:Return', 38, [(35, 38)])
+        cls.difficulty, = last_frames('23:Return,28:Return', 31, [(28, 31)])
         # the scenery box, Up to Northern Germany, and back to the option screen
-        cls.option_ngc, = last_frames('30:Return,33:Down,33.5:Right,34:Right,35:Return,40:Up,44:Return', 50,
-                                      [(45.2, 50)])
+        cls.option_ngc, = last_frames('23:Return,26:Down,26.5:Right,27:Right,28:Return,33:Up,37:Return', 43,
+                                      [(38.2, 43)])
 
     def assert_picture(self, frame, file, rows):
         import ilbm
@@ -135,7 +136,7 @@ class AmigaGraphicsTest(unittest.TestCase):
         # frame being 640 wide), and its data, rows 84 on of cars/f40.sb, in high resolution under them
         import ilbm
         import shp
-        frame, = last_frames('30:Return,33:Down,35:Return', 40, [(35, 40)])   # the last, once in
+        frame, = last_frames('23:Return,26:Down,28:Return', 33, [(28, 33)])   # the last, once in
         self.assertEqual(frame.size, (640, 200))
         pal = amiga_colours(ilbm.parse((AMIGA / 'cars/f40.st.p').read_bytes()))
         top = list(ilbm.parse((AMIGA / 'pics/bluestat').read_bytes()).pixels[:84 * 320])
@@ -154,7 +155,7 @@ class AmigaGraphicsTest(unittest.TestCase):
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the data')
 
     def test_high_scores(self):
-        # the attract loop's table after the credits (the last frame before 31 s): five entries, the
+        # the attract loop's table after the title (the last frame before 24 s): five entries, the
         # F40's logo first and the Camaro's third (a data disk's car, its colours a CMAP alone), each in
         # its car's colours 3 to 31 from two lines above the logo, colours 0 to 2 the screen's; no
         # sixth line
@@ -167,7 +168,7 @@ class AmigaGraphicsTest(unittest.TestCase):
             struct.pack_into('<l5s17s', table, 26 * i, score, car.encode(), b'Driver')
         sum_ = struct.unpack_from('<L', table, 0x150)[0] + sum(s for s, _ in entries)
         struct.pack_into('<L', table, 0x150, sum_ & 0xFFFFFFFF)
-        frame, = run('1000:Escape', 31, lambda times: [max(times)[1]],
+        frame, = run('1000:Escape', 24, lambda times: [max(times)[1]],
                      {'TDS2HISC.DAT': bytes(table)})
         screen = [(0, 0, 0), (0, 136, 238), (255, 102, 102)]
         for i, car in [(0, 'cars/f40'), (2, 'cars1/cars/camo')]:
@@ -186,14 +187,14 @@ class AmigaGraphicsTest(unittest.TestCase):
         self.assertEqual({frame.getpixel((x, y)) for y in range(172, 180) for x in range(320)}, {(0, 0, 0)})
 
     def test_gas_station(self):
-        # a race against the clock with Up held from 48 s ends its first section at the gas station
-        # (about 324 s): scen/sc1_gasstation above its split at line 103 (but for the section's sign),
+        # a race against the clock with Up held from 41 s ends its first section at the gas station
+        # (about 317 s): scen/sc1_gasstation above its split at line 103 (but for the section's sign),
         # and the F40 (gcar of cars/f40.sideview.shp, its bottom on line 180) in cars/f40.gas.p's colours
         import ilbm
         import shp
-        keys = ['30:Return', '35:Return', '38:Return', '48:Up/400', '52:Left/0.5']
-        keys += [f'{t}:Return' for t in range(70, 331, 12)]
-        frame, = run(','.join(keys), 334, lambda times: [max(n for t, n in times if 326 <= t < 334)])
+        keys = ['23:Return', '28:Return', '31:Return', '41:Up/400', '45:Left/0.5']
+        keys += [f'{t}:Return' for t in range(63, 324, 12)]
+        frame, = run(','.join(keys), 327, lambda times: [max(n for t, n in times if 319 <= t < 327)])
         pic = ilbm.parse((AMIGA / 'scen/sc1_gasstation').read_bytes())
         pal = amiga_colours(pic)
         sign = {s.name: s for s in shp.read((AMIGA / 'scen/sc1_gasstation.shp').read_bytes())}['bruc']
@@ -220,7 +221,7 @@ class AmigaGraphicsTest(unittest.TestCase):
         import rpck
         import shp
         import struct
-        frame, = last_frames('30:Return,35:Return,38:Return', 46, [(44, 46)])
+        frame, = last_frames('23:Return,28:Return,31:Return', 39, [(37, 39)])
         dash = ilbm.parse((AMIGA / 'cars/f40dash').read_bytes())
         pal = amiga_colours(dash)
         still = [(x, y) for y in range(118, 131) for x in range(176, 250)]

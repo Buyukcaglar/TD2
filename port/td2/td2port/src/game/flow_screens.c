@@ -280,8 +280,9 @@ s16 intro_sequence(void)
     if (host_amiga_pace() && (r = (s16)getkey_timeout_redraw(amiga_ticks(5), NULL, NULL)) != 0)
         return r;                                    /* PORT: as duel */
     if ((r = title_screen()) != 0) return r;
-    if (gfx_amiga_screens() && amiga_title_data()) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
-    if ((r = credits()) != 0) return r;
+    bool amiga = gfx_amiga_screens() && amiga_title_data();
+    if (amiga) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
+    if (!amiga && (r = credits()) != 0) return r;    /* PORT: duel's intro has no DSI logo or credits */
     if (DSS(DS_nscenes) == 0) return r;
     return hisc_show(700);
 }
