@@ -33,12 +33,16 @@ static const struct { const char *road, *twin, *archive; } stages[7] = {
     { "scen2/scen/euro_roaddata5", "EC_5", "EC_2" },
     { "scen2/scen/euro_roaddata1", "EC_1", "EC_2" },
 };
-/* Files taken from the European Challenge. */
+/* Files taken from the European Challenge and the Master scenery. The traffic keeps the European
+ * slots (van, thunderbird, mercedes, as EC_CAR1-3 match euro_van, euro_thunderbird and euro_mercedes)
+ * with Northern Germany's own cars in them: its euro_van.shp is the Master van (TDS2CAR3), its
+ * euro_thunderbird.shp the Master mercedes (TDS2CAR1), its euro_mercedes.shp the European thunderbird
+ * (EC_CAR2). */
 static const struct { const char *from, *to; } copies[] = {
     { "EC_.FNT", CODE ".FNT" },
-    { "EC_CAR1.PES", CODE "CAR1.PES" }, { "EC_CAR1.PCS", CODE "CAR1.PCS" },
-    { "EC_CAR2.PES", CODE "CAR2.PES" }, { "EC_CAR2.PCS", CODE "CAR2.PCS" },
-    { "EC_CAR3.PES", CODE "CAR3.PES" }, { "EC_CAR3.PCS", CODE "CAR3.PCS" },
+    { "TDS2CAR3.PES", CODE "CAR1.PES" }, { "TDS2CAR3.PCS", CODE "CAR1.PCS" },
+    { "TDS2CAR1.PES", CODE "CAR2.PES" }, { "TDS2CAR1.PCS", CODE "CAR2.PCS" },
+    { "EC_CAR2.PES", CODE "CAR3.PES" }, { "EC_CAR2.PCS", CODE "CAR3.PCS" },
 };
 
 #define AMIGA_SIGN 0x2E                                 /* the Amiga's object code of sign 0 */

@@ -4,7 +4,8 @@ Starts the port headless with the Amiga setting, which builds the scenery into t
 - the catalogue lists it with its seven stages;
 - each stage is its DOS twin with the sprite archive of its Amiga sprite file, and the original game's
   own unpacker (rle_decode, run under the harness) reads each packed file;
-- the signs are Northern Germany's own, each in the DOS slot its Amiga sign has on the road.
+- the signs are Northern Germany's own, each in the DOS slot its Amiga sign has on the road;
+- the traffic cars are the DOS twins of Northern Germany's Amiga copies.
 
 Needs build/td2port.exe, build/td2diff.dll, the unpacked image, runs/game with the California and European
 Challenges, and the unpacked Amiga game in runs/amiga; skipped without them.
@@ -78,6 +79,14 @@ class NorthernGermanyTest(unittest.TestCase):
         self.assertEqual(s5[3], '  VORSICHT \n STEINSCHLAG ')   # Europe 5 numbers its signs alike in both
         self.assertEqual(s5[4], ' OKERTAL \nSPERRE 900M')
         self.assertNotIn(9, s5)                     # its road's sign 9 has no text on the Amiga
+
+    def test_traffic(self):
+        """duel's euro_van, euro_thunderbird and euro_mercedes are copies of the Master van, the Master mercedes
+        and the European thunderbird; their DOS twins fill the three slots."""
+        for slot, twin in ((1, 'TDS2CAR3'), (2, 'TDS2CAR1'), (3, 'EC_CAR2')):
+            for ext in ('PES', 'PCS'):
+                self.assertEqual((self.out / f'NGCCAR{slot}.{ext}').read_bytes(),
+                                 (GAME / f'{twin}.{ext}').read_bytes(), f'NGCCAR{slot}.{ext}')
 
     def test_icons(self):
         """The title picture as the choice screen's picl and the menu's pics, row-major (storage mode 0)."""
