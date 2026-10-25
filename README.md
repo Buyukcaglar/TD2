@@ -146,7 +146,12 @@ You need Windows, the Visual Studio 2022 Build Tools (MSVC 14.44, Windows SDK 10
 
 ## Licence
 
-The port's code is under the MIT licence; see [`port/td2/LICENSE`](port/td2/LICENSE). The Topaz font data in `port/td2/td2port/src/platform/topaz.c` keeps its own licence, the GPL with the font exception. *Test Drive II*, its artwork, music and data belong to their owners and are not distributed here. The screenshots above show the original game's artwork, rendered by this program, to illustrate what it does.
+This project is released under the [MIT licence](LICENSE). The vendored Kylofon port in `port/td2` keeps its own MIT licence and copyright notice ([`port/td2/LICENSE`](port/td2/LICENSE)), which the top-level licence repeats.
+
+Not covered by the MIT licence:
+
+- the Topaz font data in `port/td2/td2port/src/platform/topaz.c`, which keeps its own licence, the GPL with the font exception;
+- *Test Drive II* itself: its artwork, music and data belong to their owners and are not distributed here. The screenshots in `docs/screenshots` show the original game's artwork, rendered by this program, to illustrate what it does.
 
 ## AI assistance
 
