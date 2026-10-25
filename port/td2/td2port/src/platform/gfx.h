@@ -212,8 +212,10 @@ bool gfx_amiga_duel_data(u32 addr, void *out, u32 n);
 #define AMIGA_PEN(n) ((u16)(0x20 + (n)))        /* a colour argument: pen n of the target's Amiga colours */
 /* The Amiga screen changes (duel $10bf6-$10d4c; game/amiga_wipe.c draws duel's shapes): a mask that
  * grows step by step, through which the screen shows the page (in), or black (out). An in change
- * clears the screen and gives it the page's colours first. Each show copies through the whole mask. */
-void gfx_amiga_wipe_begin(FarPtr page, bool in);
+ * gives the screen the page's colours first, and with clear makes it black (the callers that clear
+ * the shown screen, or leave it black); without, the page grows over the picture shown, as duel's
+ * set-up copies the shown screen into the one it draws. Each show copies through the whole mask. */
+void gfx_amiga_wipe_begin(FarPtr page, bool in, bool clear);
 void gfx_amiga_wipe_rect(s16 x0, s16 y0, s16 x1, s16 y1);        /* corners included */
 void gfx_amiga_wipe_line(s16 x0, s16 y0, s16 x1, s16 y1);
 void gfx_amiga_wipe_show(void);

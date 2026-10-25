@@ -719,7 +719,7 @@ void *gfx_amiga_file(const char *file, u32 *len)
 static u8 wipe_from[5][200 * 40];      /* what the mask lets through: the page's planes, or black */
 static u8 wipe_mask[200][320];
 
-void gfx_amiga_wipe_begin(FarPtr page, bool in)
+void gfx_amiga_wipe_begin(FarPtr page, bool in, bool clear)
 {
     memset(wipe_mask, 0, sizeof wipe_mask);
     memset(wipe_from, 0, sizeof wipe_from);
@@ -730,8 +730,9 @@ void gfx_amiga_wipe_begin(FarPtr page, bool in)
                 if (ram_plane(k)) memcpy(&wipe_from[k][y * 40], mp(ram_plane(k), row_at(y)), 40);
         const TargetColours *t = buffer_colours(CSW(GFX_CUR_PLANE0));
         select_screen();
-        /* duel clears the screen and gives it the new picture's colours, and the picture grows over it */
-        for (int k = 0; k < 5; k++) memset(gfx_ega.plane[k], 0, 200 * 40);
+        /* the screen gets the new picture's colours, and the picture grows over it */
+        if (clear)
+            for (int k = 0; k < 5; k++) memset(gfx_ega.plane[k], 0, 200 * 40);
         if (t && t->amiga) {
             screen = *t;
             screen.seg = 0;

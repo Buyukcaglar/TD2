@@ -47,10 +47,10 @@ static void disk(s16 r)
     }
 }
 
-void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b)
+static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
 {
     if (!gfx_amiga_screens()) return;
-    gfx_amiga_wipe_begin(flow_page_desc(), in);
+    gfx_amiga_wipe_begin(flow_page_desc(), in, clear);
     select_screen();
     wipe_t0 = ticks_get();
     wipe_frames = 0;
@@ -138,3 +138,6 @@ void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b)
         break;
     }
 }
+
+void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b) { wipe(kind, in, true, a, b); }
+void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b) { wipe(kind, true, false, a, b); }

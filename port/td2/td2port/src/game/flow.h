@@ -82,11 +82,13 @@ u16  getkey_timeout_redraw(u32 n, void (*redraw)(void *), void *ctx);
 void flow_show_page(void);
 /* PORT: duel's screen changes with the Amiga graphics (amiga_wipe.c; nothing without them): the page
  * grows over a black screen (in) or black eats the screen (out), in duel's shape for that change, with
- * its step a (and cell height b). */
+ * its step a (and cell height b). amiga_wipe_over grows the page over the picture shown, in the page's
+ * colours: duel's wipe in itself does not clear (the credits wipe in over the DSI logo that stays). */
 typedef enum {
     WIPE_BOX, WIPE_BARS, WIPE_CIRCLE, WIPE_SWEEP, WIPE_BANDS, WIPE_CHECKS, WIPE_RIGHT, WIPE_DOWN, WIPE_BLINDS,
 } AmigaWipe;
 void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b);
+void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b);
 /* 16bb/0x94C7-style lookup of concatenated 4-character names into a C array (at most max entries). */
 int  flow_find_list(FarPtr arc, const char *names, FarPtr *out, int max);
 
