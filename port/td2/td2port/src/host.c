@@ -210,7 +210,13 @@ void host_set_frame_source(bool (*compose)(u32 *), int w, int h)
     SDL_SetRenderLogicalPresentation(renderer, VIEW_W(frame_w), VIEW_H(frame_w), SDL_LOGICAL_PRESENTATION_LETTERBOX);
     if (texture) SDL_DestroyTexture(texture);
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_XRGB8888, SDL_TEXTUREACCESS_STREAMING, frame_w, frame_h);
-    SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST);
+    /* The window rarely holds a whole number of window pixels per picture pixel (200 lines become 240,
+     * Hercules's 348 become 540, then the window's size): nearest sampling then draws some rows one
+     * window pixel taller than others, which shows as uneven lines, worst in Hercules's one-pixel
+     * dither. Pixel-art sampling keeps the pixels square and blends only the one window pixel where
+     * two of them meet, so every row has the same height. */
+    if (!SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_PIXELART))
+        SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST);
 }
 
 static Uint64 tick_due_ns(Uint64 n)
