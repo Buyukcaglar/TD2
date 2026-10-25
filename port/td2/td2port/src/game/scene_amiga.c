@@ -22,6 +22,7 @@
 #include "scene.h"
 #include "flow.h"
 
+#include "../amiga/race_logic.h"
 #include "../platform/timer.h"
 
 #include <SDL3/SDL.h>
@@ -47,7 +48,8 @@ static struct {
     s16 knob_x, knob_y;                 /* the knob's hot spot on it */
     u16 road[2];                        /* the road's two pens (roaddata 26h and 28h) */
     int gauge[4];                       /* the small gauges' table entries drawn */
-    u16 oil_temp, boost;                /* duel's oil temperature (-$bc0) and the turbo's needle */
+    u16 oil_temp;                       /* duel's oil temperature (-$bc0) */
+    u16 turbo, turbo_target;            /* the turbo sample's volume as duel ramps it, and its aim */
     u32 oil_ticks;                      /* the timer when oil_temp last rose */
 } ac;
 
@@ -134,7 +136,7 @@ bool amiga_cockpit_load(void)
     gfx_amiga_keep_lines(DASH_LINE, 200);
     ac.pose = -1;
     ac.gate = ac.gate_drawn = false;
-    ac.oil_temp = ac.boost = 0;                         /* duel clears its oil temperature at the start */
+    ac.oil_temp = ac.turbo = ac.turbo_target = 0;     /* duel clears its oil temperature at the start */
     ac.oil_ticks = ticks_get();
     gfx_fill_rect_clip(0, 0, 0x140, VIEW_TOP, DSW(DS_col_sky));   /* behind the roof's open edge */
     flow_concat(ac.dash, sizeof ac.dash, car, "dash.shp");
@@ -193,8 +195,9 @@ static void needle(const char *kind, u16 hub, u16 tip)
 /* The small gauges' needles, table entries 0 to 31 ($1ac44). duel's oil temperature rises by the revs
  * / 128 each frame (at least 800 rpm), its oil pressure is 7FFFh - temperature / 2 + revs * 6 + 5000,
  * the fuel what is left of the section's, each a 16-bit value of which the gauge shows the top 5 bits.
- * The turbo's value (-$3094, halved) comes from duel's engine, which TD2 has not: here the needle
- * follows the revs above 2000 while TD2's throttle is down. */
+ * The turbo's is the turbo sample's volume (-$3094, channel 2's in duel's sound driver), halved: duel's
+ * race step ramps it, one a frame, to race_turbo_volume of the car's revs, throttle, gear and speed,
+ * while the race runs; here from TD2's car as the sound backends get it (sim.c drive_sound). */
 static void gauge_values(int v[4])
 {
     u16 rpm = DSW(DS_rpm);
@@ -203,14 +206,21 @@ static void gauge_values(int v[4])
         ac.oil_ticks = now;
         u32 t = ac.oil_temp + frames * ((rpm < 800 ? 800 : rpm) >> 7);
         ac.oil_temp = (u16)(t > 0xFFFF ? 0xFFFF : t);
-        int target = DSC(DS_throttle) > 0 && rpm > 2000 ? (rpm - 2000) / 128 : 0;
-        target = target > 31 ? 31 : target;
-        for (u32 i = 0; i < frames && ac.boost != target; i++) ac.boost = (u16)(ac.boost < target ? ac.boost + 1 : ac.boost - 1);
+        if (DSB(DS_run_state) == 0) {
+            u8 gear = DSB(DS_gear);
+            RaceCar c = {
+                .rpm = DSW(DS_rpm_display), .speed = (s32)DSW(DS_speed) << 8, .throttle = DSC(DS_throttle),
+                .in_gear = gear != 0 && gear < 7 && DSB(DS_gear_broken + gear) == 0,
+            };
+            ac.turbo_target = race_turbo_volume(&c);
+        }
+        for (u32 i = 0; i < frames && ac.turbo != ac.turbo_target; i++)
+            ac.turbo = (u16)(ac.turbo < ac.turbo_target ? ac.turbo + 1 : ac.turbo - 1);
     }
     u32 p = 0x7FFFu - ac.oil_temp / 2 + (u32)rpm * 6 + 5000;
     u32 n = DSW(DS_stage_len_copy) > 10 ? DSW(DS_stage_len_copy) - 10u : 1;
     u32 f = (u32)DSW(DS_fuel) * 0xFFFF / n;
-    v[0] = ac.boost;
+    v[0] = ac.turbo / 2 > 31 ? 31 : ac.turbo / 2;
     v[1] = ac.oil_temp >> 11;
     v[2] = (int)((p > 0xFFFF ? 0xFFFF : p) >> 11);
     v[3] = (int)((f > 0xFFFF ? 0xFFFF : f) >> 11);

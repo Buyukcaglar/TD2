@@ -90,20 +90,8 @@ static void bump_step(void)                         /* $1d2cc */
     race_car.bump = race_car.bump2 = false;
 }
 
-void race_step(void)                                /* $1d118 */
+u16 race_turbo_volume(const RaceCar *c)              /* in $1d118 */
 {
-    RaceCar *c = &race_car;
-    shift_squeal_step();
-    bump_step();
-    if (!c->engine_on) return;
-
-    u16 r = (s16)c->rpm < 800 ? 800 : c->rpm;
-    u16 p = (u16)(0x249988u / r);
-    if ((s16)p < 0x82) p = 0x82;
-    if ((s16)p > 0x708) p = 0x708;
-    engine_period = p;
-    race_sound_set(3, (s16)p, -1);
-
     u16 v = 0;
     if (c->throttle >= 0) {
         bool add_speed = true;
@@ -127,7 +115,23 @@ void race_step(void)                                /* $1d118 */
             if ((s16)v > 0x40) v = 0x40;
         }
     }
-    race_sound_ramp(2, v, 0x10000);
+    return v;
+}
+
+void race_step(void)                                /* $1d118 */
+{
+    RaceCar *c = &race_car;
+    shift_squeal_step();
+    bump_step();
+    if (!c->engine_on) return;
+
+    u16 r = (s16)c->rpm < 800 ? 800 : c->rpm;
+    u16 p = (u16)(0x249988u / r);
+    if ((s16)p < 0x82) p = 0x82;
+    if ((s16)p > 0x708) p = 0x708;
+    engine_period = p;
+    race_sound_set(3, (s16)p, -1);
+    race_sound_ramp(2, race_turbo_volume(c), 0x10000);
     u16 t = engine_period;
     if (c->low_rev_turbo) t = (u16)(t << 1);
     race_sound_set(2, (s16)t, -1);

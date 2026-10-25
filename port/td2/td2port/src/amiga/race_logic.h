@@ -34,6 +34,10 @@ void race_logic_reset(void);
 void race_start_loops(void);    /* $1d044: squeal, turbo and engine loops, engine up to full volume */
 void race_fade_out(void);       /* $1d0e2: squeal, turbo and engine down to silence */
 void race_step(void);           /* $1d118: each physics step; gear change squeal, bump, engine, turbo */
+/* The turbo sample's volume (0..64) that race_step ramps to, one a frame: from the revs (2000 to 4000)
+ * with the throttle on in gear, plus the speed above 20 mph / 4. duel's turbo gauge shows the channel's
+ * volume as it ramps ($1ac44 reads -$3094, channel 2's volume at +0Eh). */
+u16 race_turbo_volume(const RaceCar *c);
 void race_squeal_off(void);     /* $1d206 */
 void race_radar(void);          /* $1cde4: one radar beep */
 void race_crash(void);          /* $1ce10 */
