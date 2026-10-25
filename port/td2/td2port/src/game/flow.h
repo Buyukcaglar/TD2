@@ -89,6 +89,9 @@ typedef enum {
 } AmigaWipe;
 void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b);
 void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b);
+/* PORT: duel's dissolve ($155a4): the page into the screen (in; the screen takes the page's colours
+ * first), or the screen to black (out), one pixel column in eight a pass, in eight passes. */
+void amiga_dissolve(bool in);
 /* 16bb/0x94C7-style lookup of concatenated 4-character names into a C array (at most max entries). */
 int  flow_find_list(FarPtr arc, const char *names, FarPtr *out, int max);
 

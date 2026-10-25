@@ -24,10 +24,10 @@ sys.path[:0] = [str(ROOT / 'tools/amiga'), str(ROOT / 'tools')]
 EXE = ROOT / 'build/td2port.exe'
 GAME = ROOT / 'runs/game'
 AMIGA = ROOT / 'runs/amiga'
-# tools/snapshots.py's menu keys up to the scenery choice, 5 s later (the Amiga form's DSI logo and
-# credits are duel's, so its high scores show from 29 s), the last ones later still: duel's wipes take
-# their time (the option screen comes back from the car choice with bands until 66 s), and keys pressed
-# during a wipe are flushed as after a dissolve. The scenery choice opens at 68 s.
+# tools/snapshots.py's menu keys up to the scenery choice, 5 s later (the Amiga form's DSI logo,
+# credits and dissolves are duel's; Return at 35 s ends the credits), the last ones later still: duel's
+# wipes take their time (the option screen comes back from the car choice with bands until 66 s), and
+# keys pressed during a wipe are flushed as after a dissolve. The scenery choice opens at 68 s.
 KEYS = ('35:Return,44:Up,44.5:Right,45:Down,45.5:Right,46:Up,47:Down,48:Return,51:Up,54:Down,57:Down,'
         '60:Escape,67:Right,67.5:Right,68:Return')
 
@@ -163,10 +163,10 @@ class AmigaGraphicsTest(unittest.TestCase):
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the data')
 
     def test_high_scores(self):
-        # the attract loop's table after the credits (the last frame before 36 s): five entries, the
-        # F40's logo first and the Camaro's third (a data disk's car, its colours a CMAP alone), each in
-        # its car's colours 3 to 31 from two lines above the logo, colours 0 to 2 the screen's; no
-        # sixth line
+        # the attract loop's table after the credits (the last frame before 43 s; it shows from 38.4 to
+        # 45.9 s): five entries, the F40's logo first and the Camaro's third (a data disk's car, its
+        # colours a CMAP alone), each in its car's colours 3 to 31 from two lines above the logo, colours
+        # 0 to 2 the screen's; no sixth line
         import ilbm
         import shp
         import struct
@@ -176,7 +176,7 @@ class AmigaGraphicsTest(unittest.TestCase):
             struct.pack_into('<l5s17s', table, 26 * i, score, car.encode(), b'Driver')
         sum_ = struct.unpack_from('<L', table, 0x150)[0] + sum(s for s, _ in entries)
         struct.pack_into('<L', table, 0x150, sum_ & 0xFFFFFFFF)
-        frame, = run('1000:Escape', 36, lambda times: [max(times)[1]],
+        frame, = run('1000:Escape', 43, lambda times: [max(times)[1]],
                      {'TDS2HISC.DAT': bytes(table)})
         screen = [(0, 0, 0), (0, 136, 238), (255, 102, 102)]
         for i, car in [(0, 'cars/f40'), (2, 'cars1/cars/camo')]:
@@ -240,7 +240,7 @@ class AmigaGraphicsTest(unittest.TestCase):
         # over the picture shown); the option screen fades out before the difficulty screen ($2e530)
         split = []
         def pick(times):
-            credits = [n for t, n in times if 19.7 <= t < 21.0]
+            credits = [n for t, n in times if 28.7 <= t < 31.0]
             split.append(len(credits))
             return credits + [n for t, n in times if 39.9 <= t < 40.7]
         frames = run('35:Return,40:Return', 41, pick)

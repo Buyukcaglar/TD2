@@ -104,7 +104,8 @@ static void title_redraw(void *ctx);
 static s16 amiga_title(void)
 {
     host_sound_event(SOUND_TITLE, 0, NULL);
-    s16 k = screen_reveal(1);
+    amiga_dissolve(true);                            /* duel $2b5c4 */
+    s16 k = (s16)getkey();
     if (k != 0) return k;
     static Uint64 seed = 1;                             /* duel's random points ($2b350, $2b370) */
     u16 start[AMIGA_TITLE_LINES][4];
@@ -205,10 +206,12 @@ static void accolade_redraw(void *ctx)
  * bar "bull" (pics/titlecar.shp, a black box with the bar at its right end) slides in at its own row
  * from the left edge to its own x, drawn whole so that it cuts a black line through the letters
  * ($2becc). At the Amiga's pace 4 pixels a frame, as duel; at the DOS pace 2 pixels a tick, as TD2.
- * duel plays the speech once the bar is in (overlay 1204h at $2b2b8), and not after a key. */
+ * duel plays the speech once the bar is in (overlay 1204h at $2b2b8), and not after a key. The picture
+ * comes in with duel's dissolve ($2b270). */
 static s16 amiga_accolade(void)
 {
-    s16 r = screen_reveal(1);
+    amiga_dissolve(true);
+    s16 r = (s16)getkey();
     s16 end, row;
     if (r != 0) return r;
     if (!gfx_amiga_sprite_rect("pics/titlecar.shp", "bull", &end, &row, NULL, NULL)) {
@@ -628,6 +631,7 @@ static s16 amiga_showroom_intro(s16 first, s16 second)
     SDL_free(ss);
     if (frames == 0) return AMIGA_SHOWROOM_NONE;
 
+    amiga_dissolve(false);                           /* duel $2ba92: what is shown dissolves to black */
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     gfx_amiga_picture(pal[0], 0, 0);
@@ -1394,6 +1398,8 @@ s16 main_menu(void)
         gfx_clear_clip(0);
         gfx_set_text_colours(COL(0x0F, 3), 0);
         bool amiga = amiga_menu_page();
+        /* PORT: duel's attract mode (-$4382, set when the intro ran without a key) shows "Computer" */
+        if (amiga && DSW(DS_demo_mode)) DSS(DS_menu_sel) = 1;
         if (!amiga) dos_menu_icons();
         if (ensure_disk(0x7475, DSS(DS_data_disk), 0) != 0) return 1;                /* "gamediff" */
         mem_release_cache(load_shapes(DS_disk_path));                                /* preload */
@@ -1442,9 +1448,14 @@ s16 main_menu(void)
                 if (amiga) amiga_menu_highlight();
                 else menu_draw_highlight();
             }
-            k = getkey_timeout_switch(DSW(DS_demo_mode) ? 100 : 3000);
+            /* PORT: in duel's attract mode the menu waits 600 frames ($2bf94) and then starts the race
+             * shown, without TD2's random moves */
+            bool attract = amiga && DSW(DS_demo_mode);
+            k = getkey_timeout_switch(attract ? amiga_ticks(600) : DSW(DS_demo_mode) ? 100 : 3000);
             if (k == KEY_SWITCH) continue;
-            if (k == 0 || k == KEY_F10) {
+            if (k == 0 && attract) {
+                k = KEY_ENTER;
+            } else if (k == 0 || k == KEY_F10) {
                 DSW(DS_demo_mode) = 1;
                 k = menu_random_key();
                 if (k == KEY_ESC) k = 0;
@@ -1455,7 +1466,7 @@ s16 main_menu(void)
         }
         mem_release_cache(g);
         if (k == KEY_SWITCH) continue;                /* PORT: draw the menu again in the new mode */
-        if (DSW(DS_demo_mode) != 0) DSS(DS_menu_sel) = 0;
+        if (DSW(DS_demo_mode) != 0 && !amiga) DSS(DS_menu_sel) = 0;
         if (DSB(DS_protect_sabotage) != 0) return 0;
         from_box = DSS(DS_menu_sel) >= 2;
         if (amiga && from_box) amiga_wipe(WIPE_SWEEP, false, 40, 0);   /* PORT: duel $2e37e */

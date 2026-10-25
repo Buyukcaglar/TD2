@@ -645,9 +645,23 @@ static void amiga_difficulty_arrow(void)
     gfx_amiga_sprite("pics/gamedifficulty.shp", "arow", places[DSS(DS_difficulty)], 0, AMIGA_AT_HOT_X);
 }
 
+/* The settings of the difficulty chosen (the difficulty screen's Enter). */
+static void difficulty_apply(void)
+{
+    s16 dv = DSS(DS_difficulty);
+    DSS(DS_diff_score_pct) = (s16)(flow_idiv((s16)(dv * 0x43), 11) + 0x21);   /* 33..100 */
+    DSS(DS_diff_b) = (s16)(flow_idiv((s16)(dv << 7), 11) + 0x7F);             /* 127..255 */
+    DSS(DS_diff_c) = (s16)(flow_idiv((s16)(dv * 0x5A), 11) + 0x5A);           /* 90..180 */
+    DSS(DS_diff_easy) = (dv < 4 && DSW(DS_demo_mode) == 0) ? 1 : 0;
+}
+
 /* 0267:139b difficulty_screen — game_flow.md §4.10 (verified) */
 s16 difficulty_screen(void)
 {
+    if (gfx_amiga_screens() && DSW(DS_demo_mode)) {  /* PORT: duel's attract race has no difficulty */
+        difficulty_apply();                          /* screen ($2e554: -$4382 skips $2df46) */
+        return 0;
+    }
 redraw:
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
@@ -697,11 +711,7 @@ redraw:
             return KEY_ESC;
         }
         if (k == KEY_ENTER || k == KEY_SPACE) {
-            s16 dv = DSS(DS_difficulty);
-            DSS(DS_diff_score_pct) = (s16)(flow_idiv((s16)(dv * 0x43), 11) + 0x21);   /* 33..100 */
-            DSS(DS_diff_b) = (s16)(flow_idiv((s16)(dv << 7), 11) + 0x7F);             /* 127..255 */
-            DSS(DS_diff_c) = (s16)(flow_idiv((s16)(dv * 0x5A), 11) + 0x5A);           /* 90..180 */
-            DSS(DS_diff_easy) = (dv < 4 && DSW(DS_demo_mode) == 0) ? 1 : 0;
+            difficulty_apply();
             mem_release_cache(a);
             return 0;
         }
@@ -853,6 +863,28 @@ void stage_shapes_switch(void)
     stage_load_signs();
 }
 
+/* PORT: duel's race set-up ($15978) on a black page: "Loading Game..." (A4 - 6AD0h) at (100, 100) in pen
+ * 1, and the colours black and 0D04h (A4 - 6AD4h), shown at once. False without the Amiga graphics. */
+static bool amiga_loading(void)
+{
+    char text[24];
+    u8 c[4];
+    if (!gfx_amiga_screens() || !gfx_amiga_duel_data(0x2957Eu - 0x6AD0u, text, sizeof text - 1)
+        || !gfx_amiga_duel_data(0x2957Eu - 0x6AD4u, c, sizeof c))
+        return false;
+    text[sizeof text - 1] = 0;
+    u16 colours[2] = { (u16)(c[0] << 8 | c[1]), (u16)(c[2] << 8 | c[3]) };
+    gfx_amiga_colours(colours, 2);
+    u16 fg = DSW(DS_text_fg), bg = DSW(DS_text_bg);
+    gfx_set_text_colours(AMIGA_PEN(1), AMIGA_PEN(0));
+    gfx_draw_text_str(text, 100, 100);
+    gfx_set_text_colours(fg, bg);
+    flow_show_page();
+    u32 t = ticks_get() + 70;                         /* while duel loads: 0.7 s in the user's recording */
+    while (ticks_get() < t) host_pump();
+    return true;
+}
+
 /* 0267:15e4 run_game — game_flow.md §1.3, §4.11 (verified against the disassembly).
  * Returns 0 to go back to the menu, 1 when a game (or an attract-mode stage) ended. */
 s16 run_game(s16 mode)
@@ -866,8 +898,10 @@ s16 run_game(s16 mode)
     if (difficulty_screen() != 0) return 0;
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
-    draw_text_centered(0x7D84, 0x60);                 /* "Please wait while loading..." */
-    screen_reveal(2);
+    if (!amiga_loading()) {                           /* PORT */
+        draw_text_centered(0x7D84, 0x60);             /* "Please wait while loading..." */
+        screen_reveal(2);
+    }
     DSS(DS_stage) = 0;
     DSS(DS_lives) = 5;
     for (;;) {

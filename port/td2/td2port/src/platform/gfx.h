@@ -219,6 +219,11 @@ void gfx_amiga_wipe_begin(FarPtr page, bool in, bool clear);
 void gfx_amiga_wipe_rect(s16 x0, s16 y0, s16 x1, s16 y1);        /* corners included */
 void gfx_amiga_wipe_line(s16 x0, s16 y0, s16 x1, s16 y1);
 void gfx_amiga_wipe_show(void);
+/* duel's dissolve ($155a4 runs the passes 7 to 0 of $116a6) after gfx_amiga_wipe_begin(page, in, false):
+ * rows first to last (the steps of a pass; 200 make a pass) of pass, each writing one pixel column in
+ * eight from what the wipe lets through. The d-th row a pass visits is row 7d mod 200, and its columns
+ * are those of mask (d + pass) mod 8 of duel's table ($11686). */
+void gfx_amiga_dissolve_rows(int pass, int first, int last);
 /* Shows rows y0 to y0 + h - 1 of a page moved dx pixels to the right, black elsewhere, in the page's
  * colours: an Amiga viewport of that size scrolled sideways (duel's showroom). */
 void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx);

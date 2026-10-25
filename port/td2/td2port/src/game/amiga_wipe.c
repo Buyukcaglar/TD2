@@ -139,5 +139,31 @@ static void wipe(AmigaWipe kind, bool in, bool clear, s16 a, s16 b)
     }
 }
 
+/* duel runs its passes as fast as the 68000 does them, with no frame wait: in the user's recording of the
+ * original (PUAE, 25 October 2026) each of its three dissolves (the Accolade picture in and out, "The
+ * Duel" in) takes 3.15 to 3.27 s, so a pass takes 0.4 s here, its rows spread evenly over it. */
+#define DISSOLVE_PASS_TICKS 40u
+
+void amiga_dissolve(bool in)
+{
+    if (!gfx_amiga_screens()) return;
+    gfx_amiga_wipe_begin(flow_page_desc(), in, false);
+    select_screen();
+    u32 t0 = ticks_get(), total = 8u * DISSOLVE_PASS_TICKS;
+    int done = 0;
+    for (;;) {
+        u32 t = ticks_get() - t0;
+        int due = t >= total ? 1600 : (int)(1600u * t / total);
+        while (done < due) {                            /* the rows due, pass by pass */
+            int pass_end = (done / 200 + 1) * 200, end = due < pass_end ? due : pass_end;
+            gfx_amiga_dissolve_rows(7 - done / 200, done % 200, end - (pass_end - 200));
+            done = end;
+        }
+        host_present_now();
+        if (done >= 1600) return;
+        host_pump();
+    }
+}
+
 void amiga_wipe(AmigaWipe kind, bool in, s16 a, s16 b) { wipe(kind, in, true, a, b); }
 void amiga_wipe_over(AmigaWipe kind, s16 a, s16 b) { wipe(kind, true, false, a, b); }

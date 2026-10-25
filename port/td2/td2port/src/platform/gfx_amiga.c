@@ -780,6 +780,19 @@ void gfx_amiga_wipe_show(void)
     gfx_ega.dirty = true;
 }
 
+void gfx_amiga_dissolve_rows(int pass, int first, int last)
+{
+    static const u8 masks[8] = { 0x01, 0x08, 0x40, 0x02, 0x10, 0x80, 0x04, 0x20 };
+    for (int d = first; d < last && d < 200; d++) {
+        u8 m = masks[(d + pass) & 7];
+        int off = d * 7 % 200 * 40;
+        for (int bx = 0; bx < 40; bx++)
+            for (int k = 0; k < 5; k++)
+                gfx_ega.plane[k][off + bx] = (u8)((gfx_ega.plane[k][off + bx] & ~m) | (wipe_from[k][off + bx] & m));
+    }
+    gfx_ega.dirty = true;
+}
+
 void gfx_amiga_show_scrolled(FarPtr page, s16 y0, s16 h, s16 dx) { gfx_amiga_show_view(page, y0, h, dx, 0); }
 
 void gfx_amiga_show_view(FarPtr page, s16 y0, s16 h, s16 dx, s16 dy)
