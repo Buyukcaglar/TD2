@@ -11,7 +11,8 @@
  * the wheel's pose ("spm0", "spm1", "spmC"; "tcm..." for the tachometer) lets them, in pen 1: the mask
  * clears planes 1 to 4 and sets plane 0. The gear gate is XORed onto the dashboard ("gbox", $18c56)
  * when TD2 shows its gate, with the knob ("gnob", a hardware sprite in duel) at TD2's knob position
- * carried over to duel's gate: <car>.b's table at 28h has each gear's place, neutral first.
+ * carried over to duel's gate: <car>.b's table at 28h has each gear's place, neutral first. The small
+ * gauges ($1ab60: turbo, oil temperature, oil pressure, fuel) are needles from tables in <car>.b too.
  *
  * TD2's view (320 x 92 at line 19) and mirror are drawn by TD2 in the road colours: its colour numbers
  * draw the nearest of them, its sprites are duel's sprites of the same names from the Amiga archive
@@ -20,6 +21,8 @@
  * picture moves into duel's mirror frame. */
 #include "scene.h"
 #include "flow.h"
+
+#include "../platform/timer.h"
 
 #include <SDL3/SDL.h>
 #include <stdio.h>
@@ -42,6 +45,10 @@ static struct {
     FarPtr scratch;                     /* for TD2's sprites drawn with the road colours */
     bool gate, gate_drawn;              /* the gear gate is shown, and as drawn */
     s16 knob_x, knob_y;                 /* the knob's hot spot on it */
+    u16 road[2];                        /* the road's two pens (roaddata 26h and 28h) */
+    int gauge[4];                       /* the small gauges' table entries drawn */
+    u16 oil_temp, boost;                /* duel's oil temperature (-$bc0) and the turbo's needle */
+    u32 oil_ticks;                      /* the timer when oil_temp last rose */
 } ac;
 
 /* <scenery>roaddata<n>: the pens duel draws the scenery's parts in ($1678e, $1844e, $1876a), words */
@@ -52,6 +59,7 @@ static struct {
 #define ROAD_FAR        (0x1C / 2)      /* the band beyond the right ground */
 #define ROAD_EDGE       (0x1E / 2)      /* the road's edges */
 #define ROAD_SURFACE    (0x26 / 2)      /* the road (duel alternates it with 28h in bands) */
+#define ROAD_SURFACE2   (0x28 / 2)
 
 #define CAR_MIN_SPEED   0x018           /* <car>.b: the speed of the speedometer's first table entry */
 #define CAR_SPEED_HUB   0x2EE           /* the speedometer's centre, x and y bytes */
@@ -60,6 +68,9 @@ static struct {
 #define CAR_TACH_TIPS   0x4D8           /* x and y bytes for each 64 rpm */
 #define CAR_MARKER      0x012           /* the wheel marker's circle: centre x, y and radius, words */
 #define CAR_KNOB        0x028           /* each gear's knob place, x and y words, neutral first */
+#define CAR_FUEL_BAR    0x0D8           /* not 0: the fuel gauge is a bar (the Corvette) */
+#define CAR_GAUGES      0x0DA           /* turbo, oil temperature, oil pressure, fuel: each the needle's
+                                         * centre, then 32 tips, x and y words, 84h bytes a gauge */
 #define DASH_CLEAN      118             /* the dashboard below the hood */
 
 static u16 be16(const u8 *p) { return (u16)(p[0] << 8 | p[1]); }
@@ -69,6 +80,14 @@ bool amiga_cockpit_on(void) { return ac.on; }
 void amiga_cockpit_crashed(bool crashed) { ac.crashed = crashed; }
 
 void amiga_cockpit_gate(bool open) { ac.gate = open; }
+
+bool amiga_cockpit_road_bands(u16 pens[2])
+{
+    if (!ac.on) return false;
+    pens[0] = ac.road[0];
+    pens[1] = ac.road[1];
+    return true;
+}
 
 /* v on TD2's gate, between its places d0 and d1, carried to duel's a0 and a1. */
 static s16 knob_map(s16 v, s16 d0, s16 d1, s16 a0, s16 a1)
@@ -115,10 +134,14 @@ bool amiga_cockpit_load(void)
     gfx_amiga_keep_lines(DASH_LINE, 200);
     ac.pose = -1;
     ac.gate = ac.gate_drawn = false;
+    ac.oil_temp = ac.boost = 0;                         /* duel clears its oil temperature at the start */
+    ac.oil_ticks = ticks_get();
     gfx_fill_rect_clip(0, 0, 0x140, VIEW_TOP, DSW(DS_col_sky));   /* behind the roof's open edge */
     flow_concat(ac.dash, sizeof ac.dash, car, "dash.shp");
     gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_drive_buf_desc));
     gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);    /* the road, COL(7, 0) in draw_ground */
+    ac.road[0] = AMIGA_PEN(pens[ROAD_SURFACE]);
+    ac.road[1] = AMIGA_PEN(pens[ROAD_SURFACE2]);
     gfx_amiga_keep_screen_colours(ds_far(DS_drive_buf_desc));
     gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_mirror_desc));
     gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);
@@ -167,6 +190,56 @@ static void needle(const char *kind, u16 hub, u16 tip)
     }
 }
 
+/* The small gauges' needles, table entries 0 to 31 ($1ac44). duel's oil temperature rises by the revs
+ * / 128 each frame (at least 800 rpm), its oil pressure is 7FFFh - temperature / 2 + revs * 6 + 5000,
+ * the fuel what is left of the section's, each a 16-bit value of which the gauge shows the top 5 bits.
+ * The turbo's value (-$3094, halved) comes from duel's engine, which TD2 has not: here the needle
+ * follows the revs above 2000 while TD2's throttle is down. */
+static void gauge_values(int v[4])
+{
+    u16 rpm = DSW(DS_rpm);
+    u32 now = ticks_get(), frames = (now - ac.oil_ticks) * 60 / 100;   /* duel's 60 frames a second */
+    if (frames) {
+        ac.oil_ticks = now;
+        u32 t = ac.oil_temp + frames * ((rpm < 800 ? 800 : rpm) >> 7);
+        ac.oil_temp = (u16)(t > 0xFFFF ? 0xFFFF : t);
+        int target = DSC(DS_throttle) > 0 && rpm > 2000 ? (rpm - 2000) / 128 : 0;
+        target = target > 31 ? 31 : target;
+        for (u32 i = 0; i < frames && ac.boost != target; i++) ac.boost = (u16)(ac.boost < target ? ac.boost + 1 : ac.boost - 1);
+    }
+    u32 p = 0x7FFFu - ac.oil_temp / 2 + (u32)rpm * 6 + 5000;
+    u32 n = DSW(DS_stage_len_copy) > 10 ? DSW(DS_stage_len_copy) - 10u : 1;
+    u32 f = (u32)DSW(DS_fuel) * 0xFFFF / n;
+    v[0] = ac.boost;
+    v[1] = ac.oil_temp >> 11;
+    v[2] = (int)((p > 0xFFFF ? 0xFFFF : p) >> 11);
+    v[3] = (int)((f > 0xFFFF ? 0xFFFF : f) >> 11);
+}
+
+/* A small gauge ($1ab12): its face, the needle from the tip to the centre in pen 16, and the part of
+ * the steering wheel that covers it in this pose. The Corvette's fuel is a bar instead: 9 x 12 in pen
+ * 12, filled from the bottom in pen 18 by (fuel - 1000) * 12 / 65536. */
+static void small_gauge(int i, int v)
+{
+    static const char faces[4][5] = { "trb0", "oilt", "oilp", "fuel" };
+    static const char parts[4][4] = { "trs", "olt", "olp", "fue" };
+    const u8 *g = ac.car + CAR_GAUGES + 0x84 * i;
+    s16 x = (s16)be16(g), y = (s16)be16(g + 2);
+    if (x == 0) return;
+    if (i == 3 && be16(ac.car + CAR_FUEL_BAR)) {
+        u32 n = DSW(DS_stage_len_copy) > 10 ? DSW(DS_stage_len_copy) - 10u : 1;
+        u32 f = (u32)DSW(DS_fuel) * 0xFFFF / n;
+        s16 h = (s16)(((f > 1000 ? f - 1000 : 0) * 12) >> 16);
+        gfx_fill_rect(x, y, 9, 12, AMIGA_PEN(12));
+        gfx_fill_rect(x, (s16)(y + 11 - h), 9, (s16)(h + 1), AMIGA_PEN(18));
+        return;
+    }
+    gfx_amiga_sprite(ac.dash, faces[i], 0, 0, AMIGA_AT_OWN);
+    gfx_draw_line((s16)be16(g + 4 + 4 * v), (s16)be16(g + 6 + 4 * v), x, y, AMIGA_PEN(16));
+    char part[5] = { parts[i][0], parts[i][1], parts[i][2], "021"[ac.pose], 0 };   /* duel's order */
+    gfx_amiga_sprite(ac.dash, part, 0, 0, AMIGA_AT_OWN);
+}
+
 /* The steering wheel ($19244: turned past a quarter of TD2's lock, as TD2's draw_steering turns it),
  * its marker ("swhl" on the rim, $1b1ca: at -steer / 64 degrees, at most 45, on a circle of <car>.b's
  * 12h-16h) and the needles. When any of them moves, the dashboard below the hood is drawn again from
@@ -193,9 +266,13 @@ static void dashboard(void)
                       (s16)be16(ac.car + CAR_KNOB), (s16)be16(ac.car + CAR_KNOB + 8));
     s16 ky = knob_map(DSS(DS_knob_y), DSS(DS_car_knob_xy + 2), DSS(DS_car_knob_xy + 6),
                       (s16)be16(ac.car + CAR_KNOB + 2), (s16)be16(ac.car + CAR_KNOB + 6));
+    int g[4];
+    gauge_values(g);
     if (pose == ac.pose && s == ac.speed_tip && r == ac.tach_tip && mx == ac.marker_x && my == ac.marker_y
-        && ac.gate == ac.gate_drawn && (!ac.gate || (kx == ac.knob_x && ky == ac.knob_y)))
+        && ac.gate == ac.gate_drawn && (!ac.gate || (kx == ac.knob_x && ky == ac.knob_y))
+        && !memcmp(g, ac.gauge, sizeof g))
         return;
+    memcpy(ac.gauge, g, sizeof g);
     ac.gate_drawn = ac.gate;
     ac.knob_x = kx;
     ac.knob_y = ky;
@@ -211,6 +288,7 @@ static void dashboard(void)
     }
     needle("spm", CAR_SPEED_HUB, (u16)(CAR_SPEED_TIPS + 2 * s));
     needle("tcm", CAR_TACH_HUB, (u16)(CAR_TACH_TIPS + 2 * r));
+    for (int i = 0; i < 4; i++) small_gauge(i, g[i]);
     gfx_amiga_sprite(ac.dash, "swhl", mx, my, AMIGA_AT_HOT);
     if (ac.gate) {
         gfx_amiga_sprite(ac.dash, "gbox", 0, 0, AMIGA_XOR_OWN);

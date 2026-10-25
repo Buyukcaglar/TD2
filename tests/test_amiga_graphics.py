@@ -212,7 +212,7 @@ class AmigaGraphicsTest(unittest.TestCase):
 
     def test_race_cockpit(self):
         # a race against the clock, standing at the start: the F40's dashboard picture (cars/f40dash)
-        # from line 118 in its own colours where nothing moves; the roof (roof of cars/f40dash.shp) in
+        # from line 118 in its own colours where nothing moves, with the small gauges' needles; the roof (roof of cars/f40dash.shp) in
         # the section's road colours (32 words at 0A6h of scen/sc1_roaddata0) left of its digits, below
         # the progress dots and but for the radar detector's lights; and TD2's view, between the windscreen pillar and the mirror, in
         # those colours only
@@ -224,9 +224,16 @@ class AmigaGraphicsTest(unittest.TestCase):
         dash = ilbm.parse((AMIGA / 'cars/f40dash').read_bytes())
         pal = amiga_colours(dash)
         still = [(x, y) for y in range(118, 131) for x in range(176, 250)]
-        still += [(x, y) for y in range(190, 200) for x in range(200, 320)]
+        still += [(x, y) for y in range(190, 200) for x in range(200, 224)]
         diff = [(x, y) for x, y in still if frame.getpixel((x, y)) != pal[dash.pixels[y * 320 + x]]]
         self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the dashboard')
+        # the small gauges' needles in pen 16 (cars/f40.b from 0DAh: turbo, oil temperature, oil pressure,
+        # fuel, each the centre and 32 tips): each from its centre, the full tank's to its last tip
+        b = rpck.read((AMIGA / 'cars/f40.b').read_bytes())
+        for g in range(1, 4):
+            hub = struct.unpack_from('>2h', b, 0xDA + 0x84 * g)
+            self.assertEqual(frame.getpixel(hub), pal[16], f'gauge {g}')
+        self.assertEqual(frame.getpixel(struct.unpack_from('>2h', b, 0x266 + 4 + 4 * 31)), pal[16], 'fuel')
         road = rpck.read((AMIGA / 'scen/sc1_roaddata0').read_bytes())
         top = [struct.unpack_from('>H', road, 0xA6 + 2 * i)[0] for i in range(32)]
         top = [((c >> 8 & 15) * 17, (c >> 4 & 15) * 17, (c & 15) * 17) for c in top]
