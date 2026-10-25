@@ -8,7 +8,7 @@ tests/herc_snapshots.txt).
     python tools/snapshots.py --update [--cga | --hercules]   # run and rewrite the baseline
     python tools/snapshots.py --amiga          # the Amiga backend without Amiga files, against EGA
 
-Each adapter makes four runs with TD2_VIRTUAL_CLOCK, so time only advances while the host would wait
+Each adapter makes five runs with TD2_VIRTUAL_CLOCK, so time only advances while the host would wait
 and two runs give the same frames:
 - attract: 120 s of attract mode (logos, credits, scores, menus, the demo drive), a frame every 2 s;
 - menus: keys from TD2_KEYS open car select (up, down, down, escape) and scenery select (up, enter),
@@ -17,7 +17,12 @@ and two runs give the same frames:
   go round all three modes and back. Every frame from 62 s on must equal the attract run's frame of
   the same number: the switch leaves the race as it was (round_trip());
 - menuswitch: the menus run with Ctrl+Shift+G on the main menu (36 s), in car select (47 s) and in
-  scenery select (63 s). The frames from 64 s on must equal the menus run's frames of the same time.
+  scenery select (63 s). The frames from 64 s on must equal the menus run's frames of the same time;
+- race: a race against the clock from the menu, the throttle held and Return every 6 s to drive on
+  after each crash, until the game is over (about 450 s): the section's end, the gas station and the
+  results, the last life, game over, the record book and the name entry (the profile's score table is
+  empty, so the run makes both), "TD" typed, the top scores and the menu again. A frame every 0.5 s,
+  and each still screen once it has stood that long (TD2_SNAPSHOT_HELD).
 Everything the PC speaker plays goes to audio.wav. The files go to runs/snapshots/<adapter>/ (they
 show original art and play original music, so they stay out of the repository); only their SHA-256
 hashes are committed.
@@ -45,9 +50,13 @@ MENU_KEYS = ('30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,42:Down,43:Ret
 # name, seconds, keys, ms between frames; the attract run's files keep their plain names.
 # The port's command-line option for each adapter but EGA.
 FLAGS = {'cga': '--cga', 'herc': '--hercules', 'amiga': '--amiga-graphics'}
-# The Amiga backend without the Amiga game's files must show the EGA frames: its attract and menus runs
+# The Amiga backend without the Amiga game's files must show the EGA frames: its attract, menus and race runs
 # are compared with the EGA baseline (its switches go round other modes, so it has no switch runs).
-AMIGA_RUNS = ('attract', 'menus')
+AMIGA_RUNS = ('attract', 'menus', 'race')
+
+# Up held from 52 s; the Returns go on after crashes and leave the results pages; then a name.
+RACE_KEYS = ','.join(['30:Return,39:Up,39.5:Right,40:Down,40.5:Right,41:Up,43:Return,46:Return,52:Up/400'] +
+                     [f'{t}:Return' for t in range(58, 451, 6)] + ['466:Return,470:T,470.5:D,471:Return,476:Return'])
 
 SWITCH_KEYS = '45:Ctrl+Shift+G,52:Ctrl+Shift+G,60:Ctrl+Shift+G'   # in the demo race, which starts at 42 s
 MENU_SWITCH_KEYS = ','.join(sorted(MENU_KEYS.split(',') + ['36:Ctrl+Shift+G', '47:Ctrl+Shift+G', '63:Ctrl+Shift+G'],
@@ -56,7 +65,7 @@ MENU_SWITCH_KEYS = ','.join(sorted(MENU_KEYS.split(',') + ['36:Ctrl+Shift+G', '4
 SWITCH_RUNS = {'switch': ('attract', 62.0, False), 'menuswitch': ('menus', 64.0, True)}
 
 RUNS = [('attract', SECONDS, None, 2000), ('menus', 72, MENU_KEYS, 500), ('switch', SECONDS, SWITCH_KEYS, 2000),
-        ('menuswitch', 72, MENU_SWITCH_KEYS, 500)]
+        ('menuswitch', 72, MENU_SWITCH_KEYS, 500), ('race', 482, RACE_KEYS, 500)]
 
 SELECT = '0 0 0 F40 P959 TDS2'        # select.dat: the cars and the scenery the runs start with
 
@@ -83,6 +92,7 @@ def take(adapter: str = 'ega') -> dict[str, str]:
                    TD2_AUDIO_DUMP=str(out / 'audio.wav'))
         env.pop('TD2_STATE_DIR', None)
         env.pop('TD2_KEYS', None)
+        env.pop('TD2_SNAPSHOT_HELD', None)
         if keys:
             env['TD2_KEYS'] = keys
         profile = ROOT / f'runs/snapshot-profile/{adapter}-{name}'   # default scores, cars 0 and 1
@@ -92,6 +102,9 @@ def take(adapter: str = 'ega') -> dict[str, str]:
         # the intro shows the chosen cars; the game's own select.dat picks the RUF, which the base game
         # does not have
         (profile / 'select.dat').write_text(SELECT + chr(10))
+        if name == 'race':
+            env['TD2_SNAPSHOT_HELD'] = '1'     # the still screens between the race's frames too
+            (profile / 'TDS2HISC.DAT').write_bytes(bytes(0x154))   # an empty score table, checksum 0
         args = [str(EXE), '--game-dir', str(GAME), '--user-dir', str(profile)]
         if adapter in FLAGS:
             args.append(FLAGS[adapter])
@@ -145,8 +158,8 @@ def write_baseline(shots: dict[str, str], adapter: str = 'ega'):
     head = [f'# {adapter.upper()} snapshot hashes: python tools/snapshots.py --update'
             f'{" " + FLAGS[adapter] if adapter in FLAGS else ""} rewrites this file.',
             f'# {SECONDS} s of attract mode on the virtual clock, one frame every 2 s of game time, the',
-            '# scripted menu run (menus/), both with three live graphics switches (switch/, menuswitch/), and',
-            '# the speaker output of each (audio.wav).']
+            '# scripted menu run (menus/), both with three live graphics switches (switch/, menuswitch/), a',
+            '# race to game over and the name entry (race/), and the speaker output of each (audio.wav).']
     baseline_path(adapter).write_text('\n'.join(head + [f'{d}  {n}' for n, d in shots.items()]) + '\n', newline='\n')
 
 

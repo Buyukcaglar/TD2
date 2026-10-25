@@ -1,5 +1,5 @@
 """EGA, CGA and Hercules output against the committed snapshot hashes, and the live graphics switch's
-round trip (tools/snapshots.py). Takes about two minutes.
+round trip (tools/snapshots.py). Takes about five minutes (each adapter's race run takes one and a half).
 
 Needs build/TD2.exe (build.ps1) and runs/game (run.ps1 once).
 """

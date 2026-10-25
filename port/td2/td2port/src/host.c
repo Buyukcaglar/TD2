@@ -41,7 +41,7 @@ static Uint64 run_limit_ns;
 /* TD2_KEYS presses keys at given game times, for headless runs of the menus and races:
  * "20:Return,24.5:Down,30:Up/5" (seconds, an SDL scancode name, and optionally how many seconds to
  * hold it; 0.1 s otherwise). */
-#define KEY_SCRIPT_MAX 64
+#define KEY_SCRIPT_MAX 256
 static struct { Uint64 at_ns, hold_ns; SDL_Scancode sc; SDL_Keymod mod; u8 state; } key_script[KEY_SCRIPT_MAX];
 static int key_script_n;
 static void key_script_load(const char *text);
@@ -268,23 +268,31 @@ void host_sim_state(const u8 *memory, u32 size, u16 bp, u16 cx)
 }
 
 /* Developer aid: with TD2_SNAPSHOT_DIR set, every presented frame at least 2 s (or TD2_SNAPSHOT_MS)
- * after the previous snapshot is saved there as snapNNNN.bmp (works with SDL_VIDEO_DRIVER=dummy). */
-static void snapshot(void)
+ * after the previous snapshot is saved there as snapNNNN.bmp (works with SDL_VIDEO_DRIVER=dummy).
+ * With TD2_SNAPSHOT_HELD set, a frame skipped as too soon is saved as well once it has stayed on the
+ * screen that long (held: the host is waiting), so a still screen shown briefly after another (the top
+ * scores, a menu) is not lost. */
+static void snapshot(bool held)
 {
     static const char *dir;
-    static bool checked;
+    static bool checked, keep_held, skipped;
     static Uint64 last_ns, every_ns = 2 * SDL_NS_PER_SECOND;
     static int n;
     if (!checked) {
         dir = SDL_getenv("TD2_SNAPSHOT_DIR");
         const char *ms = SDL_getenv("TD2_SNAPSHOT_MS");
         if (ms && SDL_atoi(ms) > 0) every_ns = (Uint64)SDL_atoi(ms) * SDL_NS_PER_MS;
+        keep_held = SDL_getenv("TD2_SNAPSHOT_HELD") != NULL;
         checked = true;
     }
-    if (!dir) return;
+    if (!dir || (held && !skipped)) return;
     Uint64 now = now_ns();
-    if (n && now - last_ns < every_ns) return;
+    if (n && now - last_ns < every_ns) {
+        if (!held) skipped = keep_held;
+        return;
+    }
     last_ns = now;
+    skipped = false;
     SDL_Surface *s = SDL_CreateSurfaceFrom(frame_w, frame_h, SDL_PIXELFORMAT_XRGB8888, frame, frame_w * 4);
     if (!s) return;
     char path[512];
@@ -309,7 +317,7 @@ static void show_frame(void)
 
 static void present(void)
 {
-    snapshot();
+    snapshot(false);
     show_frame();
 }
 
@@ -377,6 +385,7 @@ void host_pump(void)
         }
     }
     if (!worked) {
+        snapshot(true);
         Uint64 next = tick_due_ns(ticks_run + 1);
         now = now_ns();
         if (next > now) wait_ns(SDL_min(next - now, SDL_NS_PER_MS));
