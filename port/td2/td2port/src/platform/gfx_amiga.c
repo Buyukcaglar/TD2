@@ -486,6 +486,29 @@ void gfx_amiga_restore_rect(s16 x0, s16 y0, s16 x1, s16 y1)
     gfx_ega.dirty = true;
 }
 
+bool gfx_amiga_sprite_xored(const char *file, const char *name, const char *xor_name, s16 x, s16 y)
+{
+    if (!gfx_amiga_screens()) return false;
+    char *path = NULL;
+    SDL_asprintf(&path, "%s/%s", amiga_dir, file);
+    AmigaSprite s, o;
+    bool ok = path && shp_load(path, name, &s);
+    bool other = ok && shp_load(path, xor_name, &o);
+    SDL_free(path);
+    if (!ok) return false;
+    x = (s16)(x - s.hot_x);
+    y = (s16)(y - s.hot_y);
+    for (int r = 0; r < s.h; r++)
+        for (int c = 0; c < s.w; c++) {
+            u8 v = s.mask[r * s.w + c] ? s.pix[r * s.w + c] : 0;
+            if (other && r < o.h && c < o.w && o.mask[r * o.w + c]) v ^= o.pix[r * o.w + c];
+            if (v) put_pixel((s16)(x + c), (s16)(y + r), v);
+        }
+    if (other) shp_free(&o);
+    shp_free(&s);
+    return true;
+}
+
 /* A line in pen into the target's planes, where mask (if any) is drawn. */
 static void pen_line(s16 x0, s16 y0, s16 x1, s16 y1, u8 pen, const AmigaSprite *mask)
 {

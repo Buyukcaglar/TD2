@@ -139,6 +139,10 @@ typedef enum {
 } AmigaPlace;
 /* Draws sprite name of an Amiga sprite archive into the selected target. False if it is not there. */
 bool gfx_amiga_sprite(const char *file, const char *name, s16 x, s16 y, AmigaPlace at);
+/* Draws sprite name with sprite xor_name of the same archive XORed into it from its top left corner,
+ * its hot spot at (x, y), where the result is not 0 (duel makes the sprite a bitmap, XOR-blits the
+ * other into it and draws it through the OR of its planes: the gas station's car and its shadow). */
+bool gfx_amiga_sprite_xored(const char *file, const char *name, const char *xor_name, s16 x, s16 y);
 /* A sprite's own position and its size (any may be NULL). False if it is not there. */
 bool gfx_amiga_sprite_rect(const char *file, const char *name, s16 *x, s16 *y, s16 *w, s16 *h);
 /* A sprite's hot point. False if it is not there. */

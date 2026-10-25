@@ -145,8 +145,8 @@ static void gas_station_picture(FarPtr gs, FarPtr st, u16 gast_ds, u16 carm_ds, 
 /* PORT: the gas station in its Amiga form (duel $13758) into the page: the scenery's picture
  * <scenery>gasstation, which splits its colours at line 103 (its CMP2), the section's sign over the
  * picture's (the sprite of <scenery>gasstation.shp named by the table at -$75ec: bruc, brad, john, tres,
- * rand ...), and the player's car, "gcar" of <car>.sideview.shp with its shadow "care" drawn over it,
- * at its own x with its bottom on line 180, below the split in the car's colours (<car>.gas.p). False
+ * rand ...), and the player's car, "gcar" of <car>.sideview.shp with its shadow "care" XORed into it
+ * ($11734 makes it a bitmap, -$7d88 is the XOR blit) and drawn where the result is not 0, at its own x with its bottom on line 180, below the split in the car's colours (<car>.gas.p). False
  * without the Amiga files. */
 static bool amiga_gas_station_page(void)
 {
@@ -164,9 +164,7 @@ static bool amiga_gas_station_page(void)
     s16 x, h, hx, hy;
     if (gfx_amiga_sprite_rect(file, "gcar", &x, NULL, NULL, &h) && gfx_amiga_sprite_hot(file, "gcar", &hx, &hy)) {
         s16 top = (s16)(180 - h);
-        gfx_amiga_sprite(file, "gcar", (s16)(x + hx), (s16)(top + hy), AMIGA_AT_HOT);
-        if (gfx_amiga_sprite_hot(file, "care", &hx, &hy))
-            gfx_amiga_sprite(file, "care", (s16)(x + hx), (s16)(top + hy), AMIGA_AT_HOT);
+        gfx_amiga_sprite_xored(file, "gcar", "care", (s16)(x + hx), (s16)(top + hy));
     }
     gfx_amiga_second_colours(flow_concat(file, sizeof file, car, ".gas.p"));
     return true;

@@ -206,10 +206,11 @@ class AmigaGraphicsTest(unittest.TestCase):
         cars = {s.name: s for s in shp.read((AMIGA / 'cars/f40.sideview.shp').read_bytes())}
         car, shade = cars['gcar'], cars['care']
         top = 180 - car.height
-        diff = [(x, y) for y in range(car.height) for x in range(car.width)
-                if car.mask[y * car.width + x] and not shade.mask[y * car.width + x]
-                and frame.getpixel((car.x + x, top + y)) != gas[car.pixels[y * car.width + x]]]
-        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the car')
+        # duel XORs the shadow into the car's bitmap and draws it where the result is not 0
+        want = {(x, y): (car.pixels[i] if car.mask[i] else 0) ^ (shade.pixels[i] if shade.mask[i] else 0)
+                for y in range(car.height) for x in range(car.width) for i in [y * car.width + x]}
+        diff = [(x, y) for (x, y), v in want.items() if v and frame.getpixel((car.x + x, top + y)) != gas[v]]
+        self.assertEqual(diff[:5], [], f'{len(diff)} pixels differ in the car and its shadow')
 
     def test_race_cockpit(self):
         # a race against the clock, standing at the start: the F40's dashboard picture (cars/f40dash)
