@@ -261,9 +261,14 @@ void wait_key_paused(void)
 
 /* ================================================================================ getkey family */
 
+static u16 forced_key;                              /* PORT: kbd_force_key */
+
+void kbd_force_key(u16 k) { forced_key = k; }
+
 /* 06c9:69fe getkey: far call through DS:64DC */
 u16 getkey(void)
 {
+    if (forced_key) return forced_key;               /* PORT */
     KeyFn fn = (KeyFn)codeptr_lookup(ds_far(DS_getkey_fn));
     return fn();
 }

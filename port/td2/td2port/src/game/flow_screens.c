@@ -23,6 +23,10 @@ static s16 morph(s16 a, s16 s, s16 b, s16 t)
     return (s16)((s16)v >> 5);
 }
 
+/* PORT: the intro starts its screen again after a switch changed the form (intro_sequence): the screen
+ * is black, so duel's showroom does not dissolve it out first. */
+static bool intro_again;
+
 /* ================================================================================================
  * Segment 00c0: title, Accolade, intro sequence
  * ============================================================================================== */
@@ -120,7 +124,7 @@ static s16 amiga_title(void)
     for (s16 s = 0; s <= AMIGA_TITLE_STEPS; s++) {
         if (gfx_pending_backend()) {                 /* the live switch shows the title as it ends */
             flow_switch_redraw(title_redraw, NULL);
-            return 0;
+            return (s16)getkey();                    /* KEY_FORM: TD2's title again */
         }
         select_screen();
         amiga_title_lines(start, s);
@@ -163,7 +167,7 @@ s16 title_screen(void)
         k = (s16)getkey();
         if (k != 0) return k;
     }
-    getkey_timeout_redraw(100, title_lines_redraw, NULL);   /* result ignored */
+    if (getkey_timeout_redraw(100, title_lines_redraw, NULL) == KEY_FORM) return (s16)KEY_FORM;   /* else ignored */
     title_page();
     host_sound_event(SOUND_TITLE, 0, NULL);          /* PORT: sample-based audio (the Amiga's speech) */
     k = screen_reveal(1);
@@ -223,6 +227,7 @@ static s16 amiga_accolade(void)
     for (s16 x = 0, n = 1;; x = (s16)(x + (amiga ? 4 : 2)), n++) {
         if (gfx_pending_backend()) {                 /* the live switch ends the slide */
             flow_switch_redraw(accolade_redraw, NULL);
+            if ((r = (s16)getkey()) != 0) return r;  /* KEY_FORM: TD2's Accolade again */
             host_sound_event(SOUND_ACCOLADE, 0, NULL);
             return 0;
         }
@@ -257,6 +262,7 @@ s16 accolade_screen(void)
             if (gfx_pending_backend()) {             /* PORT: the live switch ends the slide */
                 mem_release_cache_old(a);
                 flow_switch_redraw(accolade_redraw, NULL);
+                if ((r = (s16)getkey()) != 0) return r;   /* KEY_FORM: duel's Accolade again */
                 host_sound_event(SOUND_ACCOLADE, 0, NULL);
                 return 0;
             }
@@ -272,6 +278,36 @@ s16 accolade_screen(void)
     return r;
 }
 
+/* PORT: the intro's screens one at a time: a live switch that changes the screens' form, TD2's or
+ * duel's, ends the screen shown with KEY_FORM, and the intro starts it again in the new form (the user's
+ * reports, 25 October 2026: switched to the Amiga mode during the intro, TD2's screens went on in it). */
+static s16 intro_step(int step)
+{
+    s16 r;
+    switch (step) {
+    case 0:
+        if ((r = accolade_screen()) != 0) return r;
+        if (host_amiga_pace()) {                     /* PORT: duel's intro (overlay 1204h) waits for the speech */
+            if ((r = (s16)wait_sound_end(accolade_redraw, NULL)) != 0) return r;
+            return (s16)getkey_timeout_redraw(amiga_ticks(5), accolade_redraw, NULL);
+        }
+        return (s16)getkey_timeout_redraw(300, accolade_redraw, NULL);
+    case 1:
+        r = showroom_intro(100);
+        host_sound_event(SOUND_SHOWROOM_END, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
+        if (r != 0 || !host_amiga_pace()) return r;
+        return (s16)getkey_timeout_redraw(amiga_ticks(5), NULL, NULL);   /* PORT: as duel */
+    case 2:
+        if ((r = title_screen()) != 0) return r;
+        if (gfx_amiga_screens() && amiga_title_data()) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
+        return 0;
+    case 3:
+        return credits();
+    default:
+        return DSS(DS_nscenes) == 0 ? 0 : hisc_show(700);
+    }
+}
+
 /* 00c0:039c intro_sequence — game_flow.md §4.5 (verified) */
 s16 intro_sequence(void)
 {
@@ -282,21 +318,22 @@ s16 intro_sequence(void)
         if (ensure_disk(preload[i], DSS(DS_data_disk), 0) != 0) return KEY_ESC;
         mem_release_cache(load_shapes(DS_disk_path));
     }
-    if ((r = accolade_screen()) != 0) return r;
-    if (host_amiga_pace()) {                         /* PORT: duel's intro (overlay 1204h) waits for the speech */
-        if ((r = (s16)wait_sound_end(accolade_redraw, NULL)) != 0) return r;
-        if ((r = (s16)getkey_timeout_redraw(amiga_ticks(5), accolade_redraw, NULL)) != 0) return r;
-    } else if ((r = (s16)getkey_timeout_redraw(300, accolade_redraw, NULL)) != 0) return r;
-    r = showroom_intro(100);
-    host_sound_event(SOUND_SHOWROOM_END, 0, NULL);   /* PORT: sample-based audio (the Amiga's starter) */
-    if (r != 0) return r;
-    if (host_amiga_pace() && (r = (s16)getkey_timeout_redraw(amiga_ticks(5), NULL, NULL)) != 0)
-        return r;                                    /* PORT: as duel */
-    if ((r = title_screen()) != 0) return r;
-    if (gfx_amiga_screens() && amiga_title_data()) amiga_wipe(WIPE_DOWN, false, 6, 0);   /* PORT: as duel */
-    if ((r = credits()) != 0) return r;
-    if (DSS(DS_nscenes) == 0) return r;
-    return hisc_show(700);
+    flow_form_watch(true);                           /* PORT */
+    intro_again = false;
+    for (int step = 0; step < 5;) {
+        r = intro_step(step);
+        intro_again = r == (s16)KEY_FORM;
+        if (intro_again) {
+            kbd_force_key(0);
+            r = 0;
+            continue;
+        }
+        if (r != 0) break;
+        step++;
+    }
+    intro_again = false;
+    flow_form_watch(false);
+    return r;
 }
 
 /* ================================================================================================
@@ -501,25 +538,8 @@ s16 credits(void)
  * goes on one picture every 2 frames. The second car keeps the first's final speed (duel never resets
  * it). The DOS pictures and distances stay. */
 static bool amiga_showroom;
-static bool showroom_restarted;                     /* PORT: after a live switch, no dissolve out first */
 static s32 amiga_speed;                             /* pixels a frame, 16.16 */
 static s16 showroom_intro_dos(s16 unused);
-
-/* PORT: a live switch that changes the intro's showroom between TD2's form and duel's starts it again in
- * the new form (the user's report: switched to the Amiga mode while the cars drove, TD2's car went on in
- * the Amiga mode). */
-#define SHOWROOM_RESTART ((s16)0x7FFE)
-
-/* Makes the pending graphics switch; true when it changes the intro's showroom to the other form, else
- * the screen is drawn again with redraw (if any). */
-static bool showroom_switch_form(void (*redraw)(void *), void *ctx)
-{
-    bool was = gfx_amiga_screens();
-    flow_switch_redraw(NULL, NULL);
-    if (amiga_showroom && gfx_amiga_screens() != was) return true;
-    if (redraw) redraw(ctx);
-    return false;
-}
 
 /* Waits until ticks reach t: a key, KEY_SWITCH for a pending graphics switch, or 0. */
 static u16 wait_ticks(u32 t);
@@ -648,7 +668,7 @@ static s16 amiga_showroom_intro(s16 first, s16 second)
     SDL_free(ss);
     if (frames == 0) return AMIGA_SHOWROOM_NONE;
 
-    if (!showroom_restarted) amiga_dissolve(false);  /* duel $2ba92: what is shown dissolves to black */
+    if (!intro_again) amiga_dissolve(false);         /* duel $2ba92: what is shown dissolves to black */
     gfx_select_target(flow_page_desc());
     gfx_clear_clip(0);
     gfx_amiga_picture(pal[0], 0, 0);
@@ -694,8 +714,10 @@ static s16 amiga_showroom_intro(s16 first, s16 second)
             k = wait_ticks(t0 + amiga_ticks(g));
         }
     }
-    if (k == KEY_SWITCH)                             /* the live switch: TD2's showroom, or the end */
-        return showroom_switch_form(NULL, NULL) ? SHOWROOM_RESTART : 0;
+    if (k == KEY_SWITCH) {                           /* the live switch ends the showroom */
+        flow_switch_redraw(NULL, NULL);
+        return (s16)getkey();                        /* KEY_FORM: TD2's showroom again */
+    }
     select_screen();
     gfx_clear_screen(0);
     return (s16)k;
@@ -704,13 +726,8 @@ static s16 amiga_showroom_intro(s16 first, s16 second)
 s16 showroom_intro(s16 unused)                      /* PORT: the intro's showroom drives may take the Amiga's pace */
 {
     amiga_showroom = true;
-    showroom_restarted = false;
-    s16 r;
-    for (;;) {
-        amiga_speed = 0;
-        if ((r = showroom_intro_dos(unused)) != SHOWROOM_RESTART) break;
-        showroom_restarted = true;
-    }
+    amiga_speed = 0;
+    s16 r = showroom_intro_dos(unused);
     amiga_showroom = false;
     return r;
 }
@@ -793,14 +810,12 @@ static void showroom_sprites(Showroom *v)
     flow_find_list(v->a, DSTR(0x7390), v->rear, 3);  /* "rrm0rrm1rrm2" */
 }
 
-/* PORT: a graphics switch in the showroom: the sprites again in the new mode. True when the intro's
- * showroom changes to duel's form. */
-static bool showroom_switch(Showroom *v)
+/* PORT: a graphics switch in the showroom: the sprites again in the new mode. */
+static void showroom_switch(Showroom *v)
 {
     mem_release_cache(v->a);
-    bool restart = showroom_switch_form(NULL, NULL);
+    flow_switch_redraw(NULL, NULL);
     showroom_sprites(v);
-    return restart;
 }
 
 /* PORT: the car standing with its window picture, drawn again after a graphics switch. */
@@ -866,23 +881,11 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
             select_screen();
             blit_copy_clip_hot(v.carS, x, y);
         }
-        u32 end = ticks_get() + (amiga ? amiga_ticks(200) : 0x96);
-        for (;;) {                                   /* PORT: getkey_timeout_redraw, with the live switch */
-            u32 now = ticks_get();
-            r = (s16)getkey_timeout_switch(end > now ? end - now : 0);
-            if (r != (s16)KEY_SWITCH) break;
-            if (showroom_switch_form(showroom_redraw, &v)) {
-                r = SHOWROOM_RESTART;
-                break;
-            }
-        }
+        r = (s16)getkey_timeout_redraw(amiga ? amiga_ticks(200) : 0x96, showroom_redraw, &v);
         if (r != 0) goto out;
         for (DSS(DS_ss_frame) = 0; DSS(DS_ss_frame) < count; DSS(DS_ss_frame)++) {   /* window opens */
             u32 f = (u32)DSS(DS_ss_frame);
-            if (gfx_pending_backend() && showroom_switch_form(showroom_redraw, &v)) {   /* PORT: the live switch */
-                r = SHOWROOM_RESTART;
-                goto out;
-            }
+            if (gfx_pending_backend()) flow_switch_redraw(showroom_redraw, &v);   /* PORT: the live switch */
             deadline_set(amiga ? amiga_ticks(8 * (f + 1)) - amiga_ticks(8 * f) : (u32)(s32)DSS(DS_ss_frame_ticks));
             s16 fi = DSS(DS_ss_frame);
             if (fi >= 0 && fi < v.nwin) blit_copy_clip_hot(v.win[fi], x, y);   /* PORT: bounded */
@@ -899,9 +902,9 @@ s16 showroom_drive(const char *path, s16 x, s16 y, s16 anim, s16 reveal)
     s32 amiga_dist = 0;
     u32 frames = 0;
     for (;;) {
-        if (gfx_pending_backend() && showroom_switch(&v)) {   /* PORT: the live switch */
-            r = SHOWROOM_RESTART;
-            break;
+        if (gfx_pending_backend()) {                 /* PORT: the live switch */
+            showroom_switch(&v);
+            if ((r = (s16)getkey()) != 0) break;     /* KEY_FORM: duel's showroom again */
         }
         if (amiga) {                                 /* PORT: duel's steps, one per frame of the ticks so far */
             u32 due = (u32)(u16)DSS(DS_ss_ticks) * 6005u / 10000u;

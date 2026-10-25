@@ -36,6 +36,9 @@ void wait_key_paused(void);                 /* 06c9:5d1e (no direct callers) */
 
 /* ---- getkey family. Keys: ASCII in AL with AH = 0, or extended scan << 8 (platform.md §5.10). */
 u16    getkey(void);                        /* 06c9:69fe far call through DS:64DC */
+/* PORT: a key getkey returns, without reading the keyboard, until it is set to 0 again (the intro's
+ * KEY_FORM, game/flow.c). */
+void   kbd_force_key(u16 k);
 u16    getkey_raw(void);                    /* 06c9:6a03 */
 u16    getkey_menu(void);                   /* 06c9:65c5 keys with hotkeys, joystick edges */
 u16    getkey_drive(void);                  /* 06c9:6601 */

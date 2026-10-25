@@ -15,6 +15,7 @@
 #define KEY_RIGHT 0x4D00
 #define KEY_F10   0x4400
 #define KEY_SWITCH 0xFFFE        /* PORT: getkey_timeout_switch: a live graphics switch is pending */
+#define KEY_FORM   0xFFFD        /* PORT: getkey in the intro after a switch changed the screens' form */
 
 #define CAR_REC_SIZE   30           /* DS:8D24 records (§5.1) */
 #define SCN_REC_SIZE   32           /* DS:865C records (§5.2) */
@@ -78,6 +79,11 @@ u16  wait_sound_end(void (*redraw)(void *), void *ctx);
  * calls redraw(ctx) (if not NULL) to draw the screen again; getkey_timeout_redraw is getkey_timeout
  * doing that for every switch on the way. flow_show_page copies the whole page to the screen. */
 void flow_switch_redraw(void (*redraw)(void *), void *ctx);
+/* PORT: while on (the intro), a switch that changes the screens' form, TD2's or duel's (the Amiga
+ * graphics with the Amiga game's files), draws nothing again and makes getkey return KEY_FORM until it is
+ * off or the intro takes the key (kbd_force_key(0)), so the screen shown ends and the intro starts it
+ * again in the new form. */
+void flow_form_watch(bool on);
 u16  getkey_timeout_redraw(u32 n, void (*redraw)(void *), void *ctx);
 void flow_show_page(void);
 /* PORT: duel's screen changes with the Amiga graphics (amiga_wipe.c; nothing without them): the page

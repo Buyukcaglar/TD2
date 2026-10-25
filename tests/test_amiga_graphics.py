@@ -44,9 +44,10 @@ def topaz_glyphs():
     return [rows[8 * g:8 * g + 8] for g in range(256)]
 
 
-def last_frames(keys, seconds, windows):
+def last_frames(keys, seconds, windows, args=('--amiga-graphics',)):
     """Runs the port headless with the Amiga graphics; the last frame shown in each (t0, t1) window."""
-    return run(keys, seconds, lambda times: [max(n for t, n in times if t0 <= t < t1) for t0, t1 in windows])
+    return run(keys, seconds, lambda times: [max(n for t, n in times if t0 <= t < t1) for t0, t1 in windows],
+               args=args)
 
 
 def frames_after(keys, seconds, t0):
@@ -148,6 +149,13 @@ class AmigaGraphicsTest(unittest.TestCase):
         frames = run('6:Ctrl+Shift+G,6.1:Ctrl+Shift+G,6.2:Ctrl+Shift+G', 10,
                      lambda times: [n for t, n in times if t >= 7.5], args=())
         self.assertEqual(self.showroom_misses(frames), 0)
+
+    def test_accolade_switch_to_amiga(self):
+        # started in EGA, switched to the Amiga mode on TD2's "Accolade presents" (2 s): the intro starts
+        # the screen again in duel's form, pics/title2 dissolving in (about 3.2 s) and the bar sliding in
+        # on its own row (80 to 82 of pics/titlecar.shp's bull), so pics/title2 above and below the bar
+        frame, = last_frames('2:Ctrl+Shift+G,2.1:Ctrl+Shift+G,2.2:Ctrl+Shift+G', 9.5, [(2.5, 9.5)], args=())
+        self.assert_picture(frame, 'pics/title2', [*range(0, 80), *range(83, 200)])
 
     def test_car_choice(self):
         # YOUR CAR: the F40 on pics/bluestat in its colours in the top 84 lines (each pixel twice, the
