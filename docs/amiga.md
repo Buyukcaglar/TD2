@@ -156,7 +156,7 @@ Everything is read from the user's files at run time and derived files go to the
 
 1. **Formats.** Done: load files, Rpck, ILBM, the sprite archives and sprites. Next: the race screen's palette, the raw sample header, the engine samples.
 2. **Courses.** Done for Northern Germany: it is built from DOS twin stages, with its own signs (above). A general converter from Amiga road data to DOS stages is not needed for it; it would be for an Amiga scenery without DOS twins, and would need the header words and the Amiga object codes mapped.
-3. **Amiga audio.** Done: the `song` player, the race driver and the race logic in C, each checked against the original; the Paula model; the game events and car state; the Amiga `AudioBackend`; the live switch (Ctrl+Shift+S and the menu). Next: a listening test by the user.
+3. **Amiga audio.** Done: the `song` player, the race driver and the race logic in C, each checked against the original; the Paula model; the game events and car state; the Amiga `AudioBackend`; the live switch (Ctrl+Shift+S and the menu). The user tested it and approved it on 25 October 2026.
 4. **Amiga graphics.** Done: the five-plane backend, the sprite decoder, the option, difficulty and scenery choice screens (above). Next: the other screens, the switch.
 5. **Data manager.** Done for the sound: the `amiga` setting names the Amiga game's folder or archive, and `app_data_amiga_dir` finds the folder with `duel` and `sfx`. Next: the same source for the Amiga graphics and Northern Germany.
 
