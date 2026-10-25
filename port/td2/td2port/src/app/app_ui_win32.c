@@ -12,11 +12,14 @@
 #define COBJMACROS
 #include <windows.h>
 #include <dwmapi.h>
+#include <shellapi.h>
 #include <shobjidl.h>
 #include <uxtheme.h>
+#include <vssym32.h>
 #include <SDL3/SDL.h>
 
 #pragma comment(lib, "dwmapi.lib")
+#pragma comment(lib, "shell32.lib")
 #pragma comment(lib, "uxtheme.lib")
 
 /* ---------------------------------------------------------------- menus */
@@ -256,6 +259,231 @@ int app_ui_question(void *parent, const char *title, const char *text, const cha
     return q.result;
 }
 
+/* ---------------------------------------------------------------- the About box */
+
+/* Laid out as the user's Civ64 About box: the icon with the lines and the link beside it, "License:"
+ * over the licence in a scrolling read-only field, and OK at the bottom right, in dialog units of
+ * Segoe UI 9. Dark mode as in the question windows; no theme of Windows draws a dark push button, so
+ * OK is drawn here. */
+#define ABOUT_ICON 201
+#define ABOUT_LINK 202
+#define ABOUT_LICENSE 203
+#define DARK_BG RGB(32, 32, 32)
+#define DARK_FIELD RGB(43, 43, 43)
+#define DARK_TEXT RGB(255, 255, 255)
+#define DARK_LINK RGB(96, 205, 255)
+
+typedef struct {
+    WORD buf[1024];
+    size_t n;
+} Template;
+
+static void t_word(Template *t, WORD w)
+{
+    if (t->n < sizeof t->buf / sizeof t->buf[0]) t->buf[t->n++] = w;
+}
+
+static void t_str(Template *t, const wchar_t *s)
+{
+    do t_word(t, (WORD)*s); while (*s++);
+}
+
+/* One control, DWORD-aligned; a predefined class by its atom (80h button, 81h edit, 82h static). */
+static void t_item(Template *t, DWORD style, short x, short y, short cx, short cy, WORD id, WORD cls,
+                   const wchar_t *text)
+{
+    if (t->n & 1) t_word(t, 0);
+    t_word(t, LOWORD(style));
+    t_word(t, HIWORD(style));
+    t_word(t, 0);
+    t_word(t, 0);
+    t_word(t, (WORD)x);
+    t_word(t, (WORD)y);
+    t_word(t, (WORD)cx);
+    t_word(t, (WORD)cy);
+    t_word(t, id);
+    t_word(t, 0xFFFF);
+    t_word(t, cls);
+    t_str(t, text);
+    t_word(t, 0);
+}
+
+typedef struct {
+    const wchar_t *url, *license;
+    bool dark;
+    HBRUSH bg, field;
+} About;
+
+static void about_theme(HWND dlg, About *a)
+{
+    a->dark = theme_is_dark();
+    BOOL dark = a->dark;
+    DwmSetWindowAttribute(dlg, 20 /* DWMWA_USE_IMMERSIVE_DARK_MODE */, &dark, sizeof dark);
+    allow_dark(dlg);
+    HWND c = GetDlgItem(dlg, ABOUT_LICENSE);
+    allow_dark(c);                          /* the licence's scroll bar */
+    SetWindowTheme(c, a->dark ? L"DarkMode_Explorer" : NULL, NULL);
+    SendMessageW(c, WM_THEMECHANGED, 0, 0);
+    RedrawWindow(dlg, NULL, NULL, RDW_INVALIDATE | RDW_ERASE | RDW_FRAME | RDW_ALLCHILDREN);
+}
+
+/* OK: in light mode the theme's push button (defaulted), in dark mode a flat face with a lighter
+ * border, the accent's blue while it has the focus. */
+static void about_button(const DRAWITEMSTRUCT *di, const About *a)
+{
+    RECT r = di->rcItem;
+    wchar_t text[32] = L"";
+    bool pressed = (di->itemState & ODS_SELECTED) != 0, focus = (di->itemState & ODS_FOCUS) != 0;
+    HFONT font = (HFONT)SendMessageW(di->hwndItem, WM_GETFONT, 0, 0);
+    HGDIOBJ old = font ? SelectObject(di->hDC, font) : NULL;
+    GetWindowTextW(di->hwndItem, text, (int)(sizeof text / sizeof text[0]));
+    if (a->dark) {
+        HBRUSH face = CreateSolidBrush(pressed ? RGB(45, 45, 45) : RGB(60, 60, 60));
+        HBRUSH edge = CreateSolidBrush(focus ? DARK_LINK : RGB(100, 100, 100));
+        FillRect(di->hDC, &r, face);
+        FrameRect(di->hDC, &r, edge);
+        DeleteObject(face);
+        DeleteObject(edge);
+        SetTextColor(di->hDC, DARK_TEXT);
+    } else {
+        HTHEME th = OpenThemeData(di->hwndItem, L"BUTTON");
+        FillRect(di->hDC, &r, GetSysColorBrush(COLOR_BTNFACE));
+        if (th) {
+            DrawThemeBackground(th, di->hDC, BP_PUSHBUTTON, pressed ? PBS_PRESSED : PBS_DEFAULTED, &r, NULL);
+            CloseThemeData(th);
+        } else {
+            DrawFrameControl(di->hDC, &r, DFC_BUTTON, DFCS_BUTTONPUSH | (pressed ? DFCS_PUSHED : 0));
+        }
+        SetTextColor(di->hDC, GetSysColor(COLOR_BTNTEXT));
+        if (focus && !(di->itemState & ODS_NOFOCUSRECT)) {
+            RECT f = r;
+            InflateRect(&f, -3, -3);
+            DrawFocusRect(di->hDC, &f);
+        }
+    }
+    SetBkMode(di->hDC, TRANSPARENT);
+    if (pressed) OffsetRect(&r, 1, 1);
+    DrawTextW(di->hDC, text, -1, &r, DT_CENTER | DT_VCENTER | DT_SINGLELINE |
+                                         ((di->itemState & ODS_NOACCEL) ? DT_HIDEPREFIX : 0));
+    if (old) SelectObject(di->hDC, old);
+}
+
+static INT_PTR CALLBACK about_proc(HWND dlg, UINT m, WPARAM w, LPARAM l)
+{
+    About *a = (About *)GetWindowLongPtrW(dlg, DWLP_USER);
+    switch (m) {
+    case WM_INITDIALOG: {
+        a = (About *)l;
+        SetWindowLongPtrW(dlg, DWLP_USER, (LONG_PTR)a);
+        HICON icon = LoadIconW(GetModuleHandleW(NULL), MAKEINTRESOURCEW(1));
+        if (icon) SendDlgItemMessageW(dlg, ABOUT_ICON, STM_SETICON, (WPARAM)icon, 0);
+        SetDlgItemTextW(dlg, ABOUT_LICENSE, a->license);
+        about_theme(dlg, a);
+        SetFocus(GetDlgItem(dlg, IDOK));
+        return FALSE;                       /* the focus is set */
+    }
+    case WM_SETTINGCHANGE:
+        if (a && l && lstrcmpW((const wchar_t *)l, L"ImmersiveColorSet") == 0) about_theme(dlg, a);
+        break;
+    case WM_DRAWITEM:
+        if (a && w == IDOK) {
+            about_button((const DRAWITEMSTRUCT *)l, a);
+            return TRUE;
+        }
+        break;
+    case WM_CTLCOLORDLG:
+        if (a && a->dark) return (INT_PTR)a->bg;
+        break;
+    case WM_CTLCOLORSTATIC:
+        if (!a) break;
+        if ((HWND)l == GetDlgItem(dlg, ABOUT_LINK)) {
+            SetTextColor((HDC)w, a->dark ? DARK_LINK : RGB(0, 0, 204));
+            SetBkMode((HDC)w, TRANSPARENT);
+            return (INT_PTR)(a->dark ? a->bg : GetSysColorBrush(COLOR_BTNFACE));
+        }
+        if (a->dark) {                      /* the lines, the icon and the read-only licence */
+            bool field = (HWND)l == GetDlgItem(dlg, ABOUT_LICENSE);
+            SetTextColor((HDC)w, DARK_TEXT);
+            SetBkColor((HDC)w, field ? DARK_FIELD : DARK_BG);
+            return (INT_PTR)(field ? a->field : a->bg);
+        }
+        break;
+    case WM_SETCURSOR:
+        if ((HWND)w == GetDlgItem(dlg, ABOUT_LINK)) {
+            SetCursor(LoadCursorW(NULL, (LPCWSTR)IDC_HAND));
+            SetWindowLongPtrW(dlg, DWLP_MSGRESULT, TRUE);
+            return TRUE;
+        }
+        break;
+    case WM_COMMAND:
+        if (a && LOWORD(w) == ABOUT_LINK && HIWORD(w) == STN_CLICKED) {
+            ShellExecuteW(dlg, L"open", a->url, NULL, NULL, SW_SHOWNORMAL);
+            return TRUE;
+        }
+        if (LOWORD(w) == IDOK || LOWORD(w) == IDCANCEL) {
+            EndDialog(dlg, 1);
+            return TRUE;
+        }
+        break;
+    default:
+        break;
+    }
+    return FALSE;
+}
+
+void app_ui_about(void *parent, const char *title, const char *const *lines, int n, const char *url,
+                  const char *license)
+{
+    /* the edit control breaks lines at \r\n only */
+    char *crlf = SDL_malloc(2 * SDL_strlen(license) + 1), *o = crlf;
+    for (const char *c = license; *c; c++) {
+        if (*c == '\n') *o++ = '\r';
+        *o++ = *c;
+    }
+    *o = 0;
+    wchar_t *wtitle = wide(title), *wurl = wide(url), *wlicense = wide(crlf);
+    SDL_free(crlf);
+    if (n > 2) n = 2;
+
+    Template t = { 0 };
+    DWORD style = DS_MODALFRAME | DS_SETFONT | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU;
+    t_word(&t, LOWORD(style));
+    t_word(&t, HIWORD(style));
+    t_word(&t, 0);
+    t_word(&t, 0);
+    t_word(&t, (WORD)(5 + n));              /* controls */
+    t_word(&t, 0);
+    t_word(&t, 0);
+    t_word(&t, 260);
+    t_word(&t, 196);
+    t_word(&t, 0);                          /* no menu */
+    t_word(&t, 0);                          /* the dialog class */
+    t_str(&t, wtitle);
+    t_word(&t, 9);
+    t_str(&t, L"Segoe UI");
+    t_item(&t, WS_CHILD | WS_VISIBLE | SS_ICON, 10, 10, 21, 20, ABOUT_ICON, 0x82, L"");
+    for (int i = 0; i < n; i++) {
+        wchar_t *line = wide(lines[i]);
+        t_item(&t, WS_CHILD | WS_VISIBLE | SS_LEFT | SS_NOPREFIX, 42, (short)(10 + 11 * i), 208, 9, 0xFFFF, 0x82, line);
+        SDL_free(line);
+    }
+    t_item(&t, WS_CHILD | WS_VISIBLE | WS_TABSTOP | SS_LEFT | SS_NOTIFY | SS_NOPREFIX, 42, (short)(10 + 11 * n),
+           208, 9, ABOUT_LINK, 0x82, wurl);
+    t_item(&t, WS_CHILD | WS_VISIBLE | SS_LEFT, 10, 48, 240, 9, 0xFFFF, 0x82, L"License:");
+    t_item(&t, WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | ES_MULTILINE | ES_READONLY | ES_AUTOVSCROLL, 10, 59,
+           240, 108, ABOUT_LICENSE, 0x81, L"");
+    /* owner-drawn; Enter still chooses it, the dialog manager's default being IDOK */
+    t_item(&t, WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_OWNERDRAW, 200, 174, 50, 15, IDOK, 0x80, L"OK");
+
+    About a = { wurl, wlicense, false, CreateSolidBrush(DARK_BG), CreateSolidBrush(DARK_FIELD) };
+    DialogBoxIndirectParamW(GetModuleHandleW(NULL), (LPCDLGTEMPLATEW)t.buf, (HWND)parent, about_proc, (LPARAM)&a);
+    DeleteObject(a.bg);
+    DeleteObject(a.field);
+    SDL_free(wtitle);
+    SDL_free(wurl);
+    SDL_free(wlicense);
+}
+
 /* ---------------------------------------------------------------- pickers, restart */
 
 char *app_ui_pick_path(void *parent, bool folder, const char *title)
@@ -328,6 +556,13 @@ char *app_ui_pick_path(void *parent, bool folder, const char *title)
 {
     (void)parent; (void)folder; (void)title;
     return NULL;
+}
+
+void app_ui_about(void *parent, const char *title, const char *const *lines, int n, const char *url,
+                  const char *license)
+{
+    (void)parent; (void)lines; (void)n; (void)license;
+    fprintf(stderr, "%s\n%s\n", title, url);
 }
 
 bool app_ui_restart(void) { return false; }

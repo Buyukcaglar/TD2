@@ -22,7 +22,7 @@ enum {
     CMD_SOUND_SPEAKER, CMD_SOUND_AMIGA, CMD_NEXT_SOUND, CMD_AMIGA_FILES,
 };
 
-#define VERSION "0.1"
+#define VERSION "1.0"
 
 static const struct { int cmd; u32 rgb; const char *name; } phosphors[] = {
     { CMD_PHOSPHOR_WHITE, GFX_HERC_WHITE, "white" }, { CMD_PHOSPHOR_GREEN, GFX_HERC_GREEN, "green" },
@@ -116,20 +116,38 @@ void app_next_sound(void)
     host_pause_end();
 }
 
+/* The About box, laid out as the user's Civ64 one (app_ui_about): its lines, the repository and the
+ * licence, with the credits the licences ask for. */
 static void about(void)
 {
-    static const char *const ok[] = { "OK" };
-    app_ui_question(host_native_window(), "About Test Drive II",
-                    "Test Drive II: The Duel, port " VERSION "\n\n"
-                    "Plays the original 1989 DOS game by Distinctive Software and Accolade from its own "
-                    "files, which are not included.\n\n"
-                    "Port code: the Kylofon Test Drive II port (MIT licence) and this project's work on it.\n"
-                    "Libraries: SDL 3 (zlib licence), libarchive (BSD licence), zlib, xz.\n"
-                    "Amiga text: Topaz (c) Amiga Inc., raw version (c) dMG/t!s^dS!, from the amigafonts "
-                    "collection (GPL with font exception).\n\n"
-                    "Ctrl+Shift+G: next graphics mode\nCtrl+Shift+S: PC speaker or Amiga sound\n"
-                    "Ctrl+Shift+M or right click: this menu\nAlt+Enter: full screen",
-                    ok, 1);
+    static const char *const lines[] = {
+        "Windows version by Onur BUYUKCAGLAR",
+        "with Anthropic Claude AI assistance",
+    };
+    app_ui_about(host_native_window(), "About Test Drive II v" VERSION, lines, 2, "https://github.com/Buyukcaglar/TD2",
+                 "MIT License\n\n"
+                 "Copyright (c) 2026 Onur BUYUKCAGLAR\n"
+                 "Copyright (c) 2026 Krzysztof Kania (the Kylofon Test Drive II port)\n\n"
+                 "Permission is hereby granted, free of charge, to any person obtaining a copy of this "
+                 "software and associated documentation files (the \"Software\"), to deal in the Software "
+                 "without restriction, including without limitation the rights to use, copy, modify, merge, "
+                 "publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons "
+                 "to whom the Software is furnished to do so, subject to the following conditions:\n\n"
+                 "The above copyright notice and this permission notice shall be included in all copies or "
+                 "substantial portions of the Software.\n\n"
+                 "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, "
+                 "INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR "
+                 "PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE "
+                 "FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+                 "OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER "
+                 "DEALINGS IN THE SOFTWARE.\n\n"
+                 "The licence covers this program's own code. It is built on the Kylofon Test Drive II "
+                 "port (github.com/kylofon/test-drive-2-sdl3) and uses SDL 3 (zlib licence), libarchive "
+                 "(BSD licence), zlib and xz. The Amiga text is in Topaz, (c) Amiga Inc., raw version "
+                 "(c) dMG/t!s^dS!, from the amigafonts collection, under the GPL with the font exception.\n\n"
+                 "Test Drive II: The Duel, its program and its data belong to their owners (1989 Accolade "
+                 "and Distinctive Software); they are not part of this software, which needs a copy of the "
+                 "original game to run.");
 }
 
 void app_next_graphics(void)

@@ -24,6 +24,12 @@ int app_ui_popup_menu(void *native_window, const AppMenuItem *items, int n);
  * Modal over `parent` (NULL before the game window exists). */
 int app_ui_question(void *parent, const char *title, const char *text, const char *const *buttons, int n);
 
+/* The About box, as in the user's Civ64: the app icon, up to two lines and a link beside it (a click
+ * opens it in the browser), the licence (UTF-8, '\n' for new lines) in a scrolling read-only field,
+ * and OK. Modal over `parent`. */
+void app_ui_about(void *parent, const char *title, const char *const *lines, int n, const char *url,
+                  const char *license);
+
 /* The system's picker for a folder, or for an archive file (zip, 7z, rar, lha, lzh). Returns the
  * chosen path (SDL_free it), or NULL when cancelled. */
 char *app_ui_pick_path(void *parent, bool folder, const char *title);
