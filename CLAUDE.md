@@ -7,7 +7,7 @@ Start with `docs/HANDOVER.md` (current state, salvage inventory, plan) and `docs
 **Data**
 - `reference/` is read-only: original DOS and Amiga files, plus the Kylofon clone.
 - Game runs use a writable copy under `runs/` (gitignored).
-- Never commit or ship original media.
+- Never commit or ship original media. The one exception is the README's screenshots in `docs/screenshots`, at the user's request.
 
 **Codebase**
 - The codebase is the Kylofon TD2EGA SDL3 port, MIT-licensed, vendored with its LICENSE and provenance.
@@ -34,6 +34,7 @@ Start with `docs/HANDOVER.md` (current state, salvage inventory, plan) and `docs
 - `$env:PYTHONPATH = "analysis/tools/python;tools"; python -m diffharness` runs the differential harness and rewrites `docs/verification.md`. Tests: `python -m unittest discover -s tests`.
 - `python tools/snapshots.py` checks the EGA frames and speaker output of the attract loop, a scripted menu run, both again with live graphics switches, and a scripted race to game over, the name entry and the top scores against `tests/ega_snapshots.txt`; `--cga` and `--hercules` do the same against `tests/cga_snapshots.txt` and `tests/herc_snapshots.txt` (`--update` rewrites a baseline after an intended change). `--amiga` runs the Amiga graphics backend (`--amiga-graphics`) without Amiga files and compares its attract, menus and race runs with the EGA baseline.
 - `.\run.ps1 --cga` plays with the CGA backend, `.\run.ps1 --hercules` with TD2CGA's Hercules mode. Ctrl+Shift+G switches the graphics mode live, Ctrl+Shift+S the sound (PC speaker or Amiga, which needs the `amiga` setting: the Amiga game's folder or archive); a right click or Ctrl+Shift+M opens the app's menu (`src/app/`). Headless runs take `TD2_KEYS` ("30:Return,56:Up/240,60:Ctrl+Shift+G": key presses at game times, optionally held) and `TD2_SNAPSHOT_MS`.
+- `python tools/screenshots.py` retakes the README's windowed screenshots in `docs/screenshots` (four scenes in every graphics mode, held at fixed game times with `TD2_HOLD_SECONDS`).
 - `python tools/cga_compare.py` compares TD2CGA with TD2EGA function by function (`docs/cga.md`); add EGA addresses such as `06c9:3c3a` to print those functions' differences.
 
 - `tools/amiga/` reads the Amiga files in `runs/amiga` (a copy of the unpacked Amiga archive): `hunk.py`, `disasm.py <file> <start> <end>`, `rpck.py`, `ilbm.py`. `tools/dos_unpack.py` unpacks a DOS PES/PCS/DAT file. See `docs/amiga.md`.

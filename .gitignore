@@ -21,7 +21,9 @@ __pycache__/
 *.rep/
 
 # Exception: published code may describe formats, but must never include game
-# payloads, binary-derived arrays, memory dumps, screenshots or original media.
+# payloads, binary-derived arrays, memory dumps or original media. The only
+# screenshots are the README's, in docs/screenshots (the user's request,
+# 25 October 2026; tools/screenshots.py makes them).
 
 # Build output inside the vendored port
 /port/**/build*/

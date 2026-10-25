@@ -33,10 +33,12 @@ static Uint64 ticks_run;
 
 /* Developer aid: with TD2_VIRTUAL_CLOCK set, time advances only while the host would wait, so a run
  * depends on nothing but the game (and runs as fast as the machine allows). TD2_RUN_SECONDS ends the
- * run after that much game time. Together with TD2_SNAPSHOT_DIR this gives repeatable snapshots. */
+ * run after that much game time. Together with TD2_SNAPSHOT_DIR this gives repeatable snapshots.
+ * TD2_HOLD_SECONDS stops the game at that game time (decimals allowed) and keeps its last frame in the
+ * window until it is closed, for screenshots of the same moment in every graphics mode. */
 static bool virtual_clock;
 static Uint64 virtual_ns;
-static Uint64 run_limit_ns;
+static Uint64 run_limit_ns, hold_ns;
 
 /* TD2_KEYS presses keys at given game times, for headless runs of the menus and races:
  * "20:Return,24.5:Down,30:Up/5" (seconds, an SDL scancode name, and optionally how many seconds to
@@ -172,6 +174,8 @@ bool host_init(int window_scale)
     const char *v = SDL_getenv("TD2_VIRTUAL_CLOCK"), *limit = SDL_getenv("TD2_RUN_SECONDS");
     virtual_clock = v && *v && SDL_strcmp(v, "0") != 0;
     run_limit_ns = limit && SDL_atoi(limit) > 0 ? (Uint64)SDL_atoi(limit) * SDL_NS_PER_SECOND : 0;
+    const char *hold = SDL_getenv("TD2_HOLD_SECONDS");
+    hold_ns = hold && SDL_atof(hold) > 0 ? (Uint64)(SDL_atof(hold) * SDL_NS_PER_SECOND) : 0;
     key_script_load(SDL_getenv("TD2_KEYS"));
     clock_start_ns = now_ns();
     ticks_run = 0;
@@ -374,6 +378,15 @@ void host_pump(void)
     if (run_limit_ns && tick_due_ns(ticks_run) - clock_start_ns >= run_limit_ns) {
         host_shutdown();
         exit(0);
+    }
+    if (hold_ns && tick_due_ns(ticks_run) - clock_start_ns >= hold_ns) {
+        if (frame_source && frame_source(frame)) show_frame();
+        fprintf(stderr, "holding at %.2f s\n", (double)(tick_due_ns(ticks_run) - clock_start_ns) / SDL_NS_PER_SECOND);
+        fflush(stderr);
+        for (;;) {                                  /* the window watch redraws it; quitting exits */
+            process_events();
+            SDL_Delay(15);
+        }
     }
 
     /* Present at most once per ~8 ms; VSync paces it further. */
