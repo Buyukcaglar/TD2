@@ -46,7 +46,10 @@ static struct {
     FarPtr scratch;                     /* for TD2's sprites drawn with the road colours */
     bool gate, gate_drawn;              /* the gear gate is shown, and as drawn */
     s16 knob_x, knob_y;                 /* the knob's hot spot on it */
-    u16 road[2];                        /* the road's two pens (roaddata 26h and 28h) */
+    u16 bands[6];                       /* road, left and right shoulder, two pens each (roaddata 22h on) */
+    char scenery[64];                   /* the section's sprite file: the mountains and clouds */
+    bool clouds_drift, mountains;
+    u32 cloud_x[4];                     /* the clouds' drift, 16.16 pixels */
     int gauge[4];                       /* the small gauges' table entries drawn */
     u16 oil_temp;                       /* duel's oil temperature (-$bc0) */
     u16 turbo, turbo_target;            /* the turbo sample's volume as duel ramps it, and its aim */
@@ -55,13 +58,17 @@ static struct {
 
 /* <scenery>roaddata<n>: the pens duel draws the scenery's parts in ($1678e, $1844e, $1876a), words */
 #define ROAD_PENS       0x17
+#define ROAD_DRIFT      (0x02 / 2)      /* not 0: the clouds drift */
+#define ROAD_MOUNTAINS  (0x04 / 2)      /* not 0: the mountains on the horizon */
+#define ROAD_SHAPES     0xE6            /* after the 32 colours: the section's sprite file ("desertmountain.shp") */
 #define ROAD_LEFT       (0x0E / 2)      /* the ground left of the road */
 #define ROAD_RIGHT      (0x18 / 2)      /* and right of it */
 #define ROAD_SKY        (0x1A / 2)
 #define ROAD_FAR        (0x1C / 2)      /* the band beyond the right ground */
-#define ROAD_EDGE       (0x1E / 2)      /* the road's edges */
-#define ROAD_SURFACE    (0x26 / 2)      /* the road (duel alternates it with 28h in bands) */
-#define ROAD_SURFACE2   (0x28 / 2)
+#define ROAD_LEFT_EDGE  (0x10 / 2)      /* the left shoulder, in bands with 12h */
+#define ROAD_RIGHT_EDGE (0x14 / 2)      /* the right shoulder, in bands with 16h */
+#define ROAD_SURFACE    (0x22 / 2)      /* the road, in bands with 24h ($185b4; 26h, 28h and the edges 1Eh
+                                         * and 20h are for a marked stretch of lines, $184b2) */
 
 #define CAR_MIN_SPEED   0x018           /* <car>.b: the speed of the speedometer's first table entry */
 #define CAR_SPEED_HUB   0x2EE           /* the speedometer's centre, x and y bytes */
@@ -83,11 +90,43 @@ void amiga_cockpit_crashed(bool crashed) { ac.crashed = crashed; }
 
 void amiga_cockpit_gate(bool open) { ac.gate = open; }
 
-bool amiga_cockpit_road_bands(u16 pens[2])
+bool amiga_cockpit_road_bands(u16 pens[6])
 {
     if (!ac.on) return false;
-    pens[0] = ac.road[0];
-    pens[1] = ac.road[1];
+    memcpy(pens, ac.bands, sizeof ac.bands);
+    return true;
+}
+
+/* duel's horizon ($18c82): the mountains mtn0, mtn1 and mtn2 of the section's sprite file at x = 120,
+ * 350 and -200 ($18eaa), and the clouds cldA, cldB, cld0 and cld1 at x = 30, 120, 50 and 350, 17, 20,
+ * 35 and 38 lines above the horizon ($18d48), each x less duel's heading and kept within -400..400 by
+ * steps of 800 ($18f0a). The clouds drift right by 0FA0h, 1388h, 1770h and 1B58h / 65536 pixels a frame
+ * when the road data's word 02h is set; the mountains show when its word 04h is. TD2's scroll (0 to
+ * 1023 a turn) stands for duel's heading, scaled to duel's 800. */
+static s16 horizon_x(s32 x)
+{
+    while (x < -400) x += 800;
+    while (x > 400) x -= 800;
+    return (s16)x;
+}
+
+bool amiga_cockpit_backdrop(s16 horizon, u16 scroll)
+{
+    static const char mountains[3][5] = { "mtn0", "mtn1", "mtn2" };
+    static const s16 mountain_x[3] = { 120, 350, -200 };
+    static const char clouds[4][5] = { "cldA", "cldB", "cld0", "cld1" };
+    static const s16 cloud_x[4] = { 30, 120, 50, 350 }, cloud_up[4] = { 17, 20, 35, 38 };
+    static const u32 drift[4] = { 0xFA0, 0x1388, 0x1770, 0x1B58 };
+    if (!ac.on || !ac.scenery[0]) return false;
+    s32 turn = (s32)(scroll & 0x3FF) * 800 / 1024;
+    if (ac.mountains)
+        for (int i = 0; i < 3; i++)
+            gfx_amiga_sprite(ac.scenery, mountains[i], horizon_x(mountain_x[i] + turn), horizon, AMIGA_AT_HOT);
+    for (int i = 3; i >= 0; i--) {
+        if (ac.clouds_drift) ac.cloud_x[i] += drift[i];
+        gfx_amiga_sprite(ac.scenery, clouds[i], horizon_x((s32)(ac.cloud_x[i] >> 16) + cloud_x[i] + turn),
+                         (s16)(horizon - cloud_up[i]), AMIGA_AT_HOT);
+    }
     return true;
 }
 
@@ -106,14 +145,22 @@ bool amiga_cockpit_load(void)
     if (!gfx_amiga_screens() || !car || !scn) return false;
     char file[48];
     s16 section = (s16)(DSS(DS_stage) - 1);
-    snprintf(file, sizeof file, "%sroaddata%d", scn, section < 0 ? 0 : section > 5 ? 5 : section);
+    snprintf(file, sizeof file, "%sroaddata%d", scn, section < 0 ? 0 : section);
     u32 len;
     u8 *road = gfx_amiga_file(file, &len);
     u16 top[32], pens[ROAD_PENS];
-    bool ok = road && len >= 0xA6 + 64;
+    bool ok = road && len >= ROAD_SHAPES + 1;
     for (int i = 0; ok && i < 32; i++) top[i] = be16(road + 0xA6 + 2 * i);
     for (int i = 0; ok && i < ROAD_PENS; i++) pens[i] = be16(road + 2 * i);
+    if (ok) {                                           /* the section's scenery sprites */
+        char name[32];
+        snprintf(name, sizeof name, "%.*s", (int)SDL_min(len - ROAD_SHAPES, sizeof name - 1), road + ROAD_SHAPES);
+        snprintf(ac.scenery, sizeof ac.scenery, "%s%s", scn, name);
+    }
     SDL_free(road);
+    ac.clouds_drift = ok && pens[ROAD_DRIFT] != 0;
+    ac.mountains = ok && pens[ROAD_MOUNTAINS] != 0;
+    memset(ac.cloud_x, 0, sizeof ac.cloud_x);           /* $18f24 at the start */
     snprintf(file, sizeof file, "%s.b", car);
     u8 *b = gfx_amiga_file(file, &len);
     ok = ok && b && len >= sizeof ac.car;
@@ -132,7 +179,7 @@ bool amiga_cockpit_load(void)
     DSW(DS_col_right) = AMIGA_PEN(pens[ROAD_RIGHT]);
     DSW(DS_col_sky) = AMIGA_PEN(pens[ROAD_SKY]);
     DSW(DS_col_far) = AMIGA_PEN(pens[ROAD_FAR]);
-    DSW(DS_col_shoulder) = AMIGA_PEN(pens[ROAD_EDGE]);
+    DSW(DS_col_shoulder) = AMIGA_PEN(pens[ROAD_LEFT_EDGE]);
     gfx_amiga_keep_lines(DASH_LINE, 200);
     ac.pose = -1;
     ac.gate = ac.gate_drawn = false;
@@ -142,8 +189,11 @@ bool amiga_cockpit_load(void)
     flow_concat(ac.dash, sizeof ac.dash, car, "dash.shp");
     gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_drive_buf_desc));
     gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);    /* the road, COL(7, 0) in draw_ground */
-    ac.road[0] = AMIGA_PEN(pens[ROAD_SURFACE]);
-    ac.road[1] = AMIGA_PEN(pens[ROAD_SURFACE2]);
+    for (int i = 0; i < 2; i++) {
+        ac.bands[i] = AMIGA_PEN(pens[ROAD_SURFACE + i]);
+        ac.bands[2 + i] = AMIGA_PEN(pens[ROAD_LEFT_EDGE + i]);
+        ac.bands[4 + i] = AMIGA_PEN(pens[ROAD_RIGHT_EDGE + i]);
+    }
     gfx_amiga_keep_screen_colours(ds_far(DS_drive_buf_desc));
     gfx_amiga_colours_from(gfx_screen_desc(), ds_far(DS_mirror_desc));
     gfx_amiga_map_colour(7, (u8)pens[ROAD_SURFACE]);

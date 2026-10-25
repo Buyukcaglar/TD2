@@ -46,9 +46,11 @@ void draw_sky(const SceneView *v)
     }
     fill(0, 0, wd, ax, sky);
     if (DSB(DS_backdrop_off) != 0) return;
+    s16 heading = (s16)(s8)(u8)((u16)(DSW(DS_view_yaw) << 3) >> 8);
+    if (v->front && amiga_cockpit_backdrop(VS(v, top_sy), (u16)-(u16)(DSW(DS_heading) - (u16)heading)))
+        return;                                           /* PORT: duel's mountains and clouds */
     u16 hb = v->sky_handles;
     if (DSW((u16)(hb + 8 * 4 + 2)) == 0) return;          /* mtn0 / rmt0 segment */
-    s16 heading = (s16)(s8)(u8)((u16)(DSW(DS_view_yaw) << 3) >> 8);
     if (v->front) {
         s16 di = (s16)((u16)-(u16)(DSW(DS_heading) - (u16)heading) & 0x3FF);  /* DS:5344 mountain scroll */
         s16 y = VS(v, top_sy);
@@ -78,26 +80,29 @@ void draw_sky(const SceneView *v)
     }
 }
 
-/* PORT: duel's road bands in the Amiga form ($1844e): duel fills the road of each line in one of two
- * pens by bit 3 of the line's distance along the road. Here the road of the lines between two rows is
- * in the pen of that row's road unit, alternating every two units (the front view's row k is unit
- * player_pos + 1 + k, the mirror's player_pos - k). */
-static void road_bands(const SceneView *v, u16 colour[], int lines)
+/* PORT: duel's road bands in the Amiga form ($185b4): duel fills each line's road and both shoulders
+ * in one of two pens each by bit 3 of the line's distance along the road. Here the lines between two
+ * rows take the band of that row's road unit, alternating every two units (the front view's row k is
+ * unit player_pos + 1 + k, the mirror's player_pos - k). The colours: road, left and right shoulder. */
+typedef struct { u16 road, left, right; } GroundBand;
+
+static void road_bands(const SceneView *v, GroundBand band[], int lines)
 {
-    u16 pens[2];
-    for (int y = 0; y < lines; y++) colour[y] = COL(7, 0);
+    u16 pens[6];
+    for (int y = 0; y < lines; y++) band[y] = (GroundBand){ COL(7, 0), DSW(DS_col_shoulder), DSW(DS_col_shoulder) };
     if (!amiga_cockpit_road_bands(pens)) return;
     int n = v->nrows2 / 2;
     u16 start = v->front ? (u16)(VW(v, walk_ptr) - n) : (u16)(VW(v, walk_ptr) + n);
     bool done[128] = { false };
-    for (int y = 0; y < lines; y++) colour[y] = pens[(u16)(v->front ? start - 1 : start + 1) >> 1 & 1];
+    u16 b = (u16)(v->front ? start - 1 : start + 1) >> 1 & 1;
+    for (int y = 0; y < lines; y++) band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b] };
     for (int k = 0; k < n; k++) {
         s16 top = k + 1 < n ? (s16)(RW(v, row_sy, 2 * k + 2) + 1) : 0, bottom = RW(v, row_sy, 2 * k);
-        u16 unit = (u16)(v->front ? start + k : start - k);
+        b = (u16)(v->front ? start + k : start - k) >> 1 & 1;
         for (s16 y = top < 0 ? 0 : top; y <= bottom && y < lines; y++)
             if (!done[y]) {
                 done[y] = true;
-                colour[y] = pens[unit >> 1 & 1];
+                band[y] = (GroundBand){ pens[b], pens[2 + b], pens[4 + b] };
             }
     }
 }
@@ -113,8 +118,8 @@ void draw_ground(const SceneView *v)
      * times over random rows. Never happens with the shipped data; treated as empty (as clamp_spans). */
     if ((s16)si >= (s16)end2) return;
     const SceneRaster *r = raster();
-    u16 road[128];
-    road_bands(v, road, v->height < 128 ? v->height : 128);
+    GroundBand band[128];
+    road_bands(v, band, v->height < 128 ? v->height : 128);
     do {
         u16 di = CSW((u16)(si + rowtab));
         bool odd = (si & 2) != 0;
@@ -132,9 +137,10 @@ void draw_ground(const SceneView *v)
             bx = DSW(DS_scene_words);
         }
         if (r->span_to(&di, SPAN(span_ol, si), bx, odd)) goto next;
-        if (r->span_to(&di, SPAN(span_l, si), DSW(DS_col_shoulder), odd)) goto next;
-        if (r->span_to(&di, SPAN(span_r, si), road[(si >> 1) & 127], odd)) goto next;   /* road */
-        if (r->span_to(&di, SPAN(span_or, si), DSW(DS_col_shoulder), odd)) goto next;
+        const GroundBand *g = &band[(si >> 1) & 127];
+        if (r->span_to(&di, SPAN(span_l, si), g->left, odd)) goto next;              /* col_shoulder */
+        if (r->span_to(&di, SPAN(span_r, si), g->road, odd)) goto next;              /* road */
+        if (r->span_to(&di, SPAN(span_or, si), g->right, odd)) goto next;            /* col_shoulder */
         if (DSW((u16)(DS_span_flags + si)) & 0x04) {       /* right drop-off */
             if ((s16)si >= VS(v, right_sky_sy2) && VS(v, right_sky_x) >= SPAN(span_or, si)) {
                 if (r->span_to(&di, VS(v, right_sky_x), DSW(DS_col_right), odd)) goto next;

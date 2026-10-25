@@ -54,9 +54,12 @@ bool amiga_cockpit_on(void);            /* the race screen is in its Amiga form 
 void amiga_cockpit_frame(void);         /* after the view is shown: the cockpit over it */
 void amiga_cockpit_crashed(bool crashed);
 void amiga_cockpit_gate(bool open);     /* the gear gate is shown, with the knob in it */
-/* duel's two road pens, as colour words, which it alternates in bands along the road; false without
- * the Amiga form. */
-bool amiga_cockpit_road_bands(u16 pens[2]);          /* 06c9:3f0d */
+/* duel's pens, as colour words, for the road, the left and the right shoulder, two each, which it
+ * alternates in bands along the road; false without the Amiga form. */
+bool amiga_cockpit_road_bands(u16 pens[6]);
+/* duel's mountains and clouds over the front view's sky, horizon its line and scroll TD2's mountain
+ * scroll; false without the Amiga form (TD2 draws its own). */
+bool amiga_cockpit_backdrop(s16 horizon, u16 scroll);          /* 06c9:3f0d */
 
 /* ---- scene_cockpit.c */
 void cockpit_load(void);                /* 06c9:37d0 */
