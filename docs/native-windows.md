@@ -43,7 +43,8 @@ The race switch is built (step 2 below).
 - **On the menu screens** (step 3 below). The main menu, car select, scenery select and the difficulty screen read keys with `getkey_timeout_switch` (`flow.c`), which returns `KEY_SWITCH` as soon as a switch is pending. The screen releases its sprite archives, and `flow_switch_graphics` applies the switch and makes the page buffer again in the new layout. The screen then draws itself again from its top, keeping the current choice; the attract demo carries on.
 - **Text colours.** The game keeps its text colours in memory as the colour numbers of the mode that set them (`COL`). A switch to the other adapter translates them through the pairs the text uses: EGA 0Fh is CGA 3, EGA 0 is CGA 0, and so on.
 - **On the intro and attract screens.** Their waits use `getkey_timeout_redraw` (`flow.c`), which applies a switch with `flow_switch_redraw` and calls the screen's redraw function (`accolade_redraw`, `title_redraw`, `credits_redraw`, `hisc_redraw`, `showroom_redraw`), which draws the page again in the new mode and shows it. Their animations (the bull's slide, the title and DSI logo lines, the showroom's window and drive) check for a pending switch at each step: the logo lines go on from the same step, the bull's slide ends with the bull in its place, and the showroom loads its car's sprites again and drives on.
-- **Other screens** (gas station, police stop, results, game over) show for a few seconds or wait inside the original's own routines. A switch asked for there stays pending until the next screen that takes it or the next race frame.
+- **At a section's end.** The results pages wait in `results_wait` (`flow_stage.c`), which applies a switch at once and draws the page again from its figures in the new mode (the record book, the duel page and the section page). The gas station draws its picture again and starts its text scroll again.
+- **Other screens** (police stop, game over, name entry) show for a few seconds or wait inside the original's own routines. A switch asked for there stays pending until the next screen that takes it or the next race frame. An Amiga wipe, dissolve or fade under way ends at once when a switch is asked for.
 
 ### How it is tested
 
@@ -173,7 +174,7 @@ Done for the build (step 1 below). `build\TD2.exe` is about 3 MB and needs only 
 
 1. **Single exe.** Static SDL3 and C runtime, manifest, version resource. Done; the snapshots, tests and harness are unchanged.
 2. **Pending-switch mechanism and the race switch.** Done, with the `switch` snapshot run.
-3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run, and for the intro and attract screens. The gas station, police stop, results and game over screens leave the switch pending.
+3. **Screen redraw on switch.** Done for the four menu screens, with the `menuswitch` snapshot run, for the intro and attract screens, and for the results pages and the gas station. The police stop, game over and name entry screens leave the switch pending.
 4. **App UI layer on Windows.** Done: the context menu with the system theme, Ctrl+Shift+M and right click, pausing, and the graphics, monitor, window size, full screen and quit commands. The question windows move to step 5.
 5. **Game data manager.** Done: settings file, portable profile, game and expansion folders, base-game check, merged catalogues, archives (zip, 7z, rar, lha), the question windows, the first-start setup, and the Game files… and About entries.
 6. **macOS** (later): the same `app_ui` interface with AppKit.
